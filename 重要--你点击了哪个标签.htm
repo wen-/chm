@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>重要--你点击了哪个标签</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428">
+<STYLE>*{font-size:14px;line-height:15px;}</STYLE>
+</HEAD>
+
+<BODY>
+<P>重要--你点击了哪个标签</P>
+<P align=left>$(function(){</P>
+<P align=left>$("#click_box").click(function(e){</P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px" dir=ltr>
+  <BLOCKQUOTE style="MARGIN-RIGHT: 0px" dir=ltr>
+    <P>var obj_li = <STRONG><FONT 
+    size=+0>e.</FONT>target.id</STRONG>;//获取对象ID;</P>
+    <P>var obj_li1 = <STRONG><FONT 
+    size=+0>e.target</FONT>.className</STRONG>;//获取对象CLASS;</P>
+    <P>var obj_li2 = <STRONG>e.target.nodeName</STRONG>;//获取对象标签;</P>
+    <P>if(obj_li == "a1"){</P>
+    <BLOCKQUOTE style="MARGIN-RIGHT: 0px" dir=ltr>
+      <P>//执行相应的代码。</P></BLOCKQUOTE>
+    <P>};</P>
+    <P>switch(obj_li1){</P>
+    <BLOCKQUOTE style="MARGIN-RIGHT: 0px" dir=ltr>
+      <P>case a1:<BR>//执行相应的代码。</P>
+      <P>back;</P>
+      <P>case a2:</P>
+      <P>//执行相应的代码。</P>
+      <P>back;</P>
+      <P>default:<BR>//如果不是a1也不是a2就执行这里的代码；</P></BLOCKQUOTE>
+    <P>};</P></BLOCKQUOTE>
+  <P>});</P></BLOCKQUOTE>
+<P>});</P>
+<P>&lt;ul id="click_box"&gt;</P>
+<BLOCKQUOTE style="MARGIN-RIGHT: 0px" dir=ltr>
+  <P>&lt;li id="a1" class="b1"&gt;aaaaaaaaaa&lt;/li&gt;</P>
+  <P>&lt;li id="a2" class="b2"&gt;aaaaaaaaaa&lt;/li&gt;</P>
+  <P>&lt;li id="a3" class="b3"&gt;aaaaaaaaaa&lt;/li&gt;</P></BLOCKQUOTE>
+<P>&lt;/ul&gt;</P>
+<P>$(document).click(function(e){<BR>&nbsp;&nbsp;var e = e || 
+window.event;<BR>&nbsp;&nbsp;var targ = e.target || 
+e.srcElement;<BR>&nbsp;&nbsp;if( !$(targ).parents().is(".mod-pop") &amp;&amp; 
+targ.nodeName != "A" 
+){<BR>&nbsp;&nbsp;&nbsp;//xxxx<BR>&nbsp;&nbsp;}<BR>&nbsp;});</P></BODY></HTML>

@@ -1,0 +1,473 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Language" content="zh-cn" />
+
+<meta name="robots" content="all" />
+
+<meta name="author" content="w3school.com.cn" />
+<meta name="Copyright" content="Copyright W3school.com.cn All Rights Reserved." />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="false" />
+
+<link rel="stylesheet" type="text/css" href="c3.css" />
+
+<title>HTML DOM 节点树</title>
+</head>
+
+<body class="browserscripting">
+<div id="wrapper">
+<div id="navsecond">
+
+<div id="course">
+<h2>HTML DOM</h2>
+<ul>
+<li><a href="index.asp.html" title="DOM教程首页">DOM 首页</a></li>
+<li><a href="dom_intro.asp.html" title="DOM简介">DOM 简介</a></li>
+<li><a href="dom_nodes.asp.html" title="HTML DOM 节点">DOM 节点</a></li>
+<li><a href="dom_nodetree.asp.html" title="HTML DOM 节点树">DOM 节点树</a></li>
+<li><a href="dom_nodes_access.asp.html" title="HTML DOM 访问节点">DOM 节点访问</a></li>
+<li><a href="dom_nodes_info.asp.html" title="HTML DOM 节点信息">DOM 节点信息</a></li>
+<li><a href="dom_example.asp.html" title="一个 HTML DOM 实例">DOM How To</a></li>
+<li><a href="htmldom_reference.asp.html" title="">DOM 参考</a></li>
+<li><a href="dom_summary.asp.html" title="">DOM 总结</a></li>
+</ul>
+
+<h2>DOM 实例</h2>
+<ul>
+<li><a href="http://www.w3school.com.cn/example/hdom_examples.asp" title="">DOM 实例</a></li>
+</ul>
+
+<h2>DOM 对象</h2>
+<ul class="small">
+<li><a href="dom_obj_window.asp.html" title="HTML DOM Window 对象">DOM Window</a></li>
+<li><a href="dom_obj_navigator.asp.html" title="HTML DOM Navigator 对象">DOM Navigator</a></li>
+<li><a href="dom_obj_screen.asp.html" title="HTML DOM Screen 对象">DOM Screen</a></li>
+<li><a href="dom_obj_history.asp.html" title="HTML DOM History 对象">DOM History</a></li>
+<li><a href="dom_obj_location.asp.html" title="HTML DOM Location 对象">DOM Location</a></li>
+<li class="list_apart"><a href="dom_obj_document.asp.html" title="HTML DOM Document 对象">DOM Document</a></li>
+<li class="list_apart"><a href="dom_obj_anchor.asp.html" title="HTML DOM Anchor 对象">DOM Anchor</a></li>
+<li><a href="dom_obj_area.asp.html" title="HTML DOM Area 对象">DOM Area</a></li>
+<li><a href="dom_obj_base.asp.html" title="HTML DOM Base 对象">DOM Base</a></li>
+<li><a href="dom_obj_body.asp.html" title="HTML DOM Body 对象">DOM Body</a></li>
+<li><a href="dom_obj_pushbutton.asp.html" title="HTML DOM Button 对象">DOM Button</a></li>
+<li><a href="dom_obj_event.asp.html" title="HTML DOM Event 对象">DOM Event</a></li>
+<li><a href="dom_obj_form.asp.html" title="HTML DOM Form 对象">DOM Form</a></li>
+<li><a href="dom_obj_frame.asp.html" title="HTML DOM Frame 对象">DOM Frame</a></li>
+<li><a href="dom_obj_frameset.asp.html" title="HTML DOM Frameset 对象">DOM Frameset</a></li>
+<li><a href="dom_obj_iframe.asp.html" title="HTML DOM IFrame 对象">DOM IFrame</a></li>
+<li><a href="dom_obj_image.asp.html" title="HTML DOM Image 对象">DOM Image</a></li>
+<li><a href="dom_obj_button.asp.html" title="HTML DOM Button 对象">DOM Input Button</a></li>
+<li><a href="dom_obj_checkbox.asp.html" title="HTML DOM Checkbox 对象">DOM Input Checkbox</a></li>
+<li><a href="dom_obj_fileupload.asp.html" title="HTML DOM FileUpload 对象">DOM Input File</a></li>
+<li><a href="dom_obj_hidden.asp.html" title="HTML DOM Hidden 对象">DOM Input Hidden</a></li>
+<li><a href="dom_obj_password.asp.html" title="HTML DOM Password 对象">DOM Input Password</a></li>
+<li><a href="dom_obj_radio.asp.html" title="HTML DOM Radio 对象">DOM Input Radio</a></li>
+<li><a href="dom_obj_reset.asp.html" title="HTML DOM Reset 对象">DOM Input Reset</a></li>
+<li><a href="dom_obj_submit.asp.html" title="HTML DOM Submit 对象">DOM Input Submit</a></li>
+<li><a href="dom_obj_text.asp.html" title="HTML DOM Text 对象">DOM Input Text</a></li>
+<li><a href="dom_obj_link.asp.html" title="HTML DOM Link 对象">DOM Link</a></li>
+<li><a href="dom_obj_meta.asp.html" title="HTML DOM Meta 对象">DOM Meta</a></li>
+<li><a href="dom_obj_object.asp.html" title="HTML DOM Object 对象">DOM Object</a></li>
+<li><a href="dom_obj_option.asp.html" title="HTML DOM Option 对象">DOM Option</a></li>
+<li><a href="dom_obj_select.asp.html" title="HTML DOM Select 对象">DOM Select</a></li>
+<li><a href="dom_obj_style.asp.html" title="HTML DOM Style 对象">DOM Style</a></li>
+<li><a href="dom_obj_table.asp.html" title="HTML DOM Table 对象">DOM Table</a></li>
+<li><a href="dom_obj_tabledata.asp.html" title="HTML DOM TableCell 对象">DOM TableCell</a></li>
+<li><a href="dom_obj_tablerow.asp.html" title="HTML DOM TableRow 对象">DOM TableRow</a></li>
+<li><a href="dom_obj_textarea.asp.html" title="HTML DOM Textarea 对象">DOM Textarea</a></li>
+</ul>
+</div>
+</div>
+<div id="maincontent">
+
+<h1>HTML DOM Window 对象</h1>
+
+<div>
+<h2>Window 对象</h2>
+<p>Window 对象是 JavaScript 层级中的顶层对象。</p>
+<p>Window 对象代表一个浏览器窗口或一个框架。</p>
+<p>Window 对象会在 &lt;body&gt; 或 &lt;frameset&gt; 每次出现时被自动创建。</p>
+<p><a href="#description_window">有关 Window 对象的详细描述</a>。</p>
+<p><em>IE:</em> Internet Explorer, <em>F:</em> Firefox, <em>O:</em> Opera.</p>
+</div>
+
+<div>
+<h2>Window 对象的集合</h2>
+<table class="dataintable">
+  <tr>
+    <th>Collection</th>
+    <th>Description</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+  </tr>
+  <tr>
+    <td>frames[]</td>
+    <td>返回窗口中所有命名的框架。该集合是 Window 对象的数组，每个 Window 对象在窗口中含有一个框架或 &lt;iframe&gt;。属性 frames.length 存放数组 frames[] 中含有的元素个数。注意，frames[] 数组中引用的框架可能还包括框架，它们自己也具有 frames[] 数组。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  </table>
+</div>
+
+<div>
+<h2>Window 对象的属性</h2>
+
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+  </tr>
+  <tr>
+    <td><a href="prop_win_closed.asp.html">closed</a></td>
+    <td>返回窗口是否已被关闭。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_defaultstatus.asp.html">defaultStatus</a></td>
+    <td>设置或返回窗口状态栏中的默认文本。</td>
+    <td>4</td>
+    <td>No</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="dom_obj_document.asp.html">document</a></td>
+    <td>对 Document 对象的只读引用。请参阅 <a href="dom_obj_document.asp.html">Document 对象</a>。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="dom_obj_history.asp.html">history</a></td>
+    <td>对 History 对象的只读引用。请参数 <a href="dom_obj_history.asp.html">History 对象</a>。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_innerheight_innerwidth.asp.html">innerheight</a></td>
+    <td>返回窗口的文档显示区的高度。</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_innerheight_innerwidth.asp.html">innerwidth</a></td>
+    <td>返回窗口的文档显示区的宽度。</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>length</td>
+    <td>设置或返回窗口中的框架数量。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="dom_obj_location.asp.html">location</a></td>
+    <td>用于窗口或框架的 Location 对象。请参阅 <a href="dom_obj_location.asp.html">Location 对象</a>。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_name.asp.html">name</a></td>
+    <td>设置或返回窗口的名称。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="dom_obj_navigator.asp.html">Navigator</a></td>
+    <td>对 Navigator 对象的只读引用。请参数 <a href="dom_obj_navigator.asp.html">Navigator 对象</a>。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_opener.asp.html">opener</a></td>
+    <td>返回对创建此窗口的窗口的引用。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_outerheight.asp.html">outerheight</a></td>
+    <td>返回窗口的外部高度。</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_outerwidth.asp.html">outerwidth</a></td>
+    <td>返回窗口的外部宽度。</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>pageXOffset</td>
+    <td>设置或返回当前页面相对于窗口显示区左上角的 X 位置。</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>pageYOffset</td>
+    <td>设置或返回当前页面相对于窗口显示区左上角的 Y 位置。</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>parent</td>
+    <td>返回父窗口。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="dom_obj_screen.asp.html">Screen</a></td>
+    <td>对 Screen 对象的只读引用。请参数 <a href="dom_obj_screen.asp.html">Screen 对象</a>。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_self.asp.html">self</a></td>
+    <td>返回对当前窗口的引用。等价于 Window 属性。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_status.asp.html">status</a></td>
+    <td>设置窗口状态栏的文本。</td>
+    <td>4</td>
+    <td>No</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_win_top.asp.html">top</a></td>
+    <td>返回最顶层的先辈窗口。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td>window</td>
+    <td>window 属性等价于 self 属性，它包含了对窗口自身的引用。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td>
+	<ul>
+	<li>screenLeft</li>
+	<li>screenTop</li>
+	<li>screenX</li>
+	<li>screenY</li>
+	</ul>
+	</td>
+    <td>只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  </table>
+</div>
+
+<div>
+<h2>Window 对象的方法</h2>
+
+<table class="dataintable">
+  <tr>
+    <th>方法</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+  </tr>
+  <tr>
+    <td><a href="met_win_alert.asp.html">alert()</a></td>
+    <td>显示带有一段消息和一个确认按钮的警告框。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="met_win_blur.asp.html">blur()</a></td>
+    <td>把键盘焦点从顶层窗口移开。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_clearinterval.asp.html">clearInterval()</a></td>
+    <td>取消由 setInterval() 设置的 timeout。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_cleartimeout.asp.html">clearTimeout()</a></td>
+    <td>取消由 setTimeout() 方法设置的 timeout。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_close.asp.html">close()</a></td>
+    <td>关闭浏览器窗口。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_confirm.asp.html">confirm()</a></td>
+    <td>显示带有一段消息以及确认按钮和取消按钮的对话框。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_createpopup.asp.html">createPopup()</a></td>
+    <td>创建一个 pop-up 窗口。</td>
+    <td>4</td>
+    <td>No</td>
+    <td>No</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_focus.asp.html">focus()</a></td>
+    <td>把键盘焦点给予一个窗口。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_moveby.asp.html">moveBy()</a></td>
+    <td>可相对窗口的当前坐标把它移动指定的像素。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_moveto.asp.html">moveTo()</a></td>
+    <td>把窗口的左上角移动到一个指定的坐标。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_open.asp.html">open()</a></td>
+    <td>打开一个新的浏览器窗口或查找一个已命名的窗口。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_print.asp.html">print()</a></td>
+    <td>打印当前窗口的内容。</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_prompt.asp.html">prompt()</a></td>
+    <td>显示可提示用户输入的对话框。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_resizeby.asp.html">resizeBy()</a></td>
+    <td>按照指定的像素调整窗口的大小。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_resizeto.asp.html">resizeTo()</a></td>
+    <td>把窗口的大小调整到指定的宽度和高度。</td>
+    <td>4</td>
+    <td>1.5</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_scrollby.asp.html">scrollBy()</a></td>
+    <td>按照指定的像素值来滚动内容。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_scrollto.asp.html">scrollTo()</a></td>
+    <td>把内容滚动到指定的坐标。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_setinterval.asp.html">setInterval()</a></td>
+    <td>按照指定的周期（以毫秒计）来调用函数或计算表达式。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+  <tr>
+    <td><a href="met_win_settimeout.asp.html">setTimeout()</a></td>
+    <td>在指定的毫秒数后调用函数或计算表达式。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    </tr>
+</table>
+</div>
+
+<div>
+<h2><a id="description_window">Window 对象的描述</a></h2>
+<p>Window 对象表示一个浏览器窗口或一个框架。在客户端 JavaScript 中，Window 对象是全局对象，所有的表达式都在当前的环境中计算。也就是说，要引用当前窗口根本不需要特殊的语法，可以把那个窗口的属性作为全局变量来使用。例如，可以只写 <a href="dom_obj_document.asp.html">document</a>，而不必写 window.document。</p>
+<p>同样，可以把当前窗口对象的方法当作函数来使用，如只写 alert()，而不必写 Window.alert()。</p>
+<p>除了上面列出的属性和方法，Windos 对象还实现了核心 JavaScript 所定义的所有全局属性和方法。</p>
+<p>Window 对象的 window 属性和 <a href="prop_win_self.asp.html">self 属性</a>引用的都是它自己。当你想明确地引用当前窗口，而不仅仅是隐式地引用它时，可以使用这两个属性。除了这两个属性之外，parent 属性、top 属性以及 frame[] 数组都引用了与当前 Window 对象相关的其他 Window 对象。</p>
+<p>要引用窗口中的一个框架，可以使用如下语法：</p>
+<pre>
+frame[i]		//当前窗口的框架
+self.frame[i]	//当前窗口的框架
+w.frame[i]	//窗口 w 的框架
+</pre>
+<p>要引用一个框架的父窗口（或父框架），可以使用下面的语法：</p>
+<pre>
+parent		//当前窗口的父窗口
+self.parent	//当前窗口的父窗口
+w.parent 		//窗口 w 的父窗口
+</pre>
+<p>要从顶层窗口含有的任何一个框架中引用它，可以使用如下语法：</p>
+<pre>
+top		//当前框架的顶层窗口
+self.top		//当前框架的顶层窗口
+f.top		//框架 f 的顶层窗口
+</pre>
+<p>新的顶层浏览器窗口由方法 Window.open() 创建。当调用该方法时，应把 open() 调用的返回值存储在一个变量中，然后使用那个变量来引用新窗口。新窗口的 <a href="prop_win_opener.asp.html">opener 属性</a>反过来引用了打开它的那个窗口。</p>
+<p>一般来说，Window 对象的方法都是对浏览器窗口或框架进行某种操作。而 <a href="met_win_alert.asp.html">alert() 方法</a>、<a href="met_win_confirm.asp.html">confirm() 方法</a>和 <a href="met_win_prompt.asp.html">prompt 方法</a>则不同，它们通过简单的对话框与用户进行交互。</p>
+</div>
+
+</div>
+
+
+</div>
+</body>
+</html>
+

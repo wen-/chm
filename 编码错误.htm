@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>编码错误</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>编码错误</P>
+<DIV>
+<H2>错误消息</H2>
+<P>如果您试图向 IE 中载入 XML 文档，可能会得到两种指示编码问题的错误： 
+<H3>在文本内容中发现非法字符</H3>
+<P>如果 XML 文档中的某个字符与编码属性不匹配，您就会得到这个错误消息。通常，当 XML 
+文件中含有外国字符，且当文件使用类似记事本的单字节编码编辑器保存，以及没有指定编码属性时，您就会得到这个错误消息。</P>
+<H3>将当前编码切换为不被支持的指定编码</H3>
+<P>如果您的文件被保存为 Unicode/UTF-16，但是编码属性被指定为单字节编码（比如 Windows-1252、ISO-8859-1 或者 
+UTF-8）时，那么您就会得到这个错误消息。或者当您的文档被保存为单字节编码，但编码属性被指定为双字节编码（比如 
+UTF-16）时，也会得到这个错误消息。</P></DIV>
+<DIV>
+<H2>结论</H2>
+<P>结论是：编码属性应当被指定为文档被保存时所使用的编码。我最好的避免错误的建议是：</P>
+<UL>
+  <LI>使用支持编码的编辑器 
+  <LI>确定编辑器使用的编码 
+  <LI>在您的 XML 文档中使用相同的编码属性 </LI></UL></DIV></BODY></HTML>

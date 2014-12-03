@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>对象工具函数</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>对象工具函数</P>
+<P>枚举属性：</P>
+<P>//将p中的属性添加到o中</P>
+<P>function extend(o,p){</P>
+<P>for(prop in p){</P>
+<P>&nbsp;&nbsp;&nbsp; o[prop] = p[prop];</P>
+<P>}</P>
+<P>return o;</P>
+<P>}</P>
+<P>//将p中的属性添加到o中，o和p中有同名属性，o中的属性不受影响</P>
+<P>function merge(o,p){</P>
+<P>for(prop in p){</P>
+<P>&nbsp;&nbsp;&nbsp; if(o.hasOwnProperty[prop]) continue;</P>
+<P>&nbsp;&nbsp;&nbsp; o[prop] = p[prop];</P>
+<P>}</P>
+<P>return o;</P>
+<P>}</P>
+<P>//如果o中的属性在p中没有同名属性，则从o中删除这个属性</P>
+<P>function restrict(o,p){</P>
+<P>for(prop in p){</P>
+<P>&nbsp;&nbsp;&nbsp; if(! (prop in p)) delete o[prop];</P>
+<P>}</P>
+<P>return o;</P>
+<P>}</P>
+<P>//如果o中的属性在p中存在同名属性，则从o中删除这个属性</P>
+<P>function subtract(o,p){</P>
+<P>for(prop in p){</P>
+<P>&nbsp;&nbsp;&nbsp; delete o[prop];</P>
+<P>}</P>
+<P>return o;</P>
+<P>}</P></BODY></HTML>

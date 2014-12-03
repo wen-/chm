@@ -1,0 +1,317 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Language" content="zh-cn" />
+
+<meta name="robots" content="all" />
+
+<meta name="author" content="w3school.com.cn" />
+<meta name="Copyright" content="Copyright W3school.com.cn All Rights Reserved." />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="false" />
+
+<link rel="stylesheet" type="text/css" href="c3.css" />
+
+<title>HTML DOM 节点树</title>
+</head>
+
+<body class="browserscripting">
+<div id="wrapper">
+<div id="navsecond">
+
+<div id="course">
+<h2>HTML DOM</h2>
+<ul>
+<li><a href="index.asp.html" title="DOM教程首页">DOM 首页</a></li>
+<li><a href="dom_intro.asp.html" title="DOM简介">DOM 简介</a></li>
+<li><a href="dom_nodes.asp.html" title="HTML DOM 节点">DOM 节点</a></li>
+<li><a href="dom_nodetree.asp.html" title="HTML DOM 节点树">DOM 节点树</a></li>
+<li><a href="dom_nodes_access.asp.html" title="HTML DOM 访问节点">DOM 节点访问</a></li>
+<li><a href="dom_nodes_info.asp.html" title="HTML DOM 节点信息">DOM 节点信息</a></li>
+<li><a href="dom_example.asp.html" title="一个 HTML DOM 实例">DOM How To</a></li>
+<li><a href="htmldom_reference.asp.html" title="">DOM 参考</a></li>
+<li><a href="dom_summary.asp.html" title="">DOM 总结</a></li>
+</ul>
+
+<h2>DOM 实例</h2>
+<ul>
+<li><a href="http://www.w3school.com.cn/example/hdom_examples.asp" title="">DOM 实例</a></li>
+</ul>
+
+<h2>DOM 对象</h2>
+<ul class="small">
+<li><a href="dom_obj_window.asp.html" title="HTML DOM Window 对象">DOM Window</a></li>
+<li><a href="dom_obj_navigator.asp.html" title="HTML DOM Navigator 对象">DOM Navigator</a></li>
+<li><a href="dom_obj_screen.asp.html" title="HTML DOM Screen 对象">DOM Screen</a></li>
+<li><a href="dom_obj_history.asp.html" title="HTML DOM History 对象">DOM History</a></li>
+<li><a href="dom_obj_location.asp.html" title="HTML DOM Location 对象">DOM Location</a></li>
+<li class="list_apart"><a href="dom_obj_document.asp.html" title="HTML DOM Document 对象">DOM Document</a></li>
+<li class="list_apart"><a href="dom_obj_anchor.asp.html" title="HTML DOM Anchor 对象">DOM Anchor</a></li>
+<li><a href="dom_obj_area.asp.html" title="HTML DOM Area 对象">DOM Area</a></li>
+<li><a href="dom_obj_base.asp.html" title="HTML DOM Base 对象">DOM Base</a></li>
+<li><a href="dom_obj_body.asp.html" title="HTML DOM Body 对象">DOM Body</a></li>
+<li><a href="dom_obj_pushbutton.asp.html" title="HTML DOM Button 对象">DOM Button</a></li>
+<li><a href="dom_obj_event.asp.html" title="HTML DOM Event 对象">DOM Event</a></li>
+<li><a href="dom_obj_form.asp.html" title="HTML DOM Form 对象">DOM Form</a></li>
+<li><a href="dom_obj_frame.asp.html" title="HTML DOM Frame 对象">DOM Frame</a></li>
+<li><a href="dom_obj_frameset.asp.html" title="HTML DOM Frameset 对象">DOM Frameset</a></li>
+<li><a href="dom_obj_iframe.asp.html" title="HTML DOM IFrame 对象">DOM IFrame</a></li>
+<li><a href="dom_obj_image.asp.html" title="HTML DOM Image 对象">DOM Image</a></li>
+<li><a href="dom_obj_button.asp.html" title="HTML DOM Button 对象">DOM Input Button</a></li>
+<li><a href="dom_obj_checkbox.asp.html" title="HTML DOM Checkbox 对象">DOM Input Checkbox</a></li>
+<li><a href="dom_obj_fileupload.asp.html" title="HTML DOM FileUpload 对象">DOM Input File</a></li>
+<li><a href="dom_obj_hidden.asp.html" title="HTML DOM Hidden 对象">DOM Input Hidden</a></li>
+<li><a href="dom_obj_password.asp.html" title="HTML DOM Password 对象">DOM Input Password</a></li>
+<li><a href="dom_obj_radio.asp.html" title="HTML DOM Radio 对象">DOM Input Radio</a></li>
+<li><a href="dom_obj_reset.asp.html" title="HTML DOM Reset 对象">DOM Input Reset</a></li>
+<li><a href="dom_obj_submit.asp.html" title="HTML DOM Submit 对象">DOM Input Submit</a></li>
+<li><a href="dom_obj_text.asp.html" title="HTML DOM Text 对象">DOM Input Text</a></li>
+<li><a href="dom_obj_link.asp.html" title="HTML DOM Link 对象">DOM Link</a></li>
+<li><a href="dom_obj_meta.asp.html" title="HTML DOM Meta 对象">DOM Meta</a></li>
+<li><a href="dom_obj_object.asp.html" title="HTML DOM Object 对象">DOM Object</a></li>
+<li><a href="dom_obj_option.asp.html" title="HTML DOM Option 对象">DOM Option</a></li>
+<li><a href="dom_obj_select.asp.html" title="HTML DOM Select 对象">DOM Select</a></li>
+<li><a href="dom_obj_style.asp.html" title="HTML DOM Style 对象">DOM Style</a></li>
+<li><a href="dom_obj_table.asp.html" title="HTML DOM Table 对象">DOM Table</a></li>
+<li><a href="dom_obj_tabledata.asp.html" title="HTML DOM TableCell 对象">DOM TableCell</a></li>
+<li><a href="dom_obj_tablerow.asp.html" title="HTML DOM TableRow 对象">DOM TableRow</a></li>
+<li><a href="dom_obj_textarea.asp.html" title="HTML DOM Textarea 对象">DOM Textarea</a></li>
+</ul>
+</div>
+</div>
+<div id="maincontent">
+
+<h1>HTML DOM Document 对象</h1>
+
+<div>
+<h2>Document 对象</h2>
+<p>Document 对象代表整个 HTML 文档，可用来访问页面中的所有元素。</p>
+<p>Document 对象是 Window 对象的一个部分，可通过 window.document 属性来访问。</p>
+<p><a href="#description_document">有关 Document 对象的详细描述</a>。</p>
+<p><em>IE:</em> Internet Explorer, <em>F:</em> Firefox, <em>O:</em> Opera, <em>W3C:</em> World Wide Web Consortium (Internet 标准).</p>
+</div>
+
+<div>
+<h2>Document 对象的集合</h2>
+<table class="dataintable">
+  <tr>
+    <th>集合</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+    <th>W3C</th>
+  </tr>
+  <tr>
+    <td><a href="coll_doc_all.asp.html">all[]</a></td>
+    <td>提供对文档中所有 HTML 元素的访问。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="coll_doc_anchors.asp.html">anchors[]</a></td>
+    <td>返回对文档中所有 Anchor 对象的引用。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>applets</td>
+    <td>返回对文档中所有 Applet 对象的引用。</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><a href="coll_doc_forms.asp.html">forms[]</a></td>
+    <td>返回对文档中所有 Form 对象引用。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="coll_doc_images.asp.html">images[]</a></td>
+    <td>返回对文档中所有 Image 对象引用。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="coll_doc_links.asp.html">links[]</a></td>
+    <td>返回对文档中所有 Area 和 Link 对象引用。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  </table>
+</div>
+
+<div>
+<h2>Document 对象的属性</h2>
+
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+    <th>W3C</th>
+  </tr>
+  <tr>
+    <td>body</td>
+    <td>提供对 &lt;body&gt; 元素的直接访问。对于定义了框架集的文档，该属性引用最外层的 &lt;frameset&gt;。</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a href="prop_doc_cookie.asp.html">cookie</a></td>
+    <td>设置或返回与当前文档有关的所有 cookie。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_doc_domain.asp.html">domain</a></td>
+    <td>返回当前文档的域名。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_doc_lastmodified.asp.html">lastModified</a></td>
+    <td>返回文档被最后修改的日期和时间。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_doc_referrer.asp.html">referrer</a></td>
+    <td>返回载入当前文档的文档的 URL。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_doc_title.asp.html">title</a></td>
+    <td>返回当前文档的标题。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_doc_url.asp.html">URL</a></td>
+    <td>返回当前文档的 URL。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  </table>
+</div>
+
+<div>
+<h2>Document 对象的方法</h2>
+
+<table class="dataintable">
+  <tr>
+    <th>方法</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+    <th>W3C</th>
+  </tr>
+  <tr>
+    <td><a href="met_doc_close.asp.html">close()</a></td>
+    <td>关闭用  document.open() 方法打开的输出流，并显示选定的数据。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+    </tr>
+  <tr>
+    <td><a href="met_doc_getelementbyid.asp.html">getElementById()</a></td>
+    <td>返回对拥有指定 id 的第一个对象的引用。</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+    </tr>
+  <tr>
+    <td><a href="met_doc_getelementsbyname.asp.html">getElementsByName()</a></td>
+    <td>返回带有指定名称的对象集合。</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+    </tr>
+  <tr>
+    <td class="no_wrap"><a href="met_doc_getelementsbytagname.asp.html">getElementsByTagName()</a></td>
+    <td>返回带有指定标签名的对象集合。</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+    </tr>
+  <tr>
+    <td><a href="met_doc_open.asp.html">open()</a></td>
+    <td>打开一个流，以收集来自任何 document.write() 或 document.writeln() 方法的输出。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+    </tr>
+  <tr>
+    <td><a href="met_doc_write.asp.html">write()</a></td>
+    <td>向文档写 HTML 表达式 或 JavaScript 代码。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+    </tr>
+  <tr>
+    <td><a href="met_doc_writeln.asp.html">writeln()</a></td>
+    <td>等同于 write() 方法，不同的是在每个表达式之后写一个换行符。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+    </tr>
+  </table>
+</div>
+
+<div>
+<h2><a id="description_document">Document 对象的描述</a></h2>
+<p>HTMLDocument 接口对 DOM Document 接口进行了扩展，定义 HTML 专用的属性和方法。</p>
+<p>很多属性和方法都是 HTMLCollection 对象（实际上是可以用数组或名称索引的只读数组），其中保存了对锚、表单、链接以及其他可脚本元素的引用。</p>
+<p>这些集合属性都源自于 0 级 DOM。它们已经被 <a href="met_doc_getelementsbytagname.asp.html">Document.getElementsByTagName()</a> 所取代，但是仍然常常使用，因为他们很方便。</p>
+
+<p><a href="met_doc_write.asp.html">write() 方法</a>值得注意，在文档载入和解析的时候，它允许一个脚本向文档中插入动态生成的内容。</p>
+
+<p>注意，在 1 级 DOM 中，HTMLDocument 定义了一个名为 <a href="met_doc_getelementbyid.asp.html">getElementById()</a> 的非常有用的方法。在 2 级 DOM 中，该方法已经被转移到了 Document 接口，它现在由 HTMLDocument 继承而不是由它定义了。</p>
+</div>
+
+</div>
+
+
+</div>
+</body>
+</html>
+

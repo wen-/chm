@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>移动设备样式文件判断</TITLE>
+</HEAD>
+<BODY>
+<P>移动设备样式文件判断</P>
+<P>加载不同的CSS文件</P>
+<P><STRONG>1、桌面t系统和移动设备</STRONG></P>
+<P>&lt;link rel="stylesheet" type="text/css" media="<FONT 
+color=#ff0000>screen</FONT>" href="xxxx.css" /&gt;</P>
+<P>&lt;link rel="stylesheet" type="text/css" media="<FONT 
+color=#ff0000>handheld</FONT>" href="xxxx.css" /&gt;</P>
+<P>screen为桌面系统；handheld为移动设备。(判断不可靠)</P>
+<P><STRONG>2、屏幕宽度条件判断</STRONG></P>
+<P>&lt;link rel="stylesheet" type="text/css" media="<FONT color=#ff0000>only 
+screen and (max-device-width:480px)</FONT>" href="xxxx.css" 
+/&gt;只支持screen且宽度最大为480的设备</P>
+<P>@media only screen and (max-device-width:480px){</P>
+<P>body{background-color:red;}</P>
+<P>}</P>
+<P><STRONG>3、横屏及竖屏条件判断</STRONG></P>
+<P>&lt;link rel="stylesheet" type="text/css" media="<FONT color=#ff0000>all and 
+(orientation:landscape)</FONT>" href="xxxx.css" /&gt;横屏</P>
+<P>&lt;link rel="stylesheet" type="text/css" media="<FONT color=#ff0000>all and 
+(orientation:portrait)</FONT>" href="xxxx.css" /&gt;竖屏</P>
+<P><STRONG>4、iPhone4 高清图</STRONG></P>
+<P>&lt;link rel="stylesheet" type="text/css" media="<FONT color=#ff0000>all and 
+(-webkit-min-device-pixel-ratio:2)</FONT>" href="xxxx.css" /&gt;横屏</P>
+<P><STRONG>5、字休选择</STRONG></P>
+<P>应该使用t系统l默认字体，通常是（sans-serif)</P>
+<P><STRONG>6、字号大小</STRONG></P>
+<P>使用相对值常数（xx-small\x-small\smaller\small\medium\large\larger\x-large\xx-large)；</P>
+<P>使用em相对值；</P>
+<P>默认字体d大小（medium)</P>
+<P>7、<STRONG>iPhone字体缩放控制样式</STRONG></P>
+<P><STRONG>-webkit-text-size-adjust:auto/none/xx%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(none为禁用)</STRONG></P>
+</BODY>
+</HTML>

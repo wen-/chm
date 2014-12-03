@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>node多域名</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>node多域名</P>
+<DIV class="content-head clearfix" 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; ZOOM: 1; COLOR: rgb(69,69,69); FONT: 12px tahoma, helvetica, arial; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H2 class="title content-title" 
+style="FONT-SIZE: 20px; FONT-FAMILY: tahoma, helvetica, 'microsoft yahei', arial; FLOAT: left; FONT-WEIGHT: normal; COLOR: rgb(58,58,58); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; PADDING-RIGHT: 0px">node.js 
+与 nginx配合使用</H2></DIV>
+<DIV id=content class="content mod-cs-content text-content clearfix" 
+style="OVERFLOW: hidden; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; ZOOM: 1; COLOR: rgb(69,69,69); FONT: 14px/1.5 tahoma, helvetica, arial; MARGIN: 7px 0px 10px; LETTER-SPACING: normal; WIDTH: 758px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">现在小介绍下怎么用nginx和node.js配合使用。<BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+<DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN><SPAN>var</SPAN><SPAN>&nbsp;http&nbsp;=&nbsp;require(</SPAN><SPAN>'http'</SPAN><SPAN>);&nbsp;&nbsp;</SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>http.createServer(<SPAN>function</SPAN><SPAN>&nbsp;(request,&nbsp;response)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;response.writeHead(200,&nbsp;{<SPAN>'Content-Type'</SPAN><SPAN>:&nbsp;</SPAN><SPAN>'text/plain'</SPAN><SPAN>});&nbsp;&nbsp;</SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;response.end(<SPAN>'hello&nbsp;world\n'</SPAN><SPAN>);&nbsp;&nbsp;</SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>}).listen(8000);&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>console.log(<SPAN>'Server&nbsp;running&nbsp;at&nbsp;http://127.0.0.1:8000/'</SPAN><SPAN>);&nbsp;&nbsp;</SPAN></SPAN></P></DIV><BR>然后用node&nbsp;helloworld.js指令开启，这样跑在本地的机子的nodejs的程序就算开起来了，占用的是8000端口，可自己修改。 
+
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">接着，我们在nginx的vhost.conf里面写一个server</P>
+<DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">server&nbsp;{&nbsp;&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;listen&nbsp;&nbsp;<SPAN>80</SPAN><SPAN>;&nbsp;&nbsp;</SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;server_name&nbsp;taqing.me&nbsp;www.taqing.me;&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;location&nbsp;/&nbsp;{&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass&nbsp;http://<SPAN>127.0</SPAN><SPAN>.</SPAN><SPAN>0.1</SPAN><SPAN>:</SPAN><SPAN>8000</SPAN><SPAN>;&nbsp;&nbsp;</SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>}&nbsp;&nbsp;</SPAN></P></DIV><BR>将网站域名设置好，然后端口设置为80，最后proxy_pass设置为http://127.0.0.1:8000，将所有从taqing.me:80的请求传递到nodejs程序去。 
+
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">重启nginx</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">访问域名，就可以了看到helloworld了。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">虽然node.js本身就可以做服务器是没错啦，比如welcome.js里面设置为80端口就可以了。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">但是一个机子跑多个网站，其他网站又是用别的服务器，在80端口已经被占用的情况下，是可以用代理到别的端口来处理的。</P></DIV>
+<P>&nbsp;</P>
+<DL class=box_t 
+style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; HEIGHT: 35px; BORDER-RIGHT-WIDTH: 0px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: left; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 15px; FONT: bold 21px 宋体; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; WIDTH: 670px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <DD 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px">nginx结合node.js安装使用</DD></DL>
+<DL class=box_INFO 
+style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: left; COLOR: rgb(153,153,153); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 12px 宋体; PADDING-LEFT: 20px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 20px; BORDER-TOP-WIDTH: 0px; WIDTH: 630px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <DD class="frinfo line_blue" 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; OVERFLOW: hidden; HEIGHT: 30px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-IMAGE: url(http://www.2cto.com/statics/images/xxbule.jpg); BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0% 22px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; WIDTH: 500px">2012-02-04 
+  18:10:11 &nbsp;&nbsp;&nbsp;&nbsp;<A 
+  style="BACKGROUND-IMAGE: url(http://www.2cto.com/statics/images/icon/user_comment.png); BACKGROUND-POSITION: 0% 50%; FONT-WEIGHT: bold; COLOR: rgb(31,58,135); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 20px; TEXT-DECORATION: none; PADDING-RIGHT: 0px" 
+  href="http://www.2cto.com/os/201202/118403.html#comment_iframe">我来说两句&nbsp;</A>&nbsp;&nbsp; 
+  &nbsp;&nbsp;</DD>
+  <DD class="frsize line_blue" 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; OVERFLOW: hidden; HEIGHT: 30px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-IMAGE: url(http://www.2cto.com/statics/images/xxbule.jpg); BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0% 22px; FLOAT: left; PADDING-BOTTOM: 0px; TEXT-ALIGN: right; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; WIDTH: 130px"><SPAN 
+  id=favorite><A onclick="add_favorite('nginx结合node.js安装使用');" class=t6 
+  style="COLOR: rgb(31,58,135); TEXT-DECORATION: none" 
+  href="javascript:;">收藏</A><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN>&nbsp;&nbsp;<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><A 
+  style="COLOR: rgb(31,58,135); TEXT-DECORATION: none" 
+  href="http://www.2cto.com/index.php?m=member&c=content&a=publish&modid=1&siteid=1" 
+  target=_blank><IMG 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px" 
+  border=0 src="http://www.2cto.com/statics/images/dl.jpg">我要投稿</A></DD></DL>
+<DL id=fontzoom class=box_body 
+style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: left; COLOR: rgb(51,51,51); PADDING-BOTTOM: 20px; PADDING-TOP: 0px; FONT: 14px/28px 宋体; PADDING-LEFT: 20px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 20px; BORDER-TOP-WIDTH: 0px; WIDTH: 630px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <DD id=Article 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px">最近想给团队做个Web站点，本来想用Apache的，后来想到现在好像流行nginx，那就学习一下nginx吧。
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">&nbsp;</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">http://nginx.org/&nbsp; 
+  点击download下载windows版本，我下的是1.1.14版，压缩包只有1.08M，真是小啊。我把它解压到 
+  D:\Developer\nginx-1.1.14下，双击nginx.exe，弹出一个黑屏就消失了。查看进程</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em"><IMG 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; HEIGHT: 36px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; WIDTH: 248px" 
+  alt=\ 
+src="http://www.2cto.com/uploadfile/2012/0204/20120204061235769.gif"></P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">启动两个进程</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">浏览器输入http://localhost/</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em"><IMG 
+  style="LIST-STYLE-TYPE: none; BORDER-TOP: medium none; HEIGHT: 109px; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px; WIDTH: 630px" 
+  alt=\ 
+src="http://www.2cto.com/uploadfile/2012/0204/20120204061235183.gif"></P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">OK可以使用</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">不过打开关闭太麻烦了，还要手动关进程，有没有像apache那样的托盘就好了</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">google一下，还真有，软件叫nginxtray 
+  官网&nbsp;<A style="FONT-SIZE: 14px; COLOR: rgb(202,0,0); TEXT-DECORATION: none" 
+  href="http://nginxtray.codeplex.com/">http://nginxtray.codeplex.com/</A>&nbsp;是codeplex的开源项目，我下的1.0版</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">我<A 
+  class=keylink 
+  style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); TEXT-DECORATION: none" 
+  href="http://www.2cto.com/soft" target=_blank>下载</A>后解压到D:\Developer\NginxTray 
+  1.0</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">双击执行&nbsp;NginxTray.exe，托盘多个图标</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em"><IMG 
+  style="LIST-STYLE-TYPE: none; BORDER-TOP: medium none; HEIGHT: 184px; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px; WIDTH: 202px" 
+  alt=\ 
+src="http://www.2cto.com/uploadfile/2012/0204/20120204061235532.gif"></P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">提供打开、关闭和重启功能，不过使用前需要配置一下nginx的位置</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">点击settings</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em"><IMG 
+  style="LIST-STYLE-TYPE: none; BORDER-TOP: medium none; HEIGHT: 399px; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px; WIDTH: 443px" 
+  alt=\ 
+src="http://www.2cto.com/uploadfile/2012/0204/20120204061235897.gif"></P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">Nginx 
+  Directory 是nginx的解压目录，我的是<SPAN 
+  style="WHITE-SPACE: pre">D:\Developer\nginx-1.1.14，<STRONG>注意：替换时要小心，有一部分被Nginx 
+  Directory标签遮住了，我就搞了半天</STRONG></SPAN></P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">现在启动关闭好方便了。</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em"><SPAN 
+  style="WHITE-SPACE: pre">D:\Developer\nginx-1.1.14\conf</SPAN>\nginx.conf 
+  是主要配置文件有点像httpd.conf，结合node.js使用时需要修改该文件，在server {下添加</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">&nbsp; 
+  &nbsp; &nbsp; &nbsp; location /node {<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+  &nbsp; proxy_pass http://127.0.0.1:1337;<BR>&nbsp; &nbsp; &nbsp; &nbsp; }</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">node,js例子example.js文件如下：</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em"><BR><BR><BR>var 
+  http = require('http');&nbsp;<BR>http.createServer(function (req, res) 
+  {&nbsp;<BR>&nbsp; res.writeHead(200, {'Content-Type': 
+  'text/plain'});&nbsp;<BR>&nbsp; res.end('Hello 
+  World\n');&nbsp;<BR>}).listen(1337, "127.0.0.1");&nbsp;<BR>console.log('Server 
+  running at http://127.0.0.1:1337/');&nbsp; &nbsp;在命令行执行node example.js</P><BR>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 8px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">&nbsp;</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">重启nginx</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">在地址栏输入http://www.2cto.com 
+  /node</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em">&nbsp;</P>
+  <P 
+  style="BORDER-LEFT-WIDTH: 0px; LIST-STYLE-TYPE: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; TEXT-INDENT: 2em"><IMG 
+  style="LIST-STYLE-TYPE: none; BORDER-TOP: medium none; HEIGHT: 108px; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px; WIDTH: 352px" 
+  alt=\ 
+  src="http://www.2cto.com/uploadfile/2012/0204/20120204061236858.gif"><BR><BR>OK结合使用成功</P></DD></DL></BODY></HTML>

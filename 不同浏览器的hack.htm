@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>不同浏览器的hack</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16464">
+<STYLE type=text/css>
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+	font-family:"宋体";
+}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<P>CSS hack写法：</P>
+<P>.e{ <BR>color:#FFF; /* FF,OP */ <BR>[;color:#0F0;] /* Sa,CH */</P><PRE style="BORDER-BOTTOM: rgb(235,235,235) 1px solid; BORDER-LEFT: rgb(235,235,235) 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 28px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(247,247,247); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 40px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-POSITION: 10px 10px; ORPHANS: 2; COLOR: rgb(233,77,0); FONT-SIZE: 12px; BORDER-TOP: rgb(235,235,235) 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(235,235,235) 1px solid; WORD-SPACING: 0px; PADDING-TOP: 5px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" class="brush: css; ">#element {
+    color: green\0/IE8+9; /* IE8+9  */
+}
+:root #element { color:pink \0/IE9; }  /* IE9 */</PRE><PRE style="BORDER-BOTTOM: rgb(235,235,235) 1px solid; BORDER-LEFT: rgb(235,235,235) 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 28px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(247,247,247); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 40px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-POSITION: 10px 10px; ORPHANS: 2; COLOR: rgb(233,77,0); FONT-SIZE: 12px; BORDER-TOP: rgb(235,235,235) 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(235,235,235) 1px solid; WORD-SPACING: 0px; PADDING-TOP: 5px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" class="brush: css; "><OL style="PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 14px/28px 'Microsoft YaHei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><LI style="LIST-STYLE-POSITION: inside; PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: decimal; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">background-color:red\0;IE8和IE9都支持；<LI style="LIST-STYLE-POSITION: inside; PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: decimal; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">background-color:blue\9\0; 仅IE9支持；</LI></OL></PRE>
+<P>color:#FFF\0; /*IE8、IE9*/ <BR>color:#FFF\9; /*IE6、7、8*/ <BR>*color:#FF0; /* 
+IE7、6 */<BR>_color:#F00; /* IE6 */ <BR>}<BR>:root .e{color:#000;} /*IE9*/(:root 
+CSS3，伪类指根，即HTML{})</P>
+<P></P>
+<P>注意hack的书写顺序。</P>
+<P><STRONG>浏览器专属 CSS Hack</STRONG></P>
+<P>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "<A 
+href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</A>"&gt;<BR>&lt;html 
+lang="en"&gt;<BR>&lt;head&gt;<BR>&lt;meta http-equiv="Content-Type" 
+content="text/html; charset=utf-8"&gt;<BR>&lt;title&gt;CSS Browser 
+Hacks&lt;/title&gt;<BR>&lt;style type="text/css"&gt;<BR>body p<BR>{<BR>display: 
+none;<BR>}<BR>/* Opera */<BR>html:first-child #opera<BR>{<BR>display: 
+block;<BR>}<BR>/* IE 7 */<BR>html &gt; body #ie7<BR>{<BR>*display: 
+block;<BR>}<BR>/* IE 6 */<BR>body #ie6<BR>{<BR>_display: block;<BR>}<BR>/* 
+Firefox 1 - 2 */<BR>body:empty #firefox12<BR>{<BR>display: block;<BR>}<BR>/* 
+Firefox */<BR>@-moz-document url-prefix()<BR>{<BR>#firefox { display: block; 
+}<BR>}<BR>/* Safari */<BR>@media screen and 
+(-webkit-min-device-pixel-ratio:0)<BR>{<BR>#safari { display: block; 
+}<BR>}<BR>/* Opera */<BR>@media all and (-webkit-min-device-pixel-ratio:10000), 
+not all and (-webkit-min-device-pixel-ratio:0)<BR>{<BR>head~body #opera { 
+display: block; 
+}<BR>}<BR>&lt;/style&gt;<BR>&lt;/head&gt;<BR><BR>&lt;body&gt;<BR>&lt;p 
+id="opera"&gt;我来自 Opera 7.2 - 9.5&lt;/p&gt;<BR>&lt;p id="safari"&gt;我是神奇的 
+Safari&lt;/p&gt;<BR>&lt;p id="firefox"&gt;我来自 Firefox&lt;/p&gt;<BR>&lt;p 
+id="firefox12"&gt;我是你爷爷 Firefox 1 - 2 &lt;/p&gt;<BR>&lt;p id="ie7"&gt;我是囧 IE 
+7&lt;/p&gt;<BR>&lt;p id="ie6"&gt;我是脑瘸 IE 
+6&lt;/p&gt;<BR>&lt;/body&gt;<BR>&lt;/html&gt;</P>
+<P>&nbsp;</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">我将<A 
+style="COLOR: rgb(41,180,240); TEXT-DECORATION: " 
+href="http://browserhacks.com/" 
+target=_blank>Browserhacks.com</A>上有关于各种浏览器的hack写法搬移到w3cplus上，以供大家翻阅与查找。</P>
+<H4 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; LETTER-SPACING: normal; FONT-FAMILY: 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 12px; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">一、Chrome浏览器</H4>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>选择器Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Chrome 24- and Safari 5- */
+::made-up-pseudo-element, .selector {
+  代码放在这里
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>媒体查询Hacks</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Chrome, Safari 3+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  代码放在这里	
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>JavaScript 
+Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Chrome */
+var isChrome = Boolean(window.chrome);	
+</PRE>
+<H4 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; LETTER-SPACING: normal; FONT-FAMILY: 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 12px; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">二、Firefox浏览器</H4>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>属性选择器Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Firefox 1.5 */
+body:empty .selector {
+ 样式代码放这里
+}
+/* Firefox 2+ */
+.selector, x:-moz-any-link {
+ 样式代码放这里	
+}
+/* Firefox 3+ */
+.selector, x:-moz-any-link; x:default {
+ 样式代码放这里	
+}
+/* Firefox 3.5+ */
+body:not(:-moz-handler-blocked) .selector {
+ 样式代码放这里	
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>媒体查询Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Firefox 3.5+, IE 9/10, Opera */
+@media screen and (min-resolution: +72dpi) {
+ 样式代码放这里		
+}
+/* Firefox 3.6+ */
+@media screen and (-moz-images-in-menus:0) {
+ 样式代码放这里		
+}
+/* Firefox 4+ */
+@media screen and (min--moz-device-pixel-ratio:0) {
+ 样式代码放这里		
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>JavaScript 
+Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Firefox */
+var isFF = !!navigator.userAgent.match(/firefox/i);
+
+/* Firefox 2 - 13 */
+var isFF = Boolean(window.globalStorage);
+
+/* Firefox 2/3 */
+var isFF = /a/[-1]=='a';
+
+/* Firefox 3 */
+var isFF = (function x(){})[-5]=='x';	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>混合型Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Firefox 3+ */
+@-moz-document url-prefix() {
+ 样式代码放这里		
+}	
+</PRE>
+<H4 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; LETTER-SPACING: normal; FONT-FAMILY: 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 12px; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">三、Opera浏览器</H4>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>属性选择器Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Opera 9.25, Safari 2/3.1 */
+*|html[xmlns*=""] .selector {
+ 样式代码放这里	
+}
+
+/* Opera 9.27 and below, Safari 2 */
+html:first-child .selector {
+ 样式代码放这里	
+}
+
+/* Opera 9.5+ */
+noindex:-o-prefocus, .selector {
+ 样式代码放这里	
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>媒体查询Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Opera 7 */
+@media all and (min-width: 0px){
+ 样式代码放这里		
+}
+
+/* Opera 12- */
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+ 样式代码放这里		
+}
+
+/* Opera, Firefox 3.5+, IE 9/10 */
+@media screen and (min-resolution: +72dpi) {
+ 样式代码放这里		
+}
+
+/* Opera, IE 8/9/10 */
+@media screen {
+ 样式代码放这里		
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>JavaScript 
+Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Opera 9.64- */
+var isOpera = /^function \(/.test([].sort);
+
+/* Opera 12- */
+var isOpera = Boolean(window.opera);	
+</PRE>
+<H4 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; LETTER-SPACING: normal; FONT-FAMILY: 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 12px; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">四、Safari浏览器</H4>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>属性选择器Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Safari 2/3 */
+html[xmlns*=""] body:last-child .selector {
+ 样式代码放这里		
+} 
+html[xmlns*=""]:root .selector  {
+ 样式代码放这里		
+}
+
+/* Safari 2/3.1, Opera 9.25 */
+*|html[xmlns*=""] .selector {
+ 样式代码放这里		
+}
+
+/* Safari 5- and Chrome 24- */
+::made-up-pseudo-element, .selector {
+ 样式代码放这里		
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>媒体查询Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* Safari */
+var isSafari = /a/.__proto__=='//';	
+</PRE>
+<H4 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; LETTER-SPACING: normal; FONT-FAMILY: 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 12px; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">五、IE浏览器</H4>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>选择器Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 6 and below */
+* html .selector  {
+ 样式代码放这里		
+} 
+.suckyie6.selector {
+ 样式代码放这里		
+} /* .suckyie6 can be any unused class */
+
+/* IE 7 and below */
+.selector, {
+ 样式代码放这里		
+}
+
+/* IE 7 */
+*:first-child+html .selector {
+  样式代码放这里	
+} 
+.selector, x:-IE7 {
+ 样式代码放这里		
+} 
+*+html .selector {
+ 样式代码放这里		
+} 
+
+/* Everything but IE 6 */
+html &gt; body .selector {
+ 样式代码放这里		
+}
+
+/* Everything but IE 6/7 */
+html &gt; /**/ body .selector {
+  样式代码放这里	
+}
+head ~ /* */ body .selector {
+ 样式代码放这里		
+}
+
+/* Everything but IE 6/7/8 */
+:root *&gt; .selector {
+ 样式代码放这里		
+} 
+body:last-child .selector {
+ 样式代码放这里		
+} 
+body:nth-of-type(1) .selector {
+ 样式代码放这里		
+} 
+body:first-of-type .selector {
+ 样式代码放这里		
+}	
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>属性/属性值 
+Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 6 */
+.selector { _color: blue; } 
+.selector { -color: blue; }
+
+/* IE 6/7 - any combination of these characters: 
+ ! $ &amp; * ( ) = % + @ , . / ` [ ] # ~ ? : &lt;  &gt; | */
+.selector { !color: blue; } 
+.selector { $color: blue; } 
+.selector { &amp;color: blue; } 
+.selector { *color: blue; } 
+/* ... */
+
+/* IE 6/7 - acts as an !important */
+.selector { color: blue !ie; } 
+/* string after ! can be anything */
+
+/* IE 8/9 */
+.selector { color: blue\0/; } 
+/* must go at the END of all rules */
+
+/* IE 9/10 */
+.selector:nth-of-type(1n) { color: blue\9; }
+
+/* IE 6/7/8/9/10 */
+.selector { color: blue\9; } 
+.selector { color/*\**/: blue\9; }
+
+ /* Everything but IE 6 */
+.selector { color/**/: blue; }
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>媒体查询Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 6/7 */
+@media screen\9 {
+ 样式代码放这里		
+}
+
+/* IE 6/7/8 */
+@media \0screen\,screen\9 {
+ 样式代码放这里		
+}
+
+/* IE 8 */
+@media \0screen {
+ 样式代码放这里		
+}
+
+/* IE 8/9/10 &amp; Opera */
+@media screen\0 {
+ 样式代码放这里		
+}
+
+/* IE 9/10, Firefox 3.5+, Opera */
+@media screen and (min-resolution: +72dpi) {
+ 样式代码放这里		
+}
+
+/* IE 9/10 */
+@media screen and (min-width:0\0) {
+ 样式代码放这里		
+}
+
+/* IE 10+ */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+ 样式代码放这里		
+}
+
+/* Everything but IE 6/7/8 */
+@media screen and (min-width: 400px) {
+ 样式代码放这里		
+}
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>JavaScript 
+Hack</STRONG></P><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE &lt;= 8 */
+var isIE = '\v'=='v';	
+</PRE><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 6 */
+(checkIE = document.createElement("b")).innerHTML = "&lt;!--[if IE 6]&gt;&lt;i&gt;&lt;/i&gt;&lt;![endif]--&gt;"; 
+var isIE = checkIE.getElementsByTagName("i").length == 1;	
+</PRE><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 7 */
+(checkIE = document.createElement("b")).innerHTML = "&lt;!--[if IE 7]&gt;&lt;i&gt;&lt;/i&gt;&lt;![endif]--&gt;"; 
+var isIE = checkIE.getElementsByTagName("i").length == 1;
+navigator.appVersion.indexOf("MSIE 7.")!=-1	
+</PRE><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 8 */
+(checkIE = document.createElement("b")).innerHTML = "&lt;!--[if IE 8]&gt;&lt;i&gt;&lt;/i&gt;&lt;![endif]--&gt;"; 
+var isIE = checkIE.getElementsByTagName("i").length == 1;	
+</PRE><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 9 */
+(checkIE = document.createElement("b")).innerHTML = "&lt;!--[if IE 9]&gt;&lt;i&gt;&lt;/i&gt;&lt;![endif]--&gt;"; 
+var isIE = checkIE.getElementsByTagName("i").length == 1;	
+</PRE><PRE style="BORDER-BOTTOM: rgb(238,238,238) 3px solid; BORDER-LEFT: rgb(238,238,238) 3px solid; PADDING-BOTTOM: 10px; LINE-HEIGHT: 22px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WHITE-SPACE: pre-wrap; ORPHANS: 2; COLOR: rgb(64,64,64); FONT-SIZE: 14px; OVERFLOW: hidden; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(238,238,238) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/* IE 10 */
+var isIE = eval("/*@cc_on!@*/false") &amp;&amp; document.documentMode === 10;	
+
+/* IE 10 */
+var isIE = document.body.style.msTouchAction != undefined;
+</PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">上面列出各个浏览器下hack的写法，当然在实际运用之中并不建议使用hack。如果你的页面需要hack来处理时，请先检查你的css或者js，如果实在无法达到要求，在考虑使用hack来处理。</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 9px; LETTER-SPACING: normal; FONT: 14px/22px 'Microsoft Yahei'; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(64,64,64); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>特别声明：</STRONG>以上展示的hack代码均来自于：<A 
+style="COLOR: rgb(41,180,240); TEXT-DECORATION: " 
+href="http://browserhacks.com/" 
+target=_blank>http://browserhacks.com/</A></P></BODY></HTML>

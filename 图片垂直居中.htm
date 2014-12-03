@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>图片垂直居中</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>图片垂直居中</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/*自动缩放后垂直左右都居中*/<BR>.box_pic{<BR>width:155px;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>height:117px;<BR>/*非IE的主流浏览器识别的垂直居中的方法*/<BR>display: 
+table-cell;<BR>vertical-align:middle;<BR>/*设置水平居中*/<BR>text-align:center;<BR>/* 
+针对IE的Hack */<BR>*display: block;<BR>*font-size: 102px;/*约为高度的0.873，200*0.873 
+约为175*/<BR>*font-family:Arial;/*防止非utf-8引起的hack失效问题，如gbk编码*/<BR>}<BR>.box_pic 
+img{<BR>/**//*设置图片垂直居中*/<BR>vertical-align:middle;<BR>display:block;<BR>margin:0 
+auto;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt;div 
+class="box_pic"&gt;&lt;a href="info.asp?id=&lt;%=rs("id")%&gt;"&gt;&lt;img 
+src="&lt;%=sysrootdir&amp;rs("qianbopic")%&gt;" width="155" height="155" 
+onload="autoimg(this,155,117)"&gt;&lt;/a&gt;&lt;/div&gt;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">最近做购物网制作方式,商品图片要垂直水平居中<BR>第一种<BR>css里面<BR>&lt;style 
+type="text/css"&gt;<BR>* {margin:0;padding:0}<BR>div 
+{width:500px;height:500px;border:1px solid 
+#ccc;overflow:hidden;position:relative;display:table-cell;text-align:center;vertical-align:middle}<BR>div 
+p {position:static;+position:absolute;top:50%}<BR>img 
+{position:static;+position:relative;top:-50%;left:-50%;}<BR>&lt;/style&gt;<BR><BR>body里面<BR>&lt;body&gt;<BR>&lt;div&gt;&lt;p&gt;&lt;a 
+href="#"&gt;&lt;img src="<A 
+style="COLOR: rgb(95,155,205); TEXT-DECORATION: underline" 
+href="http://www.google.com/intl/en/images/logo.gif" rel=external 
+target=_blank>http://www.google.com/intl/en/images/logo.gif</A>" 
+/&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;<BR>&lt;/body&gt;<BR><BR><BR>第二种<BR>css里面<BR>&lt;style 
+type="text/css"&gt;<BR>body {margin:0;padding:0}<BR>div 
+{width:500px;height:500px;line-height:500px;border:1px solid 
+#ccc;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+overflow:hidden;position:relative;text-align:center;margin:auto}<BR>div p 
+{position:static;+position:absolute;top:50%}<BR>img 
+{position:static;+position:relative;top:-50%;left:-50%;width:276px;height:110px;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+vertical-align:middle}<BR>p:after 
+{content:".";font-size:1px;visibility:hidden}<BR>&lt;/style&gt;<BR><BR>body里面<BR>&lt;body&gt;<BR>&lt;div&gt;&lt;p&gt;&lt;a 
+href="#"&gt;&lt;img src="<A 
+style="COLOR: rgb(95,155,205); TEXT-DECORATION: underline" 
+href="http://www.google.com/intl/en/images/logo.gif" rel=external 
+target=_blank>http://www.google.com/intl/en/images/logo.gif</A>"/&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;<BR>&lt;/body&gt;<BR><BR><BR>第三种<BR>css里面<BR>&lt;style 
+type="text/css"&gt;<BR>div {height:300px;width:500px;border:1px solid 
+#000;display:inline-block;text-align:center;vertical-align:middle}<BR>&lt;/style&gt;<BR><BR>body里面<BR>&lt;body&gt;<BR>&lt;!--[if 
+IE]&gt;<BR>&lt;style type="text/css"&gt;<BR>i {<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+display:inline-block;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+height:100%;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+vertical-align:middle<BR>&nbsp;&nbsp;&nbsp;&nbsp; }<BR>img { 
+vertical-align:middle&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&lt;/style&gt;<BR>&lt;![endif]--&gt;<BR>&lt;div&gt;<BR>&lt;i&gt;&lt;/i&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;img src="<A style="COLOR: rgb(95,155,205); TEXT-DECORATION: underline" 
+href="http://www.baidu.com/img/logo.gif" rel=external 
+target=_blank>http://www.baidu.com/img/logo.gif</A>" 
+alt=""/&gt;<BR>&lt;/div&gt;<BR><BR><BR>第四种<BR>css里面<BR>&lt;style 
+type="text/css"&gt;<BR>* {margin:0;padding:0}<BR>div {width: 
+height:400px;400px;border:1px solid 
+#444;display:table-cell;text-align:center;vertical-align:middle;+display:block;+font-size:370px;}<BR>img{ 
+vertical-align:middle; }<BR><BR>body里面<BR>&lt;body&gt;<BR>&lt;div&gt;&lt;a 
+href="#"&gt;&lt;img src="<A 
+style="COLOR: rgb(95,155,205); TEXT-DECORATION: underline" 
+href="http://www.google.com/intl/en/images/logo.gif" rel=external 
+target=_blank>http://www.google.com/intl/en/images/logo.gif</A>" 
+/&gt;&lt;/a&gt;&lt;/div&gt;<BR>&lt;/body&gt;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&lt;div class="a1"&gt;<BR>&nbsp;&lt;ul&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;&lt;li&gt;&lt;a href="#"&gt;&lt;img src="images/button_big1.gif" alt="" 
+/&gt;&lt;<FONT 
+color=#0000ff>span&gt;&lt;/span</FONT>&gt;&lt;/a&gt;&lt;/li&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;&lt;li&gt;&lt;a href="#"&gt;&lt;img src="images/button_big.gif" alt="" 
+/&gt;&lt;/a&gt;&lt;/li&gt;<BR>&nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;&lt;a 
+href="#"&gt;&lt;img src="images/kxwz.jpg" alt="" 
+/&gt;&lt;/a&gt;&lt;/li&gt;<BR>&nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;&lt;a 
+href="#"&gt;&lt;img src="images/code.gif" alt="" 
+/&gt;&lt;/a&gt;&lt;/li&gt;<BR>&nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;&lt;a 
+href="#"&gt;&lt;img src="images/ico_soft_keyboard.gif" alt="" 
+/&gt;&lt;/a&gt;&lt;/li&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/ul&gt;<BR>&lt;/div&gt;</P>
+<P>&lt;style type="text/css"&gt;<BR><FONT color=#ff0000>.a1 
+li{<BR>&nbsp;width:200px;<BR>&nbsp;height:200px;<BR>&nbsp;text-align:center;<BR>&nbsp;float:left;<BR>&nbsp;border:solid 
+1px #ccc;<BR>}<BR>.a1 l</FONT>i a{<BR>&nbsp;display: 
+table-cell;<BR>&nbsp;&nbsp;&nbsp; height: 200px;&nbsp; 
+/*用百分百不行*/<BR>&nbsp;&nbsp;&nbsp; vertical-align: middle;<BR>&nbsp;&nbsp;&nbsp; 
+width: 200px;<BR>}<BR>.a1 li a 
+span{/*加SPAN标签是为了让IE67能垂直居中*/<BR>&nbsp;height:100%;<BR>&nbsp;vertical-align:middle;<BR>&nbsp;display:inline-block;<BR>}<BR>.a1 
+li img{<BR>&nbsp;vertical-align:middle;<BR>}<BR>&lt;/style&gt;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY></HTML>

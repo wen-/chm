@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>与attr()和css()一样，val()也可以用来设置元素的value值，运用方法也大同小异。如：<br />
+  $(function(){<br />
+  $(&quot;input[type=button]&quot;).click(function(){<br />
+  var  sValue=$(this).val();        //选获取按钮的value值<br />
+  $(&quot;input[type=text]&quot;).val(sValue);         //赋给文本框<br />
+  });<br />
+  });</p>
+</body>
+</html>

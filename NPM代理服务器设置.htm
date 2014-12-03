@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>NPM代理服务器设置</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>NPM代理服务器设置</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 13px/19px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">由于需要在公司使用Node，经常需要通过代理来使用npm命令来为node.js安装所需的程序包。估计很多人都有这种需求，网络上也和很多教程，其实大家主要参考<A 
+style="TEXT-DECORATION: underline; COLOR: rgb(0,105,214); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
+href="https://npmjs.org/doc/config.html">npm的文档</A>就可以了，我也在这里总结一下。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 13px/19px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">1、首先看你的操作系统的环境变量：</P>
+<BLOCKQUOTE 
+style="BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND-IMAGE: none; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(239,239,239) 2px solid; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 5px; TEXT-ALIGN: left; PADDING-TOP: 10px; FONT: 13px/1.6em 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 60px; MARGIN: 10px 0px 10px 25px; MIN-HEIGHT: 35px; BORDER-LEFT: rgb(239,239,239) 2px solid; LETTER-SPACING: normal; PADDING-RIGHT: 60px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><EM 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">HTTPS_PROXY 
+  / https_proxy / HTTP_PROXY / http_proxy</EM></P></BLOCKQUOTE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 13px/19px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">注意其中带s和不带s的区别，以及大小写的区别。如果有了这些操作系统的环境变量，npm会自动使用的，或者是说默认值。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 13px/19px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">2、如果没有设置环境变量，npm的可以有几个配置选项来配置代理服务器：</P>
+<BLOCKQUOTE 
+style="BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND-IMAGE: none; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(239,239,239) 2px solid; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 5px; TEXT-ALIGN: left; PADDING-TOP: 10px; FONT: 13px/1.6em 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 60px; MARGIN: 10px 0px 10px 25px; MIN-HEIGHT: 35px; BORDER-LEFT: rgb(239,239,239) 2px solid; LETTER-SPACING: normal; PADDING-RIGHT: 60px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><PRE style="WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><EM style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">npm config set &lt;key&gt; &lt;value&gt; [--global]
+npm config get &lt;key&gt;
+npm config delete &lt;key&gt;
+npm config list
+npm config edit
+npm get &lt;key&gt;
+npm set &lt;key&gt; &lt;value&gt; [--global]</EM></CODE></PRE></BLOCKQUOTE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 13px/19px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">上面的命令把npm设置配置选项的命令大体列了一下，大家可以根据帮助来按照需求自行使用。对于设置代理服务器大概有以下两个配置选项：<EM 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">proxy</EM>和<EM 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">https_proxy，</EM>这两个选项一般我只要设置<EM 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">proxy</EM>这个选项就可以了，除非你的https的代理服务器与你的http协议的代理服务器不同，你需要设置两个代理服务器。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 13px/19px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">3、设置命令：</P>
+<BLOCKQUOTE 
+style="BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND-IMAGE: none; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(239,239,239) 2px solid; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 5px; TEXT-ALIGN: left; PADDING-TOP: 10px; FONT: 13px/1.6em 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 60px; MARGIN: 10px 0px 10px 25px; MIN-HEIGHT: 35px; BORDER-LEFT: rgb(239,239,239) 2px solid; LETTER-SPACING: normal; PADDING-RIGHT: 60px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><EM 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">npm 
+  config set 
+proxy=http://[user]:[password]@[proxy_host]:[proxy_port]</EM></P></BLOCKQUOTE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 13px/19px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">其中的user和password如果代理服务器不要求则是非比选项，不带user/password话@字符也要去掉哦。</P>
+<BLOCKQUOTE 
+style="BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND-IMAGE: none; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(239,239,239) 2px solid; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 5px; TEXT-ALIGN: left; PADDING-TOP: 10px; FONT: 13px/1.6em 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 60px; MARGIN: 10px 0px 10px 25px; MIN-HEIGHT: 35px; BORDER-LEFT: rgb(239,239,239) 2px solid; LETTER-SPACING: normal; PADDING-RIGHT: 60px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG><FONT 
+  size=2 face=Tahoma>npm config set 
+  proxy=http://11.133.190.13:8080</FONT></STRONG></P>
+  <P>&nbsp;</P>
+  <P>去掉代理：<SPAN 
+  style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(50,62,50); TEXT-ALIGN: left; FONT: 14px/21px simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(156,174,193); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">npm 
+  config set proxy null</SPAN></P></BLOCKQUOTE>
+<DIV class=article_title 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 20px/30px 'Microsoft YaHei'; MARGIN: 5px 0px; DISPLAY: block; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>
+<H1 
+style="VERTICAL-ALIGN: middle; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 20px/30px 'Microsoft YaHei'; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><SPAN 
+class=link_title><A style="TEXT-DECORATION: none; COLOR: rgb(0,0,0)" 
+href="http://blog.csdn.net/cnbird2008/article/details/8442333">如何给 NPM 
+设置代理</A></SPAN></H1></DIV>
+<DIV class=article_manage 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(153,153,153); PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 5px; FONT: 12px/24px Arial; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+color=></FONT>&nbsp;</DIV>
+<DIV id=article_content class=article_content 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 20px 0px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">GFW 
+蛋疼的把 https://registry.npmjs.org 给墙了，导致无法通过 NPM 
+安装模块。<BR>可以运行如下两句命令设置代理，注意代理的地址改为自己实际可用的代理。</P><PRE style="WORD-WRAP: break-word; WHITE-SPACE: pre-wrap">npm config set proxy=http://127.0.0.1:8087
+npm config set registry=http://registry.npmjs.org</PRE></DIV></BODY></HTML>

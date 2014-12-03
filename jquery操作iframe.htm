@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>jquery操作iframe</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16421">
+<STYLE>*{font-size:12px}</STYLE>
+</HEAD>
+<BODY>
+<P style="FONT-SIZE: 16px; FONT-WEIGHT: bold"><FONT 
+color=#ff0000>iframe自适应高度：</FONT></P>
+<P 
+style="FONT-SIZE: 16px; FONT-WEIGHT: bold">$('#xxx',parent.document).attr('height',$("body").height());</P>
+<P 
+style="FONT-SIZE: 16px; FONT-WEIGHT: bold">$(window.parent.document).find("#xxx").attr('height',$("body").height());</P>
+<P style="FONT-SIZE: 16px; FONT-WEIGHT: bold"><FONT 
+color=#ff0000>多层iframe获取高度：</FONT></P>
+<P style="FONT-SIZE: 16px; FONT-WEIGHT: bold">iframe_height = 
+window.setInterval(function(){<BR>&nbsp;&nbsp;if($("#deal_iframe1").attr("height") 
+!= "" &amp;&amp; $("#deal_iframe2").attr("height") != 
+""){<BR>&nbsp;&nbsp;&nbsp;$('#deal_iframe',parent.document).att("height",$("body").height());<BR>&nbsp;&nbsp;&nbsp;window.clearInterval(iframe_height);<BR>&nbsp;&nbsp;}<BR>&nbsp;},1000)</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+size=+0>=================================</FONT></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">1 
+内容里有两个ifame</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&lt;iframe 
+id="leftiframe"...&lt;/iframe&gt;<FONT size=3><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>&lt;iframe 
+id="mainiframe..&lt;/iframe&gt;</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">leftiframe中jQuery改变mainiframe的src代码：<FONT 
+size=3><SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>$("#mainframe",parent.document.body).attr("src","<A 
+style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(102,102,102); FONT-SIZE: 14px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+href="http://www.baidu.com/">http://www.baidu.com</A>")</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">2 
+如果内容里面有一个ID为mainiframe的ifame<FONT size=3><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>&lt;iframe 
+id="mainifame"...&gt;&lt;/ifame&gt;<FONT size=3><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>ifame包含一个someID<FONT size=3><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>&lt;div id="someID"&gt;you want to get this 
+content&lt;/div&gt;<FONT size=3><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>得到someID的内容</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+size=3><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(255,0,0)"><STRONG 
+style="LINE-HEIGHT: normal">$("#mainiframe").contents().find("someID").html()</STRONG></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></FONT>html 或者 
+$("#mainiframe").contains().find("someID").text()值</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">2 
+如上面所示<FONT size=3><SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>leftiframe中的jQuery操作mainiframe的内容someID的内容<FONT 
+size=3><SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="LINE-HEIGHT: normal"></FONT>$("#mainframe",parent.document.body).contents().find("someID").html()或者 
+$("#mainframe",parent.document.body).contents().find("someID").val()</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT size=3>Jquery获取到 iframe 所属的父窗口的里面的id为xuan的 
+标签的</FONT></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(0,85,255)"><FONT 
+size=3>$(window.parent.document).find("#xuan").html(x);//<IMG 
+style="LINE-HEIGHT: normal" 
+src="http://img.baidu.com/hi/jx2/j_0007.gif"></FONT></SPAN></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT size=3>//js创建 元素 并追加到 父元素的 Iframe中的 
+元素中的dom操作问题：</FONT></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT size=3>详见链接：</FONT><A 
+style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(102,102,102); FONT-SIZE: 14px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+href="http://www.cssrain.cn/?p=1376">http://www.cssrain.cn/?p=1376</A></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(255,0,0)"><FONT 
+size=3>iframe中直接调用父窗口中的方法</FONT></SPAN><FONT 
+size=3>：假设父窗口有个add的方法</FONT></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT size=3>self.parent.add();&nbsp;&nbsp;&nbsp; 
+或者&nbsp;&nbsp; window.parent.add();<BR 
+style="LINE-HEIGHT: normal"></FONT></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT 
+size=3>===============================================================</FONT></STRONG></P>
+<H3 
+style="LINE-HEIGHT: normal; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+color=#000000>IE和Firefox对iframe document对象的差异性</FONT></H3>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+color=#000000>在IE6、IE7中，我们可以使用<FONT size=3><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="LINE-HEIGHT: normal">document.frames[ID].document</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></FONT>来访问iframe子窗口中的<STRONG 
+style="LINE-HEIGHT: normal"><FONT 
+size=3>document对象</FONT></STRONG>，可是这是不符合W3C标准的写法，也是IE下独有的方法，在Firefox下却不可以使用，Firefox下使用的是符合W3C标准的<FONT 
+size=3><SPAN class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="LINE-HEIGHT: normal">document.getElementById(ID).contentDocument</STRONG></FONT>方法，今天我在写实例的时候，通过IE8进行测试，IE8也是使用的符合W3C标准的 
+document.getElementById(ID).contentDocument 方法。所以我们可以写一个在IE和Firefox下通用的获取iframe 
+document对象的函数—getIFrameDOM：</FONT></P>
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=wp_syntax>
+<DIV 
+style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all" 
+class=code><PRE style="LINE-HEIGHT: normal" class=javascript><FONT color=#000000><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,51,102); FONT-WEIGHT: bold">function</SPAN> getIFrameDOM<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">(</SPAN>id<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">)</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">{</SPAN>  <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,0,102); FONT-WEIGHT: bold">return</SPAN> document.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">getElementById</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">(</SPAN>id<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">)</SPAN>.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">contentDocument</SPAN> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">||</SPAN> <BR style="LINE-HEIGHT: normal">document.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">frames</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">[</SPAN>id<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">]</SPAN>.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">document</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">;</SPAN> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">}</SPAN></FONT></PRE></DIV></DIV>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><EM 
+style="LINE-HEIGHT: normal"><FONT size=3>P.S.</FONT></EM>:如果我们要获取iframe的<STRONG 
+style="LINE-HEIGHT: normal"><FONT 
+size=3>window对象</FONT></STRONG>，而不是document对象，可以使用document.getElementById(ID).contentWindow的方法。这样我们就可以使用子窗口中的window对象了，比如子窗口中的函数。</P>
+<H3 
+style="LINE-HEIGHT: normal; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">在子窗口使用父窗口的函数，获取父窗口document对象</H3><BR 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">在子窗口中，我们可以通过<STRONG 
+style="LINE-HEIGHT: normal"><FONT 
+size=3>parent</FONT></STRONG>就可以获得父窗口的window对象，如果假如我们在父窗口有一个函数为getIFrameDOM，我们可以通过parent.getIFrameDOM来调用，同理我们使用parent.document就可以在子窗口中访问父窗口的document对象了。</P>
+<H3 
+style="LINE-HEIGHT: normal; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">使用JavaScript进行iframe的DOM操作实例</H3>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">首先，我们在父窗口中引入两个iframe子窗口，ID分别为wIframeA、wIframeB，地址分别为：a.html、b.html。<BR 
+style="LINE-HEIGHT: normal">父窗口主要HTML代码如下：</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"></P><BR 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=wp_syntax>
+<DIV 
+style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all" 
+class=code><PRE style="LINE-HEIGHT: normal" class=html>&lt;div id="pHello" style="margin:10px auto;width:360px;height:30px;"&gt;此处可通过iframeB的<BR style="LINE-HEIGHT: normal">JavaScript函数，来替换哦~&lt;/div&gt; &lt;iframe id="wIframeA" name="myiframeA" src="a.html" <BR style="LINE-HEIGHT: normal">scrolling="no" frameborder="0"&gt;&lt;/iframe&gt; <BR style="LINE-HEIGHT: normal">&lt;iframe id="wIframeB" name="myiframeB" src="b.html" scrolling="no" frameborder="0"&gt;&lt;/iframe&gt;</PRE></DIV></DIV>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">在子窗口A、B中我放了一个ID为hello的P，以方便我们进行DOM操作演示，子窗口A、B的主要HTML代码如下：</P>
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=wp_syntax>
+<DIV 
+style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all" 
+class=code><PRE style="LINE-HEIGHT: normal" class=html>&lt;p id="hello"&gt;Hello World!&lt;/p&gt;</PRE></DIV></DIV>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT 
+size=3>1、在iframe中，父窗口操作子窗口的DOM</FONT></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">建好了父窗口跟子窗口，这样我们可以在父窗口中，通过以下iframeA()函数来把子窗口A更换P的背景颜色为红色：</P>
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=wp_syntax>
+<DIV 
+style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all" 
+class=code><PRE style="LINE-HEIGHT: normal" class=javascript><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,51,102); FONT-WEIGHT: bold">function</SPAN> iframeA<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">(</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">)</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">{</SPAN><SPAN style="LINE-HEIGHT: normal; FONT-STYLE: italic; COLOR: rgb(0,102,0)">//给子窗口A改变ID为hello的背景色</SPAN>  <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,51,102); FONT-WEIGHT: bold">var</SPAN> a <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">=</SPAN> getIFrameDOM<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">(</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,102,204)">"wIframeA"</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">)</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">;</SPAN>  <BR style="LINE-HEIGHT: normal">a.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">getElementById</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">(</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,102,204)">'hello'</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">)</SPAN>.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">style</SPAN>.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">background</SPAN> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">=</SPAN> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,102,204)">"red"</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">;</SPAN> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">}</SPAN> <BR style="LINE-HEIGHT: normal"><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,51,102); FONT-WEIGHT: bold">function</SPAN> getIFrameDOM<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">(</SPAN>id<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">)</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">{</SPAN><SPAN style="LINE-HEIGHT: normal; FONT-STYLE: italic; COLOR: rgb(0,102,0)">//兼容IE、Firefox的iframe DOM获取函数</SPAN> <BR style="LINE-HEIGHT: normal"> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,0,102); FONT-WEIGHT: bold">return</SPAN> document.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">getElementById</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">(</SPAN>id<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">)</SPAN>.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">contentDocument</SPAN> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">||</SPAN> document.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">frames</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">[</SPAN>id<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">]</SPAN>.<SPAN style="LINE-HEIGHT: normal; COLOR: rgb(102,0,102)">document</SPAN><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(51,153,51)">;</SPAN> <SPAN style="LINE-HEIGHT: normal; COLOR: rgb(0,153,0)">}</SPAN></PRE></DIV></DIV>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT 
+size=3>2、在iframe中，子窗口操作父窗口的DOM</FONT></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">在子窗口中，我们可以方便的进行父窗口DOM操作，只需要在DOM操作之前添加亦歌parent对象的方法就可以啦，如：在上面的子窗口B中，我们可以使用下面的代码把，父窗口中ID为“pHello”的内容给替换掉:</P><PRE style="BORDER-BOTTOM: 0px; BORDER-LEFT: rgb(221,221,221) 0px; PADDING-BOTTOM: 0px; OVERFLOW-X: visible; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(192,208,246); TEXT-INDENT: 0px; MARGIN: 15px 0px; PADDING-LEFT: 20px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 12px/21px monospace; WORD-WRAP: break-word; ORPHANS: 2; COLOR: rgb(102,102,102); BORDER-TOP: 0px; BORDER-RIGHT: 0px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; border-image: initial" class=javascript>parent.<SPAN style="COLOR: rgb(102,0,102)">document</SPAN>.<SPAN style="COLOR: rgb(102,0,102)">getElementById</SPAN><SPAN style="COLOR: rgb(0,153,0)">(</SPAN><SPAN style="COLOR: rgb(51,102,204)">"pHello"</SPAN><SPAN style="COLOR: rgb(0,153,0)">)</SPAN>.<SPAN style="COLOR: rgb(102,0,102)">innerHTML</SPAN><SPAN style="COLOR: rgb(51,153,51)">=</SPAN><SPAN style="COLOR: rgb(51,102,204)">"&lt;p style='background:#000;color:#fff;font-size:15px;'&gt;O(∩_∩)O哈哈~用子窗口B就可以替换你！不服吗？&lt;/p&gt;"</SPAN><SPAN style="COLOR: rgb(51,153,51)">;</SPAN></PRE>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><BR 
+style="LINE-HEIGHT: normal">-------------------</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT 
+size=3>3、在iframe中，子窗口A操作子窗口B的DOM</FONT></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">既然子窗口可以操作父窗口的window对象和document对象，那么子窗口也可以操作另外的子窗口的DOM啦~断桥残雪在子窗口B中可以直接使用parent直接调用父窗口中的getIFrameDOM函数获得子窗口A的document对象，这样要修改子窗口A的内容就很简单啦，如以下的代码：</P><FONT 
+color=#000000><FONT size=3><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(0,51,102); FONT-WEIGHT: bold"><PRE style="BORDER-BOTTOM: 0px; BORDER-LEFT: rgb(221,221,221) 0px; PADDING-BOTTOM: 0px; OVERFLOW-X: visible; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(192,208,246); TEXT-INDENT: 0px; MARGIN: 15px 0px; PADDING-LEFT: 20px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 12px/21px monospace; WORD-WRAP: break-word; ORPHANS: 2; COLOR: rgb(102,102,102); BORDER-TOP: 0px; BORDER-RIGHT: 0px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; border-image: initial" class=javascript><SPAN style="COLOR: rgb(0,51,102); FONT-WEIGHT: bold">var</SPAN> a<SPAN style="COLOR: rgb(51,153,51)">=</SPAN>parent.<SPAN style="COLOR: rgb(102,0,102)">getIFrameDOM</SPAN><SPAN style="COLOR: rgb(0,153,0)">(</SPAN><SPAN style="COLOR: rgb(51,102,204)">"wIframeA"</SPAN><SPAN style="COLOR: rgb(0,153,0)">)</SPAN><SPAN style="COLOR: rgb(51,153,51)">;</SPAN>
+a.<SPAN style="COLOR: rgb(102,0,102)">getElementById</SPAN><SPAN style="COLOR: rgb(0,153,0)">(</SPAN><SPAN style="COLOR: rgb(51,102,204)">'hello'</SPAN><SPAN style="COLOR: rgb(0,153,0)">)</SPAN>.<SPAN style="COLOR: rgb(102,0,102)">innerHTML</SPAN><SPAN style="COLOR: rgb(51,153,51)">=</SPAN><SPAN style="COLOR: rgb(51,102,204)">"&lt;span style='color:blue;font-size:18px;background:yellow;'&gt;看，俺子窗口B也能DOM你A！&lt;/span&gt;"</SPAN><SPAN style="COLOR: rgb(51,153,51)">;</SPAN></PRE></SPAN></FONT><FONT 
+size=+0><FONT color=#339933></FONT>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(85,0,255)"><FONT 
+size=3></FONT></FONT>===================================================================================</FONT></SPAN></STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">一个iframe高度自动变化的问题搞了我半天，网上找了下资料，不是很好，结合了一下jquery(版本1.3.2)，4行代码即可，完美兼容IE、Firefox、Opera、Safari、Google 
+Chrome,js如下:</P><SPAN 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/18px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;</SPAN><BR 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); FONT-SIZE: 14px; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">function&nbsp; 
+heightSet(thisFrame){<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if($.browser.mozilla 
+|| $.browser.msie){<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+bodyHeight =window.frames["thisFrameName"].document.body.scrollHeight;<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else{<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+bodyHeight =thisFrame.contentWindow.document.documentElement.scrollHeight;<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//这行可代替上一行，这样heightSet函数的参数可以省略了<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//bodyHeight = 
+document.getElementById("thisFrameId").contentWindow.document.documentElement.scrollHeight;<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR 
+style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+document.getElementById("thisFrameId").height=bodyHeight; &nbsp;<BR 
+style="LINE-HEIGHT: normal"></STRONG>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><FONT size=3>}</FONT></STRONG></P><STRONG 
+style="LINE-HEIGHT: normal; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); FONT-SIZE: 14px; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+size=3><SPAN style="LINE-HEIGHT: normal; COLOR: rgb(85,0,255)">&nbsp;&lt;iframe 
+id="mainFrame" name="mainFrame" frameborder="0"&nbsp; scrolling="no" src=""<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(0,85,255)">onload="</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(0,85,255)">heightSet(this)</SPAN></FONT><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(85,0,255)"><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(0,85,255)"><FONT 
+size=3>"</FONT></SPAN><FONT size=3>&gt;</FONT></SPAN><BR 
+style="LINE-HEIGHT: normal"></STRONG>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal"><SPAN 
+style="LINE-HEIGHT: normal; COLOR: rgb(85,0,255)"><FONT 
+size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/iframe&gt;</FONT></SPAN></STRONG></P>
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">引用</DIV>
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: normal">this</STRONG>关键字在各种浏览器似乎有不同的意思,FF和IE必须要通过iframe的名字去得到内部页面高度,而其他浏览器则可以用this或ID</DIV><BR 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">引用</DIV>
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">都在说一个异步的问题，如果你ajax用得特别多,但又不想每次都去设置，那动态改变iframe肯定达不到你的代码清洁要求，没办法，要么你就脱离iframe。我只能说说一般处理方式，毕竟ajax或动态表单在一般应用中只占小数比例,异步请求后只需在后面加上:</DIV><BR 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+<DIV 
+style="FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(102,102,102); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+<DIV 
+style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">
+<DIV 
+style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Js代码</DIV></DIV><STRONG 
+style="LINE-HEIGHT: normal"><SPAN style="LINE-HEIGHT: normal"><SPAN 
+style="LINE-HEIGHT: normal">parent.window.heightSet();&nbsp;</SPAN></SPAN></STRONG></DIV>
+<H2></H2></BODY></HTML>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>处理特性</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;font-family:arial;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　只有Element节点才能有特性。Element节点的attributes属性其实是NamedNodeMap，它提供一些用于访问和处理其内容的方法（请记住这些方法都是返回一个Attr节点，而非特性值）：<BR>●getNamedItem(name)：返回nodeName属性值等于name的节点；<BR>●removeNamedItem(name)：删除nodeName属性值等于name的节点；<BR>●setNamedItem(node)：将node添加到列表中，按其nodeName属性进行索引；<BR>●item(pos)：像NodeList一样，返回在位置pos的节点；</P>
+<P>　　NamedNodeMap对象也有一个length属性来指示它所包含的节点的数量。</P>
+<P>　　DOM定义了三个元素方法来帮助访问特性：<BR>●getAttribute(name)——等于attributes.getNamedItem(name).value;<BR>●setAttribute(name, 
+newvalue)——等于attributes.getNamedItem(name).value = 
+newvalue;<BR>●removeAttribute(name)——等于attributes.removeNamedItem(name)。</P>
+<P>　　核心DOM的特性和方法是通用的，是为了在各种情况下操作所有XML文档而设计的。HTML 
+DOM的特性和方法是在专门针对HTML的同时也让一些DOM操作更加简便。大部分情况下，HTML 
+DOM元素中包含的所有特性都可作为属性。例如：<BR>&lt;img src="mypicture.jpg" border="0" 
+/&gt;<BR>　　用核心的DOM来获取和设置特性：<BR>alert(oImg.getAttribute("src"));<BR>alert(oImg.getAttribute("border"));<BR>oImg.setAttribute("src","mypicture2.jpg");<BR>oImg.setAttribute("border","1");<BR>　　然而，使用HTMLDOM，可以使用同样名称的属性来获取和设置这些值：<BR>alert(oImg.src);<BR>alert(oImg.border);<BR>oImg.src 
+= "mypicture2.jp";<BR>oImg.border = 
+"1";<BR>　　唯一的特性名和属性名不一样的特例是class特性，因为class在ECMAScript中是一个保留字，不能作为变量名、属性名或者函数名。于是，相应的属性名就变成ClassName：<BR>alert(oDiv.className);<BR>oDiv.className 
+= 
+"footer";<BR>IE在setAttribute()上有个很大的问题：当你使用它时，变量并不会总是正确地反应出来。因此，最好尽可能使用属性。</P></BODY></HTML>

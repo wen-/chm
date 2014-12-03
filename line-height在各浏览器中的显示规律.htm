@@ -1,0 +1,10 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>line-height在各浏览器中的显示规律</TITLE>
+<META content="text/html; charset=gb312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19019">
+<STYLE>*{font-size:12px}</STYLE>
+</HEAD>
+<BODY>
+<P>line-height在各浏览器中的显示规律：<BR></P>
+<P>FireFox：<BR>　　宋体将所定义字体的大小作为高度，但font-size不大于16px时，为了兼顾“g”“p”这类超出文本基线的字符，汉字的实际高度都比定义高度矮1px。当font-size大于16px且为奇数时，中英文字符等高并均比font-size矮1px<BR>　　指定了font-size，但没有指定line-height时，浏览器默认line-height为font-size+2。<BR>　　同时指定了font-size和line-height时，浏览器会将font-size在line-height内居中。font-size与line-height的差值除以2，各为上下的间距。如这个值除以2不为整数，则文字下间距比上间距多1px。</P>
+<P>IE8：<BR>　　依FireFox的规则再上移1px为浏览器最终渲染位置。</P></BODY></HTML>

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>对象的可扩展属性</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>对象的可扩展属性</P>
+<P>判断对象是否可扩展：</P>
+<P>Object.esExtensible()</P>
+<P>将对象转换为不可扩展：</P>
+<P>Object.preventExtensions()</P>
+<P>将待转换的对象做为参数传入，是不可逆的。</P>
+<P>将对象转换为不可扩展且将所有自有属性都设置为不可配置的：</P>
+<P>Object.seal();</P>
+<P>不能给对象添加新属性，已有的属性不能删除或配置，不过已有的可写属性还是可以设置的。</P>
+<P>此操作也是不可逆的，只能用Object.isSealed()来检测对象是否封闭。</P>
+<P>锁定对象：</P>
+<P>Object.freeze()</P>
+<P>将对象转换为不可扩展且将所有自有属性都设置为不可配置外，还将其所有自有属性设置为只读，如果对象的存取器属性具有setter方法，将不受影响，仍然可以通过属性赋值调用它们，使用Object.isFrozen()来检测对象是否锁定</P>
+<P>创建一个封闭对象，包括一个冻结的原型和不可枚举的属性：</P>
+<P>var o = 
+Object.seal(Object.create(Object.freeze({x:1}),{y:{value:w,writable:true}}));</P></BODY></HTML>

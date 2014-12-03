@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>当引入jQuery后，几乎web中的所有元素都可以通过hover()方法来直接感应鼠标，以制作更复杂的效果，其本质是mouseover和mouseout事件的合并。<br />
+  hover(over,out)方法可以接受两个参数，均为函数。例：<br />
+  $(function(){<br />
+  $(&quot;img&quot;).hover(<br />
+  function(oEvent){<br />
+  //第一个函数相当于mouseover事件监听<br />
+  $(oEvent.target).css(&quot;opacity&quot;,&quot;0.5&quot;);<br />
+  },<br />
+  function(oEvent){<br />
+  //第二个函数相当于mouseout事件监听<br />
+  $(oEvent.target).css(&quot;opacity&quot;,&quot;1.0&quot;);<br />
+  }<br />
+  );<br />
+  });<br />
+  与上一个例子相类似，只不过将“toggle”替换成了“hover”（函数表现形式有所不同）。</p>
+</body>
+</html>

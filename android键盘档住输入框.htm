@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>android键盘档住输入框</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>android键盘档住输入框</P>
+<P>
+<TABLE class=wenzhangcss 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; BORDER-SPACING: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(241,254,221); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD 
+    style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+      <DIV class=xiantao><FONT color=></FONT></DIV></TD></TR>
+  <TR>
+    <TD 
+    style="HEIGHT: 200px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
+    vAlign=top width=670 align=left><SPAN onmouseup=NewHighlight(event) 
+      onmousedown="newhighlight = true;" id=articlecontent>
+      <TABLE style="BORDER-COLLAPSE: collapse; BORDER-SPACING: 0px">
+        <TBODY>
+        <TR>
+          <TD 
+          style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
+          width=670>
+            <H3 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 700 15px/24px arial, 宋体, SimHei; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+            class=link_title><A 
+            style="TEXT-DECORATION: none; COLOR: rgb(45,100,179)" 
+            href="http://blog.csdn.net/stonesharp/article/details/7648384"><FONT 
+            color=>Android 软键盘盖住输入框的问题</FONT></A></SPAN></H3>
+            <DIV class=article_manage><SPAN class=link_categories></SPAN><SPAN 
+            class=link_report><A title=举报 
+            style="TEXT-DECORATION: none; COLOR: rgb(45,100,179)" 
+            href="http://blog.csdn.net/stonesharp/article/details/7648384#report"></A></SPAN></DIV>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">当在Android的layout设计里面如果输入框过多，则在输入弹出软键盘的时候，下面的输入框会有一部分被软件盘挡住，从而不能获取焦点输入。</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">解决办法：</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">方法一：在你的activity中的oncreate中setContentView之前写上这个代码getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">方法二：在项目的AndroidManifest.xml文件中界面对应的&lt;activity&gt;里加入android:windowSoftInputMode="stateVisible|adjustResize"，这样会让屏幕整体上移。如果加上的是</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            android:windowSoftInputMode="adjustPan"这样键盘就会覆盖屏幕。</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">方法三：把顶级的layout替换成ScrollView，或者说在顶级的Layout上面再加一层ScrollView的封装。这样就会把软键盘和输入框一起滚动了，软键盘会一直处于底部。</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">注：方法一和二应该是同一种方法，不过一个是在代码里实现一个是在xml文件里实现。可能会应为1.5和之前的版本不支持该方法。但是方法三是肯定没有问题的。</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">文主要介绍<FONT 
+            color=><STRONG 
+            style="COLOR: rgb(76,76,76)">Android中如何解决输入法键盘和activity页面遮挡的问题</STRONG>。</FONT></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+            style="COLOR: rgb(76,76,76)"><SPAN style="FONT-SIZE: 16px"><FONT 
+            color=#ff0000>总结：</FONT></SPAN></STRONG></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+            style="COLOR: rgb(76,76,76)"><SPAN style="FONT-SIZE: 16px"><FONT 
+            color=#ff0000>&lt;preference name="fullscreen" value="false" /&gt; 
+            <BR>&nbsp;&lt;!--全屏显示，隐藏顶部状态栏(最好设置为false,因为如果为true，输入框弹出软件键盘时，会被档住)--&gt;</FONT></SPAN></STRONG></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">不希望遮挡设置activity属性<STRONG 
+            style="COLOR: rgb(76,76,76)">android:windowSoftInputMode="adjustPan"</STRONG></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">希望动态调整高度<STRONG 
+            style="COLOR: rgb(76,76,76)">android:windowSoftInputMode="adjustResize"</STRONG></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+            style="COLOR: rgb(76,76,76)"><SPAN 
+            style="FONT-SIZE: 16px">问题:</SPAN></STRONG></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">我原来的问题是，对于腾讯微博的OAuth验证webView，弹出软键盘后，输入框上移就看不到输入框了，后发现Webview放到了 
+            ScrollView中，将ScrollView改为LinearLayout问题解决了，不会在弹出软键盘后大幅滚动。不过下面还是详细介绍下软键盘和 
+            activity页面遮挡的问题。</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+            style="COLOR: rgb(76,76,76)"><SPAN 
+            style="FONT-SIZE: 16px">详细：</SPAN></STRONG></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">通常情况下如果我们在一个输入框输入内容，输入法键盘弹出时，activity自动设置高度，相当于在activity向上滚动了添加了输入法键盘的高度。但有时可能淹没当前的输入框，<STRONG 
+            style="COLOR: rgb(76,76,76)">如果希望输入法键盘弹出时不自动向上挤压activity</STRONG>，在activty中设置属性<STRONG 
+            style="COLOR: rgb(76,76,76)">android:windowSoftInputMode="adjustPan"</STRONG>即可，如下：</P>
+            <DIV class=dp-highlighter>
+            <DIV class=bar>
+            <DIV class=tools>Java代码 &nbsp;<A title=收藏这段代码><IMG class=star 
+            style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+            alt=收藏代码 
+            src="http://image59.360doc.com/DownloadImg/2013/02/2713/30578306_1.png"></A></DIV></DIV>
+            <OL class=dp-j 
+            style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 2em; MARGIN: 0px; PADDING-RIGHT: 0px">
+              <LI 
+              style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN><SPAN>&lt;activity&nbsp;android:name=</SPAN><SPAN 
+              class=string>"testActivity"</SPAN><SPAN>&nbsp;&nbsp;</SPAN></SPAN> 
+
+              <LI 
+              style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:windowSoftInputMode=<SPAN 
+              class=string>"adjustPan"</SPAN><SPAN>&gt;&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">设置属性为android:windowSoftInputMode="adjustResize"即可自动调整高度。</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">属性stateVisible表示默认显示输入法键盘，其他属性见：<A 
+            style="TEXT-DECORATION: none; COLOR: rgb(45,100,179)" 
+            href="http://developer.android.com/guide/topics/manifest/activity-element.html#wsoft" 
+            target=_blank>android:windowSoftInputMode</A></P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">adjustPan同样存在问题，即可能需要关闭软键盘，定位被挡住的输入框，我希望的是<STRONG 
+            style="COLOR: rgb(76,76,76)">介于adjustPan和adjustResize之间的解决方案</STRONG>，即软键盘会对activity有一定挤压，但是焦点所在输入框始终会显示在屏幕上，有会的朋友欢迎留言分享，个人觉得可能的解决方案是<A 
+            title=重写方法介绍 style="TEXT-DECORATION: none; COLOR: rgb(45,100,179)" 
+            href="http://blog.csdn.net/itachi85/article/details/6596284" 
+            target=_blank>new一个LinearLayout</A>，重写其中的</P>
+            <DIV class=dp-highlighter>
+            <DIV class=bar>
+            <DIV class=tools>Java代码 &nbsp;<A title=收藏这段代码><IMG class=star 
+            style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+            alt=收藏代码 
+            src="http://image59.360doc.com/DownloadImg/2013/02/2713/30578306_1.png"></A></DIV></DIV>
+            <OL class=dp-j 
+            style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 2em; MARGIN: 0px; PADDING-RIGHT: 0px">
+              <LI 
+              style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN><SPAN 
+              class=keyword>protected</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+              class=keyword>void</SPAN><SPAN>&nbsp;onSizeChanged(</SPAN><SPAN 
+              class=keyword>int</SPAN><SPAN>&nbsp;w,&nbsp;</SPAN><SPAN 
+              class=keyword>int</SPAN><SPAN>&nbsp;h,&nbsp;</SPAN><SPAN 
+              class=keyword>int</SPAN><SPAN>&nbsp;oldw,&nbsp;</SPAN><SPAN 
+              class=keyword>int</SPAN><SPAN>&nbsp;oldh)&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+            <P 
+            style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">方法，使得h参数动态变化达到效果，但较耗时，暂不想尝试了。</P></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></P></BODY></HTML>

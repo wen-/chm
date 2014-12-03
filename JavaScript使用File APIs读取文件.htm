@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>JavaScript使用File APIs读取文件</TITLE>
+</HEAD>
+<BODY>
+<P>JavaScript使用File APIs读取文件</P>
+<H2 
+style="BORDER-BOTTOM: rgb(226,226,226) 1px solid; TEXT-ALIGN: center; PADDING-BOTTOM: 10px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT-FAMILY: 'Microsoft Yahei', SimSun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); FONT-SIZE: 22px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=title>JavaScript使用File APIs读取文件</H2>
+<P 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 12px/33px tahoma, arial, 宋体, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; HEIGHT: 33px; COLOR: rgb(133,133,133); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=info>发布时间：2012-05-14 作者：小想 来源：未知<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A style="COLOR: rgb(0,83,153)" 
+title=我要评论 
+href="http://www.html5china.com/HTML5features/DrapAndDrop/20120514_3665.html#postform">我要评论</A></P>
+<P 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 10px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 2em; MARGIN: 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; FONT-FAMILY: Verdana, 'Microsoft YaHei', SimSun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,102,0); FONT-SIZE: 14px; BORDER-TOP: rgb(204,204,204) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(204,204,204) 1px dashed; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=summary>介绍(introduction) HTML5最终提供了与本地文件交互的标准方法：File API规范。正如文章示例中的功能，File 
+API在图像未发送到服务器之前可以创建图像的缩略图预览，用户在离线状态下允许…</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; OVERFLOW-X: hidden; OVERFLOW-Y: hidden; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 20px 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 14px/28px Verdana, 'Microsoft YaHei', SimSun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=content>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-introduction>介绍(introduction)</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">HTML5最终提供了与本地文件交互的标准方法：File 
+API规范。正如文章示例中的功能，File 
+API在图像未发送到服务器之前可以创建图像的缩略图预览，用户在离线状态下允许应用保存文件的引用。此外，你可以使用客户端的逻辑来验证文件的扩展名是否匹配上传的mimetype类型，限制上传文件的大小。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">这份规范提供了几个访问本地文件系统的接口:</P>
+<OL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">File&nbsp;- 
+  单个文件；提供只读的信息，例如：文件大小，mime类型，文件句柄的引用</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">FileList&nbsp;- 
+  类似数组的File对象序列。(想像&lt;input type="file" multiple&gt; 或从桌面文件夹中拖动的文件)。</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Blob&nbsp;- 
+  允许把文件切片成字节范围。</LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">当与上面的数据结构结合使用的时候，FileReader接口可以通过类似JS事件处理的方式异步读取文件。因此，它可以监视文件的读取进度，捕捉错误，载入完成时如何处理。在许多方面APIs工作的方式类似XMLHttpRequest的事件模型。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">注意：在这个教程写下的此时，最低限度支持与本地文件交互的APIs的浏览器有：Chrome 
+6.0、Firefox 3.6。Firefox 3.6.3版本的浏览器没有支持File.slice()方法。</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-selecting-files>选择文件</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">在开始其它事情之前要做的第一件事是：检查浏览器是否充分支持File 
+API:</P><PRE style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 4px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN: 0px auto 10px 0px; PADDING-LEFT: 10px; WIDTH: 579px; PADDING-RIGHT: 4px; FONT-FAMILY: Verdana, 'Microsoft YaHei'; FONT-SIZE: 12px; BORDER-TOP: rgb(204,204,204) 3px solid; BORDER-RIGHT: rgb(204,204,204) 1px dashed; PADDING-TOP: 4px; background-origin: initial; background-clip: initial; border-image: initial">// 检测不同的File API支持度
+if (window.File &amp;&amp; window.FileReader &amp;&amp; window.FileList &amp;&amp; window.Blob) {
+  // 支持所有的File API
+} else {
+  alert('The File APIs are not fully supported in this browser.');
+}
+</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">当然，如果你的app只用到其中的几个API，可以根据需求修改上面的代码。</P>
+<H3 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-selecting-files-input>使用<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" title=表单 
+href="http://www.html5china.com/HTML5features/form/" 
+target=_blank><U>表单</U></A>方式选择文件</H3>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">加载文件最直接的方法是使用标准的&lt;input 
+type="file"&gt;元素。JavaScript返回选中文件对象的列表：FileList。下面的例子使用'multiple'属性允许一次选中多个文件：</P><PRE style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 4px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN: 0px auto 10px 0px; PADDING-LEFT: 10px; WIDTH: 579px; PADDING-RIGHT: 4px; FONT-FAMILY: Verdana, 'Microsoft YaHei'; FONT-SIZE: 12px; BORDER-TOP: rgb(204,204,204) 3px solid; BORDER-RIGHT: rgb(204,204,204) 1px dashed; PADDING-TOP: 4px; background-origin: initial; background-clip: initial; border-image: initial">&lt;input type="file" id="files" name="files[]" multiple /&gt;
+&lt;output id="list"&gt;&lt;/output&gt;
+
+&lt;script&gt;
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList对象 
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('&lt;li&gt;&lt;strong&gt;', escape(f.name), '&lt;/strong&gt; (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '&lt;/li&gt;');
+    }
+    document.getElementById('list').innerHTML = '&lt;ul&gt;' + output.join('') + '&lt;/ul&gt;';
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+&lt;/script&gt;
+</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</DIV>
+<H3 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-selecting-files-dnd>使用<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" title=拖拽 
+href="http://www.html5china.com/HTML5features/DrapAndDrop/" 
+target=_blank><U>拖拽</U></A>方式选择文件</H3>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">另外一个加载文件的技术是原生的拖拽，可以从桌面拖动文件到浏览器。我们可以对前面的示例略作修改来添加拖拽支持。</P><PRE style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 4px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN: 0px auto 10px 0px; PADDING-LEFT: 10px; WIDTH: 579px; PADDING-RIGHT: 4px; FONT-FAMILY: Verdana, 'Microsoft YaHei'; FONT-SIZE: 12px; BORDER-TOP: rgb(204,204,204) 3px solid; BORDER-RIGHT: rgb(204,204,204) 1px dashed; PADDING-TOP: 4px; background-origin: initial; background-clip: initial; border-image: initial">&lt;div id="drop_zone"&gt;Drop files here&lt;/div&gt;
+&lt;output id="list"&gt;&lt;/output&gt;
+
+&lt;script&gt;
+  function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    var files = evt.dataTransfer.files; // FileList object.
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('&lt;li&gt;&lt;strong&gt;', escape(f.name), '&lt;/strong&gt; (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '&lt;/li&gt;');
+    }
+    document.getElementById('list').innerHTML = '&lt;ul&gt;' + output.join('') + '&lt;/ul&gt;';
+  }
+
+  function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+  }
+
+  // Setup the dnd listeners.
+  var dropZone = document.getElementById('drop_zone');
+  dropZone.addEventListener('dragover', handleDragOver, false);
+  dropZone.addEventListener('drop', handleFileSelect, false);
+&lt;/script&gt;
+</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">注意：一些浏览器会把&lt;input 
+type="file"&gt;元素当成终止拖放的目标(Some browsers treat &lt;input type="file"&gt; 
+elements as native drop targets)。尝试拖动文件到前面示例的输入区域。</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-reading-files>读取文件</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">现在到了有趣的部分！</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">在你获取File引用之后，实例化一个<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="http://dev.w3.org/2006/webapi/FileAPI/#filereader-interface">FileReader</A>对象，可将文件内容读入到内存。当装载完成，会触发reader的onload事件，并且可以通过它的result属性访问文件数据。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">FileReader提供四个方法异步地读取文件。</P>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">FileReader.readAsBinaryString(Blob|File)&nbsp;-&nbsp;result属性将包含类似二进制字符串的file/blob数据。每个字节代表在[0..255]之间的一个整数。</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">FileReader.readAsText(Blob|File, 
+  opt_encoding)&nbsp;-&nbsp;result属性将包含类似文本字符串的file/blob数据。默认的字符串是'UTF-8'解码。使用可选的编码参数来指定不同的格式。</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">FileReader.readAsDataURL(Blob|File)&nbsp;-&nbsp;result属性将包含把file/blob数据通过<A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="http://en.wikipedia.org/wiki/Data_URI_scheme">data URL</A>编码后的值</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">FileReader.readAsArrayBuffer(Blob|File)&nbsp;-&nbsp;result属性将把file/blob数据作为<A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="https://cvs.khronos.org/svn/repos/registry/trunk/public/webgl/doc/spec/TypedArray-spec.html">ArrayBuffer</A>对象返回。</LI></UL>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">一旦调用了FileReader的任何一个读取方法，onloadstart,&nbsp;onprogress,&nbsp;onload,&nbsp;onabort,&nbsp;onerror, 
+and&nbsp;onloadend都可以用来跟踪文件读取的进展情况。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">这个下面的示例，过滤用户选取的图片，调用reader.readAsDataURL()，并通过设置缩略图的'src'属性来生成预览。</P><PRE style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 4px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN: 0px auto 10px 0px; PADDING-LEFT: 10px; WIDTH: 579px; PADDING-RIGHT: 4px; FONT-FAMILY: Verdana, 'Microsoft YaHei'; FONT-SIZE: 12px; BORDER-TOP: rgb(204,204,204) 3px solid; BORDER-RIGHT: rgb(204,204,204) 1px dashed; PADDING-TOP: 4px; background-origin: initial; background-clip: initial; border-image: initial">&lt;style&gt;
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+&lt;/style&gt;
+
+&lt;input type="file" id="files" name="files[]" multiple /&gt;
+&lt;output id="list"&gt;&lt;/output&gt;
+
+&lt;script&gt;
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['&lt;img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/&gt;'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+&lt;/script&gt;
+</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<H3 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-slicing-files>分割文件</H3>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">在一些情况下，把整个文件读到内存中并不是最好的选择。例如，你想写一个异步上传文件的程序。一个可行的方式是，把文件分割成byte文件块来发送文件。服务器组件可以以正确的顺序重建文件的内容。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">幸运的是，File接口提供了分割的方法。该方法接收开始的byte值作为第一个参数，结束的byte值作为第二个参数，可选的内容类型作为第三个参数。由于这个方法的语义目前处于变动状态，所以它拥有一个开发商的前缀。</P><PRE style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 4px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN: 0px auto 10px 0px; PADDING-LEFT: 10px; WIDTH: 579px; PADDING-RIGHT: 4px; FONT-FAMILY: Verdana, 'Microsoft YaHei'; FONT-SIZE: 12px; BORDER-TOP: rgb(204,204,204) 3px solid; BORDER-RIGHT: rgb(204,204,204) 1px dashed; PADDING-TOP: 4px; background-origin: initial; background-clip: initial; border-image: initial">if (file.webkitSlice) {
+  var blob = file.webkitSlice(startingByte, endindByte);
+} else if (file.mozSlice) {
+  var blob = file.mozSlice(startingByte, endindByte);
+}
+reader.readAsBinaryString(blob);
+</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">下面的示例演示读取文件块。一些值得注意的是，它使用onloadend事件和检查evt.target.readyState来代替使用onload事件。</P><PRE style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 4px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN: 0px auto 10px 0px; PADDING-LEFT: 10px; WIDTH: 579px; PADDING-RIGHT: 4px; FONT-FAMILY: Verdana, 'Microsoft YaHei'; FONT-SIZE: 12px; BORDER-TOP: rgb(204,204,204) 3px solid; BORDER-RIGHT: rgb(204,204,204) 1px dashed; PADDING-TOP: 4px; background-origin: initial; background-clip: initial; border-image: initial">&lt;style&gt;
+  #byte_content {
+    margin: 5px 0;
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  #byte_range { margin-top: 5px; }
+&lt;/style&gt;
+
+&lt;input type="file" id="files" name="file" /&gt; Read bytes: 
+&lt;span class="readBytesButtons"&gt;
+  &lt;button data-startbyte="0" data-endbyte="4"&gt;1-5&lt;/button&gt;
+  &lt;button data-startbyte="5" data-endbyte="14"&gt;6-15&lt;/button&gt;
+  &lt;button data-startbyte="6" data-endbyte="7"&gt;7-8&lt;/button&gt;
+  &lt;button&gt;entire file&lt;/button&gt;
+&lt;/span&gt;
+&lt;div id="byte_range"&gt;&lt;/div&gt;
+&lt;div id="byte_content"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  function readBlob(opt_startByte, opt_stopByte) {
+
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Please select a file!');
+      return;
+    }
+
+    var file = files[0];
+    var start = parseInt(opt_startByte) || 0;
+    var stop = parseInt(opt_stopByte) || file.size - 1;
+
+    var reader = new FileReader();
+
+    // If we use onloadend, we need to check the readyState.
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        document.getElementById('byte_content').textContent = evt.target.result;
+        document.getElementById('byte_range').textContent = 
+            ['Read bytes: ', start + 1, ' - ', stop + 1,
+             ' of ', file.size, ' byte file'].join('');
+      }
+    };
+
+    if (file.webkitSlice) {
+      var blob = file.webkitSlice(start, stop + 1);
+    } else if (file.mozSlice) {
+      var blob = file.mozSlice(start, stop + 1);
+    }
+    reader.readAsBinaryString(blob);
+  }
+  
+  document.querySelector('.readBytesButtons').addEventListener('click', function(evt) {
+    if (evt.target.tagName.toLowerCase() == 'button') {
+      var startByte = evt.target.getAttribute('data-startbyte');
+      var endByte = evt.target.getAttribute('data-endbyte');
+      readBlob(startByte, endByte);
+    }
+  }, false);
+&lt;/script&gt;
+</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</DIV>
+<H3 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-monitoring-progress>监测读取进度</H3>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">使用异步事件处理，我们可以去监测文件的读取进度；这对于大的文件来说十分有用处，也可以捕捉错误信息，当读取完成时作何处理。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">事件onloadstart和onprogress可以用来监视文件的读取进度。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">下面的示例演示，使用进度条来监视读取状态。进度条指示文件读取进度，试着从你的硬盘中选择一个或多个文件。</P><PRE style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 4px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN: 0px auto 10px 0px; PADDING-LEFT: 10px; WIDTH: 579px; PADDING-RIGHT: 4px; FONT-FAMILY: Verdana, 'Microsoft YaHei'; FONT-SIZE: 12px; BORDER-TOP: rgb(204,204,204) 3px solid; BORDER-RIGHT: rgb(204,204,204) 1px dashed; PADDING-TOP: 4px; background-origin: initial; background-clip: initial; border-image: initial">&lt;style&gt;
+  #progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #000;
+    font-size: 14px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+  }
+  #progress_bar.loading {
+    opacity: 1.0;
+  }
+  #progress_bar .percent {
+    background-color: #99ccff;
+    height: auto;
+    width: 0;
+  }
+&lt;/style&gt;
+
+&lt;input type="file" id="files" name="file" /&gt;
+&lt;button onclick="abortRead();"&gt;Cancel read&lt;/button&gt;
+&lt;div id="progress_bar"&gt;&lt;div class="percent"&gt;0%&lt;/div&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var reader;
+  var progress = document.querySelector('.percent');
+
+  function abortRead() {
+    reader.abort();
+  }
+
+  function errorHandler(evt) {
+    switch(evt.target.error.code) {
+      case evt.target.error.NOT_FOUND_ERR:
+        alert('File Not Found!');
+        break;
+      case evt.target.error.NOT_READABLE_ERR:
+        alert('File is not readable');
+        break;
+      case evt.target.error.ABORT_ERR:
+        break; // noop
+      default:
+        alert('An error occurred reading this file.');
+    };
+  }
+
+  function updateProgress(evt) {
+    // evt is an ProgressEvent.
+    if (evt.lengthComputable) {
+      var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+      // Increase the progress bar length.
+      if (percentLoaded &lt; 100) {
+        progress.style.width = percentLoaded + '%';
+        progress.textContent = percentLoaded + '%';
+      }
+    }
+  }
+
+  function handleFileSelect(evt) {
+    // Reset progress indicator on new file selection.
+    progress.style.width = '0%';
+    progress.textContent = '0%';
+
+    reader = new FileReader();
+    reader.onerror = errorHandler;
+    reader.onprogress = updateProgress;
+    reader.onabort = function(e) {
+      alert('File read cancelled');
+    };
+    reader.onloadstart = function(e) {
+      document.getElementById('progress_bar').className = 'loading';
+    };
+    reader.onload = function(e) {
+      // Ensure that the progress bar displays 100% at the end.
+      progress.style.width = '100%';
+      progress.textContent = '100%';
+      setTimeout("document.getElementById('progress_bar').className='';", 2000);
+    }
+
+    // Read in the image file as a binary string.
+    reader.readAsBinaryString(evt.target.files[0]);
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+&lt;/script&gt;
+</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</DIV>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px" 
+id=toc-references>资源</H2>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="http://www.w3.org/TR/file-upload/" target=_blank>File</A>&nbsp;API 
+  specification</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="http://www.w3.org/TR/file-upload/#dfn-filereader" 
+  target=_blank>FileReader</A>&nbsp;interface specification</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="http://www.w3.org/TR/file-upload/#dfn-Blob" 
+  target=_blank>Blob</A>&nbsp;interface specification</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="http://www.w3.org/TR/file-upload/#dfn-fileerror" 
+  target=_blank>FileError</A>&nbsp;interface specification</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="http://www.w3.org/TR/progress-events/#Progress" 
+  target=_blank>ProgressEvent</A>&nbsp;specification</LI></UL>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">原文链接<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="http://www.html5rocks.com/en/tutorials/file/dndfiles/" 
+target=_blank>Reading files in JavaScript using the File 
+APIs</A></P></DIV></DIV>
+<DIV 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 20px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 12px/18px tahoma, arial, 宋体, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 20px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=dede_pages>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=pagelist></UL></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; DISPLAY: block; FONT: 12px/18px tahoma, arial, 宋体, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=clearfix>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 30px; WIDTH: 320px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px" 
+class=weekfirst><BR class=Apple-interchange-newline></DIV></DIV>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

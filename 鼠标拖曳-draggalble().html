@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>无标题文档</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<STYLE type=text/css>
+<!--
+body,td,th {
+	font-size: 12px; line-height:20px;
+}
+-->
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18999"></HEAD>
+<BODY>
+<P>　　引入UI基本库和draggable库后，jQuery的鼠标拖曳实现，只需要给目标对象添加draggable()方法即可。<BR>$(".block").draggable();<BR>$(".#x").draggable({axis:"x"});&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//只能在x方向拖曳<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#y").draggable({axis:"y"});&nbsp;&nbsp;&nbsp;&nbsp; 
+//只能在y方向拖曳<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$("#parent").draggable({containment:"parent"});&nbsp;&nbsp;&nbsp; 
+//只能在父元素中拖曳<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$("#z").draggable("disable");&nbsp;&nbsp;&nbsp; 
+//暂时禁用拖曳<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$("#z").draggable("enable");&nbsp;&nbsp;&nbsp; 
+//重新启用拖曳<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$("#z").draggable("destroy");&nbsp;&nbsp;&nbsp; //彻底移除拖曳功能</P>
+<P>　　引入基本库和sortable库后，可以实现拖动排序的功能。<BR>$("#myList").sortable();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//让myList下的元素可以拖动排序<BR>某些特殊情况下会因为拖动事件抢在单击事件之前而导致单击事件失效。如果出现这种情况，可以设置参数delay延时1毫秒：<BR>$("#myList").sortable({delay:1});&nbsp;&nbsp;&nbsp; 
+//修复潜在单击问题</P></BODY></HTML>

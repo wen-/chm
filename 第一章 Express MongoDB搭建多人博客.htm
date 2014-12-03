@@ -1,0 +1,1739 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>第一章  Express MongoDB搭建多人博客 · nswbmw/N-blog Wiki · GitHub</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" />
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png" />
+    <link rel="logo" type="image/svg" href="https://github-media-downloads.s3.amazonaws.com/github-logo.svg" />
+    <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png">
+    <link rel="assets" href="https://a248.e.akamai.net/assets.github.com/">
+    <link rel="xhr-socket" href="/_sockets" />
+    
+    
+
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="selected-link" value="repo_wiki" data-pjax-transient />
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" />
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="mMbbniz0wLvdAfQLN+Kz/Pcr+UepJxX56bVg9rBIy+Q=" name="csrf-token" />
+
+    <link href="https://a248.e.akamai.net/assets.github.com/assets/github-be6069435cb0250bd316958375c0de713801bdf5.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="https://a248.e.akamai.net/assets.github.com/assets/github2-91a602bfb8b2a53f90aa7aea127a69e4f9ef1f11.css" media="all" rel="stylesheet" type="text/css" />
+    
+
+
+      <script src="https://a248.e.akamai.net/assets.github.com/assets/frameworks-1f72571b966545f4e27481a3b0ebbeeed4f2f139.js" type="text/javascript"></script>
+      <script src="https://a248.e.akamai.net/assets.github.com/assets/github-3b51dd74a94c713c22309e373955e5fa02a3bb65.js" type="text/javascript"></script>
+      
+      <meta http-equiv="x-pjax-version" content="f5ee7511175547406ed413cec6ae4c9b">
+
+        <script src="https://a248.e.akamai.net/assets.github.com/assets/wiki-5f94f237a61cfac742b656f8a10702b3b86e9b37.js" type="text/javascript"></script>
+
+  <meta property="og:title" content="N-blog"/>
+  <meta property="og:type" content="githubog:gitrepository"/>
+  <meta property="og:url" content="https://github.com/nswbmw/N-blog"/>
+  <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-user-420.png"/>
+  <meta property="og:site_name" content="GitHub"/>
+  <meta property="og:description" content="N-blog - 使用 Express + MongoDB 搭建多人博客"/>
+
+  <meta name="description" content="N-blog - 使用 Express + MongoDB 搭建多人博客" />
+
+  <meta content="4279697" name="octolytics-dimension-user_id" /><meta content="nswbmw" name="octolytics-dimension-user_login" /><meta content="10309334" name="octolytics-dimension-repository_id" /><meta content="nswbmw/N-blog" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="10309334" name="octolytics-dimension-repository_network_root_id" /><meta content="nswbmw/N-blog" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/nswbmw/N-blog/commits/master.atom" rel="alternate" title="Recent Commits to N-blog:master" type="application/atom+xml" />
+
+  </head>
+
+
+  <body class="logged_out  windows vis-public env-production  kill-the-chrome">
+
+    <div class="wrapper">
+      
+      
+      
+
+      
+      <div class="header header-logged-out">
+  <div class="container clearfix">
+
+    <a class="header-logo-wordmark" href="https://github.com/">
+      <span class="mega-octicon octicon-logo-github"></span>
+    </a>
+
+    <div class="header-actions">
+      <a class="button primary" href="/signup">Sign up</a>
+      <a class="button" href="/login?return_to=%2Fnswbmw%2FN-blog%2Fwiki%2F%25E7%25AC%25AC%25E4%25B8%2580%25E7%25AB%25A0--Express-MongoDB%25E6%2590%25AD%25E5%25BB%25BA%25E5%25A4%259A%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2">Sign in</a>
+    </div>
+
+    <div class="command-bar js-command-bar  in-repository">
+
+
+      <ul class="top-nav">
+          <li class="explore"><a href="/explore">Explore</a></li>
+        <li class="features"><a href="/features">Features</a></li>
+          <li class="enterprise"><a href="https://enterprise.github.com/">Enterprise</a></li>
+          <li class="blog"><a href="/blog">Blog</a></li>
+      </ul>
+        <form accept-charset="UTF-8" action="/search" class="command-bar-form" id="top_search_form" method="get">
+
+<input type="text" data-hotkey="/ s" name="q" id="js-command-bar-field" placeholder="Search or type a command" tabindex="1" autocapitalize="off"
+    
+    
+      data-repo="nswbmw/N-blog"
+      data-branch="master"
+      data-sha="b92eb6240e468e36eb30948e5c92920e83ddc7fa"
+  >
+
+    <input type="hidden" name="nwo" value="nswbmw/N-blog" />
+
+    <div class="select-menu js-menu-container js-select-menu search-context-select-menu">
+      <span class="minibutton select-menu-button js-menu-target">
+        <span class="js-select-button">This repository</span>
+      </span>
+
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container">
+        <div class="select-menu-modal">
+
+          <div class="select-menu-item js-navigation-item selected">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" class="js-search-this-repository" name="search_target" value="repository" checked="checked" />
+            <div class="select-menu-item-text js-select-button-text">This repository</div>
+          </div> <!-- /.select-menu-item -->
+
+          <div class="select-menu-item js-navigation-item">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" name="search_target" value="global" />
+            <div class="select-menu-item-text js-select-button-text">All repositories</div>
+          </div> <!-- /.select-menu-item -->
+
+        </div>
+      </div>
+    </div>
+
+  <span class="octicon help tooltipped downwards" title="Show command bar help">
+    <span class="octicon octicon-question"></span>
+  </span>
+
+
+  <input type="hidden" name="ref" value="cmdform">
+
+</form>
+    </div>
+
+  </div>
+</div>
+
+
+      
+
+
+          <div class="site" itemscope itemtype="http://schema.org/WebPage">
+    
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+
+<ul class="pagehead-actions">
+
+
+
+    <li>
+      <a href="/login?return_to=%2Fnswbmw%2FN-blog"
+        class="minibutton with-count js-toggler-target star-button entice tooltipped upwards"
+        title="You must be signed in to use this feature" rel="nofollow">
+        <span class="octicon octicon-star"></span>Star
+      </a>
+      <a class="social-count js-social-count" href="/nswbmw/N-blog/stargazers">
+        120
+      </a>
+    </li>
+    <li>
+      <a href="/login?return_to=%2Fnswbmw%2FN-blog"
+        class="minibutton with-count js-toggler-target fork-button entice tooltipped upwards"
+        title="You must be signed in to fork a repository" rel="nofollow">
+        <span class="octicon octicon-git-branch"></span>Fork
+      </a>
+      <a href="/nswbmw/N-blog/network" class="social-count">
+        76
+      </a>
+    </li>
+</ul>
+
+        <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="repo-label"><span>public</span></span>
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author">
+            <a href="/nswbmw" class="url fn" itemprop="url" rel="author"><span itemprop="title">nswbmw</span></a></span
+          ><span class="repohead-name-divider">/</span><strong
+          ><a href="/nswbmw/N-blog" class="js-current-repository js-repo-home-link">N-blog</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="Octocat-spinner-32" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+
+      <div class="repository-with-sidebar repo-container
+            ">
+
+          <div class="repository-sidebar">
+
+              
+
+<div class="repo-nav repo-nav-full js-repository-container-pjax js-octicon-loaders">
+  <div class="repo-nav-contents">
+    <ul class="repo-menu">
+      <li class="tooltipped leftwards" title="Code">
+        <a href="/nswbmw/N-blog" class="js-selected-navigation-item " data-gotokey="c" data-pjax="true" data-selected-links="repo_source repo_downloads repo_commits repo_tags repo_branches /nswbmw/N-blog">
+          <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+        <li class="tooltipped leftwards" title="Issues">
+          <a href="/nswbmw/N-blog/issues" class="js-selected-navigation-item js-disable-pjax" data-gotokey="i" data-selected-links="repo_issues /nswbmw/N-blog/issues">
+            <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+            <span class='counter'>1</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>        </li>
+
+      <li class="tooltipped leftwards" title="Pull Requests"><a href="/nswbmw/N-blog/pulls" class="js-selected-navigation-item js-disable-pjax" data-gotokey="p" data-selected-links="repo_pulls /nswbmw/N-blog/pulls">
+            <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+            <span class='counter'>0</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+
+        <li class="tooltipped leftwards" title="Wiki">
+          <a href="/nswbmw/N-blog/wiki" class="js-selected-navigation-item selected" data-pjax="true" data-selected-links="repo_wiki /nswbmw/N-blog/wiki">
+            <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>        </li>
+
+
+    </ul>
+    <div class="repo-menu-separator"></div>
+    <ul class="repo-menu">
+
+      <li class="tooltipped leftwards" title="Pulse">
+        <a href="/nswbmw/N-blog/pulse" class="js-selected-navigation-item " data-pjax="true" data-selected-links="pulse /nswbmw/N-blog/pulse">
+          <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+      <li class="tooltipped leftwards" title="Graphs">
+        <a href="/nswbmw/N-blog/graphs" class="js-selected-navigation-item " data-pjax="true" data-selected-links="repo_graphs repo_contributors /nswbmw/N-blog/graphs">
+          <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+      <li class="tooltipped leftwards" title="Network">
+        <a href="/nswbmw/N-blog/network" class="js-selected-navigation-item js-disable-pjax" data-selected-links="repo_network /nswbmw/N-blog/network">
+          <span class="octicon octicon-git-branch"></span> <span class="full-word">Network</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+    </ul>
+
+  </div>
+</div>
+
+
+              <div class="only-with-full-nav">
+
+                
+
+  
+
+<div class="clone-url open"
+  data-protocol-type="http"
+  data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><strong>HTTPS</strong> clone URL</h3>
+
+  <input type="text" class="clone js-url-field"
+         value="https://github.com/nswbmw/N-blog.git" readonly="readonly">
+
+  <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/nswbmw/N-blog.git" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+</div>
+
+  
+
+<div class="clone-url "
+  data-protocol-type="subversion"
+  data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><strong>Subversion</strong> checkout URL</h3>
+
+  <input type="text" class="clone js-url-field"
+         value="https://github.com/nswbmw/N-blog" readonly="readonly">
+
+  <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/nswbmw/N-blog" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+</div>
+
+
+
+<p class="clone-options">You can clone with
+    <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>,
+    <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>,
+  and <a href="https://help.github.com/articles/which-remote-url-should-i-use">other methods.</a>
+</p>
+
+
+  <a href="http://windows.github.com" class="minibutton sidebar-button">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+
+                  <a href="/nswbmw/N-blog/archive/master.zip"
+                     class="minibutton sidebar-button"
+                     title="Download this repository as a zip file"
+                     rel="nofollow">
+                    <span class="octicon octicon-cloud-download"></span>
+                    Download ZIP
+                  </a>
+
+              </div>
+          </div>
+
+          <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
+            
+
+<div class="tabnav">
+  <ul class="tabnav-tabs">
+    <li><a href="/nswbmw/N-blog/wiki" class="js-selected-navigation-item tabnav-tab" data-selected-links=" /nswbmw/N-blog/wiki">Home</a></li>
+    <li><a href="/nswbmw/N-blog/wiki/_pages" class="js-selected-navigation-item tabnav-tab" data-selected-links=" /nswbmw/N-blog/wiki/_pages">Pages</a></li>
+    <li><a href="/nswbmw/N-blog/wiki/_history" class="js-selected-navigation-item tabnav-tab" data-selected-links=" /nswbmw/N-blog/wiki/_history">History</a></li>
+  </ul>
+  <div class="tabnav-right">
+    <div class="tabnav-widget">
+      <a href="/nswbmw/N-blog/wiki/_new" class="button minibutton primary js-new-wiki-page">New Page</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <ul class="wiki-actions readability-extra">
+    <li class="gollum-minibutton"><a href="/nswbmw/N-blog/wiki/%E7%AC%AC%E4%B8%80%E7%AB%A0--Express-MongoDB%E6%90%AD%E5%BB%BA%E5%A4%9A%E4%BA%BA%E5%8D%9A%E5%AE%A2/_history"
+       class="minibutton bigger action-page-history">
+       Page History
+     </a></li>
+    <li class="gollum-minibutton"><span class="js-zeroclipboard minibutton" data-clipboard-text="https://github.com/nswbmw/N-blog.wiki.git" data-copied-hint="copied!" title="Click to copy url to clipboard">Clone URL</span></li>
+  </ul>
+  <h1 class="instapaper_title">第一章  Express MongoDB搭建多人博客</h1>
+</div>
+<div id="wiki-content">
+  <div class="wrap">
+  <div id="wiki-body" class="gollum-markdown-content instapaper_body">
+    <div class="markdown-body">
+      <h2>
+<a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>学习环境</h2>
+
+<p><strong>node.js:</strong> 0.10.7+</p>
+
+<h2>
+<a name="-1" class="anchor" href="#-1"><span class="octicon octicon-link"></span></a>快速开始</h2>
+
+<h3>
+<a name="express" class="anchor" href="#express"><span class="octicon octicon-link"></span></a>安装Express</h3>
+
+<pre><code>npm install -g express
+</code></pre>
+
+<p>我们需要用全局模式安装 express，因为只有这样我们才能在命令行中使用它。目前 express 最新版本为 express 3.2.4。</p>
+
+<h3>
+<a name="-2" class="anchor" href="#-2"><span class="octicon octicon-link"></span></a>新建一个工程</h3>
+
+<p>今后的学习把 D:\blog 文件夹作为我们的工程目录。windows 下打开 cmd 切换到 D 盘，输入 <code>express -e ejs blog</code> （注意 express 3.* 中安装 ejs 不再是 -t 而是 -e，可以输入 <code>express -h</code> 查看），然后输入 <code>cd blog&amp;npm install</code> 安装所需模块，如下图所示：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.1.jpg" alt=""></p>
+
+<p>安装完成后输入 <code>node app</code>，此时命令行中会显示 Express server listening on port 3000，在浏览器里输入 <code>localhost:3000</code>，如下所示：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.2.jpg" alt=""></p>
+
+<p>我们用 express 初始化了一个工程，并指定使用 ejs 模板引擎，下一节我们讲解工程的内部结构。</p>
+
+<h3>
+<a name="-3" class="anchor" href="#-3"><span class="octicon octicon-link"></span></a>工程结构</h3>
+
+<p>我们回头看看生成的工程目录里面有什么，打开 D:\blog，里面如图所示：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.3.jpg" alt=""></p>
+
+<p><strong>app.js</strong>：启动文件。<br><strong>package.json</strong>:存储着工程的信息及所需的依赖模块，当在 dependencies 中添加依赖时，运行npm install，会检查当前目录下的 package.json，并自动安装所有指定的依赖模块。<br><strong>node_modules</strong>：存放 package.json 中安装的模块，当你在 package.json 添加依赖的模块并安装后，默认存放在这个文件夹下<br><strong>public</strong>：存放 image、css、js 等文件<br><strong>routes</strong>：存放路由文件<br><strong>views</strong>：存放模版文件  </p>
+
+<p>打开 app.js，让我们看看里面究竟有什么东西：</p>
+
+<pre><code>/**
+ * Module dependencies.
+ */
+
+var express = require('express')
+  , routes = require('./routes')
+  , user = require('./routes/user')
+  , http = require('http')
+  , path = require('path');
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code></pre>
+
+<p>在 node.js 中模块分为核心模块和文件模块两种，核心模块是通过 require('xxxx') 导入的，文件模块是以 require('/xxxx') 或 require('./xxxx')、require('../xxxx') 形式导入的；核心模块是用c/c++编译的二进制模块，而文件模块是后缀为.js、.json、.node 的文件，在 node.js 中一个文件/文件夹也可以称之为一个模块。更多关于模块及模块加载顺序的信息请查阅官网：<a href="http://nodejs.org/api/all.html#all_modules">http://nodejs.org/api/all.html#all_modules</a><br>
+这里导入了 express、http、path 核心模块，routes 文件夹下的 index.js 和 user.js 文件模块。 </p>
+
+<p>因为 express 框架是依赖 connect 框架（Node的一个中间件框架）创建而成的，可查阅 connect 文档：<a href="http://www.senchalabs.org/connect/">http://www.senchalabs.org/connect/</a>和 express 官方文档：<a href="http://expressjs.com/api.html">http://expressjs.com/api.html</a>了解更多内容。<br><strong>app.set(name, value)</strong>：设置 <code>name</code> 的值为 <code>value</code><br><strong>app.set('port', process.env.PORT || 3000)</strong>：设置端口为 <code>process.env.PORT</code> 或 <code>3000</code><br><strong>app.set('views', __dirname + '/views')</strong>：设置 views 文件夹为视图文件的目录，存放模板文件，__dirname 为全局变量，存储着当前正在执行脚本所在的目录名。<br><strong>app.set('view engine', 'ejs')</strong>：设置视图模版引擎为 ejs  </p>
+
+<p><strong>app.use([path], function)</strong>：使用中间件 <code>function</code>，可选参数<code>path</code>默认为"/"<br><strong>app.use(express.favicon())</strong>：connect 内建的中间件，使用默认的 favicon 图标，如果想使用自己的图标，需改为 <code>app.use(express.favicon(__dirname + '/public/images/favicon.ico'));</code> 这里我们把自定义的 favicon.ico 放到了 public/images 文件夹下。<br><strong>app.use(express.logger('dev'))</strong>：connect 内建的中间件，在开发环境下使用，在终端显示简单的不同颜色的日志，比如在启动 app.js 后访问 localhost:3000，终端会输出：</p>
+
+<pre><code>Express server listening on port 3000
+GET / 200 21ms - 206b
+GET /stylesheets/style.css 304 4ms
+</code></pre>
+
+<p>数字200显示为绿色，304显示为蓝色。假如你去掉这一行代码，不管你怎么刷新网页，终端都只有一行 Express server listening on port 3000。<br><strong>app.use(express.bodyParser())</strong>：connect 内建的中间件，用来解析请求体，支持 application/json，
+application/x-www-form-urlencoded, 和 multipart/form-data。<br><strong>app.use(express.methodOverride())</strong>：connect 内建的中间件，可以协助处理 POST 请求，伪装 PUT、DELETE 和其他 HTTP 方法。<br><strong>app.use(app.router)</strong>：设置应用的路由（可选），详细请参考：<a href="http://stackoverflow.com/questions/12695591/node-js-express-js-how-does-app-router-work">http://stackoverflow.com/questions/12695591/node-js-express-js-how-does-app-router-work</a><br><strong>app.use(express.static(path.join(__dirname, 'public')))</strong>：connect 内建的中间件，设置根目录下的 public 文件夹为静态文件服务器，存放 image、css、js 文件于此。<br><strong>if ('development' == app.get('env')) {app.use(express.errorHandler());}</strong>：开发环境下的错误处理，输出错误信息。</p>
+
+<p><strong>app.get('/', routes.index)</strong>：路由控制器，如果用户访问" / "路径，则由 routes.index 来控制，routes/index.js 内容如下：</p>
+
+<pre><code>exports.index = function(req, res){
+  res.render('index', { title: 'Express' });
+};
+</code></pre>
+
+<p>通过 exports.index 导出 index 函数接口，<code>app.get('/', routes.index)</code> 相当于：</p>
+
+<pre><code>app.get('/', function(req, res){
+  res.render('index', { title: 'Express' });
+};)
+</code></pre>
+
+<p><strong>res.render('index', { title: 'Express' })</strong>：调用 ejs 模板引擎解析 views/index.ejs（我们之前通过 <code>app.set('views', __dirname + '/views')</code> 设置了模版文件默认存储在 views 下），并传入一个对象作为参数，这个对象只有一个属性 title: 'Express'，即用字符串 Express 替换 views/index.ejs 中所有 title 变量，后面我们将会了解更多关于模板引的内容。  </p>
+
+<pre><code>http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code></pre>
+
+<p>这段代码的意思是创建服务器并监听3000端口，成功后在命令行中显示 Express server listening on port 3000，然后我们就可以通过在浏览器输入 localhost:3000 来访问了。</p>
+
+<p>这一小节我们学习了如何创建一个工程并启动它，了解了工程的大体结构，下一节我们将学习 Express 的基本使用及路由控制。</p>
+
+<h2>
+<a name="-4" class="anchor" href="#-4"><span class="octicon octicon-link"></span></a>路由控制</h2>
+
+<h3>
+<a name="-5" class="anchor" href="#-5"><span class="octicon octicon-link"></span></a>工作原理</h3>
+
+<p>上面提到过 app.js 中 <code>app.get('/', routes.index)</code> 可以用以下代码取代：</p>
+
+<pre><code>app.get('/', function(req, res){
+  res.render('index', { title: 'Express' });
+};)
+</code></pre>
+
+<p>这段代码的意思是当访问主页时，调用 ejs 模板引擎，传入 title 变量的值为字符串 Express，来渲染 index.ejs 模版文件，生成静态页面并显示在浏览器里。 </p>
+
+<p>我们来作一些修改，以上代码实现了路由的功能，我们当然可以不要 routes/index.js 文件，把实现路由功能的代码都放在 app.js 里，但随着时间的推移 app.js 会变得难以维护，这也违背了代码模块化的思想，所以我们把实现路由功能的代码都放在 routes/index.js 里。官方给出的写法是在 app.js 中实现了简单的路由分配，然后再去 index.js 中找到对应的路由函数，最终实现路由功能。我们不妨把路由控制器和实现路由功能的函数都放到 index.js 里，app.js 中只有一个总的路由接口。<br>
+打开 app.js，删除 <code>, user = require('./routes/user')</code> （我们这里用不到 routes/user.js，同时删除这个文件）和</p>
+
+<pre><code>app.get('/', routes.index);
+app.get('/users', user.list);
+</code></pre>
+
+<p>在 app.js 最后添加：</p>
+
+<pre><code>routes(app);
+</code></pre>
+
+<p>修改 index.js 如下：</p>
+
+<pre><code>module.exports = function(app){
+  app.get('/',function(req,res){
+    res.render('index', { title: 'Express' });
+  });
+};
+</code></pre>
+
+<p>现在，再运行你的 app，你会发现主页毫无二致。这两种写法的区别就好比：<br>
+你的朋友结婚了，你收到请帖要赴宴。到了酒店门口被总管给拦住了。官方的写法是总管看了看请帖然后给你指了朋友团的地方，然后你过去坐下。咱的写法是总管看了看请帖简单确认了下你是被邀请的人，然后你进去自己找到朋友团的地方坐下。</p>
+
+<h3>
+<a name="-6" class="anchor" href="#-6"><span class="octicon octicon-link"></span></a>路由规则</h3>
+
+<p>express 封装了多种 http 请求方式，但我们这里主要只使用 get 和 post 两种。<br>
+get 和 post 的第一个参数都为请求的路径，第二个参数为处理请求的回调函数，它有两个参数分别是 req 和 res，表示请求信息和响应信息 。路径请求及对应的获取路径有以下几种形式：  </p>
+
+<p><strong>req.query</strong>  </p>
+
+<pre><code>// GET /search?q=tobi+ferret  
+req.query.q  
+// =&gt; "tobi ferret"  
+
+// GET /shoes?order=desc&amp;shoe[color]=blue&amp;shoe[type]=converse  
+req.query.order  
+// =&gt; "desc"  
+
+req.query.shoe.color  
+// =&gt; "blue"  
+
+req.query.shoe.type  
+// =&gt; "converse"  
+</code></pre>
+
+<p><strong>req.body</strong>  </p>
+
+<pre><code>// POST user[name]=tobi&amp;user[email]=tobi@learnboost.com  
+req.body.user.name  
+// =&gt; "tobi"  
+
+req.body.user.email  
+// =&gt; "tobi@learnboost.com"  
+
+// POST { "name": "tobi" }  
+req.body.name  
+// =&gt; "tobi"  
+</code></pre>
+
+<p><strong>req.params</strong></p>
+
+<pre><code>// GET /user/tj  
+req.params.name  
+// =&gt; "tj"  
+
+// GET /file/javascripts/jquery.js  
+req.params[0]  
+// =&gt; "javascripts/jquery.js"  
+
+**req.param(name)**
+
+// ?name=tobi  
+req.param('name')  
+// =&gt; "tobi"  
+
+// POST name=tobi  
+req.param('name')  
+// =&gt; "tobi"  
+
+// /user/tobi for /user/:name   
+req.param('name')  
+// =&gt; "tobi"  
+</code></pre>
+
+<p>不难看出：<br>
+req.query 处理 get 请求<br>
+req.params 处理 /:xxx 形式的 get 请求<br>
+req.body 处理 post 请求<br>
+req.param(name) 可以处理 get 和 post 请求，但查找优先级由高到低为 req.params→req.body→req.query<br>
+路径规则还支持正则表达式，更多请查阅：<a href="http://expressjs.com/api.html">http://expressjs.com/api.html</a></p>
+
+<h3>
+<a name="-7" class="anchor" href="#-7"><span class="octicon octicon-link"></span></a>添加路由规则</h3>
+
+<p>当我们访问 localhost:3000 时，会显示： </p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.2.jpg" alt=""></p>
+
+<p>当我们访问 localhost:3000/nswbmw 这种不存在的页面时就会显示： </p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.4.jpg" alt=""></p>
+
+<p>这是因为不存在 /nswbmw 的路由规则，而且它也不是一个 public 目录下的文件，所以 Express 返回了 404 Not Found 的错误。<br>
+下面我们来添加这条路由规则，使得当访问 localhost:3000/nswbmw 时，页面显示 hello,world!<br><strong>注意</strong>：以下修改仅用于测试，看到效果后再把代码还原回来。<br>
+修改 index.js，在 <code>app.get('/')</code> 函数后添加一条路由规则：  </p>
+
+<pre><code>app.get('/nswbmw',function(req,res){
+  res.send('hello.world!');
+});
+</code></pre>
+
+<p>访问 localhost:3000/nswbmw 页面显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.5.jpg" alt=""></p>
+
+<p>很简单吧？这一节我们学习了基本的路由规则及如何添加一条路由规则，下一节我们将学习模板引擎的知识。</p>
+
+<h2>
+<a name="-8" class="anchor" href="#-8"><span class="octicon octicon-link"></span></a>模版引擎</h2>
+
+<h3>
+<a name="-9" class="anchor" href="#-9"><span class="octicon octicon-link"></span></a>什么是模板引擎</h3>
+
+<p>模板引擎（Template Engine）是一个将页面模板和要显示的数据结合起来生成 HTML 页面的工具。<br>
+如果说上面讲到的 express 中的路由控制方法相当于 MVC 中的控制器的话，那模板引擎就相当于 MVC 中的视图。</p>
+
+<blockquote>
+<p>模板引擎的功能是将页面模板和要显示的数据结合起来生成 HTML 页面。它既可以运
+行在服务器端又可以运行在客户端，大多数时候它都在服务器端直接被解析为 HTML，解析
+完成后再传输给客户端，因此客户端甚至无法判断页面是否是模板引擎生成的。有时候模板
+引擎也可以运行在客户端，即浏览器中，典型的代表就是 XSLT，它以 XML 为输入，在客
+户端生成 HTML 页面。但是由于浏览器兼容性问题，XSLT 并不是很流行。目前的主流还是
+由服务器运行模板引擎。</p>
+
+<p>在 MVC 架构中，模板引擎包含在服务器端。控制器得到用户请求后，从模型获取数据，
+调用模板引擎。模板引擎以数据和页面模板为输入，生成 HTML 页面，然后返回给控制器，
+由控制器交回客户端。 </p>
+
+<p align="right">——《Node.js开发指南》</p>
+</blockquote>
+
+<p>什么是 ejs ?</p>
+
+<p>ejs 是模板引擎的一种，也是我们这个教程中使用的模板引擎，因为它十分简单，而且与 Express 集成良好。</p>
+
+<h3>
+<a name="-10" class="anchor" href="#-10"><span class="octicon octicon-link"></span></a>使用模板引擎</h3>
+
+<p>前面我们通过以下两行代码设置了模板引擎和页面模板的存储位置：</p>
+
+<pre><code>app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+</code></pre>
+
+<p>在 routes/index.js 中通过调用 res.render 渲染模版，并将其产生的页面直接返回给客户端。它接受两个参数，第一个是模板的名称，即 views 目录下的模板文件名，扩展名 .ejs 可选；第二个参数是传递给模板的数据，用于模板翻译。<br>
+index.ejs 内容如下：  </p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
+    &lt;link rel='stylesheet' href='/stylesheets/style.css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
+    &lt;p&gt;Welcome to &lt;%= title %&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>当我们 <code>res.render('index', { title: 'Express' });</code> 时，模板引擎会把 &lt;%= title %&gt; 替换成 Express，然后把替换后的页面现实给用户。  </p>
+
+<p>渲染后生成的页面代码为：</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Express&lt;/title&gt;
+    &lt;link rel='stylesheet' href='/stylesheets/style.css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Express&lt;/h1&gt;
+    &lt;p&gt;Welcome to Express&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>注意</strong>：我们设置了静态文静目录为 public（<code>app.use(express.static(path.join(__dirname, 'public')))</code>），所以上面代码中的 <code>href='/stylesheets/style.css'</code> 就相当于 <code>href='public/stylesheets/style.css'</code> 。 </p>
+
+<p>ejs 的标签系统非常简单，它只有以下3种标签。 </p>
+
+<pre><code>&lt;% code %&gt;：JavaScript 代码。  
+&lt;%= code %&gt;：显示替换过 HTML 特殊字符的内容。  
+&lt;%- code %&gt;：显示原始 HTML 内容。  
+</code></pre>
+
+<p><strong>注意</strong>： <code>&lt;%= code %&gt;</code> 和 <code>&lt;%- code %&gt;</code> 的区别，当变量 code 为字符串时，两者没有区别；当 code 为比如<code>&lt;h1&gt;hello&lt;/h1&gt;</code> 时，<code>&lt;%= code %&gt;</code> 会原样输出 <code>&lt;h1&gt;hello&lt;/h1&gt;</code>，而 <code>&lt;%- code %&gt;</code> 则会输出H1大的 hello。  </p>
+
+<p>EJS 的官方示例：  </p>
+
+<p><strong>The Data</strong>  </p>
+
+<pre><code>{ title:    'Cleaning Supplies',
+  supplies: ['mop', 'broom', 'duster'] }
+</code></pre>
+
+<p><strong>The Template</strong></p>
+
+<pre><code>&lt;ul&gt;
+&lt;% for(var i=0; i&lt;supplies.length; i++) {%&gt;
+   &lt;li&gt;&lt;%= supplies[i] %&gt;&lt;/li&gt;
+&lt;% } %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p><strong>The Result</strong></p>
+
+<ul>
+<li>mop</li>
+<li>broom</li>
+<li>duster</li>
+</ul><p>我们可以用上述三种方式实现页面模板系统能实现的任何内容。</p>
+
+<h3>
+<a name="-11" class="anchor" href="#-11"><span class="octicon octicon-link"></span></a>页面布局</h3>
+
+<p>Express 3.* 中我们不再使用 layout.ejs 进行页面布局，转而使用 include 来替代。include 的简单使用如下：  </p>
+
+<p><strong>a.ejs</strong></p>
+
+<pre><code>&lt;%- include b %&gt;
+hello,world!
+&lt;%- include c %&gt;
+</code></pre>
+
+<p><strong>b.ejs</strong></p>
+
+<pre><code>this is b
+</code></pre>
+
+<p><strong>c.ejs</strong></p>
+
+<pre><code>this is c
+</code></pre>
+
+<p>最终 a.ejs 会显示：</p>
+
+<pre><code>this is b
+hello,world!
+this is c
+</code></pre>
+
+<p>这一节我们学习了模版引擎的相关知识，下一节我们正式开始学习如何从头开始搭建一个多人博客。</p>
+
+<h2>
+<a name="-12" class="anchor" href="#-12"><span class="octicon octicon-link"></span></a>搭建多人博客</h2>
+
+<h3>
+<a name="-13" class="anchor" href="#-13"><span class="octicon octicon-link"></span></a>功能分析</h3>
+
+<p>作为入门教程，我们要搭建的博客具有简单的允许多人注册、登录、发表文章、登出的功能。  </p>
+
+<h3>
+<a name="-14" class="anchor" href="#-14"><span class="octicon octicon-link"></span></a>设计目标</h3>
+
+<p>未登录：主页左侧导航显示 home、login、register，右侧显示已发表的文章、发表日期及作者。<br>
+登陆后：主页左侧导航显示 home、post、logout，右侧显示已发表的文章、发表日期及作者。<br>
+用户登录、注册、发表成功以及登出后都返回到主页。  </p>
+
+<p><strong>用户登陆前</strong>：</p>
+
+<p>主页：  </p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.6.jpg" alt=""></p>
+
+<p>登录页：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.7.jpg" alt=""></p>
+
+<p>注册页：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.8.jpg" alt=""></p>
+
+<p><strong>用户登录后</strong>：</p>
+
+<p>主页:</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.9.jpg" alt=""></p>
+
+<p>发表页：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.10.jpg" alt=""></p>
+
+<p><strong>注意</strong>：没有登出页，当点击 LOGOUT 后，退出登陆并返回到主页。</p>
+
+<h3>
+<a name="-15" class="anchor" href="#-15"><span class="octicon octicon-link"></span></a>路由规划</h3>
+
+<p>我们已经把设计的构想图贴出来了，接下来的任务就是写路由规划了。路由规划，或者说控制器规划是整个网站的骨架部分，因为它处于整个架构的枢纽位置，相当于各个接口之间的粘合剂，所以应该优先考虑。<br>
+根据构思的设计图，我们作以下路由规划：  </p>
+
+<pre><code>/ ：首页
+/login ：用户登录
+/reg ：用户注册
+/post ：发表文章
+/logout ：登出
+</code></pre>
+
+<p>login 和 reg 页只能是未登录的用户访问，而 post 和 logout 页只能是已登录的用户访问。首页则针对已登录和未登录的用户显示不同的内容。 </p>
+
+<p>修改 index.js 如下：  </p>
+
+<pre><code>module.exports = function(app){
+  app.get('/',function(req,res){
+    res.render('index', { title: '主页' });
+  });
+  app.get('/reg',function(req,res){
+    res.render('reg', { title: '注册' });
+  });
+  app.post('/reg',function(req,res){
+  });
+  app.get('/login',function(req,res){
+    res.render('login', { title: '登录' });
+  });
+  app.post('/login',function(req,res){
+  });
+  app.get('/post',function(req,res){
+    res.render('post', { title: '发表' });
+  });
+  app.post('/post',function(req,res){
+  });
+  app.get('/logout',function(req,res){
+  });
+};
+</code></pre>
+
+<p>如何针对已登录和未登录的用户显示不同的内容呢？或者说如何判断用户是否已经登陆了呢？进一步说如何记住用户的登录状态呢？我们通过引入会话机制，来记录用户登录状态，还要访问数据库来保存和读取用户信息。下一节我们将学习如何使用数据库。</p>
+
+<h2>
+<a name="-16" class="anchor" href="#-16"><span class="octicon octicon-link"></span></a>使用数据库</h2>
+
+<h3>
+<a name="mongodb" class="anchor" href="#mongodb"><span class="octicon octicon-link"></span></a>MongoDB简介</h3>
+
+<blockquote>
+<p>MongoDB 是一个对象数据库，它没有表、行等概念，也没有固定的模式和结构，所有的数据以文档的形式存储。所谓文档就是一个关联数组式的对象，它的内部由属性组成，一个属性对应的值可能是一个数、字符串、日期、数组，甚至是一个嵌套的文档。  </p>
+
+<p align="right">——《Node.js开发指南》</p> 
+</blockquote>
+
+<p>下面是一个 MongoDB 文档的示例： </p>
+
+<pre><code>{ 
+  "_id" : ObjectId( "4f7fe8432b4a1077a7c551e8" ),   
+  "name" : "nswbmw",  
+  "age" : 22,
+  "email" : [ "xxx@126.com", "xxx@gmail.com" ],  
+  "family" : {  
+    "mother" : { ... },  
+    "father" : { ... },  
+    "sister : { ... },  
+    "address" : "earth"  
+  }
+}
+</code></pre>
+
+<p>更多有关 MongoDB 的知识请参考 《mongodb权威指南》或查阅：<a href="http://www.mongodb.org/">http://www.mongodb.org/</a></p>
+
+<h3>
+<a name="mongodb-1" class="anchor" href="#mongodb-1"><span class="octicon octicon-link"></span></a>安装MongoDB</h3>
+
+<p>安装 mongodb 很简单，去官网（<a href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a>）下载最新版的 mongodb，解压到D盘并把文件夹重命名为 mongodb，并在 mongodb 文件夹下新建 blog 文件夹作为我们的存储目录。打开 cmd，切换到  d:\mongodb\bin 目录下，在命令行中输入 mongod -dbpath "d:\mongodb\blog" 设置 blog 文件夹作为我们工程的存储目录，这样数据库就成功启动了。为了方便以后使用数据库，我们在桌面上新建 “启动mongodb.bat” ，并写入 <code>d:\mongodb\bin\mongod.exe -dbpath d:\mongodb\blog</code> ，这样我们以后只需运行桌面上的 “启动mongodb.bat” 就可启动数据库了。</p>
+
+<h3>
+<a name="mongodb-2" class="anchor" href="#mongodb-2"><span class="octicon octicon-link"></span></a>连接MongoDB</h3>
+
+<p>数据库虽然安装并启动成功了，但我们需要连接数据库后才能使用数据库。怎么才能在 Node.js 中使用 MongoDb 呢？我们需要使用 node-mongodb-native 模块，打开 package.json，在 dependencies 中添加一行代码： </p>
+
+<pre><code>{
+  "name": "blog",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.4",
+    "ejs": "*",
+    "mongodb": "*"
+  }
+}
+</code></pre>
+
+<p>然后运行 npm install 更新依赖的模块，稍等片刻后模块就下载并安装完成。  </p>
+
+<p>接下来在工程的目录中创建 settings.js 文件，这个文件用于保存数据库的连接信息。我们将数据库命名为 blog，数据库服务器在本地，因此 settings.js 文件的内容如下：</p>
+
+<pre><code>module.exports = { 
+  cookieSecret: 'myblog', 
+  db: 'blog', 
+  host: 'localhost'
+}; 
+</code></pre>
+
+<p>其中 db 是数据库的名称，host 是数据库的地址。cookieSecret 用于 Cookie 加密与数据库无关，我们留作后用。</p>
+
+<p>接下来在根目录下新建 models 文件夹，并在 models 文件夹下新建 db.js ，添加如下代码：</p>
+
+<pre><code>var settings = require('../settings'),
+    Db = require('mongodb').Db,
+    Connection = require('mongodb').Connection,
+    Server = require('mongodb').Server;
+module.exports = new Db(settings.db, new Server(settings.host, Connection.DEFAULT_PORT, {}));
+</code></pre>
+
+<p>我们先不用弄清楚代码为什么这么写，我们现在只需知道以上代码通过 module.exports 输出了创建的数据库连接，在后面的小节中我们会用到这个模块。</p>
+
+<h3>
+<a name="-17" class="anchor" href="#-17"><span class="octicon octicon-link"></span></a>会话支持</h3>
+
+<blockquote>
+<p>会话是一种持久的网络协议，用于完成服务器和客户端之间的一些交互行为。会话是一个比连接粒度更大的概念， 一次会话可能包含多次连接，每次连接都被认为是会话的一次操作。在网络应用开发中，有必要实现会话以帮助用户交互。例如网上购物的场景，用户浏览了多个页面，购买了一些物品，这些请求在多次连接中完成。许多应用层网络协议都是由会话支持的，如 FTP、Telnet 等，而 HTTP 协议是无状态的，本身不支持会话，因此在没有额外手段的帮助下，前面场景中服务器不知道用户购买了什么。 </p>
+
+<p>为了在无状态的 HTTP 协议之上实现会话，Cookie 诞生了。Cookie 是一些存储在客户端的信息，每次连接的时候由浏览器向服务器递交，服务器也向浏览器发起存储 Cookie 的请求，依靠这样的手段服务器可以识别客户端。我们通常意义上的 HTTP 会话功能就是这样实现的。具体来说，浏览器首次向服务器发起请求时，服务器生成一个唯一标识符并发送给客户端浏览器，浏览器将这个唯一标识符存储在 Cookie 中，以后每次再发起请求，客户端</p>
+
+<p>浏览器都会向服务器传送这个唯一标识符，服务器通过这个唯一标识符来识别用户。 对于开发者来说，我们无须关心浏览器端的存储，需要关注的仅仅是如何通过这个唯一标识符来识别用户。很多服务端脚本语言都有会话功能，如 PHP，把每个唯一标识符存储到文件中。Express 也提供了会话中间件，默认情况下是把用户信息存储在内存中，但我们既然已经有了 MongoDB，不妨把会话信息存储在数据库中，便于持久维护。</p>
+
+<p align="right">——《Node.js开发指南》</p> 
+</blockquote>
+
+<p>为了使用这一功能，我们首先要获取一个叫做 connect-mongo 的模块，在 package.json 中添加一行代码： </p>
+
+<pre><code>{
+  "name": "blog",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.4",
+    "ejs": "*",
+    "mongodb": "*",
+    "connect-mongo": "*"
+  }
+}
+</code></pre>
+
+<p>运行 npm install 安装模块。然后打开 app.js，在 <code>, path = require('path')</code> 后添加以下代码：</p>
+
+<pre><code>, MongoStore = require('connect-mongo')(express)
+, settings = require('./settings');
+</code></pre>
+
+<p>在 <code>app.use(express.methodOverride());</code> 后添加：</p>
+
+<pre><code>app.use(express.cookieParser());
+app.use(express.session({
+  secret: settings.cookieSecret,
+  key: settings.db,
+  cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+  store: new MongoStore({
+    db: settings.db
+  })
+}));
+</code></pre>
+
+<p>其中 express.cookieParser() 是 Cookie 解析的中间件。express.session() 则提供会话支持，secret 用来防止篡改 cookie，key 的值为 cookie 的名字，通过设置 cookie 的 maxAge 值设定cookie的生存期，这里我们设置 cookie 的生存期为30天，设置它的 store 参数为 MongoStore 实例，把会话信息存储到数据库中，以避免丢失。在后面的小节中，我们可以通过 req.session 获取当前用户的会话对象，以维护用户相关的信息。</p>
+
+<h2>
+<a name="-18" class="anchor" href="#-18"><span class="octicon octicon-link"></span></a>注册和登陆</h2>
+
+<p>我们已经准备好了数据库访问和会话存储的相关信息，接下来我们完成用户注册和登录功能。</p>
+
+<h3>
+<a name="-19" class="anchor" href="#-19"><span class="octicon octicon-link"></span></a>页面设计</h3>
+
+<p>首先我们来完成主页、登录页和注册页的页面设计。<br>
+修改 views/index.ejs 如下：  </p>
+
+<pre><code>&lt;%- include header %&gt;
+这是主页
+&lt;%- include footer %&gt;
+</code></pre>
+
+<p>在 views 下新建 header.ejs，添加如下代码：</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8" /&gt;
+&lt;title&gt;Blog&lt;/title&gt;
+&lt;link rel="stylesheet" href="stylesheets/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header&gt;
+&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+&lt;span&gt;&lt;a title="主页" href="/"&gt;home&lt;/a&gt;&lt;/span&gt;
+&lt;span&gt;&lt;a title="登录" href="/login"&gt;login&lt;/a&gt;&lt;/span&gt;
+&lt;span&gt;&lt;a title="注册" href="/reg"&gt;register&lt;/a&gt;&lt;/span&gt;
+&lt;/nav&gt;
+
+&lt;article&gt;
+</code></pre>
+
+<p>在 views 下新建 footer.ejs，添加如下代码：</p>
+
+<pre><code>&lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>修改 public/stylesheets/style.css 如下：</p>
+
+<pre><code>/* inspired by http://yihui.name/cn/ */
+*{padding:0;margin:0;}
+body{width:600px;margin:2em auto;padding:0 2em;font-size:14px;font-family:"Microsoft YaHei";}
+p{line-height:24px;margin:1em 0;}
+header{padding:.5em 0;border-bottom:1px solid #cccccc;}
+nav{float:left;font-family:"Microsoft YaHei";font-size:1.1em;text-transform:uppercase;margin-left:-12em;width:9em;text-align:right;}
+nav a{display:block;text-decoration:none;padding:.7em 1em;color:#000000;}
+nav a:hover{background-color:#ff0000;color:#f9f9f9;-webkit-transition:color .2s linear;}
+article{font-size:16px;padding-top:.5em;}
+article a{color:#dd0000;text-decoration:none;}
+article a:hover{color:#333333;text-decoration:underline;}
+.info{font-size:14px;}
+</code></pre>
+
+<p>此时运行 app.js ，主页显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.6.jpg" alt=""></p>
+
+<p>接下来在 views 下新建 login.ejs，内容如下：</p>
+
+<pre><code>&lt;%- include header %&gt;
+&lt;form method="post"&gt;
+  用户名：&lt;input type="text" name="name"/&gt;&lt;br /&gt;
+  密码：  &lt;input type="password" name="password"/&gt;&lt;br /&gt;
+         &lt;input type="submit" value="登录"/&gt;
+&lt;/form&gt;
+&lt;%- include footer %&gt;
+</code></pre>
+
+<p>登录页面显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.7.jpg" alt=""></p>
+
+<p>在 views 下新建reg.ejs，内容如下：</p>
+
+<pre><code>&lt;%- include header %&gt;
+&lt;form method="post"&gt;
+  用户名：  &lt;input type="text" name="name"/&gt;&lt;br /&gt;
+  密码：    &lt;input type="password" name="password"/&gt;&lt;br /&gt;
+  确认密码：&lt;input type="password" name="password-repeat"/&gt;&lt;br /&gt;
+  邮箱：    &lt;input type="email" name="email"/&gt;&lt;br /&gt;
+           &lt;input type="submit" value="注册"/&gt;
+&lt;/form&gt;
+&lt;%- include footer %&gt;
+</code></pre>
+
+<p>注册页面显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.8.jpg" alt=""></p>
+
+<p>至此，未登录时的主页、注册页、登录页都已经完成。</p>
+
+<h3>
+<a name="-20" class="anchor" href="#-20"><span class="octicon octicon-link"></span></a>页面通知</h3>
+
+<p>接下来我们将实现用户注册和登陆，在这之前我们需要引入 flash 模块来实现页面的通知和错误信息显示的功能。  </p>
+
+<p>什么是 flash?  </p>
+
+<blockquote>
+<p>req.flash 是 Express 提供的一个奇妙的工具，通过它保存的变量只会在用户当前和下一次的请求中被访问( req.flash 是存放在session里的)，之后会被清除，通过它我们可以很方便地实现页面的通知和错误信息显示功能。</p>
+
+<p align="right">——《Node.js开发指南》</p> 
+</blockquote>
+
+<p>在 package.json 添加一行代码：</p>
+
+<pre><code>{
+  "name": "blog",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.4",
+    "ejs": "*",
+    "mongodb": "*",
+    "connect-mongo": "*",
+    "connect-flash": "*"
+  }
+}
+</code></pre>
+
+<p>然后 npm install 安装 flash 模块，修改 app.js 在 <code>, settings = require('./settings')</code> 后添加：</p>
+
+<pre><code>, flash = require('connect-flash');
+</code></pre>
+
+<p>在 <code>app.set('view engine', 'ejs');</code> 后添加：</p>
+
+<pre><code>app.use(flash());
+</code></pre>
+
+<p>现在我们就可以使用 flash 功能了。</p>
+
+<h3>
+<a name="-21" class="anchor" href="#-21"><span class="octicon octicon-link"></span></a>注册响应</h3>
+
+<p>前面我们已经完成了注册页，当然现在点击注册是没有效果的，因为我们还没有实现处理 POST 请求的功能，下面就来实现它。</p>
+
+<p>在 models 文件夹下新建 user.js，添加如下代码：</p>
+
+<pre><code>var mongodb = require('./db');
+
+function User(user){
+  this.name = user.name;
+  this.password = user.password;
+  this.email = user.email;
+};
+
+module.exports = User;
+
+User.prototype.save = function(callback) {//存储用户信息
+  //要存入数据库的用户文档
+  var user = {
+      name: this.name,
+      password: this.password,
+      email: this.email
+  };
+  //打开数据库
+  mongodb.open(function(err, db){
+    if(err){
+      return callback(err);
+    }
+    //读取 users 集合
+    db.collection('users', function(err, collection){
+      if(err){
+        mongodb.close();
+        return callback(err);
+      }
+      //将用户数据插入 users 集合
+      collection.insert(user,{safe: true}, function(err, user){
+        mongodb.close();
+        callback(err, user);//成功！返回插入的用户信息
+      });
+    });
+  });
+};
+
+User.get = function(name, callback){//读取用户信息
+  //打开数据库
+  mongodb.open(function(err, db){
+    if(err){
+      return callback(err);
+    }
+    //读取 users 集合
+    db.collection('users', function(err, collection){
+      if(err){
+        mongodb.close();
+        return callback(err);
+      }
+      //查找用户名 name 值为 name文档
+      collection.findOne({
+        name: name
+      },function(err, doc){
+        mongodb.close();
+        if(doc){
+          var user = new User(doc);
+          callback(err, user);//成功！返回查询的用户信息
+        } else {
+          callback(err, null);//失败！返回null
+        }
+      });
+    });
+  });
+};
+</code></pre>
+
+<p>我们暂时先不去研究这些代码，我们只需知道通过 <code>User.prototype.save</code> 实现了用户信息的存储，通过 <code>User.get</code> 实现了用户信息的读取。</p>
+
+<p>打开 routes/index.js ，在最前面添加如下代码：  </p>
+
+<pre><code>var crypto = require('crypto'),
+    User = require('../models/user.js');
+</code></pre>
+
+<p>通过 require 引入 user.js 用户模型和 crypto 模块，crypto 是 Node.js 的一个核心模块，我们后面用它生成散列值来加密密码。  </p>
+
+<p>修改 <code>app.post('/reg')</code> 如下：</p>
+
+<pre><code>app.post('/reg', function(req,res){
+  var name = req.body.name,
+      password = req.body.password,
+      password_re = req.body['password-repeat'];
+  //检验用户两次输入的密码是否一致
+  if(password_re != password){
+    req.flash('error','两次输入的密码不一致!'); 
+    return res.redirect('/reg');
+  }
+  //生成密码的散列值
+  var md5 = crypto.createHash('md5'),
+      password = md5.update(req.body.password).digest('hex');
+  var newUser = new User({
+      name: req.body.name,
+      password: password,
+      email: req.body.email
+  });
+  //检查用户名是否已经存在 
+  User.get(newUser.name, function(err, user){
+    if(user){
+      err = '用户已存在!';
+    }
+    if(err){
+      req.flash('error', err);
+      return res.redirect('/reg');
+    }
+    //如果不存在则新增用户
+    newUser.save(function(err){
+      if(err){
+        req.flash('error',err);
+        return res.redirect('/reg');
+      }
+      req.session.user = newUser;//用户信息存入session
+      req.flash('success','注册成功!');
+      res.redirect('/');
+    });
+  });
+});
+</code></pre>
+
+<p><strong>注意</strong>：我们把用户信息存储在了 session 里，以后就可以通过 req.session.user 读取用户信息。</p>
+
+<ul>
+<li>
+<strong>req.body</strong>： 就是 POST 请求信息解析过后的对象，例如我们要访问用户传递的 name="password" 域的值，只需访问 req.body['password'] 或 req.body.password 即可。</li>
+<li>
+<strong>res.redirect</strong>： 重定向功能，实现了页面的跳转，更多关于 res.redirect 的信息请查阅：<a href="http://expressjs.com/api.html#res.redirect">http://expressjs.com/api.html#res.redirect</a>
+</li>
+<li>
+<strong>User</strong>：在前面的代码中，我们直接使用了 User 对象。User 是一个描述数据的对象，即 MVC 
+架构中的模型。前面我们使用了许多视图和控制器，这是第一次接触到模型。与视图和控制器不同，模型是真正与数据打交道的工具，没有模型，网站就只是一个外壳，不能发挥真实的作用，因此它是框架中最根本的部分。</li>
+</ul><p>在桌面新建 “启动app.bat” 并写入 ：</p>
+
+<pre><code>supervisor d:\blog\app
+//node d:\blog\app
+</code></pre>
+
+<p>以后我们可以通过打开 “启动app.bat” 来启动我们的博客，而不必每次都要在命令行中启动。</p>
+
+<p>现在先后运行你的 “启动mongodb.bat” 和 “启动app.bat” ，打开浏览器输入 localhost:3000/reg 注册试试吧！注册成功后显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.11.jpg" alt=""></p>
+
+<p>我们查看数据库中是否存入了用户的信息，运行 d:\mongodb\bin\mongo ，输入：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.12.jpg" alt=""></p>
+
+<p>用户信息已经成功存入数据库。但这还不是我们想要的效果，我们想要的效果是当注册成功返回主页时，左侧导航显示 HOME 、POST 、LOGOUT ，右侧显示 “注册成功！”字样。下面我们来实现它。</p>
+
+<p>修改 index.js  ，将 <code>app.get('/')</code> 修改如下：</p>
+
+<pre><code>app.get('/',function(req,res){
+  res.render('index',{
+    title:'主页',
+    user: req.session.user,
+    success:req.flash('success').toString(),
+    error:req.flash('error').toString()
+  });
+});
+</code></pre>
+
+<p>修改 header.ejs，将<code>&lt;nav&gt;&lt;/nav&gt;</code>修改如下：</p>
+
+<pre><code>&lt;nav&gt;
+&lt;span&gt;&lt;a title="主页" href="/"&gt;home&lt;/a&gt;&lt;/span&gt;
+&lt;% if(locals.user){ %&gt;
+  &lt;span&gt;&lt;a title="发表" href="/post"&gt;post&lt;/a&gt;&lt;/span&gt;
+  &lt;span&gt;&lt;a title="登出" href="/logout"&gt;logout&lt;/a&gt;&lt;/span&gt;
+&lt;% } else { %&gt;
+  &lt;span&gt;&lt;a title="登录" href="/login"&gt;login&lt;/a&gt;&lt;/span&gt;
+  &lt;span&gt;&lt;a title="注册" href="/reg"&gt;register&lt;/a&gt;&lt;/span&gt;
+&lt;% } %&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<p>在 <code>&lt;article&gt;</code> 后添加如下代码：</p>
+
+<pre><code>&lt;% if (locals.success) { %&gt;
+  &lt;div &gt;&lt;%= locals.success %&gt;&lt;/div&gt;
+&lt;% } %&gt;
+&lt;% if (locals.error) { %&gt;
+  &lt;div&gt;&lt;%= locals.error %&gt; &lt;/div&gt;
+&lt;% } %&gt;
+</code></pre>
+
+<p>现在注册成功后显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.13.jpg" alt=""></p>
+
+<p>我们通过对 session 的使用实现了对用户状态的检测，再根据不同的用户状态显示不同的导航信息。<br>
+简单解释一下流程：用户在注册成功后，把用户信息存入 session ，同时页面跳转到主页显示 “注册成功！” 。然后把 session 中的用户信息赋给全局变量 res.locals.user ，在渲染 ejs 文件时通过检测 locals.user 判断用户是否在线，根据用户状态的不同显示不同的导航信息。</p>
+
+<h3>
+<a name="-22" class="anchor" href="#-22"><span class="octicon octicon-link"></span></a>登录与登出响应</h3>
+
+<p>现在我们来实现登陆的响应。<br>
+打开 index.js 将 <code>app.post('/login')</code> 修改如下：</p>
+
+<pre><code>app.post('/login', function(req, res){
+  //生成密码的散列值
+  var md5 = crypto.createHash('md5'),
+      password = md5.update(req.body.password).digest('hex');
+  //检查用户是否存在
+  User.get(req.body.name, function(err, user){
+    if(!user){
+      req.flash('error', '用户不存在!'); 
+      return res.redirect('/login'); 
+    }
+    //检查密码是否一致
+    if(user.password != password){
+      req.flash('error', '密码错误!'); 
+      return res.redirect('/login');
+    }
+    //用户名密码都匹配后，将用户信息存入 session
+    req.session.user = user;
+    req.flash('success','登陆成功!');
+    res.redirect('/');
+  });
+});
+</code></pre>
+
+<p>接下来我们实现登出响应。修改 <code>app.get('/logout')</code> 如下：</p>
+
+<pre><code>app.get('/logout', function(req, res){
+  req.session.user = null;
+  req.flash('success','登出成功!');
+  res.redirect('/');
+});
+</code></pre>
+
+<p>通过把 req.session.user 赋值 null 丢掉 session 中用户的信息，实现用户的退出。<br>
+登录后页面显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.14.jpg" alt=""></p>
+
+<p>登出后页面显示如下：</p>
+
+<p><img src="https://raw.github.com/nswbmw/N-blog/master/public/images/1.15.jpg" alt=""></p>
+
+<p>至此，我们实现了用户注册与登陆的功能，并且根据用户登录状态显示不同的导航。</p>
+
+<h3>
+<a name="-23" class="anchor" href="#-23"><span class="octicon octicon-link"></span></a>页面权限控制</h3>
+
+<p>我们虽然已经完成了用户注册与登陆的功能，但并不能阻止比如已经登陆的用户访问 localhost:3000/reg 页面（读者可亲自尝试下）。为此，我们需要为页面设置访问权限。即注册和登陆页面应该阻止已登陆的用户访问，登出及后面我们将要实现的发表页只对已登录的用户开放。如何实现页面权限的控制呢？我们可以把用户登录状态的检查放到路由中间件中，在每个路径前增加路由中间件，即可实现页面权限控制。我们添加 checkNotLogin 和 checkLogin 函数。<br>
+最终 index.js 中代码如下：</p>
+
+<pre><code>var crypto = require('crypto'),
+    User = require('../models/user.js');
+
+module.exports = function(app){
+  app.get('/',function(req,res){
+    res.render('index',{
+    title:'主页',
+    user: req.session.user,
+    success:req.flash('success').toString(),
+    error:req.flash('error').toString()
+  });
+});
+
+  app.get('/reg', checkNotLogin);
+  app.get('/reg',function(req,res){
+    res.render('reg', {
+      title: '注册',
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+
+  app.post('/reg', checkNotLogin);
+  app.post('/reg', function(req,res){
+    var name = req.body.name,
+        password = req.body.password,
+        password_re = req.body['password-repeat'];
+    //检验用户两次输入的密码是否一致
+    if(password_re != password){
+      req.flash('error','两次输入的密码不一致!'); 
+      return res.redirect('/reg');
+    }
+    //生成密码的散列值
+    var md5 = crypto.createHash('md5'),
+        password = md5.update(req.body.password).digest('hex');
+    var newUser = new User({
+        name: req.body.name,
+        password: password,
+        email: req.body.email
+    });
+    //检查用户名是否已经存在 
+    User.get(newUser.name, function(err, user){
+      if(user){
+        err = '用户已存在!';
+      }
+      if(err){
+        req.flash('error', err);
+        return res.redirect('/reg');
+      }
+      //如果不存在则新增用户
+      newUser.save(function(err){
+        if(err){
+          req.flash('error',err);
+          return res.redirect('/reg');
+        }
+        req.session.user = newUser;//用户信息存入session
+        req.flash('success','注册成功!');
+        res.redirect('/');
+      });
+    });
+  });
+
+  app.get('/login', checkNotLogin);
+  app.get('/login', function(req, res){
+    res.render('login',{
+      title: '登录',
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    }); 
+  });
+
+  app.post('/login', checkNotLogin);
+  app.post('/login', function(req, res){
+    //生成密码的散列值
+    var md5 = crypto.createHash('md5'),
+        password = md5.update(req.body.password).digest('hex');
+    //检查用户是否存在
+    User.get(req.body.name, function(err, user){
+      if(!user){
+        req.flash('error', '用户不存在!'); 
+        return res.redirect('/login'); 
+      }
+      //检查密码是否一致
+      if(user.password != password){
+        req.flash('error', '密码错误!'); 
+        return res.redirect('/login');
+      }
+      //用户名密码都匹配后，将用户信息存入 session
+      req.session.user = user;
+      req.flash('success','登陆成功!');
+      res.redirect('/');
+    });
+  });
+
+  app.get('/post', checkLogin);
+  app.get('/post',function(req,res){
+    res.render('post', {
+      title: '发表',
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+
+  app.post('/post', checkLogin);
+  app.post('/post',function(req,res){
+  });
+
+  app.get('/logout', checkLogin);
+  app.get('/logout', function(req, res){
+    req.session.user = null;
+    req.flash('success','登出成功!');
+    res.redirect('/');
+  });
+};
+
+function checkLogin(req, res, next){
+  if(!req.session.user){
+    req.flash('error','未登录!'); 
+    return res.redirect('/login');
+  }
+  next();
+}
+
+function checkNotLogin(req,res,next){
+  if(req.session.user){
+    req.flash('error','已登录!'); 
+    return res.redirect('/');
+  }
+  next();
+}
+</code></pre>
+
+<p><strong>注意</strong>：为了维护用户状态和 flash 通知功能的使用，我们在 <code>app.get('/reg)'</code> 和 <code>app.get('/login)</code> 和 <code>app.get('/post')</code> 里添加了以下代码：</p>
+
+<pre><code>user: req.session.user,
+success: req.flash('success').toString(),
+error: req.flash('error').toString()
+</code></pre>
+
+<h2>
+<a name="-24" class="anchor" href="#-24"><span class="octicon octicon-link"></span></a>发表文章</h2>
+
+<p>现在我们的博客已经具备了用户注册、登陆、页面权限控制的功能，接下来我们完成博客最核心的部分——发表文章。在这一节，我们将会实现发表文章的功能，完成整个博客的设计。</p>
+
+<h3>
+<a name="-25" class="anchor" href="#-25"><span class="octicon octicon-link"></span></a>页面设计</h3>
+
+<p>我们先来完成发表页的页面设计。在 views 文件夹下新建 post.ejs ，添加如下代码：</p>
+
+<pre><code>&lt;%- include header %&gt;
+&lt;form method="post"&gt;
+  标题：&lt;br /&gt;
+  &lt;input type="text" name="title" /&gt;&lt;br /&gt;
+  正文：&lt;br /&gt;
+  &lt;textarea name="post" rows="20" cols="100"&gt;&lt;/textarea&gt;&lt;br /&gt;
+  &lt;input type="submit" value="发表" /&gt;
+&lt;/form&gt;
+&lt;%- include footer %&gt;
+</code></pre>
+
+<h3>
+<a name="-26" class="anchor" href="#-26"><span class="octicon octicon-link"></span></a>文章模型</h3>
+
+<p>仿照用户模型，我们将文章模型命名为 Post 对象，它拥有与 User 相似的接口，分别是 Post.get 和 Post.prototype.save。Post.get 的功能是从数据库中获取文章，可以按指定用户获取，也可以获取全部的内容。Post.prototype.save 是 Post 对象原型的方法，用来将文章保存到数据库。<br>
+在 models 文件夹下新建 post.js ，添加如下代码：</p>
+
+<pre><code>var mongodb = require('./db');
+
+function Post(name, title, post) {
+  this.name = name;
+  this.title= title;
+  this.post = post;
+}
+
+module.exports = Post;
+
+Post.prototype.save = function(callback) {//存储一篇文章及其相关信息
+  var date = new Date();
+  //存储各种时间格式，方便以后扩展
+  var time = {
+      date: date,
+      year : date.getFullYear(),
+      month : date.getFullYear() + "-" + (date.getMonth()+1),
+      day : date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate(),
+      minute : date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes()
+  }
+  //要存入数据库的文档
+  var post = {
+      name: this.name,
+      time: time,
+      title:this.title,
+      post: this.post
+  };
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    //读取 posts 集合
+    db.collection('posts', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //将文档插入 posts 集合
+      collection.insert(post, {
+        safe: true
+      }, function (err,post) {
+        mongodb.close();
+        callback(null);
+      });
+    });
+  });
+};
+
+Post.get = function(name, callback) {//读取文章及其相关信息
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    //读取 posts 集合
+    db.collection('posts', function(err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      var query = {};
+      if (name) {
+        query.name = name;
+      }
+      //根据 query 对象查询文章
+      collection.find(query).sort({
+        time: -1
+      }).toArray(function (err, docs) {
+        mongodb.close();
+        if (err) {
+          callback(err, null);//失败！返回 null
+        }
+        callback(null, docs);//成功！以数组形式返回查询的结果
+      });
+    });
+  });
+};
+</code></pre>
+
+<h3>
+<a name="-27" class="anchor" href="#-27"><span class="octicon octicon-link"></span></a>发表响应</h3>
+
+<p>接下来我们给发表文章注册响应，打开 index.js ，在 <code>User = require('../models/user.js')</code> 后添加一行代码：</p>
+
+<pre><code>Post = require('../models/post.js');
+</code></pre>
+
+<p>修改 <code>app.post('/post')</code> 如下：</p>
+
+<pre><code>app.post('/post', function(req, res){
+  var currentUser = req.session.user,
+      post = new Post(currentUser.name, req.body.title, req.body.post);
+  post.save(function(err){
+    if(err){
+      req.flash('error', err); 
+      return res.redirect('/');
+    }
+    req.flash('success', '发布成功!');
+    res.redirect('/');
+  });
+});
+</code></pre>
+
+<p>最后，我们修改 index.ejs ，让主页右侧显示发表过的文章及其相关信息。<br>
+打开 index.ejs ，修改如下：</p>
+
+<pre><code>&lt;%- include header %&gt;
+&lt;% posts.forEach(function(post, index){ %&gt;
+  &lt;p&gt;&lt;h2&gt;&lt;a href="#"&gt;&lt;%= post.title %&gt;&lt;/a&gt;&lt;/h2&gt;&lt;/p&gt;
+  &lt;p class="info"&gt;
+    作者：&lt;a href="#"&gt;&lt;%= post.name %&gt;&lt;/a&gt; |
+    日期：&lt;%= post.time.minute %&gt;
+  &lt;/p&gt;
+  &lt;p&gt;&lt;%- post.post %&gt;&lt;/p&gt;
+&lt;% }) %&gt;
+&lt;%- include footer %&gt;
+</code></pre>
+
+<p>打开 index.js ，修改 <code>app.get('/')</code> 如下：</p>
+
+<pre><code>app.get('/', function(req,res){
+  Post.get(null, function(err, posts){
+    if(err){
+      posts = [];
+    } 
+    res.render('index',{
+      title: '主页',
+      user: req.session.user,
+      posts: posts,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    });
+  });
+});
+</code></pre>
+
+<p>至此，我们的博客就建成了。</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="gollum-footer">
+  <p id="last-edit">
+    Last edited by nswbmw, <time class="js-relative-date" datetime="2013-05-27T00:59:12-07:00" title="2013-05-27 00:59:12">May 27, 2013</time>
+  </p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div>
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="http://developer.github.com">Developer</a></li>
+      <li><a href="http://training.github.com">Training</a></li>
+      <li><a href="http://shop.github.com">Shop</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+
+    <a href="/">
+      <span class="mega-octicon octicon-mark-github"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>&copy; 2013 <span title="0.08196s from fe3.rs.github.com">GitHub</span>, Inc.</li>
+        <li><a href="/site/terms">Terms</a></li>
+        <li><a href="/site/privacy">Privacy</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-fullscreen-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="js-fullscreen-contents" placeholder="" data-suggester="fullscreen_suggester"></textarea>
+          <div class="suggester-container">
+              <div class="suggester fullscreen-suggester js-navigation-container" id="fullscreen_suggester"
+                 data-url="/nswbmw/N-blog/suggestions/commit">
+              </div>
+          </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped leftwards" title="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped leftwards"
+      title="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-remove-close close ajax-error-dismiss"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+    
+    <span id='server_response_time' data-time='0.08238' data-host='fe3'></span>
+    
+  </body>
+</html>
+

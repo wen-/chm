@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>使用jquery操作iframe</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19019"><style>*{font-size:12px}</style></HEAD>
+<BODY><SPAN 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; BORDER-COLLAPSE: separate; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=Apple-style-span><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 18px; FONT-FAMILY: Arial, sans-serif, Helvetica, Tahoma; FONT-SIZE: 12px" 
+class=Apple-style-span>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">使用jquery操作iframe</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">1 
+内容里有两个ifame</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&lt;iframe 
+id="leftiframe"...&lt;/iframe&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;iframe 
+id="mainiframe..&lt;/iframe&gt;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">leftiframe中jQuery改变mainiframe的src代码：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>$("#mainframe",parent.document.body).attr("src","<A 
+style="COLOR: rgb(0,102,0); TEXT-DECORATION: underline" 
+href="http://www.radys.cn/">http://www.radys.cn</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>")</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2 
+如果内容里面有一个ID为mainiframe的ifame<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&nbsp; &lt;iframe 
+id="mainifame"...&gt;&lt;/ifame&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>ifame包含一个someID<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;div id="someID"&gt;you want to 
+get this content&lt;/div&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>得到someID的内容</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+$("#mainiframe").contents().find("someID").html() html 或者 
+$("#mainiframe").contains().find("someID").text()值</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2 
+如上面所示<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>&nbsp;&nbsp; 
+leftiframe中的jQuery操作mainiframe的内容someID的内容<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&nbsp;&nbsp; 
+$("#mainframe",parent.document.body).contents().find("someID").html()或者 
+$("#mainframe",parent.document.body).contents().find("someID").val()</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; BORDER-COLLAPSE: separate; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; -webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=Apple-style-span><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 21px; FONT-FAMILY: verdana, sans-serif; FONT-SIZE: 14px" 
+class=Apple-style-span>從程式中來看，如果要存取&nbsp;<SPAN style="LINE-HEIGHT: 21px" 
+class=bold>iframe</SPAN>&nbsp;中的元素的話，可以使用&nbsp;<SPAN style="LINE-HEIGHT: 21px" 
+class=boldRed>.contents()</SPAN>&nbsp;後再來&nbsp;<SPAN style="LINE-HEIGHT: 21px" 
+class=boldRed>.find()</SPAN>；但如果是要呼叫<SPAN style="LINE-HEIGHT: 21px" 
+class=bold>iframe</SPAN>&nbsp;中定義的方法時，得用&nbsp;<SPAN style="LINE-HEIGHT: 21px" 
+class=boldRed>.contentWindow</SPAN>&nbsp;這屬性才行喔。</SPAN></SPAN></P></SPAN></SPAN></BODY></HTML>

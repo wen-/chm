@@ -1,0 +1,13 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>引入JS乱码</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>引入JS乱码</P>
+<P>JS文件的编码和页面的编码不一致，导致中文乱码的解决方法：</P>
+<P>a.html编码为GBK</P>
+<P>b.js编码为UTF-8</P>
+<P>在a.html中引入b.js要加入： <STRONG><FONT 
+color=#ff0000>charset="utf-8"</FONT></STRONG> 就不会出现乱码了。</P>
+<P>&lt;script src="b.js" <FONT 
+color=#ff0000>charset="utf-8"</FONT>&gt;&lt;/script&gt;</P></BODY></HTML>

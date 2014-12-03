@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>ant打包APK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>ant打包APK</P>
+<DIV class=article_title 
+style="COLOR: rgb(0,0,0); FONT: 20px/30px 'Microsoft YaHei'; MARGIN: 5px 0px; DISPLAY: block"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>
+<H3 
+style="VERTICAL-ALIGN: middle; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 20px/30px 'Microsoft YaHei'; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><SPAN 
+class=link_title><A style="TEXT-DECORATION: none; COLOR: rgb(0,0,0)" 
+href="http://blog.csdn.net/houyu_1983/article/details/9129031">android使用ant编译APK</A></SPAN></H3></DIV>
+<DIV class=article_manage 
+style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 5px; FONT: 12px/24px Arial; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><SPAN 
+class=link_postdate style="MARGIN: 0px 5px 0px 0px">2013-06-19 15:06</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=阅读次数 class=link_view 
+style="BACKGROUND-IMAGE: url(http://static.blog.csdn.net/images/ico_view.png); BACKGROUND-POSITION: 0% 50%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px">174人阅读</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=评论次数 class=link_comments 
+style="BACKGROUND-IMAGE: url(http://static.blog.csdn.net/images/ico_comm.png); BACKGROUND-POSITION: 0% 50%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px"><A 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://blog.csdn.net/houyu_1983/article/details/9129031#comments">评论</A>(0)</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=link_collect 
+style="MARGIN: 0px 5px"><A 
+onclick="javascript:collectArticle('android使用ant编译APK','9129031');return false;" 
+title=收藏 style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="javascript:void(0);">收藏</A></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=link_report 
+style="MARGIN: 0px 5px"><A onclick="javascript:report(9129031,2);return false;" 
+title=举报 style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://blog.csdn.net/houyu_1983/article/details/9129031#report">举报</A></SPAN></DIV>
+<DIV id=article_content class=article_content 
+style="FONT: 14px/26px Arial; MARGIN: 20px 0px 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/25px 'Lucida Grande', 'Lucida Sans Unicode', Arial, 宋体, Helvetica, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ANT是java开发的很好的构建工具，很多开源项目都是使用ANT来构建的，并且ANT和JUNIT可以很好的配合使用，生成非常完美的测试报告，帮助开发人员开发。作为一名开发人员，如果一天天的时间都花在项目的部署和简单的测试上，是一种巨大的浪费；而ANT可以帮助我们完成一些单调而无聊的事情，使开发人员从这些无聊的工作中解脱出来；能更加专注于业务。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp; 
+&nbsp; 
+在我的博客中，我将系列的讲解ANT的使用方法，我本人使用ANT的时间也不长，如果我的博客有错漏，希望给我批评指正！要使用ANT，就必须先部署ANT的使用环境！</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">①首先登录ant的官方网站http://ant.apache.org/bindownload.cgi，下载apache-ant-1.8.4-bin.zip。这是ant要使用的类库。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">②在windows环境中，主要配置两个环境ant_home和path</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp; 
+&nbsp; 
+ANT_HOME&nbsp;:指的是apache-ant-1.8.4-bin.zip的解压文件（apache-ant-1.8.4）所在的位置；我把这个文件放在D盘，所以我这里设置的ant_home就是ant_home=D:\apache-ant-1.8.2；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp; 
+path路径设置为：PATH = %ANT_HOME%/bin; %ANT_HOME%/lib即可</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">③这两个路径的设置方法：右键点击“我的电脑”---属性---高级系统设置---高级---环境变量---在"系统变量“中点击”新建“---在弹出的对话框中，变量名：ANT_HOME 
+&nbsp; 变量值：D:\apache-ant-1.8.4 &nbsp; &nbsp; 
+&nbsp;然后点击”确定“即可（ANT_HOME就设置成功了，可以用同样的方法设置path路径，在这里不再罗嗦了）</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">④到此，ANT的环境变量就设置好了。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">⑤在dos窗口中输入 
+ant &nbsp;-version；如果输出如下图示的内容，说明ant已经配置完成了。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; MARGIN: 0px auto; BORDER-LEFT: medium none; DISPLAY: block" 
+alt="" 
+src="file:///C:/Users/Administrator/AppData/Local/youdao/ynote/images/4DA1AA1AA8944DA3975B71BE8AF1F519/clipboard.png"></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; MARGIN: 0px auto; BORDER-LEFT: medium none; DISPLAY: block" 
+alt="" src="http://img.my.csdn.net/uploads/201302/25/1361775395_9159.png"><BR 
+style="MARGIN: 0px"></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">经过上面的配置，ANT的已经配置配置完成，剩下的就是Android的环境配置了，这个就不用多说了，不过要注意的是，很多人的环境只是配置了platform-tools的环境变量，这个这是执行adb命令的环境变量，要利用ant构建apk，必须可以运行android命令，android的命令一般在android 
+sdk的下的tool是目录下，只有配置了这个，android的命令才可用</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp; 
+&nbsp; &nbsp;下面介绍下android的简单命令：</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp; 
+&nbsp; &nbsp;&nbsp;<SPAN 
+style="FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: rgb(73,73,73); MARGIN: 0px; LINE-HEIGHT: 22px">参数说明：</SPAN></P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;-k 
+/--package 为命名空间（包名）-a /--name 工程名&nbsp;</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/22px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;-p 
+/--path 项目 -t 为目标平台的版本编号</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/26px Arial, Helvetica, sans-serif; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 14px; MARGIN: 0px; LINE-HEIGHT: 22px"><BR 
+style="MARGIN: 0px"></SPAN></SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/26px Arial, Helvetica, sans-serif; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 14px; MARGIN: 0px; LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+例子：</SPAN></SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Administrator&gt;android 
+create project -k com.android.Ta</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">nk 
+-a AntTest -t 7 &nbsp;-p E:\AntTest</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp; 
+&nbsp;运行成功后会在E盘的AntTest目录下生成一个Android工程，里面有我们需要的build.xml文件</SPAN><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 0px auto; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+alt="" src="http://img.my.csdn.net/uploads/201302/25/1361775498_3300.png"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp; 
+&nbsp;</SPAN><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 0px auto; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+alt="" 
+src="file:///C:/Users/Administrator/AppData/Local/youdao/ynote/images/6BBB0C6554534C2385F7864FE3A38A01/clipboard.png"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">对已经存在的android工程,我们可以update下（修改平台的版本）,这样会自动添加build.xml 
+等ant 的配置文件</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/22px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">android 
+update project --name AntTest -t 11&nbsp;</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;-p 
+F:\AntTest</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/22px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="MARGIN: 0px"></SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ant 
+参数介绍</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp; 
+* debug：带调试用签名的构建<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp; 
+* release：构建应用程序，生成的apk必须签名才可以发布<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp; 
+* install：安装调试构建的包到运行着的模拟器或者设备；<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp; 
+* reinstall<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp; 
+* uninstall</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">使用ant命令时可以进入到项目目录中，或者ant 
+debug Buildfile: E:\MyLiB\Android\AndroidAnt\MyBoardCastReciver\build.xml</P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">到目前为止，ANT和Android的环境配置成功</SPAN>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="MARGIN: 0px"></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="MARGIN: 0px"></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">接下来就是利用Ant打包</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/24px 微软雅黑, Verdana, sans-serif, 宋体; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">如果是利用测试签名打包：在cmd命令进入项目的根目录下，如：E:\ant\AntTest 
+执行&nbsp;<SPAN style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">ant 
+debug命令会在项目的bin目录下生成使用debug签名的apk</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px 微软雅黑; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">如果是自定义签名：</SPAN><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">则在项目根目录下添加ant.properties（也有会自动生成</SPAN><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px"><SPAN 
+style="MARGIN: 0px; LINE-HEIGHT: 26px">local.properties</SPAN></SPAN><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">）文件,配置密钥的路径和别名</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px 微软雅黑; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">具体配置如下：</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px 微软雅黑; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">key.store=路径</SPAN><BR 
+style="FONT-FAMILY: Arial; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">key.store.password=</SPAN><BR 
+style="FONT-FAMILY: Arial; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">key.alias=</SPAN><BR 
+style="FONT-FAMILY: Arial; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px; LINE-HEIGHT: 26px">key.alias.password=</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px 微软雅黑; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px"><SPAN 
+style="MARGIN: 0px; LINE-HEIGHT: 26px">同样进入根目录下，运行 ant 
+release就可以打包了</SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px 微软雅黑; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px"><SPAN 
+style="MARGIN: 0px; LINE-HEIGHT: 26px">打包成功后如图：</SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px 微软雅黑; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; MARGIN: 0px auto; BORDER-LEFT: medium none; DISPLAY: block" 
+alt="" 
+src="file:///C:/Users/Administrator/AppData/Local/youdao/ynote/images/595604848AB64234B28183B3D5AA761C/clipboard.png"></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px 微软雅黑; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: Arial; MARGIN: 0px"><SPAN 
+style="MARGIN: 0px; LINE-HEIGHT: 26px"><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; MARGIN: 0px auto; BORDER-LEFT: medium none; DISPLAY: block" 
+alt="" 
+src="http://img.my.csdn.net/uploads/201302/25/1361775535_3651.png"></SPAN></SPAN></P><BR 
+class=Apple-interchange-newline></DIV></BODY></HTML>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>事件对象在不同的浏览器之间存在很多区别，在jQuery中，事件对象是通过唯一的参数传递给事件监听函数的。如：<br />
+  $(function(){<br />
+  $(&quot;p&quot;).bind(&quot;click&quot;,function(e){<br />
+  var  sPosPage=&quot;(&quot;+e.pageX+&quot;,&quot;+e.pageY+&quot;)&quot;;<br />
+  var  sPosScreen=&quot;(&quot;+e.screenX+&quot;,&quot;+e.screen+&quot;)&quot;;<br />
+  $(&quot;span&quot;).html(&quot;&lt;br&gt;Page:&quot;+sPosPage+&quot;&lt;br&gt;Screen:&quot;+sPsoScreen);<br />
+  });<br />
+  });<br />
+  上面的代码给&lt;p&gt;绑定了鼠标Click事件监听函数，并将事件对象作为参数传递，从而获取了鼠标事件触发点的坐标值。<br />
+  对于事件对象的属性和方法，jQuery最重要的工作就是替开发者解决了兼容性问题，常用的属性和方法如表所示：</p>
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="151"><br />
+      属性和方法 </td>
+    <td width="581"><p align="center">说明</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>altKey</p></td>
+    <td width="581"><p>按下Alt键则为true,否则为false</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>ctrlKey</p></td>
+    <td width="581"><p>按下Ctrl键则为true，否则为false</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>keyCode</p></td>
+    <td width="581"><p>对于keyup和keydown事件，返回按键的值（A和a的值是一样的，都为65）</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>pageX,pageY</p></td>
+    <td width="581"><p>鼠标指针在客户端区域坐标</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>screenX,screenY</p></td>
+    <td width="581"><p>鼠标指针相对于整个计算机屏幕的坐标值</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>relatedTarget</p></td>
+    <td width="581"><p>鼠标事件中，鼠标指针所进入或离开的元素</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>shiftKey</p></td>
+    <td width="581"><p>按下shift键则为true，否则为false</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>target</p></td>
+    <td width="581"><p>引起事件的元素/对象</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>type</p></td>
+    <td width="581"><p>事件的名称，如click、mouseover等</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>which</p></td>
+    <td width="581"><p>键盘事件中为按键的Unicode值，鼠标事件中代表按键的值（1为左键；2为右键；3；为中键）</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>stopPropagation()</p></td>
+    <td width="581"><p>阻止事件向上冒泡</p></td>
+  </tr>
+  <tr>
+    <td width="151"><p>preventDefault()</p></td>
+    <td width="581"><p>阻止事件的默认行为</p></td>
+  </tr>
+</table>
+</body>
+</html>

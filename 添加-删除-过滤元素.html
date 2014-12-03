@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p><a></a>可以利用add()方法来添加元素，代码如下：<br />
+  $(&quot;img[alt]&quot;).add(&quot;img[title]&quot;)<br />
+  以上代码将所有设置了alt属性的&lt;img&gt;和所有设置了title属性的&lt;img&gt;组合在了一起，它等同于<br />
+  $(&quot;img[alt],img[title]&quot;)<br />
+  与add()方法相反,not()方法可以去除元素集中的某些元素，例如：<br />
+  $(&quot;li[title]&quot;).not(&quot;[title*=isaac]&quot;)<br />
+  表示选中所有设置了title属性的&lt;li&gt;标记，但不包括title值中任意匹配字符串“isaac”的那些。<br />
+  注意：not()方法所接受的参数都不能包含特定的元素，只能是通用的表达式，例如下面是典型的错误代码：<br />
+  $(&quot;li[title]&quot;).not(&quot;img[title*=isaac]&quot;)<br />
+  正确的写法为：<br />
+  $(&quot;img[title]&quot;).not(&quot;[title*=isaac]&quot;)<br />
+  除了add()和not()外，jQuery还提供了更强大的filter()方法来筛选元素。filter()可以接受两种类型的参数，一种与not()方法一样，接受通用的表达式，代码如下：<br />
+  $(&quot;div&quot;).addClass(&quot;myClass1&quot;).filter(&quot;[class*=middel]&quot;).addClass(&quot;myClass2&quot;);<br />
+  在jQuery代码中首先给所有&lt;div&gt;块都添加“myClass1”样式风格，然后通过filter()方法，将class属性匹配“middle”的选择出来，再添加“myClass2”样式风格。<br />
+  注意：在filter()的参数中，不能使用直接的等于匹配（=），只能使用前匹配（^=）、后匹配（$=）或任意匹配（*=）。<br />
+  filter()另外一种类型的参数是函数。它可以让用户自定义筛选函数。该函数要求返回布尔值，对于返回值为true的元素则保留，否则去除。例如：<br />
+  $(function(){<br />
+  $(&quot;div&quot;).addClass(&quot;myClass1&quot;).filter(function(index){<br />
+  return  index==1||$(this).attr(&quot;id&quot;)==&quot;fourth&quot;;       //attr()是jQuery获取属性的方法<br />
+  }).addClass(&quot;myClass2&quot;);<br />
+  });<br />
+以上代码首先将所有的&lt;div&gt;块赋予myClass1样式风格，然后利用filter()返回的函数值将&lt;div&gt;列表中位于第1个的，以及id为“fourth”的元素筛选出来，并赋予myClass2样式风格。</p>
+</body>
+</html>

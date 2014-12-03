@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>什么是DOM</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;font-family:arial;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　要访问&lt;html/&gt;元素（这是该文件的document元素），你可以使用document的documentElement特性：<BR>var 
+oHtml = document.documentElement;</P>
+<P>　　如果你想取得&lt;head/&gt;和&lt;body/&gt;元素，使用下面的代码：<BR>var oHead = 
+oHtml.childNodes[0];<BR>var oBody = 
+oHtml.childNodes[1];<BR>　　这其实是NodeList在JavaScript中的简便实现。实际上正式的从childNodes列表中获取子节点的方法是使用item()方法：<BR>var 
+oHead = oHtml.childNodes.item(0);<BR>var oBody = oHtml.childNodes.item(1);</P>
+<P>　　你还可以通过使用childNodes.length特性来获取子节点的数量：<BR>alert(oHtml.childNodes.length);<BR>　　HTML 
+DOM定义了document.body作为指向&lt;body/&gt;元素的指针：<BR>var oBody = 
+document.body;<BR></P></BODY></HTML>

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>打开新窗口</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P>&nbsp;&nbsp;&nbsp; 
+window.open()方法打开新窗口。该方法接受四个参数，即要载入新窗口的页面的URL、新窗口的名字（为目标所用）、特性字符串和说明是否用新载入的页面替换当前载入的页面的Boolean值。一般只用前三个参数，因为最后一个参数只有在调用window.open()方法却不打开新窗口时才有效。 
+</P>
+<P>&nbsp;&nbsp; 
+如果用已有框架的名字作为window.open()方法的第二个参数调用它，那么URL所指的页面就会被载入该框架。例如，要把页面载入名为“topFrame”的框架，可以使用下在的代码：<BR>window.open("http://www.wrox.com/","topFrame");<BR>&nbsp;&nbsp;&nbsp; 
+专用的框架名：_self、_parent、_top、和_blank也是有效的。<BR>&nbsp;&nbsp;&nbsp; 
+如果声明的框架名无效，window.open()将打开新窗口，该窗口的特性由第三个参数（特性字符串）决定。如果省略第三个参数，将打开新的浏览器窗口，就像点击了target被设置为_blank的链接。</P>
+<P>&nbsp;&nbsp;&nbsp; 
+如果使用第三个参数，该方法就假设应该打开新窗口。特性字符串是用逗号分隔的设置列表，它定义新创建窗口的某些方面。下表显示了各种设置：<BR><IMG 
+align=baseline src="images/12.jpg"><BR>&nbsp;&nbsp;&nbsp; 
+特性字符串是用逗号分隔的，因此在逗号或等号前后不能有空格。例如：<BR>window.open("http://www.wrox.com/","","height=150,width=300,top=10,left=10,resizeable=yes");</P></BODY></HTML>

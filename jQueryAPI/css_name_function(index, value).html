@@ -1,0 +1,12 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>css(name, function(index, value))</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="css"><h2><span>返回值:jQuery</span>css(name, function(index, value))</h2><h3>概述</h3><div class="desc"><p>在所有匹配的元素中，设置一个样式属性的值。</p><div class="longdesc"><pre>数字将自动转化为像素值</pre></div></div><h3>参数</h3><div><h4><strong>name</strong><span>value</span></h4><p>属性名</p><h4><strong>function(index, value)</strong><span>Function</span></h4><p>此函数返回要设置的属性值。接受两个参数，index为元素在对象集合中的索引位置，value是原先的属性值。</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">逐渐增加div的大小</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>  $("div").click(function() {
+    $(this).css({
+      width: function(index, value) {
+        return parseFloat(value) * 1.2;
+      }, 
+      height: function(index, value) {
+        return parseFloat(value) * 1.2;
+      }
+
+    });
+  });</code></pre></div></div></div></body></html>

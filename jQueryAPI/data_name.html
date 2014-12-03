@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>data([name])</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="data"><h2><span>返回值:Any</span>data(<em class="optional">[name]</em>)</h2><h3>概述</h3><div class="desc"><p>返回元素上储存的相应名字的数据，可以用data(name, value)来设定。</p><div class="longdesc"><pre>如果jQuery集合指向多个元素，那将只返回第一个元素的对应数据。
+
+这个函数可以用于在一个元素上存取数据而避免了循环引用的风险。jQuery.data是1.2.3版的新功能。你可以在很多地方使用这个函数，另外jQuery UI里经常使用这个函数。
+
+如果不带任何参数，则会把所有数据作为一个JavaScript对象来返回。</pre></div></div><h3>参数</h3><div><h4><strong>name<em> (可选)</em></strong><span>String</span></h4><p>存储的数据名</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">在一个div上存取数据</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;div&gt;&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("div").data("blah");  // undefined
+$("div").data("blah", "hello");  // blah设置为hello
+$("div").data("blah");  // hello
+$("div").data("blah", 86);  // 设置为86
+$("div").data("blah");  //  86
+$("div").removeData("blah");  //移除blah
+$("div").data("blah");  // undefined</code></pre><h4 xmlns="">描述:</h4><p xmlns="">在一个div上存取名/值对数据</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;div&gt;&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("div").data("test", { first: 16, last: "pizza!" });
+$("div").data("test").first  //16;
+$("div").data("test").last  //pizza!;</code></pre></div></div></div></body></html>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js倒计时</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>js倒计时</P>
+<P>//倒计时</P>
+<P>&nbsp;var star_time = new Date(2014,3,4,12,20,0);//开始时间<BR>&nbsp;var 
+over_time = new Date(2014,3,4,12,20,50);//结束时间<BR>&nbsp;var ms = over_time - 
+star_time;//计算时长<BR>&nbsp;var endtime=(star_time - new 
+Date(2014,3,4,11,15,0).getTime())+new Date(2014,3,4,11,15,0).getTime()+ms;//new 
+Date(2014,3,4,11,15,0)用服务器当前的时间<BR>&nbsp;var gap = new Date().getTime() - new 
+Date(2014,3,4,11,15,0).getTime();//客户端时间减去服务器端时间得到 时差<BR>&nbsp;endtime = endtime 
++ gap;//时长加上时差＝客户端的</P>
+<P>&nbsp;function fresh(){<BR>&nbsp;&nbsp;var nowtime = new 
+Date().getTime();<BR>&nbsp;&nbsp;var 
+leftsecond=parseInt((endtime-nowtime)/1000);<BR>&nbsp;&nbsp;d=parseInt(leftsecond/3600/24);<BR>&nbsp;&nbsp;h=parseInt((leftsecond/3600)%24);<BR>&nbsp;&nbsp;m=parseInt((leftsecond/60)%60);<BR>&nbsp;&nbsp;s=parseInt(leftsecond%60);<BR>&nbsp;&nbsp;$(".times").html("倒计时："+m+"分"+s+"秒");<BR>&nbsp;&nbsp;if(leftsecond&lt;=0){<BR>&nbsp;&nbsp;&nbsp;$(".times").html("答题时间到");<BR>&nbsp;&nbsp;&nbsp;clearInterval(sh);<BR>&nbsp;&nbsp;}</P>
+<P>};<BR>&nbsp;fresh();<BR>&nbsp;var 
+sh=window.setInterval(fresh,1000);</P></BODY></HTML>

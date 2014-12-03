@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>数组方法</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>数组方法</P>
+<P>ECMAScript 5中的数组方法：</P>
+<P><STRONG>1、forEach(v,i,a);//</STRONG>从头到尾遍历数组。</P>
+<P>有三个参数：</P>
+<P>v;//值；</P>
+<P>i;//索引；</P>
+<P>a;//数组本身；</P>
+<P>var data = [1,2,3,4,5];</P>
+<P>var sum = 0;</P>
+<P>data.forEach(function(i){sum += i});//数组求和；</P>
+<P><STRONG>2、map();//</STRONG>将调用的数组的每个元素传递给指定的函数；有返回值，返回新数组，如果数组是稀疏数组，返回的同样是稀疏数组。</P>
+<P>var a = [1,2,3,4];</P>
+<P>b = a.map(function(x){return x*x;});//b是[1,4,9]</P>
+<P><STRONG>3、filter();//</STRONG>返回的数组元素是调用数组的一个子集；它会跳过稀疏数组中缺少的元素，返回的总是稠密的。</P>
+<P>var a = [1,2,3,4,5];</P>
+<P>small = a.filter(function(x){return x&lt;3});//[1,2]</P>
+<P>every = a.filter(function(x,i){return i%2 == 0});//[1,3,5]</P>
+<P>用filter()压缩稀疏数组：</P>
+<P>var dense = a.filter(function(){return true;});</P>
+<P>用filter()压缩空缺并删除undefined和null元素：</P>
+<P>a = a.filter(function(x){return x !== undefined &amp;&amp; x != null;});</P>
+<P><STRONG>4、every()和some();//</STRONG>对数组元素应用指定的函数进行判定，返回true或false;</P>
+<P>var a = [1,2,3,4,5];</P>
+<P>a.every(function(x){return x &lt; 10;});//true,所有的值都小于10</P>
+<P>a.every(function(x){return x%2 === 0;});//false,不所有的值都是偶数</P>
+<P>a.some(function(x){return x%2 ===0;});//true,只要含有偶数就返回true;</P>
+<P>a.some(isNaN);//false,所有都为false时才返回false;</P>
+<P><STRONG><FONT 
+color=#ff0000>在空数组上调用时，every()返回true,some()返回false;</FONT></STRONG></P>
+<P><STRONG>5、reduce()和reduceRight();</STRONG>//使用指定的函数将数组元素进行组合，生成单个值。</P>
+<P>var a = [1,2,3,4,5]</P>
+<P>var sum = a.reduce(function(x,y){return x+y},0);//数组求和；</P>
+<P>var pro = a.reduce(function(x,y){return x*y},1);//数组求积；</P>
+<P>var max = a.reduce(function(x,y){return (x&gt;y)?x:y;});//求最大值；</P>
+<P>reduce()需要两个参数。第一个为化简操作的函数，第二个是数组的第一个元素做为其初始值，以上例子的原理是：</P>
+<P>0+1返回1，再用返回的1+2等于3，再用3+3等于6，再用6+4等于10 ，一直到最后一个。</P>
+<P>2*3返回6，再用返回的6*4等于24，再用24*5，一直到最后一个。</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>172页</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY></HTML>

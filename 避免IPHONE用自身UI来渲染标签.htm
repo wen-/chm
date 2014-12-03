@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>避免IPHONE用自身UI来渲染标签</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>避免IPHONE用自身UI来渲染标签</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(64,64,64); TEXT-ALIGN: left; FONT: 15px/28px Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-text-size-adjust: auto">iPhone上的safari解析input[type="submit"]和input[type="reset"]按钮会以苹果浏览器的默认UI渲染，我们在样式中明确的设置了button的圆角值，但到iPhone的safari上就不生效了。要想让他生效，就需要在样式中明确的指名：</P><PRE style="WORD-WRAP: break-word; FONT-SIZE: 12px; FONT-FAMILY: Monaco, 'Bitstream Vera Sans Mono', 'Lucida Consol', 'Courier New', Courier, monospace; FONT-VARIANT: normal; BACKGROUND-IMAGE: none; WHITE-SPACE: pre-wrap; BACKGROUND-ATTACHMENT: scroll; TEXT-TRANSFORM: none; WORD-SPACING: 0px; BACKGROUND-POSITION: 0px 0px; FONT-WEIGHT: normal; COLOR: rgb(25,95,145); PADDING-BOTTOM: 10px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px 0px 15px; BORDER-LEFT: rgb(22,132,200) 5px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 10px; WIDTH: 739px; BACKGROUND-COLOR: rgb(254,251,243); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-text-size-adjust: auto">	.form-actions input{
+		...	
+	  <STRONG style="COLOR: red"> -webkit-appearance: none;</STRONG>     
+	}
+	</PRE>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(64,64,64); TEXT-ALIGN: left; FONT: 15px/28px Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-text-size-adjust: auto">告诉浏览器我们不希望按钮按苹果的默认UI来渲染。</P>
+<H1 id=page-title class=title 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(64,64,64); FONT: 22px/36px 'Microsoft Yahei'; MARGIN: 0px 0px 0px 60px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">使用CSS3的appearance属性改变元素的外观</H1>
+<DIV class="region region-content" 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(64,64,64); FONT: 14px/22px 'Microsoft Yahei'; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SECTION 
+id=block-system-main class="block block-system" style="DISPLAY: block">
+<DIV class=content style="MARGIN-TOP: 0px"><ARTICLE id=node-361 
+class="node node-blog node-promoted node-full clearfix" 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; DISPLAY: block; LINE-HEIGHT: 2; PADDING-RIGHT: 0px" 
+typeof="sioc:Post sioct:BlogPost" 
+about="/css3/changing-appearance-of-element-with-css3.html"><HEADER 
+class=node-header 
+style="MARGIN-BOTTOM: 10px; POSITION: relative; DISPLAY: block">
+<DIV class=title-bottom 
+style="COLOR: rgb(204,204,204); MARGIN-LEFT: 60px">作者：<SPAN>大漠</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>日期：<SPAN>2012-08-06</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>点击：<SPAN>2679</SPAN></DIV>
+<DIV class=article-type 
+style="HEIGHT: 50px; POSITION: absolute; LEFT: 0px; TOP: -30px; WIDTH: 50px"><A 
+title=css3 style="COLOR: rgb(41,180,240); TEXT-DECORATION: none" 
+href="http://www.w3cplus.com/blog/tags/11.html"><I class=icon-blog 
+style="FONT-SIZE: 20px; HEIGHT: 50px; FONT-FAMILY: w3cplus; POSITION: absolute; COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-ALIGN: center; Z-INDEX: 10; LINE-HEIGHT: 50px; WIDTH: 50px; BACKGROUND-COLOR: rgb(62,212,229)"></I></A></DIV></HEADER><SECTION 
+class="body-content clearfix" style="MARGIN-BOTTOM: 20px; DISPLAY: block">
+<DIV 
+class="field field-name-body field-type-text-with-summary field-label-hidden">
+<DIV class=field-items>
+<DIV class="field-item even" property="content:encoded">
+<P 
+style="MARGIN: 0px 0px 9px">前段时间在《修复iPhone上submit按钮bug》中介绍了使用“-webkit-appearance: 
+none; 
+”来改变按钮在iPhone下的默认风格，其实我们可以反过来思路，使用“appearance”属性，来改变任何元素的浏览器默认风格，简单的说，你可以使用“appearance”属性将“段落p”渲染成button的风格，也可以渲染成“输入框”、“选择框”等效果。</P>
+<P 
+style="MARGIN: 0px 0px 9px">大家都知道每个浏览器对HTML元素渲染都不一样，比如说“button”，在chrome和ff中，渲染出来的效果都是不尽相同的。这样一来就有了今天这个思路，利用浏览器的对元素的默认渲染风格，我们可以使用“appearance”属性对任何元素的渲染风格改变，最简单的来说，我要把“a”链接默认显示成“按钮”风格，那么我们可以使用“appearance”设置为“button”。</P>
+<P 
+style="MARGIN: 0px 0px 9px">“appearance”功能听起来蛮大的，不过可惜的是，目前各个浏览器厂商各自为政，还无法达到统一的标准，至今天也只有两个内核的浏览器可以使用，其一是“webkit”，其二是“ff”的，也就是说在使用“appearances”时，需要加上各浏览器厂前缀。</P>
+<P style="MARGIN: 0px 0px 9px">appearance使用方法：</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; WHITE-SPACE: pre-wrap; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; DISPLAY: block; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=class>.elmClass</SPAN><SPAN class=rules>{
+   <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-appearance</SPAN>:<SPAN class=value> value;</SPAN></SPAN>
+   <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-appearance</SPAN>:<SPAN class=value>    value;</SPAN></SPAN>
+   <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">appearance</SPAN>:<SPAN class=value>         value;</SPAN></SPAN>
+<SPAN class=rule>}</SPAN></SPAN>
+</PRE>
+<P style="MARGIN: 0px 0px 9px">接下来我们一起来看个简单的实例：</P><PRE class=xml style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; WHITE-SPACE: pre-wrap; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; DISPLAY: block; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN> <SPAN class=attribute style="COLOR: rgb(181,137,0)">class</SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)">"lookLikeAButton"</SPAN>&gt;</SPAN>我是一个段落P元素 <SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN>&gt;</SPAN>
+<SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN> <SPAN class=attribute style="COLOR: rgb(181,137,0)">class</SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)">"lookLikeAListbox"</SPAN>&gt;</SPAN>我是一个段落P元素 <SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN>&gt;</SPAN>
+<SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN> <SPAN class=attribute style="COLOR: rgb(181,137,0)">class</SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)">"lookLikeAListitem"</SPAN>&gt;</SPAN>我是一个段落P元素 <SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN>&gt;</SPAN>
+<SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN> <SPAN class=attribute style="COLOR: rgb(181,137,0)">class</SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)">"lookLikeASearchfield"</SPAN>&gt;</SPAN>我是一个段落P元素 <SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN>&gt;</SPAN>
+<SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN> <SPAN class=attribute style="COLOR: rgb(181,137,0)">class</SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)">"lookLikeATextarea"</SPAN>&gt;</SPAN>我是一个段落P元素 <SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN>&gt;</SPAN>
+<SPAN class=tag>&lt;<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN> <SPAN class=attribute style="COLOR: rgb(181,137,0)">class</SPAN>=<SPAN class=value style="COLOR: rgb(42,161,152)">"lookLikeAMenulist"</SPAN>&gt;</SPAN>我是一个段落P元素<SPAN class=tag>&lt;/<SPAN class=title style="COLOR: rgb(38,139,210); MARGIN-LEFT: 60px">p</SPAN>&gt;</SPAN>
+</PRE>
+<P style="MARGIN: 0px 0px 9px">接下来，使用“appearance”属性来改变上面“P”元素的风格：</P><PRE class=css style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; WHITE-SPACE: pre-wrap; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; DISPLAY: block; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54)"><SPAN class=comment style="MARGIN-BOTTOM: 0px !important; VERTICAL-ALIGN: top; COLOR: rgb(88,110,117); FONT-STYLE: italic; DISPLAY: inline !important">/*看起来像个按钮，以按钮的风格渲染*/</SPAN>
+<SPAN class=class>.lookLikeAButton</SPAN><SPAN class=rules>{
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-appearance</SPAN>:<SPAN class=value>button;</SPAN></SPAN>
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-appearance</SPAN>:<SPAN class=value>button;</SPAN></SPAN>
+<SPAN class=rule>}</SPAN></SPAN>
+<SPAN class=comment style="MARGIN-BOTTOM: 0px !important; VERTICAL-ALIGN: top; COLOR: rgb(88,110,117); FONT-STYLE: italic; DISPLAY: inline !important">/*看起来像个清单盒子，以listbox风格渲染*/</SPAN>
+<SPAN class=class>.lookLikeAListbox</SPAN><SPAN class=rules>{
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-appearance</SPAN>:<SPAN class=value>listbox;</SPAN></SPAN>
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-appearance</SPAN>:<SPAN class=value>listbox;</SPAN></SPAN>
+<SPAN class=rule>}</SPAN></SPAN>
+<SPAN class=comment style="MARGIN-BOTTOM: 0px !important; VERTICAL-ALIGN: top; COLOR: rgb(88,110,117); FONT-STYLE: italic; DISPLAY: inline !important">/*看起来像个清单列表，以listitem风格渲染*/</SPAN>
+<SPAN class=class>.lookLikeAListitem</SPAN><SPAN class=rules>{
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-appearance</SPAN>:<SPAN class=value>listitem;</SPAN></SPAN>
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-appearance</SPAN>:<SPAN class=value>listitem;</SPAN></SPAN>
+<SPAN class=rule>}</SPAN></SPAN>
+<SPAN class=comment style="MARGIN-BOTTOM: 0px !important; VERTICAL-ALIGN: top; COLOR: rgb(88,110,117); FONT-STYLE: italic; DISPLAY: inline !important">/*看起来像个搜索框，以searchfield风格渲染*/</SPAN>
+<SPAN class=class>.lookLikeASearchfield</SPAN><SPAN class=rules>{
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-appearance</SPAN>:<SPAN class=value>searchfield;</SPAN></SPAN>
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-appearance</SPAN>:<SPAN class=value>searchfield;</SPAN></SPAN>
+<SPAN class=rule>}</SPAN></SPAN>
+<SPAN class=comment style="MARGIN-BOTTOM: 0px !important; VERTICAL-ALIGN: top; COLOR: rgb(88,110,117); FONT-STYLE: italic; DISPLAY: inline !important">/*看起来像个文本域，以textarea风格渲染*/</SPAN>
+<SPAN class=class>.lookLikeATextarea</SPAN><SPAN class=rules>{
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-appearance</SPAN>:<SPAN class=value>textarea;</SPAN></SPAN>
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-appearance</SPAN>:<SPAN class=value>textarea;</SPAN></SPAN>
+<SPAN class=rule>}</SPAN></SPAN>
+<SPAN class=comment style="MARGIN-BOTTOM: 0px !important; VERTICAL-ALIGN: top; COLOR: rgb(88,110,117); FONT-STYLE: italic; DISPLAY: inline !important">/*看起来像个下接菜单，以menulist风格渲染*/</SPAN>
+<SPAN class=class>.lookLikeAMenulist</SPAN><SPAN class=rules>{
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-webkit-appearance</SPAN>:<SPAN class=value>menulist;</SPAN></SPAN>
+     <SPAN class=rule><SPAN class=attribute style="COLOR: rgb(181,137,0)">-moz-appearance</SPAN>:<SPAN class=value>menulist;</SPAN></SPAN>
+<SPAN class=rule>}</SPAN></SPAN>
+</PRE>
+<P style="MARGIN: 0px 0px 9px">经过“appearance”的属性值设置后，段落P的默认风格就被改变了，如图所示：</P>
+<P style="MARGIN: 0px 0px 9px"><A 
+style="COLOR: rgb(41,180,240); TEXT-DECORATION: none" 
+href="http://jsfiddle.net/w3cplus/fXZRA/" target=_blank><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="" 
+src="http://www.w3cplus.com/sites/default/files/201202/appearance.jpg"></A></P>
+<P 
+style="MARGIN: 0px 0px 9px">当然上面的属性只是“appearance”中的一部分，我搜集了一下webkit和Mozilla下的appearance给大家参考：</P>
+<P style="MARGIN: 0px 0px 9px"><STRONG>Webkit下的appearance属性值</STRONG></P><PRE class=perl style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; WHITE-SPACE: pre-wrap; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; DISPLAY: block; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54)">checkbox
+radio
+<SPAN class=keyword style="COLOR: rgb(133,153,0)">push</SPAN>-button
+square-button
+button
+button-bevel
+listbox
+listitem
+menulist
+menulist-button
+menulist-text
+menulist-textfield
+scrollbarbutton-up
+scrollbarbutton-down
+scrollbarbutton-left
+scrollbarbutton-right
+scrollbartrack-horizontal
+scrollbartrack-vertical
+scrollbarthumb-horizontal
+scrollbarthumb-vertical
+scrollbargripper-horizontal
+scrollbargripper-vertical
+slider-horizontal
+slider-vertical
+sliderthumb-horizontal
+sliderthumb-vertical
+caret
+searchfield
+searchfield-decoration
+searchfield-results-decoration
+searchfield-results-button
+searchfield-cancel-button
+textfield
+textarea
+</PRE>
+<P style="MARGIN: 0px 0px 9px"><STRONG>Mozilla下的appearance属性值</STRONG></P><PRE class=diff style="FONT-SIZE: 16px; BORDER-TOP: rgb(238,238,238) 3px solid; FONT-FAMILY: consolas; BORDER-RIGHT: rgb(238,238,238) 3px solid; WHITE-SPACE: pre-wrap; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(238,238,238) 3px solid; COLOR: rgb(131,148,150); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 10px 0px; BORDER-LEFT: rgb(238,238,238) 3px solid; DISPLAY: block; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(0,43,54)">none
+button
+checkbox
+checkbox-container
+checkbox-small
+dialog
+listbox
+menuitem
+menulist
+menulist-button
+menulist-textfield
+menupopup
+progressbar
+radio
+radio-container
+radio-small
+resizer
+scrollbar
+scrollbarbutton-down
+scrollbarbutton-left
+scrollbarbutton-right
+scrollbarbutton-up
+scrollbartrack-horizontal
+scrollbartrack-vertical
+separator
+statusbar
+tab
+tab-left-edge Obsolete
+tabpanels
+textfield
+textfield-multiline
+toolbar
+toolbarbutton
+toolbox
+<SPAN class=deletion style="COLOR: rgb(220,50,47)">-moz-mac-unified-toolbar</SPAN>
+<SPAN class=deletion style="COLOR: rgb(220,50,47)">-moz-win-borderless-glass</SPAN>
+<SPAN class=deletion style="COLOR: rgb(220,50,47)">-moz-win-browsertabbar-toolbox</SPAN>
+<SPAN class=deletion style="COLOR: rgb(220,50,47)">-moz-win-communications-toolbox</SPAN>
+<SPAN class=deletion style="COLOR: rgb(220,50,47)">-moz-win-glass</SPAN>
+<SPAN class=deletion style="COLOR: rgb(220,50,47)">-moz-win-media-toolbox</SPAN>
+tooltip
+treeheadercell
+treeheadersortarrow
+treeitem
+treetwisty
+treetwistyopen
+treeview
+window
+</PRE>
+<P style="MARGIN: 0px 0px 9px">大家要是感兴趣的话可以看看下面的相关介绍：</P>
+<OL 
+style="PADDING-BOTTOM: 0.25em; PADDING-TOP: 0px; PADDING-LEFT: 1em; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 25px; PADDING-RIGHT: 0px"><A 
+  style="COLOR: rgb(41,180,240); TEXT-DECORATION: none" 
+  href="https://developer.mozilla.org/en/CSS/-moz-appearance" 
+  target=_blank>Mozilla Docs for -moz-appearance</A></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 25px; PADDING-RIGHT: 0px"><A 
+  style="COLOR: rgb(41,180,240); TEXT-DECORATION: none" 
+  href="http://trentwalton.com/2010/07/14/css-webkit-appearance/" 
+  target=_blank>Trent Walton on Webkit Appearance</A></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 25px; PADDING-RIGHT: 0px"><A 
+  style="COLOR: rgb(41,180,240); TEXT-DECORATION: none" 
+  href="http://www.shauninman.com/archive/2010/04/22/disable_the_default_inner_shadow_of_search_inputs_on_the_ipad" 
+  target=_blank>Shaun Inman on Disabling Inner Text Shadow of Text Inputs on 
+  iPad</A></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 25px; PADDING-RIGHT: 0px"><A 
+  style="COLOR: rgb(41,180,240); TEXT-DECORATION: none" 
+  href="http://www.w3.org/TR/css3-ui/#appearance" target=_blank>CSS3 
+  Spec</A></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 25px; PADDING-RIGHT: 0px"><A 
+  style="COLOR: rgb(41,180,240); TEXT-DECORATION: none" 
+  href="http://css-infos.net/property/-webkit-appearance" target=_blank>CSS 
+  property: -webkit-appearance</A></LI></OL>
+<P 
+style="MARGIN: 0px 0px 9px">最后在提醒大家一回，目前在IE系列和Opera浏览器上不支持“appearance”，而且Safari也只有3.0版本以上支持，而在Chrome和Firefox以及移动设置浏览器上得到较好的支持。如果大家对此感兴趣，自己可以私下一个下个尝试上面的属性值，给大家带来何种效果。</P></DIV></DIV></DIV></SECTION></ARTICLE></DIV></SECTION></DIV></BODY></HTML>

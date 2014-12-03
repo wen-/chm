@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<h2><a> jQery</a>概述</h2>
+<h3><a> JQery</a>是什么</h3>
+<p>目前jQuery主要提供如下功能<br />
+  (1)访问页面框架的局部<br />
+  (2)修改页面的表现<br />
+  (3)更改页面的内容<br />
+  (4)响应事件<br />
+  (5)为页面添加动画<br />
+  (6)与服务器异步交互<br />
+  (7)简化常用的JavaScript操作</p>
+<h2><a> jQueryr</a>的“$”</h2>
+<p>在jQuery中，“$”提供了丰富的功能，包括选择页面中一个或理一类元素、作为功能函数的前缀、window.onload的完善、创建页面的DOM节点等。</p>
+<h3>选择器</h3>
+<p>jQueryr中选择器的通用语法如下：<br />
+  $(selector)或jQueryr(selector)<br />
+  其中selector符合CSS3标准。在<a>jQuery</a> 中，美元符号“$”就等同于“jQuery”。<br />
+  一些典型的jQueryr选择元素的例子：<br />
+  $(&quot;#showDiv&quot;)<br />
+  id选择器，相当于JavaScript中的document.getElementById(&quot;#showDiv&quot;)。<br />
+  $(&quot;.SomeClass&quot;)<br />
+  类别选择器，相当于CSS类别为“SoomeClass”的所有节点元素。<br />
+  $(&quot;p:odd&quot;)<br />
+  选择所有位于奇数行的&lt;p&gt;标记。几乎所有的标记都可以用“:odd”或“:even”来实现奇偶的选择。<br />
+  $(&quot;td:nth-child(1)&quot;)<br />
+  所有表格行的第一个单元格，就是第一列。<br />
+  $(&quot;li&gt;a&quot;)<br />
+  子选择器，返回&lt;li&gt;标记的所有子元素&lt;a&gt;，不包括孙标记。<br />
+  $(&quot;a[href$=pdf]&quot;)<br />
+  选择所有超链接，并且这些超链接的href属性是以“pdf”结尾的。<br />
+  使用选择器10.4章节将会详解。</p>
+<h3>功能函数前缀</h3>
+<p>例如用户在提交表单时，需要将文本框中的最前端和最末端的空格清理掉，JavaScript没有提供类似trim()的功能，引入jQuery后，便可以直接使用trim()函数：<br />
+  sString=$.trim(sString);</p>
+<h3>解决window.onload函数的冲突</h3>
+<p>jQery中的ready()方法很好地解决了上述问题，它能够自动地将其中的函数在页面加载完成后运行，并且同一个页面中可以使用多个ready()方法，而且不相互冲突。<br />
+  例如一个隔行变色的代码：<br />
+  $(document).ready(function(){<br />
+  $(&quot;table.datalist  tr:nth-child(odd)&quot;).addclass(&quot;altrow&quot;);<br />
+  });<br />
+  对上述代码，jQuery还提供了简写，可以省略其中的“(document).ready”部分，代码如下：<br />
+  $(function(){<br />
+  $(&quot;table.datalist  tr:nth-child(odd)&quot;).addclass(&quot;altrow&quot;);<br />
+  });</p>
+<h3>创建DOM元素</h3>
+<p>jQuery使用“$”可以直接创建DOM元素，如：<br />
+  var oNewP=$(&quot;&lt;p&gt;这是一个感人的故事&lt;/p&gt; &quot;)<br />
+  以上代码等同于JavaScript中的如下代码：<br />
+  var oNewP=document.createElement(&quot;p&quot;);<br />
+  var oText=document.createTextNode(&quot;这是一个感人的故事&quot;);<br />
+  oNewP.appendChild(oText);<br />
+  另外，jQuery还提供了DOM元素的insertAfter()方法，例如：<br />
+  $(function(){         //简写的ready()函数<br />
+  var  oNewP=$(&quot;&lt;p&gt;这是一个感人的故事&lt;/P&quot;);         //创建DOM元素<br />
+  oNewP.insertAfter(&quot;#myTarget&quot;);         //用insertAfter()方法将新建的DOM元素插入到id为myTarget的标签后<br />
+  });</p>
+<h3>自定义添加“$”</h3>
+<p>例如jQuery中并没有将一组表单元素设置为不可用的disable()方法，用户可以自定义该方法，代码如下：<br />
+  $fn.disable=function(){         //为$添加一个方法。“$fn”是扩展jQuery所必需的<br />
+  return  this.each(funciton(){          //利用匿名函数定义这个方法，即用each()将调用此方法的每个元素设置属性<br />
+  if(typeof  this.disabled!=&quot;undefined&quot;) this.disabled=true;             //如果该属性未定义<br />
+  });<br />
+  }</p>
+<h3>解决“$”的冲突</h3>
+<p>如果开发者使用了别的类库框架，“$”符号可能会发生冲突，jQuery提供了noConflict()方法来解决“$”冲突问题，例如：<br />
+  jQuery.noConfilct();<br />
+  以上代码便可以让“$”按照其它JavaScript框架的方式运算。这时在jQuery中便不能再使用“$”，而必须使用“jQuery”。</p>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>YSlow优化之Add Expires headers (nodejs+express)</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>YSlow优化之Add Expires headers (nodejs+express)</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px">强烈推荐YSlow网站优化工具，简单好使，我用的是Firefox下的YSlow：</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px"><A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" 
+href="https://addons.mozilla.org/en-US/firefox/addon/yslow/" 
+target=_blank>https://addons.mozilla.org/en-US/firefox/addon/yslow/</A></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px"></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px"><A title="Add Expires headers" 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" 
+href="http://developer.yahoo.com/performance/rules.html#expires" 
+target=_blank>Add Expires headers</A>（给静态组件配置过期响应头）</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+style="COLOR: rgb(153,51,0)">就是向文档添加一个有效期，告诉浏览器这个文档的有效性和持久性。如果已有缓存，文档就可以从浏览器中的缓存(除已经过期)而不是从服务器读取。接着，客 
+户端验证缓存中的副本，看看是否过期或者失效，以决定是否必须从服务器获得更新。简单来说就是优化了这项可以加快网站速度，对于不经常更新的文件，例如 
+CSS、图片文件都很有用，下次访问就直接从浏览器读取而不用向服务器下载。</SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px"></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px">对于nodejs+express框架，配置方法非常简单，只需在app.js里面的静态文件服务那里加个maxAge属性设置：</SPAN></P>
+<DIV class=dp-highlighter 
+style="OVERFLOW: auto; WORD-WRAP: break-word; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-BREAK: break-all; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 1px; TEXT-ALIGN: left; PADDING-TOP: 1px; FONT: 12px/25px Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; PADDING-LEFT: 1px; MARGIN-LEFT: 9px; LETTER-SPACING: normal; PADDING-RIGHT: 1px; WIDTH: 679px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV class=bar>
+<DIV class=tools 
+style="FONT-WEIGHT: bold; COLOR: black; PADDING-BOTTOM: 3px; TEXT-ALIGN: left; PADDING-TOP: 3px; PADDING-LEFT: 3px; MARGIN: 0px; PADDING-RIGHT: 3px">Js代码<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=15 width=14 
+src=http://972169909-qq-com.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+allowscriptaccess="always" quality="high" 
+flashvars="clipboard=%2F%2Fapp.js%0A%2F%2F%E5%85%B3%E9%94%AE%E6%98%AF%E8%AE%BE%E7%BD%AEmaxAge%EF%BC%8C%E8%A6%81%E6%B1%82%E8%B6%B3%E5%A4%9F%E5%A4%A7%EF%BC%8C%E8%BF%99%E9%87%8C%E6%98%AF%E4%B8%80%E5%B9%B4%E5%B7%A6%E5%8F%B3%EF%BC%8C%E5%8D%95%E4%BD%8D%E6%98%AF%E6%AF%AB%E7%A7%92%0Aapp.use(express.static(path.join(__dirname%2C%20'public')%2C%20%7BmaxAge%3A31557600000%7D))%3B%0A" 
+wmode="transparent">&nbsp;<A 
+onclick="code_favorites_do_favorite(this);return false;" title=收藏这段代码 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" 
+href="javascript:void()"><IMG class=star 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=收藏代码 
+src="http://972169909-qq-com.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL class=dp-c 
+style="LIST-STYLE-TYPE: decimal; FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; BORDER-BOTTOM: rgb(209,215,220) 1px solid; COLOR: rgb(43,145,175); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; BORDER-LEFT: rgb(209,215,220) 1px solid; LINE-HEIGHT: 1.4em; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI 
+  style="FONT-SIZE: 1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px 0px 0px 38px; BORDER-LEFT: rgb(209,215,220) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,250,250)"><SPAN 
+  style="COLOR: black"><SPAN class=comment 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; COLOR: rgb(0,130,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px; WIDTH: auto">//app.js</SPAN><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="FONT-SIZE: 1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px 0px 0px 38px; BORDER-LEFT: rgb(209,215,220) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,250,250)"><SPAN 
+  style="COLOR: black"><SPAN class=comment 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; COLOR: rgb(0,130,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px; WIDTH: auto">//关键是设置maxAge，要求足够大，这里是一年左右，单位是毫秒</SPAN><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="FONT-SIZE: 1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px 0px 0px 38px; BORDER-LEFT: rgb(209,215,220) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,250,250)"><SPAN 
+  style="COLOR: black">app.use(express.<SPAN class=keyword 
+  style="FONT-WEIGHT: bold; COLOR: rgb(127,0,85)">static</SPAN><SPAN 
+  style="COLOR: black">(path.join(__dirname,&nbsp;</SPAN><SPAN class=string 
+  style="COLOR: blue">'public'</SPAN><SPAN 
+  style="COLOR: black">),&nbsp;{maxAge:31557600000}));&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px"><SPAN 
+style="FONT-SIZE: 16px; COLOR: rgb(153,51,0)">此时的YSlow评分：&nbsp;A-93</SPAN><BR><IMG 
+title=点击查看原始大小图片 class=magplus 
+style="CURSOR: url(http://www.iteye.com/images/magplus.gif), pointer; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="" 
+src="http://dl.iteye.com/upload/attachment/0080/3376/df0174ad-9455-37cf-a2d5-6c59384c911c.png" 
+width=700 height=258><BR></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px"></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px">如果不设置maxAge的话：</SPAN><SPAN 
+style="FONT-SIZE: 16px">（注：如果设置过，需要清除cookies并且重新运行node才能明显看到不设置的效果）</SPAN></P>
+<DIV class=dp-highlighter 
+style="OVERFLOW: auto; WORD-WRAP: break-word; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-BREAK: break-all; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 1px; TEXT-ALIGN: left; PADDING-TOP: 1px; FONT: 12px/25px Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; PADDING-LEFT: 1px; MARGIN-LEFT: 9px; LETTER-SPACING: normal; PADDING-RIGHT: 1px; WIDTH: 679px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV class=bar>
+<DIV class=tools 
+style="FONT-WEIGHT: bold; COLOR: black; PADDING-BOTTOM: 3px; TEXT-ALIGN: left; PADDING-TOP: 3px; PADDING-LEFT: 3px; MARGIN: 0px; PADDING-RIGHT: 3px">Js代码<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=15 width=14 
+src=http://972169909-qq-com.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+allowscriptaccess="always" quality="high" 
+flashvars="clipboard=app.use(express.static(path.join(__dirname%2C%20'public')))%3B" 
+wmode="transparent">&nbsp;<A 
+onclick="code_favorites_do_favorite(this);return false;" title=收藏这段代码 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" 
+href="javascript:void()"><IMG class=star 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=收藏代码 
+src="http://972169909-qq-com.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL class=dp-c 
+style="LIST-STYLE-TYPE: decimal; FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; BORDER-BOTTOM: rgb(209,215,220) 1px solid; COLOR: rgb(43,145,175); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; BORDER-LEFT: rgb(209,215,220) 1px solid; LINE-HEIGHT: 1.4em; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI 
+  style="FONT-SIZE: 1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px 0px 0px 38px; BORDER-LEFT: rgb(209,215,220) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,250,250)"><SPAN 
+  style="COLOR: black"><SPAN style="COLOR: black">app.use(express.</SPAN><SPAN 
+  class=keyword 
+  style="FONT-WEIGHT: bold; COLOR: rgb(127,0,85)">static</SPAN><SPAN 
+  style="COLOR: black">(path.join(__dirname,&nbsp;</SPAN><SPAN class=string 
+  style="COLOR: blue">'public'</SPAN><SPAN 
+  style="COLOR: black">)));&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Helvetica, Tahoma, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 16px"><SPAN 
+style="FONT-SIZE: 16px; COLOR: rgb(51,102,255)">&nbsp;<SPAN 
+style="COLOR: rgb(153,51,0)">此时的YSlow评分：B-84（下降9分）</SPAN></SPAN><BR><IMG 
+title=点击查看原始大小图片 class=magplus 
+style="CURSOR: url(http://www.iteye.com/images/magplus.gif), pointer; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="" 
+src="http://dl.iteye.com/upload/attachment/0080/3374/47172c1f-a4a0-3502-ab3c-bcf7055760a9.png" 
+width=700 height=322><BR>&nbsp;<BR></SPAN></P></BODY></HTML>

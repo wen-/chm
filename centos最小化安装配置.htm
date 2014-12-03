@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>centos最小化安装配置</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>centos最小化安装配置</P><ARTICLE 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 12px/18px 'microsoft yahei', Tahoma, Helvetica, SimSun, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">
+<H2 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; COLOR: rgb(84,85,89); FONT-SIZE: 22px; OVERFLOW: hidden; PADDING-TOP: 25px" 
+id=title_article class=title_article><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; VERTICAL-ALIGN: middle; BORDER-TOP: medium none; BORDER-RIGHT: medium none" 
+title=置顶日志 
+src="http://www.lvtao.net/content/templates/lvtao/images/best.png"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>生产服务器环境最小化安装后 Centos 6.5优化配置备忘</H2>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px dashed; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: 38px; MARGIN: 15px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 38px; COLOR: rgb(155,155,155); OVERFLOW: hidden; BORDER-TOP: rgb(221,221,221) 1px dashed; PADDING-TOP: 0px" 
+class=share_article>作者：<A style="COLOR: rgb(155,155,155); TEXT-DECORATION: none" 
+title=" memory@lvtao.net" href="http://www.lvtao.net/author/1">Memory</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>发布于：2014-8-13 15:00 Wednesday<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(155,155,155); TEXT-DECORATION: none" 
+href="http://www.lvtao.net/sort/server">服务器</A></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; FONT-SIZE: 14px; WORD-BREAK: normal; PADDING-TOP: 0px" 
+class=content><STRONG>本文 centos 6.5 优化 
+的项有18处:</STRONG><BR>1、centos6.5最小化安装后启动网卡<BR>2、ifconfig查询IP进行SSH链接<BR>3、更新系统源并且升级系统<BR>4、系统时间更新和设定定时任<BR>5、修改ip地址、网关、主机名、DNS<BR>6、关闭selinux，清空iptables<BR>7、创建普通用户并进行sudo授权管理<BR>8、修改SSH端口号和屏蔽root账号远程登陆<BR>9、锁定关键文件系统（禁止非授权用户获得权限）<BR>10、精简开机自启动服务<BR>11、调整系统文件描述符大小<BR>12、设置系统字符集<BR>13、清理登陆的时候显示的系统及内核版本<BR>14、内核参数优化<BR>15、定时清理/var/spool/clientmqueue<BR>16、删除不必要的系统用户和群组<BR>17、关闭重启ctl-alt-delete组合键<BR>18、设置一些全局变量<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><STRONG>1、启动网卡</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#centos6.x最小化安装后，网卡默认不是启动状态(本地虚拟机最小化安装，默认是不启动的，网卡模式选桥接，然后执行以下命令就可以连网了)
+ifup eth0</PRE><STRONG>2、SSH链接 ifconfig 查看IP后SSH终端连接。</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><STRONG>3、更新源 
+最小化安装是没有wget工具的，必须先安装在修改源)</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">yum install wget</PRE>备份原系统更新源<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</PRE>进入yum.repos.d目录<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">cd /etc/yum.repos.d</PRE>下载网易镜像源或者搜狐镜像源<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#下载网易镜像源：
+wget http://mirrors.163.com/.help/CentOS6-Base-163.repo
+#或者
+#下载搜狐镜像源：
+wget http://mirrors.sohu.com/help/CentOS-Base-sohu.repo</PRE>网易搜狐的源可能有问题。<BR>参考http://blog.csdn.net/ichsonx/article/details/8518420<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">清空yum缓存
+yum clean all
+生存缓存
+yum makecache
+开始更新系统以及内核
+yum upgrade
+必备软件
+yum install ntpdate -y</PRE><STRONG>4、系统时间更新和设定定时任务 第一种：更新时间并且写入BOIS</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">yum install ntpdate</PRE><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">ntpdate time.windows.com &amp;&amp; hwclock -w &amp;&amp; hwclock --systohc</PRE>第二种：更新时间并且写入定时任务<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">echo '*/30 * * * * ntpdate time.windows.com &amp;&amp; hwclock -w &amp;&amp; hwclock --systohc &gt;/dev/null 2&gt;&amp;1' &gt;&gt;/var/spool/cron/root</PRE>第三种：每间隔5分钟和10分钟同步一次时间<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">echo '*/5 * * * * /usr/sbin/ntpdate time.windows.com &gt;/dev/null 2 &gt;&amp;1' &gt;&gt;/var/spool/cron/root
+echo '*/10 * * * * /usr/sbin/ntpdate time.nist.gov &gt;/dev/null 2&gt;&amp;1' &gt;&gt;/var/spool/cron/root</PRE>提示：CentOS 
+6.x的时间同步命令路径不一样 6是/usr/sbin/ntpdate 
+5是/sbin/ntpdate<BR><STRONG>5、修改ip地址、网关、主机名、DNS #eth0 网卡设置</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">mv /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0.bak
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0 #网卡设备名称
+HWADDR=00:0C:29:D0:C7:B5 #以太网设备的对应的物理地址
+TYPE=Ethernet #网络类型为以太网模式
+UUID=080a457b-6a53-4a3a-9155-a23c1146c2c6 #通用唯一识别码
+ONBOOT=yes #是否启动引导的时候激活YES
+NM_CONTROLLED=no #设备eth0是否可以由Network Manager图形管理工具托管
+BOOTPROTO=dhcp #静态IP地址获取状态 如：DHCP表示自动获取IP地址
+IPADDR=192.168.1.10 #IP
+IPV6INIT=no
+IPV6_AUTOCONF=no
+NETMASK=255.255.255.0 #网卡对应的网络掩码
+GATEWAY=192.168.1.1 #网关地址</PRE><STRONG>检查网卡配置</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">cat /etc/sysconfig/network-scripts/ifcfg-eth0</PRE><STRONG>网关配置</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">vi /etc/sysconfig/network
+#表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络，而且很多系统服务程序将无法启动
+NETWORKING=yes
+#设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
+HOSTNAME=c65mini.localdomain
+#设置本机连接的网关的IP地址。例如，网关为10.0.0.1或者192.168.1.1
+GATEWAY=192.168.1.1</PRE><STRONG>修改主机DNS</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">vi /etc/resolv.conf
+; generated by /sbin/dhclient-script
+nameserver 8.8.8.8
+nameserver 4.4.4.4</PRE><STRONG>修改HOSTS</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">vi /etc/hosts
+127.0.0.1 lvtao.localdomain
+#使用DNS域名服务器来解析名字
+order bind hosts
+#一台主机是否存在多个IP
+multi on
+#如果用逆向解析找出与指定的地址匹配的主机名，对返回的地址进行解析以确认它确实与您查询的地址相配。为了防止“骗取”IP地址
+nospoof on</PRE><STRONG>重启网卡生效设置两种方法</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">service network restart
+或者
+/etc/init.d/network restart</PRE><STRONG>6、关闭selinux，清空iptables 
+在服务器配置完全成功后各项服务正常后，在开启selinux</STRONG><BR><STRONG>查看selinux状态</STRONG> 
+<UL 
+style="PADDING-BOTTOM: 0px; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI style="FONT-STYLE: normal">第一种方法：/usr/bin/setstatus -v #如果显示：SELinux 
+  status: enabled 就是开启状态 
+  <LI style="FONT-STYLE: normal">第二种方法：cat /etc/selinux/config 
+  #如果显示：SELINUX=enforcing 则是开启状态permissive有提醒的状态 disabled是关闭 
+  <LI style="FONT-STYLE: normal">第三种方法：grep SELINUX=disabled /etc/selinux/config 
+
+  <LI 
+style="FONT-STYLE: normal">第四种方法：getenforce</LI></UL><STRONG>修改selinux状态</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>如果修改配置文件则永久生效，但是必须要重启系统 
+<UL 
+style="PADDING-BOTTOM: 0px; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI style="FONT-STYLE: normal">第一种：vi /etc/selinux/config 修改 SELINUX=disabled 
+  <LI style="FONT-STYLE: normal">第二种：sed –i 
+  ‘s/SELINUX=enforcing/SELINUX=disabled/g’ 
+/etc/selinux/config</LI></UL>如果想立即生效（如果想临时性的改变） setenforce 0<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>setenforce 1 设置SELinux 
+成为enforcing模式 setenforce 0 设置SELinux 成为permissive模式 查看状态 getenforce<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>iptables防火墙规则清理了，根据需求定制<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#清空iptables规则
+iptables -F
+#查看iptables规则
+iptables -L
+#保存规则，注意，虽然清空了，不保存的话，重启后，又会有规则。
+/etc/init.d/iptables save</PRE><STRONG>7、创建普通用户并进行sudo授权管理</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>创建普通用户 useradd lvtao 修改用户密码 passwd 
+lvtao<BR>另一种方式：一次性创建用户和设置密码 echo "123456"|passwd --stdin lvtao&amp;&amp;history 
+–c<BR>其中lvtao为你创建的用户名<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>sudo授权管理 
+打开sudo配置文件 visudo<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#按:set nu 查看行，找到99行
+root ALL=(ALL) ALL
+#添加
+lvtao ALL=(ALL) ALL</PRE><STRONG>8、修改SSH端口号和屏蔽root账号远程登陆</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#备份SSH配置 
+cp /etc/ssh/sshd_config sshd_config_bak 
+#修改SSH安全配置 
+vi /etc/ssh/sshd_config
+#SSH链接默认端口
+port 52113
+#禁止root账号登陆
+PermitRootLogin no
+#禁止空密码
+PermitEmptyPasswords no
+#不使用DNS
+UseDNS no</PRE>重新载入SSH配置 /etc/init.d/sshd reload 查看端口里面是否有刚才修改过的端口号52113<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">netstat -lnt</PRE>或者反查端口是那个进程<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">lsof -i tcp:52113</PRE>centos6.5最小化安装没有lsof工具需要 
+yum install lsof<BR><STRONG>9、锁定关键文件系统（禁止非授权用户获得权限）</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">chattr +i /etc/passwd
+chattr +i /etc/inittab
+chattr +i /etc/group
+chattr +i /etc/shadow
+chattr +i /etc/gshadow</PRE><STRONG>10、精简开机自启动服务</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><STRONG>注意:</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>刚装完操作系统一般可以只保留crond，network，syslog，sshd这四个服务。 
+后期根据业务需求制定自启服务 #（Centos6.x为rsyslog Cetnos5.x为syslog） 如果是中文的话。可能会需要LANG=en 或者替换 
+3:on 成 3:启用<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#关闭全部服务
+for sun in `chkconfig --list|grep 3:on|awk '{print $1}'`;do chkconfig --level 3 $sun off;done
+
+#或者
+for sun in `chkconfig --list|grep 3:启用|awk '{print $1}'`;do chkconfig --level 3 $sun off;done
+
+#开启需要的服务
+for sun in crond rsyslog sshd network;do chkconfig --level 3 $sun on;done
+
+#或者需要使用防火墙的话可以开启iptables和ip6tables
+for sun in crond rsyslog sshd network iptables ip6tables;do chkconfig --level 3 $sun on;done</PRE>查询下开启的服务 
+chkconfig –list | grep 3:on 或者 chkconfig –list|grep 3:启用<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">[bingoku@c65mini ~]$ chkconfig --list|grep 3:启用
+crond           0:关闭    1:关闭    2:启用    3:启用    4:启用    5:启用    6:关闭
+ip6tables       0:关闭    1:关闭    2:启用    3:启用    4:启用    5:启用    6:关闭
+iptables        0:关闭    1:关闭    2:启用    3:启用    4:启用    5:启用    6:关闭
+network         0:关闭    1:关闭    2:启用    3:启用    4:启用    5:启用    6:关闭
+rsyslog         0:关闭    1:关闭    2:启用    3:启用    4:启用    5:启用    6:关闭
+sshd            0:关闭    1:关闭    2:启用    3:启用    4:启用    5:启用    6:关闭</PRE><STRONG>11、调整文件描述符大小</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#查看文件描述符大小
+ulimit -n </PRE>第一种：#这里参考的是阿里云主机默认设置。<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">vi /etc/security/limits.conf 
+* soft nofile 65535 
+* hard nofile 65535 
+* soft nproc 65535 
+* hard nproc 65535 
+* soft nofile 65535
+* hard nofile 65535 </PRE>第二种：echo '* - nofile 65535' &gt;&gt; 
+/etc/security/limits.conf<BR>第三种：把ulimit -SHn 65535命令加入到/etc/rc.local，然后每次重启生效 
+追加命令到rc.local配置文件里面<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">cat &gt;&gt;/etc/rc.local&lt;&lt;EOF
+#open files
+ulimit -HSn 65535
+#stack size
+ulimit -s 65535
+EOF</PRE>第四种：如果不修改limits配置文件，直接立即生效，但重启后又恢复之前的默认。 ulimit -SHn 
+65535<BR><STRONG>12、设置系统字符集</STRONG><BR>第一种：vi 
+/etc/sysconfig/i18n<BR>如果想用中文提示：LANG=”zh_CN.UTF-8″ 如果想用英文提示：LANG=”en_US.UTF-8″ 
+如果临时切换也可以 LANG=zh_CN.UTF-8<BR>第二种：使用sed快速替换<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#替换成英文
+sed -i 's#LANG="zh_CN.*"#LANG="en_US.UTF-8"#' /etc/sysconfig/i18n
+#替换成中文
+sed -i 's#LANG="en_US.*"#LANG="zh_CN.UTF-8"#' /etc/sysconfig/i18n
+#替换成UTF-8中文
+sed -i 's#LANG="zh_CN.*"#LANG="zh_CN.UTF-8"#' /etc/sysconfig/i18n
+</PRE><STRONG>13、清理登陆的时候显示的系统及内核版本</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#查看登陆信息 
+cat /etc/redhat-release cat /etc/issue 
+#清理登陆信息
+echo &gt;/etc/redhat-release 
+echo &gt;/etc/issue
+</PRE><STRONG>14、内核参数优化 vi /etc/sysctl.conf</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#可用于apache，nginx，squid多种等web应用
+net.ipv4.tcp_max_syn_backlog = 65536
+net.core.netdev_max_backlog = 32768
+net.core.somaxconn = 32768
+
+net.core.wmem_default = 8388608
+net.core.rmem_default = 8388608
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_synack_retries = 2
+net.ipv4.tcp_syn_retries = 2
+
+net.ipv4.tcp_tw_recycle = 1
+#net.ipv4.tcp_tw_len = 1
+net.ipv4.tcp_tw_reuse = 1
+
+net.ipv4.tcp_mem = 94500000 915000000 927000000
+net.ipv4.tcp_max_orphans = 3276800
+
+#net.ipv4.tcp_fin_timeout = 30
+#net.ipv4.tcp_keepalive_time = 120
+net.ipv4.ip_local_port_range = 1024 65535
+
+#以下参数是对centos6.x的iptables防火墙的优化，防火墙不开会有提示，可以忽略不理。
+#如果是centos5.X需要吧netfilter.nf_conntrack替换成ipv4.netfilter.ip
+#centos5.X为net.ipv4.ip_conntrack_max = 25000000
+net.nf_conntrack_max = 25000000
+net.netfilter.nf_conntrack_max = 25000000
+net.netfilter.nf_conntrack_tcp_timeout_established = 180
+net.netfilter.nf_conntrack_tcp_timeout_time_wait = 120
+net.netfilter.nf_conntrack_tcp_timeout_close_wait = 60
+net.netfilter.nf_conntrack_tcp_timeout_fin_wait = 120
+</PRE>立即生效 /sbin/sysctl -p centos6.5可能会报错<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">error: "net.bridge.bridge-nf-call-ip6tables" is an unknown key
+error: "net.bridge.bridge-nf-call-iptables" is an unknown key
+error: "net.bridge.bridge-nf-call-arptables" is an unknown key</PRE>出现这个的原因是，没有自动载入bridge桥接模块<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">modprobe bridge
+echo "modprobe bridge"&gt;&gt; /etc/rc.local</PRE>查看桥接 lsmod|grep 
+bridge<BR>centos5.X可能会报错 
+这个错误可能是你的防火墙没有开启或者自动处理可载入的模块ip_conntrack没有自动载入，解决办法有二，一是开启防火墙，二是自动处理开载入的模块ip_conntrack<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">error: "net.ipv4.ip_conntrack_max"is an unknown key
+error: "net.ipv4.netfilter.ip_conntrack_max"is an unknown key
+error: "net.ipv4.netfilter.ip_conntrack_tcp_timeout_established"is an unknown key
+error: "net.ipv4.netfilter.ip_conntrack_tcp_timeout_time_wait"is an unknown key
+error: "net.ipv4.netfilter.ip_conntrack_tcp_timeout_close_wait"is an unknown key
+error: "net.ipv4.netfilter.ip_conntrack_tcp_timeout_fin_wait"is an unknown key</PRE>centos5.X解决方法：<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">modprobe ip_conntrack
+echo "modprobe ip_conntrack"&gt;&gt; /etc/rc.local</PRE>centos6.X可能会报错 
+这个错误可能是你的防火墙没有开启或者自动处理可载入的模块ip_conntrack没有自动载入，解决办法有二，一是开启防火墙，二是自动处理开载入的模块ip_conntrack<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">error: "net.nf_conntrack_max"isan unknown key
+error: "net.netfilter.nf_conntrack_max"isan unknown key
+error: "net.netfilter.nf_conntrack_tcp_timeout_established"isan unknown key
+error: "net.netfilter.nf_conntrack_tcp_timeout_time_wait"isan unknown key
+error: "net.netfilter.nf_conntrack_tcp_timeout_close_wait"isan unknown key
+error: "net.netfilter.nf_conntrack_tcp_timeout_fin_wait"isan unknown key</PRE>centos6.X解决方法：<PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">modprobe nf_conntrack
+echo "modprobe nf_conntrack"&gt;&gt; /etc/rc.local</PRE>注意：笔者在整理这篇centos6.5内核优化的时候发现，如果不开启ip6tables去优化nf_conntrack模块去执行上面的解决方法会依旧提示上面的error。所以在优化服务的时候，可以选择留下iptables和ip6tables。当然如果不用iptables的话，在内核优化的时候就要去掉对nf_conntrack的设置，在进行/sbin/sysctl 
+-p 
+是不会有错误提示的。<BR><STRONG>15、如果安装sendmail必须定时自动清理/var/spool/clientmqueue/下文件防止inode节点被占满</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#centos6.5已经不自动安装sendmail了所以没必要走这一步优化
+mkdir -p /server/scripts
+vi /server/scripts/spool_clean.sh
+#!/bin/sh
+find/var/spool/clientmqueue/-typef -mtime +30|xargsrm-f</PRE><STRONG>16、删除不必要的系统用户和群组</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#删除不必要的用户
+userdel adm
+userdel lp
+userdel sync
+userdel shutdown
+userdel halt
+userdel news
+userdel uucp
+userdel operator
+userdel games
+userdel gopher
+userdel ftp
+#删除不必要的群组
+groupdel adm
+groupdel lp
+groupdel news
+groupdel uucp
+groupdel games
+groupdel dip
+groupdel pppusers</PRE><STRONG>17、关闭重启ctl-alt-delete组合键</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">vi /etc/init/control-alt-delete.conf
+#注释掉
+#exec /sbin/shutdown -r now "Control-Alt-Deletepressed" </PRE><STRONG>18、设置一些全局变量</STRONG><PRE style="BORDER-BOTTOM: rgb(225,225,225) 1px dotted; BORDER-LEFT: rgb(225,225,225) 4px solid; PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; BACKGROUND-COLOR: rgb(249,249,249); MARGIN: 2px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: block; FONT-FAMILY: 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; OVERFLOW: hidden; BORDER-TOP: rgb(225,225,225) 1px dotted; BORDER-RIGHT: rgb(225,225,225) 1px dotted; PADDING-TOP: 6px; border-image-source: none">#设置自动退出终端，防止非法关闭ssh客户端造成登录进程过多，可以设置大一些，单位为秒
+echo "TMOUT=3600"&gt;&gt; /etc/profile
+#历史命令记录数量设置为10条
+sed -i "s/HISTSIZE=1000/HISTSIZE=10/" /etc/profile
+#立即生效
+source /etc/profile</PRE></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 10px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 12px; PADDING-TOP: 0px" 
+class=tag>标签: <A style="COLOR: rgb(51,51,51); TEXT-DECORATION: none" 
+href="http://www.lvtao.net/tag/centos" rel=tag>centos</A> <A 
+style="COLOR: rgb(51,51,51); TEXT-DECORATION: none" 
+href="http://www.lvtao.net/tag/linux" rel=tag>linux</A></DIV></ARTICLE>
+<DIV 
+style="BORDER-LEFT: rgb(243,121,31) 2px solid; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 8px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; FONT: 12px/20px 'microsoft yahei', Tahoma, Helvetica, SimSun, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=nextlog><STRONG>上一篇：</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(51,51,51); TEXT-DECORATION: none" 
+href="http://www.lvtao.net/ios/558.html">2014年苹果ios开发者证书申请及xcode5应用上线发布</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><STRONG>下一篇：</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(51,51,51); TEXT-DECORATION: none" 
+href="http://www.lvtao.net/linux/556.html">第二十二章 
+使用Nagios搭建监控服务器</A></DIV></BODY></HTML>

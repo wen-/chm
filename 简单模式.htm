@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>元字符与特殊字符</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046"><STYLE>*{font-size:12px;line-height:18px;}</STYLE></HEAD>
+<BODY>
+<P><strong>元字符：</strong><br>
+  　　(  [  {  \ ^ $ | ) ? + .<br>
+  　　任何时候要在正则表达式中使用这些元字符，都必须对它们进行转义。因此，要匹配一个问号，正则表达式应该这样表示：<br>
+  var reQmark = /\?/;<br>
+  　　或者这样表示：<br>
+  var reQMark = new RegExp(&quot;\\?&quot;);<br>
+　　当正则表达式以这种形式表示时，所有的反斜杠都必须用两个反斜杠来替换。</P>
+<P><strong>使用特殊字符</strong><br>
+  　　正则表达式中，可以直接使用字符来表示它们本身，也可以使用它们的 ASCII代码或者Unicode代码指定字符。<br>
+  　　要使用ASCII来表示一个字符，则必须指定一个两位的十六进制代码，，并在前面加上\x。例如，字符b的ASCII代码为98，等于十六进制的62，因此，表示字符b可以使用\x62，在正则表达式中为/\x62/。也可以用八进制来代替十六进制，直接在反斜杠之后跟上八进制数值。例如，b等于八进制的142，在正则表达式中为/\142/。<br>
+　　如果要使用Unicode来表示字符，必须指定字符串的四位的十六进制表示形式。因此b应该是\u0062，在正则表达式中为/\u0062/。<br>
+<img src="images/21.jpg" width="666" height="314"></P>
+</BODY></HTML>

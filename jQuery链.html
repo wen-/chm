@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>在jQuery链中，后面的操作都是以前面的操作结果为对象的，环环相扣。如果希望操作对象为上一步的对象，则可以使用end()方法：<br />
+  $(function(){<br />
+  $(&quot;p&quot;).find(&quot;span&quot;).addClass(&quot;myClass1&quot;).end().addClass(&quot;myClass2&quot;);<br />
+  });<br />
+  以上代码在&lt;p&gt;标记中搜索&lt;span&gt;标记，然后添加样式风格“myClass1”，利用end()方法将操作对象往回设置为($(&quot;p&quot;),并添加样式风格“myClass2”。<br />
+  另外，还可以通过andSelf()将两个对象进行组合后共同处理：<br />
+  $(function(){<br />
+  $(&quot;div&quot;).find(&quot;p&quot;).addClass(&quot;myBackgroud&quot;).addSelf().addClass(&quot;myBorder&quot;);<br />
+  });<br />
+  以上代码首先在&lt;div&gt;块搜索&lt;P&gt;标记，添加背景相关的样式风格“myBackgroud”,这个风格只对&lt;p&gt;有效，然后利用andSelf()方法将&lt;div&gt;和&lt;p&gt;组合在一起，添加“myBorder”。</p>
+</body>
+</html>

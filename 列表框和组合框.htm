@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>列表框和组合框</TITLE>
+<META content="text/html; charset=unicode" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19088">
+<STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　列表框和组合框是通过HTML的&lt;select /&gt;元素来创建的。默认情况下，浏览器会将&lt;selece 
+/&gt;元素渲染成组合框。要将同样的代码渲染成列表框，只要添加size特性来提示同时可见的条目个数。</P>
+<P>　　HTML DOM为每个&lt;select 
+/&gt;元素定义了option集合，要获取&lt;option/&gt;的显示文本和值。可以使用一般的DOM方法：<BR>alert(oListbox.options[1].firstChild.nodeValue;)//输出显示文本<BR>alert(oListbox.options[1].getAttribute("value"));//输出值<BR>　　不过，使用两个HTML 
+DOM中定义的&lt;option 
+/&gt;特性会更加简单：text，返回显示文本；value，返回值。如：<BR>alert(oListbox.options[1].text);//输出值<BR>alert(oListbox.options[1].value);//输出值</P>
+<P>　　每个&lt;option 
+/&gt;也有个index特性，表示它在options集合中的位置：<BR>alert(oListbox.options[1].index);</P>
+<P>　　&lt;select /&gt;元素有一个selectedIndex特性，它为目前选中的选项的索引（如果没有选中任何选项，那么为-1）。</P>
+<P>　　删除选项：<BR>　　将需要删除的选项设置为null：<BR>oListbox.option[1]=null;<BR>　　或将要删除的选项的索引传递给它：<BR>oListbox.remove(0);//删除第一个option</P>
+<P>　　利用insertBefore()方法，可以对option进行排序。</P></BODY></HTML>

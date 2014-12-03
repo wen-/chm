@@ -1,0 +1,1076 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>HTML5的File API应用</TITLE>
+</HEAD>
+<BODY>
+<P>HTML5的File API应用</P>
+<H2 
+style="BORDER-BOTTOM: rgb(226,226,226) 1px solid; TEXT-ALIGN: center; PADDING-BOTTOM: 10px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT-FAMILY: 'Microsoft Yahei', SimSun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); FONT-SIZE: 22px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=title>HTML5的File API应用</H2>
+<P 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 12px/33px tahoma, arial, 宋体, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; HEIGHT: 33px; COLOR: rgb(133,133,133); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=info>发布时间：2012-05-13 作者：小想 来源：未知<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A style="COLOR: rgb(0,83,153)" 
+title=我要评论 
+href="http://www.html5china.com/HTML5features/DrapAndDrop/20120513_3648.html#postform">我要评论</A></P>
+<P 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 10px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 2em; MARGIN: 0px; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; FONT-FAMILY: Verdana, 'Microsoft YaHei', SimSun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,102,0); FONT-SIZE: 14px; BORDER-TOP: rgb(204,204,204) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(204,204,204) 1px dashed; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=summary>HTML5新增了很多特性，其中File 
+API是非常重要的部分。在肉大师中，我大量使用了HTML5的文件API，这样一来可以给予用户近乎桌面软件的体验，二来还能减少服务器和带宽的消耗。今天终…</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; OVERFLOW-X: hidden; OVERFLOW-Y: hidden; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 20px 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 14px/28px Verdana, 'Microsoft YaHei', SimSun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=content>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;HTML5新增了很多特性，其中File 
+API是非常重要的部分。在肉大师中，我大量使用了HTML5的文件API，这样一来可以给予用户近乎桌面软件的体验，二来还能减少服务器和带宽的消耗。今天终于把最后几个问题解决了，在这里总结下HTML5 
+File API的使用。</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px">用途</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">在W3C页面上，列出了<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="http://dev.w3.org/2009/dap/file-system/pub/FileSystem/" target=_blank>File 
+API可能用到的场合</A>（以下为意译，可能有所偏颇，欢迎对比原文阅读）：</P>
+<OL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">断点续传
+  <UL 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">上传时，先把目标文件复制到本地沙箱，然后分解逐块上传</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">浏览器崩溃或者网络中断也没关系，因为恢复后可以续传</LI></UL></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">需要大量媒体素材的应用，比如视频游戏
+  <UL 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">下载压缩包，在本地解压，就能恢复之前目录结构</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">跨平台</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">通过渐进式下载，进入新关卡或者开启新功能均无需等待，因为玩的时候所需素材已经通过后台下载完成了</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">从本地缓存中直接读取素材，速度飞快</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">二进制文件也不在话下</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">使用压缩包可以大大减轻带宽和服务器消耗，也避免了频繁下载碎片文件带来的检索问题</LI></UL></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">离线图片/音频编辑器通
+  <UL 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">不怕频繁读写大量数据</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">只想重写文件的某些部分也能做到（比如修改ID3或者EXIF信息）</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">创建目录组织项目后用起来舒服多了</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">编辑完的文件还能被iTunes、Picasa之类的本地应用访问</LI></UL></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">离线视频播放器
+  <UL 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">下载超过1G的大文件，将来想看再看</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">可以在不同时间点间来回跳转播放</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">能够给Video标签提供URL</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">即便片子还没下完，也能把下载到的部分先睹为快</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">还能任意截取一段视频交给Video标签播放</LI></UL></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">离线邮件客户端
+  <UL 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">下载保存附件到本地自不必说</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">断网的情况下，可以缓存用户要上传的附件，以后再上传</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">需要时可以列出缓存里的附件，通过缩略图显示，预览后上传</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">能像正常服务器那样触发标准的下载动作</LI>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">不仅能使用XHR一次性上传全部内容，还可以把邮件和附件拆解成小块依次发送</LI></UL></LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">听起来都是些令人振奋的功能，实际用起来还是要踩点坑。下面就把我的经验分享一下。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px">FileReader</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">很多浏览器都实现了FileReader，关于它的教程和文章很多，而且常与同样被HTML5引入的DND（Drag 
+&amp; Drop）API连用，以支持“上传图片文件前先预览”的功能。比如：</P>
+<OL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  title="NATIVE HTML5 DRAG AND DROP" 
+  href="http://www.html5rocks.com/en/tutorials/dnd/basics/" target=_blank>NATIVE 
+  HTML5 DRAG AND DROP</A></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  href="http://blog.meathill.net/tech/js/www.html5rocks.com/en/tutorials/file/dndfiles/" 
+  target=_blank>Reading local files in JavaScript</A></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  title="HTML5 Drag and Drop Upload and File API Tutorial" 
+  href="http://www.thebuzzmedia.com/html5-drag-and-drop-and-file-api-tutorial/" 
+  rel=bookmark>HTML5 Drag and Drop Upload and File API Tutorial</A></LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">所以这个主题我就不再多着笔墨去写了，值得注意的有以下几点：</P>
+<OL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">只有&lt;input 
+  type=”file” /&gt;和<A style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+  title=拖拽 href="http://www.html5china.com/HTML5features/DrapAndDrop/" 
+  target=_blank><U>拖拽</U></A>文件后可以获得FileList，无法通过URL直接读取文件（后面要说到的本地文件可以）</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">FileList形似数组，可以用脚标取元素，而且有length属性，但它本身并不是数组，不支持concat和slice等方法，要操作只能遍历</LI></OL>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px">本地文件</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">这里必须解释一下“本地文件”的概念。本地文件是HTML5<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" title=本地存储 
+href="http://www.html5china.com/HTML5features/LocalStorage/" 
+target=_blank><U>本地存储</U></A>的一部分（不特指那个localStorage），<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" title=本地存储 
+href="http://www.html5china.com/HTML5features/LocalStorage/" 
+target=_blank><U>本地存储</U></A>现在分为4个等级：</P>
+<OL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Cookie，最古老，100K限制，通用</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">localStorage，新增，各浏览器的容量限制不等，采用“键－值”对应的方式存储，按域划分沙箱，不能跨域读写数据</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">数据库，新增，容量限制不等，标准不一</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">本地文件，新增，目前只有Chrome 
+  12+支持；全体域的临时文件共享1G空间，每个域需单独请求持久化存储空间；不能跨域操作，但同域下本地文件和远程文件之间不算跨域</LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">这里的“本地文件”并不是我们通常意义上说的文件，没有直接存放在操作系统的文件体系中，直接搜索文件名是找不到的。Windows下可以在C:\Users\用户名\AppData\Local\Google\Chrome\User 
+Data\Default\File 
+System找到它的真身，是索引文件+大文件，其读写只能用JavaScrip操作。可以用“filesystem:http://domain.com/temporary/文件名”（假设域名是domain）来访问，比如：</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_6226><FONT size=3><BR></FONT></DIV>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>XML/HTML Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_5738')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_5738>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-xml>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: rgb(0,0,0)">//&nbsp;经本地环境下的js写入的文件&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: blue; FONT-WEIGHT: bold" 
+  class=tag>&lt;</SPAN><SPAN style="COLOR: rgb(127,0,85); FONT-WEIGHT: bold" 
+  class=tag-name>img</SPAN><SPAN style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+  style="COLOR: red" class=attribute>src</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">=</SPAN><SPAN style="COLOR: blue" 
+  class=attribute-value>"filesystem:file:///temporary/MG_8764.jpg"</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=tag>/&gt;</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">//&nbsp;经远程环境下的js写入的文件&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: blue; FONT-WEIGHT: bold" 
+  class=tag>&lt;</SPAN><SPAN style="COLOR: rgb(127,0,85); FONT-WEIGHT: bold" 
+  class=tag-name>img</SPAN><SPAN style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+  style="COLOR: red" class=attribute>src</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">=</SPAN><SPAN style="COLOR: blue" 
+  class=attribute-value>"filesystem:http://blog.meathill.net/temporary/MG_8764.jpg"</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=tag>/&gt;</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">本地环境下，这个API同样受到限制，需要在Chrome启动时添加参数：&nbsp;–allow-file-access-from-files 
+方可正常使用。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">后面几节的内容基本都是我从&nbsp;<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+title="EXPLORING THE FILESYSTEM APIS" 
+href="http://www.html5rocks.com/en/tutorials/file/filesystem/" 
+target=_blank>EXPLORING THE FILESYSTEM APIS</A>&nbsp;和&nbsp;<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+title="File API: Directories and System" 
+href="http://dev.w3.org/2009/dap/file-system/pub/FileSystem/" target=_blank>File 
+API: Directories and 
+System</A>&nbsp;中学到的。目前关于本地文件API的介绍很少，应用也不多（毕竟仅限Chrome），不过看看那些令人心动的应用场景，相信不久我们就能在更多浏览器里看到它的身影了。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">接下来，我们还是边看代码边进行吧。操作本地文件前需要请求空间：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>JavaScript Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_8892')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_8892>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-c>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: green" 
+  class=comment>//&nbsp;判断是何种浏览器，使用不同的函数</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">window.requestFileSystem&nbsp;&nbsp;=&nbsp;window.requestFileSystem&nbsp;||&nbsp;window.webkitRequestFileSystem;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: green" 
+  class=comment>//&nbsp;type&nbsp;类型，&lt;code&gt;TEMPORARY&lt;/code&gt;&nbsp;临时，所有文件共享1G空间；或者PERSISTENT&nbsp;永久，需单独请求</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: green" 
+  class=comment>//&nbsp;size&nbsp;容量，单位是字节</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: green" 
+  class=comment>//&nbsp;成功失败两个回调函数，后面仍会大量出现</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">window.requestFileSystem(type,&nbsp;size,&nbsp;successCallback,&nbsp;opt_errorCallback);&nbsp;&nbsp;</SPAN></LI></OL></DIV></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_423733>
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  </TABLE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">请求空间成功后，会调用成功的回调函数，并传入FileSystem的实例，我们可以把它存起来，以备后用。</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_62816>
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  </TABLE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">错误的回调函数写一个通用的就行了，以后几乎每次都要用到：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>JavaScript Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_5679')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_5679>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-c>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;errorHandler(e)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>var</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;msg&nbsp;=&nbsp;</SPAN><SPAN 
+  style="COLOR: blue" class=string>''</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>switch</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(e.code)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>case</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;FileError.QUOTA_EXCEEDED_ERR:&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue" class=string>'QUOTA_EXCEEDED_ERR'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>break</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>case</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;FileError.NOT_FOUND_ERR:&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue" class=string>'NOT_FOUND_ERR'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>break</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>case</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;FileError.SECURITY_ERR:&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue" class=string>'SECURITY_ERR'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>break</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>case</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;FileError.INVALID_MODIFICATION_ERR:&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue" class=string>'INVALID_MODIFICATION_ERR'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>break</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>case</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;FileError.INVALID_STATE_ERR:&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue" class=string>'INVALID_STATE_ERR'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>break</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>default</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">:&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue" class=string>'Unknown&nbsp;Error'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>break</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;console.log(<SPAN 
+  style="COLOR: blue" class=string>'Error:&nbsp;'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;+&nbsp;msg);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI></OL></DIV></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_850958>
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  </TABLE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">请求临时空间（TEMPORARY）就这么简单；请求持久化存储空间（PERSISTENT）稍微复杂些，因为临时存储是所有应用共享1G空间，而持久化存储则是按照域来单独授予空间，所以后者后必须经过用户许可才行。代码方面要在requestFileSystem之前，先请求空间，用户许可后方可继续：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>JavaScript Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_1299')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_1299>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-c>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: rgb(0,0,0)">window.webkitStorageInfo.requestQuota(PERSISTENT,&nbsp;1024*1024,&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">(grantedBytes)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;window.requestFileSystem(PERSISTENT,&nbsp;grantedBytes,&nbsp;fileSystemReadyHandler,&nbsp;errorHandler);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">},&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">(e)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;console.log(<SPAN style="COLOR: blue" 
+  class=string>'Error'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">,&nbsp;e);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+style="COLOR: rgb(0,0,0)">});&nbsp;&nbsp;</SPAN></LI></OL></DIV></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_437317>
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  </TABLE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Chrome会降下黄条，询问用户是否允许该域使用持久化存储，用户同意后才会请求FileSystem。</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px">复制文件</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">复制文件指把文件从操作系统的文件系统复制到本地文件的文件系统中。这个操作很简单，也很有代表性，请先看代码：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>JavaScript Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_8156')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_8156>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-c>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>this</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">.clone&nbsp;=&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(file)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN style="COLOR: green" 
+  class=comment>//&nbsp;file即通过拖拽或者&lt;input&nbsp;type="file"&nbsp;/&gt;选择产生的File实例</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;targetFile&nbsp;=&nbsp;file;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN style="COLOR: green" 
+  class=comment>//&nbsp;create&nbsp;true表示如果该文件不存在，则创建之</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileSystem.root.getFile(file.name,&nbsp;{create:&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>true</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">},&nbsp;fileEntry_cloneReadyHandler,&nbsp;errorHandler);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;fileEntry_cloneReadyHandler(fileEntry)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN style="COLOR: green" 
+  class=comment>//&nbsp;获取本地文件的URL，可以赋给img的src属性，一般是filesystem://domain://temporary或者persistent/路径/文件名</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileURL&nbsp;=&nbsp;fileEntry.toURL();&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileEntry.createWriter(fileWriter_cloneReadyHandler,&nbsp;errorHandler);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: blue; FONT-WEIGHT: bold" 
+  class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;fileWriter_cloneReadyHandler(fileWriter)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: green" 
+  class=comment>//&nbsp;onwrite的话可能文件还没写完，所以最好用onwriteend，这点我参考的教程中没有提到</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.onwriteend&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">(e)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;console.log(<SPAN 
+  style="COLOR: blue" class=string>'Write&nbsp;completed.'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.onerror&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">(e)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;console.log(<SPAN 
+  style="COLOR: blue" class=string>'Write&nbsp;failed:&nbsp;'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;+&nbsp;e.toString());&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.write(targetFile);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;targetFile&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>null</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI></OL></DIV></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_242459>
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  </TABLE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">几乎所有的文件型操作都包括以上三步：获取文件、创建FileWriter、写入。与我们日常的文件操作不太一样，HTML5的File 
+API要先找到或创建文件，然后再对文件进行操作，所以文件的URL在getFile之后就已经确定下来。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">getFile有4个参数，分别是文件名（文件路径我这次没用到，所以这篇文章中不会提及）、文件处理策略、成功回调函数、错误回调函数。按照w3c规范，文件处理策略有两个参数，分别是create和exclusive。前者代表如果目标文件不存在，是否创建；后者代表如果目标文件已存在，是否抛出异常，在后面“写文件”一节里会特别讲解这个参数的用法。</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px">写文件</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">与复制文件不同，为了保证输出的文件可用，我们需要选择合适的文件格式和文件类型。这里我姑且假设输入的内容都是字符串，直接以文本文件来保存就可以了。至于二进制文件后面再讨论。继续看代码吧：</P>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_447990>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</DIV>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>JavaScript Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_7700')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_7700>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-c>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>this</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">.save&nbsp;=&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(name,&nbsp;content,&nbsp;type)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileName&nbsp;=&nbsp;name;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileContent&nbsp;=&nbsp;content;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileType&nbsp;=&nbsp;type&nbsp;||&nbsp;<SPAN 
+  style="COLOR: blue" class=string>'text/plain'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileSystem.root.getFile(fileName,&nbsp;{create:&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>true</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">,&nbsp;exclusive:&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>true</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">},&nbsp;fileEntry_saveReadyHandler,&nbsp;errorHandler);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;fileEntry_saveReadyHandler(fileEntry)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileURL&nbsp;=&nbsp;fileEntry.toURL();&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileEntry.createWriter(fileWriter_saveReadyHandler,&nbsp;errorHandler);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;errorHandler(error)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN style="COLOR: green" 
+  class=comment>//&nbsp;前面可以照搬，后面需要增加一个处理</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>if</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(error.code&nbsp;==&nbsp;FileError.INVALID_MODIFICATION_ERR)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;fileSystem.root.getFile(fileName,&nbsp;{create:&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>false</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">},&nbsp;fileEntry_removeReadyHandler,&nbsp;errorHandler);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;fileWriter_saveReadyHandler(fileWriter)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.onwriteend&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(event)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;console.log(<SPAN 
+  style="COLOR: blue" class=string>'Write&nbsp;completed.'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.onerror&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(error)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;console.log(<SPAN 
+  style="COLOR: blue" class=string>'Write&nbsp;failed:&nbsp;'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;+&nbsp;error.toString());&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>var</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;bb&nbsp;=&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>new</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;WebKitBlobBuilder();&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;bb.append(fileContent);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.write(builder.getBlob(fileType));&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileContent&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>null</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: blue; FONT-WEIGHT: bold" 
+  class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;fileEntry_removeReadyHandler(fileEntry)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileEntry.remove(fileRemoveHandler,&nbsp;errorHandler);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;fileRemoveHandler()&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;self.save(fileName,&nbsp;fileContent,&nbsp;fileType);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI></OL></DIV></DIV>
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  </TABLE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">可以看到，大体上还是三步：获取文件，创建FileWriter、写入内容，不过增加了很多异常处理。这就要回到前面提到的那个getFile，它的第二个参数“文件处理策略”，里面有个字段叫exclusive，代表如果目标文件已经存在，是否抛出异常。因为FileWriter写入内容时以文件指针为标准，从0开始，逐字节写入，直到fileContent写完；当目标文件存在时，它仍会这么做，这种逐字节覆盖的方式导致如果先前的内容比后写入的内容要长，文件内容就会是新老相接的。这明显不是我们希望的结果，所以我要修改errorHandler，当遇到FileError.INVALID_MODIFICATION_ERR时就先把目标文件删除，然后再重新写入。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">删除文件的操作是两步：获取文件、删除文件。完成之后，再次调用save方法，写入内容。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">另外需要注意的是BlobBuilder（Chrome下是WebKitBlobBuilder）。<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="http://www.w3.org/TR/FileAPI/#dfn-Blob" 
+target=_blank>Blob</A>是HTML5中引入的新类型，代表不可变的原始数据。它是所有文件的基础，可以是任何一种文件类型。BlobBuilder则是生成这种数据格式的工具，它提供一个append方法，用来将数据添加到Blob中，还提供了一个getBlob方法，用来提取Blob。这两个方法配合，就可以将内存中的数据保存到硬盘上了。</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px">JSZip与BlobBuilder</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">我在项目中主要用到的操作有：</P>
+<OL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">用户通过拖拽或者选择文件的方式，将文件复制到本地</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">将用户生成的内容保存为本地文件</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">将用户生成的所有内容（html、js、css、图片、视频等）存入一个压缩包，交给用户下载</LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">zip压缩方面，我选择了JSZip这个类库（官网：<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="http://stuartk.com/jszip/" 
+target=_blank>http://stuartk.com/jszip/</A>，Github：<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="https://github.com/Stuk/jszip" 
+target=_blank>https://github.com/Stuk/jszip</A>）。最开始，我按照官网介绍使用location触发下载，小容量内容测试时一切都好，正式导出时Chrome就反复崩溃。Google之，原来Chrome的URL上限是2M，当压缩后的内容超过2M后，就不能再通过location触发下载了。没办法继续Google，从国外一个大侠的<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="http://chimo.chromic.org/2011/12/05/web-workers-and-more/" 
+target=_blank>博客</A>中找到了克敌制胜的法宝：Uint8Array 和 ArrayBuffer。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Uint8Array 
+和 ArrayBuffer 
+也是新标准带来的好东西。前者表示一个由8位无符号整数组成的数组，后者则是二进制数据缓冲，这样说大家可能不明白，按照我的理解和用法，就是Uint8Array（<A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="https://developer.mozilla.org/en/JavaScript_typed_arrays" 
+target=_blank>JavaScript 
+类型数组</A>的一种）的数据可以通过ArrayBuffer来转化成二进制对象，而前者可以用来转化对象。具体的做法还得参考代码：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>JavaScript Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_6882')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_6882>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-c>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;fileWriter_saveReadyHandler(fileWriter)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.onwriteend&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(event)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;console.log(<SPAN 
+  style="COLOR: blue" class=string>'Write&nbsp;completed.'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.onerror&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>function</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(error)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;console.log(<SPAN 
+  style="COLOR: blue" class=string>'Write&nbsp;failed:&nbsp;'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;+&nbsp;error.toString());&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: green" 
+  class=comment>//&nbsp;处理二进制数据，暂时只考虑zip，其它应该也通用</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>var</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;builder&nbsp;=&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>new</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;WebKitBlobBuilder();&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>if</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(fileType&nbsp;==&nbsp;</SPAN><SPAN 
+  style="COLOR: blue" class=string>'application/zip'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>var</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;byteArray&nbsp;=&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>new</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;Uint8Array(fileContent.length);&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>for</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;(</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>var</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;i&nbsp;=&nbsp;0,&nbsp;len&nbsp;=&nbsp;fileContent.length;&nbsp;i&nbsp;&lt;&nbsp;len;&nbsp;i++)&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+  style="COLOR: green" class=comment>//&nbsp;把内容逐字节转化为无符号8位整数</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byteArray[i]&nbsp;=&nbsp;fileContent.charCodeAt(i)&nbsp;&amp;&nbsp;0xFF;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;builder.append(byteArray.buffer);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;}&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>else</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;builder.append(fileContent);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;}&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileWriter.write(builder.getBlob(fileType));&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;fileContent&nbsp;=&nbsp;<SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>null</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">;&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+style="COLOR: rgb(0,0,0)">}&nbsp;&nbsp;</SPAN></LI></OL></DIV></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_970657>
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  </TABLE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">前面的函数修改后，就可以妥善保存二进制文件了，非常神奇。相比外国大侠的解决方案，这样将zip文件保存到本地的做法，牺牲了部分浏览器兼容性（目前只有Chrome支持File 
+API），但是文件名可读性要好的多，也方便XHR将文件上传到服务器，相信日后会有更多应用选择我的这种方式。</P>
+<H2 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 0px">类库下载和最后</H2>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">我把这些操作封装在一个类里，方便使用，有兴趣的同学可以下载。这个类依赖Backbone.Events。大家如果有问题和建议，也欢迎在留言里跟我交流。</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="COLOR: rgb(0,66,118); TEXT-DECORATION: underline" 
+href="http://blog.meathill.net/wp-content/uploads/2012/05/FileReferrence1.js">FileReferrence</A></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">用法：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; OVERFLOW-X: auto; OVERFLOW-Y: auto; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px 0px 1.1em; PADDING-LEFT: 0px; WIDTH: 597px; PADDING-RIGHT: 0px; FONT: 12px 'Courier New', monospace; WORD-BREAK: break-all; BORDER-TOP: rgb(221,221,221) 3px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+class=codeText>
+<DIV 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(242,242,242); MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 5px; HEIGHT: 15px; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 5px; background-origin: initial; background-clip: initial" 
+class=codeHead><SPAN style="PADDING-LEFT: 5px; FLOAT: left" 
+class=lantxt>JavaScript Code</SPAN><SPAN 
+style="FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal" class=copyCodeText 
+onclick="copyIdText('code_4765')">复制内容到剪贴板</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=code_4765>
+<OL 
+style="BORDER-LEFT: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px 1px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); PADDING-TOP: 2px; background-origin: initial; background-clip: initial" 
+class=dp-c>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)"><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>var</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;file&nbsp;=&nbsp;</SPAN><SPAN 
+  style="COLOR: blue; FONT-WEIGHT: bold" class=keyword>new</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;FileReferrence();&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: green" 
+  class=comment>//&nbsp;复制文件到本地</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN 
+  style="COLOR: rgb(0,0,0)">file.clone(file);&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial"><SPAN 
+  style="COLOR: rgb(0,0,0)"><SPAN style="COLOR: green" 
+  class=comment>//&nbsp;保存内容到指定文件</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; COLOR: rgb(170,0,0); PADDING-TOP: 0px; background-origin: initial; background-clip: initial" 
+  class=alt><SPAN style="COLOR: rgb(0,0,0)">file.save(<SPAN style="COLOR: blue" 
+  class=string>'temp.txt'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">,&nbsp;</SPAN><SPAN style="COLOR: blue" 
+  class=string>'text'</SPAN><SPAN 
+  style="COLOR: rgb(0,0,0)">);&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=highlighter_81346>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+<TABLE 
+style="BORDER-COLLAPSE: collapse; -webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px" 
+border=0 cellSpacing=0 cellPadding=0>
+  
+  <TR>
+    <TD 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</TD>
+    <TD 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</TD></TR></TABLE></DIV></DIV></DIV></DIV>
+<DIV 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 20px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 12px/18px tahoma, arial, 宋体, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 20px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=dede_pages>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=pagelist></UL></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; DISPLAY: block; FONT: 12px/18px tahoma, arial, 宋体, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=clearfix>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 30px; WIDTH: 320px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px" 
+class=weekfirst><BR class=Apple-interchange-newline></DIV></DIV>
+</BODY>
+</HTML>

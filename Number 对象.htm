@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Number 对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16450"></HEAD>
+<BODY>
+<DIV>
+<H2>Number 对象</H2>
+<P>Number 对象是原始数值的包装对象。</P>
+<H3>创建 Number 对象的语法：</H3><PRE>var myNum=new Number(<I>value</I>);
+var myNum=Number(<I>value</I>);</PRE>
+<H3>参数</H3>
+<P>参数 <I>value</I> 是要创建的 Number 对象的数值，或是要转换成数字的值。</P>
+<H3>返回值</H3>
+<P>当 Number() 和运算符 new 一起作为构造函数使用时，它返回一个新创建的 Number 对象。如果不用 new 运算符，把 Number() 
+作为一个函数来调用，它将把自己的参数转换成一个原始的数值，并且返回这个值（如果转换失败，则返回 NaN）。</P></DIV>
+<DIV>
+<H2>Number 对象属性</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 25%">属性</TH>
+    <TH style="WIDTH: 61%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_constructor_number.html">constructor</A></TD>
+    <TD>返回对创建此对象的 Number 函数的引用。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_max_value.html">MAX_VALUE</A></TD>
+    <TD>可表示的最大的数。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_min_value.html">MIN_VALUE</A></TD>
+    <TD>可表示的最小的数。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_nan_number.html">NaN</A></TD>
+    <TD>非数字值。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_negative_infinity.html">NEGATIVE_INFINITY</A></TD>
+    <TD>负无穷大，溢出时返回该值。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_positive_infinity.html">POSITIVE_INFINITY</A></TD>
+    <TD>正无穷大，溢出时返回该值。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD>prototype</TD>
+    <TD>使您有能力向对象添加属性和方法。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Number 对象方法</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 25%">方法</TH>
+    <TH style="WIDTH: 61%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_tostring_number.html">toString</A></TD>
+    <TD>把数字转换为字符串，使用指定的基数。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_tolocalestring_number.html">toLocaleString</A></TD>
+    <TD>把数字转换为字符串，使用本地数字格式顺序。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_tofixed.html">toFixed</A></TD>
+    <TD>把数字转换为字符串，结果的小数点后有指定位数的数字。</TD>
+    <TD>1.0</TD>
+    <TD>5.5</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toexponential.html">toExponential</A></TD>
+    <TD>把对象的值转换为指数计数法。</TD>
+    <TD>1.0</TD>
+    <TD>5.5</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toprecision.html">toPrecision</A></TD>
+    <TD>把数字格式化为指定的长度。</TD>
+    <TD>1.0</TD>
+    <TD>5.5</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_valueof_number.html">valueOf</A></TD>
+    <TD>返回一个 Number 对象的基本数字值。</TD>
+    <TD>1.0</TD>
+    <TD>4.0</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Number 对象描述</H2>
+<P>在 JavaScript 中，数字是一种基本的数据类型。JavaScript 还支持 Number 
+对象，该对象是原始数值的包装对象。在必要时，JavaScript 会自动地在原始数据和对象之间转换。在 JavaScript 1.1 中，可以用构造函数 
+Number() 明确地创建一个 Number 对象，尽管这样做并没有什么必要。</P>
+<P>构造函数 Number() 可以不与运算符 new 一起使用，而直接作为转化函数来使用。以这种方式调用 Number() 
+时，它会把自己的参数转化成一个数字，然后返回转换后的原始数值（或 NaN）。</P>
+<P>构造函数通常还用作 5 个有用的数字常量的占位符，这 5 个有用的数字常量分别是可表示的最大数、可表示的最小数、正无穷大、负无穷大和特殊的 NaN 
+值。注意，这些值是构造函数 Number() 自身的属性，而不是单独的某个 Number 对象的属性。</P>
+<P>比如这样使用属性 MAX_VALUE 是正确的：</P><PRE>var big = Number.MAX_VALUE</PRE>
+<P>但是这样是错误的：</P><PRE>var n= new Number(2);
+var big = n.MAX_VALUE</PRE>
+<P>作为比较，我们看一下 toString() 和 Number 对象的其他方法，它们是每个 Number 对象的方法，而不是 Number() 
+构造函数的方法。前面提到过，在必要时，JavaScript 会自动地把原始数值转化成 Number 对象，调用 Number 方法的既可以是 Number 
+对象，也可以是原始数字值。</P><PRE>var n = 123;
+var binary_value = n.toString(2);</PRE></DIV></BODY></HTML>

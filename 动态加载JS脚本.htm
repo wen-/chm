@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>动态加载JS脚本</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>动态加载JS脚本</P>
+<P>&nbsp;</P>
+<P>function loadScript(url, callback){<BR>&nbsp;&nbsp;&nbsp; var script = 
+document.createElement ("script")<BR>&nbsp;&nbsp;&nbsp; script.type = 
+"text/javascript";<BR>&nbsp;&nbsp;&nbsp; if (script.readyState){ 
+//IE<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; script.onreadystatechange = 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (script.readyState == "loaded" || script.readyState == 
+"complete"){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+script.onreadystatechange = 
+null;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<BR>&nbsp;&nbsp;&nbsp; } else 
+{ //Others<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; script.onload = 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+};<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; script.src = 
+url;<BR>&nbsp;&nbsp;&nbsp;  
+document.getElementsByTagName_r("head")[0].appendChild(script);<BR>}<BR></P>
+<P>&nbsp;</P></BODY></HTML>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>ThinkPHP路由模式2不起作用解决办法</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>ThinkPHP路由模式2不起作用解决办法</P>
+<P><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">Apache癿配置过程：</SPAN><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">1、httpd.conf配置文件中加载了mod_rewrite.so模块</SPAN><FONT 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WORD-WRAP: normal; WHITE-SPACE: normal; LETTER-SPACING: normal; WORD-BREAK: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+color=#ff0000>（去掉前面的#号）<BR></FONT><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">2、</SPAN><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">AllowOverride 
+None 将None改为 All</SPAN><FONT 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WORD-WRAP: normal; WHITE-SPACE: normal; LETTER-SPACING: normal; WORD-BREAK: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+color=#ff0000>（有很多个，只需改一处单独的不被其它标签包含的 <SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">AllowOverride 
+None</SPAN>）<BR></FONT><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">3、确保URL_MODEL设置为2<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><FONT 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WORD-WRAP: normal; WHITE-SPACE: normal; LETTER-SPACING: normal; WORD-BREAK: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+color=#ff0000>（ThinkPHP框架的conf/convention.php）<BR></FONT><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">4、把.htaccess文件放到入口文件的同级目录下</SPAN><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&lt;IfModule 
+mod_rewrite.c&gt;<BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">RewriteEngine 
+on</SPAN><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">RewriteCond 
+%{REQUEST_FILENAME} !-d</SPAN><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">RewriteCond 
+%{REQUEST_FILENAME} !-f</SPAN><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">RewriteRule 
+^(.*)$ index.php/$1 [QSA,PT,L]</SPAN></P>
+<P><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"></SPAN>&lt;/IfModule&gt;<BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">重启Apache之后，原来的</SPAN><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">http:///index.php/Blog/read/id/1 
+&nbsp;</SPAN><WBR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><WBR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">就可以通过访问</SPAN><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">http:///Blog/read/id/1 
+&nbsp;</SPAN><WBR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><WBR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(254,254,254); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 14px/21px simsun; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(73,73,73); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">简化了URL地址。</SPAN></P></BODY></HTML>

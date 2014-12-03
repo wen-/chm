@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>截取URL参数</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>截取URL参数</P>
+<DIV>var URLParams = new Object() ; </DIV>
+<DIV>var aParams = document.location.search.substr(1); </DIV>
+<DIV>if(aParams.indexOf("&amp;") &gt; -1){ </DIV>
+<DIV>&nbsp;&nbsp;&nbsp; aParams = aParams.split('&amp;'); </DIV>
+<DIV>&nbsp;&nbsp;&nbsp; for (i=0 ; i &lt; aParams.length ; i++) { </DIV>
+<DIV>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var aParam = 
+aParams[i].split('=') ; </DIV>
+<DIV>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URLParams[aParam[0]] = aParam[1] 
+; </DIV>
+<DIV>&nbsp;&nbsp;&nbsp; } </DIV>
+<DIV>}else{ </DIV>
+<DIV>&nbsp;&nbsp;&nbsp; var aParam = aParams.split('=') ; </DIV>
+<DIV>&nbsp;&nbsp;&nbsp; URLParams[aParam[0]] = aParam[1] ; </DIV>
+<DIV>} </DIV>
+</BODY></HTML>

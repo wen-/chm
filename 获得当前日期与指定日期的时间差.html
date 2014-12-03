@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>获得当前日期与指定日期的时间差</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>获取当天日期（前后指定日期）</P>
+<P>function GetDateStr(AddDayCount) {<BR>&nbsp;&nbsp;&nbsp; var dd = new 
+Date();<BR>&nbsp;&nbsp;&nbsp; 
+dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期<BR>&nbsp;&nbsp;&nbsp; 
+var y = dd.getFullYear();<BR>&nbsp;&nbsp;&nbsp; var m = 
+dd.getMonth()+1;//获取当前月份的日期<BR>&nbsp;&nbsp;&nbsp; var d = 
+dd.getDate();<BR>&nbsp;&nbsp;&nbsp; return y+"-"+m+"-"+d;<BR>}</P>
+<P><BR>获得当前日期与指定日期的时间差</P><PRE style="POSITION: fixed; LEFT: -1000px">var $olddate = $("#new_msg tr:gt(0) td:nth-child(3)");<BR>var newdate_ms = +new Date();<BR>var longtime = 60;//<BR>var longtime_ms = longtime*24*60*60*1000;<BR>$olddate.length;<BR>console.log(newdate);<BR>$olddate.each(function(index, element) {<BR>     <BR>    var aOlddate = ($(this).text()).split("-");<BR>    var olddate = new Date();<BR>    olddate.setFullYear(aOlddate[0],aOlddate[1]-1,aOlddate[2]);<BR>    var olddate_ms = olddate.getTime();<BR>    if(newdate_ms - olddate_ms &gt;= longtime_ms){<BR>        $(this).parents("tr").hide();<BR>    }<BR>    console.log(olddate.getTime()); <BR>});</PRE><PRE style="POSITION: fixed; LEFT: -1000px">var $olddate = $("#new_msg tr:gt(0) td:nth-child(3)");<BR>var newdate_ms = +new Date();<BR>var longtime = 8;//<BR>var longtime_ms = longtime*24*60*60*1000;<BR>$olddate.length;<BR>console.log(newdate);<BR>$olddate.each(function(index, element) {<BR>     <BR>    var aOlddate = ($(this).text()).split("-");<BR>    var olddate = new Date();<BR>    olddate.setFullYear(aOlddate[0],aOlddate[1]-1,aOlddate[2]);<BR>    var olddate_ms = olddate.getTime();<BR>    if(newdate_ms - olddate_ms &gt;= longtime_ms){<BR>        $(this).parents("tr").hide();<BR>    }<BR>    console.log(olddate.getTime()); <BR>});</PRE><PRE style="POSITION: fixed; LEFT: -1000px">var $olddate = $("#new_msg tr:gt(0) td:nth-child(3)");<BR>var newdate_ms = +new Date();<BR>var longtime = 8;//<BR>var longtime_ms = longtime*24*60*60*1000;<BR>$olddate.length;<BR>console.log(newdate);<BR>$olddate.each(function(index, element) {<BR>     <BR>    var aOlddate = ($(this).text()).split("-");<BR>    var olddate = new Date();<BR>    olddate.setFullYear(aOlddate[0],aOlddate[1]-1,aOlddate[2]);<BR>    var olddate_ms = olddate.getTime();<BR>    if(newdate_ms - olddate_ms &gt;= longtime_ms){<BR>        $(this).parents("tr").hide();<BR>    }<BR>    console.log(olddate.getTime()); <BR>});</PRE>var 
+$olddate = $("#new_msg tr:gt(0) td:nth-child(3)");<BR>var newdate_ms = +new 
+Date();<BR>var longtime = 100;//天，指定天数<BR>var longtime_ms = 
+longtime*24*60*60*1000;<BR>$olddate.length;<BR>console.log(newdate);<BR>$olddate.each(function(index, 
+element) {<BR>&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; var aOlddate = 
+($(this).text()).split("-");<BR>&nbsp;&nbsp;&nbsp; var olddate = new 
+Date();<BR>&nbsp;&nbsp;&nbsp; 
+olddate.setFullYear(aOlddate[0],aOlddate[1]-1,aOlddate[2]);<BR>&nbsp;&nbsp;&nbsp; 
+var olddate_ms = olddate.getTime();<BR>&nbsp;&nbsp;&nbsp; if(newdate_ms - 
+olddate_ms &gt;= longtime_ms){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$(this).parents("tr").hide();<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+//console.log(olddate.getTime()); <BR>}); </BODY></HTML>

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>添加地址栏图标.htm</TITLE>
+</HEAD>
+<BODY>
+<P>如果为网站添加一个favicon(网络头像)只要将图标文件的名称编辑成为favicon.ico放在网站的根目录下便可以。 
+<BR>------------------------------------------------------------------------- 
+<BR>但IE6以前的版本要添加如下标签: <BR>收藏 <BR>&lt;link rel="bookmark" href="http://你的网址/favicon.ico" 
+type="image/x-icon"&gt; <BR>网络头像 <BR>&lt;link rel="shortcut icon" href="http://你的网址/favicon.ico" 
+type="image/x-icon"&gt; <BR>注意：该图标的路径一定要使用绝对路径。 <BR>------------------------------------------------------------------------- 
+<BR>Firefox还支持GIF动画格式的Favicon,使用方法如下: <BR>首先制作一个16*16的gif动画,然后在html代码&lt;head&gt;&lt;/head&gt;中加入如下代码: 
+<BR>&lt;link rel=”shortcut icon” href=”favicon.ico” &gt; <BR>&lt;link rel=”icon” href=”animated_favicon.gif” 
+type=”image/gif” &gt; </P>
+<P>------------------------------------------------------------------------- 
+<BR>在IE中有时会显示不出来，因为如果网页保存在缓存中有保存则不会去更新favicon.ico文件，所以要清除缓存或者去访问一下http://你的网址/favicon.ico 
+<BR></P>
+</BODY>
+</HTML>

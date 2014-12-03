@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>xampp启用gzip压缩</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>xampp启用gzip压缩</P>
+<DIV class="content-head clearfix" 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; ZOOM: 1; COLOR: rgb(69,69,69); FONT: 12px tahoma, helvetica, arial; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H2 class="title content-title" 
+style="FONT-SIZE: 20px; FONT-FAMILY: tahoma, helvetica, 'microsoft yahei', arial; FLOAT: left; FONT-WEIGHT: normal; COLOR: rgb(58,58,58); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; PADDING-RIGHT: 0px">window系统下在XAMPP套件中开启Apache的gzip功能</H2></DIV>
+<DIV id=content class="content mod-cs-content text-content clearfix" 
+style="OVERFLOW: hidden; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; ZOOM: 1; COLOR: rgb(69,69,69); FONT: 14px/1.5 tahoma, helvetica, arial; MARGIN: 7px 0px 10px; LETTER-SPACING: normal; WIDTH: 758px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">本文主要针对<STRONG>XAMPP</STRONG>套件中的<STRONG>Apache</STRONG>的<STRONG>gzip</STRONG>功能开启方案。 
+对于其他套件中Apache的gzip功能开启的方法其实大同小异。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">主要都是通过修改Apache的配置文件。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>为什么要开启Gzip？</STRONG><BR>答：Gzip开启以后会将输出到用户浏览器的数据进行压缩的处理，这样就会减小通过网络传输的数据量，提高浏览的速度。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>如何开启Gzip？</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">下面就主要以图片进行说明同时配以简单的文字说明。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">1. 
+先找到httpd.conf文件，对于XAMPP套件，这个文件位于： %XAMPP安装目录%\apache\conf\ 目录下</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;<IMG 
+border=0 hspace=0 alt="" src="E:\wen\e\技术文档\技术手册\images\gzip1.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">2. 
+开启gzip功能。<B>XAMPP的Apache</B>提供支gzip功能，但是名字是叫mod_deflate，默认是没有开启的。所以首先要开始gzip功能。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">gzip功能是使用mod_deflate.so模块，第一步要做的就是引入mod_deflate.so模块：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">首先打开 
+httpd.conf 文件， 然后搜索找到 mod_deflate.so 这一行，然后去掉这一行前面的 "#" 注释符号。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+border=0 hspace=0 alt="" src="images/gzip2.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">3. 
+配置gzip。 一般要进行gzip的文件是一些常见的web文件文件，如 js，css等。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+style="MARGIN-BOTTOM: 8px; MAX-WIDTH: 758px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; CLEAR: both; BORDER-LEFT: 0px" 
+src="images/gzip3.jpg" small="0"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"># 
+mod_deflate：<BR>&lt;ifmodule mod_deflate.c&gt;<BR>AddOutputFilterByType DEFLATE 
+text/plain<BR>AddOutputFilterByType DEFLATE text/html<BR>AddOutputFilterByType 
+DEFLATE text/xml<BR>AddOutputFilterByType DEFLATE 
+text/css<BR>AddOutputFilterByType DEFLATE 
+text/javascript<BR>AddOutputFilterByType DEFLATE 
+application/xhtml+xml<BR>AddOutputFilterByType DEFLATE 
+application/xml<BR>AddOutputFilterByType DEFLATE 
+application/rss+xml<BR>AddOutputFilterByType DEFLATE 
+application/atom_xml<BR>AddOutputFilterByType DEFLATE 
+application/x-javascript<BR>AddOutputFilterByType DEFLATE 
+application/x-httpd-php<BR>AddOutputFilterByType DEFLATE 
+image/svg+xml<BR>DeflateCompressionLevel 6 <BR>#DeflateCompressionLevel 6 #压缩率, 
+6是建议值(以上为要压缩的文件类型，可合并如下。#号接有中文apache启动不了).</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">#AddOutputFilterByType 
+DEFLATE text/html text/plain text/css text/xml 
+text/javascript<BR>#DeflateCompressionLevel 9<BR>#SetOutputFilter 
+DEFLATE<BR>&lt;/ifmodule&gt;<BR>4. 重启Apache。 然后去浏览器测试一下效果。下面是我的一些效果截图：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+style="MARGIN-BOTTOM: 8px; MAX-WIDTH: 758px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; CLEAR: both; BORDER-LEFT: 0px" 
+src="images/gzip4.jpg" small="0"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+style="MARGIN-BOTTOM: 8px; MAX-WIDTH: 758px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; CLEAR: both; BORDER-LEFT: 0px" 
+src="images/gzip5.jpg" small="0"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">大家可以从图中看到，效果非常惊人，压缩率达到了 
+76.7% ，效果非常明显。</P></DIV></BODY></HTML>

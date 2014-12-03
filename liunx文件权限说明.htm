@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>liunx文件权限说明</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>liunx文件权限说明</P><IMG src="images/liunx_1.jpg"> <IMG src="images/liunx_2.png"> 
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">在图一中，我们看到了，图中分为七栏，每一栏分别代表什么我会在下面详细说明，在图二中，我们看到test1文件与test2目录文件默认权限，那又分别又代表什么，好了废话不多说，我们下面来详细说一下。</P></BLOCKQUOTE>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,255); FONT-SIZE: 18px; PADDING-TOP: 0px">1. 
+文件的默认属性</SPAN></P>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">在图一中，我们可以看到，文件有默认属性分为七栏，其意义分另为：</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">第一栏: 
+  代表这个文件的类型与权限(permission)</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">文件类型： 
+  &nbsp; &nbsp;<SPAN 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-：普通文件 (f) &nbsp; &nbsp; &nbsp;<BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;d: 目录文件 &nbsp; &nbsp; &nbsp;<BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;b: 块设备文件 (block) &nbsp; &nbsp; &nbsp;<BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;c: 字符设备文件 (character) &nbsp; &nbsp; 
+  &nbsp;<BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;l: 符号链接文件(symbolic link file) &nbsp; &nbsp; 
+  &nbsp;<BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;p: 命令管道文件(pipe) &nbsp; &nbsp; &nbsp;<BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;s: 套接字文件(socket)</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">文件权限: 
+  9位，每3位一组，每一组：rwx(读，写，执行), r--</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;第一组为: 文件拥有者的权限， 该文件的拥有者可以读写，但不可执行；</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;第二组为: 同群组的权限</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;第三组为: 其他非本群组的权限</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">第二栏: 
+  文件硬链接的次数 (我会在磁盘管理时详细说明)</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">第三栏: 
+  表示这个文件(或目录)的拥有者(owner)</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">第四栏: 
+  表示这个文件的所属群组(group)</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">第五栏: 
+  为这个文件的容量大小，默认单位为bytes</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">第六栏: 
+  为这个文件的建档日期或者是最近的修改日期</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;访问:access &nbsp; &nbsp;<SPAN 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;修改:modify，文件内容发生了改变 &nbsp; &nbsp; &nbsp;<BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp; 
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;改变:change，metadata，元数据</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">第七栏: 
+  为这个文件的文件名</P></BLOCKQUOTE>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,255); FONT-SIZE: 18px; PADDING-TOP: 0px">2. 
+文件与目录的默认权限</SPAN></P>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px">从上面的讲解中我们可以看到，一个文件有若干个属性，包括读写运行(r, 
+  w, x)等基本权限，及是否为目录 (d) 、文件 (-) 等等的属性！ 要修改属性的方法在我在前面的博客中也讲过 (chgrp,<SPAN 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=Apple-converted-space>&nbsp;</SPAN>chown,chmod) 
+  。那么现在我们知道如何创建或者是改变一个目录或文件的属性了，不过， 你知道当你创建一个新的文件或目录时，他的默认权限会是什么吗？嘿嘿！那就与 umask 
+  这个玩意儿有关了！那么 umask 是在做什么呢？基本上,umask 就是指定 目前使用者在创建文件或目录时候的权限默认值， 那么如何得知或配置umask 
+  呢？</SPAN></P></BLOCKQUOTE>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,255); FONT-SIZE: 18px; PADDING-TOP: 0px">3. 
+umask(遮罩码)命令</SPAN></P>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px">如下图:</SPAN></P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+  title=5.3 border=0 alt=5.3 
+  src="images/liunx_3.jpg" 
+  height=114></P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">1). 
+  查看方式有两种，一种可以直接输入 umask ，就可以看到数字型态的权限配置分数， 一种则是加入 -S (Symbolic) 
+  这个选项，就会以符号类型的方式来显示出权限了！从第一种方式，我们看到了四组数字，奇怪不应该是三组吗？其实第一组是特殊权限用的，我们暂时不用去管它，在后面的博客中我会详细讲解，先卖个关子!在默认权限的属性上，目录与文件是不一样的。我们知道 
+  x 
+  权限对于目录是非常重要的（不理解的朋友可以看下面，目录与文件的权限意义）！但是一般文件的创建则不应该有运行的权限，因为一般文件通常是用在于数据的记录嘛！当然不需要运行的权限了。因此，默认的情况如下：</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">若使用者创建为”文件“则默认“没有可运行( 
+  x )权限”，亦即只有 rw 这两个项目，也就是最大为 666 ，默认权限如下： &nbsp; &nbsp;<SPAN 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">-rw-rw-rw-</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">若使用者创建为”目录“，则由于 
+  x 与是否可以进入此目录有关，因此默认为所有权限均开放，亦即为 777 ，默认权限如下： &nbsp; &nbsp;<SPAN 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">drwxrwxrwx</P></BLOCKQUOTE>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2). 
+  要注意的是，umask 的值指的是“该默认值需要减掉的权限！”因为 r、w、x 分别是 4、2、1 ，所以！也就是说，当要拿掉能写的权限，就是减去2 
+  ，而如果要拿掉能读的权限，也就是减去4 ，那么要拿掉读与写的权限，也就是减去 6 ，而要拿掉运行与写入的权限，也就是减去 3 ，这样了解吗？请问你， 5 
+  是什么？呵呵！ 就是读与运行的权限啦！</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">如果以上面的例子来说明的话，因为 
+  umask 为022 ，所以 user 并没有被拿掉任何权限，不过 group 与 others 的权限被拿掉了 2 (也就是 w 
+  这个权限)，那么当使用者：</P></BLOCKQUOTE>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">创建文件时：(-rw-rw-rw-) 
+  - (-----w--w-) ==&gt; -rw-r--r-- (666-umask)</P></BLOCKQUOTE>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">创建目录时：(drwxrwxrwx) 
+  - (d----w--w-) ==&gt; drwxr-xr-x (777-umask)</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">以上就是umask作用，你懂了吗？对于r、w、x 
+  分别代表 4、2、1 下面会详细讲解（数字权限）！</P></BLOCKQUOTE>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,255); FONT-SIZE: 18px; PADDING-TOP: 0px">4. 
+目录与文件的权限的重要性</SPAN></P>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">1). 
+  权限对文件的重要性</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">文件是实际含有数据的地方，包括一般文本文件、数据库内容文件、二进制可执行文件(binary 
+  program)等等。 因此，权限对于文件来说，他的意义是这样的：</P>
+  <UL 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=" list-paddingleft-2">
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <P 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">r 
+    (read)：可读取此一文件的实际内容，如读取文本文件的文字内容等</P>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <P 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">w 
+    (write)：可以编辑、新增或者是修改该文件的内容(但不含删除该文件)</P>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <P 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">x 
+    (execute)：该文件具有可以被系统执行的权限</P></LI></UL>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">那个可读(r)代表读取文件内容是还好了解，那么可执行(x)呢？这里你就必须要小心啦！ 
+  因为在Windows底下一个文件是否具有执行的能力是由扩展名来判断的， 例如：.exe, 
+  .bat等等，但是在Linux底下，我们的文件是否能被执行，则是藉由是否具有x这个权限来决定的！跟扩展名是没有绝对的关系的！至于最后一个w这个权限呢？当你对一个文件具有w权限时，你可以具有写入/编辑/新增/修改文件的内容的权限，但并不具备有删除该文件本身的权限！对于文件的rwx来说，主要都是针对文件的内容而言，与文件名的存在与否没有关系喔！因为文件记录的是实际的数据嘛！</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"></P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2). 
+  权限对目录的重要性</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">文件是存放实际数据的所在，那么目录主要是储存啥玩意啊？目录主要的内容是在记录文件名的列表，文件名与目录有强烈的关联性！ 
+  所以如果是针对目录时，那个 r, w, x 对目录是什么意义呢？</P>
+  <UL 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=" list-paddingleft-2">
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <P 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">r 
+    (read contents in directory)： &nbsp; &nbsp; &nbsp;<SPAN 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+    class=Apple-converted-space>&nbsp;</SPAN><BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">表示具有读取目录结构列表的权限，所以当你具有读取(r)一个目录的权限时，表示你可以查询该目录下的文件名数据。 
+    所以你就可以利用 ls 这个指令将该目录的内容列表显示出来！</P>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <P 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">w 
+    (modify contents of directory)： &nbsp; &nbsp; &nbsp;<SPAN 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+    class=Apple-converted-space>&nbsp;</SPAN><BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">这个可写入的权限对目录来说，是很了不起的！ 
+    因为他表示你具有异动该目录结构列表的权限，也就是底下这些权限： &nbsp; &nbsp; &nbsp; &nbsp;</P>
+    <UL 
+    style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+    class=" list-paddingleft-2">
+      <LI 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+      <P 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">建立新的文件与目录</P>
+      <LI 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+      <P 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">删除已经存在的文件与目录(不论该文件的权限为何！)</P>
+      <LI 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+      <P 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">将已存在的文件或目录进行更名</P>
+      <LI 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+      <P 
+      style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">搬移该目录内的文件、目录位置</P></LI></UL><BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">总之，目录的w权限就与该目录底下的文件名异动有关就对了啦！ 
+
+    <P 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"></P>
+    <LI 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+    <P 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">x 
+    (access directory)： &nbsp; &nbsp; &nbsp;<SPAN 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+    class=Apple-converted-space>&nbsp;</SPAN><BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">目录的执行权限有啥用途啊？目录只是记录文件名而已，总不能拿来执行吧？没错！目录不可以被执行，目录的x代表的是用户能否进入该目录成为工作目录的用途！所谓的工作目录(work 
+    directory)就是你目前所在的目录啦！举例来说，当你登入Linux时， 你所在的家目录就是你当下的工作目录。而变换目录的指令是cd(change 
+    directory)，你能否改变目录，就得看x权限啦，嘿嘿！</P></LI></UL></BLOCKQUOTE>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,255); FONT-SIZE: 18px; PADDING-TOP: 0px">5. 
+数字权限</SPAN></P>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">数字类型与文件权限</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><BR 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限， 
+  先复习一下刚刚上面提到的数据：文件的权限字符为：-rwxrwxrwx， 
+  这九个权限是三个三个一组的！其中，我们可以使用数字来代表各个权限，各权限的分数对照表如下：</P>
+  <BLOCKQUOTE 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">r:4 
+    &nbsp; &nbsp;<SPAN 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+    class=Apple-converted-space>&nbsp;</SPAN><BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">w:2 
+    &nbsp; &nbsp; &nbsp;<BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">x:1</BLOCKQUOTE>每种身份(owner/group/others)各自的三个权限(r/w/x)分数是需要累加的，例如当权限为：[-rwxrwx---] 
+  分数则是： &nbsp; &nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/25px Verdana, Arial, Tahoma; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(80,80,80); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <BLOCKQUOTE 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">owner 
+    = rwx = 4+2+1 = 7 &nbsp; &nbsp;<SPAN 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+    class=Apple-converted-space>&nbsp;</SPAN><BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">group 
+    = rwx = 4+2+1 = 7 &nbsp; &nbsp; &nbsp;<BR 
+    style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">others= 
+    --- = 0+0+0 = 
+0</BLOCKQUOTE>所以等一下我们设定权限的变更时，该文件的权限数字就是770啦！是不是很简单啊！</BLOCKQUOTE></BODY></HTML>

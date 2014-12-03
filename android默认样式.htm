@@ -1,0 +1,2583 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>android默认样式</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>android默认样式</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">我们知道不同的浏览器对css有不同的解析方式，在android 
+webkit 上面默认的定制自己样式的通道，假如我们对这个流程有一个比较清晰的了解，那么我们也可以自己去do itself。</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+首先介绍下android 
+webkit的默认的css样式表(声明我都是基于android4.0.1讲解)，默认的css样式位置在(android/external/webkit/Source/WebCore/css/html.css)</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>[html]&nbsp; 
+*&nbsp;<BR>&nbsp;* The default style sheet used to render 
+HTML.&nbsp;<BR>&nbsp;*&nbsp;<BR>&nbsp;* Copyright (C) 2000 Lars Knoll 
+(knoll@kde.org)&nbsp;<BR>&nbsp;* Copyright (C) 2003, 2004, 2005, 2006, 2007, 
+2008, 2009, 2010, 2011 Apple Inc. All rights 
+reserved.&nbsp;<BR>&nbsp;*&nbsp;<BR>&nbsp;* This library is free software; you 
+can redistribute it and/or&nbsp;<BR>&nbsp;* modify it under the terms of the GNU 
+Library General Public&nbsp;<BR>&nbsp;* License as published by the Free 
+Software Foundation; either&nbsp;<BR>&nbsp;* version 2 of the License, or (at 
+your option) any later version.&nbsp;<BR>&nbsp;*&nbsp;<BR>&nbsp;* This library 
+is distributed in the hope that it will be useful,&nbsp;<BR>&nbsp;* but WITHOUT 
+ANY WARRANTY; without even the implied warranty of&nbsp;<BR>&nbsp;* 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&nbsp; See the 
+GNU&nbsp;<BR>&nbsp;* Library General Public License for more 
+details.&nbsp;<BR>&nbsp;*&nbsp;<BR>&nbsp;* You should have received a copy of 
+the GNU Library General Public License&nbsp;<BR>&nbsp;* along with this library; 
+see the file COPYING.LIB.&nbsp; If not, write to&nbsp;<BR>&nbsp;* the Free 
+Software Foundation, Inc., 51 Franklin Street, Fifth Floor,&nbsp;<BR>&nbsp;* 
+Boston, MA 02110-1301, 
+USA.&nbsp;<BR>&nbsp;*&nbsp;<BR>&nbsp;*/&nbsp;<BR>&nbsp;<BR>@namespace 
+"http://www.w3.org/1999/xhtml";&nbsp;<BR>&nbsp;<BR>html 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* 
+children of the &lt;head&gt; element all have display:none */&nbsp;<BR>head 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>meta 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>title 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>link 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>style 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>script 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* 
+generic block-level elements */&nbsp;<BR>&nbsp;<BR>body 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-repeat:no-repeat 
+!important;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: 8px&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>p 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>div {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>layer {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>article, aside, footer, header, hgroup, nav, 
+section {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>marquee {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; overflow: 
+-webkit-marquee&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>address 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>blockquote {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+40px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+40px;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>figcaption {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>figure 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+40px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+40px;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>q {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>q:before {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+content: open-quote;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>q:after 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; content: 
+close-quote;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>center {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; /* special centering to be able to 
+emulate the html4/netscape behaviour */&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-align: 
+-webkit-center&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>hr {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+0.5em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+0.5em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+auto;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+auto;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-style: 
+inset;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-width: 
+1px&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>map {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* heading elements 
+*/&nbsp;<BR>&nbsp;<BR>h1 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 2em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 0.67__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-after: 0.67em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-weight: 
+bold&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>:-webkit-any(article,aside,nav,section) h1 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 1.5em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 0.83__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-after: 
+0.83em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) h1 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-size: 1.17em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+h1 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 1.00em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1.33__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-after: 
+1.33em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) h1 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-size: .83em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1.67__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1.67em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+h1 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: .67em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 2.33__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-after: 2.33em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>h2 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-size: 1.5em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+0.83__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+0.83em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-weight: 
+bold&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>h3 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+1.17em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-weight: 
+bold&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>h4 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1.33__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1.33em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-weight: 
+bold&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>h5 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: .83em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1.67__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-after: 1.67em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-weight: 
+bold&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>h6 {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: .67em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 2.33__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-after: 2.33em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-weight: 
+bold&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* tables */&nbsp;<BR>&nbsp;<BR>table 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: table;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+border-collapse: separate;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-spacing: 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-color: 
+gray&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>thead {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+table-header-group;&nbsp;<BR>&nbsp;&nbsp;&nbsp; vertical-align: 
+middle;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-color: 
+inherit&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>tbody {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: table-row-group;&nbsp;<BR>&nbsp;&nbsp;&nbsp; vertical-align: 
+middle;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-color: 
+inherit&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>tfoot {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: table-footer-group;&nbsp;<BR>&nbsp;&nbsp;&nbsp; vertical-align: 
+middle;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-color: 
+inherit&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* for tables without table section 
+elements (can happen with XHTML or dynamically created tables) */&nbsp;<BR>table 
+&gt; tr {&nbsp;<BR>&nbsp;&nbsp;&nbsp; vertical-align: 
+middle;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>col {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+table-column&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>colgroup 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+table-column-group&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>tr 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: table-row;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: inherit;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-color: 
+inherit&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>td, th {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: table-cell;&nbsp;<BR>&nbsp;&nbsp;&nbsp; vertical-align: 
+inherit&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>th {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-weight: bold&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>caption 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+table-caption;&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-align: 
+-webkit-center&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* lists */&nbsp;<BR>&nbsp;<BR>ul, 
+menu, dir {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; list-style-type: 
+disc;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-start: 
+40px&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>ol {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; list-style-type: 
+decimal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-start: 
+40px&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>li {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+list-item&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>ul ul, ol ul 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; list-style-type: 
+circle&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>ol ol ul, ol ul ul, ul ol ul, ul ul ul 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; list-style-type: 
+square&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>dd {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+40px&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>dl {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>dt {&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>ol ul, ul ol, ul ul, ol ol 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+0&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* form elements */&nbsp;<BR>&nbsp;<BR>form 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+margin-top: 0__qem;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>label 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+default;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>legend {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-start: 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-end: 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 
+none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>fieldset {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-before: 
+0.35em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-start: 
+0.75em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-end: 
+0.75em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-after: 
+0.625em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 2px groove 
+ThreeDFace&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>button {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: button;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* Form controls don't 
+go vertical. */&nbsp;<BR>input, textarea, keygen, select, button, isindex, 
+meter, progress {&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-block-flow: tb 
+!important;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input, textarea, keygen, select, 
+button, isindex, datagrid {&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: 
+0__qem;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font: 
+-webkit-small-control;&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: 
+initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; letter-spacing: 
+normal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; word-spacing: 
+normal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; line-height: 
+normal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-transform: 
+none;&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-indent: 0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+text-shadow: none;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-align: 
+-webkit-auto;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="hidden"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input, 
+input[type="password"], input[type="search"], isindex 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+textfield;&nbsp;<BR>&nbsp;&nbsp;&nbsp; padding: 1px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: white;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 2px 
+inset;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-rtl-ordering: 
+logical;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-user-select: 
+text;&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+auto;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="search"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="search"]::-webkit-search-cancel-button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-cancel-button;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="search"]::-webkit-search-decoration 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-decoration;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="search"]::-webkit-search-results-decoration 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-results-decoration;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="search"]::-webkit-search-results-button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-results-button;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input::-webkit-input-list-button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+list-button;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input::-webkit-inner-spin-button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+inner-spin-button;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; position: 
+relative;&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+default;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-user-select: 
+none;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input::-webkit-outer-spin-button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+outer-spin-button;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; position: 
+relative;&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+default;&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin-left: 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-user-select: 
+none;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input::-webkit-input-speech-button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+-webkit-input-speech-button;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>keygen, select 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 
+5px;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>keygen::-webkit-keygen-select 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: 
+0px;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>textarea {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: textarea;&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: 
+white;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 1px 
+solid;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-rtl-ordering: 
+logical;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-user-select: 
+text;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-orient: 
+vertical;&nbsp;<BR>&nbsp;&nbsp;&nbsp; resize: auto;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+cursor: auto;&nbsp;<BR>&nbsp;&nbsp;&nbsp; padding: 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; white-space: 
+pre-wrap;&nbsp;<BR>&nbsp;&nbsp;&nbsp; word-wrap: 
+break-word;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input::-webkit-input-placeholder, 
+isindex::-webkit-input-placeholder, textarea::-webkit-input-placeholder 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: 
+darkGray;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="password"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-text-security: disc 
+!important;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="hidden"], 
+input[type="image"], input[type="file"] {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; padding: 
+initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: 
+initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 
+initial;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="file"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-align: 
+baseline;&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-align: start 
+!important;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input:-webkit-autofill 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: #FAFFBD 
+!important;&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-image:none 
+!important;&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: #000000 
+!important;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="radio"], 
+input[type="checkbox"] {&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: 3px 
+0.5ex;&nbsp;<BR>&nbsp;&nbsp;&nbsp; padding: initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 
+initial;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="button"], 
+input[type="submit"], input[type="reset"], 
+input[type="file"]::-webkit-file-upload-button {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: push-button;&nbsp;<BR>&nbsp;&nbsp;&nbsp; white-space: 
+pre&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="button"], input[type="submit"], 
+input[type="reset"], input[type="file"]::-webkit-file-upload-button, button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-align: 
+center;&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-align: 
+center;&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: default;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+color: ButtonText;&nbsp;<BR>&nbsp;&nbsp;&nbsp; padding: 2px 6px 3px 
+6px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 2px outset 
+ButtonFace;&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: 
+ButtonFace;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="range"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+slider-horizontal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; padding: 
+initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 
+initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: 
+2px;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="range"]::-webkit-slider-thumb 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+sliderthumb-horizontal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="button"]:disabled, 
+input[type="submit"]:disabled, 
+input[type="reset"]:disabled,&nbsp;<BR>input[type="file"]:disabled::-webkit-file-upload-button, 
+button:disabled,&nbsp;<BR>select:disabled, keygen:disabled, optgroup:disabled, 
+option:disabled, datagrid:disabled {&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: 
+GrayText&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="button"]:active, 
+input[type="submit"]:active, input[type="reset"]:active, 
+input[type="file"]:active::-webkit-file-upload-button, button:active 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-style: 
+inset&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="button"]:active:disabled, 
+input[type="submit"]:active:disabled, input[type="reset"]:active:disabled, 
+input[type="file"]:active:disabled::-webkit-file-upload-button, 
+button:active:disabled {&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-style: 
+outset&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>area, param {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="checkbox"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+checkbox;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="radio"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+radio;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>select {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: menulist;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-align: 
+center;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 1px 
+solid;&nbsp;<BR>&nbsp;&nbsp;&nbsp; white-space: pre;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-rtl-ordering: logical;&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: 
+black;&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: 
+white;&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+default;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>select[size],&nbsp;<BR>select[multiple],&nbsp;<BR>select[size][multiple] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+listbox;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-align: 
+start;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 1px inset 
+gray;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 
+initial;&nbsp;<BR>&nbsp;&nbsp;&nbsp; white-space: 
+initial;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>select[size="0"],&nbsp;<BR>select[size="1"] 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+menulist;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-align: 
+center;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 1px 
+solid;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 
+5px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; white-space: 
+pre;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>optgroup {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-weight: bolder;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>option 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-weight: 
+normal;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>output {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: inline;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* form validation message bubble 
+*/&nbsp;<BR>&nbsp;<BR>::-webkit-validation-bubble {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; z-index: 
+2147483647;&nbsp;<BR>&nbsp;&nbsp;&nbsp; position: 
+absolute;&nbsp;<BR>&nbsp;&nbsp;&nbsp; opacity: 0.95;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+line-height: 0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-text-security: 
+none;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-transition: opacity 05.5s 
+ease;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>::-webkit-validation-bubble-message 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+position: relative;&nbsp;<BR>&nbsp;&nbsp;&nbsp; top: 
+-4px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font: message-box;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+color: black;&nbsp;<BR>&nbsp;&nbsp;&nbsp; min-width: 
+50px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; max-width: 200px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+border: solid 2px #400;&nbsp;<BR>&nbsp;&nbsp;&nbsp; background: 
+-webkit-gradient(linear, left top, left bottom, from(#f8ecec), 
+to(#e8cccc));&nbsp;<BR>&nbsp;&nbsp;&nbsp; padding: 
+8px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 
+8px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-shadow: 4px 4px 4px 
+rgba(100,100,100,0.6),&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inset 
+-2px -2px 1px #d0c4c4,&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inset 
+2px 2px 1px white;&nbsp;<BR>&nbsp;&nbsp;&nbsp; line-height: 
+normal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; z-index: 
+2147483644;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>::-webkit-validation-bubble-arrow 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+position: relative;&nbsp;<BR>&nbsp;&nbsp;&nbsp; left: 
+32px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; width: 16px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+height: 16px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: 
+#f8ecec;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-width: 2px 0 0 
+2px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-style: 
+solid;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-color: 
+#400;&nbsp;<BR>&nbsp;&nbsp;&nbsp; box-shadow: inset 2px 2px 1px 
+white;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-transform-origin: 0 
+0;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-transform: 
+rotate(45deg);&nbsp;<BR>&nbsp;&nbsp;&nbsp; z-index: 
+2147483645;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>::-webkit-validation-bubble-arrow-clipper 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+overflow: hidden;&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 
+16px;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* meter */&nbsp;<BR>&nbsp;<BR>meter 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+meter;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-box;&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+width: 5em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; vertical-align: 
+-0.2em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>meter::-webkit-meter-bar 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, 
+left bottom, from(#ddd), to(#ddd), color-stop(0.20, #eee), color-stop(0.45, 
+#ccc), color-stop(0.55, #ccc));&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>meter::-webkit-meter-optimum-value 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, 
+left bottom, from(#ad7), to(#ad7), color-stop(0.20, #cea), color-stop(0.45, 
+#7a3), color-stop(0.55, #7a3));&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>meter::-webkit-meter-suboptimum-value 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, 
+left bottom, from(#fe7), to(#fe7), color-stop(0.20, #ffc), color-stop(0.45, 
+#db3), color-stop(0.55, #db3));&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>meter::-webkit-meter-even-less-good-value 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, 
+left bottom, from(#f77), to(#f77), color-stop(0.20, #fcc), color-stop(0.45, 
+#d44), color-stop(0.55, #d44));&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* progress 
+*/&nbsp;<BR>&nbsp;<BR>progress {&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+progress-bar;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 
+1em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; width: 10em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: 
+-0.2em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>progress::-webkit-progress-bar 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: 
+gray;&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 100%;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: 
+border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>progress::-webkit-progress-value 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; background-color: 
+green;&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 100%;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+width: 50%; /* should be removed later */&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* datagrid 
+*/&nbsp;<BR>&nbsp;<BR>datagrid {&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 150px; /* 
+We don't use width:300px in CSS, since we want width:intrinsic and 
+width:min-intrinsic to reset to 300 properly. */&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: datagrid;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-rtl-ordering: 
+logical;&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: black;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: white;&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+default;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 1px inset 
+gray;&nbsp;<BR>&nbsp;&nbsp;&nbsp; white-space: 
+initial;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* inline elements 
+*/&nbsp;<BR>&nbsp;<BR>u, ins {&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-decoration: 
+underline&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>strong, b {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-weight: bolder&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>i, cite, em, var, address 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-style: 
+italic&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>tt, code, kbd, samp 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-family: 
+monospace&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>pre, xmp, plaintext, listing 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-family: monospace;&nbsp;<BR>&nbsp;&nbsp;&nbsp; white-space: 
+pre;&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: 1__qem 
+0&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>mark {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: yellow;&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: 
+black&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>big {&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+larger&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>small {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+font-size: smaller&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>s, strike, del 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-decoration: 
+line-through&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>sub {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: sub;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+smaller&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>sup {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: super;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+smaller&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>nobr {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+white-space: nowrap&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* states 
+*/&nbsp;<BR>&nbsp;<BR>:focus {&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp; outline: auto 
+5px -webkit-focus-ring-color&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* Read-only text 
+fields do not show a focus ring but do still receive focus 
+*/&nbsp;<BR>html:focus, body:focus, input[readonly]:focus 
+{&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp; outline: 
+none&nbsp;<BR>}&nbsp;<BR>&nbsp;&nbsp;&nbsp;<BR>input:focus, textarea:focus, 
+isindex:focus, keygen:focus, select:focus {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+outline-offset: 
+-2px&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>input[type="button"]:focus,&nbsp;<BR>input[type="checkbox"]:focus,&nbsp;<BR>input[type="file"]:focus,&nbsp;<BR>input[type="hidden"]:focus,&nbsp;<BR>input[type="image"]:focus,&nbsp;<BR>input[type="radio"]:focus,&nbsp;<BR>input[type="reset"]:focus,&nbsp;<BR>input[type="search"]:focus,&nbsp;<BR>input[type="submit"]:focus,&nbsp;<BR>input[type="file"]:focus::-webkit-file-upload-button 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; outline-offset: 
+0&nbsp;<BR>}&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>a:-webkit-any-link 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: -webkit-link;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+text-decoration: none;&nbsp;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+auto;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>a:-webkit-any-link:active 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; color: 
+-webkit-activelink&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* HTML5 ruby elements 
+*/&nbsp;<BR>&nbsp;<BR>ruby, rt {&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-indent: 0; /* 
+blocks used for ruby rendering should not trigger this 
+*/&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>rt {&nbsp;<BR>&nbsp;&nbsp;&nbsp; line-height: 
+normal;&nbsp;<BR>&nbsp;&nbsp;&nbsp; -webkit-text-emphasis: 
+none;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>ruby &gt; rt {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+50%;&nbsp;<BR>&nbsp;&nbsp;&nbsp; text-align: 
+-webkit-auto;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>ruby &gt; rp 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: none;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* 
+other elements */&nbsp;<BR>&nbsp;<BR>noframes {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: none&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>frameset, frame 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>frameset {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+border-color: inherit&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>iframe 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; border: 2px 
+inset&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>details {&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+display: block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>summary 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: 
+block&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>summary::-webkit-details-marker 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; display: inline-block;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+width: 0.66em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; height: 
+0.66em;&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin-right: 
+0.4em;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* page */&nbsp;<BR>&nbsp;<BR>@page 
+{&nbsp;<BR>&nbsp;&nbsp;&nbsp; /* FIXME: Define the right default values for page 
+properties. */&nbsp;<BR>&nbsp;&nbsp;&nbsp; size: 
+auto;&nbsp;<BR>&nbsp;&nbsp;&nbsp; margin: auto;&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+padding: 0px;&nbsp;<BR>&nbsp;&nbsp;&nbsp; border-width: 
+0px;&nbsp;<BR>}&nbsp;<BR>&nbsp;<BR>/* noscript is handled internally, as it 
+depends on settings */&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/*<BR>&nbsp;* 
+The default style sheet used to render HTML.<BR>&nbsp;*<BR>&nbsp;* Copyright (C) 
+2000 Lars Knoll (knoll@kde.org)<BR>&nbsp;* Copyright (C) 2003, 2004, 2005, 2006, 
+2007, 2008, 2009, 2010, 2011 Apple Inc. All rights 
+reserved.<BR>&nbsp;*<BR>&nbsp;* This library is free software; you can 
+redistribute it and/or<BR>&nbsp;* modify it under the terms of the GNU Library 
+General Public<BR>&nbsp;* License as published by the Free Software Foundation; 
+either<BR>&nbsp;* version 2 of the License, or (at your option) any later 
+version.<BR>&nbsp;*<BR>&nbsp;* This library is distributed in the hope that it 
+will be useful,<BR>&nbsp;* but WITHOUT ANY WARRANTY; without even the implied 
+warranty of<BR>&nbsp;* MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+PURPOSE.&nbsp; See the GNU<BR>&nbsp;* Library General Public License for more 
+details.<BR>&nbsp;*<BR>&nbsp;* You should have received a copy of the GNU 
+Library General Public License<BR>&nbsp;* along with this library; see the file 
+COPYING.LIB.&nbsp; If not, write to<BR>&nbsp;* the Free Software Foundation, 
+Inc., 51 Franklin Street, Fifth Floor,<BR>&nbsp;* Boston, MA 02110-1301, 
+USA.<BR>&nbsp;*<BR>&nbsp;*/</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">@namespace 
+"http://www.w3.org/1999/xhtml";</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">html 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+children of the &lt;head&gt; element all have display:none */<BR>head 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">meta 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">title 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">link 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">style 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">script 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+generic block-level elements */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">body 
+{<BR>&nbsp;&nbsp;&nbsp; background-repeat:no-repeat 
+!important;<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; margin: 
+8px<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">p 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 0;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">div 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">layer 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">article, 
+aside, footer, header, hgroup, nav, section {<BR>&nbsp;&nbsp;&nbsp; display: 
+block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">marquee 
+{<BR>&nbsp;&nbsp;&nbsp; display: inline-block;<BR>&nbsp;&nbsp;&nbsp; overflow: 
+-webkit-marquee<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">address 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">blockquote 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 40px;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 40px;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">figcaption 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">figure 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 40px;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 40px;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">q 
+{<BR>&nbsp;&nbsp;&nbsp; display: inline<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">q:before 
+{<BR>&nbsp;&nbsp;&nbsp; content: open-quote;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">q:after 
+{<BR>&nbsp;&nbsp;&nbsp; content: close-quote;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">center 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; /* special 
+centering to be able to emulate the html4/netscape behaviour 
+*/<BR>&nbsp;&nbsp;&nbsp; text-align: -webkit-center<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">hr 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 0.5em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+0.5em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: auto;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: auto;<BR>&nbsp;&nbsp;&nbsp; border-style: 
+inset;<BR>&nbsp;&nbsp;&nbsp; border-width: 1px<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">map 
+{<BR>&nbsp;&nbsp;&nbsp; display: inline<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+heading elements */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">h1 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+2em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+0.67__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+0.67em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 0;<BR>&nbsp;&nbsp;&nbsp; font-weight: bold<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">:-webkit-any(article,aside,nav,section) 
+h1 {<BR>&nbsp;&nbsp;&nbsp; font-size: 1.5em;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 0.83__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+0.83em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) h1 {<BR>&nbsp;&nbsp;&nbsp; font-size: 
+1.17em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 1em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+h1 {<BR>&nbsp;&nbsp;&nbsp; font-size: 1.00em;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1.33__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1.33em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) h1 {<BR>&nbsp;&nbsp;&nbsp; font-size: 
+.83em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1.67__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 1.67em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">:-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+:-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) 
+h1 {<BR>&nbsp;&nbsp;&nbsp; font-size: .67em;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 2.33__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+2.33em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">h2 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+1.5em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+0.83__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+0.83em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 0;<BR>&nbsp;&nbsp;&nbsp; font-weight: bold<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">h3 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+1.17em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 1em;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;<BR>&nbsp;&nbsp;&nbsp; font-weight: bold<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">h4 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1.33__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1.33em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 0;<BR>&nbsp;&nbsp;&nbsp; font-weight: bold<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">h5 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+.83em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1.67__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1.67em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 0;<BR>&nbsp;&nbsp;&nbsp; font-weight: bold<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">h6 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+.67em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+2.33__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+2.33em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 0;<BR>&nbsp;&nbsp;&nbsp; font-weight: bold<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+tables */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">table 
+{<BR>&nbsp;&nbsp;&nbsp; display: table;<BR>&nbsp;&nbsp;&nbsp; border-collapse: 
+separate;<BR>&nbsp;&nbsp;&nbsp; border-spacing: 2px;<BR>&nbsp;&nbsp;&nbsp; 
+border-color: gray<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">thead 
+{<BR>&nbsp;&nbsp;&nbsp; display: table-header-group;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: middle;<BR>&nbsp;&nbsp;&nbsp; border-color: inherit<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">tbody 
+{<BR>&nbsp;&nbsp;&nbsp; display: table-row-group;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: middle;<BR>&nbsp;&nbsp;&nbsp; border-color: inherit<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">tfoot 
+{<BR>&nbsp;&nbsp;&nbsp; display: table-footer-group;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: middle;<BR>&nbsp;&nbsp;&nbsp; border-color: inherit<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+for tables without table section elements (can happen with XHTML or dynamically 
+created tables) */<BR>table &gt; tr {<BR>&nbsp;&nbsp;&nbsp; vertical-align: 
+middle;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">col 
+{<BR>&nbsp;&nbsp;&nbsp; display: table-column<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">colgroup 
+{<BR>&nbsp;&nbsp;&nbsp; display: table-column-group<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">tr 
+{<BR>&nbsp;&nbsp;&nbsp; display: table-row;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: inherit;<BR>&nbsp;&nbsp;&nbsp; border-color: inherit<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">td, 
+th {<BR>&nbsp;&nbsp;&nbsp; display: table-cell;<BR>&nbsp;&nbsp;&nbsp; 
+vertical-align: inherit<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">th 
+{<BR>&nbsp;&nbsp;&nbsp; font-weight: bold<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">caption 
+{<BR>&nbsp;&nbsp;&nbsp; display: table-caption;<BR>&nbsp;&nbsp;&nbsp; 
+text-align: -webkit-center<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+lists */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ul, 
+menu, dir {<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+list-style-type: disc;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 1em;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-start: 40px<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ol 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; list-style-type: 
+decimal;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 1em;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+0;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-start: 40px<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">li 
+{<BR>&nbsp;&nbsp;&nbsp; display: list-item<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ul 
+ul, ol ul {<BR>&nbsp;&nbsp;&nbsp; list-style-type: circle<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ol 
+ol ul, ol ul ul, ul ol ul, ul ul ul {<BR>&nbsp;&nbsp;&nbsp; list-style-type: 
+square<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">dd 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-start: 40px<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">dl 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-before: 1__qem;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 
+1em;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-start: 0;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-end: 0;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">dt 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ol 
+ul, ul ol, ul ul, ol ol {<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-before: 
+0;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-after: 0<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+form elements */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">form 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; margin-top: 
+0__qem;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">label 
+{<BR>&nbsp;&nbsp;&nbsp; cursor: default;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">legend 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-padding-start: 2px;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-end: 
+2px;<BR>&nbsp;&nbsp;&nbsp; border: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">fieldset 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-margin-start: 2px;<BR>&nbsp;&nbsp;&nbsp; -webkit-margin-end: 
+2px;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-before: 0.35em;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-padding-start: 0.75em;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-end: 
+0.75em;<BR>&nbsp;&nbsp;&nbsp; -webkit-padding-after: 
+0.625em;<BR>&nbsp;&nbsp;&nbsp; border: 2px groove ThreeDFace<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">button 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: button;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+Form controls don't go vertical. */<BR>input, textarea, keygen, select, button, 
+isindex, meter, progress {<BR>&nbsp;&nbsp;&nbsp; -webkit-block-flow: tb 
+!important;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input, 
+textarea, keygen, select, button, isindex, datagrid {<BR>&nbsp;&nbsp;&nbsp; 
+margin: 0__qem;<BR>&nbsp;&nbsp;&nbsp; font: 
+-webkit-small-control;<BR>&nbsp;&nbsp;&nbsp; color: 
+initial;<BR>&nbsp;&nbsp;&nbsp; letter-spacing: normal;<BR>&nbsp;&nbsp;&nbsp; 
+word-spacing: normal;<BR>&nbsp;&nbsp;&nbsp; line-height: 
+normal;<BR>&nbsp;&nbsp;&nbsp; text-transform: none;<BR>&nbsp;&nbsp;&nbsp; 
+text-indent: 0;<BR>&nbsp;&nbsp;&nbsp; text-shadow: none;<BR>&nbsp;&nbsp;&nbsp; 
+display: inline-block;<BR>&nbsp;&nbsp;&nbsp; text-align: -webkit-auto;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="hidden"] 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input, 
+input[type="password"], input[type="search"], isindex {<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: textfield;<BR>&nbsp;&nbsp;&nbsp; padding: 
+1px;<BR>&nbsp;&nbsp;&nbsp; background-color: white;<BR>&nbsp;&nbsp;&nbsp; 
+border: 2px inset;<BR>&nbsp;&nbsp;&nbsp; -webkit-rtl-ordering: 
+logical;<BR>&nbsp;&nbsp;&nbsp; -webkit-user-select: text;<BR>&nbsp;&nbsp;&nbsp; 
+cursor: auto;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="search"] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: searchfield;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="search"]::-webkit-search-cancel-button 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-cancel-button;<BR>&nbsp;&nbsp;&nbsp; display: inline-block;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="search"]::-webkit-search-decoration 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-decoration;<BR>&nbsp;&nbsp;&nbsp; display: inline-block;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="search"]::-webkit-search-results-decoration 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-results-decoration;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="search"]::-webkit-search-results-button 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+searchfield-results-button;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input::-webkit-input-list-button 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: list-button;<BR>&nbsp;&nbsp;&nbsp; 
+display: inline-block;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input::-webkit-inner-spin-button 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+inner-spin-button;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;<BR>&nbsp;&nbsp;&nbsp; position: relative;<BR>&nbsp;&nbsp;&nbsp; 
+cursor: default;<BR>&nbsp;&nbsp;&nbsp; -webkit-user-select: none;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input::-webkit-outer-spin-button 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+outer-spin-button;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;<BR>&nbsp;&nbsp;&nbsp; position: relative;<BR>&nbsp;&nbsp;&nbsp; 
+cursor: default;<BR>&nbsp;&nbsp;&nbsp; margin-left: 2px;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-user-select: none;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input::-webkit-input-speech-button 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+-webkit-input-speech-button;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">keygen, 
+select {<BR>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 5px;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">keygen::-webkit-keygen-select 
+{<BR>&nbsp;&nbsp;&nbsp; margin: 0px;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">textarea 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: textarea;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: white;<BR>&nbsp;&nbsp;&nbsp; border: 1px 
+solid;<BR>&nbsp;&nbsp;&nbsp; -webkit-rtl-ordering: 
+logical;<BR>&nbsp;&nbsp;&nbsp; -webkit-user-select: text;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-orient: vertical;<BR>&nbsp;&nbsp;&nbsp; resize: 
+auto;<BR>&nbsp;&nbsp;&nbsp; cursor: auto;<BR>&nbsp;&nbsp;&nbsp; padding: 
+2px;<BR>&nbsp;&nbsp;&nbsp; white-space: pre-wrap;<BR>&nbsp;&nbsp;&nbsp; 
+word-wrap: break-word;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input::-webkit-input-placeholder, 
+isindex::-webkit-input-placeholder, textarea::-webkit-input-placeholder 
+{<BR>&nbsp;&nbsp;&nbsp; color: darkGray;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="password"] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-text-security: disc !important;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="hidden"], 
+input[type="image"], input[type="file"] {<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: initial;<BR>&nbsp;&nbsp;&nbsp; padding: 
+initial;<BR>&nbsp;&nbsp;&nbsp; background-color: initial;<BR>&nbsp;&nbsp;&nbsp; 
+border: initial;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="file"] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-box-align: baseline;<BR>&nbsp;&nbsp;&nbsp; 
+text-align: start !important;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input:-webkit-autofill 
+{<BR>&nbsp;&nbsp;&nbsp; background-color: #FAFFBD 
+!important;<BR>&nbsp;&nbsp;&nbsp; background-image:none 
+!important;<BR>&nbsp;&nbsp;&nbsp; color: #000000 !important;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="radio"], 
+input[type="checkbox"] {<BR>&nbsp;&nbsp;&nbsp; margin: 3px 
+0.5ex;<BR>&nbsp;&nbsp;&nbsp; padding: initial;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: initial;<BR>&nbsp;&nbsp;&nbsp; border: initial;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="button"], 
+input[type="submit"], input[type="reset"], 
+input[type="file"]::-webkit-file-upload-button {<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-appearance: push-button;<BR>&nbsp;&nbsp;&nbsp; white-space: pre<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="button"], 
+input[type="submit"], input[type="reset"], 
+input[type="file"]::-webkit-file-upload-button, button {<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-align: center;<BR>&nbsp;&nbsp;&nbsp; text-align: 
+center;<BR>&nbsp;&nbsp;&nbsp; cursor: default;<BR>&nbsp;&nbsp;&nbsp; color: 
+ButtonText;<BR>&nbsp;&nbsp;&nbsp; padding: 2px 6px 3px 
+6px;<BR>&nbsp;&nbsp;&nbsp; border: 2px outset ButtonFace;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: ButtonFace;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: 
+border-box<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="range"] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+slider-horizontal;<BR>&nbsp;&nbsp;&nbsp; padding: initial;<BR>&nbsp;&nbsp;&nbsp; 
+border: initial;<BR>&nbsp;&nbsp;&nbsp; margin: 2px;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="range"]::-webkit-slider-thumb 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: 
+sliderthumb-horizontal;<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="button"]:disabled, 
+input[type="submit"]:disabled, 
+input[type="reset"]:disabled,<BR>input[type="file"]:disabled::-webkit-file-upload-button, 
+button:disabled,<BR>select:disabled, keygen:disabled, optgroup:disabled, 
+option:disabled, datagrid:disabled {<BR>&nbsp;&nbsp;&nbsp; color: 
+GrayText<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="button"]:active, 
+input[type="submit"]:active, input[type="reset"]:active, 
+input[type="file"]:active::-webkit-file-upload-button, button:active 
+{<BR>&nbsp;&nbsp;&nbsp; border-style: inset<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="button"]:active:disabled, 
+input[type="submit"]:active:disabled, input[type="reset"]:active:disabled, 
+input[type="file"]:active:disabled::-webkit-file-upload-button, 
+button:active:disabled {<BR>&nbsp;&nbsp;&nbsp; border-style: outset<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">area, 
+param {<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="checkbox"] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: checkbox;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="radio"] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: radio;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">select 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: menulist;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-align: 
+center;<BR>&nbsp;&nbsp;&nbsp; border: 1px solid;<BR>&nbsp;&nbsp;&nbsp; 
+white-space: pre;<BR>&nbsp;&nbsp;&nbsp; -webkit-rtl-ordering: 
+logical;<BR>&nbsp;&nbsp;&nbsp; color: black;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: white;<BR>&nbsp;&nbsp;&nbsp; cursor: default;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">select[size],<BR>select[multiple],<BR>select[size][multiple] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: listbox;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-align: start;<BR>&nbsp;&nbsp;&nbsp; border: 1px inset 
+gray;<BR>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 
+initial;<BR>&nbsp;&nbsp;&nbsp; white-space: initial;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">select[size="0"],<BR>select[size="1"] 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: menulist;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-align: center;<BR>&nbsp;&nbsp;&nbsp; border: 1px 
+solid;<BR>&nbsp;&nbsp;&nbsp; -webkit-border-radius: 5px;<BR>&nbsp;&nbsp;&nbsp; 
+white-space: pre;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">optgroup 
+{<BR>&nbsp;&nbsp;&nbsp; font-weight: bolder;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">option 
+{<BR>&nbsp;&nbsp;&nbsp; font-weight: normal;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">output 
+{<BR>&nbsp;&nbsp;&nbsp; display: inline;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+form validation message bubble */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">::-webkit-validation-bubble 
+{<BR>&nbsp;&nbsp;&nbsp; display: inline-block;<BR>&nbsp;&nbsp;&nbsp; z-index: 
+2147483647;<BR>&nbsp;&nbsp;&nbsp; position: absolute;<BR>&nbsp;&nbsp;&nbsp; 
+opacity: 0.95;<BR>&nbsp;&nbsp;&nbsp; line-height: 0;<BR>&nbsp;&nbsp;&nbsp; 
+margin: 0;<BR>&nbsp;&nbsp;&nbsp; -webkit-text-security: 
+none;<BR>&nbsp;&nbsp;&nbsp; -webkit-transition: opacity 05.5s ease;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">::-webkit-validation-bubble-message 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; position: 
+relative;<BR>&nbsp;&nbsp;&nbsp; top: -4px;<BR>&nbsp;&nbsp;&nbsp; font: 
+message-box;<BR>&nbsp;&nbsp;&nbsp; color: black;<BR>&nbsp;&nbsp;&nbsp; 
+min-width: 50px;<BR>&nbsp;&nbsp;&nbsp; max-width: 200px;<BR>&nbsp;&nbsp;&nbsp; 
+border: solid 2px #400;<BR>&nbsp;&nbsp;&nbsp; background: 
+-webkit-gradient(linear, left top, left bottom, from(#f8ecec), 
+to(#e8cccc));<BR>&nbsp;&nbsp;&nbsp; padding: 8px;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-border-radius: 8px;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-shadow: 4px 4px 
+4px rgba(100,100,100,0.6),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inset 
+-2px -2px 1px #d0c4c4,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inset 2px 
+2px 1px white;<BR>&nbsp;&nbsp;&nbsp; line-height: normal;<BR>&nbsp;&nbsp;&nbsp; 
+z-index: 2147483644;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">::-webkit-validation-bubble-arrow 
+{<BR>&nbsp;&nbsp;&nbsp; display: inline-block;<BR>&nbsp;&nbsp;&nbsp; position: 
+relative;<BR>&nbsp;&nbsp;&nbsp; left: 32px;<BR>&nbsp;&nbsp;&nbsp; width: 
+16px;<BR>&nbsp;&nbsp;&nbsp; height: 16px;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: #f8ecec;<BR>&nbsp;&nbsp;&nbsp; border-width: 2px 0 0 
+2px;<BR>&nbsp;&nbsp;&nbsp; border-style: solid;<BR>&nbsp;&nbsp;&nbsp; 
+border-color: #400;<BR>&nbsp;&nbsp;&nbsp; box-shadow: inset 2px 2px 1px 
+white;<BR>&nbsp;&nbsp;&nbsp; -webkit-transform-origin: 0 
+0;<BR>&nbsp;&nbsp;&nbsp; -webkit-transform: rotate(45deg);<BR>&nbsp;&nbsp;&nbsp; 
+z-index: 2147483645;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">::-webkit-validation-bubble-arrow-clipper 
+{<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; overflow: 
+hidden;<BR>&nbsp;&nbsp;&nbsp; height: 16px;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+meter */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">meter 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: meter;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-box;<BR>&nbsp;&nbsp;&nbsp; height: 1em;<BR>&nbsp;&nbsp;&nbsp; width: 
+5em;<BR>&nbsp;&nbsp;&nbsp; vertical-align: -0.2em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">meter::-webkit-meter-bar 
+{<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, left 
+bottom, from(#ddd), to(#ddd), color-stop(0.20, #eee), color-stop(0.45, #ccc), 
+color-stop(0.55, #ccc));<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">meter::-webkit-meter-optimum-value 
+{<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, left 
+bottom, from(#ad7), to(#ad7), color-stop(0.20, #cea), color-stop(0.45, #7a3), 
+color-stop(0.55, #7a3));<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">meter::-webkit-meter-suboptimum-value 
+{<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, left 
+bottom, from(#fe7), to(#fe7), color-stop(0.20, #ffc), color-stop(0.45, #db3), 
+color-stop(0.55, #db3));<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">meter::-webkit-meter-even-less-good-value 
+{<BR>&nbsp;&nbsp;&nbsp; background: -webkit-gradient(linear, left top, left 
+bottom, from(#f77), to(#f77), color-stop(0.20, #fcc), color-stop(0.45, #d44), 
+color-stop(0.55, #d44));<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+progress */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">progress 
+{<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: progress-bar;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;<BR>&nbsp;&nbsp;&nbsp; display: 
+inline-block;<BR>&nbsp;&nbsp;&nbsp; height: 1em;<BR>&nbsp;&nbsp;&nbsp; width: 
+10em;<BR>&nbsp;&nbsp;&nbsp; vertical-align: -0.2em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">progress::-webkit-progress-bar 
+{<BR>&nbsp;&nbsp;&nbsp; background-color: gray;<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">progress::-webkit-progress-value 
+{<BR>&nbsp;&nbsp;&nbsp; background-color: green;<BR>&nbsp;&nbsp;&nbsp; height: 
+100%;<BR>&nbsp;&nbsp;&nbsp; width: 50%; /* should be removed later 
+*/<BR>&nbsp;&nbsp;&nbsp; -webkit-box-sizing: border-box;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+datagrid */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">datagrid 
+{<BR>&nbsp;&nbsp;&nbsp; height: 150px; /* We don't use width:300px in CSS, since 
+we want width:intrinsic and width:min-intrinsic to reset to 300 properly. 
+*/<BR>&nbsp;&nbsp;&nbsp; -webkit-appearance: datagrid;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-box-sizing: border-box;<BR>&nbsp;&nbsp;&nbsp; -webkit-rtl-ordering: 
+logical;<BR>&nbsp;&nbsp;&nbsp; color: black;<BR>&nbsp;&nbsp;&nbsp; 
+background-color: white;<BR>&nbsp;&nbsp;&nbsp; cursor: 
+default;<BR>&nbsp;&nbsp;&nbsp; border: 1px inset gray;<BR>&nbsp;&nbsp;&nbsp; 
+white-space: initial;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+inline elements */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">u, 
+ins {<BR>&nbsp;&nbsp;&nbsp; text-decoration: underline<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">strong, 
+b {<BR>&nbsp;&nbsp;&nbsp; font-weight: bolder<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">i, 
+cite, em, var, address {<BR>&nbsp;&nbsp;&nbsp; font-style: italic<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">tt, 
+code, kbd, samp {<BR>&nbsp;&nbsp;&nbsp; font-family: monospace<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">pre, 
+xmp, plaintext, listing {<BR>&nbsp;&nbsp;&nbsp; display: 
+block;<BR>&nbsp;&nbsp;&nbsp; font-family: monospace;<BR>&nbsp;&nbsp;&nbsp; 
+white-space: pre;<BR>&nbsp;&nbsp;&nbsp; margin: 1__qem 0<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">mark 
+{<BR>&nbsp;&nbsp;&nbsp; background-color: yellow;<BR>&nbsp;&nbsp;&nbsp; color: 
+black<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">big 
+{<BR>&nbsp;&nbsp;&nbsp; font-size: larger<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">small 
+{<BR>&nbsp;&nbsp;&nbsp; font-size: smaller<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">s, 
+strike, del {<BR>&nbsp;&nbsp;&nbsp; text-decoration: line-through<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">sub 
+{<BR>&nbsp;&nbsp;&nbsp; vertical-align: sub;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+smaller<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">sup 
+{<BR>&nbsp;&nbsp;&nbsp; vertical-align: super;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+smaller<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">nobr 
+{<BR>&nbsp;&nbsp;&nbsp; white-space: nowrap<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+states */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">:focus 
+{<BR>&nbsp;&nbsp;&nbsp; outline: auto 5px -webkit-focus-ring-color<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+Read-only text fields do not show a focus ring but do still receive focus 
+*/<BR>html:focus, body:focus, input[readonly]:focus {<BR>&nbsp;&nbsp;&nbsp; 
+outline: none<BR>}<BR>&nbsp;<BR>input:focus, textarea:focus, isindex:focus, 
+keygen:focus, select:focus {<BR>&nbsp;&nbsp;&nbsp; outline-offset: -2px<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">input[type="button"]:focus,<BR>input[type="checkbox"]:focus,<BR>input[type="file"]:focus,<BR>input[type="hidden"]:focus,<BR>input[type="image"]:focus,<BR>input[type="radio"]:focus,<BR>input[type="reset"]:focus,<BR>input[type="search"]:focus,<BR>input[type="submit"]:focus,<BR>input[type="file"]:focus::-webkit-file-upload-button 
+{<BR>&nbsp;&nbsp;&nbsp; outline-offset: 
+0<BR>}<BR>&nbsp;&nbsp;&nbsp;<BR>a:-webkit-any-link {<BR>&nbsp;&nbsp;&nbsp; 
+color: -webkit-link;<BR>&nbsp;&nbsp;&nbsp; text-decoration: 
+none;<BR>&nbsp;&nbsp;&nbsp; cursor: auto;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">a:-webkit-any-link:active 
+{<BR>&nbsp;&nbsp;&nbsp; color: -webkit-activelink<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+HTML5 ruby elements */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ruby, 
+rt {<BR>&nbsp;&nbsp;&nbsp; text-indent: 0; /* blocks used for ruby rendering 
+should not trigger this */<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">rt 
+{<BR>&nbsp;&nbsp;&nbsp; line-height: normal;<BR>&nbsp;&nbsp;&nbsp; 
+-webkit-text-emphasis: none;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ruby 
+&gt; rt {<BR>&nbsp;&nbsp;&nbsp; display: block;<BR>&nbsp;&nbsp;&nbsp; font-size: 
+50%;<BR>&nbsp;&nbsp;&nbsp; text-align: -webkit-auto;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">ruby 
+&gt; rp {<BR>&nbsp;&nbsp;&nbsp; display: none;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+other elements */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">noframes 
+{<BR>&nbsp;&nbsp;&nbsp; display: none<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">frameset, 
+frame {<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">frameset 
+{<BR>&nbsp;&nbsp;&nbsp; border-color: inherit<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">iframe 
+{<BR>&nbsp;&nbsp;&nbsp; border: 2px inset<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">details 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">summary 
+{<BR>&nbsp;&nbsp;&nbsp; display: block<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">summary::-webkit-details-marker 
+{<BR>&nbsp;&nbsp;&nbsp; display: inline-block;<BR>&nbsp;&nbsp;&nbsp; width: 
+0.66em;<BR>&nbsp;&nbsp;&nbsp; height: 0.66em;<BR>&nbsp;&nbsp;&nbsp; 
+margin-right: 0.4em;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+page */</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">@page 
+{<BR>&nbsp;&nbsp;&nbsp; /* FIXME: Define the right default values for page 
+properties. */<BR>&nbsp;&nbsp;&nbsp; size: auto;<BR>&nbsp;&nbsp;&nbsp; margin: 
+auto;<BR>&nbsp;&nbsp;&nbsp; padding: 0px;<BR>&nbsp;&nbsp;&nbsp; border-width: 
+0px;<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/* 
+noscript is handled internally, as it depends on settings 
+*/<BR>上面的就是webkit的css默认表，上面都是一些常见的css默认样式</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">那么这个文件是如何加载到webcore中那？</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">按照我们猜测有可能是浏览器启动的时候直接加载进去，如同在页面里面直接加载使用</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">如同下面的例子：</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>[html] 
+view 
+plaincopyprint?&lt;head&gt;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;link rel="stylesheet" type="text/css" href="<A 
+href="http://www.dreamdu.com/style.css">http://www.dreamdu.com/style.css</A>" 
+/&gt;&nbsp;<BR>&lt;/head&gt;&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt;head&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;link rel="stylesheet" type="text/css" href="<A 
+href="http://www.dreamdu.com/style.css">http://www.dreamdu.com/style.css</A>" 
+/&gt;<BR>&lt;/head&gt;实际上webcore中的使用有点类似，但是形式不一样。</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">下面我们就简单说一下如何把html.css文件加载到webcore内部中</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">首先我们看到(android/external/webkit/Source/WebCore/Android.derived.mk)</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">我们看下里面的脚本代码：</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>[plain] 
+view plaincopyprint?# user agent style sheets&nbsp;<BR>&nbsp;<BR>style_sheets := 
+$(LOCAL_PATH)/css/html.css $(LOCAL_PATH)/css/quirks.css 
+$(LOCAL_PATH)/css/fullscreen.css $(LOCAL_PATH)/css/view-source.css 
+$(LOCAL_PATH)/css/mediaControls.css $(LOCAL_PATH)/css/mediaControlsAndroid.css 
+$(LOCAL_PATH)/css/guangxidvb.css $(LOCAL_PATH)/css/guangxivod.css&nbsp;<BR>ifeq 
+($(ENABLE_SVG), true)&nbsp;<BR>style_sheets := $(style_sheets) 
+$(LOCAL_PATH)/css/svg.css&nbsp;<BR>endif&nbsp;<BR>GEN := 
+$(intermediates)/css/UserAgentStyleSheets.h&nbsp;<BR>make_css_file_arrays := 
+$(LOCAL_PATH)/css/make-css-file-arrays.pl&nbsp;<BR>$(GEN): PRIVATE_CUSTOM_TOOL = 
+$&lt; $@ $(basename<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+href="mailto:$@).cpp">$@).cpp</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>$(filter %.css,$^)&nbsp;<BR>$(GEN): 
+$(make_css_file_arrays) 
+$(style_sheets)&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$(transform-generated-source)&nbsp;<BR>LOCAL_GENERATED_SOURCES += $(GEN) 
+$(GEN:%.h=%.cpp)&nbsp;<BR>&nbsp;<BR># character set name table&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"># 
+user agent style sheets</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">style_sheets 
+:= $(LOCAL_PATH)/css/html.css $(LOCAL_PATH)/css/quirks.css 
+$(LOCAL_PATH)/css/fullscreen.css $(LOCAL_PATH)/css/view-source.css 
+$(LOCAL_PATH)/css/mediaControls.css $(LOCAL_PATH)/css/mediaControlsAndroid.css 
+$(LOCAL_PATH)/css/guangxidvb.css $(LOCAL_PATH)/css/guangxivod.css<BR>ifeq 
+($(ENABLE_SVG), true)<BR>style_sheets := $(style_sheets) 
+$(LOCAL_PATH)/css/svg.css<BR>endif<BR>GEN := 
+$(intermediates)/css/UserAgentStyleSheets.h<BR>make_css_file_arrays := 
+$(LOCAL_PATH)/css/make-css-file-arrays.pl<BR>$(GEN): PRIVATE_CUSTOM_TOOL = $&lt; 
+$@ $(basename<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+href="mailto:$@).cpp">$@).cpp</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>$(filter %.css,$^)<BR>$(GEN): 
+$(make_css_file_arrays) 
+$(style_sheets)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$(transform-generated-source)<BR>LOCAL_GENERATED_SOURCES += $(GEN) 
+$(GEN:%.h=%.cpp)</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"># 
+character set name table</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">webkit对<A 
+class=keylink href="http://www.2cto.com/kf/qianduan/css/" 
+target=_blank>html</A>.css做了个特殊的处理，会先把html.css文件转化成16机制的数字</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">具体生成在：</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">obj/STATIC_LIBRARIES/libwebcore_intermediates/Source/WebCore/css/UserAgentStyleSheets.h</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>[html] 
+view plaincopyprint?namespace WebCore {&nbsp;<BR>extern const char 
+htmlUserAgentStyleSheet[14912];&nbsp;<BR>extern const char 
+quirksUserAgentStyleSheet[351];&nbsp;<BR>extern const char 
+fullscreenUserAgentStyleSheet[509];&nbsp;<BR>extern const char 
+sourceUserAgentStyleSheet[2014];&nbsp;<BR>extern const char 
+mediaControlsUserAgentStyleSheet[4051];&nbsp;<BR>extern const char 
+mediaControlsAndroidUserAgentStyleSheet[2812];&nbsp;<BR>extern const char 
+guangxidvbUserAgentStyleSheet[14937];&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">namespace 
+WebCore {<BR>extern const char htmlUserAgentStyleSheet[14912];<BR>extern const 
+char quirksUserAgentStyleSheet[351];<BR>extern const char 
+fullscreenUserAgentStyleSheet[509];<BR>extern const char 
+sourceUserAgentStyleSheet[2014];<BR>extern const char 
+mediaControlsUserAgentStyleSheet[4051];<BR>extern const char 
+mediaControlsAndroidUserAgentStyleSheet[2812];<BR>extern const char 
+guangxidvbUserAgentStyleSheet[14937];<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">obj/STATIC_LIBRARIES/libwebcore_intermediates/Source/WebCore/css/UserAgentStyleSheets.cpp</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>namespace 
+WebCore {<BR>extern const char htmlUserAgentStyleSheet[14912] = 
+{<BR>&nbsp;&nbsp;&nbsp; 64, 110, 97, 109, 101, 115, 112, 97, 99, 101, 32, 34, 
+104, 116, 116, 112,<BR>&nbsp;&nbsp;&nbsp; 58, 47, 47, 119, 119, 119, 46, 119, 
+51, 46, 111, 114, 103, 47, 49, 57,<BR>&nbsp;&nbsp;&nbsp; 57, 57, 47, 120, 104, 
+116, 109, 108, 34, 59, 32, 104, 116, 109, 108, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 
+32, 100, 105, 115, 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 
+107,<BR>&nbsp;&nbsp;&nbsp; 32, 125, 32, 104, 101, 97, 100, 32, 123, 32, 100, 
+105, 115, 112, 108, 97,<BR>&nbsp;&nbsp;&nbsp; 121, 58, 32, 110, 111, 110, 101, 
+32, 125, 32, 109, 101, 116, 97, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 
+115, 112, 108, 97, 121, 58, 32, 110, 111, 110, 101, 32, 
+125,<BR>&nbsp;&nbsp;&nbsp; 32, 116, 105, 116, 108, 101, 32, 123, 32, 100, 105, 
+115, 112, 108, 97, 121,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 110, 111, 110, 101, 32, 
+125, 32, 108, 105, 110, 107, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 115, 
+112, 108, 97, 121, 58, 32, 110, 111, 110, 101, 32, 125, 
+32,<BR>&nbsp;&nbsp;&nbsp; 115, 116, 121, 108, 101, 32, 123, 32, 100, 105, 115, 
+112, 108, 97, 121, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 110, 111, 110, 101, 32, 125, 
+32, 115, 99, 114, 105, 112, 116, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 
+115, 112, 108, 97, 121, 58, 32, 110, 111, 110, 101, 32, 
+125,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 100, 121, 32, 123, 32, 98, 97, 99, 107, 
+103, 114, 111, 117,<BR>&nbsp;&nbsp;&nbsp; 110, 100, 45, 114, 101, 112, 101, 97, 
+116, 58, 110, 111, 45, 114, 101, 112,<BR>&nbsp;&nbsp;&nbsp; 101, 97, 116, 32, 
+33, 105, 109, 112, 111, 114, 116, 97, 110, 116, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 
+100, 105, 115, 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 114, 103, 105, 110, 58, 32, 56, 112, 120, 32, 
+125, 32, 112, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 100, 105, 115, 112, 108, 97, 
+121, 58, 32, 98, 108, 111, 99, 107,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 45, 119, 101, 
+98, 107, 105, 116, 45, 109, 97, 114, 103, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 45, 
+98, 101, 102, 111, 114, 101, 58, 32, 49, 95, 95, 113, 101, 109, 
+59,<BR>&nbsp;&nbsp;&nbsp; 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 
+103, 105, 110, 45,<BR>&nbsp;&nbsp;&nbsp; 97, 102, 116, 101, 114, 58, 32, 49, 95, 
+95, 113, 101, 109, 59, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 
+116, 45, 109, 97, 114, 103, 105, 110, 45, 115, 116,<BR>&nbsp;&nbsp;&nbsp; 97, 
+114, 116, 58, 32, 48, 59, 32, 45, 119, 101, 98, 107, 105, 116, 
+45,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 114, 103, 105, 110, 45, 101, 110, 100, 58, 
+32, 48, 59, 32, 125,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 118, 32, 123, 32, 100, 
+105, 115, 112, 108, 97, 121, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 108, 111, 99, 
+107, 32, 125, 32, 108, 97, 121, 101, 114, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 
+100, 105, 115, 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 32, 
+125,<BR>&nbsp;&nbsp;&nbsp; 32, 97, 114, 116, 105, 99, 108, 101, 44, 32, 97, 115, 
+105, 100, 101, 44,<BR>&nbsp;&nbsp;&nbsp; 32, 102, 111, 111, 116, 101, 114, 44, 
+32, 104, 101, 97, 100, 101, 114, 44,<BR>&nbsp;&nbsp;&nbsp; 32, 104, 103, 114, 
+111, 117, 112, 44, 32, 110, 97, 118, 44, 32, 115, 101,<BR>&nbsp;&nbsp;&nbsp; 99, 
+116, 105, 111, 110, 32, 123, 32, 100, 105, 115, 112, 108, 97, 121, 
+58,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 108, 111, 99, 107, 32, 125, 32, 109, 97, 114, 
+113, 117, 101, 101,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 100, 105, 115, 112, 108, 
+97, 121, 58, 32, 105, 110, 108, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 101, 45, 98, 
+108, 111, 99, 107, 59, 32, 111, 118, 101, 114, 102, 108,<BR>&nbsp;&nbsp;&nbsp; 
+111, 119, 58, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 
+113,<BR>&nbsp;&nbsp;&nbsp; 117, 101, 101, 32, 125, 32, 97, 100, 100, 114, 101, 
+115, 115, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 115, 112, 108, 97, 121, 
+58, 32, 98, 108, 111, 99, 107, 32, 125,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 108, 111, 
+99, 107, 113, 117, 111, 116, 101, 32, 123, 32, 100, 105,<BR>&nbsp;&nbsp;&nbsp; 
+115, 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 59, 32, 45, 
+119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 105, 
+110, 45, 98, 101, 102,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 101, 58, 32, 49, 95, 95, 
+113, 101, 109, 59, 32, 45, 119, 101,<BR>&nbsp;&nbsp;&nbsp; 98, 107, 105, 116, 
+45, 109, 97, 114, 103, 105, 110, 45, 97, 102, 116, 101,<BR>&nbsp;&nbsp;&nbsp; 
+114, 58, 32, 49, 101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 
+45,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 114, 103, 105, 110, 45, 115, 116, 97, 114, 
+116, 58, 32, 52, 48,<BR>&nbsp;&nbsp;&nbsp; 112, 120, 59, 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 109, 97, 114, 103,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 45, 101, 
+110, 100, 58, 32, 52, 48, 112, 120, 59, 32, 125, 32,<BR>&nbsp;&nbsp;&nbsp; 102, 
+105, 103, 99, 97, 112, 116, 105, 111, 110, 32, 123, 32, 100, 105, 
+115,<BR>&nbsp;&nbsp;&nbsp; 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 32, 
+125, 32, 102, 105,<BR>&nbsp;&nbsp;&nbsp; 103, 117, 114, 101, 32, 123, 32, 100, 
+105, 115, 112, 108, 97, 121, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 108, 111, 99, 
+107, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109,<BR>&nbsp;&nbsp;&nbsp; 97, 
+114, 103, 105, 110, 45, 98, 101, 102, 111, 114, 101, 58, 32, 49, 
+101,<BR>&nbsp;&nbsp;&nbsp; 109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 
+109, 97, 114, 103, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 45, 97, 102, 116, 101, 114, 
+58, 32, 49, 101, 109, 59, 32, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 
+116, 45, 109, 97, 114, 103, 105, 110, 45, 115, 116, 97,<BR>&nbsp;&nbsp;&nbsp; 
+114, 116, 58, 32, 52, 48, 112, 120, 59, 32, 45, 119, 101, 98, 107, 
+105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 109, 97, 114, 103, 105, 110, 45, 101, 110, 
+100, 58, 32, 52, 48,<BR>&nbsp;&nbsp;&nbsp; 112, 120, 59, 32, 125, 32, 113, 32, 
+123, 32, 100, 105, 115, 112, 108, 97,<BR>&nbsp;&nbsp;&nbsp; 121, 58, 32, 105, 
+110, 108, 105, 110, 101, 32, 125, 32, 113, 58, 98, 101,<BR>&nbsp;&nbsp;&nbsp; 
+102, 111, 114, 101, 32, 123, 32, 99, 111, 110, 116, 101, 110, 116, 58, 
+32,<BR>&nbsp;&nbsp;&nbsp; 111, 112, 101, 110, 45, 113, 117, 111, 116, 101, 59, 
+32, 125, 32, 113, 58,<BR>&nbsp;&nbsp;&nbsp; 97, 102, 116, 101, 114, 32, 123, 32, 
+99, 111, 110, 116, 101, 110, 116, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 99, 108, 111, 
+115, 101, 45, 113, 117, 111, 116, 101, 59, 32, 125, 32,<BR>&nbsp;&nbsp;&nbsp; 
+99, 101, 110, 116, 101, 114, 32, 123, 32, 100, 105, 115, 112, 108, 97, 
+121,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 98, 108, 111, 99, 107, 59, 32, 116, 101, 120, 
+116, 45, 97, 108,<BR>&nbsp;&nbsp;&nbsp; 105, 103, 110, 58, 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 99, 101, 110,<BR>&nbsp;&nbsp;&nbsp; 116, 101, 114, 32, 125, 
+32, 104, 114, 32, 123, 32, 100, 105, 115, 112, 108,<BR>&nbsp;&nbsp;&nbsp; 97, 
+121, 58, 32, 98, 108, 111, 99, 107, 59, 32, 45, 119, 101, 98, 
+107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 109, 97, 114, 103, 105, 110, 45, 98, 
+101, 102, 111, 114, 101,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 48, 46, 53, 101, 109, 59, 
+32, 45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 109, 97, 114, 
+103, 105, 110, 45, 97, 102, 116, 101, 114, 58, 32, 48,<BR>&nbsp;&nbsp;&nbsp; 46, 
+53, 101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 
+97,<BR>&nbsp;&nbsp;&nbsp; 114, 103, 105, 110, 45, 115, 116, 97, 114, 116, 58, 
+32, 97, 117, 116, 111,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 45, 119, 101, 98, 107, 105, 
+116, 45, 109, 97, 114, 103, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 45, 101, 110, 100, 
+58, 32, 97, 117, 116, 111, 59, 32, 98, 111, 114, 100,<BR>&nbsp;&nbsp;&nbsp; 101, 
+114, 45, 115, 116, 121, 108, 101, 58, 32, 105, 110, 115, 101, 116, 
+59,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 114, 100, 101, 114, 45, 119, 105, 100, 
+116, 104, 58, 32, 49,<BR>&nbsp;&nbsp;&nbsp; 112, 120, 32, 125, 32, 109, 97, 112, 
+32, 123, 32, 100, 105, 115, 112, 108,<BR>&nbsp;&nbsp;&nbsp; 97, 121, 58, 32, 
+105, 110, 108, 105, 110, 101, 32, 125, 32, 104, 49, 32,<BR>&nbsp;&nbsp;&nbsp; 
+123, 32, 100, 105, 115, 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 
+107,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 102, 111, 110, 116, 45, 115, 105, 122, 101, 
+58, 32, 50, 101, 109,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 45, 119, 101, 98, 107, 105, 
+116, 45, 109, 97, 114, 103, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 45, 98, 101, 102, 
+111, 114, 101, 58, 32, 48, 46, 54, 55, 95, 95, 113,<BR>&nbsp;&nbsp;&nbsp; 101, 
+109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 
+103,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 45, 97, 102, 116, 101, 114, 58, 32, 48, 46, 
+54, 55, 101, 109,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 45, 119, 101, 98, 107, 105, 116, 
+45, 109, 97, 114, 103, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 45, 115, 116, 97, 114, 
+116, 58, 32, 48, 59, 32, 45, 119, 101, 98, 107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 
+45, 109, 97, 114, 103, 105, 110, 45, 101, 110, 100, 58, 32, 
+48,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 102, 111, 110, 116, 45, 119, 101, 105, 103, 
+104, 116, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 111, 108, 100, 32, 125, 32, 58, 45, 
+119, 101, 98, 107, 105, 116, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 110, 121, 40, 97, 
+114, 116, 105, 99, 108, 101, 44, 97, 115, 105, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 
+44, 110, 97, 118, 44, 115, 101, 99, 116, 105, 111, 110, 41, 32, 104, 
+49,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 102, 111, 110, 116, 45, 115, 105, 122, 
+101, 58, 32, 49, 46,<BR>&nbsp;&nbsp;&nbsp; 53, 101, 109, 59, 32, 45, 119, 101, 
+98, 107, 105, 116, 45, 109, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 103, 105, 110, 45, 
+98, 101, 102, 111, 114, 101, 58, 32, 48, 46, 56, 51,<BR>&nbsp;&nbsp;&nbsp; 95, 
+95, 113, 101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 
+109,<BR>&nbsp;&nbsp;&nbsp; 97, 114, 103, 105, 110, 45, 97, 102, 116, 101, 114, 
+58, 32, 48, 46, 56,<BR>&nbsp;&nbsp;&nbsp; 51, 101, 109, 59, 32, 125, 32, 58, 45, 
+119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 97, 110, 121, 40, 97, 
+114, 116, 105, 99, 108, 101, 44, 97, 115, 105, 100,<BR>&nbsp;&nbsp;&nbsp; 101, 
+44, 110, 97, 118, 44, 115, 101, 99, 116, 105, 111, 110, 41, 32, 
+58,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 107, 105, 116, 45, 97, 110, 121, 40, 
+97, 114, 116, 105,<BR>&nbsp;&nbsp;&nbsp; 99, 108, 101, 44, 97, 115, 105, 100, 
+101, 44, 110, 97, 118, 44, 115, 101,<BR>&nbsp;&nbsp;&nbsp; 99, 116, 105, 111, 
+110, 41, 32, 104, 49, 32, 123, 32, 102, 111, 110, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 
+115, 105, 122, 101, 58, 32, 49, 46, 49, 55, 101, 109, 59, 32, 
+45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 
+105, 110, 45, 98, 101,<BR>&nbsp;&nbsp;&nbsp; 102, 111, 114, 101, 58, 32, 49, 95, 
+95, 113, 101, 109, 59, 32, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 
+116, 45, 109, 97, 114, 103, 105, 110, 45, 97, 102, 116,<BR>&nbsp;&nbsp;&nbsp; 
+101, 114, 58, 32, 49, 101, 109, 59, 32, 125, 32, 58, 45, 119, 101, 
+98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 97, 110, 121, 40, 97, 114, 116, 
+105, 99, 108, 101, 44,<BR>&nbsp;&nbsp;&nbsp; 97, 115, 105, 100, 101, 44, 110, 
+97, 118, 44, 115, 101, 99, 116, 105, 111,<BR>&nbsp;&nbsp;&nbsp; 110, 41, 32, 58, 
+45, 119, 101, 98, 107, 105, 116, 45, 97, 110, 121, 40,<BR>&nbsp;&nbsp;&nbsp; 97, 
+114, 116, 105, 99, 108, 101, 44, 97, 115, 105, 100, 101, 44, 110, 
+97,<BR>&nbsp;&nbsp;&nbsp; 118, 44, 115, 101, 99, 116, 105, 111, 110, 41, 32, 58, 
+45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 97, 110, 121, 40, 97, 
+114, 116, 105, 99, 108, 101, 44,<BR>&nbsp;&nbsp;&nbsp; 97, 115, 105, 100, 101, 
+44, 110, 97, 118, 44, 115, 101, 99, 116, 105, 111,<BR>&nbsp;&nbsp;&nbsp; 110, 
+41, 32, 104, 49, 32, 123, 32, 102, 111, 110, 116, 45, 115, 105, 
+122,<BR>&nbsp;&nbsp;&nbsp; 101, 58, 32, 49, 46, 48, 48, 101, 109, 59, 32, 45, 
+119, 101, 98, 107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 109, 97, 114, 103, 105, 
+110, 45, 98, 101, 102, 111, 114, 101,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 49, 46, 51, 
+51, 95, 95, 113, 101, 109, 59, 32, 45, 119, 101,<BR>&nbsp;&nbsp;&nbsp; 98, 107, 
+105, 116, 45, 109, 97, 114, 103, 105, 110, 45, 97, 102, 116, 
+101,<BR>&nbsp;&nbsp;&nbsp; 114, 58, 32, 49, 46, 51, 51, 101, 109, 59, 32, 125, 
+32, 58, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 116, 45, 97, 110, 121, 
+40, 97, 114, 116, 105, 99, 108,<BR>&nbsp;&nbsp;&nbsp; 101, 44, 97, 115, 105, 
+100, 101, 44, 110, 97, 118, 44, 115, 101, 99, 116,<BR>&nbsp;&nbsp;&nbsp; 105, 
+111, 110, 41, 32, 58, 45, 119, 101, 98, 107, 105, 116, 45, 97, 
+110,<BR>&nbsp;&nbsp;&nbsp; 121, 40, 97, 114, 116, 105, 99, 108, 101, 44, 97, 
+115, 105, 100, 101, 44,<BR>&nbsp;&nbsp;&nbsp; 110, 97, 118, 44, 115, 101, 99, 
+116, 105, 111, 110, 41, 32, 58, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 
+105, 116, 45, 97, 110, 121, 40, 97, 114, 116, 105, 99, 
+108,<BR>&nbsp;&nbsp;&nbsp; 101, 44, 97, 115, 105, 100, 101, 44, 110, 97, 118, 
+44, 115, 101, 99, 116,<BR>&nbsp;&nbsp;&nbsp; 105, 111, 110, 41, 32, 58, 45, 119, 
+101, 98, 107, 105, 116, 45, 97, 110,<BR>&nbsp;&nbsp;&nbsp; 121, 40, 97, 114, 
+116, 105, 99, 108, 101, 44, 97, 115, 105, 100, 101, 44,<BR>&nbsp;&nbsp;&nbsp; 
+110, 97, 118, 44, 115, 101, 99, 116, 105, 111, 110, 41, 32, 104, 49, 
+32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 102, 111, 110, 116, 45, 115, 105, 122, 101, 
+58, 32, 46, 56, 51,<BR>&nbsp;&nbsp;&nbsp; 101, 109, 59, 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 109, 97, 114, 103,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 45, 98, 
+101, 102, 111, 114, 101, 58, 32, 49, 46, 54, 55, 95,<BR>&nbsp;&nbsp;&nbsp; 95, 
+113, 101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 
+97,<BR>&nbsp;&nbsp;&nbsp; 114, 103, 105, 110, 45, 97, 102, 116, 101, 114, 58, 
+32, 49, 46, 54, 55,<BR>&nbsp;&nbsp;&nbsp; 101, 109, 59, 32, 125, 32, 58, 45, 
+119, 101, 98, 107, 105, 116, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 110, 121, 40, 97, 
+114, 116, 105, 99, 108, 101, 44, 97, 115, 105, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 
+44, 110, 97, 118, 44, 115, 101, 99, 116, 105, 111, 110, 41, 32, 58, 
+45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 97, 110, 121, 40, 97, 
+114, 116, 105, 99,<BR>&nbsp;&nbsp;&nbsp; 108, 101, 44, 97, 115, 105, 100, 101, 
+44, 110, 97, 118, 44, 115, 101, 99,<BR>&nbsp;&nbsp;&nbsp; 116, 105, 111, 110, 
+41, 32, 58, 45, 119, 101, 98, 107, 105, 116, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 110, 
+121, 40, 97, 114, 116, 105, 99, 108, 101, 44, 97, 115, 105, 100, 
+101,<BR>&nbsp;&nbsp;&nbsp; 44, 110, 97, 118, 44, 115, 101, 99, 116, 105, 111, 
+110, 41, 32, 58, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 97, 
+110, 121, 40, 97, 114, 116, 105, 99,<BR>&nbsp;&nbsp;&nbsp; 108, 101, 44, 97, 
+115, 105, 100, 101, 44, 110, 97, 118, 44, 115, 101, 99,<BR>&nbsp;&nbsp;&nbsp; 
+116, 105, 111, 110, 41, 32, 58, 45, 119, 101, 98, 107, 105, 116, 45, 
+97,<BR>&nbsp;&nbsp;&nbsp; 110, 121, 40, 97, 114, 116, 105, 99, 108, 101, 44, 97, 
+115, 105, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 44, 110, 97, 118, 44, 115, 101, 99, 
+116, 105, 111, 110, 41, 32, 104, 49,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 102, 
+111, 110, 116, 45, 115, 105, 122, 101, 58, 32, 46, 54,<BR>&nbsp;&nbsp;&nbsp; 55, 
+101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 
+114,<BR>&nbsp;&nbsp;&nbsp; 103, 105, 110, 45, 98, 101, 102, 111, 114, 101, 58, 
+32, 50, 46, 51, 51,<BR>&nbsp;&nbsp;&nbsp; 95, 95, 113, 101, 109, 59, 32, 45, 
+119, 101, 98, 107, 105, 116, 45, 109,<BR>&nbsp;&nbsp;&nbsp; 97, 114, 103, 105, 
+110, 45, 97, 102, 116, 101, 114, 58, 32, 50, 46, 51,<BR>&nbsp;&nbsp;&nbsp; 51, 
+101, 109, 59, 32, 125, 32, 104, 50, 32, 123, 32, 100, 105, 115, 
+112,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 59, 32, 
+102, 111, 110, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 115, 105, 122, 101, 58, 32, 49, 
+46, 53, 101, 109, 59, 32, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 116, 
+45, 109, 97, 114, 103, 105, 110, 45, 98, 101, 102,<BR>&nbsp;&nbsp;&nbsp; 111, 
+114, 101, 58, 32, 48, 46, 56, 51, 95, 95, 113, 101, 109, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 
+103, 105, 110, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 102, 116, 101, 114, 58, 32, 48, 46, 
+56, 51, 101, 109, 59, 32, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 116, 
+45, 109, 97, 114, 103, 105, 110, 45, 115, 116, 97,<BR>&nbsp;&nbsp;&nbsp; 114, 
+116, 58, 32, 48, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 
+109,<BR>&nbsp;&nbsp;&nbsp; 97, 114, 103, 105, 110, 45, 101, 110, 100, 58, 32, 
+48, 59, 32, 102, 111,<BR>&nbsp;&nbsp;&nbsp; 110, 116, 45, 119, 101, 105, 103, 
+104, 116, 58, 32, 98, 111, 108, 100, 32,<BR>&nbsp;&nbsp;&nbsp; 125, 32, 104, 51, 
+32, 123, 32, 100, 105, 115, 112, 108, 97, 121, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 
+108, 111, 99, 107, 59, 32, 102, 111, 110, 116, 45, 115, 105, 122, 
+101,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 49, 46, 49, 55, 101, 109, 59, 32, 45, 119, 
+101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 109, 97, 114, 103, 105, 110, 
+45, 98, 101, 102, 111, 114, 101, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 49, 95, 95, 113, 
+101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 
+109, 97, 114, 103, 105, 110, 45, 97, 102, 116, 101, 114, 58, 32, 
+49,<BR>&nbsp;&nbsp;&nbsp; 101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 
+109, 97, 114, 103,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 45, 115, 116, 97, 114, 116, 
+58, 32, 48, 59, 32, 45, 119, 101,<BR>&nbsp;&nbsp;&nbsp; 98, 107, 105, 116, 45, 
+109, 97, 114, 103, 105, 110, 45, 101, 110, 100, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 
+48, 59, 32, 102, 111, 110, 116, 45, 119, 101, 105, 103, 104, 116, 
+58,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 108, 100, 32, 125, 32, 104, 52, 32, 123, 
+32, 100, 105, 115,<BR>&nbsp;&nbsp;&nbsp; 112, 108, 97, 121, 58, 32, 98, 108, 
+111, 99, 107, 59, 32, 45, 119, 101,<BR>&nbsp;&nbsp;&nbsp; 98, 107, 105, 116, 45, 
+109, 97, 114, 103, 105, 110, 45, 98, 101, 102, 111,<BR>&nbsp;&nbsp;&nbsp; 114, 
+101, 58, 32, 49, 46, 51, 51, 95, 95, 113, 101, 109, 59, 32, 
+45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 
+105, 110, 45, 97, 102,<BR>&nbsp;&nbsp;&nbsp; 116, 101, 114, 58, 32, 49, 46, 51, 
+51, 101, 109, 59, 32, 45, 119, 101,<BR>&nbsp;&nbsp;&nbsp; 98, 107, 105, 116, 45, 
+109, 97, 114, 103, 105, 110, 45, 115, 116, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 116, 
+58, 32, 48, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 
+97,<BR>&nbsp;&nbsp;&nbsp; 114, 103, 105, 110, 45, 101, 110, 100, 58, 32, 48, 59, 
+32, 102, 111, 110,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 119, 101, 105, 103, 104, 116, 
+58, 32, 98, 111, 108, 100, 32, 125,<BR>&nbsp;&nbsp;&nbsp; 32, 104, 53, 32, 123, 
+32, 100, 105, 115, 112, 108, 97, 121, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 
+111, 99, 107, 59, 32, 102, 111, 110, 116, 45, 115, 105, 122, 101, 
+58,<BR>&nbsp;&nbsp;&nbsp; 32, 46, 56, 51, 101, 109, 59, 32, 45, 119, 101, 98, 
+107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 114, 103, 105, 110, 45, 98, 
+101, 102, 111, 114, 101, 58, 32, 49,<BR>&nbsp;&nbsp;&nbsp; 46, 54, 55, 95, 95, 
+113, 101, 109, 59, 32, 45, 119, 101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 
+45, 109, 97, 114, 103, 105, 110, 45, 97, 102, 116, 101, 114, 58, 
+32,<BR>&nbsp;&nbsp;&nbsp; 49, 46, 54, 55, 101, 109, 59, 32, 45, 119, 101, 98, 
+107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 114, 103, 105, 110, 45, 115, 
+116, 97, 114, 116, 58, 32, 48, 59,<BR>&nbsp;&nbsp;&nbsp; 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 109, 97, 114, 103, 105, 110, 45,<BR>&nbsp;&nbsp;&nbsp; 101, 
+110, 100, 58, 32, 48, 59, 32, 102, 111, 110, 116, 45, 119, 101, 
+105,<BR>&nbsp;&nbsp;&nbsp; 103, 104, 116, 58, 32, 98, 111, 108, 100, 32, 125, 
+32, 104, 54, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 115, 112, 108, 97, 
+121, 58, 32, 98, 108, 111, 99, 107, 59,<BR>&nbsp;&nbsp;&nbsp; 32, 102, 111, 110, 
+116, 45, 115, 105, 122, 101, 58, 32, 46, 54, 55, 101,<BR>&nbsp;&nbsp;&nbsp; 109, 
+59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 45, 98, 101, 102, 111, 114, 101, 58, 32, 50, 46, 
+51, 51, 95, 95,<BR>&nbsp;&nbsp;&nbsp; 113, 101, 109, 59, 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 109, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 103, 105, 110, 45, 97, 
+102, 116, 101, 114, 58, 32, 50, 46, 51, 51, 101,<BR>&nbsp;&nbsp;&nbsp; 109, 59, 
+32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 45, 115, 116, 97, 114, 116, 58, 32, 48, 59, 32, 
+45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 109, 97, 114, 103, 
+105, 110, 45, 101, 110, 100, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 48, 59, 32, 102, 111, 
+110, 116, 45, 119, 101, 105, 103, 104, 116, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 
+111, 108, 100, 32, 125, 32, 116, 97, 98, 108, 101, 32, 123, 32, 
+100,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 112, 108, 97, 121, 58, 32, 116, 97, 98, 
+108, 101, 59, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 100, 101, 114, 45, 99, 
+111, 108, 108, 97, 112, 115, 101, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 115, 101, 112, 
+97, 114, 97, 116, 101, 59, 32, 98, 111, 114, 100, 101, 
+114,<BR>&nbsp;&nbsp;&nbsp; 45, 115, 112, 97, 99, 105, 110, 103, 58, 32, 50, 112, 
+120, 59, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 100, 101, 114, 45, 99, 111, 
+108, 111, 114, 58, 32, 103, 114, 97,<BR>&nbsp;&nbsp;&nbsp; 121, 32, 125, 32, 
+116, 104, 101, 97, 100, 32, 123, 32, 100, 105, 115, 112,<BR>&nbsp;&nbsp;&nbsp; 
+108, 97, 121, 58, 32, 116, 97, 98, 108, 101, 45, 104, 101, 97, 100, 
+101,<BR>&nbsp;&nbsp;&nbsp; 114, 45, 103, 114, 111, 117, 112, 59, 32, 118, 101, 
+114, 116, 105, 99, 97,<BR>&nbsp;&nbsp;&nbsp; 108, 45, 97, 108, 105, 103, 110, 
+58, 32, 109, 105, 100, 100, 108, 101, 59,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 
+114, 100, 101, 114, 45, 99, 111, 108, 111, 114, 58, 32, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 104, 101, 114, 105, 116, 32, 125, 32, 116, 98, 
+111, 100, 121, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 115, 112, 108, 97, 
+121, 58, 32, 116, 97, 98, 108, 101, 45,<BR>&nbsp;&nbsp;&nbsp; 114, 111, 119, 45, 
+103, 114, 111, 117, 112, 59, 32, 118, 101, 114, 116, 105,<BR>&nbsp;&nbsp;&nbsp; 
+99, 97, 108, 45, 97, 108, 105, 103, 110, 58, 32, 109, 105, 100, 100, 
+108,<BR>&nbsp;&nbsp;&nbsp; 101, 59, 32, 98, 111, 114, 100, 101, 114, 45, 99, 
+111, 108, 111, 114, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 105, 110, 104, 101, 114, 105, 
+116, 32, 125, 32, 116, 102, 111, 111, 116,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 
+100, 105, 115, 112, 108, 97, 121, 58, 32, 116, 97, 98, 
+108,<BR>&nbsp;&nbsp;&nbsp; 101, 45, 102, 111, 111, 116, 101, 114, 45, 103, 114, 
+111, 117, 112, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 118, 101, 114, 116, 105, 99, 97, 
+108, 45, 97, 108, 105, 103, 110, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 109, 105, 100, 
+100, 108, 101, 59, 32, 98, 111, 114, 100, 101, 114, 45, 
+99,<BR>&nbsp;&nbsp;&nbsp; 111, 108, 111, 114, 58, 32, 105, 110, 104, 101, 114, 
+105, 116, 32, 125, 32,<BR>&nbsp;&nbsp;&nbsp; 116, 97, 98, 108, 101, 32, 62, 32, 
+116, 114, 32, 123, 32, 118, 101, 114,<BR>&nbsp;&nbsp;&nbsp; 116, 105, 99, 97, 
+108, 45, 97, 108, 105, 103, 110, 58, 32, 109, 105, 100,<BR>&nbsp;&nbsp;&nbsp; 
+100, 108, 101, 59, 32, 125, 32, 99, 111, 108, 32, 123, 32, 100, 105, 
+115,<BR>&nbsp;&nbsp;&nbsp; 112, 108, 97, 121, 58, 32, 116, 97, 98, 108, 101, 45, 
+99, 111, 108, 117,<BR>&nbsp;&nbsp;&nbsp; 109, 110, 32, 125, 32, 99, 111, 108, 
+103, 114, 111, 117, 112, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 115, 112, 
+108, 97, 121, 58, 32, 116, 97, 98, 108, 101, 45, 99,<BR>&nbsp;&nbsp;&nbsp; 111, 
+108, 117, 109, 110, 45, 103, 114, 111, 117, 112, 32, 125, 32, 116, 
+114,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 100, 105, 115, 112, 108, 97, 121, 58, 
+32, 116, 97, 98, 108,<BR>&nbsp;&nbsp;&nbsp; 101, 45, 114, 111, 119, 59, 32, 118, 
+101, 114, 116, 105, 99, 97, 108, 45,<BR>&nbsp;&nbsp;&nbsp; 97, 108, 105, 103, 
+110, 58, 32, 105, 110, 104, 101, 114, 105, 116, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 
+98, 111, 114, 100, 101, 114, 45, 99, 111, 108, 111, 114, 58, 32, 105, 
+110,<BR>&nbsp;&nbsp;&nbsp; 104, 101, 114, 105, 116, 32, 125, 32, 116, 100, 44, 
+32, 116, 104, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 115, 112, 108, 97, 
+121, 58, 32, 116, 97, 98, 108, 101, 45,<BR>&nbsp;&nbsp;&nbsp; 99, 101, 108, 108, 
+59, 32, 118, 101, 114, 116, 105, 99, 97, 108, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 108, 
+105, 103, 110, 58, 32, 105, 110, 104, 101, 114, 105, 116, 32, 125, 
+32,<BR>&nbsp;&nbsp;&nbsp; 116, 104, 32, 123, 32, 102, 111, 110, 116, 45, 119, 
+101, 105, 103, 104, 116,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 98, 111, 108, 100, 32, 
+125, 32, 99, 97, 112, 116, 105, 111, 110,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 
+100, 105, 115, 112, 108, 97, 121, 58, 32, 116, 97, 98, 
+108,<BR>&nbsp;&nbsp;&nbsp; 101, 45, 99, 97, 112, 116, 105, 111, 110, 59, 32, 
+116, 101, 120, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 97, 108, 105, 103, 110, 58, 32, 
+45, 119, 101, 98, 107, 105, 116, 45, 99,<BR>&nbsp;&nbsp;&nbsp; 101, 110, 116, 
+101, 114, 32, 125, 32, 117, 108, 44, 32, 109, 101, 110, 
+117,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 100, 105, 114, 32, 123, 32, 100, 105, 115, 
+112, 108, 97, 121, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 108, 111, 99, 107, 59, 32, 
+108, 105, 115, 116, 45, 115, 116, 121,<BR>&nbsp;&nbsp;&nbsp; 108, 101, 45, 116, 
+121, 112, 101, 58, 32, 100, 105, 115, 99, 59, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 
+101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 105, 110, 45, 98, 
+101,<BR>&nbsp;&nbsp;&nbsp; 102, 111, 114, 101, 58, 32, 49, 95, 95, 113, 101, 
+109, 59, 32, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 116, 45, 109, 97, 
+114, 103, 105, 110, 45, 97, 102, 116,<BR>&nbsp;&nbsp;&nbsp; 101, 114, 58, 32, 
+49, 101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 
+109, 97, 114, 103, 105, 110, 45, 115, 116, 97, 114, 116, 58, 32, 
+48,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 
+114, 103, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 45, 101, 110, 100, 58, 32, 48, 59, 32, 
+45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 112, 97, 100, 100, 
+105, 110, 103, 45, 115, 116, 97, 114, 116, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 52, 48, 
+112, 120, 32, 125, 32, 111, 108, 32, 123, 32, 100, 105, 115, 
+112,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 59, 32, 
+108, 105, 115, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 115, 116, 121, 108, 101, 45, 116, 
+121, 112, 101, 58, 32, 100, 101, 99,<BR>&nbsp;&nbsp;&nbsp; 105, 109, 97, 108, 
+59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 109, 97,<BR>&nbsp;&nbsp;&nbsp; 114, 
+103, 105, 110, 45, 98, 101, 102, 111, 114, 101, 58, 32, 49, 95, 
+95,<BR>&nbsp;&nbsp;&nbsp; 113, 101, 109, 59, 32, 45, 119, 101, 98, 107, 105, 
+116, 45, 109, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 103, 105, 110, 45, 97, 102, 116, 
+101, 114, 58, 32, 49, 101, 109, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 
+107, 105, 116, 45, 109, 97, 114, 103, 105, 110, 45, 115,<BR>&nbsp;&nbsp;&nbsp; 
+116, 97, 114, 116, 58, 32, 48, 59, 32, 45, 119, 101, 98, 107, 105, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 109, 97, 114, 103, 105, 110, 45, 101, 110, 100, 
+58, 32, 48, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 107, 105, 116, 45, 
+112, 97, 100, 100, 105, 110, 103, 45,<BR>&nbsp;&nbsp;&nbsp; 115, 116, 97, 114, 
+116, 58, 32, 52, 48, 112, 120, 32, 125, 32, 108, 105,<BR>&nbsp;&nbsp;&nbsp; 32, 
+123, 32, 100, 105, 115, 112, 108, 97, 121, 58, 32, 108, 105, 115, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 105, 116, 101, 109, 32, 125, 32, 117, 108, 32, 
+117, 108, 44, 32, 111,<BR>&nbsp;&nbsp;&nbsp; 108, 32, 117, 108, 32, 123, 32, 
+108, 105, 115, 116, 45, 115, 116, 121, 108,<BR>&nbsp;&nbsp;&nbsp; 101, 45, 116, 
+121, 112, 101, 58, 32, 99, 105, 114, 99, 108, 101, 32, 
+125,<BR>&nbsp;&nbsp;&nbsp; 32, 111, 108, 32, 111, 108, 32, 117, 108, 44, 32, 
+111, 108, 32, 117, 108,<BR>&nbsp;&nbsp;&nbsp; 32, 117, 108, 44, 32, 117, 108, 
+32, 111, 108, 32, 117, 108, 44, 32, 117,<BR>&nbsp;&nbsp;&nbsp; 108, 32, 117, 
+108, 32, 117, 108, 32, 123, 32, 108, 105, 115, 116, 45, 
+115,<BR>&nbsp;&nbsp;&nbsp; 116, 121, 108, 101, 45, 116, 121, 112, 101, 58, 32, 
+115, 113, 117, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 101, 32, 125, 32, 100, 100, 32, 
+123, 32, 100, 105, 115, 112, 108, 97, 121,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 98, 
+108, 111, 99, 107, 59, 32, 45, 119, 101, 98, 107, 105, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 109, 97, 114, 103, 105, 110, 45, 115, 116, 97, 
+114, 116, 58, 32, 52,<BR>&nbsp;&nbsp;&nbsp; 48, 112, 120, 32, 125, 32, 100, 108, 
+32, 123, 32, 100, 105, 115, 112, 108,<BR>&nbsp;&nbsp;&nbsp; 97, 121, 58, 32, 98, 
+108, 111, 99, 107, 59, 32, 45, 119, 101, 98, 107,<BR>&nbsp;&nbsp;&nbsp; 105, 
+116, 45, 109, 97, 114, 103, 105, 110, 45, 98, 101, 102, 111, 114, 
+101,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 49, 95, 95, 113, 101, 109, 59, 32, 45, 119, 
+101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 109, 97, 114, 103, 105, 110, 
+45, 97, 102, 116, 101, 114, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 49, 101, 109, 59, 32, 
+45, 119, 101, 98, 107, 105, 116, 45, 109, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 103, 
+105, 110, 45, 115, 116, 97, 114, 116, 58, 32, 48, 59, 32, 45, 
+119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 105, 
+110, 45, 101, 110, 100,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 48, 59, 32, 125, 32, 100, 
+116, 32, 123, 32, 100, 105, 115, 112,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 121, 58, 
+32, 98, 108, 111, 99, 107, 32, 125, 32, 111, 108, 32,<BR>&nbsp;&nbsp;&nbsp; 117, 
+108, 44, 32, 117, 108, 32, 111, 108, 44, 32, 117, 108, 32, 117, 
+108,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 111, 108, 32, 111, 108, 32, 123, 32, 45, 119, 
+101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 109, 97, 114, 103, 105, 110, 
+45, 98, 101, 102, 111, 114, 101, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 48, 59, 32, 45, 
+119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 103,<BR>&nbsp;&nbsp;&nbsp; 105, 
+110, 45, 97, 102, 116, 101, 114, 58, 32, 48, 32, 125, 32, 102, 
+111,<BR>&nbsp;&nbsp;&nbsp; 114, 109, 32, 123, 32, 100, 105, 115, 112, 108, 97, 
+121, 58, 32, 98, 108,<BR>&nbsp;&nbsp;&nbsp; 111, 99, 107, 59, 32, 109, 97, 114, 
+103, 105, 110, 45, 116, 111, 112, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 48, 95, 95, 113, 
+101, 109, 59, 32, 125, 32, 108, 97, 98, 101, 108,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 
+32, 99, 117, 114, 115, 111, 114, 58, 32, 100, 101, 102, 97, 
+117,<BR>&nbsp;&nbsp;&nbsp; 108, 116, 59, 32, 125, 32, 108, 101, 103, 101, 110, 
+100, 32, 123, 32, 100,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 112, 108, 97, 121, 58, 
+32, 98, 108, 111, 99, 107, 59, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 
+105, 116, 45, 112, 97, 100, 100, 105, 110, 103, 45, 115,<BR>&nbsp;&nbsp;&nbsp; 
+116, 97, 114, 116, 58, 32, 50, 112, 120, 59, 32, 45, 119, 101, 98, 
+107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 112, 97, 100, 100, 105, 110, 103, 45, 
+101, 110, 100, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 50, 112, 120, 59, 32, 98, 111, 114, 
+100, 101, 114, 58, 32, 110, 111, 110,<BR>&nbsp;&nbsp;&nbsp; 101, 32, 125, 32, 
+102, 105, 101, 108, 100, 115, 101, 116, 32, 123, 32, 100,<BR>&nbsp;&nbsp;&nbsp; 
+105, 115, 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 59, 32, 
+45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 109, 97, 114, 103, 
+105, 110, 45, 115, 116,<BR>&nbsp;&nbsp;&nbsp; 97, 114, 116, 58, 32, 50, 112, 
+120, 59, 32, 45, 119, 101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 109, 97, 
+114, 103, 105, 110, 45, 101, 110, 100, 58, 32, 50, 112,<BR>&nbsp;&nbsp;&nbsp; 
+120, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 112, 97, 100, 100, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 103, 45, 98, 101, 102, 111, 114, 101, 58, 32, 
+48, 46, 51, 53, 101,<BR>&nbsp;&nbsp;&nbsp; 109, 59, 32, 45, 119, 101, 98, 107, 
+105, 116, 45, 112, 97, 100, 100, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 103, 45, 115, 
+116, 97, 114, 116, 58, 32, 48, 46, 55, 53, 101, 109,<BR>&nbsp;&nbsp;&nbsp; 59, 
+32, 45, 119, 101, 98, 107, 105, 116, 45, 112, 97, 100, 100, 105, 
+110,<BR>&nbsp;&nbsp;&nbsp; 103, 45, 101, 110, 100, 58, 32, 48, 46, 55, 53, 101, 
+109, 59, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 112, 97, 
+100, 100, 105, 110, 103, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 102, 116, 101, 114, 58, 
+32, 48, 46, 54, 50, 53, 101, 109, 59, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 
+100, 101, 114, 58, 32, 50, 112, 120, 32, 103, 114, 111, 111, 
+118,<BR>&nbsp;&nbsp;&nbsp; 101, 32, 84, 104, 114, 101, 101, 68, 70, 97, 99, 101, 
+32, 125, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 116, 111, 110, 32, 123, 32, 45, 
+119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 97, 112, 112, 101, 97, 
+114, 97, 110, 99, 101, 58, 32, 98, 117, 116, 116,<BR>&nbsp;&nbsp;&nbsp; 111, 
+110, 59, 32, 125, 32, 105, 110, 112, 117, 116, 44, 32, 116, 101, 
+120,<BR>&nbsp;&nbsp;&nbsp; 116, 97, 114, 101, 97, 44, 32, 107, 101, 121, 103, 
+101, 110, 44, 32, 115,<BR>&nbsp;&nbsp;&nbsp; 101, 108, 101, 99, 116, 44, 32, 98, 
+117, 116, 116, 111, 110, 44, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 115, 105, 110, 100, 
+101, 120, 44, 32, 109, 101, 116, 101, 114, 44, 32, 112,<BR>&nbsp;&nbsp;&nbsp; 
+114, 111, 103, 114, 101, 115, 115, 32, 123, 32, 45, 119, 101, 98, 107, 
+105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 98, 108, 111, 99, 107, 45, 102, 108, 111, 
+119, 58, 32, 116, 98,<BR>&nbsp;&nbsp;&nbsp; 32, 33, 105, 109, 112, 111, 114, 
+116, 97, 110, 116, 59, 32, 125, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 112, 117, 
+116, 44, 32, 116, 101, 120, 116, 97, 114, 101, 97, 44, 32,<BR>&nbsp;&nbsp;&nbsp; 
+107, 101, 121, 103, 101, 110, 44, 32, 115, 101, 108, 101, 99, 116, 44, 
+32,<BR>&nbsp;&nbsp;&nbsp; 98, 117, 116, 116, 111, 110, 44, 32, 105, 115, 105, 
+110, 100, 101, 120, 44,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 97, 116, 97, 103, 114, 
+105, 100, 32, 123, 32, 109, 97, 114, 103,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 58, 
+32, 48, 95, 95, 113, 101, 109, 59, 32, 102, 111, 110, 116,<BR>&nbsp;&nbsp;&nbsp; 
+58, 32, 45, 119, 101, 98, 107, 105, 116, 45, 115, 109, 97, 108, 108, 
+45,<BR>&nbsp;&nbsp;&nbsp; 99, 111, 110, 116, 114, 111, 108, 59, 32, 99, 111, 
+108, 111, 114, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 105, 116, 105, 97, 108, 
+59, 32, 108, 101, 116, 116, 101, 114, 45,<BR>&nbsp;&nbsp;&nbsp; 115, 112, 97, 
+99, 105, 110, 103, 58, 32, 110, 111, 114, 109, 97, 108, 
+59,<BR>&nbsp;&nbsp;&nbsp; 32, 119, 111, 114, 100, 45, 115, 112, 97, 99, 105, 
+110, 103, 58, 32, 110,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 109, 97, 108, 59, 32, 
+108, 105, 110, 101, 45, 104, 101, 105, 103,<BR>&nbsp;&nbsp;&nbsp; 104, 116, 58, 
+32, 110, 111, 114, 109, 97, 108, 59, 32, 116, 101, 120, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 116, 114, 97, 110, 115, 102, 111, 114, 109, 58, 
+32, 110, 111, 110, 101,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 116, 101, 120, 116, 45, 
+105, 110, 100, 101, 110, 116, 58, 32, 48,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 116, 
+101, 120, 116, 45, 115, 104, 97, 100, 111, 119, 58, 32, 
+110,<BR>&nbsp;&nbsp;&nbsp; 111, 110, 101, 59, 32, 100, 105, 115, 112, 108, 97, 
+121, 58, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 108, 105, 110, 101, 45, 98, 108, 
+111, 99, 107, 59, 32, 116, 101, 120, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 97, 108, 
+105, 103, 110, 58, 32, 45, 119, 101, 98, 107, 105, 116, 
+45,<BR>&nbsp;&nbsp;&nbsp; 97, 117, 116, 111, 59, 32, 125, 32, 105, 110, 112, 
+117, 116, 91, 116, 121,<BR>&nbsp;&nbsp;&nbsp; 112, 101, 61, 34, 104, 105, 100, 
+100, 101, 110, 34, 93, 32, 123, 32, 100,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 112, 
+108, 97, 121, 58, 32, 110, 111, 110, 101, 32, 125, 32, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 112, 117, 116, 44, 32, 105, 110, 112, 117, 116, 
+91, 116, 121, 112, 101,<BR>&nbsp;&nbsp;&nbsp; 61, 34, 112, 97, 115, 115, 119, 
+111, 114, 100, 34, 93, 44, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 112, 117, 116, 
+91, 116, 121, 112, 101, 61, 34, 115, 101, 97, 114, 99, 
+104,<BR>&nbsp;&nbsp;&nbsp; 34, 93, 44, 32, 105, 115, 105, 110, 100, 101, 120, 
+32, 123, 32, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 98, 107, 105, 116, 45, 97, 112, 
+112, 101, 97, 114, 97, 110, 99, 101,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 116, 101, 
+120, 116, 102, 105, 101, 108, 100, 59, 32, 112, 97, 100,<BR>&nbsp;&nbsp;&nbsp; 
+100, 105, 110, 103, 58, 32, 49, 112, 120, 59, 32, 98, 97, 99, 107, 
+103,<BR>&nbsp;&nbsp;&nbsp; 114, 111, 117, 110, 100, 45, 99, 111, 108, 111, 114, 
+58, 32, 119, 104, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 101, 59, 32, 98, 111, 114, 
+100, 101, 114, 58, 32, 50, 112, 120, 32,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 115, 
+101, 116, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 
+114,<BR>&nbsp;&nbsp;&nbsp; 116, 108, 45, 111, 114, 100, 101, 114, 105, 110, 103, 
+58, 32, 108, 111, 103,<BR>&nbsp;&nbsp;&nbsp; 105, 99, 97, 108, 59, 32, 45, 119, 
+101, 98, 107, 105, 116, 45, 117, 115,<BR>&nbsp;&nbsp;&nbsp; 101, 114, 45, 115, 
+101, 108, 101, 99, 116, 58, 32, 116, 101, 120, 116, 59,<BR>&nbsp;&nbsp;&nbsp; 
+32, 99, 117, 114, 115, 111, 114, 58, 32, 97, 117, 116, 111, 59, 32, 
+125,<BR>&nbsp;&nbsp;&nbsp; 32, 105, 110, 112, 117, 116, 91, 116, 121, 112, 101, 
+61, 34, 115, 101, 97,<BR>&nbsp;&nbsp;&nbsp; 114, 99, 104, 34, 93, 32, 123, 32, 
+45, 119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 97, 112, 112, 101, 
+97, 114, 97, 110, 99, 101, 58, 32, 115, 101, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 99, 
+104, 102, 105, 101, 108, 100, 59, 32, 45, 119, 101, 98, 107, 105, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 98, 111, 120, 45, 115, 105, 122, 105, 110, 103, 
+58, 32, 98, 111, 114,<BR>&nbsp;&nbsp;&nbsp; 100, 101, 114, 45, 98, 111, 120, 59, 
+32, 125, 32, 105, 110, 112, 117, 116,<BR>&nbsp;&nbsp;&nbsp; 91, 116, 121, 112, 
+101, 61, 34, 115, 101, 97, 114, 99, 104, 34, 93, 58,<BR>&nbsp;&nbsp;&nbsp; 58, 
+45, 119, 101, 98, 107, 105, 116, 45, 115, 101, 97, 114, 99, 104, 
+45,<BR>&nbsp;&nbsp;&nbsp; 99, 97, 110, 99, 101, 108, 45, 98, 117, 116, 116, 111, 
+110, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 107, 105, 116, 45, 97, 
+112, 112, 101, 97, 114, 97, 110,<BR>&nbsp;&nbsp;&nbsp; 99, 101, 58, 32, 115, 
+101, 97, 114, 99, 104, 102, 105, 101, 108, 100, 45,<BR>&nbsp;&nbsp;&nbsp; 99, 
+97, 110, 99, 101, 108, 45, 98, 117, 116, 116, 111, 110, 59, 32, 
+100,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 112, 108, 97, 121, 58, 32, 105, 110, 108, 
+105, 110, 101, 45, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 99, 107, 59, 32, 125, 32, 
+105, 110, 112, 117, 116, 91, 116, 121,<BR>&nbsp;&nbsp;&nbsp; 112, 101, 61, 34, 
+115, 101, 97, 114, 99, 104, 34, 93, 58, 58, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 101, 
+98, 107, 105, 116, 45, 115, 101, 97, 114, 99, 104, 45, 100, 101, 
+99,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 97, 116, 105, 111, 110, 32, 123, 32, 45, 
+119, 101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 97, 112, 112, 101, 97, 
+114, 97, 110, 99, 101, 58, 32, 115, 101,<BR>&nbsp;&nbsp;&nbsp; 97, 114, 99, 104, 
+102, 105, 101, 108, 100, 45, 100, 101, 99, 111, 114, 97,<BR>&nbsp;&nbsp;&nbsp; 
+116, 105, 111, 110, 59, 32, 100, 105, 115, 112, 108, 97, 121, 58, 32, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 108, 105, 110, 101, 45, 98, 108, 111, 99, 107, 
+59, 32, 125, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 112, 117, 116, 91, 116, 121, 
+112, 101, 61, 34, 115, 101, 97, 114, 99,<BR>&nbsp;&nbsp;&nbsp; 104, 34, 93, 58, 
+58, 45, 119, 101, 98, 107, 105, 116, 45, 115, 101, 97,<BR>&nbsp;&nbsp;&nbsp; 
+114, 99, 104, 45, 114, 101, 115, 117, 108, 116, 115, 45, 100, 101, 99, 
+111,<BR>&nbsp;&nbsp;&nbsp; 114, 97, 116, 105, 111, 110, 32, 123, 32, 45, 119, 
+101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 97, 112, 112, 101, 97, 114, 
+97, 110, 99, 101, 58, 32, 115, 101, 97,<BR>&nbsp;&nbsp;&nbsp; 114, 99, 104, 102, 
+105, 101, 108, 100, 45, 114, 101, 115, 117, 108, 116, 115,<BR>&nbsp;&nbsp;&nbsp; 
+45, 100, 101, 99, 111, 114, 97, 116, 105, 111, 110, 59, 32, 100, 105, 
+115,<BR>&nbsp;&nbsp;&nbsp; 112, 108, 97, 121, 58, 32, 105, 110, 108, 105, 110, 
+101, 45, 98, 108, 111,<BR>&nbsp;&nbsp;&nbsp; 99, 107, 59, 32, 125, 32, 105, 110, 
+112, 117, 116, 91, 116, 121, 112, 101,<BR>&nbsp;&nbsp;&nbsp; 61, 34, 115, 101, 
+97, 114, 99, 104, 34, 93, 58, 58, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 
+105, 116, 45, 115, 101, 97, 114, 99, 104, 45, 114, 101, 115, 117, 
+108,<BR>&nbsp;&nbsp;&nbsp; 116, 115, 45, 98, 117, 116, 116, 111, 110, 32, 123, 
+32, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 97, 112, 112, 
+101, 97, 114, 97, 110, 99, 101, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 115, 101, 97, 114, 
+99, 104, 102, 105, 101, 108, 100, 45, 114, 101, 115, 117,<BR>&nbsp;&nbsp;&nbsp; 
+108, 116, 115, 45, 98, 117, 116, 116, 111, 110, 59, 32, 100, 105, 115, 
+112,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 121, 58, 32, 105, 110, 108, 105, 110, 101, 
+45, 98, 108, 111, 99,<BR>&nbsp;&nbsp;&nbsp; 107, 59, 32, 125, 32, 105, 110, 112, 
+117, 116, 58, 58, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 
+105, 110, 112, 117, 116, 45, 108, 105, 115, 116, 45, 98,<BR>&nbsp;&nbsp;&nbsp; 
+117, 116, 116, 111, 110, 32, 123, 32, 45, 119, 101, 98, 107, 105, 116, 
+45,<BR>&nbsp;&nbsp;&nbsp; 97, 112, 112, 101, 97, 114, 97, 110, 99, 101, 58, 32, 
+108, 105, 115, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 98, 117, 116, 116, 111, 110, 59, 
+32, 100, 105, 115, 112, 108, 97, 121,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 105, 110, 
+108, 105, 110, 101, 45, 98, 108, 111, 99, 107, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 
+125, 32, 105, 110, 112, 117, 116, 58, 58, 45, 119, 101, 98, 107, 105, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 105, 110, 110, 101, 114, 45, 115, 112, 105, 110, 
+45, 98, 117, 116, 116,<BR>&nbsp;&nbsp;&nbsp; 111, 110, 32, 123, 32, 45, 119, 
+101, 98, 107, 105, 116, 45, 97, 112, 112,<BR>&nbsp;&nbsp;&nbsp; 101, 97, 114, 
+97, 110, 99, 101, 58, 32, 105, 110, 110, 101, 114, 45, 
+115,<BR>&nbsp;&nbsp;&nbsp; 112, 105, 110, 45, 98, 117, 116, 116, 111, 110, 59, 
+32, 100, 105, 115, 112,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 121, 58, 32, 105, 110, 
+108, 105, 110, 101, 45, 98, 108, 111, 99,<BR>&nbsp;&nbsp;&nbsp; 107, 59, 32, 
+112, 111, 115, 105, 116, 105, 111, 110, 58, 32, 114, 101, 
+108,<BR>&nbsp;&nbsp;&nbsp; 97, 116, 105, 118, 101, 59, 32, 99, 117, 114, 115, 
+111, 114, 58, 32, 100,<BR>&nbsp;&nbsp;&nbsp; 101, 102, 97, 117, 108, 116, 59, 
+32, 45, 119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 117, 115, 101, 
+114, 45, 115, 101, 108, 101, 99, 116, 58, 32, 110, 111, 
+110,<BR>&nbsp;&nbsp;&nbsp; 101, 59, 32, 125, 32, 105, 110, 112, 117, 116, 58, 
+58, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 111, 117, 116, 
+101, 114, 45, 115, 112, 105, 110, 45, 98,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 116, 
+111, 110, 32, 123, 32, 45, 119, 101, 98, 107, 105, 116, 
+45,<BR>&nbsp;&nbsp;&nbsp; 97, 112, 112, 101, 97, 114, 97, 110, 99, 101, 58, 32, 
+111, 117, 116, 101,<BR>&nbsp;&nbsp;&nbsp; 114, 45, 115, 112, 105, 110, 45, 98, 
+117, 116, 116, 111, 110, 59, 32, 100,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 112, 108, 
+97, 121, 58, 32, 105, 110, 108, 105, 110, 101, 45, 98,<BR>&nbsp;&nbsp;&nbsp; 
+108, 111, 99, 107, 59, 32, 112, 111, 115, 105, 116, 105, 111, 110, 58, 
+32,<BR>&nbsp;&nbsp;&nbsp; 114, 101, 108, 97, 116, 105, 118, 101, 59, 32, 99, 
+117, 114, 115, 111, 114,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 100, 101, 102, 97, 117, 
+108, 116, 59, 32, 109, 97, 114, 103, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 45, 108, 
+101, 102, 116, 58, 32, 50, 112, 120, 59, 32, 45, 119, 101,<BR>&nbsp;&nbsp;&nbsp; 
+98, 107, 105, 116, 45, 117, 115, 101, 114, 45, 115, 101, 108, 101, 99, 
+116,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 110, 111, 110, 101, 59, 32, 125, 32, 105, 
+110, 112, 117, 116, 58,<BR>&nbsp;&nbsp;&nbsp; 58, 45, 119, 101, 98, 107, 105, 
+116, 45, 105, 110, 112, 117, 116, 45, 115,<BR>&nbsp;&nbsp;&nbsp; 112, 101, 101, 
+99, 104, 45, 98, 117, 116, 116, 111, 110, 32, 123, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 
+119, 101, 98, 107, 105, 116, 45, 97, 112, 112, 101, 97, 114, 97, 110, 
+99,<BR>&nbsp;&nbsp;&nbsp; 101, 58, 32, 45, 119, 101, 98, 107, 105, 116, 45, 105, 
+110, 112, 117, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 115, 112, 101, 101, 99, 104, 45, 
+98, 117, 116, 116, 111, 110, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 115, 112, 
+108, 97, 121, 58, 32, 105, 110, 108, 105, 110, 101, 45,<BR>&nbsp;&nbsp;&nbsp; 
+98, 108, 111, 99, 107, 59, 32, 125, 32, 107, 101, 121, 103, 101, 110, 
+44,<BR>&nbsp;&nbsp;&nbsp; 32, 115, 101, 108, 101, 99, 116, 32, 123, 32, 45, 119, 
+101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 98, 111, 114, 100, 101, 114, 
+45, 114, 97, 100, 105, 117, 115, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 53, 112, 120, 59, 
+32, 125, 32, 107, 101, 121, 103, 101, 110, 58, 58,<BR>&nbsp;&nbsp;&nbsp; 45, 
+119, 101, 98, 107, 105, 116, 45, 107, 101, 121, 103, 101, 110, 45, 
+115,<BR>&nbsp;&nbsp;&nbsp; 101, 108, 101, 99, 116, 32, 123, 32, 109, 97, 114, 
+103, 105, 110, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 48, 112, 120, 59, 32, 125, 32, 116, 
+101, 120, 116, 97, 114, 101, 97, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 45, 119, 
+101, 98, 107, 105, 116, 45, 97, 112, 112, 101, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 
+97, 110, 99, 101, 58, 32, 116, 101, 120, 116, 97, 114, 101, 97, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 98, 97, 99, 107, 103, 114, 111, 117, 110, 100, 45, 99, 
+111, 108, 111, 114,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 119, 104, 105, 116, 101, 59, 
+32, 98, 111, 114, 100, 101, 114, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 49, 112, 120, 32, 
+115, 111, 108, 105, 100, 59, 32, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 
+105, 116, 45, 114, 116, 108, 45, 111, 114, 100, 101, 114, 105, 110, 
+103,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 108, 111, 103, 105, 99, 97, 108, 59, 32, 45, 
+119, 101, 98, 107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 117, 115, 101, 114, 45, 
+115, 101, 108, 101, 99, 116, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 116, 101, 120, 116, 
+59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 98, 111,<BR>&nbsp;&nbsp;&nbsp; 120, 
+45, 111, 114, 105, 101, 110, 116, 58, 32, 118, 101, 114, 116, 105, 
+99,<BR>&nbsp;&nbsp;&nbsp; 97, 108, 59, 32, 114, 101, 115, 105, 122, 101, 58, 32, 
+97, 117, 116, 111,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 99, 117, 114, 115, 111, 114, 
+58, 32, 97, 117, 116, 111, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 112, 97, 100, 100, 105, 
+110, 103, 58, 32, 50, 112, 120, 59, 32, 119, 104,<BR>&nbsp;&nbsp;&nbsp; 105, 
+116, 101, 45, 115, 112, 97, 99, 101, 58, 32, 112, 114, 101, 45, 
+119,<BR>&nbsp;&nbsp;&nbsp; 114, 97, 112, 59, 32, 119, 111, 114, 100, 45, 119, 
+114, 97, 112, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 114, 101, 97, 107, 45, 119, 111, 
+114, 100, 59, 32, 125, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 112, 117, 116, 58, 
+58, 45, 119, 101, 98, 107, 105, 116, 45, 105, 110, 112,<BR>&nbsp;&nbsp;&nbsp; 
+117, 116, 45, 112, 108, 97, 99, 101, 104, 111, 108, 100, 101, 114, 44, 
+32,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 105, 110, 100, 101, 120, 58, 58, 45, 119, 
+101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 105, 110, 112, 117, 116, 45, 
+112, 108, 97, 99, 101, 104, 111, 108, 100,<BR>&nbsp;&nbsp;&nbsp; 101, 114, 44, 
+32, 116, 101, 120, 116, 97, 114, 101, 97, 58, 58, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 
+101, 98, 107, 105, 116, 45, 105, 110, 112, 117, 116, 45, 112, 108, 97, 
+99,<BR>&nbsp;&nbsp;&nbsp; 101, 104, 111, 108, 100, 101, 114, 32, 123, 32, 99, 
+111, 108, 111, 114, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 97, 114, 107, 71, 114, 
+97, 121, 59, 32, 125, 32, 105, 110, 112,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 91, 
+116, 121, 112, 101, 61, 34, 112, 97, 115, 115, 119, 111, 
+114,<BR>&nbsp;&nbsp;&nbsp; 100, 34, 93, 32, 123, 32, 45, 119, 101, 98, 107, 105, 
+116, 45, 116, 101,<BR>&nbsp;&nbsp;&nbsp; 120, 116, 45, 115, 101, 99, 117, 114, 
+105, 116, 121, 58, 32, 100, 105, 115,<BR>&nbsp;&nbsp;&nbsp; 99, 32, 33, 105, 
+109, 112, 111, 114, 116, 97, 110, 116, 59, 32, 125, 32,<BR>&nbsp;&nbsp;&nbsp; 
+105, 110, 112, 117, 116, 91, 116, 121, 112, 101, 61, 34, 104, 105, 100, 
+100,<BR>&nbsp;&nbsp;&nbsp; 101, 110, 34, 93, 44, 32, 105, 110, 112, 117, 116, 
+91, 116, 121, 112, 101,<BR>&nbsp;&nbsp;&nbsp; 61, 34, 105, 109, 97, 103, 101, 
+34, 93, 44, 32, 105, 110, 112, 117, 116,<BR>&nbsp;&nbsp;&nbsp; 91, 116, 121, 
+112, 101, 61, 34, 102, 105, 108, 101, 34, 93, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 
+45, 119, 101, 98, 107, 105, 116, 45, 97, 112, 112, 101, 97, 114, 97, 
+110,<BR>&nbsp;&nbsp;&nbsp; 99, 101, 58, 32, 105, 110, 105, 116, 105, 97, 108, 
+59, 32, 112, 97, 100,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 110, 103, 58, 32, 105, 
+110, 105, 116, 105, 97, 108, 59, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 97, 99, 107, 103, 
+114, 111, 117, 110, 100, 45, 99, 111, 108, 111, 114, 58,<BR>&nbsp;&nbsp;&nbsp; 
+32, 105, 110, 105, 116, 105, 97, 108, 59, 32, 98, 111, 114, 100, 101, 
+114,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 105, 110, 105, 116, 105, 97, 108, 59, 32, 
+125, 32, 105, 110, 112,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 91, 116, 121, 112, 101, 
+61, 34, 102, 105, 108, 101, 34, 93, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 45, 119, 
+101, 98, 107, 105, 116, 45, 98, 111, 120, 45, 97, 108,<BR>&nbsp;&nbsp;&nbsp; 
+105, 103, 110, 58, 32, 98, 97, 115, 101, 108, 105, 110, 101, 59, 32, 
+116,<BR>&nbsp;&nbsp;&nbsp; 101, 120, 116, 45, 97, 108, 105, 103, 110, 58, 32, 
+115, 116, 97, 114, 116,<BR>&nbsp;&nbsp;&nbsp; 32, 33, 105, 109, 112, 111, 114, 
+116, 97, 110, 116, 59, 32, 125, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 112, 117, 
+116, 58, 45, 119, 101, 98, 107, 105, 116, 45, 97, 117, 
+116,<BR>&nbsp;&nbsp;&nbsp; 111, 102, 105, 108, 108, 32, 123, 32, 98, 97, 99, 
+107, 103, 114, 111, 117,<BR>&nbsp;&nbsp;&nbsp; 110, 100, 45, 99, 111, 108, 111, 
+114, 58, 32, 35, 70, 65, 70, 70, 66,<BR>&nbsp;&nbsp;&nbsp; 68, 32, 33, 105, 109, 
+112, 111, 114, 116, 97, 110, 116, 59, 32, 98, 97,<BR>&nbsp;&nbsp;&nbsp; 99, 107, 
+103, 114, 111, 117, 110, 100, 45, 105, 109, 97, 103, 101, 58, 
+110,<BR>&nbsp;&nbsp;&nbsp; 111, 110, 101, 32, 33, 105, 109, 112, 111, 114, 116, 
+97, 110, 116, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 99, 111, 108, 111, 114, 58, 32, 35, 
+48, 48, 48, 48, 48, 48, 32, 33,<BR>&nbsp;&nbsp;&nbsp; 105, 109, 112, 111, 114, 
+116, 97, 110, 116, 59, 32, 125, 32, 105, 110, 112,<BR>&nbsp;&nbsp;&nbsp; 117, 
+116, 91, 116, 121, 112, 101, 61, 34, 114, 97, 100, 105, 111, 34, 
+93,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 105, 110, 112, 117, 116, 91, 116, 121, 112, 
+101, 61, 34, 99, 104,<BR>&nbsp;&nbsp;&nbsp; 101, 99, 107, 98, 111, 120, 34, 93, 
+32, 123, 32, 109, 97, 114, 103, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 58, 32, 51, 112, 
+120, 32, 48, 46, 53, 101, 120, 59, 32, 112, 97,<BR>&nbsp;&nbsp;&nbsp; 100, 100, 
+105, 110, 103, 58, 32, 105, 110, 105, 116, 105, 97, 108, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 98, 97, 99, 107, 103, 114, 111, 117, 110, 100, 45, 99, 
+111, 108, 111, 114,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 105, 110, 105, 116, 105, 97, 
+108, 59, 32, 98, 111, 114, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 114, 58, 32, 105, 
+110, 105, 116, 105, 97, 108, 59, 32, 125, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 
+112, 117, 116, 91, 116, 121, 112, 101, 61, 34, 98, 117, 116, 116, 111, 
+110,<BR>&nbsp;&nbsp;&nbsp; 34, 93, 44, 32, 105, 110, 112, 117, 116, 91, 116, 
+121, 112, 101, 61, 34,<BR>&nbsp;&nbsp;&nbsp; 115, 117, 98, 109, 105, 116, 34, 
+93, 44, 32, 105, 110, 112, 117, 116, 91,<BR>&nbsp;&nbsp;&nbsp; 116, 121, 112, 
+101, 61, 34, 114, 101, 115, 101, 116, 34, 93, 44, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 
+110, 112, 117, 116, 91, 116, 121, 112, 101, 61, 34, 102, 105, 108, 101, 
+34,<BR>&nbsp;&nbsp;&nbsp; 93, 58, 58, 45, 119, 101, 98, 107, 105, 116, 45, 102, 
+105, 108, 101, 45,<BR>&nbsp;&nbsp;&nbsp; 117, 112, 108, 111, 97, 100, 45, 98, 
+117, 116, 116, 111, 110, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 
+107, 105, 116, 45, 97, 112, 112, 101, 97, 114, 97, 110,<BR>&nbsp;&nbsp;&nbsp; 
+99, 101, 58, 32, 112, 117, 115, 104, 45, 98, 117, 116, 116, 111, 110, 
+59,<BR>&nbsp;&nbsp;&nbsp; 32, 119, 104, 105, 116, 101, 45, 115, 112, 97, 99, 
+101, 58, 32, 112, 114,<BR>&nbsp;&nbsp;&nbsp; 101, 32, 125, 32, 105, 110, 112, 
+117, 116, 91, 116, 121, 112, 101, 61, 34,<BR>&nbsp;&nbsp;&nbsp; 98, 117, 116, 
+116, 111, 110, 34, 93, 44, 32, 105, 110, 112, 117, 116, 
+91,<BR>&nbsp;&nbsp;&nbsp; 116, 121, 112, 101, 61, 34, 115, 117, 98, 109, 105, 
+116, 34, 93, 44, 32,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 112, 117, 116, 91, 116, 
+121, 112, 101, 61, 34, 114, 101, 115, 101,<BR>&nbsp;&nbsp;&nbsp; 116, 34, 93, 
+44, 32, 105, 110, 112, 117, 116, 91, 116, 121, 112, 101, 
+61,<BR>&nbsp;&nbsp;&nbsp; 34, 102, 105, 108, 101, 34, 93, 58, 58, 45, 119, 101, 
+98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 102, 105, 108, 101, 45, 117, 112, 
+108, 111, 97, 100, 45, 98, 117, 116,<BR>&nbsp;&nbsp;&nbsp; 116, 111, 110, 44, 
+32, 98, 117, 116, 116, 111, 110, 32, 123, 32, 45, 119,<BR>&nbsp;&nbsp;&nbsp; 
+101, 98, 107, 105, 116, 45, 98, 111, 120, 45, 97, 108, 105, 103, 110, 
+58,<BR>&nbsp;&nbsp;&nbsp; 32, 99, 101, 110, 116, 101, 114, 59, 32, 116, 101, 
+120, 116, 45, 97, 108,<BR>&nbsp;&nbsp;&nbsp; 105, 103, 110, 58, 32, 99, 101, 
+110, 116, 101, 114, 59, 32, 99, 117, 114,<BR>&nbsp;&nbsp;&nbsp; 115, 111, 114, 
+58, 32, 100, 101, 102, 97, 117, 108, 116, 59, 32, 99, 111,<BR>&nbsp;&nbsp;&nbsp; 
+108, 111, 114, 58, 32, 66, 117, 116, 116, 111, 110, 84, 101, 120, 116, 
+59,<BR>&nbsp;&nbsp;&nbsp; 32, 112, 97, 100, 100, 105, 110, 103, 58, 32, 50, 112, 
+120, 32, 54, 112,<BR>&nbsp;&nbsp;&nbsp; 120, 32, 51, 112, 120, 32, 54, 112, 120, 
+59, 32, 98, 111, 114, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 114, 58, 32, 50, 112, 120, 
+32, 111, 117, 116, 115, 101, 116, 32, 66, 117,<BR>&nbsp;&nbsp;&nbsp; 116, 116, 
+111, 110, 70, 97, 99, 101, 59, 32, 98, 97, 99, 107, 103, 
+114,<BR>&nbsp;&nbsp;&nbsp; 111, 117, 110, 100, 45, 99, 111, 108, 111, 114, 58, 
+32, 66, 117, 116, 116,<BR>&nbsp;&nbsp;&nbsp; 111, 110, 70, 97, 99, 101, 59, 32, 
+45, 119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 98, 111, 120, 45, 
+115, 105, 122, 105, 110, 103, 58, 32, 98, 111, 114, 100,<BR>&nbsp;&nbsp;&nbsp; 
+101, 114, 45, 98, 111, 120, 32, 125, 32, 105, 110, 112, 117, 116, 91, 
+116,<BR>&nbsp;&nbsp;&nbsp; 121, 112, 101, 61, 34, 114, 97, 110, 103, 101, 34, 
+93, 32, 123, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 97, 
+112, 112, 101, 97, 114, 97, 110, 99,<BR>&nbsp;&nbsp;&nbsp; 101, 58, 32, 115, 
+108, 105, 100, 101, 114, 45, 104, 111, 114, 105, 122, 111,<BR>&nbsp;&nbsp;&nbsp; 
+110, 116, 97, 108, 59, 32, 112, 97, 100, 100, 105, 110, 103, 58, 32, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 105, 116, 105, 97, 108, 59, 32, 98, 111, 114, 
+100, 101, 114, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 105, 116, 105, 97, 108, 
+59, 32, 109, 97, 114, 103, 105, 110, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 50, 112, 120, 
+59, 32, 125, 32, 105, 110, 112, 117, 116, 91, 116, 121,<BR>&nbsp;&nbsp;&nbsp; 
+112, 101, 61, 34, 114, 97, 110, 103, 101, 34, 93, 58, 58, 45, 119, 
+101,<BR>&nbsp;&nbsp;&nbsp; 98, 107, 105, 116, 45, 115, 108, 105, 100, 101, 114, 
+45, 116, 104, 117, 109,<BR>&nbsp;&nbsp;&nbsp; 98, 32, 123, 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 97, 112, 112, 101,<BR>&nbsp;&nbsp;&nbsp; 97, 114, 97, 110, 
+99, 101, 58, 32, 115, 108, 105, 100, 101, 114, 116, 104,<BR>&nbsp;&nbsp;&nbsp; 
+117, 109, 98, 45, 104, 111, 114, 105, 122, 111, 110, 116, 97, 108, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 115, 112, 108, 97, 121, 58, 32, 98, 108, 
+111, 99, 107, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 125, 32, 105, 110, 112, 117, 116, 
+91, 116, 121, 112, 101, 61, 34, 98, 117,<BR>&nbsp;&nbsp;&nbsp; 116, 116, 111, 
+110, 34, 93, 58, 100, 105, 115, 97, 98, 108, 101, 100, 44,<BR>&nbsp;&nbsp;&nbsp; 
+32, 105, 110, 112, 117, 116, 91, 116, 121, 112, 101, 61, 34, 115, 117, 
+98,<BR>&nbsp;&nbsp;&nbsp; 109, 105, 116, 34, 93, 58, 100, 105, 115, 97, 98, 108, 
+101, 100, 44, 32,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 112, 117, 116, 91, 116, 121, 
+112, 101, 61, 34, 114, 101, 115, 101,<BR>&nbsp;&nbsp;&nbsp; 116, 34, 93, 58, 
+100, 105, 115, 97, 98, 108, 101, 100, 44, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 
+112, 117, 116, 91, 116, 121, 112, 101, 61, 34, 102, 105, 108, 101, 34, 
+93,<BR>&nbsp;&nbsp;&nbsp; 58, 100, 105, 115, 97, 98, 108, 101, 100, 58, 58, 45, 
+119, 101, 98, 107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 102, 105, 108, 101, 45, 
+117, 112, 108, 111, 97, 100, 45, 98,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 116, 111, 
+110, 44, 32, 98, 117, 116, 116, 111, 110, 58, 100, 105,<BR>&nbsp;&nbsp;&nbsp; 
+115, 97, 98, 108, 101, 100, 44, 32, 115, 101, 108, 101, 99, 116, 58, 
+100,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 97, 98, 108, 101, 100, 44, 32, 107, 101, 
+121, 103, 101, 110, 58,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 115, 97, 98, 108, 101, 
+100, 44, 32, 111, 112, 116, 103, 114, 111,<BR>&nbsp;&nbsp;&nbsp; 117, 112, 58, 
+100, 105, 115, 97, 98, 108, 101, 100, 44, 32, 111, 112, 
+116,<BR>&nbsp;&nbsp;&nbsp; 105, 111, 110, 58, 100, 105, 115, 97, 98, 108, 101, 
+100, 44, 32, 100, 97,<BR>&nbsp;&nbsp;&nbsp; 116, 97, 103, 114, 105, 100, 58, 
+100, 105, 115, 97, 98, 108, 101, 100, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 99, 
+111, 108, 111, 114, 58, 32, 71, 114, 97, 121, 84, 101, 
+120,<BR>&nbsp;&nbsp;&nbsp; 116, 32, 125, 32, 105, 110, 112, 117, 116, 91, 116, 
+121, 112, 101, 61, 34,<BR>&nbsp;&nbsp;&nbsp; 98, 117, 116, 116, 111, 110, 34, 
+93, 58, 97, 99, 116, 105, 118, 101, 44,<BR>&nbsp;&nbsp;&nbsp; 32, 105, 110, 112, 
+117, 116, 91, 116, 121, 112, 101, 61, 34, 115, 117, 98,<BR>&nbsp;&nbsp;&nbsp; 
+109, 105, 116, 34, 93, 58, 97, 99, 116, 105, 118, 101, 44, 32, 105, 
+110,<BR>&nbsp;&nbsp;&nbsp; 112, 117, 116, 91, 116, 121, 112, 101, 61, 34, 114, 
+101, 115, 101, 116, 34,<BR>&nbsp;&nbsp;&nbsp; 93, 58, 97, 99, 116, 105, 118, 
+101, 44, 32, 105, 110, 112, 117, 116, 91,<BR>&nbsp;&nbsp;&nbsp; 116, 121, 112, 
+101, 61, 34, 102, 105, 108, 101, 34, 93, 58, 97, 99, 116,<BR>&nbsp;&nbsp;&nbsp; 
+105, 118, 101, 58, 58, 45, 119, 101, 98, 107, 105, 116, 45, 102, 105, 
+108,<BR>&nbsp;&nbsp;&nbsp; 101, 45, 117, 112, 108, 111, 97, 100, 45, 98, 117, 
+116, 116, 111, 110, 44,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 117, 116, 116, 111, 110, 
+58, 97, 99, 116, 105, 118, 101, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 114, 
+100, 101, 114, 45, 115, 116, 121, 108, 101, 58, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 
+110, 115, 101, 116, 32, 125, 32, 105, 110, 112, 117, 116, 91, 116, 121, 
+112,<BR>&nbsp;&nbsp;&nbsp; 101, 61, 34, 98, 117, 116, 116, 111, 110, 34, 93, 58, 
+97, 99, 116, 105,<BR>&nbsp;&nbsp;&nbsp; 118, 101, 58, 100, 105, 115, 97, 98, 
+108, 101, 100, 44, 32, 105, 110, 112,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 91, 116, 
+121, 112, 101, 61, 34, 115, 117, 98, 109, 105, 116, 34,<BR>&nbsp;&nbsp;&nbsp; 
+93, 58, 97, 99, 116, 105, 118, 101, 58, 100, 105, 115, 97, 98, 108, 
+101,<BR>&nbsp;&nbsp;&nbsp; 100, 44, 32, 105, 110, 112, 117, 116, 91, 116, 121, 
+112, 101, 61, 34, 114,<BR>&nbsp;&nbsp;&nbsp; 101, 115, 101, 116, 34, 93, 58, 97, 
+99, 116, 105, 118, 101, 58, 100, 105,<BR>&nbsp;&nbsp;&nbsp; 115, 97, 98, 108, 
+101, 100, 44, 32, 105, 110, 112, 117, 116, 91, 116, 121,<BR>&nbsp;&nbsp;&nbsp; 
+112, 101, 61, 34, 102, 105, 108, 101, 34, 93, 58, 97, 99, 116, 105, 
+118,<BR>&nbsp;&nbsp;&nbsp; 101, 58, 100, 105, 115, 97, 98, 108, 101, 100, 58, 
+58, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 102, 105, 108, 
+101, 45, 117, 112, 108, 111, 97, 100, 45,<BR>&nbsp;&nbsp;&nbsp; 98, 117, 116, 
+116, 111, 110, 44, 32, 98, 117, 116, 116, 111, 110, 58, 
+97,<BR>&nbsp;&nbsp;&nbsp; 99, 116, 105, 118, 101, 58, 100, 105, 115, 97, 98, 
+108, 101, 100, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 114, 100, 101, 114, 
+45, 115, 116, 121, 108, 101, 58, 32, 111,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 115, 
+101, 116, 32, 125, 32, 97, 114, 101, 97, 44, 32, 112, 97,<BR>&nbsp;&nbsp;&nbsp; 
+114, 97, 109, 32, 123, 32, 100, 105, 115, 112, 108, 97, 121, 58, 32, 
+110,<BR>&nbsp;&nbsp;&nbsp; 111, 110, 101, 32, 125, 32, 105, 110, 112, 117, 116, 
+91, 116, 121, 112, 101,<BR>&nbsp;&nbsp;&nbsp; 61, 34, 99, 104, 101, 99, 107, 98, 
+111, 120, 34, 93, 32, 123, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 
+116, 45, 97, 112, 112, 101, 97, 114, 97, 110, 99,<BR>&nbsp;&nbsp;&nbsp; 101, 58, 
+32, 99, 104, 101, 99, 107, 98, 111, 120, 59, 32, 45, 119, 
+101,<BR>&nbsp;&nbsp;&nbsp; 98, 107, 105, 116, 45, 98, 111, 120, 45, 115, 105, 
+122, 105, 110, 103, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 114, 100, 101, 114, 
+45, 98, 111, 120, 59, 32, 125, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 112, 117, 
+116, 91, 116, 121, 112, 101, 61, 34, 114, 97, 100, 105, 
+111,<BR>&nbsp;&nbsp;&nbsp; 34, 93, 32, 123, 32, 45, 119, 101, 98, 107, 105, 116, 
+45, 97, 112, 112,<BR>&nbsp;&nbsp;&nbsp; 101, 97, 114, 97, 110, 99, 101, 58, 32, 
+114, 97, 100, 105, 111, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 107, 
+105, 116, 45, 98, 111, 120, 45, 115, 105, 122, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 
+103, 58, 32, 98, 111, 114, 100, 101, 114, 45, 98, 111, 120, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 125, 32, 115, 101, 108, 101, 99, 116, 32, 123, 32, 45, 
+119, 101, 98, 107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 97, 112, 112, 101, 97, 
+114, 97, 110, 99, 101, 58, 32, 109,<BR>&nbsp;&nbsp;&nbsp; 101, 110, 117, 108, 
+105, 115, 116, 59, 32, 45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 
+45, 98, 111, 120, 45, 115, 105, 122, 105, 110, 103, 58, 32, 98, 111, 
+114,<BR>&nbsp;&nbsp;&nbsp; 100, 101, 114, 45, 98, 111, 120, 59, 32, 45, 119, 
+101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 98, 111, 120, 45, 97, 108, 
+105, 103, 110, 58, 32, 99, 101, 110, 116,<BR>&nbsp;&nbsp;&nbsp; 101, 114, 59, 
+32, 98, 111, 114, 100, 101, 114, 58, 32, 49, 112, 120, 32,<BR>&nbsp;&nbsp;&nbsp; 
+115, 111, 108, 105, 100, 59, 32, 119, 104, 105, 116, 101, 45, 115, 112, 
+97,<BR>&nbsp;&nbsp;&nbsp; 99, 101, 58, 32, 112, 114, 101, 59, 32, 45, 119, 101, 
+98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 114, 116, 108, 45, 111, 114, 100, 
+101, 114, 105, 110, 103, 58, 32, 108,<BR>&nbsp;&nbsp;&nbsp; 111, 103, 105, 99, 
+97, 108, 59, 32, 99, 111, 108, 111, 114, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 
+97, 99, 107, 59, 32, 98, 97, 99, 107, 103, 114, 111, 117, 110, 
+100,<BR>&nbsp;&nbsp;&nbsp; 45, 99, 111, 108, 111, 114, 58, 32, 119, 104, 105, 
+116, 101, 59, 32, 99,<BR>&nbsp;&nbsp;&nbsp; 117, 114, 115, 111, 114, 58, 32, 
+100, 101, 102, 97, 117, 108, 116, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 125, 32, 115, 
+101, 108, 101, 99, 116, 91, 115, 105, 122, 101, 93, 44, 
+32,<BR>&nbsp;&nbsp;&nbsp; 115, 101, 108, 101, 99, 116, 91, 109, 117, 108, 116, 
+105, 112, 108, 101, 93,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 115, 101, 108, 101, 99, 
+116, 91, 115, 105, 122, 101, 93, 91, 109,<BR>&nbsp;&nbsp;&nbsp; 117, 108, 116, 
+105, 112, 108, 101, 93, 32, 123, 32, 45, 119, 101, 98, 
+107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 97, 112, 112, 101, 97, 114, 97, 110, 
+99, 101, 58, 32, 108,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 116, 98, 111, 120, 59, 32, 
+45, 119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 98, 111, 120, 45, 97, 
+108, 105, 103, 110, 58, 32, 115, 116, 97, 114, 116,<BR>&nbsp;&nbsp;&nbsp; 59, 
+32, 98, 111, 114, 100, 101, 114, 58, 32, 49, 112, 120, 32, 105, 
+110,<BR>&nbsp;&nbsp;&nbsp; 115, 101, 116, 32, 103, 114, 97, 121, 59, 32, 45, 
+119, 101, 98, 107, 105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 98, 111, 114, 100, 101, 
+114, 45, 114, 97, 100, 105, 117, 115, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 105, 110, 
+105, 116, 105, 97, 108, 59, 32, 119, 104, 105, 116, 101, 
+45,<BR>&nbsp;&nbsp;&nbsp; 115, 112, 97, 99, 101, 58, 32, 105, 110, 105, 116, 
+105, 97, 108, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 125, 32, 115, 101, 108, 101, 99, 
+116, 91, 115, 105, 122, 101, 61, 34, 48,<BR>&nbsp;&nbsp;&nbsp; 34, 93, 44, 32, 
+115, 101, 108, 101, 99, 116, 91, 115, 105, 122, 101, 61,<BR>&nbsp;&nbsp;&nbsp; 
+34, 49, 34, 93, 32, 123, 32, 45, 119, 101, 98, 107, 105, 116, 45, 
+97,<BR>&nbsp;&nbsp;&nbsp; 112, 112, 101, 97, 114, 97, 110, 99, 101, 58, 32, 109, 
+101, 110, 117, 108,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 116, 59, 32, 45, 119, 101, 
+98, 107, 105, 116, 45, 98, 111, 120,<BR>&nbsp;&nbsp;&nbsp; 45, 97, 108, 105, 
+103, 110, 58, 32, 99, 101, 110, 116, 101, 114, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 
+111, 114, 100, 101, 114, 58, 32, 49, 112, 120, 32, 115, 111, 108, 
+105,<BR>&nbsp;&nbsp;&nbsp; 100, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 98, 
+111, 114, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 114, 45, 114, 97, 100, 105, 117, 115, 
+58, 32, 53, 112, 120, 59, 32, 119,<BR>&nbsp;&nbsp;&nbsp; 104, 105, 116, 101, 45, 
+115, 112, 97, 99, 101, 58, 32, 112, 114, 101, 59,<BR>&nbsp;&nbsp;&nbsp; 32, 125, 
+32, 111, 112, 116, 103, 114, 111, 117, 112, 32, 123, 32, 102, 
+111,<BR>&nbsp;&nbsp;&nbsp; 110, 116, 45, 119, 101, 105, 103, 104, 116, 58, 32, 
+98, 111, 108, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 114, 59, 32, 125, 32, 111, 112, 
+116, 105, 111, 110, 32, 123, 32, 102, 111,<BR>&nbsp;&nbsp;&nbsp; 110, 116, 45, 
+119, 101, 105, 103, 104, 116, 58, 32, 110, 111, 114, 109, 
+97,<BR>&nbsp;&nbsp;&nbsp; 108, 59, 32, 125, 32, 111, 117, 116, 112, 117, 116, 
+32, 123, 32, 100, 105,<BR>&nbsp;&nbsp;&nbsp; 115, 112, 108, 97, 121, 58, 32, 
+105, 110, 108, 105, 110, 101, 59, 32, 125,<BR>&nbsp;&nbsp;&nbsp; 32, 58, 58, 45, 
+119, 101, 98, 107, 105, 116, 45, 118, 97, 108, 105, 100,<BR>&nbsp;&nbsp;&nbsp; 
+97, 116, 105, 111, 110, 45, 98, 117, 98, 98, 108, 101, 32, 123, 32, 
+100,<BR>&nbsp;&nbsp;&nbsp; 105, 115, 112, 108, 97, 121, 58, 32, 105, 110, 108, 
+105, 110, 101, 45, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 99, 107, 59, 32, 122, 45, 
+105, 110, 100, 101, 120, 58, 32, 50,<BR>&nbsp;&nbsp;&nbsp; 49, 52, 55, 52, 56, 
+51, 54, 52, 55, 59, 32, 112, 111, 115, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 105, 111, 
+110, 58, 32, 97, 98, 115, 111, 108, 117, 116, 101, 59, 32, 
+111,<BR>&nbsp;&nbsp;&nbsp; 112, 97, 99, 105, 116, 121, 58, 32, 48, 46, 57, 53, 
+59, 32, 108, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 101, 45, 104, 101, 105, 103, 104, 
+116, 58, 32, 48, 59, 32, 109, 97,<BR>&nbsp;&nbsp;&nbsp; 114, 103, 105, 110, 58, 
+32, 48, 59, 32, 45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 116, 
+101, 120, 116, 45, 115, 101, 99, 117, 114, 105, 116, 121, 58, 
+32,<BR>&nbsp;&nbsp;&nbsp; 110, 111, 110, 101, 59, 32, 45, 119, 101, 98, 107, 
+105, 116, 45, 116, 114,<BR>&nbsp;&nbsp;&nbsp; 97, 110, 115, 105, 116, 105, 111, 
+110, 58, 32, 111, 112, 97, 99, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 121, 32, 48, 53, 
+46, 53, 115, 32, 101, 97, 115, 101, 59, 32, 125, 32,<BR>&nbsp;&nbsp;&nbsp; 58, 
+58, 45, 119, 101, 98, 107, 105, 116, 45, 118, 97, 108, 105, 100, 
+97,<BR>&nbsp;&nbsp;&nbsp; 116, 105, 111, 110, 45, 98, 117, 98, 98, 108, 101, 45, 
+109, 101, 115, 115,<BR>&nbsp;&nbsp;&nbsp; 97, 103, 101, 32, 123, 32, 100, 105, 
+115, 112, 108, 97, 121, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 99, 107, 59, 
+32, 112, 111, 115, 105, 116, 105, 111, 110, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 114, 
+101, 108, 97, 116, 105, 118, 101, 59, 32, 116, 111, 112, 58, 32, 
+45,<BR>&nbsp;&nbsp;&nbsp; 52, 112, 120, 59, 32, 102, 111, 110, 116, 58, 32, 109, 
+101, 115, 115, 97,<BR>&nbsp;&nbsp;&nbsp; 103, 101, 45, 98, 111, 120, 59, 32, 99, 
+111, 108, 111, 114, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 99, 107, 59, 32, 
+109, 105, 110, 45, 119, 105, 100, 116, 104, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 53, 
+48, 112, 120, 59, 32, 109, 97, 120, 45, 119, 105, 100, 116, 
+104,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 50, 48, 48, 112, 120, 59, 32, 98, 111, 114, 
+100, 101, 114, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 115, 111, 108, 105, 100, 32, 50, 
+112, 120, 32, 35, 52, 48, 48, 59,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 97, 99, 107, 
+103, 114, 111, 117, 110, 100, 58, 32, 45, 119, 101,<BR>&nbsp;&nbsp;&nbsp; 98, 
+107, 105, 116, 45, 103, 114, 97, 100, 105, 101, 110, 116, 40, 108, 
+105,<BR>&nbsp;&nbsp;&nbsp; 110, 101, 97, 114, 44, 32, 108, 101, 102, 116, 32, 
+116, 111, 112, 44, 32,<BR>&nbsp;&nbsp;&nbsp; 108, 101, 102, 116, 32, 98, 111, 
+116, 116, 111, 109, 44, 32, 102, 114, 111,<BR>&nbsp;&nbsp;&nbsp; 109, 40, 35, 
+102, 56, 101, 99, 101, 99, 41, 44, 32, 116, 111, 40, 35,<BR>&nbsp;&nbsp;&nbsp; 
+101, 56, 99, 99, 99, 99, 41, 41, 59, 32, 112, 97, 100, 100, 105, 
+110,<BR>&nbsp;&nbsp;&nbsp; 103, 58, 32, 56, 112, 120, 59, 32, 45, 119, 101, 98, 
+107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 98, 111, 114, 100, 101, 114, 45, 114, 
+97, 100, 105, 117, 115, 58, 32, 56,<BR>&nbsp;&nbsp;&nbsp; 112, 120, 59, 32, 45, 
+119, 101, 98, 107, 105, 116, 45, 98, 111, 120, 45,<BR>&nbsp;&nbsp;&nbsp; 115, 
+104, 97, 100, 111, 119, 58, 32, 52, 112, 120, 32, 52, 112, 120, 
+32,<BR>&nbsp;&nbsp;&nbsp; 52, 112, 120, 32, 114, 103, 98, 97, 40, 49, 48, 48, 
+44, 49, 48, 48,<BR>&nbsp;&nbsp;&nbsp; 44, 49, 48, 48, 44, 48, 46, 54, 41, 44, 
+32, 105, 110, 115, 101, 116,<BR>&nbsp;&nbsp;&nbsp; 32, 45, 50, 112, 120, 32, 45, 
+50, 112, 120, 32, 49, 112, 120, 32, 35,<BR>&nbsp;&nbsp;&nbsp; 100, 48, 99, 52, 
+99, 52, 44, 32, 105, 110, 115, 101, 116, 32, 50, 112,<BR>&nbsp;&nbsp;&nbsp; 120, 
+32, 50, 112, 120, 32, 49, 112, 120, 32, 119, 104, 105, 116, 101, 
+59,<BR>&nbsp;&nbsp;&nbsp; 32, 108, 105, 110, 101, 45, 104, 101, 105, 103, 104, 
+116, 58, 32, 110, 111,<BR>&nbsp;&nbsp;&nbsp; 114, 109, 97, 108, 59, 32, 122, 45, 
+105, 110, 100, 101, 120, 58, 32, 50,<BR>&nbsp;&nbsp;&nbsp; 49, 52, 55, 52, 56, 
+51, 54, 52, 52, 59, 32, 125, 32, 58, 58, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 
+107, 105, 116, 45, 118, 97, 108, 105, 100, 97, 116, 105, 
+111,<BR>&nbsp;&nbsp;&nbsp; 110, 45, 98, 117, 98, 98, 108, 101, 45, 97, 114, 114, 
+111, 119, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 115, 112, 108, 97, 121, 
+58, 32, 105, 110, 108, 105, 110, 101,<BR>&nbsp;&nbsp;&nbsp; 45, 98, 108, 111, 
+99, 107, 59, 32, 112, 111, 115, 105, 116, 105, 111, 110,<BR>&nbsp;&nbsp;&nbsp; 
+58, 32, 114, 101, 108, 97, 116, 105, 118, 101, 59, 32, 108, 101, 102, 
+116,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 51, 50, 112, 120, 59, 32, 119, 105, 100, 116, 
+104, 58, 32, 49,<BR>&nbsp;&nbsp;&nbsp; 54, 112, 120, 59, 32, 104, 101, 105, 103, 
+104, 116, 58, 32, 49, 54, 112,<BR>&nbsp;&nbsp;&nbsp; 120, 59, 32, 98, 97, 99, 
+107, 103, 114, 111, 117, 110, 100, 45, 99, 111,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 
+114, 58, 32, 35, 102, 56, 101, 99, 101, 99, 59, 32, 98, 
+111,<BR>&nbsp;&nbsp;&nbsp; 114, 100, 101, 114, 45, 119, 105, 100, 116, 104, 58, 
+32, 50, 112, 120, 32,<BR>&nbsp;&nbsp;&nbsp; 48, 32, 48, 32, 50, 112, 120, 59, 
+32, 98, 111, 114, 100, 101, 114, 45,<BR>&nbsp;&nbsp;&nbsp; 115, 116, 121, 108, 
+101, 58, 32, 115, 111, 108, 105, 100, 59, 32, 98, 111,<BR>&nbsp;&nbsp;&nbsp; 
+114, 100, 101, 114, 45, 99, 111, 108, 111, 114, 58, 32, 35, 52, 48, 
+48,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 98, 111, 120, 45, 115, 104, 97, 100, 111, 119, 
+58, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 115, 101, 116, 32, 50, 112, 120, 32, 50, 
+112, 120, 32, 49, 112, 120, 32,<BR>&nbsp;&nbsp;&nbsp; 119, 104, 105, 116, 101, 
+59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 116,<BR>&nbsp;&nbsp;&nbsp; 114, 97, 
+110, 115, 102, 111, 114, 109, 45, 111, 114, 105, 103, 105, 110, 
+58,<BR>&nbsp;&nbsp;&nbsp; 32, 48, 32, 48, 59, 32, 45, 119, 101, 98, 107, 105, 
+116, 45, 116, 114,<BR>&nbsp;&nbsp;&nbsp; 97, 110, 115, 102, 111, 114, 109, 58, 
+32, 114, 111, 116, 97, 116, 101, 40,<BR>&nbsp;&nbsp;&nbsp; 52, 53, 100, 101, 
+103, 41, 59, 32, 122, 45, 105, 110, 100, 101, 120, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 
+50, 49, 52, 55, 52, 56, 51, 54, 52, 53, 59, 32, 125, 32, 
+58,<BR>&nbsp;&nbsp;&nbsp; 58, 45, 119, 101, 98, 107, 105, 116, 45, 118, 97, 108, 
+105, 100, 97, 116,<BR>&nbsp;&nbsp;&nbsp; 105, 111, 110, 45, 98, 117, 98, 98, 
+108, 101, 45, 97, 114, 114, 111, 119,<BR>&nbsp;&nbsp;&nbsp; 45, 99, 108, 105, 
+112, 112, 101, 114, 32, 123, 32, 100, 105, 115, 112, 108,<BR>&nbsp;&nbsp;&nbsp; 
+97, 121, 58, 32, 98, 108, 111, 99, 107, 59, 32, 111, 118, 101, 114, 
+102,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 119, 58, 32, 104, 105, 100, 100, 101, 110, 
+59, 32, 104, 101, 105,<BR>&nbsp;&nbsp;&nbsp; 103, 104, 116, 58, 32, 49, 54, 112, 
+120, 59, 32, 125, 32, 109, 101, 116,<BR>&nbsp;&nbsp;&nbsp; 101, 114, 32, 123, 
+32, 45, 119, 101, 98, 107, 105, 116, 45, 97, 112, 112,<BR>&nbsp;&nbsp;&nbsp; 
+101, 97, 114, 97, 110, 99, 101, 58, 32, 109, 101, 116, 101, 114, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 45, 119, 101, 98, 107, 105, 116, 45, 98, 111, 120, 45, 
+115, 105, 122, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 103, 58, 32, 98, 111, 114, 100, 
+101, 114, 45, 98, 111, 120, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 100, 105, 115, 112, 
+108, 97, 121, 58, 32, 105, 110, 108, 105, 110, 101, 45,<BR>&nbsp;&nbsp;&nbsp; 
+98, 111, 120, 59, 32, 104, 101, 105, 103, 104, 116, 58, 32, 49, 101, 
+109,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 119, 105, 100, 116, 104, 58, 32, 53, 101, 
+109, 59, 32, 118, 101,<BR>&nbsp;&nbsp;&nbsp; 114, 116, 105, 99, 97, 108, 45, 97, 
+108, 105, 103, 110, 58, 32, 45, 48,<BR>&nbsp;&nbsp;&nbsp; 46, 50, 101, 109, 59, 
+32, 125, 32, 109, 101, 116, 101, 114, 58, 58, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 
+101, 98, 107, 105, 116, 45, 109, 101, 116, 101, 114, 45, 98, 97, 
+114,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 98, 97, 99, 107, 103, 114, 111, 117, 
+110, 100, 58, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 
+103, 114, 97, 100, 105, 101, 110, 116, 40,<BR>&nbsp;&nbsp;&nbsp; 108, 105, 110, 
+101, 97, 114, 44, 32, 108, 101, 102, 116, 32, 116, 111, 
+112,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 108, 101, 102, 116, 32, 98, 111, 116, 116, 
+111, 109, 44, 32, 102,<BR>&nbsp;&nbsp;&nbsp; 114, 111, 109, 40, 35, 100, 100, 
+100, 41, 44, 32, 116, 111, 40, 35, 100,<BR>&nbsp;&nbsp;&nbsp; 100, 100, 41, 44, 
+32, 99, 111, 108, 111, 114, 45, 115, 116, 111, 112, 40,<BR>&nbsp;&nbsp;&nbsp; 
+48, 46, 50, 48, 44, 32, 35, 101, 101, 101, 41, 44, 32, 99, 111, 
+108,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 45, 115, 116, 111, 112, 40, 48, 46, 52, 53, 
+44, 32, 35, 99,<BR>&nbsp;&nbsp;&nbsp; 99, 99, 41, 44, 32, 99, 111, 108, 111, 
+114, 45, 115, 116, 111, 112, 40,<BR>&nbsp;&nbsp;&nbsp; 48, 46, 53, 53, 44, 32, 
+35, 99, 99, 99, 41, 41, 59, 32, 104, 101,<BR>&nbsp;&nbsp;&nbsp; 105, 103, 104, 
+116, 58, 32, 49, 48, 48, 37, 59, 32, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 
+107, 105, 116, 45, 98, 111, 120, 45, 115, 105, 122, 105, 110, 103, 58, 
+32,<BR>&nbsp;&nbsp;&nbsp; 98, 111, 114, 100, 101, 114, 45, 98, 111, 120, 59, 32, 
+125, 32, 109, 101,<BR>&nbsp;&nbsp;&nbsp; 116, 101, 114, 58, 58, 45, 119, 101, 
+98, 107, 105, 116, 45, 109, 101, 116,<BR>&nbsp;&nbsp;&nbsp; 101, 114, 45, 111, 
+112, 116, 105, 109, 117, 109, 45, 118, 97, 108, 117, 101,<BR>&nbsp;&nbsp;&nbsp; 
+32, 123, 32, 98, 97, 99, 107, 103, 114, 111, 117, 110, 100, 58, 32, 
+45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 103, 114, 97, 100, 
+105, 101, 110, 116, 40,<BR>&nbsp;&nbsp;&nbsp; 108, 105, 110, 101, 97, 114, 44, 
+32, 108, 101, 102, 116, 32, 116, 111, 112,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 108, 
+101, 102, 116, 32, 98, 111, 116, 116, 111, 109, 44, 32, 
+102,<BR>&nbsp;&nbsp;&nbsp; 114, 111, 109, 40, 35, 97, 100, 55, 41, 44, 32, 116, 
+111, 40, 35, 97,<BR>&nbsp;&nbsp;&nbsp; 100, 55, 41, 44, 32, 99, 111, 108, 111, 
+114, 45, 115, 116, 111, 112, 40,<BR>&nbsp;&nbsp;&nbsp; 48, 46, 50, 48, 44, 32, 
+35, 99, 101, 97, 41, 44, 32, 99, 111, 108,<BR>&nbsp;&nbsp;&nbsp; 111, 114, 45, 
+115, 116, 111, 112, 40, 48, 46, 52, 53, 44, 32, 35, 55,<BR>&nbsp;&nbsp;&nbsp; 
+97, 51, 41, 44, 32, 99, 111, 108, 111, 114, 45, 115, 116, 111, 112, 
+40,<BR>&nbsp;&nbsp;&nbsp; 48, 46, 53, 53, 44, 32, 35, 55, 97, 51, 41, 41, 59, 
+32, 104, 101,<BR>&nbsp;&nbsp;&nbsp; 105, 103, 104, 116, 58, 32, 49, 48, 48, 37, 
+59, 32, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 98, 111, 120, 
+45, 115, 105, 122, 105, 110, 103, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 111, 114, 
+100, 101, 114, 45, 98, 111, 120, 59, 32, 125, 32, 109, 
+101,<BR>&nbsp;&nbsp;&nbsp; 116, 101, 114, 58, 58, 45, 119, 101, 98, 107, 105, 
+116, 45, 109, 101, 116,<BR>&nbsp;&nbsp;&nbsp; 101, 114, 45, 115, 117, 98, 111, 
+112, 116, 105, 109, 117, 109, 45, 118, 97,<BR>&nbsp;&nbsp;&nbsp; 108, 117, 101, 
+32, 123, 32, 98, 97, 99, 107, 103, 114, 111, 117, 110, 
+100,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 45, 119, 101, 98, 107, 105, 116, 45, 103, 
+114, 97, 100, 105, 101,<BR>&nbsp;&nbsp;&nbsp; 110, 116, 40, 108, 105, 110, 101, 
+97, 114, 44, 32, 108, 101, 102, 116, 32,<BR>&nbsp;&nbsp;&nbsp; 116, 111, 112, 
+44, 32, 108, 101, 102, 116, 32, 98, 111, 116, 116, 111, 
+109,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 102, 114, 111, 109, 40, 35, 102, 101, 55, 41, 
+44, 32, 116, 111,<BR>&nbsp;&nbsp;&nbsp; 40, 35, 102, 101, 55, 41, 44, 32, 99, 
+111, 108, 111, 114, 45, 115, 116,<BR>&nbsp;&nbsp;&nbsp; 111, 112, 40, 48, 46, 
+50, 48, 44, 32, 35, 102, 102, 99, 41, 44, 32,<BR>&nbsp;&nbsp;&nbsp; 99, 111, 
+108, 111, 114, 45, 115, 116, 111, 112, 40, 48, 46, 52, 53, 
+44,<BR>&nbsp;&nbsp;&nbsp; 32, 35, 100, 98, 51, 41, 44, 32, 99, 111, 108, 111, 
+114, 45, 115, 116,<BR>&nbsp;&nbsp;&nbsp; 111, 112, 40, 48, 46, 53, 53, 44, 32, 
+35, 100, 98, 51, 41, 41, 59,<BR>&nbsp;&nbsp;&nbsp; 32, 104, 101, 105, 103, 104, 
+116, 58, 32, 49, 48, 48, 37, 59, 32, 45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 
+107, 105, 116, 45, 98, 111, 120, 45, 115, 105, 122, 105, 
+110,<BR>&nbsp;&nbsp;&nbsp; 103, 58, 32, 98, 111, 114, 100, 101, 114, 45, 98, 
+111, 120, 59, 32, 125,<BR>&nbsp;&nbsp;&nbsp; 32, 109, 101, 116, 101, 114, 58, 
+58, 45, 119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 109, 101, 116, 
+101, 114, 45, 101, 118, 101, 110, 45, 108, 101, 115, 115, 
+45,<BR>&nbsp;&nbsp;&nbsp; 103, 111, 111, 100, 45, 118, 97, 108, 117, 101, 32, 
+123, 32, 98, 97, 99,<BR>&nbsp;&nbsp;&nbsp; 107, 103, 114, 111, 117, 110, 100, 
+58, 32, 45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 103, 114, 97, 
+100, 105, 101, 110, 116, 40, 108, 105, 110, 101, 97, 114,<BR>&nbsp;&nbsp;&nbsp; 
+44, 32, 108, 101, 102, 116, 32, 116, 111, 112, 44, 32, 108, 101, 102, 
+116,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 111, 116, 116, 111, 109, 44, 32, 102, 114, 
+111, 109, 40, 35, 102,<BR>&nbsp;&nbsp;&nbsp; 55, 55, 41, 44, 32, 116, 111, 40, 
+35, 102, 55, 55, 41, 44, 32, 99,<BR>&nbsp;&nbsp;&nbsp; 111, 108, 111, 114, 45, 
+115, 116, 111, 112, 40, 48, 46, 50, 48, 44, 32,<BR>&nbsp;&nbsp;&nbsp; 35, 102, 
+99, 99, 41, 44, 32, 99, 111, 108, 111, 114, 45, 115, 116, 
+111,<BR>&nbsp;&nbsp;&nbsp; 112, 40, 48, 46, 52, 53, 44, 32, 35, 100, 52, 52, 41, 
+44, 32, 99,<BR>&nbsp;&nbsp;&nbsp; 111, 108, 111, 114, 45, 115, 116, 111, 112, 
+40, 48, 46, 53, 53, 44, 32,<BR>&nbsp;&nbsp;&nbsp; 35, 100, 52, 52, 41, 41, 59, 
+32, 104, 101, 105, 103, 104, 116, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 49, 48, 48, 37, 
+59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 98, 111,<BR>&nbsp;&nbsp;&nbsp; 120, 
+45, 115, 105, 122, 105, 110, 103, 58, 32, 98, 111, 114, 100, 101, 
+114,<BR>&nbsp;&nbsp;&nbsp; 45, 98, 111, 120, 59, 32, 125, 32, 112, 114, 111, 
+103, 114, 101, 115, 115,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 97, 112, 112, 101, 97,<BR>&nbsp;&nbsp;&nbsp; 114, 97, 110, 
+99, 101, 58, 32, 112, 114, 111, 103, 114, 101, 115, 115, 
+45,<BR>&nbsp;&nbsp;&nbsp; 98, 97, 114, 59, 32, 45, 119, 101, 98, 107, 105, 116, 
+45, 98, 111, 120,<BR>&nbsp;&nbsp;&nbsp; 45, 115, 105, 122, 105, 110, 103, 58, 
+32, 98, 111, 114, 100, 101, 114, 45,<BR>&nbsp;&nbsp;&nbsp; 98, 111, 120, 59, 32, 
+100, 105, 115, 112, 108, 97, 121, 58, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 108, 
+105, 110, 101, 45, 98, 108, 111, 99, 107, 59, 32, 104, 101, 105, 
+103,<BR>&nbsp;&nbsp;&nbsp; 104, 116, 58, 32, 49, 101, 109, 59, 32, 119, 105, 
+100, 116, 104, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 49, 48, 101, 109, 59, 32, 118, 101, 
+114, 116, 105, 99, 97, 108, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 108, 105, 103, 110, 
+58, 32, 45, 48, 46, 50, 101, 109, 59, 32, 125, 32,<BR>&nbsp;&nbsp;&nbsp; 112, 
+114, 111, 103, 114, 101, 115, 115, 58, 58, 45, 119, 101, 98, 107, 
+105,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 112, 114, 111, 103, 114, 101, 115, 115, 45, 
+98, 97, 114, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 98, 97, 99, 107, 103, 114, 111, 
+117, 110, 100, 45, 99, 111, 108, 111,<BR>&nbsp;&nbsp;&nbsp; 114, 58, 32, 103, 
+114, 97, 121, 59, 32, 104, 101, 105, 103, 104, 116, 58,<BR>&nbsp;&nbsp;&nbsp; 
+32, 49, 48, 48, 37, 59, 32, 45, 119, 101, 98, 107, 105, 116, 45, 
+98,<BR>&nbsp;&nbsp;&nbsp; 111, 120, 45, 115, 105, 122, 105, 110, 103, 58, 32, 
+98, 111, 114, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 114, 45, 98, 111, 120, 59, 32, 
+125, 32, 112, 114, 111, 103, 114, 101, 115,<BR>&nbsp;&nbsp;&nbsp; 115, 58, 58, 
+45, 119, 101, 98, 107, 105, 116, 45, 112, 114, 111, 103, 
+114,<BR>&nbsp;&nbsp;&nbsp; 101, 115, 115, 45, 118, 97, 108, 117, 101, 32, 123, 
+32, 98, 97, 99, 107,<BR>&nbsp;&nbsp;&nbsp; 103, 114, 111, 117, 110, 100, 45, 99, 
+111, 108, 111, 114, 58, 32, 103, 114,<BR>&nbsp;&nbsp;&nbsp; 101, 101, 110, 59, 
+32, 104, 101, 105, 103, 104, 116, 58, 32, 49, 48, 48,<BR>&nbsp;&nbsp;&nbsp; 37, 
+59, 32, 119, 105, 100, 116, 104, 58, 32, 53, 48, 37, 59, 32, 
+45,<BR>&nbsp;&nbsp;&nbsp; 119, 101, 98, 107, 105, 116, 45, 98, 111, 120, 45, 
+115, 105, 122, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 103, 58, 32, 98, 111, 114, 100, 
+101, 114, 45, 98, 111, 120, 59, 32, 125,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 97, 116, 
+97, 103, 114, 105, 100, 32, 123, 32, 104, 101, 105, 103,<BR>&nbsp;&nbsp;&nbsp; 
+104, 116, 58, 32, 49, 53, 48, 112, 120, 59, 32, 45, 119, 101, 98, 
+107,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 45, 97, 112, 112, 101, 97, 114, 97, 110, 
+99, 101, 58, 32, 100,<BR>&nbsp;&nbsp;&nbsp; 97, 116, 97, 103, 114, 105, 100, 59, 
+32, 45, 119, 101, 98, 107, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 45, 98, 111, 120, 45, 
+115, 105, 122, 105, 110, 103, 58, 32, 98, 111, 114,<BR>&nbsp;&nbsp;&nbsp; 100, 
+101, 114, 45, 98, 111, 120, 59, 32, 45, 119, 101, 98, 107, 105, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 114, 116, 108, 45, 111, 114, 100, 101, 114, 105, 
+110, 103, 58, 32, 108,<BR>&nbsp;&nbsp;&nbsp; 111, 103, 105, 99, 97, 108, 59, 32, 
+99, 111, 108, 111, 114, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 99, 107, 59, 
+32, 98, 97, 99, 107, 103, 114, 111, 117, 110, 100,<BR>&nbsp;&nbsp;&nbsp; 45, 99, 
+111, 108, 111, 114, 58, 32, 119, 104, 105, 116, 101, 59, 32, 
+99,<BR>&nbsp;&nbsp;&nbsp; 117, 114, 115, 111, 114, 58, 32, 100, 101, 102, 97, 
+117, 108, 116, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 111, 114, 100, 101, 114, 58, 
+32, 49, 112, 120, 32, 105, 110, 115, 101,<BR>&nbsp;&nbsp;&nbsp; 116, 32, 103, 
+114, 97, 121, 59, 32, 119, 104, 105, 116, 101, 45, 115, 
+112,<BR>&nbsp;&nbsp;&nbsp; 97, 99, 101, 58, 32, 105, 110, 105, 116, 105, 97, 
+108, 59, 32, 125, 32,<BR>&nbsp;&nbsp;&nbsp; 117, 44, 32, 105, 110, 115, 32, 123, 
+32, 116, 101, 120, 116, 45, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 99, 111, 114, 97, 
+116, 105, 111, 110, 58, 32, 117, 110, 100, 101, 114, 108,<BR>&nbsp;&nbsp;&nbsp; 
+105, 110, 101, 32, 125, 32, 115, 116, 114, 111, 110, 103, 44, 32, 98, 
+32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 102, 111, 110, 116, 45, 119, 101, 105, 103, 
+104, 116, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 111, 108, 100, 101, 114, 32, 125, 
+32, 105, 44, 32, 99, 105, 116, 101, 44,<BR>&nbsp;&nbsp;&nbsp; 32, 101, 109, 44, 
+32, 118, 97, 114, 44, 32, 97, 100, 100, 114, 101, 115,<BR>&nbsp;&nbsp;&nbsp; 
+115, 32, 123, 32, 102, 111, 110, 116, 45, 115, 116, 121, 108, 101, 58, 
+32,<BR>&nbsp;&nbsp;&nbsp; 105, 116, 97, 108, 105, 99, 32, 125, 32, 116, 116, 44, 
+32, 99, 111, 100,<BR>&nbsp;&nbsp;&nbsp; 101, 44, 32, 107, 98, 100, 44, 32, 115, 
+97, 109, 112, 32, 123, 32, 102,<BR>&nbsp;&nbsp;&nbsp; 111, 110, 116, 45, 102, 
+97, 109, 105, 108, 121, 58, 32, 109, 111, 110, 111,<BR>&nbsp;&nbsp;&nbsp; 115, 
+112, 97, 99, 101, 32, 125, 32, 112, 114, 101, 44, 32, 120, 109, 
+112,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 112, 108, 97, 105, 110, 116, 101, 120, 116, 
+44, 32, 108, 105, 115,<BR>&nbsp;&nbsp;&nbsp; 116, 105, 110, 103, 32, 123, 32, 
+100, 105, 115, 112, 108, 97, 121, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 98, 108, 111, 
+99, 107, 59, 32, 102, 111, 110, 116, 45, 102, 97, 109, 
+105,<BR>&nbsp;&nbsp;&nbsp; 108, 121, 58, 32, 109, 111, 110, 111, 115, 112, 97, 
+99, 101, 59, 32, 119,<BR>&nbsp;&nbsp;&nbsp; 104, 105, 116, 101, 45, 115, 112, 
+97, 99, 101, 58, 32, 112, 114, 101, 59,<BR>&nbsp;&nbsp;&nbsp; 32, 109, 97, 114, 
+103, 105, 110, 58, 32, 49, 95, 95, 113, 101, 109, 32,<BR>&nbsp;&nbsp;&nbsp; 48, 
+32, 125, 32, 109, 97, 114, 107, 32, 123, 32, 98, 97, 99, 107, 
+103,<BR>&nbsp;&nbsp;&nbsp; 114, 111, 117, 110, 100, 45, 99, 111, 108, 111, 114, 
+58, 32, 121, 101, 108,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 119, 59, 32, 99, 111, 
+108, 111, 114, 58, 32, 98, 108, 97, 99,<BR>&nbsp;&nbsp;&nbsp; 107, 32, 125, 32, 
+98, 105, 103, 32, 123, 32, 102, 111, 110, 116, 45, 115,<BR>&nbsp;&nbsp;&nbsp; 
+105, 122, 101, 58, 32, 108, 97, 114, 103, 101, 114, 32, 125, 32, 115, 
+109,<BR>&nbsp;&nbsp;&nbsp; 97, 108, 108, 32, 123, 32, 102, 111, 110, 116, 45, 
+115, 105, 122, 101, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 115, 109, 97, 108, 108, 101, 
+114, 32, 125, 32, 115, 44, 32, 115, 116,<BR>&nbsp;&nbsp;&nbsp; 114, 105, 107, 
+101, 44, 32, 100, 101, 108, 32, 123, 32, 116, 101, 120, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 100, 101, 99, 111, 114, 97, 116, 105, 111, 110, 
+58, 32, 108, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 101, 45, 116, 104, 114, 111, 117, 
+103, 104, 32, 125, 32, 115, 117, 98, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 118, 
+101, 114, 116, 105, 99, 97, 108, 45, 97, 108, 105, 103, 
+110,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 115, 117, 98, 59, 32, 102, 111, 110, 116, 45, 
+115, 105, 122, 101,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 115, 109, 97, 108, 108, 101, 
+114, 32, 125, 32, 115, 117, 112, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 118, 101, 
+114, 116, 105, 99, 97, 108, 45, 97, 108, 105, 103, 110,<BR>&nbsp;&nbsp;&nbsp; 
+58, 32, 115, 117, 112, 101, 114, 59, 32, 102, 111, 110, 116, 45, 115, 
+105,<BR>&nbsp;&nbsp;&nbsp; 122, 101, 58, 32, 115, 109, 97, 108, 108, 101, 114, 
+32, 125, 32, 110, 111,<BR>&nbsp;&nbsp;&nbsp; 98, 114, 32, 123, 32, 119, 104, 
+105, 116, 101, 45, 115, 112, 97, 99, 101,<BR>&nbsp;&nbsp;&nbsp; 58, 32, 110, 
+111, 119, 114, 97, 112, 32, 125, 32, 58, 102, 111, 99, 
+117,<BR>&nbsp;&nbsp;&nbsp; 115, 32, 123, 32, 111, 117, 116, 108, 105, 110, 101, 
+58, 32, 97, 117, 116,<BR>&nbsp;&nbsp;&nbsp; 111, 32, 53, 112, 120, 32, 45, 119, 
+101, 98, 107, 105, 116, 45, 102, 111,<BR>&nbsp;&nbsp;&nbsp; 99, 117, 115, 45, 
+114, 105, 110, 103, 45, 99, 111, 108, 111, 114, 32, 125,<BR>&nbsp;&nbsp;&nbsp; 
+32, 104, 116, 109, 108, 58, 102, 111, 99, 117, 115, 44, 32, 98, 111, 
+100,<BR>&nbsp;&nbsp;&nbsp; 121, 58, 102, 111, 99, 117, 115, 44, 32, 105, 110, 
+112, 117, 116, 91, 114,<BR>&nbsp;&nbsp;&nbsp; 101, 97, 100, 111, 110, 108, 121, 
+93, 58, 102, 111, 99, 117, 115, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 111, 117, 
+116, 108, 105, 110, 101, 58, 32, 110, 111, 110, 101, 32, 
+125,<BR>&nbsp;&nbsp;&nbsp; 32, 105, 110, 112, 117, 116, 58, 102, 111, 99, 117, 
+115, 44, 32, 116, 101,<BR>&nbsp;&nbsp;&nbsp; 120, 116, 97, 114, 101, 97, 58, 
+102, 111, 99, 117, 115, 44, 32, 105, 115,<BR>&nbsp;&nbsp;&nbsp; 105, 110, 100, 
+101, 120, 58, 102, 111, 99, 117, 115, 44, 32, 107, 101, 
+121,<BR>&nbsp;&nbsp;&nbsp; 103, 101, 110, 58, 102, 111, 99, 117, 115, 44, 32, 
+115, 101, 108, 101, 99,<BR>&nbsp;&nbsp;&nbsp; 116, 58, 102, 111, 99, 117, 115, 
+32, 123, 32, 111, 117, 116, 108, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 101, 45, 111, 
+102, 102, 115, 101, 116, 58, 32, 45, 50, 112, 120, 32, 
+125,<BR>&nbsp;&nbsp;&nbsp; 32, 105, 110, 112, 117, 116, 91, 116, 121, 112, 101, 
+61, 34, 98, 117, 116,<BR>&nbsp;&nbsp;&nbsp; 116, 111, 110, 34, 93, 58, 102, 111, 
+99, 117, 115, 44, 32, 105, 110, 112,<BR>&nbsp;&nbsp;&nbsp; 117, 116, 91, 116, 
+121, 112, 101, 61, 34, 99, 104, 101, 99, 107, 98, 111,<BR>&nbsp;&nbsp;&nbsp; 
+120, 34, 93, 58, 102, 111, 99, 117, 115, 44, 32, 105, 110, 112, 117, 
+116,<BR>&nbsp;&nbsp;&nbsp; 91, 116, 121, 112, 101, 61, 34, 102, 105, 108, 101, 
+34, 93, 58, 102, 111,<BR>&nbsp;&nbsp;&nbsp; 99, 117, 115, 44, 32, 105, 110, 112, 
+117, 116, 91, 116, 121, 112, 101, 61,<BR>&nbsp;&nbsp;&nbsp; 34, 104, 105, 100, 
+100, 101, 110, 34, 93, 58, 102, 111, 99, 117, 115, 44,<BR>&nbsp;&nbsp;&nbsp; 32, 
+105, 110, 112, 117, 116, 91, 116, 121, 112, 101, 61, 34, 105, 109, 
+97,<BR>&nbsp;&nbsp;&nbsp; 103, 101, 34, 93, 58, 102, 111, 99, 117, 115, 44, 32, 
+105, 110, 112, 117,<BR>&nbsp;&nbsp;&nbsp; 116, 91, 116, 121, 112, 101, 61, 34, 
+114, 97, 100, 105, 111, 34, 93, 58,<BR>&nbsp;&nbsp;&nbsp; 102, 111, 99, 117, 
+115, 44, 32, 105, 110, 112, 117, 116, 91, 116, 121, 112,<BR>&nbsp;&nbsp;&nbsp; 
+101, 61, 34, 114, 101, 115, 101, 116, 34, 93, 58, 102, 111, 99, 117, 
+115,<BR>&nbsp;&nbsp;&nbsp; 44, 32, 105, 110, 112, 117, 116, 91, 116, 121, 112, 
+101, 61, 34, 115, 101,<BR>&nbsp;&nbsp;&nbsp; 97, 114, 99, 104, 34, 93, 58, 102, 
+111, 99, 117, 115, 44, 32, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 112, 117, 116, 91, 
+116, 121, 112, 101, 61, 34, 115, 117, 98, 109, 105, 116,<BR>&nbsp;&nbsp;&nbsp; 
+34, 93, 58, 102, 111, 99, 117, 115, 44, 32, 105, 110, 112, 117, 116, 
+91,<BR>&nbsp;&nbsp;&nbsp; 116, 121, 112, 101, 61, 34, 102, 105, 108, 101, 34, 
+93, 58, 102, 111, 99,<BR>&nbsp;&nbsp;&nbsp; 117, 115, 58, 58, 45, 119, 101, 98, 
+107, 105, 116, 45, 102, 105, 108, 101,<BR>&nbsp;&nbsp;&nbsp; 45, 117, 112, 108, 
+111, 97, 100, 45, 98, 117, 116, 116, 111, 110, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 
+32, 111, 117, 116, 108, 105, 110, 101, 45, 111, 102, 102, 115, 101, 116, 
+58,<BR>&nbsp;&nbsp;&nbsp; 32, 48, 32, 125, 32, 97, 58, 45, 119, 101, 98, 107, 
+105, 116, 45, 97,<BR>&nbsp;&nbsp;&nbsp; 110, 121, 45, 108, 105, 110, 107, 32, 
+123, 32, 99, 111, 108, 111, 114, 58,<BR>&nbsp;&nbsp;&nbsp; 32, 45, 119, 101, 98, 
+107, 105, 116, 45, 108, 105, 110, 107, 59, 32, 116,<BR>&nbsp;&nbsp;&nbsp; 101, 
+120, 116, 45, 100, 101, 99, 111, 114, 97, 116, 105, 111, 110, 58, 
+32,<BR>&nbsp;&nbsp;&nbsp; 110, 111, 110, 101, 59, 32, 99, 117, 114, 115, 111, 
+114, 58, 32, 97, 117,<BR>&nbsp;&nbsp;&nbsp; 116, 111, 59, 32, 125, 32, 97, 58, 
+45, 119, 101, 98, 107, 105, 116, 45,<BR>&nbsp;&nbsp;&nbsp; 97, 110, 121, 45, 
+108, 105, 110, 107, 58, 97, 99, 116, 105, 118, 101, 32,<BR>&nbsp;&nbsp;&nbsp; 
+123, 32, 99, 111, 108, 111, 114, 58, 32, 45, 119, 101, 98, 107, 105, 
+116,<BR>&nbsp;&nbsp;&nbsp; 45, 97, 99, 116, 105, 118, 101, 108, 105, 110, 107, 
+32, 125, 32, 114, 117,<BR>&nbsp;&nbsp;&nbsp; 98, 121, 44, 32, 114, 116, 32, 123, 
+32, 116, 101, 120, 116, 45, 105, 110,<BR>&nbsp;&nbsp;&nbsp; 100, 101, 110, 116, 
+58, 32, 48, 59, 32, 125, 32, 114, 116, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 108, 
+105, 110, 101, 45, 104, 101, 105, 103, 104, 116, 58, 32, 110, 111, 
+114,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 108, 59, 32, 45, 119, 101, 98, 107, 105, 
+116, 45, 116, 101, 120,<BR>&nbsp;&nbsp;&nbsp; 116, 45, 101, 109, 112, 104, 97, 
+115, 105, 115, 58, 32, 110, 111, 110, 101,<BR>&nbsp;&nbsp;&nbsp; 59, 32, 125, 
+32, 114, 117, 98, 121, 32, 62, 32, 114, 116, 32, 123, 32,<BR>&nbsp;&nbsp;&nbsp; 
+100, 105, 115, 112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 59, 
+32,<BR>&nbsp;&nbsp;&nbsp; 102, 111, 110, 116, 45, 115, 105, 122, 101, 58, 32, 
+53, 48, 37, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 116, 101, 120, 116, 45, 97, 108, 105, 
+103, 110, 58, 32, 45, 119, 101, 98,<BR>&nbsp;&nbsp;&nbsp; 107, 105, 116, 45, 97, 
+117, 116, 111, 59, 32, 125, 32, 114, 117, 98, 121,<BR>&nbsp;&nbsp;&nbsp; 32, 62, 
+32, 114, 112, 32, 123, 32, 100, 105, 115, 112, 108, 97, 121, 
+58,<BR>&nbsp;&nbsp;&nbsp; 32, 110, 111, 110, 101, 59, 32, 125, 32, 110, 111, 
+102, 114, 97, 109, 101,<BR>&nbsp;&nbsp;&nbsp; 115, 32, 123, 32, 100, 105, 115, 
+112, 108, 97, 121, 58, 32, 110, 111, 110,<BR>&nbsp;&nbsp;&nbsp; 101, 32, 125, 
+32, 102, 114, 97, 109, 101, 115, 101, 116, 44, 32, 102, 
+114,<BR>&nbsp;&nbsp;&nbsp; 97, 109, 101, 32, 123, 32, 100, 105, 115, 112, 108, 
+97, 121, 58, 32, 98,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 99, 107, 32, 125, 32, 102, 
+114, 97, 109, 101, 115, 101, 116, 32,<BR>&nbsp;&nbsp;&nbsp; 123, 32, 98, 111, 
+114, 100, 101, 114, 45, 99, 111, 108, 111, 114, 58, 32,<BR>&nbsp;&nbsp;&nbsp; 
+105, 110, 104, 101, 114, 105, 116, 32, 125, 32, 105, 102, 114, 97, 109, 
+101,<BR>&nbsp;&nbsp;&nbsp; 32, 123, 32, 98, 111, 114, 100, 101, 114, 58, 32, 50, 
+112, 120, 32, 105,<BR>&nbsp;&nbsp;&nbsp; 110, 115, 101, 116, 32, 125, 32, 100, 
+101, 116, 97, 105, 108, 115, 32, 123,<BR>&nbsp;&nbsp;&nbsp; 32, 100, 105, 115, 
+112, 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 32,<BR>&nbsp;&nbsp;&nbsp; 125, 
+32, 115, 117, 109, 109, 97, 114, 121, 32, 123, 32, 100, 105, 115, 
+112,<BR>&nbsp;&nbsp;&nbsp; 108, 97, 121, 58, 32, 98, 108, 111, 99, 107, 32, 125, 
+32, 115, 117, 109,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 114, 121, 58, 58, 45, 119, 
+101, 98, 107, 105, 116, 45, 100, 101,<BR>&nbsp;&nbsp;&nbsp; 116, 97, 105, 108, 
+115, 45, 109, 97, 114, 107, 101, 114, 32, 123, 32, 100,<BR>&nbsp;&nbsp;&nbsp; 
+105, 115, 112, 108, 97, 121, 58, 32, 105, 110, 108, 105, 110, 101, 45, 
+98,<BR>&nbsp;&nbsp;&nbsp; 108, 111, 99, 107, 59, 32, 119, 105, 100, 116, 104, 
+58, 32, 48, 46, 54,<BR>&nbsp;&nbsp;&nbsp; 54, 101, 109, 59, 32, 104, 101, 105, 
+103, 104, 116, 58, 32, 48, 46, 54,<BR>&nbsp;&nbsp;&nbsp; 54, 101, 109, 59, 32, 
+109, 97, 114, 103, 105, 110, 45, 114, 105, 103, 104,<BR>&nbsp;&nbsp;&nbsp; 116, 
+58, 32, 48, 46, 52, 101, 109, 59, 32, 125, 32, 64, 112, 97, 
+103,<BR>&nbsp;&nbsp;&nbsp; 101, 32, 123, 32, 115, 105, 122, 101, 58, 32, 97, 
+117, 116, 111, 59, 32,<BR>&nbsp;&nbsp;&nbsp; 109, 97, 114, 103, 105, 110, 58, 
+32, 97, 117, 116, 111, 59, 32, 112, 97,<BR>&nbsp;&nbsp;&nbsp; 100, 100, 105, 
+110, 103, 58, 32, 48, 112, 120, 59, 32, 98, 111, 114, 100,<BR>&nbsp;&nbsp;&nbsp; 
+101, 114, 45, 119, 105, 100, 116, 104, 58, 32, 48, 112, 120, 59, 32, 
+125<BR>};这样经过上面2个文件的转化就转化成为C++层次的数组，那么我们就可以在源代码中直接去使用了。</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">具体使用的过程：</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+class=keylink href="http://www.2cto.com/kf/qianduan/css/" 
+target=_blank>CSS</A>StyleSelector.cpp文件下面</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">static 
+void loadFullDefaultStyle(UserAgentType type)<BR>{<BR>&nbsp;&nbsp;&nbsp; if 
+(simpleDefaultStyleSheet) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ASSERT(defaultStyle);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delete 
+defaultStyle;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+simpleDefaultStyleSheet-&gt;deref();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+defaultStyle = new RuleSet;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+simpleDefaultStyleSheet = 0;<BR>&nbsp;&nbsp;&nbsp; } else 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ASSERT(!defaultStyle);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+defaultStyle = new RuleSet;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+defaultPrintStyle = new RuleSet;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+defaultQuirksStyle = new RuleSet;<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp; 
+// Strict-mode rules.<BR>&nbsp;&nbsp;&nbsp; String defaultRules 
+;<BR>&nbsp;if(type == DefaultUserAgent)<BR>&nbsp;&nbsp;defaultRules = 
+String(htmlUserAgentStyleSheet, sizeof(htmlUserAgentStyleSheet)) + 
+RenderTheme::defaultTheme()-&gt;extraDefaultStyleSheet();<BR>&nbsp;else if (type 
+== DvbUserAgent)<BR>&nbsp;&nbsp;defaultRules = 
+String(guangxidvbUserAgentStyleSheet, sizeof(guangxidvbUserAgentStyleSheet)) + 
+RenderTheme::defaultTheme()-&gt;extraDefaultStyleSheet();<BR>&nbsp;else if (type 
+== VodUserAgent)<BR>&nbsp;&nbsp;defaultRules = 
+String(guangxivodUserAgentStyleSheet, sizeof(guangxivodUserAgentStyleSheet)) + 
+RenderTheme::defaultTheme()-&gt;extraDefaultStyleSheet();<BR>&nbsp;<BR>&nbsp;&nbsp;&nbsp; 
+CSSStyleSheet* defaultSheet = parseUASheet(defaultRules);<BR>&nbsp;&nbsp;&nbsp; 
+defaultStyle-&gt;addRulesFromSheet(defaultSheet, 
+screenEval());<BR>&nbsp;&nbsp;&nbsp; 
+defaultPrintStyle-&gt;addRulesFromSheet(defaultSheet, printEval());</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp; 
+// Quirks-mode rules.<BR>&nbsp;&nbsp;&nbsp; String quirksRules = 
+String(quirksUserAgentStyleSheet, sizeof(quirksUserAgentStyleSheet)) + 
+RenderTheme::defaultTheme()-&gt;extraQuirksStyleSheet();<BR>&nbsp;&nbsp;&nbsp; 
+CSSStyleSheet* quirksSheet = parseUASheet(quirksRules);<BR>&nbsp;&nbsp;&nbsp; 
+defaultQuirksStyle-&gt;addRulesFromSheet(quirksSheet, screenEval());<BR>}</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: medium Simsun; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">调用<BR>loadFullDefaultStyle函数都是在<BR>CSSStyleSelector文件里面，那么我们就可以通过设置setting的开关来完成相应版本的定制工作。</P>
+<P><BR class=Apple-interchange-newline>&nbsp;</P></BODY></HTML>

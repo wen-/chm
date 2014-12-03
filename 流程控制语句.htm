@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>流程控制语句</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.18702">
+<STYLE>*{font-size:12px;line-height:20px}</STYLE>
+</HEAD>
+<BODY>
+<P><STRONG>if语句——<BR></STRONG>　　if(condition) statement1 [else 
+statement2]每个语句都可以是单行代码，也可以是代码块。如：<BR>&lt;script type="text/javascript 
+"&gt;<BR>　　var iNumber = Number(prompt("请输入一个5到100之间的数字","")) ;<BR>　　if 
+(isNaN(iNumber)) document.write("请确认你的输入正确"); <BR>　　else 
+if(iNumber&gt;100|iNumber|&lt;5))<BR>　　document.write("你输入的数字范围不在5和100之间");<BR>　　else<BR>　　document.write("你输入的数字是:"+iNumber);<BR>&lt;/script&gt;</P>
+<P><BR><STRONG>switch语句——</STRONG><BR>&lt;script 
+type="text/javescript"&gt;<BR>iWeek=parseInt(prompt("请输入1到7之间的整数",""));<BR>switch(iweek){<BR>&nbsp; 
+case 1:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+document.write("Monday");<BR>&nbsp;&nbsp;&nbsp; break;<BR>&nbsp; case 
+2:<BR>&nbsp;&nbsp;&nbsp; document.write("Tuesday");<BR>&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;……<BR>&nbsp; default:<BR>&nbsp;&nbsp;&nbsp; 
+document.write("Error");<BR>}&nbsp;&nbsp;&nbsp; <BR>&lt;/script&gt;</P>
+<P><BR><STRONG>do…while语句——</STRONG><BR>&nbsp;&nbsp;&nbsp; &lt;script 
+type="text/javascript"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var aNumbers=new 
+Array();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var 
+sMessage="你输入了：\n";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var 
+iToal=0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var 
+vUserInput;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var 
+iArrayIndex=0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+do{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+vUserInput=prompt("输入一个数字，或者'0'退出","0");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+aNumbers[iArrayIndex]=vUserInput;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+iArrayIndex++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+iTotal+=Number(vUserInput);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+sMessage+=vUserInput+"\n";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}while(vUserInput!=0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+sMessage+="总数："+iTotal;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+alert(sMessage);<BR>&lt;/script&gt;</P>
+<P><BR><STRONG>while语句——<BR></STRONG>&lt;script 
+type="text/javascript"&gt;<BR>&nbsp;&nbsp;&nbsp; var i= 
+iSum=0;<BR>&nbsp;&nbsp;&nbsp; while (i&lt;=0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+iSum+=i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+i++;<BR>}<BR>alert(iSum);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; &lt;/script&gt;</P>
+<P><BR><STRONG>for语句——</STRONG><BR>for (var 
+i=0;i&lt;aNubers.length;i++){<BR>&nbsp; iTotal+=Number(aNumbers[i]);<BR>&nbsp; 
+sMessage+=aNumbers[i]+"\n";}</P>
+<P><BR><STRONG>break和continue语句——</STRONG><BR>break退出循环；continue退出当前这一次循环。</P>
+<P><BR><STRONG>for…in语句——</STRONG><BR>for…in语句通常用来枚举对象的属性。语法：<BR>&nbsp; 
+for(property in expression) statement<BR>它将遍历expression 
+中的所有属性，并每个属性都执行一次statement循环体。例：<BR>&nbsp; for(var i in 
+window)<BR>&nbsp;&nbsp;&nbsp; document.write(i+"="window[i]+"&lt;br 
+/&gt;");<BR>列举出所有window对象的属性名称和属性值。</P>
+<P>&nbsp;</P>
+<P><BR>&nbsp;</P></BODY></HTML>

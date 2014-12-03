@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>android模拟器离线包安装</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P><STRONG>android模拟器离线包安装</STRONG></P>
+<P><STRONG></STRONG>&nbsp;</P>
+<P><STRONG>下载：</STRONG></P>
+<P><A 
+href="https://dl-ssl.google.com/android/repository/addon.xml">https://dl-ssl.google.com/android/repository/addon.xml</A><BR>记录android 
+API更新地址；</P>
+<P><BR><A 
+href="https://dl-ssl.google.com/android/repository/repository-7.xml">https://dl-ssl.google.com/android/repository/repository-7.xml</A><BR>记录android 
+SDK等包更新地址；</P>
+<P>&nbsp;</P>
+<P><STRONG>安装：</STRONG></P>
+<P><BR>对应各个版本下载后离线安装。</P>
+<P>注：下载到的包不用解压，在SDK根文件夹建temp来存放所有包，</P>
+<P>执行根目录下的SDK Manager.exe，就可以安装了，不用漫长等待在线更新。</P>
+<P>&nbsp;</P>
+<P><STRONG>配置路径：</STRONG></P>
+<P>安装完后执行AVD Manager.exe新建虚拟手机系统，会在C盘用户目录下生成 .android的文件夹，</P>
+<P>里面是配置文件（AVD配置）。可将其路径更改到SDK根目录下，方便移植。方法如下：</P>
+<P>1、计算机--属性--高级系统设置--环境变量--<FONT color=#ff0000>用户变量</FONT>--<FONT 
+color=#ff0000>新建用户变量</FONT>--ANDROID_SDK_HOME</P>
+<P>值为：SDK根目录的路径（或根据需求自行定制）；</P>
+<P>2、如果是已经生成的AVD,将其及配置文件ini一起拷到<FONT 
+color=#ff0000>ANDROID_SDK_HOME</FONT>指向的目录，</P>
+<P>并修改对应的配置文件指向的路径就可以了（例：android16.ini）</P>
+<P>&nbsp;</P>
+<P><STRONG>安装<FONT color=#ff0000>apk</FONT>应用:</STRONG></P>
+<P><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><STRONG>1、将下载到的apk应用保存到SDK根目录下的platform-tools文件夹（早期系统可能是tools文件夹，主要看里面有没有adb.exe的文件）；</STRONG></FONT></FONT></FONT></FONT></FONT></FONT></P>
+<P><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><STRONG>2、运行--cmd--dos窗口，CD到platform-tools文件夹下，输入adb install 
+***.apk&nbsp;&nbsp;&nbsp; 
+回车，就安装了；</STRONG></FONT></FONT></FONT></FONT></FONT></FONT></P>
+<P><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><STRONG>3、安装的文件会存放到AVD下对应的sdcard.img镜像文件中，用 UltraISO 
+就可以打开查看。</STRONG></FONT></FONT></FONT></FONT></FONT></FONT></P>
+<P><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><STRONG>4、安装时不要连接手机等移动设备，否则安装失败。error:more than one device and 
+emulator</STRONG></FONT></FONT></FONT></FONT></FONT></FONT></P>
+<P><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><STRONG><FONT color=#ff0000>报错信息提示不只一个设备</FONT><FONT 
+style=""></STRONG></P></FONT>
+<P></FONT></FONT></FONT></FONT></FONT>&nbsp;</P></FONT>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY></HTML>

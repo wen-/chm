@@ -1,0 +1,1289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>移动页面总结</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>移动页面总结</P>
+<H2><A id=cb_post_title_url 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html">webkit 
+webApp 开发技术要点总结</A> </H2>
+<DIV class=postText>
+<DIV id=cnblogs_post_body>
+<P>如果你是一名前端er,又想在移动设备上开发出自己的应用，那怎么实现呢？幸好，webkit内核的浏览器能帮助我们完成这一切。接触 webkit 
+webApp的开发已经有一段时间了，现把一些技巧分享给大家 ：</P>
+<P><STRONG>1. 
+viewport：</STRONG><BR>也就是可视区域。对于桌面浏览器，我们都很清楚viewport是什么，就是出去了所有工具栏、状态栏、滚动条等等之后用于看网页的区域，<BR>这是真正有效的区域。由于移动设备屏幕宽度不同于传统web,因此我们需要改变viewport;</P>
+<P>实际上我们可以操作的属性有4 个：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_723736 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="javascript plain">width 
+      -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//&nbsp; viewport 的宽度 （范围从200 
+      到10,000，默认为980 像素）</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">height 
+      -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//&nbsp; viewport 的高度 （范围从223 
+      到10,000）</CODE></DIV>
+      <DIV class="line number3 index2 alt2">&nbsp;</DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">initial-scale -&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//&nbsp; 初始的缩放比例 （范围从&gt;0 
+      到10）</CODE></DIV>
+      <DIV class="line number5 index4 alt2">&nbsp;</DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="javascript plain">minimum-scale -&nbsp;&nbsp;&nbsp; </CODE><CODE 
+      class="javascript comments">//&nbsp;&nbsp; 允许用户缩放到的最小比例</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="javascript plain">maximum-scale -&nbsp;&nbsp;&nbsp; </CODE><CODE 
+      class="javascript comments">//&nbsp;&nbsp; 允许用户缩放到的最大比例</CODE></DIV>
+      <DIV class="line number8 index7 alt1">&nbsp;</DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="javascript plain">user-scalable -&nbsp;&nbsp;&nbsp; </CODE><CODE 
+      class="javascript comments">//&nbsp;&nbsp; 用户是否可以手动缩 
+      (no,yes)</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR>那么到底这些设置如何让Safari 知道？其实很简单，就一个meta，形如：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_72510 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript plain">&lt;meta http-equiv=</CODE><CODE 
+      class="javascript string">"Content-Type"</CODE> <CODE 
+      class="javascript plain">content=</CODE><CODE 
+      class="javascript string">"text/html; charset=utf-8"</CODE><CODE 
+      class="javascript plain">&gt;&nbsp;&nbsp; </CODE><CODE 
+      class="javascript comments">//编码</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">&lt;meta id=</CODE><CODE 
+      class="javascript string">"viewport"</CODE> <CODE 
+      class="javascript plain">name=</CODE><CODE 
+      class="javascript string">"viewport"</CODE> <CODE 
+      class="javascript plain">content=</CODE><CODE 
+      class="javascript string">"width=320; initial-scale=1.0;maximum-scale=1.0; 
+      user-scalable=no;"</CODE><CODE class="javascript plain">/&gt;</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">&lt;meta name=”apple-mobile-web-app-capable” 
+      content=”yes” /&gt;&nbsp; </CODE><CODE class="javascript comments">// 
+      离线应用的另一个技巧&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">&lt;meta 
+      name=”apple-mobile-web-app-status-bar-style” content=black” /&gt;&nbsp; 
+      </CODE><CODE class="javascript comments">// 
+      隐藏状态栏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="javascript plain">&lt;meta content=</CODE><CODE 
+      class="javascript string">"black"</CODE> <CODE 
+      class="javascript plain">name=</CODE><CODE 
+      class="javascript string">"apple-mobile-web-app-status-bar-style"</CODE> 
+      <CODE class="javascript plain">/&gt; </CODE><CODE 
+      class="javascript comments">//指定的iphone中safari顶端的状态条的样式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="javascript plain">&lt;meta content=</CODE><CODE 
+      class="javascript string">"telephone=no"</CODE> <CODE 
+      class="javascript plain">name=</CODE><CODE 
+      class="javascript string">"format-detection"</CODE> <CODE 
+      class="javascript plain">/&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE 
+      class="javascript comments">//告诉设备忽略将页面中的数字识别为电话号码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="javascript plain">&lt;meta name=</CODE><CODE 
+      class="javascript string">"Author"</CODE> <CODE 
+      class="javascript plain">contect=</CODE><CODE 
+      class="javascript string">"Mr.He"</CODE><CODE class="javascript plain">/ 
+      &gt;&nbsp; </CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR>在设置了initial-scale=1 之后，我们终于可以以1:1 
+的比例进行页面设计了。关于viewport，还有一个很重要的概念是：iphone 的safari 
+浏览器完全没有滚动条，而且不是简单的“隐藏滚动条”，是根本没有这个功能。iphone 的safari 
+浏览器实际上从一开始就完整显示了这个网页，然后用viewport 
+查看其中的一部分。当你用手指拖动时，其实拖的不是页面，而是viewport。浏览器行为的改变不止是滚动条，交互事件也跟普通桌面不一样。(请参考：<A 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/23/webkit-touch-event-1.html" 
+target=_blank>指尖的下JS</A> 系列文章)<BR><BR><STRONG>2.&nbsp;link:</STRONG></P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_556734 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript plain">&lt;link rel=”apple-touch-startup-image” 
+      href=”startup.png” /&gt; </CODE><CODE class="javascript comments">// 
+      设置开始页面图片</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">&lt;link rel=”apple-touch-icon” 
+      href=”iphon_tetris_icon.png”/&gt; </CODE><CODE 
+      class="javascript comments">// 在设置书签的时候可以显示好看的图标</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">&lt;link rel=</CODE><CODE 
+      class="javascript string">"stylesheet"</CODE> <CODE 
+      class="javascript plain">media=</CODE><CODE class="javascript string">"all 
+      and (orientation:portrait)"</CODE> <CODE 
+      class="javascript plain">href=</CODE><CODE 
+      class="javascript string">"portrait.css"</CODE><CODE 
+      class="javascript plain">&gt;&nbsp;&nbsp;&nbsp; </CODE><CODE 
+      class="javascript comments">// 肖像模式样式&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">&lt;link rel=</CODE><CODE 
+      class="javascript string">"stylesheet"</CODE> <CODE 
+      class="javascript plain">media=</CODE><CODE class="javascript string">"all 
+      and (orientation:landscape)"</CODE> <CODE 
+      class="javascript plain">href=</CODE><CODE 
+      class="javascript string">"landscape.css"</CODE>&nbsp;&nbsp; <CODE 
+      class="javascript comments">// 风景模式样式</CODE></DIV>
+      <DIV class="line number5 index4 alt2">&nbsp;</DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="javascript comments">//竖屏时使用的样式 </CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="javascript plain">&lt;style media=</CODE><CODE 
+      class="javascript string">"all and (orientation:portrait)"</CODE> <CODE 
+      class="javascript plain">type=</CODE><CODE 
+      class="javascript string">"text/css"</CODE><CODE 
+      class="javascript plain">&gt;</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="javascript preprocessor">#landscape { display: none; }</CODE></DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="javascript plain">&lt;/style&gt;</CODE></DIV>
+      <DIV class="line number10 index9 alt1">&nbsp;</DIV>
+      <DIV class="line number11 index10 alt2"><CODE 
+      class="javascript comments">//横屏时使用的样式 </CODE></DIV>
+      <DIV class="line number12 index11 alt1"><CODE 
+      class="javascript plain">&lt;style media=</CODE><CODE 
+      class="javascript string">"all and (orientation:landscape)"</CODE> <CODE 
+      class="javascript plain">type=</CODE><CODE 
+      class="javascript string">"text/css"</CODE><CODE 
+      class="javascript plain">&gt;</CODE></DIV>
+      <DIV class="line number13 index12 alt2"><CODE 
+      class="javascript preprocessor">#portrait { display: none; }</CODE></DIV>
+      <DIV class="line number14 index13 alt1"><CODE 
+      class="javascript plain">&lt;/style&gt;&nbsp; 
+  </CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>3. 事件 ： (</STRONG>请参考：<A 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/23/webkit-touch-event-1.html" 
+target=_blank>指尖的下JS</A>&nbsp;系列文章)</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_888754 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="javascript comments">// 
+      手势事件</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">touchstart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//当手指接触屏幕时触发</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">touchmove&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//当已经接触屏幕的手指开始移动后触发</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">touchend&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//当手指离开屏幕时触发</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="javascript plain">touchcancel</CODE></DIV>
+      <DIV class="line number6 index5 alt1">&nbsp;</DIV>
+      <DIV class="line number7 index6 alt2"><CODE class="javascript comments">// 
+      触摸事件</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="javascript plain">gesturestart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//当两个手指接触屏幕时触发</CODE></DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="javascript plain">gesturechange&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//当两个手指接触屏幕后开始移动时触发</CODE></DIV>
+      <DIV class="line number10 index9 alt1"><CODE 
+      class="javascript plain">gestureend</CODE></DIV>
+      <DIV class="line number11 index10 alt2">&nbsp;</DIV>
+      <DIV class="line number12 index11 alt1"><CODE 
+      class="javascript comments">// 屏幕旋转事件&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number13 index12 alt2"><CODE 
+      class="javascript plain">onorientationchange&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number14 index13 alt1">&nbsp;</DIV>
+      <DIV class="line number15 index14 alt2"><CODE 
+      class="javascript comments">// 
+      检测触摸屏幕的手指何时改变方向&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number16 index15 alt1"><CODE 
+      class="javascript plain">orientationchange&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number17 index16 alt2">&nbsp;</DIV>
+      <DIV class="line number18 index17 alt1"><CODE 
+      class="javascript comments">// touch事件支持的相关属性</CODE></DIV>
+      <DIV class="line number19 index18 alt2"><CODE 
+      class="javascript plain">touches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number20 index19 alt1"><CODE 
+      class="javascript plain">targetTouches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number21 index20 alt2"><CODE 
+      class="javascript plain">changedTouches&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number22 index21 alt1"><CODE 
+      class="javascript plain">clientX　　　　</CODE><CODE 
+      class="javascript comments">// X coordinate of touch relative to the 
+      viewport (excludes scroll offset)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number23 index22 alt2"><CODE 
+      class="javascript plain">clientY　　　　</CODE><CODE 
+      class="javascript comments">// Y coordinate of touch relative to the 
+      viewport (excludes scroll offset)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE></DIV>
+      <DIV class="line number24 index23 alt1"><CODE 
+      class="javascript plain">screenX　　　 </CODE><CODE 
+      class="javascript comments">// Relative to the 
+      screen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number25 index24 alt2"><CODE 
+      class="javascript plain">screenY 　　&nbsp; </CODE><CODE 
+      class="javascript comments">// Relative to the 
+      screen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number26 index25 alt1"><CODE 
+      class="javascript plain">pageX　　 　　</CODE><CODE 
+      class="javascript comments">// Relative to the full page (includes 
+      scrolling)&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number27 index26 alt2"><CODE 
+      class="javascript plain">pageY　　　　 </CODE><CODE 
+      class="javascript comments">// Relative to the full page (includes 
+      scrolling)&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number28 index27 alt1"><CODE 
+      class="javascript plain">target　　　　 </CODE><CODE 
+      class="javascript comments">// Node the touch event originated 
+      from&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number29 index28 alt2"><CODE 
+      class="javascript plain">identifier　　&nbsp;&nbsp; </CODE><CODE 
+      class="javascript comments">// An identifying number, unique to each touch 
+      event</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>4.&nbsp;屏幕旋转事件</STRONG>：onorientationchange<BR>添加屏幕旋转事件侦听，可随时发现屏幕旋转状态（左旋、右旋还是没旋）。例子：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_541094 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="javascript comments">// 
+      判断屏幕是否旋转</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript keyword">function</CODE> <CODE 
+      class="javascript plain">orientationChange() { </CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">switch</CODE><CODE 
+      class="javascript plain">(window.orientation) { </CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">　　</CODE><CODE 
+      class="javascript keyword">case</CODE> <CODE 
+      class="javascript plain">0:&nbsp; </CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">alert(</CODE><CODE 
+      class="javascript string">"肖像模式 0,screen-width: "</CODE> <CODE 
+      class="javascript plain">+ screen.width + </CODE><CODE 
+      class="javascript string">"; screen-height:"</CODE> <CODE 
+      class="javascript plain">+ screen.height); </CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">break</CODE><CODE class="javascript plain">; 
+      </CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">　　</CODE><CODE 
+      class="javascript keyword">case</CODE> <CODE 
+      class="javascript plain">-90:&nbsp; </CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">alert(</CODE><CODE class="javascript string">"左旋 
+      -90,screen-width: "</CODE> <CODE class="javascript plain">+ screen.width + 
+      </CODE><CODE class="javascript string">"; screen-height:"</CODE> <CODE 
+      class="javascript plain">+ screen.height); </CODE></DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">break</CODE><CODE class="javascript plain">; 
+      </CODE></DIV>
+      <DIV class="line number10 index9 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">　　</CODE><CODE 
+      class="javascript keyword">case</CODE> <CODE 
+      class="javascript plain">90:&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number11 index10 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">alert(</CODE><CODE class="javascript string">"右旋 
+      90,screen-width: "</CODE> <CODE class="javascript plain">+ screen.width + 
+      </CODE><CODE class="javascript string">"; screen-height:"</CODE> <CODE 
+      class="javascript plain">+ screen.height); </CODE></DIV>
+      <DIV class="line number12 index11 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">break</CODE><CODE class="javascript plain">; 
+      </CODE></DIV>
+      <DIV class="line number13 index12 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">　　</CODE><CODE 
+      class="javascript keyword">case</CODE> <CODE 
+      class="javascript plain">180:&nbsp;&nbsp;&nbsp; </CODE></DIV>
+      <DIV class="line number14 index13 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">　　alert(</CODE><CODE 
+      class="javascript string">"风景模式 180,screen-width: "</CODE> <CODE 
+      class="javascript plain">+ screen.width + </CODE><CODE 
+      class="javascript string">"; screen-height:"</CODE> <CODE 
+      class="javascript plain">+ screen.height); </CODE></DIV>
+      <DIV class="line number15 index14 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">　　</CODE><CODE 
+      class="javascript keyword">break</CODE><CODE class="javascript plain">; 
+      </CODE></DIV>
+      <DIV class="line number16 index15 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">};&lt;br&gt;};</CODE></DIV>
+      <DIV class="line number17 index16 alt2"><CODE 
+      class="javascript comments">// 添加事件监听 </CODE></DIV>
+      <DIV class="line number18 index17 alt1"><CODE 
+      class="javascript plain">addEventListener(</CODE><CODE 
+      class="javascript string">'load'</CODE><CODE class="javascript plain">, 
+      </CODE><CODE class="javascript keyword">function</CODE><CODE 
+      class="javascript plain">(){ </CODE></DIV>
+      <DIV class="line number19 index18 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">orientationChange(); </CODE></DIV>
+      <DIV class="line number20 index19 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">window.onorientationchange = orientationChange; 
+      </CODE></DIV>
+      <DIV class="line number21 index20 alt2"><CODE 
+      class="javascript plain">});</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>5.&nbsp;隐藏地址栏 &amp; 处理事件的时候，防止滚动条出现：</STRONG></P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_574785 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="javascript comments">// 
+      隐藏地址栏&nbsp; &amp; 处理事件的时候 ，防止滚动条出现</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">addEventListener(</CODE><CODE 
+      class="javascript string">'load'</CODE><CODE class="javascript plain">, 
+      </CODE><CODE class="javascript keyword">function</CODE><CODE 
+      class="javascript plain">(){ </CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript plain">setTimeout(</CODE><CODE 
+      class="javascript keyword">function</CODE><CODE 
+      class="javascript plain">(){ window.scrollTo(0, 1); }, 100); </CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">});</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>6.&nbsp;双手指滑动事件：</STRONG></P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_255695 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="javascript comments">// 
+      双手指滑动事件</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">addEventListener(</CODE><CODE 
+      class="javascript string">'load'</CODE><CODE 
+      class="javascript plain">,　　</CODE><CODE 
+      class="javascript keyword">function</CODE><CODE 
+      class="javascript plain">(){ window.onmousewheel = twoFingerScroll;}, 
+      </CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">false</CODE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <CODE class="javascript comments">// 兼容各浏览器，表示在冒泡阶段调用事件处理程序 (true 
+      捕获阶段)</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE class="javascript plain">); 
+      </CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="javascript keyword">function</CODE> <CODE 
+      class="javascript plain">twoFingerScroll(ev) { </CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">var</CODE> <CODE class="javascript plain">delta 
+      =ev.wheelDelta/120;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">//对 delta 值进行判断(比如正负) ，而后执行相应操作 
+      </CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">return</CODE> <CODE 
+      class="javascript keyword">true</CODE><CODE class="javascript plain">; 
+      </CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE class="javascript plain">}; 
+      </CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>7. 判断是否为iPhone：</STRONG></P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_307003 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="javascript comments">// 
+      判断是否为 iPhone ： </CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript keyword">function</CODE> <CODE 
+      class="javascript plain">isAppleMobile() { </CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</CODE><CODE 
+      class="javascript keyword">return</CODE> <CODE 
+      class="javascript plain">(navigator.platform.indexOf(</CODE><CODE 
+      class="javascript string">'iPad'</CODE><CODE class="javascript plain">) != 
+      -1); </CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE class="javascript plain">}; 
+      </CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>8.&nbsp;localStorage:</STRONG><BR>&nbsp;例子 ：（注意数据名称 &nbsp;n 
+&nbsp;要用引号引起来）</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_505103 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript keyword">var</CODE> <CODE class="javascript plain">v = 
+      localStorage.getItem(</CODE><CODE 
+      class="javascript string">'n'</CODE><CODE class="javascript plain">) ? 
+      localStorage.getItem(</CODE><CODE 
+      class="javascript string">'n'</CODE><CODE class="javascript plain">) : 
+      </CODE><CODE class="javascript string">""</CODE><CODE 
+      class="javascript plain">;&nbsp;&nbsp; </CODE><CODE 
+      class="javascript comments">// 如果名称是&nbsp; n 的数据存在 ，则将其读出 ，赋予变量&nbsp; 
+      v&nbsp; 。 </CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">localStorage.setItem(</CODE><CODE 
+      class="javascript string">'n'</CODE><CODE class="javascript plain">, 
+      v);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">// 写入名称为 n、值为&nbsp; v&nbsp; 的数据 
+      </CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">localStorage.removeItem(</CODE><CODE 
+      class="javascript string">'n'</CODE><CODE 
+      class="javascript plain">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </CODE><CODE class="javascript comments">// 删除名称为&nbsp; n&nbsp; 
+      的数据&nbsp;&nbsp;&nbsp; 
+</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>9. 使用特殊链接：</STRONG><BR>&nbsp;如果你关闭自动识别后 ，又希望某些电话号码能够链接到 iPhone 
+的拨号功能 ，那么可以通过这样来声明电话链接 ,</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_745529 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">a</CODE> <CODE 
+      class="html color1">href</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"tel:12345654321"</CODE><CODE 
+      class="html plain">&gt;打电话给我&lt;/</CODE><CODE 
+      class="html keyword">a</CODE><CODE class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">a</CODE> <CODE 
+      class="html color1">href</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"sms:12345654321"</CODE><CODE 
+      class="html plain">&gt;发短信&lt;/</CODE><CODE 
+      class="html keyword">a</CODE><CODE class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="html plain">或用于单元格：</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">td</CODE> <CODE 
+      class="html color1">onclick</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"location.href='tel:122'"</CODE><CODE 
+      class="html plain">&gt;</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>10.&nbsp;自动大写与自动修正</STRONG><BR>要关闭这两项功能，可以通过autocapitalize 
+与autocorrect 这两个选项：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_560864 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">input</CODE> 
+      <CODE class="html color1">type</CODE><CODE 
+      class="html plain">=</CODE><CODE class="html string">"text"</CODE> <CODE 
+      class="html color1">autocapitalize</CODE><CODE 
+      class="html plain">=</CODE><CODE class="html string">"off"</CODE> <CODE 
+      class="html color1">autocorrect</CODE><CODE 
+      class="html plain">=</CODE><CODE class="html string">"off"</CODE> <CODE 
+      class="html plain">/&gt;</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>11.&nbsp;WebKit 
+CSS:</STRONG><BR>①“盒模型”的具体描述性质的包围盒块内容，包括边界，填充等等。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_854271 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">-webkit-border-bottom-left-radius: radius;</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">-webkit-border-top-left-radius: horizontal_radius 
+      vertical_radius;</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="html plain">-webkit-border-radius: 
+      radius;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //容器圆角</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="html plain">-webkit-box-sizing: sizing_model; 
+      边框常量值：border-box/content-box</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="html plain">-webkit-box-shadow: hoff voff blur color; 
+      //容器阴影（参数分别为：水平X 方向偏移量；垂直Y 方向偏移量；高斯模糊半径值；阴影颜色值）</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="html plain">-webkit-margin-bottom-collapse: collapse_behavior; 
+      常量值：collapse/discard/separate</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="html plain">-webkit-margin-start: width;</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="html plain">-webkit-padding-start: width;</CODE></DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="html plain">-webkit-border-image: url(borderimg.gif) 25 25 25 25 
+      round/stretch round/stretch;</CODE></DIV>
+      <DIV class="line number10 index9 alt1"><CODE 
+      class="html plain">-webkit-appearance: push-button;&nbsp;&nbsp; //内置的CSS 
+      表现，暂时只支持push-button</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>②“视觉格式化模型”描述性质，确定了位置和大小的块元素。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_828018 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="html plain">direction: 
+      rtl</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">unicode-bidi: bidi-override; 
+      常量：bidi-override/embed/normal</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>③“视觉效果”描述属性，调整的视觉效果块内容，包括溢出行为，调整行为，能见度，动画，变换，和过渡。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_621729 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="html plain">clip: 
+      rect(10px, 5px, 10px, 5px)</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE class="html plain">resize: 
+      auto; 常量：auto/both/horizontal/none/vertical</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE class="html plain">visibility: 
+      visible; 常量: collapse/hidden/visible</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="html plain">-webkit-transition: opacity 1s linear; 动画效果 
+      ease/linear/ease-in/ease-out/ease-in-out</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="html plain">-webkit-backface-visibility: visibler; 
+      常量：visible(默认值)/hidden</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="html plain">-webkit-box-reflect: right 1px; 镜向反转</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="html plain">-webkit-box-reflect: below 4px -webkit-gradient(linear, 
+      left top, left bottom,</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="html plain">from(transparent), color-stop(0.5, transparent), 
+      to(white));</CODE></DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="html plain">-webkit-mask-image: -webkit-gradient(linear, left top, 
+      left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));;&nbsp;&nbsp; //CSS 
+      遮罩/蒙板效果</CODE></DIV>
+      <DIV class="line number10 index9 alt1"><CODE 
+      class="html plain">-webkit-mask-attachment: fixed; 
+      常量：fixed/scroll</CODE></DIV>
+      <DIV class="line number11 index10 alt2"><CODE 
+      class="html plain">-webkit-perspective: value; 常量：none(默认)</CODE></DIV>
+      <DIV class="line number12 index11 alt1"><CODE 
+      class="html plain">-webkit-perspective-origin: left top;</CODE></DIV>
+      <DIV class="line number13 index12 alt2"><CODE 
+      class="html plain">-webkit-transform: rotate(5deg);</CODE></DIV>
+      <DIV class="line number14 index13 alt1"><CODE 
+      class="html plain">-webkit-transform-style: preserve-3d; 
+      常量：flat/preserve-3d; (2D 
+与3D)</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>④“生成的内容，自动编号，并列出”描述属性，允许您更改内容的一个组成部分，创建自动编号的章节和标题，和操纵的风格清单的内容。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_444140 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="html plain">content: 
+      “Item” counter(section) ” “;</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE class="html plain">This resets 
+      the counter.</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE class="html plain">First 
+      section</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE class="html plain">&gt;two 
+      section</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE class="html plain">three 
+      section</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="html plain">counter-increment: section 1;</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="html plain">counter-reset: 
+section;</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>⑤“分页媒体”描述性能与外观的属性，控制印刷版本的网页，如分页符的行为。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_230173 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">page-break-after: auto; 
+      常量：always/auto/avoid/left/right</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">page-break-before: auto; 
+      常量：always/auto/avoid/left/right</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="html plain">page-break-inside: auto; 
+      常量：auto/avoid</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>⑥“颜色和背景”描述属性控制背景下的块级元素和颜色的文本内容的组成部分。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_759059 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">-webkit-background-clip: content; 
+      常量：border/content/padding/text</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">-webkit-background-origin: padding; 
+      常量：border/content/padding/text</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="html plain">-webkit-background-size: 55px; 
+      常量：length/length_x/length_y</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>⑦ “字型”的具体描述性质的文字字体的选择范围内的一个因素。报告还描述属性用于下载字体定义。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_911399 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">unicode-range: U+00-FF, 
+  U+980-9FF;</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>⑧“文本”描述属性的特定文字样式，间距和自动滚屏。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_14616 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">text-shadow: #00FFFC 10px 10px 5px;</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">text-transform: capitalize; 
+      常量：capitalize/lowercase/none/uppercase</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE class="html plain">word-wrap: 
+      break-word; 常量：break-word/normal</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="html plain">-webkit-marquee: right large infinite normal 10s; 
+      常量：direction(方向) increment(迭代次数) repetition(重复) style(样式) 
+      speed(速度);</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="html plain">-webkit-marquee-direction: 
+      ahead/auto/backwards/down/forwards/left/reverse/right/up</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="html plain">-webkit-marquee-incrementt: 
+      1-n/infinite(无穷次)</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="html plain">-webkit-marquee-speed: fast/normal/slow</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="html plain">-webkit-marquee-style: 
+      alternate/none/scroll/slide</CODE></DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="html plain">-webkit-text-fill-color: #ff6600; 常量：capitalize, 
+      lowercase, none, uppercase</CODE></DIV>
+      <DIV class="line number10 index9 alt1"><CODE 
+      class="html plain">-webkit-text-security: circle; 
+      常量：circle/disc/none/square</CODE></DIV>
+      <DIV class="line number11 index10 alt2"><CODE 
+      class="html plain">-webkit-text-size-adjust: none; 
+      常量:auto/none;</CODE></DIV>
+      <DIV class="line number12 index11 alt1"><CODE 
+      class="html plain">-webkit-text-stroke: 15px #fff;</CODE></DIV>
+      <DIV class="line number13 index12 alt2"><CODE 
+      class="html plain">-webkit-line-break: after-white-space; 
+      常量：normal/after-white-space</CODE></DIV>
+      <DIV class="line number14 index13 alt1"><CODE 
+      class="html plain">-webkit-appearance: caps-lock-indicator;</CODE></DIV>
+      <DIV class="line number15 index14 alt2"><CODE 
+      class="html plain">-webkit-nbsp-mode: space; 常量： normal/space</CODE></DIV>
+      <DIV class="line number16 index15 alt1"><CODE 
+      class="html plain">-webkit-rtl-ordering: logical; 
+      常量：visual/logical</CODE></DIV>
+      <DIV class="line number17 index16 alt2"><CODE 
+      class="html plain">-webkit-user-drag: element; 
+      常量：element/auto/none</CODE></DIV>
+      <DIV class="line number18 index17 alt1"><CODE 
+      class="html plain">-webkit-user-modify: read- only; 
+      常量：read-write-plaintext-only/read-write/read-only</CODE></DIV>
+      <DIV class="line number19 index18 alt2"><CODE 
+      class="html plain">-webkit-user-select: text; 
+      常量：text/auto/none</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>⑨“表格”描述的布局和设计性能表的具体内容。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_149588 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">-webkit-border-horizontal-spacing: 2px;</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">-webkit-border-vertical-spacing: 2px;</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="html plain">-webkit-column-break-after: right; 
+      常量：always/auto/avoid/left/right</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="html plain">-webkit-column-break-before: right; 
+      常量：always/auto/avoid/left/right</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="html plain">–webkit-column-break-inside: logical; 
+      常量：avoid/auto</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="html plain">-webkit-column-count: 3; //分栏</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="html plain">-webkit-column-rule: 1px solid #fff;</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="html plain">style:dashed,dotted,double,groove,hidden,inset,none,outset,ridge,solid</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>⑩“用户界面”描述属性，涉及到用户界面元素在浏览器中，如滚动文字区，滚动条，等等。报告还描述属性，范围以外的网页内容，如光标的标注样式和显示当您按住触摸触摸<BR>目标，如在iPhone上的链接。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_30180 class="syntaxhighlighter nogutter  css">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="css plain">-webkit-box-align: </CODE><CODE 
+      class="css value">baseline</CODE><CODE class="css plain">,</CODE><CODE 
+      class="css value">center</CODE><CODE class="css plain">,end,start,stretch 
+      常量：</CODE><CODE class="css value">baseline</CODE><CODE 
+      class="css plain">/</CODE><CODE class="css value">center</CODE><CODE 
+      class="css plain">/end/start/stretch</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="css plain">-webkit-box-</CODE><CODE 
+      class="css keyword">direction</CODE><CODE class="css plain">: </CODE><CODE 
+      class="css value">normal</CODE><CODE class="css plain">;常量：</CODE><CODE 
+      class="css value">normal</CODE><CODE 
+      class="css plain">/reverse</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="css plain">-webkit-box-flex: flex_valuet</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="css plain">-webkit-box-flex-group: group_number</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="css plain">-webkit-box-lines: multiple; 
+      常量：multiple/single</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="css plain">-webkit-box-ordinal-group: group_number</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="css plain">-webkit-box-orient: block-axis; 
+      常量：block-axis/horizontal/inline-axis/vertical/orientation</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="css plain">–webkit-box-pack: alignment; 常量：</CODE><CODE 
+      class="css value">center</CODE><CODE class="css plain">/end/</CODE><CODE 
+      class="css value">justify</CODE><CODE 
+      class="css plain">/start</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P><BR><STRONG>12.&nbsp;动画过渡</STRONG><BR>这是 Webkit 中最具创新力的特性：使用过渡函数定义动画。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_925757 class="syntaxhighlighter nogutter  css">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="css plain">-webkit-animation: title infinite ease-in-out 
+      </CODE><CODE class="css value">3</CODE><CODE 
+      class="css plain">s;</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE class="css plain">animation 
+      有这几个属性：</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="css plain">-webkit-animation-name： 
+      //属性名，就是我们定义的keyframes</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="css plain">-webkit-animation-duration：</CODE><CODE 
+      class="css value">3</CODE><CODE class="css plain">s //持续时间</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="css plain">-webkit-animation-timing-function： //过渡类型：ease/ 
+      linear(线性) /ease-in(慢到快)/ease-out(快到慢) /ease-in-out(慢到快再到慢) 
+      /cubic-bezier</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="css plain">-webkit-animation-delay：</CODE><CODE 
+      class="css value">10</CODE><CODE class="css plain">ms 
+      //动画延迟(默认</CODE><CODE class="css value">0</CODE><CODE 
+      class="css plain">)</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="css plain">-webkit-animation-iteration-count： //循环次数(默认</CODE><CODE 
+      class="css value">1</CODE><CODE class="css plain">)，infinite 
+      为无限</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="css plain">-webkit-animation-direction： //动画方式：</CODE><CODE 
+      class="css value">normal</CODE><CODE class="css plain">(默认 正向播放)； 
+      alternate(交替方向，第偶数次正向播放，第奇数次反向播放)</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>这些同样是可以简写的。但真正让我觉的很爽的是keyframes，它能定义一个动画的转变过程供调用，过程为0%到100%或from(0%)到to(100%)。简单点说，只要你有想法，你想让元素在这个过程中以什么样的方式改变都是很简单的。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_188667 class="syntaxhighlighter nogutter  css">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="css plain">-webkit-transform: 
+      类型（缩放scale/旋转rotate/倾斜skew/位移translate）</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="css plain">scale(num,num) 放大倍率。scaleX 和 scaleY(</CODE><CODE 
+      class="css value">3</CODE><CODE class="css plain">)，可以简写为：scale(* , 
+      *)</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE class="css plain">rotate(*deg) 
+      转动角度。rotateX 和 rotateY，可以简写为：rotate(* , *)</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE class="css plain">Skew(*deg) 
+      倾斜角度。skewX 和skewY，可简写为：skew(* , *)</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="css plain">translate(*,*) 坐标移动。translateX 
+      和translateY，可简写为：translate(* , 
+*)。</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>实现模拟弹出消息框（Alert）的例子：<BR>①定义过渡（在&lt;style 
+type="text/css"&gt;段中描述keyframes）：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_51871 class="syntaxhighlighter nogutter  css">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="css plain">@-webkit-keyframes DivZoom</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="css plain">{</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE class="css value">0%</CODE> 
+      <CODE class="css plain">{ -webkit-transform: scale(</CODE><CODE 
+      class="css value">0.01</CODE><CODE class="css plain">) }</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE class="css value">60%</CODE> 
+      <CODE class="css plain">{ -webkit-transform: scale(</CODE><CODE 
+      class="css value">1.05</CODE><CODE class="css plain">) }</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE class="css value">80%</CODE> 
+      <CODE class="css plain">{ -webkit-transform: scale(</CODE><CODE 
+      class="css value">0.95</CODE><CODE class="css plain">) }</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE class="css value">100%</CODE> 
+      <CODE class="css plain">{ -webkit-transform: scale(</CODE><CODE 
+      class="css value">1.00</CODE><CODE class="css plain">) }</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="css plain">}</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE class="css plain">.sZoom { 
+      -webkit-animation: DivZoom </CODE><CODE class="css value">0.5</CODE><CODE 
+      class="css plain">s ease-in-out 
+}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>（很容易看懂，将元素从缩小的0.01 倍--很小但不能为0 倍，放大到1.05 倍，再缩小到0.95倍，最后到1 倍即正常大小。整个过渡过程事件为0.5 
+秒，动画方式为ease-in-out，即慢到快再到慢，默认只进行1 次过渡。这正是大家经常看到的 iPhone 
+弹出的提示信息的动画效果！）<BR>②定义元素（在&lt;body&gt;段中）：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_350479 class="syntaxhighlighter nogutter  html">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">div</CODE> <CODE 
+      class="html color1">id</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"layerH"</CODE> <CODE 
+      class="html plain">style="-webkit-border-radius:12px; border:2px solid 
+      #FFF;-webkit-box-shadow: 0px 2px 4px #888;position: absolute; left: 24px; 
+      top: 106px;&lt;br&gt;width: 256px; height: 268px; padding-left: 8px; 
+      padding-right: 8px;color: #FFFFFF; text-shadow: 1px 1px 1px #000; 
+      text-align: center;background-color: RGBA(32,48,96,0.9);</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="html plain">background-image:url('BG-Msg.png'); 
+      background-repeat:no-repeat;</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE class="html plain">z-index: 1; 
+      visibility: hidden; "&gt;</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">p</CODE><CODE 
+      class="html plain">&gt;&lt;</CODE><CODE class="html keyword">span</CODE> 
+      <CODE class="html color1">style</CODE><CODE 
+      class="html plain">=</CODE><CODE class="html string">"font-size: 16pt; 
+      font-weight: bold"</CODE><CODE 
+      class="html plain">&gt;使用说明&lt;/</CODE><CODE 
+      class="html keyword">span</CODE><CODE 
+      class="html plain">&gt;&lt;/</CODE><CODE 
+      class="html keyword">p</CODE><CODE class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">hr</CODE> <CODE 
+      class="html plain">noshade </CODE><CODE 
+      class="html color1">size</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"1"</CODE><CODE class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">div</CODE> <CODE 
+      class="html color1">id</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"HelpText"</CODE> <CODE 
+      class="html color1">style</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"height: 120px"</CODE><CODE 
+      class="html plain">&gt;说明文字&lt;/</CODE><CODE 
+      class="html keyword">div</CODE><CODE class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number7 index6 alt2"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">hr</CODE> <CODE 
+      class="html plain">noshade </CODE><CODE 
+      class="html color1">size</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"1"</CODE><CODE class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number8 index7 alt1"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">form</CODE> <CODE 
+      class="html color1">name</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"formV"</CODE> <CODE 
+      class="html color1">method</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"POST"</CODE><CODE 
+class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number9 index8 alt2"><CODE 
+      class="html plain">&lt;</CODE><CODE class="html keyword">input</CODE> 
+      <CODE class="html color1">type</CODE><CODE 
+      class="html plain">=</CODE><CODE class="html string">"button"</CODE> <CODE 
+      class="html color1">value</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">"确认"</CODE> <CODE class="html color1">name</CODE><CODE 
+      class="html plain">=</CODE><CODE class="html string">"B1"</CODE></DIV>
+      <DIV class="line number10 index9 alt1"><CODE 
+      class="html plain">style="width: 100%; height: 40px; font-size: 14pt; 
+      ont-weight: bold;</CODE></DIV>
+      <DIV class="line number11 index10 alt2"><CODE class="html plain">color: 
+      #FFFFFF; text-shadow: 0px -1px 1px #000;"</CODE></DIV>
+      <DIV class="line number12 index11 alt1"><CODE 
+      class="html color1">onclick</CODE><CODE class="html plain">=</CODE><CODE 
+      class="html string">" layerH.style.visibility='hidden'"</CODE><CODE 
+      class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number13 index12 alt2"><CODE 
+      class="html plain">&lt;/</CODE><CODE class="html keyword">form</CODE><CODE 
+      class="html plain">&gt;</CODE></DIV>
+      <DIV class="line number14 index13 alt1"><CODE 
+      class="html plain">&lt;/</CODE><CODE class="html keyword">div</CODE><CODE 
+      class="html plain">&gt;</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>③启动动画（在 javascript 定义的函数中）</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_102074 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript keyword">function</CODE> <CODE 
+      class="javascript plain">pHelp()</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">{</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">layerH.style.visibility = </CODE><CODE 
+      class="javascript string">'visible'</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">layerH.style.cssText = </CODE><CODE 
+      class="javascript string">"-webkit-animation-delay: "</CODE> <CODE 
+      class="javascript plain">+ Math.random() + </CODE><CODE 
+      class="javascript string">"ms"</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="javascript plain">layerH.className = </CODE><CODE 
+      class="javascript string">'sZoom'</CODE></DIV>
+      <DIV class="line number6 index5 alt1"><CODE 
+      class="javascript plain">}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>(这个启动函数就很好理解了。但是为什么要使用-webkit-animation-delay 
+这句呢？因为当一个元素过渡显示完成后，若其样式没有变化，下一次将无法进行过渡动画显示。我们巧妙的利用其动画延迟时间定义，使其有所变化，就避免了上述问题。其中使用随机数函数Math.random()，产生一个大于0 
+小于1 的随机数。当然，延迟零点几毫秒，用户是不会察觉的。)<BR><BR><STRONG>补充：</STRONG><BR>1.&nbsp;锁定 
+viewport</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_542885 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript plain">ontouchmove=</CODE><CODE 
+      class="javascript string">"event.preventDefault()"</CODE> <CODE 
+      class="javascript comments">//锁定viewport，任何屏幕操作不移动用户界面（弹出键盘除外）。</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>2.&nbsp;被点击元素的外观变化，可以使用样式来设定：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_127880 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript plain">-webkit-tap-highlight-color: 
+    颜色</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>3.&nbsp;侦测iPhone/iPod<BR>开发特定设备的移动网站，首先要做的就是设备侦测了。下面是使用Javascript侦测iPhone/iPod的UA，然后转向到专属的URL。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_877110 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript keyword">if</CODE><CODE 
+      class="javascript plain">((navigator.userAgent.match(/iPhone/i)) || 
+      (navigator.userAgent.match(/iPod/i))) {</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">　　</CODE><CODE 
+      class="javascript keyword">if</CODE> <CODE 
+      class="javascript plain">(document.cookie.indexOf(</CODE><CODE 
+      class="javascript string">"iphone_redirect=false"</CODE><CODE 
+      class="javascript plain">) == -1) {</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">　　　　window.location = </CODE><CODE 
+      class="javascript string">"<A 
+      href="http://m.example.com/">http://m.example.com</A>"</CODE><CODE 
+      class="javascript plain">;</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">　　}</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="javascript plain">}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>虽然Javascript是可以在水果设备上运行的，但是用户还是可以禁用。它也会造成客户端刷新和额外的数据传输，所以下面是服务器端侦测和转向：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_935985 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript keyword">if</CODE><CODE 
+      class="javascript plain">(strstr($_SERVER[</CODE><CODE 
+      class="javascript string">'HTTP_USER_AGENT'</CODE><CODE 
+      class="javascript plain">],</CODE><CODE 
+      class="javascript string">'iPhone'</CODE><CODE class="javascript plain">) 
+      || strstr($_SERVER[</CODE><CODE 
+      class="javascript string">'HTTP_USER_AGENT'</CODE><CODE 
+      class="javascript plain">],</CODE><CODE 
+      class="javascript string">'iPod'</CODE><CODE class="javascript plain">)) 
+      {</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript plain">　　header(</CODE><CODE 
+      class="javascript string">'Location: <A 
+      href="http://yoursite.com/iphone">http://yoursite.com/iphone</A>'</CODE><CODE 
+      class="javascript plain">);</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">　　exit();</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>4.&nbsp;阻止旋转屏幕时自动调整字体大小</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_334901 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="javascript plain">html, 
+      body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 
+      {-webkit-text-size-adjust:none;}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>5.&nbsp;iPhone才识别的CSS<BR>如果不想设备侦测，可以用CSS媒体查询来专为iPhone/iPod定义样式。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_732119 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript plain">@media screen and (max-device-width: 480px) 
+      {}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>6.&nbsp;缩小图片<BR>网站的大图通常宽度都超过480像素，如果用前面的代码限制了缩放，这些图片在iPhone版显示显然会超过屏幕。好在iPhone机能还够，我们可以用CSS让iPhone自动将大图片缩小显示。</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_993927 class="syntaxhighlighter nogutter  css">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="css plain">@media 
+      </CODE><CODE class="css value">screen</CODE> <CODE class="css plain">and 
+      (max-device-</CODE><CODE class="css keyword">width</CODE><CODE 
+      class="css plain">: </CODE><CODE class="css value">480px</CODE><CODE 
+      class="css plain">){</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="css plain">　　img{</CODE><CODE 
+      class="css keyword">max-width</CODE><CODE class="css plain">:</CODE><CODE 
+      class="css value">100%</CODE><CODE class="css plain">;</CODE><CODE 
+      class="css keyword">height</CODE><CODE class="css plain">:</CODE><CODE 
+      class="css value">auto</CODE><CODE class="css plain">;}</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="css plain">}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>7.&nbsp;模拟:hover伪类<BR>因为iPhone并没有鼠标指针，所以没有hover事件。那么CSS 
+:hover伪类就没用了。但是iPhone有Touch事件，onTouchStart 类似 onMouseOver，onTouchEnd 类似 
+onMouseOut。所以我们可以用它来模拟hover。使用Javascript：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_990615 class="syntaxhighlighter nogutter  javascript">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE 
+      class="javascript keyword">var</CODE> <CODE 
+      class="javascript plain">myLinks = 
+      document.getElementsByTagName(</CODE><CODE 
+      class="javascript string">'a'</CODE><CODE 
+      class="javascript plain">);</CODE></DIV>
+      <DIV class="line number2 index1 alt1"><CODE 
+      class="javascript keyword">for</CODE><CODE 
+      class="javascript plain">(</CODE><CODE 
+      class="javascript keyword">var</CODE> <CODE class="javascript plain">i = 
+      0; i &lt; myLinks.length; i++){</CODE></DIV>
+      <DIV class="line number3 index2 alt2"><CODE 
+      class="javascript plain">　　myLinks[i].addEventListener(’touchstart’, 
+      </CODE><CODE class="javascript keyword">function</CODE><CODE 
+      class="javascript plain">(){</CODE><CODE 
+      class="javascript keyword">this</CODE><CODE 
+      class="javascript plain">.className = “hover”;}, </CODE><CODE 
+      class="javascript keyword">false</CODE><CODE 
+      class="javascript plain">);</CODE></DIV>
+      <DIV class="line number4 index3 alt1"><CODE 
+      class="javascript plain">　　myLinks[i].addEventListener(’touchend’, 
+      </CODE><CODE class="javascript keyword">function</CODE><CODE 
+      class="javascript plain">(){</CODE><CODE 
+      class="javascript keyword">this</CODE><CODE 
+      class="javascript plain">.className = “”;}, </CODE><CODE 
+      class="javascript keyword">false</CODE><CODE 
+      class="javascript plain">);</CODE></DIV>
+      <DIV class="line number5 index4 alt2"><CODE 
+      class="javascript plain">}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>然后用CSS增加hover效果：</P>
+<DIV class=cnblogs_Highlighter>
+<DIV>
+<DIV id=highlighter_283534 class="syntaxhighlighter nogutter  css">
+<DIV class=toolbar><SPAN><A class="toolbar_item command_help help" 
+href="http://www.cnblogs.com/pifoo/archive/2011/05/28/webkit-webapp.html#">?</A></SPAN></DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD class=code>
+      <DIV class=container>
+      <DIV class="line number1 index0 alt2"><CODE class="css plain">a:hover, 
+      a.hover { </CODE><CODE class="css comments">/* 你的hover效果 */</CODE> <CODE 
+      class="css plain">}</CODE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>这样设计一个链接，感觉可以更像按钮。并且，这个模拟可以用在任何元素上。</P></DIV></DIV></BODY></HTML>

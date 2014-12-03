@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>attr()方法除了可以获取元素的属性值外，还可以设置属性的值，通用表达式为：<br />
+  attr(name,value)<br />
+  例如：<br />
+  $(&quot;a[href^=http://]&quot;).attr(&quot;target&quot;,&quot;_blank&quot;);                //使所有的外部链接都在新窗口打开<br />
+  $(&quot;button:gt(0)&quot;).attr(&quot;disabled&quot;,&quot;disbaled&quot;);                //使第1个按钮后的所有按钮被禁用<br />
+  很多时个希望属性的值能够根据不同的元素有规律地变化，这时可以使用方法attr(name,fn)。它的第2个参数为一个函数，该函数接受一个参数，为元素的序号，返回值为字符串。例如：<br />
+  $(function(){<br />
+  $(&quot;div&quot;).attr(&quot;id&quot;,function(index){<br />
+  //将id设置为序号相关的参数<br />
+  return &quot;div-id&quot;+index;<br />
+  }).each(finction(){<br />
+  //找到每一项的span标记<br />
+  $(this).find(&quot;span&quot;).html(&quot;id=&quot;+this.id  );<br />
+  });<br />
+  });<br />
+  以上代码通过attr(name,fn)将页面中所有&lt;div&gt;块的属性设置为序号相差的参数，并通过each()方法遍历&lt;div&gt;块,将id值显示在各自的&lt;span&gt;标记中。从中也可以看中jQuery链的强大。<br />
+  attr()还提供了一个列表设置的attr(properties)方法，可以同时设置多个属性。如：<br />
+  $(function(){<br />
+  $(&quot;img&quot;).attr({<br />
+  src:&quot;06.jpg&quot;,<br />
+  title:&quot;紫荆公寓&quot;,<br />
+  alt:&quot;紫荆公寓&quot;<br />
+  });<br />
+  });</p>
+</body>
+</html>

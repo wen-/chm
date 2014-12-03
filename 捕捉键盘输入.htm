@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>捕捉键盘输入</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.18702">
+<STYLE>*{font-size:12px;line-height:20px;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　对于Netscape浏览器，要想浏览器不断查看窗口中是否发生鼠标、键盘事件（包括MouseDown，MouseUp和KeyPress，KeyDown，KeyUp 
+事件），必须添加如下代码，否则将不会“捕捉”鼠标、键盘事件：<BR>if 
+(document.layers)<BR>document.captureEvents(event.KEYPRESS);<BR>　　对IE浏览器，则不需要，浏览器会自动不断检测是否发生了鼠标、键盘事件。 
+</P>
+<P>　　获取用户键盘输入的ASCII码值关键代码如下：<BR>if 
+(document.layers)<BR>document.captureEvents(event.KEYPRESS);<BR>if 
+(document.layers)<BR>var keyChar =e.which;<BR>if (document.all)<BR>var keyChar 
+=event.keyCode;</P>
+<P>　　字符在内存单元中是以ASCII码值的形式存储的。常用字符的ASCII码值如下：<BR>· 小写字母a～z的ASCII码值为97～122；<BR>· 
+大写字母A～Z的ASCII码值为65～90；<BR>· 数字0～9的ASCII码值为49～57；<BR>· 回车键的ASCII码值为13。 </P>
+<P>　　通过String.fromCharCode(ASCII码值)可以将ASCII码值转化为字符值。</P></BODY></HTML>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>通过原型继承一个新对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>通过原型继承一个新对象</P>
+<P>function inherit(p){</P>
+<P>if(p == null)throw TypeError();</P>
+<P>if(Object.create) return Object.create(p);</P>
+<P>var t = typeof p;</P>
+<P>if(t !== "object" &amp;&amp; t !== "function"){</P><PRE>function f(){};</PRE><PRE>f.prototype = p;</PRE><PRE>return new f();</PRE>
+<P>}</P>
+<P>}</P>
+<P>&nbsp;</P>
+<P>属性继承：</P>
+<P>var unitcircle = {r:1};</P>
+<P>var c = inherit(unitcircle);</P>
+<P>c.x =1;c.y = 1;</P>
+<P>c.r = 2;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //覆盖继承来的r属性</P>
+<P>unitcircle.r;&nbsp;&nbsp; //=1 原型链不会被修改</P></BODY></HTML>

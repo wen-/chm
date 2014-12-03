@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>闭合子标签有浮动的父标签</TITLE>
+<style type="text/css">*{font-size:12px;line-height:24px;}p{margin-bottom:10px;}</style>
+</HEAD>
+<BODY>
+<P>对于IE只要使元素拥有Layout属性即可清除浮动，方法有很多，如height:1%,overflow:hidden,zoom:1等，但我们一般应选取尽可能不造成副作用的方式，即最优办法是采用zoom:1的办法。</P>
+<P>对于符合标准的浏览器，一般采用CSS的:after伪类为浮动元素后面增加一个清除浮动的元素来实现。上面的代码通过增加一个.号，然后通过 
+clear:both;display:block来清除浮动，然后通过visibility:hidden和height:0来隐藏这个点号。</P>
+<P>上面的写法其实并不是最简的，根据我自己的试验及在51js上看到某人的办法后尝试出了一个更简单且兼容所有浏览器的写法：</P>
+<DIV class=bar>
+<DIV class=tools>代码 ：<A title=复制代码 href="#" ></A><A title=收藏这段代码 href="javascript:void()" ></A></DIV></DIV>
+<P class=dp-highlighter><PRE style="DISPLAY: none" id=962791 class=js title=清除浮动的最简写法 index="2" source_ url="http://piziwang.javaeye.com/blog/365730" codeable_ type="Post" name="code" pre_>.clearfix {zoom:1} 
+.clearfix:after { 
+content: '\20';  
+display: block;  
+clear: both;  
+}</PRE>
+<P></P>
+<P></P>
+<P>content:'\20'指定在浮动列表后增加一个空白字符，首先这个字符不可见，无需visibility:hidden来隐藏，其次他没有高度，无需height:0来隐藏其高度。因此这样就大大简化了原来的代码同时也达到了清除浮动的目的。</P>
+<P><STRONG>下面是完整代码：</STRONG> </P>
+<P></P>
+<DIV class=dp-highlighter>
+<DIV class=bar>
+<DIV class=tools>代码 <A title=复制代码 href="#" ></A><A title=收藏这段代码 href="javascript:void()" ></A></DIV></DIV>
+<OL class=dp-c>
+  <LI><SPAN><SPAN 
+  >&lt;style type=</SPAN><SPAN class=string 
+  ><FONT color=#0000ff 
+  >"text/css"</FONT></SPAN><SPAN>&gt; 
+  </SPAN></SPAN>
+  <LI><SPAN>.clearfix {zoom:1} </SPAN>
+  <LI><SPAN>.clearfix:after { </SPAN>
+  <LI><SPAN>content: </SPAN><SPAN 
+  class=string><FONT color=#0000ff 
+  >'\20'</FONT></SPAN><SPAN>; 
+  </SPAN></SPAN>
+  <LI><SPAN>display: block; </SPAN>
+  <LI><SPAN>clear: both; </SPAN>
+  <LI><SPAN>} </SPAN>
+  <LI><SPAN>ul{border:1px solid #ccc} 
+  </SPAN>
+  <LI><SPAN>ul li{</SPAN><SPAN 
+  class=keyword><STRONG><FONT 
+  color=#7f0055>float</FONT></STRONG></SPAN><SPAN 
+  >:left;width:120px;line-height:25px;text-align:center} 
+  </SPAN></SPAN>
+  <LI><SPAN>&lt;/style&gt; </SPAN>
+  <LI><SPAN>&lt;ul </SPAN><SPAN 
+  class=keyword><STRONG><FONT 
+  color=#7f0055>class</FONT></STRONG></SPAN><SPAN 
+  >=</SPAN><SPAN class=string><FONT 
+  color=#0000ff>"clearfix"</FONT></SPAN><SPAN 
+  >&gt;&lt;li&gt;选项一&lt;/li&gt;&lt;li&gt;选项二&lt;/li&gt;&lt;li&gt;选项三&lt;/li&gt;&lt;/ul&gt;</SPAN></LI></OL></DIV>
+</BODY>
+</HTML>

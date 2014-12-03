@@ -1,0 +1,9 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>更改键名</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>更改键名 <STRONG><FONT color=#ff0000>$rename</FONT></STRONG></P>
+<P>db.posts.update({ "$atomic" : "true" },{<FONT 
+color=#ff0000>$rename:{"sort":"ssort"}</FONT>}, false, true);</P>
+<P>xxx.update({},{$rename:{"sort":"ssort"}}, false, true);</P></BODY></HTML>

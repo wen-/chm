@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>wrapInner(fn)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="wrapInner"><h2><span>返回值:jQuery</span>wrapInner(fn)</h2><h3>概述</h3><div class="desc"><p>将每一个匹配的元素的子内容(包括文本节点)用DOM元素包裹起来</p><div class="longdesc"><pre></pre></div></div><h3>参数</h3><div><h4><strong>fn</strong><span>Function</span></h4><p>生成包裹结构的一个函数</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">用原先div的内容作为新div的class，并将每一个元素包裹起来</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;div class="container"&gt;
+  &lt;div class="inner"&gt;Hello&lt;/div&gt;
+  &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$('.inner').wrapInner(function() {
+  return '&lt;div class="' + $(this).text() + '" /&gt;';
+});</code></pre><h5 xmlns="">结果:</h5><pre xmlns=""><code>&lt;div class="container"&gt;
+  &lt;div class="inner"&gt;
+    &lt;div class="Hello"&gt;Hello&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="inner"&gt;
+    &lt;div class="Goodbye"&gt;Goodbye&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div></div></div></body></html>

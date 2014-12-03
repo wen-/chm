@@ -1,0 +1,52 @@
+/* ::::: file:///E:/wen/ff%E4%B8%8B%E8%BD%BD%E7%BD%91%E9%A1%B5/data/20130417143323/index.css ::::: */
+
+body { font-family: Verdana,Arial,Helvetica,sans-serif; }
+img { border: 0px none; }
+#MySignature { margin-top: 10px; }
+.cnblogs_code { background-color: rgb(245, 245, 245); font-family: Courier New; font-size: 12px; border: 1px solid rgb(204, 204, 204); padding: 5px; overflow: auto; margin: 5px 0px; }
+.cnblogs_code div { background-color: rgb(245, 245, 245); }
+.cnblogs_code span { font-family: Courier New; font-size: 12px; }
+.cnblogs_code_toolbar a:hover, .cnblogs_code_toolbar a:link, .cnblogs_code_toolbar a:visited, .cnblogs_code_toolbar a:active, .cnblogs_code_toolbar a:link img, .cnblogs_code_toolbar a:visited img { background-color: rgb(245, 245, 245) ! important; border: medium none ! important; }
+.clear { clear: both; }
+.c_ad_block { margin-top: 10px; line-height: 1.5; }
+.cnblogs_code_toolbar { margin-top: 5px; }
+.cnblogs_code_toolbar span { padding-right: 5px; }
+input::-moz-focus-inner { border: 0px none; padding: 0px; }
+* { margin: 0px; padding: 0px; }
+html { height: 100%; }
+body { color: rgb(0, 0, 0); background: url('bg_body.gif') repeat scroll left top transparent; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 9pt; min-height: 101%; line-height: 1.5; }
+fieldset, img { border: 0px none; }
+h1, h2, h3, h4, h5, h6 {  }
+a:link { color: rgb(7, 93, 179); text-decoration: none; }
+a:visited { color: rgb(7, 93, 179); text-decoration: none; }
+a:hover { color: rgb(7, 93, 179); text-decoration: underline; }
+a:active { color: rgb(7, 93, 179); text-decoration: none; }
+.clear { clear: both; }
+#home { margin: 0px auto; width: 100%; min-width: 930px; }
+#main { width: 97%; min-width: 950px; text-align: left; margin: auto; }
+#mainContent .forFlow { margin: 0px 250px 0px 0px; background: url('bg_left.gif') repeat-x scroll left top rgb(254, 254, 242); padding-top: 35px; padding-bottom: 15px; }
+#mainContent { float: left; width: 100%; margin: 0px -250px 0px 0px; background: none repeat scroll 0% 0% transparent; border: 0px solid green; text-align: left; overflow-x: hidden; }
+.postTitle { font-weight: bold; float: right; line-height: 1.5; width: 100%; clear: both; font-size: 14px; }
+.postTitle a:link, .postTitle a:visited, .postTitle a:active { color: rgb(51, 51, 51); }
+.postTitle a:hover { color: rgb(170, 122, 83); text-decoration: underline; }
+#topics { width: 95%; min-height: 200px; padding: 0px 0px 10px; text-overflow: ellipsis; overflow: hidden; word-break: break-all; margin: auto; }
+#topics a:link { color: rgb(7, 93, 179); }
+#topics a:visited { color: rgb(7, 93, 179); }
+#topics a:hover { color: rgb(170, 122, 83); text-decoration: underline; }
+#topics a:active { color: rgb(7, 93, 179); }
+#topics .postTitle { font-size: 14px; font-weight: bold; float: left; line-height: 1.5; padding-left: 5px; }
+.postBody { padding: 5px 2px 5px 5px; line-height: 1.5; color: rgb(0, 0, 0); font-size: 13px; }
+.postBody p { line-height: 1.5; color: rgb(0, 0, 0); font-size: 13px; }
+.postBody span { line-height: 1.5; }
+.commentform { width: 90%; margin: auto auto 10px; }
+#HistoryToday { font-weight: bold; }
+.postBody { line-height: 1.5; margin-top: 5px; }
+.postBody p, .postCon p { line-height: 1.5; }
+.postBody a:link, .postBody a:visited, .postBody a:active { text-decoration: underline; }
+p { margin: 10px auto; text-indent: 0px; }
+.postBody p, .postCon p { margin: 10px auto; }
+.postBody p, .postCon p { text-indent: 0px; }
+.cnblogs_code span { line-height: 1.5; }
+.cnblogs_code { font-family: Courier New; font-size: 12px; }
+.cnblogs_code span { font-family: Courier New; font-size: 12px; }
+#cnblogs_post_body { word-break: normal ! important; }

@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>jQuery(html, props)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="jQuery"><h2><span>返回值:jQuery</span>jQuery(html, props)</h2><h3>概述</h3><div class="desc"><p>根据提供的原始 HTML 标记字符串，动态创建由 jQuery 对象包装的 DOM 元素。同时设置一系列的属性、事件等。</p><div class="longdesc"><pre></pre></div></div><h3>参数</h3><div><h4><strong>html</strong><span>String</span></h4><p>用于动态创建DOM元素的HTML标记字符串</p><h4><strong>props</strong><span>Map</span></h4><p>用于附加到新创建元素上的属性、事件和方法</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">动态创建一个 div 元素（以及其中的所有内容），并将它追加到 body 元素中。在这个函数的内部，是通过临时创建一个元素，并将这个元素的 innerHTML 属性设置为给定的标记字符串，来实现标记到 DOM 元素转换的。所以，这个函数既有灵活性，也有局限性。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("&lt;div&gt;", {
+  "class": "test",
+  text: "Click me!",
+  click: function(){
+    $(this).toggleClass("test");
+  }
+}).appendTo("body");</code></pre><h4 xmlns="">描述:</h4><p xmlns="">创建一个 &lt;input&gt; 元素，同时设定 type 属性、属性值，以及一些事件。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("&lt;input&gt;", {
+  type: "text",
+  val: "Test",
+  focusin: function() {
+    $(this).addClass("active");
+  },
+  focusout: function() {
+    $(this).removeClass("active");
+  }
+}).appendTo("form");</code></pre></div></div></div></body></html>

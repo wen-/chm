@@ -1,0 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>IE无法设置代理</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>IE无法设置代理</P>
+<DIV class="content-head clearfix">
+<H2 class="title content-title">IE无法设置代理服务器的解决方法</H2></DIV>
+<DIV id=content class="content mod-cs-content text-content clearfix">
+<P>今天遇到了IE的代理服务器无法设置的问题，局域网设置对话框里，“代理服务器”一栏是灰色的，无法更改，而且Internet&nbsp;选项的“连接”标签页的下面有个警告：“某些设置由系统管理员管理”，如下图所示：<BR></P>
+<P><IMG 
+src="http://hiphotos.baidu.com/qcomdd/pic/item/d038e7cd7b899e51b3bc4ba142a7d933c9950d93.jpg"><BR></P>
+<P><BR>而我的电脑就只有Administrator一个用户，我就是系统管理员。<BR><BR>最后的解决办法是：<BR>1、单击“开始－＞运行”，输入“gpedit.msc”打开组策略，依次展开“用户配置－＞管理模板－＞Windows组件－＞Internet&nbsp;Explorer”，然后将右侧窗口中的“禁用更改代理服务器设置”策略改成“未配置”或“已禁用”。<BR>2、再展开组策略“计算机配置－＞管理模板－＞Windows组件－＞Internet&nbsp;Explorer”，在右侧窗口将“禁用更改代理服务器设置”改成“未配置”或“已禁用”即可。<BR><BR>如果这样仍然没有解决，就去看看注册表里有没有开启代理：<BR>1、单击“开始－＞运行”，输入“regedit”打开注册表编辑器。<BR>2.、进入HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion 
+\Internet&nbsp;Settings子键，在Internet&nbsp;Settings子键下的右窗口中双击ProxyEnable，将该键值项的值由系统默认的“0”修改为“1”。（若改为“0”，表示不启用代理服务器功能）<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;完成上述设置后，按F5刷新即可使设置生效。</P></DIV></BODY></HTML>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js键盘事件（上下-回车）</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428">
+</HEAD>
+<BODY>
+<P>js键盘事件（上下-回车）</P>
+<P>$(document).keydown(function(e){<BR>&nbsp;&nbsp; if (e.keyCode == 38){&nbsp; 
+//按了上箭头 <BR>&nbsp;&nbsp; &nbsp;if($(".li_bg").index() == 
+0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;$(".email_box 
+li").removeClass("li_bg").last().addClass("li_bg");<BR>&nbsp;&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;$(".li_bg").removeClass("li_bg").prev().addClass("li_bg");<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else if(e.keyCode == 40){ //按了下箭头<BR>&nbsp;&nbsp; &nbsp;if($(".li_bg").index() 
+== $(".email_box li").length-1){<BR>&nbsp;&nbsp;&nbsp;&nbsp;$(".email_box 
+li").removeClass("li_bg").first().addClass("li_bg");<BR>&nbsp;&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;$(".li_bg").removeClass("li_bg").next().addClass("li_bg");<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else if(e.which == 13){ //按了回车<BR>&nbsp;&nbsp;&nbsp; var sNewVal = 
+$(".li_bg").text(); 
+<BR>&nbsp;&nbsp;&nbsp;$(".mail_input").val(sNewVal).focus();<BR>&nbsp;&nbsp;&nbsp;$(".li_bg").parents(".email_box").hide();<BR>&nbsp;&nbsp;&nbsp;$(".email_box 
+li").removeClass("li_bg").eq(0).addClass("li_bg");<BR>&nbsp;&nbsp; }<BR>&nbsp; 
+});</P>
+<P>$(document).click(function(e){<BR>&nbsp;&nbsp;var e = e || 
+window.event;<BR>&nbsp;&nbsp;var targ = e.target || 
+e.srcElement;<BR>&nbsp;&nbsp;if( !$(targ).parents().is(".mod-pop") &amp;&amp; 
+targ.nodeName != "A" 
+){<BR>&nbsp;&nbsp;&nbsp;//xxxx<BR>&nbsp;&nbsp;}<BR>&nbsp;});</P>
+<DIV class=articalTitle 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(50,62,50); PADDING-BOTTOM: 10px; TEXT-ALIGN: left; FONT: 12px/20px Verdana, 宋体, sans-serif; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(191,205,172); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-text-size-adjust: auto">
+<H2 id=t_6999d3cb01011xxs class="titName SG_txta" 
+style="LIST-STYLE-TYPE: none; FONT-SIZE: 18px; BORDER-TOP: 0px; FONT-FAMILY: 微软雅黑, 黑体; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: 300; COLOR: rgb(50,62,50); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; DISPLAY: inline; PADDING-RIGHT: 0px">JavaScript键盘事件</H2><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class="time SG_txtc" 
+style="FONT-SIZE: 10px; FONT-FAMILY: Arial; WHITE-SPACE: nowrap; COLOR: rgb(99,113,96); MARGIN-LEFT: 5px; MARGIN-RIGHT: 13px">(2012-05-21 
+14:11:03)</SPAN> 
+<DIV class=turnBoxzz style="FLOAT: right"></DIV></DIV>
+<DIV id=sina_keyword_ad_area class=articalTag 
+style="WIDTH: 690px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(50,62,50); TEXT-ALIGN: left; FONT: 12px/20px Verdana, 宋体, sans-serif; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(191,205,172); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-text-size-adjust: auto">
+<TABLE 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <TBODY>
+  <TR>
+    <TD class=blog_tag 
+    style="FONT-SIZE: 12px; FONT-FAMILY: 宋体; VERTICAL-ALIGN: top; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 10px"><SPAN 
+      class=SG_txtb 
+      style="FONT-FAMILY: 宋体; COLOR: rgb(99,113,96)">标签：</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN> 
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 5px 0px 0px; BORDER-LEFT: 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(39,158,176)" 
+      href="http://search.sina.com.cn/?c=blog&q=js&by=tag" 
+      target=_blank>js</A></H3><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 5px 0px 0px; BORDER-LEFT: 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(39,158,176)" 
+      href="http://search.sina.com.cn/?c=blog&q=%BC%FC%C5%CC%CA%C2%BC%FE&by=tag" 
+      target=_blank>键盘事件</A></H3><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 5px 0px 0px; BORDER-LEFT: 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(39,158,176)" 
+      href="http://search.sina.com.cn/?c=blog&q=%CA%E4%C8%EB%B7%A8&by=tag" 
+      target=_blank>输入法</A></H3><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 5px 0px 0px; BORDER-LEFT: 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(39,158,176)" 
+      href="http://search.sina.com.cn/?c=blog&q=it&by=tag" 
+      target=_blank>it</A></H3></TD>
+    <TD class=blog_class 
+    style="FONT-SIZE: 12px; FONT-FAMILY: 宋体; WIDTH: 220px; VERTICAL-ALIGN: top; WHITE-SPACE: nowrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></TD></TR></TBODY></TABLE></DIV>
+<DIV id=sina_keyword_ad_area2 class="articalContent  " 
+style="OVERFLOW: hidden; WORD-WRAP: normal; WIDTH: 690px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(50,62,50); PADDING-BOTTOM: 30px; TEXT-ALIGN: left; PADDING-TOP: 18px; FONT: 14px/21px simsun; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(191,205,172); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; -webkit-text-size-adjust: auto">
+<H2 
+style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">测试环境</H2>
+<UL 
+style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">
+  <LI 
+  style="LIST-STYLE-TYPE: disc; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">系统：Windows 
+  Vista Ultimate SP1 
+  <LI 
+  style="LIST-STYLE-TYPE: disc; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">输入法：谷歌拼音输入法 
+  1.2.30.71 
+  <LI 
+  style="LIST-STYLE-TYPE: disc; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">IE版本：ie6, 
+  ie7, ie8 beta1 
+  <LI 
+  style="LIST-STYLE-TYPE: disc; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">Firefox版本：2.0.0.16, 
+  3.0.1 
+  <LI 
+  style="LIST-STYLE-TYPE: disc; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">Safari版本：3.1.2 
+
+  <LI 
+  style="LIST-STYLE-TYPE: disc; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">Opera版本：9.51</LI></UL>
+<H2 
+style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">测试结果</H2>
+<TABLE 
+style="BORDER-COLLAPSE: separate; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-SPACING: 10px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">
+  <TBODY>
+  <TR 
+  style="BORDER-TOP: rgb(51,51,51) 1px solid; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid">
+    <TH 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; PADDING-RIGHT: 10px" 
+    width=80>浏览器</TH>
+    <TH 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; PADDING-RIGHT: 10px">输入法未开启</TH>
+    <TH 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; PADDING-RIGHT: 10px">输入法开启</TH></TR>
+  <TR 
+  style="BORDER-TOP: rgb(51,51,51) 1px solid; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid">
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">Firefox</TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">
+      <OL 
+      style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">正常按下再放起A键，会依次触发keydown, 
+        keypress, input, keyup 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">仅按下修饰键（Ctrl/Shift/Alt）时，不会触发keypress. 
+        注意：按下Esc, Insert, Tab, Pause, Left, Up, Enter等键时，也会触发keypress. 
+        小结：keypress在按下非字符键时，有些会触发，有些不会触发，具体浏览器还不同。 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">仅在输入框的值有变化时，才会触发input. 
+        比如Backspace键会引起值的变化，因此会触发input. 
+        但是要注意：光标在输入值最后面时，按下Delete键不会改变输入值，但依旧会触发input. 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">按住某键不放时，会连续触发keydown. 
+        当按下的是会触发keypress的键（参考上面第2条）时候，还会连续触发keypress. 
+        同样，如果按下的是会触发input的键，也会连续触发input. 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">Ctrl+C/V/X快捷键粘贴复制等操作时，会依次触发keydown, 
+        keydown, keypress, input, keyup, keyup. 
+        其中input仅在值有变化时才触发（比如粘贴一张图片到文字输入框时，不会触发input）。 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">Ctrl+Z/Y操作时，和第5条规律一致。 
+
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">通过鼠标右键进行粘贴复制等操作时，仅会触发input.</LI></OL></TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">
+      <OL 
+      style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">输入法中输入第一个字符时，触发keydown, 
+        keypress. 输入过程中不会触发键盘事件，输入完成时，会触发input, input, keyup. 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">输入法开启时，输入数字时，和输入法未开启时一致。</LI></OL></TD></TR>
+  <TR 
+  style="BORDER-TOP: rgb(51,51,51) 1px solid; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid">
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">IE</TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">和Firefox基本一致，就是input改成propertychange.<BR>注意：<BR>2. 
+      在ie中，仅字符键会触发keypress. 这比firefox强。<BR>3. 
+      在ie中，Esc和Backspace功能一样，这和firefox不同。在ie中，Delete键没有改变值时，不会触发propertychange.<BR>5. 
+      在ie中，Ctrl+C/X/V不会触发keypress.<BR>6. 
+      在ie中，如果监听的事件中YAHOO.log这种页面输出的语句时，会导致Ctrl+Z/Y失效。没有输入语句时不会。（这可以认为是IE的Bug）</TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px">
+      <OL 
+      style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">输入法中输入第一个字符时，触发keydown, 
+        keyup. 输入过程中也会连续触发keydown, keyup. 输入完成时，触发keydown, propertychange, 
+        keyup. （无论怎样都不会触发keypress） 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">输入法开启时，输入数字时，和输入法未开启时一样，但不会触发keypress.</LI></OL></TD></TR>
+  <TR 
+  style="BORDER-TOP: rgb(51,51,51) 1px solid; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid">
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">Opera</TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">大部分和Firefox一致。注意以下几条：<BR>2. 
+      所有键都会触发keypress.<BR>4. 连续按下某键时，仅会连续触发keypress. （这个处理比其它浏览器合理）<BR>5. 
+      多个keypress.</TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">和上面的浏览器都不同，仅在输入完成时触发input.</TD></TR>
+  <TR 
+  style="BORDER-TOP: rgb(51,51,51) 1px solid; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid">
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">Safari</TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">大部分和Firefox一致。注意以下几条：<BR>2. 
+      和IE类似，仅字符键会触发keypress.<BR>5. 和IE一致。</TD>
+    <TD 
+    style="FONT-SIZE: 12px; BORDER-TOP: rgb(51,51,51) 1px solid; FONT-FAMILY: Verdana, 宋体, sans-serif; BORDER-RIGHT: rgb(51,51,51) 1px solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: rgb(51,51,51) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px; BORDER-SPACING: 10px; BORDER-LEFT: rgb(51,51,51) 1px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 10px">
+      <OL 
+      style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">输入法中输入第一个字符时，触发keydown, 
+        input, keyup. 输入过程中会连续触发keydown, input, input, keyup. 输入完成时，触发keydown, 
+        input, input, keyup. （和IE一样，不会触发keypress） 
+        <LI 
+        style="LIST-STYLE-TYPE: decimal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">输入法开启时，输入数字时，和IE一样，不会触发keypress.</LI></OL></TD></TR></TBODY></TABLE></DIV></BODY></HTML>

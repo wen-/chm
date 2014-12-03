@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>修改对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046"><style>*{font-size:12px;line-height:18px;}</style></HEAD>
+<BODY>
+<P>1.为对象定义新方法<BR>&nbsp;&nbsp;&nbsp; 
+可以用prototype属性为任何已有的类定义新方法。<BR>&nbsp;&nbsp;&nbsp; 
+例如用toHexString()方法实现toString(16)进行16进制转换：<BR>Number.prototype.toHexString = 
+function () {<BR>&nbsp;&nbsp;&nbsp; return this.toString(16);<BR>}</P>
+<P>var iNum = 15;<BR>alert(iNum.toHexString());//outputs “F”</P>
+<P>2.重定义已有方法<BR>&nbsp;&nbsp;&nbsp; 
+在JavaScript中，函数名只是指向函数的指针，因此可以轻易地使它指向其它函数。如修改本地方法toString()：<BR>Function.prototype.toString 
+= function () {<BR>&nbsp;&nbsp;&nbsp; return “Function code hidden”;<BR>}</P>
+<P>function sayHi() {<BR>&nbsp;&nbsp;&nbsp; alert(”hi”);<BR>}</P>
+<P>alert(sayHi.toString());//outputs “function code hidden”</P></BODY></HTML>

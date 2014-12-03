@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>浏览器测试</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16421"></HEAD>
+<BODY>
+<P>浏览器测试</P>
+<P>1、IE10不支持原有的IE滤镜啦……</P>
+<P>2、IE10 JS同名方法函数会被覆盖，加if判断无效</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>IE6遮select</P>
+<P>if(navigator.userAgent.indexOf("MSIE 6")&gt;-1){<BR>&nbsp;&nbsp;var h = 
+$("#id").height();<BR>&nbsp;&nbsp;var w = 
+$("#id").width();<BR>&nbsp;&nbsp;$("#id").append("&lt;iframe class='ie_bg' 
+allowTransparency='true'&gt;&lt;/iframe&gt;");&nbsp;$(".ie_bg").css({"position":"absolute","z-index":"-1","backgroundColor":"transparent","opacity":"0","top":"0","left":"0","height":h,"width":w});<BR>&nbsp;}<BR>});<BR></P></BODY></HTML>

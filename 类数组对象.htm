@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>类数组对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>类数组对象</P>
+<P>检测对象是否为类数组对象：</P>
+<P>function isArrayLike(o){</P>
+<P>if(o &amp;&amp; typeof o === "object" &amp;&amp;</P>
+<P>isFinite(o.length) &amp;&amp; o.length &gt;= 0 &amp;&amp;</P>
+<P>o.length === Math.floor(o.length) &amp;&amp;</P>
+<P>o.length &lt; 4294967296){</P>
+<P>return true;</P>
+<P>}else{</P>
+<P>return false;</P>
+<P>};</P>
+<P>&nbsp;</P>
+<P><STRONG><FONT 
+color=#ff0000>使用数组方法来修改字符串会导致错误，并且出错不会提示。</FONT></STRONG></P></BODY></HTML>

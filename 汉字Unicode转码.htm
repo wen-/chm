@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>汉字Unicode转码</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>汉字Unicode转码</P>
+<P>function unicode(str){<BR>&nbsp;&nbsp;&nbsp; return 
+str.replace(/[^\u0000-\u00FF]/g,function($0){return 
+escape($0).replace(/(%u)(\w{4})/gi,"<A 
+href="file://\\u$2">\\u$2</A>")});<BR>}<BR></P>
+<P>&nbsp;</P></BODY></HTML>

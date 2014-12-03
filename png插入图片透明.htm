@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>png插入图片透明</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19019"><style>*{font-size:12px;}</style></HEAD>
+<BODY>
+<P>加上一段js代码后,所有插入的透明png自动透明了.（注意，这方法也是只对直接插入的图片有效，对背景图无效）</P>
+<P>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "<A 
+href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</A>"&gt;<BR>&lt;html 
+xmlns="<A 
+href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>"&gt;<BR>&lt;head&gt;<BR>&lt;meta 
+http-equiv="Content-Type" content="text/html; charset=gb2312" 
+/&gt;<BR>&lt;title&gt;无标题文档&lt;/title&gt;<BR>&lt;script 
+language="JavaScript"&gt;<BR>function correctPNG() // correctly handle PNG 
+transparency in Win IE 5.5 &amp; 6.<BR>{<BR>&nbsp;&nbsp;&nbsp; var arVersion = 
+navigator.appVersion.split("MSIE")<BR>&nbsp;&nbsp;&nbsp; var version = 
+parseFloat(arVersion[1])<BR>&nbsp;&nbsp;&nbsp; if ((version &gt;= 5.5) 
+&amp;&amp; (document.body.filters))<BR>&nbsp;&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(var j=0; 
+j&lt;document.images.length; j++)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var img = 
+document.images[j]<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var 
+imgName = 
+img.src.toUpperCase()<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (imgName.substring(imgName.length-3, imgName.length) == 
+"PNG")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var imgID = (img.id) ? "id='" + img.id + "' " : 
+""<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var imgClass = (img.className) ? "class='" + img.className + "' " : 
+""<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt 
++ "' 
+"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var imgStyle = "display:inline-block;" + 
+img.style.cssText<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (img.align == "left") imgStyle = "float:left;" + 
+imgStyle<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (img.align == "right") imgStyle = "float:right;" + 
+imgStyle<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (img.parentElement.href) imgStyle = "cursor:hand;" + 
+imgStyle<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var strNewHTML = "&lt;span " + imgID + imgClass + 
+imgTitle<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++ " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + 
+imgStyle + 
+";"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++ 
+"filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
++ "(src=\'" + img.src + "\', 
+sizingMethod='scale');\"&gt;&lt;/span&gt;"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+img.outerHTML = 
+strNewHTML<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+j = j-1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+}&nbsp;&nbsp;&nbsp; <BR>}<BR>window.attachEvent("onload", 
+correctPNG);<BR>&lt;/script&gt;<BR>&lt;style 
+type="text/css"&gt;<BR>&lt;!--<BR>body {<BR>background-color: 
+#9999CC;<BR>}<BR>--&gt;<BR>&lt;/style&gt;&lt;/head&gt;</P>
+<P>&lt;body&gt;<BR>把图片换成你自己的图片<BR>&lt;img src="img/icon_face_03.png" width="30" 
+height="30" /&gt;&lt;!--把图片换成你自己的图片 --&gt;<BR>&lt;img src="img/icon_face_05.png" 
+width="30" height="30" /&gt;<BR>&lt;img src="img/menu_title_over.png" 
+width="130" height="36" 
+/&gt;<BR>&lt;/body&gt;<BR>&lt;/html&gt;</P></BODY></HTML>

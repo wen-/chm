@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>字符类</TITLE><STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　字符类是用于测试的字符的组合。通过将一些字符放入方括号中，可以很有效地告诉正则表达式去匹配相应的字符。<br>
+  <strong>1、简单类</strong><br>
+  　　例如，要匹配bat或cat或fat：/[bcf]at/gi<br>
+  <strong>2、负向类</strong><br>
+  　　例，想获取包含at，但不能以b或c开头的单词：/[^bc]at/gi<br>
+  <strong>3、范围类</strong><br>
+　　例，指定从a至z之间的范围：/[a-z]/gi<br>
+<strong>4、组合类：</strong><br>
+  　　例如，要匹配所有从a～m的字母以及从1～4的数字，以及一个换行符，那么所用到的类应该这样：/[a-m1-4\n]/g。注意在内部的类之间不要有空格。而且，JavaScript不支持某些其他正则表达式实现中的联合类和交叉类。<br>
+  <strong>5、预定义类：</strong><br>
+<img src="images/22.jpg" width="664" height="242"><br>
+　　使用预定义类可以明显地使模式匹配变得简单。例如，假设想匹配3个数字，如果不用\d的话，代码会类似这样：<br>
+var sToMatch = &quot;567 9838 abc&quot;;<br>
+var reThreeNums = /[0-9] [0-9] [0-9]/;<br>
+alert(reThreeNums.test(sTomatch));        //outputs &quot;true&quot;<br>
+　　使用\d，正则表达式变得更加明了：<br>
+var sToMatch = &quot;567 9838 abc&quot;;<br>
+var reThreeNums = /\d\d\d/;<br>
+alert(reThreeNums.test(sTomatch));        //outputs &quot;true&quot;<br>
+</P>
+</BODY>
+</HTML>

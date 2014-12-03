@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>jQuery还提供了一些很实用的小方法，通过查询来获取新的元素集合。例如find()方法，通过匹配选择器来筛选元素，代码如下：<br />
+  $(&quot;p&quot;).find(&quot;span&quot;)<br />
+  以上代码表示在所有&lt;p&gt;标记的元素中搜索&lt;span&gt;标记，获得一个新的元素集合，它完全等同于以下代码：<br />
+  $(&quot;span&quot;,$(&quot;p&quot;))<br />
+  另外，还可以通过is()方法来检测是否包含指定的元素，例如可以通过以下代码来检测页面的&lt;div&gt;块是否包含图片：<br />
+  var bHasImage=$(&quot;div&quot;).is(&quot;img&quot;);<br />
+  is()方法返回布尔值，当至少包含一个匹配项时为true，否则为false。</p>
+</body>
+</html>

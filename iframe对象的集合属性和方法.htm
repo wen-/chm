@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>HTML DOM 节点树</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language>
+<META name=robots content=all>
+<META name=author content=w3school.com.cn>
+<META name=Copyright content="Copyright W3school.com.cn All Rights Reserved.">
+<META name=MSSmartTagsPreventParsing content=true>
+<META content=false http-equiv=imagetoolbar><LINK rel=stylesheet type=text/css 
+href="c3.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY class=browserscripting>
+<DIV id=wrapper>
+<DIV id=navsecond>
+<DIV id=course>
+<H2>HTML DOM</H2>
+<UL>
+  <LI><A title=DOM教程首页 href="index.asp.html">DOM 首页</A> 
+  <LI><A title=DOM简介 href="dom_intro.asp.html">DOM 简介</A> 
+  <LI><A title="HTML DOM 节点" href="dom_nodes.asp.html">DOM 节点</A> 
+  <LI><A title="HTML DOM 节点树" href="dom_nodetree.asp.html">DOM 节点树</A> 
+  <LI><A title="HTML DOM 访问节点" href="dom_nodes_access.asp.html">DOM 节点访问</A> 
+  <LI><A title="HTML DOM 节点信息" href="dom_nodes_info.asp.html">DOM 节点信息</A> 
+  <LI><A title="一个 HTML DOM 实例" href="dom_example.asp.html">DOM How To</A> 
+  <LI><A title="" href="htmldom_reference.asp.html">DOM 参考</A> 
+  <LI><A title="" href="dom_summary.asp.html">DOM 总结</A> </LI></UL>
+<H2>DOM 实例</H2>
+<UL>
+  <LI><A title="" 
+  href="http://www.w3school.com.cn/example/hdom_examples.asp">DOM 实例</A> 
+</LI></UL>
+<H2>DOM 对象</H2>
+<UL class=small>
+  <LI><A title="HTML DOM Window 对象" href="dom_obj_window.asp.html">DOM 
+  Window</A> 
+  <LI><A title="HTML DOM Navigator 对象" href="dom_obj_navigator.asp.html">DOM 
+  Navigator</A> 
+  <LI><A title="HTML DOM Screen 对象" href="dom_obj_screen.asp.html">DOM 
+  Screen</A> 
+  <LI><A title="HTML DOM History 对象" href="dom_obj_history.asp.html">DOM 
+  History</A> 
+  <LI><A title="HTML DOM Location 对象" href="dom_obj_location.asp.html">DOM 
+  Location</A> 
+  <LI class=list_apart><A title="HTML DOM Document 对象" 
+  href="dom_obj_document.asp.html">DOM Document</A> 
+  <LI class=list_apart><A title="HTML DOM Anchor 对象" 
+  href="dom_obj_anchor.asp.html">DOM Anchor</A> 
+  <LI><A title="HTML DOM Area 对象" href="dom_obj_area.asp.html">DOM Area</A> 
+  <LI><A title="HTML DOM Base 对象" href="dom_obj_base.asp.html">DOM Base</A> 
+  <LI><A title="HTML DOM Body 对象" href="dom_obj_body.asp.html">DOM Body</A> 
+  <LI><A title="HTML DOM Button 对象" href="dom_obj_pushbutton.asp.html">DOM 
+  Button</A> 
+  <LI><A title="HTML DOM Event 对象" href="dom_obj_event.asp.html">DOM Event</A> 
+  <LI><A title="HTML DOM Form 对象" href="dom_obj_form.asp.html">DOM Form</A> 
+  <LI><A title="HTML DOM Frame 对象" href="dom_obj_frame.asp.html">DOM Frame</A> 
+  <LI><A title="HTML DOM Frameset 对象" href="dom_obj_frameset.asp.html">DOM 
+  Frameset</A> 
+  <LI><A title="HTML DOM IFrame 对象" href="dom_obj_iframe.asp.html">DOM 
+  IFrame</A> 
+  <LI><A title="HTML DOM Image 对象" href="dom_obj_image.asp.html">DOM Image</A> 
+  <LI><A title="HTML DOM Button 对象" href="dom_obj_button.asp.html">DOM Input 
+  Button</A> 
+  <LI><A title="HTML DOM Checkbox 对象" href="dom_obj_checkbox.asp.html">DOM Input 
+  Checkbox</A> 
+  <LI><A title="HTML DOM FileUpload 对象" href="dom_obj_fileupload.asp.html">DOM 
+  Input File</A> 
+  <LI><A title="HTML DOM Hidden 对象" href="dom_obj_hidden.asp.html">DOM Input 
+  Hidden</A> 
+  <LI><A title="HTML DOM Password 对象" href="dom_obj_password.asp.html">DOM Input 
+  Password</A> 
+  <LI><A title="HTML DOM Radio 对象" href="dom_obj_radio.asp.html">DOM Input 
+  Radio</A> 
+  <LI><A title="HTML DOM Reset 对象" href="dom_obj_reset.asp.html">DOM Input 
+  Reset</A> 
+  <LI><A title="HTML DOM Submit 对象" href="dom_obj_submit.asp.html">DOM Input 
+  Submit</A> 
+  <LI><A title="HTML DOM Text 对象" href="dom_obj_text.asp.html">DOM Input 
+  Text</A> 
+  <LI><A title="HTML DOM Link 对象" href="dom_obj_link.asp.html">DOM Link</A> 
+  <LI><A title="HTML DOM Meta 对象" href="dom_obj_meta.asp.html">DOM Meta</A> 
+  <LI><A title="HTML DOM Object 对象" href="dom_obj_object.asp.html">DOM 
+  Object</A> 
+  <LI><A title="HTML DOM Option 对象" href="dom_obj_option.asp.html">DOM 
+  Option</A> 
+  <LI><A title="HTML DOM Select 对象" href="dom_obj_select.asp.html">DOM 
+  Select</A> 
+  <LI><A title="HTML DOM Style 对象" href="dom_obj_style.asp.html">DOM Style</A> 
+  <LI><A title="HTML DOM Table 对象" href="dom_obj_table.asp.html">DOM Table</A> 
+  <LI><A title="HTML DOM TableCell 对象" href="dom_obj_tabledata.asp.html">DOM 
+  TableCell</A> 
+  <LI><A title="HTML DOM TableRow 对象" href="dom_obj_tablerow.asp.html">DOM 
+  TableRow</A> 
+  <LI><A title="HTML DOM Textarea 对象" href="dom_obj_textarea.asp.html">DOM 
+  Textarea</A> </LI></UL></DIV></DIV>
+<DIV id=maincontent>
+<H1>HTML DOM IFrame 对象</H1>
+<DIV>
+<H2>IFrame 对象</H2>
+<P>IFrame 对象代表一个 HTML 的内联框架。</P>
+<P>在 HTML 文档中 &lt;iframe&gt; 每出现一次，一个 IFrame 对象就会被创建。</P>
+<P><EM>IE:</EM> Internet Explorer, <EM>F:</EM> Firefox, <EM>O:</EM> Opera, 
+<EM>W3C:</EM> World Wide Web Consortium (Internet 标准).</P></DIV>
+<DIV>
+<H2>IFrame 对象的属性</H2>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH>属性</TH>
+    <TH>描述</TH>
+    <TH>IE</TH>
+    <TH>F</TH>
+    <TH>O</TH>
+    <TH>W3C</TH></TR>
+  <TR>
+    <TD><A href="prop_iframe_align.asp.html">align</A></TD>
+    <TD>根据周围的文字排列 iframe。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_contentDocument.asp.html">contentDocument</A></TD>
+    <TD>容纳框架的内容的文档。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_frameborder.asp.html">frameBorder</A></TD>
+    <TD>设置或返回是否显示 iframe 周围的边框。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_height.asp.html">height</A></TD>
+    <TD>设置或返回 iframe 的高度。</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_id.asp.html">id</A></TD>
+    <TD>设置或返回 iframe 的 id。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_longdesc.asp.html">longDesc</A></TD>
+    <TD>设置或返回描述 iframe 内容的文档的 URL。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_marginheight.asp.html">marginHeight</A></TD>
+    <TD>设置或返回 iframe 的顶部和底部的页空白。</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_marginwidth.asp.html">marginWidth</A></TD>
+    <TD>设置或返回 iframe 的左侧和右侧的页空白。</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_name.asp.html">name</A></TD>
+    <TD>设置或返回 iframe 的名称。</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_scrolling.asp.html">scrolling</A></TD>
+    <TD>设置或返回 iframe 是否可拥有滚动条。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>No</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_src.asp.html">src</A></TD>
+    <TD>设置或返回应载入 iframe 中的文档的 URL。</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_iframe_width.asp.html">width</A></TD>
+    <TD>设置或返回 iframe 的宽度。</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Standard Properties</H2>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH>Property</TH>
+    <TH>Description</TH>
+    <TH>IE&nbsp;</TH>
+    <TH>F</TH>
+    <TH>O</TH>
+    <TH>W3C</TH></TR>
+  <TR>
+    <TD><A href="prop_classname.asp.html">className</A></TD>
+    <TD>Sets or returns the class attribute of an element</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_dir.asp.html">dir</A></TD>
+    <TD>Sets or returns the direction of text</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_lang.asp.html">lang</A></TD>
+    <TD>Sets or returns the language code for an element</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A href="prop_title.asp.html">title</A></TD>
+    <TD>Sets or returns an element's advisory title</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+<P>&nbsp;</P>
+<P align=left><FONT style="BACKGROUND-COLOR: #f9f9f9">&lt;iframe class='ie6_bg' 
+scrolling='no' frameborder='0' height='0'&gt;&lt;/iframe&gt;</FONT></P>
+<P align=left><FONT 
+style="BACKGROUND-COLOR: #f9f9f9">iframe默认高度为150px,宽度为300px</FONT></P>
+<P align=left><FONT 
+style="BACKGROUND-COLOR: #f9f9f9">即使设置了属性高度为0，它仍然默认会有15像素的高度。</FONT></P>
+<P align=left><FONT 
+style="BACKGROUND-COLOR: #f9f9f9">通过JS插入IFRAME时如果要设置其高宽，可先定义其父窗口的高宽两个变量，再赋予IFRAME,就可以解决。</FONT></P>
+<P align=left><FONT style="BACKGROUND-COLOR: #f9f9f9"></FONT>&nbsp;</P>
+<P align=left><FONT style="BACKGROUND-COLOR: #f9f9f9"></FONT>&nbsp;</P>
+<P align=left><FONT style="BACKGROUND-COLOR: #f9f9f9"></FONT>&nbsp;</P>
+<P align=left><FONT 
+style="BACKGROUND-COLOR: #f9f9f9"></FONT>&nbsp;</P></BODY></HTML>

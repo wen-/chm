@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>apk签名证书</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>apk签名证书</P>
+<DIV class=exp-content-block 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); FONT: 14px/24px arial, 宋体, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV class=exp-content-body style="TEXT-ALIGN: justify; MARGIN-TOP: 5px">
+<DIV class=exp-content-listblock style="POSITION: relative">
+<DIV class=content-listblock-text>
+<P 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">将android程序打成一个APK包，需要选择一个数字证书，即keystore文件，本文简单的讲述一下怎样生成合格的keystore.</P></DIV></DIV></DIV></DIV>
+<DIV class=exp-content-block 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); FONT: 14px/24px arial, 宋体, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H2 class=exp-content-head 
+style="FONT-SIZE: 16px; HEIGHT: 30px; FONT-FAMILY: 'microsoft yahei'; BORDER-BOTTOM: rgb(241,241,241) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 40px 0px 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><A 
+style="COLOR: rgb(45,100,179); TEXT-DECORATION: none" href="javascript:;" 
+name=section-2></A>工具/原料</H2>
+<DIV class=exp-content-body style="TEXT-ALIGN: justify; MARGIN-TOP: 5px">
+<UL class=exp-content-unorderlist 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <LI class="exp-content-list list-item-1" 
+  style="BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/unsortlist.png); BACKGROUND-ATTACHMENT: scroll; POSITION: relative; BACKGROUND-POSITION: 0px 5px; FLOAT: none !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 15px !important; MARGIN: auto; PADDING-RIGHT: 0px !important; BACKGROUND-COLOR: transparent">
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">keytool工具</P></DIV></LI></UL></DIV></DIV>
+<DIV class=exp-content-block 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); FONT: 14px/24px arial, 宋体, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H2 class=exp-content-head 
+style="FONT-SIZE: 16px; HEIGHT: 30px; FONT-FAMILY: 'microsoft yahei'; BORDER-BOTTOM: rgb(241,241,241) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 40px 0px 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><A 
+style="COLOR: rgb(45,100,179); TEXT-DECORATION: none" href="javascript:;" 
+name=section-3></A>方法/步骤</H2>
+<DIV class=exp-content-body style="TEXT-ALIGN: justify; MARGIN-TOP: 5px">
+<OL class=exp-conent-orderlist 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <LI class="exp-content-list list-item-1" 
+  style="HEIGHT: auto; POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 22px !important; PADDING-TOP: 1px !important; PADDING-LEFT: 42px !important; MARGIN: 0px; MIN-HEIGHT: 20px; PADDING-RIGHT: 0px !important">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; FONT-FAMILY: 'Microsoft Yahei'; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png); POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: 0px; LINE-HEIGHT: 32px; TOP: 3px; WIDTH: 32px">1</DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">Keytool是java自带的一个生成数字证书的工具，路径位于JAVA\jdk1.6.0_10\bin下。</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class=content-list-image style="POSITION: relative"><A 
+  class=exp-image-wraper 
+  style="POSITION: relative; COLOR: rgb(45,100,179); TEXT-DECORATION: none; DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/6f2f55a1971f9fb5b83e6c6d.html?picindex=1" 
+  target=_self><IMG class=exp-image-default 
+  style="BORDER-TOP: rgb(255,255,255) 1px solid; BORDER-RIGHT: rgb(255,255,255) 1px solid; BORDER-BOTTOM: rgb(255,255,255) 1px solid; BORDER-LEFT: rgb(255,255,255) 1px solid; DISPLAY: block" 
+  alt=android开发经验技巧：[1]keystore数字证书 src="images/apk-0.jpg"></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-2" 
+  style="HEIGHT: auto; POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 22px !important; PADDING-TOP: 1px !important; PADDING-LEFT: 42px !important; MARGIN: 0px; MIN-HEIGHT: 20px; PADDING-RIGHT: 0px !important">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; FONT-FAMILY: 'Microsoft Yahei'; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png); POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: 0px; LINE-HEIGHT: 32px; TOP: 3px; WIDTH: 32px">2</DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">打开控制台，输入keytool，可以看到工具的使用说明。</P>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px"></P></DIV>
+  <DIV class=content-list-media>
+  <DIV class=content-list-image style="POSITION: relative"><A 
+  class=exp-image-wraper 
+  style="POSITION: relative; COLOR: rgb(45,100,179); TEXT-DECORATION: none; DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/6f2f55a1971f9fb5b83e6c6d.html?picindex=2" 
+  target=_self><IMG class=exp-image-default 
+  style="BORDER-TOP: rgb(255,255,255) 1px solid; BORDER-RIGHT: rgb(255,255,255) 1px solid; BORDER-BOTTOM: rgb(255,255,255) 1px solid; BORDER-LEFT: rgb(255,255,255) 1px solid; DISPLAY: block" 
+  alt=android开发经验技巧：[1]keystore数字证书 src="images/apk-1.jpg"></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-3" 
+  style="HEIGHT: auto; POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 22px !important; PADDING-TOP: 1px !important; PADDING-LEFT: 42px !important; MARGIN: 0px; MIN-HEIGHT: 20px; PADDING-RIGHT: 0px !important">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; FONT-FAMILY: 'Microsoft Yahei'; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png); POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: 0px; LINE-HEIGHT: 32px; TOP: 3px; WIDTH: 32px">3</DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">我们需要用到的参数。</P>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">-genkey 
+  生成文件。</P>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">-alias 
+  别名。</P>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">-keyalg 
+  加密算法。</P>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">-validity 
+  有效期。</P>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">-keystore 
+  文件名。</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class=content-list-image style="POSITION: relative"><A 
+  class="exp-image-wraper  image-loaded" 
+  style="HEIGHT: 328px; POSITION: relative; COLOR: rgb(45,100,179); TEXT-DECORATION: none; DISPLAY: block; WIDTH: 502px" 
+  href="http://jingyan.baidu.com/album/6f2f55a1971f9fb5b83e6c6d.html?picindex=3" 
+  target=_self><IMG class=exp-image-default 
+  style="BORDER-TOP: rgb(255,255,255) 1px solid; BORDER-RIGHT: rgb(255,255,255) 1px solid; BORDER-BOTTOM: rgb(255,255,255) 1px solid; BORDER-LEFT: rgb(255,255,255) 1px solid; DISPLAY: block" 
+  alt=android开发经验技巧：[1]keystore数字证书 src="images/apk-2.jpg"><SPAN 
+  id=exp-album-enter-3 title=查看图册 class=exp-album-enter 
+  style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/exp-album-newenter-default.png); RIGHT: 1px; POSITION: absolute; BACKGROUND-POSITION: 50% 50%; DISPLAY: block; WIDTH: 24px; BOTTOM: 1px; BACKGROUND-COLOR: transparent"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-4" 
+  style="HEIGHT: auto; POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 22px !important; PADDING-TOP: 1px !important; PADDING-LEFT: 42px !important; MARGIN: 0px; MIN-HEIGHT: 20px; PADDING-RIGHT: 0px !important">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; FONT-FAMILY: 'Microsoft Yahei'; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png); POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: 0px; LINE-HEIGHT: 32px; TOP: 3px; WIDTH: 32px">4</DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">回车后按提示信息输入。</P>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">输入密码就行了，其他的信息随便输入。</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class=content-list-image style="POSITION: relative"><A 
+  class="exp-image-wraper  image-loaded" 
+  style="HEIGHT: 328px; POSITION: relative; COLOR: rgb(45,100,179); TEXT-DECORATION: none; DISPLAY: block; WIDTH: 502px" 
+  href="http://jingyan.baidu.com/album/6f2f55a1971f9fb5b83e6c6d.html?picindex=4" 
+  target=_self><SPAN id=exp-album-enter-4 title=查看图册 class=exp-album-enter 
+  style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/exp-album-newenter-default.png); RIGHT: 1px; POSITION: absolute; BACKGROUND-POSITION: 50% 50%; DISPLAY: block; WIDTH: 24px; BOTTOM: 1px; BACKGROUND-COLOR: transparent"></SPAN><IMG 
+  border=0 hspace=0 alt=android开发经验技巧：[1]keystore数字证书 
+  src="images/apk-3.jpg"></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-5" 
+  style="HEIGHT: auto; POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 22px !important; PADDING-TOP: 1px !important; PADDING-LEFT: 42px !important; MARGIN: 0px; MIN-HEIGHT: 20px; PADDING-RIGHT: 0px !important">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; FONT-FAMILY: 'Microsoft Yahei'; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png); POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: 0px; LINE-HEIGHT: 32px; TOP: 3px; WIDTH: 32px">5</DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">这样数字证书就生成了。路径为JDK 
+  的bin文件夹中。</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class=content-list-image style="POSITION: relative"><A 
+  class="exp-image-wraper  image-loaded" 
+  style="HEIGHT: 265px; POSITION: relative; COLOR: rgb(45,100,179); TEXT-DECORATION: none; DISPLAY: block; WIDTH: 502px" 
+  href="http://jingyan.baidu.com/album/6f2f55a1971f9fb5b83e6c6d.html?picindex=5" 
+  target=_self><IMG class=exp-image-default 
+  style="BORDER-TOP: rgb(255,255,255) 1px solid; BORDER-RIGHT: rgb(255,255,255) 1px solid; BORDER-BOTTOM: rgb(255,255,255) 1px solid; BORDER-LEFT: rgb(255,255,255) 1px solid; DISPLAY: block" 
+  alt=android开发经验技巧：[1]keystore数字证书 src="images/apk-4.jpg"><SPAN 
+  id=exp-album-enter-5 title=查看图册 class=exp-album-enter 
+  style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/exp-album-newenter-default.png); RIGHT: 1px; POSITION: absolute; BACKGROUND-POSITION: 50% 50%; DISPLAY: block; WIDTH: 24px; BOTTOM: 1px; BACKGROUND-COLOR: transparent"></SPAN></A></DIV></DIV></LI></OL></DIV></DIV>
+<DIV class=exp-content-block 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); FONT: 14px/24px arial, 宋体, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H2 class=exp-content-head 
+style="FONT-SIZE: 16px; HEIGHT: 30px; FONT-FAMILY: 'microsoft yahei'; BORDER-BOTTOM: rgb(241,241,241) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 40px 0px 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><A 
+style="COLOR: rgb(45,100,179); TEXT-DECORATION: none" href="javascript:;" 
+name=section-4></A>注意事项</H2>
+<DIV class=exp-content-body style="TEXT-ALIGN: justify; MARGIN-TOP: 5px">
+<UL class=exp-content-unorderlist 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <LI class="exp-content-list list-item-1" 
+  style="BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/unsortlist.png); BACKGROUND-ATTACHMENT: scroll; POSITION: relative; BACKGROUND-POSITION: 0px 5px; FLOAT: none !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 15px !important; MARGIN: auto; PADDING-RIGHT: 0px !important; BACKGROUND-COLOR: transparent">
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">keystore是生成APK包的第一步。</P></DIV>
+  <LI class="exp-content-list list-item-2" 
+  style="BACKGROUND-IMAGE: url(http://img.baidu.com/img/iknow/exp/global/unsortlist.png); BACKGROUND-ATTACHMENT: scroll; POSITION: relative; BACKGROUND-POSITION: 0px 5px; FLOAT: none !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 15px !important; MARGIN: auto; PADDING-RIGHT: 0px !important; BACKGROUND-COLOR: transparent">
+  <DIV class=content-list-text>
+  <P 
+  style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">测试过程中密码尽量简单，以免遗忘。</P></DIV></LI></UL></DIV></DIV>
+<DIV id=auto-app-placehold 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/21px arial, 宋体, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></DIV>
+<DIV class="exp-content-block " 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); FONT: 14px/24px arial, 宋体, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+class=Apple-interchange-newline></DIV></BODY></HTML>

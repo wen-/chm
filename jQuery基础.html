@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>jQuery基础</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>jQuery基础</P>
+<P>$(document).ready(function(){}) == $(function(){})</P>
+<P>$(function(){xxx();})优先于onLoad="xxx()"</P>
+<P>&nbsp;</P>
+<P>$("#abc").ready(function(){xxx();})这样写法不赞成，</P>
+<P>因为它和$(function(){xxx();})没区别，而且存在的问题是</P>
+<P>就算$("#abc")节点不存在，后面的xxx()在文档就序后同样会执行。</P></BODY></HTML>

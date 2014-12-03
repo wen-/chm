@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>queue(name)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="queue"><h2><span>返回值:Array&lt;Function&gt;</span>queue(name)</h2><h3>概述</h3><div class="desc"><p>返回指向第一个匹配元素的队列(将是一个函数数组)</p><div class="longdesc"><pre></pre></div></div><h3>参数</h3><div><h4><strong>name</strong><span>String</span></h4><p>队列名，默认为fx</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">显示队列长度</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;style&gt;
+  div { margin:3px; width:40px; height:40px;
+        position:absolute; left:0px; top:30px; 
+        background:green; display:none; }
+  div.newcolor { background:blue; }
+  span { color:red; }
+  &lt;/style&gt;
+  &lt;button id="show"&gt;Show Length of Queue&lt;/button&gt;
+  &lt;span&gt;&lt;/span&gt;
+  &lt;div&gt;&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("#show").click(function () {
+      var n = $("div").queue("fx");
+      $("span").text("Queue length is: " + n.length);
+});
+function runIt() {
+      $("div").show("slow");
+      $("div").animate({left:'+=200'},2000);
+      $("div").slideToggle(1000);
+      $("div").slideToggle("fast");
+      $("div").animate({left:'-=200'},1500);
+      $("div").hide("slow");
+      $("div").show(1200);
+      $("div").slideUp("normal", runIt);
+}
+runIt();</code></pre></div></div></div></body></html>

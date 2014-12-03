@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>setTimeout和setInterval使用注意事项</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>setTimeout和setInterval使用注意事项</P>
+<P><STRONG>t</STRONG> = window.setTimeout("函数名",100);</P>
+<P>window.clearTimeout(<STRONG>t</STRONG>);</P>
+<P>如果引用JQ库，所调用的函数必须写在$(function(){&nbsp;&nbsp; });外面，不然报错，提示<FONT 
+color=#ff0000><STRONG>t</STRONG> = window.setTimeout("函数名",100)</FONT>中的"<FONT 
+color=#ff0000>函数名</FONT>"未定义。//修正：<FONT 
+color=#ff00ff>可以不用写在外面：但要括起来-------window.setTimeout(<FONT 
+color=#0000ff>function(){ <FONT color=#ff0000>函数名</FONT> 
+},</FONT>100)</FONT></P>
+<P>如直接写匿名函数则无其它要求。</P>
+<P><FONT 
+color=#ff0000>函数名用双引号括起来，如果是直接写匿名函数，则不用引号，直接setTimeout(function(){//代码},100).</FONT></P>
+<P><FONT color=#000000></FONT>&nbsp;</P>
+<P><STRONG>t</STRONG> = window.setInterval("函数名",100);</P>
+<P>window.clearInterval(<STRONG>t</STRONG>);</P></BODY></HTML>

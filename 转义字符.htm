@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>转义字符</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>转义字符</P>
+<H2>转义字符</H2>
+<P><STRONG>非法的 XML 字符必须被替换为实体引用（entity reference）。</STRONG></P>
+<P>假如您在 XML 文档中放置了一个类似 "&lt;" 字符，那么这个文档会产生一个错误，这是因为解析器会把它解释为新元素的开始。因此你不能这样写：</P><PRE>&lt;message&gt;if salary &lt; 1000 then&lt;/message&gt;</PRE>
+<P>为了避免此类错误，需要把字符 "&lt;" 替换为实体引用，就像这样：</P><PRE>&lt;message&gt;if salary &amp;lt; 1000 then&lt;/message&gt;</PRE>
+<H3>在 XML 中有 5 个预定义的实体引用：</H3>
+<P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TD>&amp;lt;</TD>
+    <TD>&lt;</TD>
+    <TD>小于</TD></TR>
+  <TR>
+    <TD>&amp;gt;</TD>
+    <TD>&gt;</TD>
+    <TD>大于</TD></TR>
+  <TR>
+    <TD>&amp;amp;</TD>
+    <TD>&amp;</TD>
+    <TD>和号</TD></TR>
+  <TR>
+    <TD>&amp;apos;</TD>
+    <TD>'</TD>
+    <TD>省略号</TD></TR>
+  <TR>
+    <TD>&amp;quot;</TD>
+    <TD>"</TD>
+    <TD>引号</TD></TR></TBODY></TABLE></P>
+<P class=note><SPAN>注释：</SPAN>严格地讲，在 XML 中仅有字符 "&lt;"和"&amp;" 
+是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。 </P></BODY></HTML>

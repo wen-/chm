@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>形参和实参</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>形参和实参</P>
+<P>实参多于形参时自动省略，少于则用undefined代替。</P>
+<P>实参对象：<STRONG>arguments</STRONG></P>
+<P>最重要的用处是让函数可以操作任意数量的实参。</P>
+<P>例获取传入参数的最大数：</P>
+<P>function max(){</P>
+<P>var max = Number.NEGATIVE_INFINITY;</P>
+<P>for(var i=0;i&lt;arguments.length;i++){</P>
+<P>if(arguments[i] &gt; max){max = arguments[i];}</P>
+<P>}</P>
+<P>return max;</P>
+<P>}</P>
+<P>var largest = max(1,2,3,4,5,6);</P>
+<P>像这种可以接受任意个数的实参的函数被称为：“不定实参函数”</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></BODY></HTML>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>在11.3.2节中曾经提到元素的复制和移动，但这取决于目标的个数。如果目标对象只有一个，也希望能执行复制操作，jQuery提供了clone()方法来完成这项任务。例：<br />
+  $(function(){<br />
+  $(&quot;img:eq(0)&quot;).clone().appendTo($(&quot;p&quot;));<br />
+  $(&quot;img:eq(1)&quot;).clone().appendT0($&quot;p:eq(0)&quot;);<br />
+  });<br />
+  另外，clone()函数还可以接受布尔对象作为参数，当该参数为true时，除了克隆元素本身，它所携带的事件方法将一块复制，例如：<br />
+  $(function(){<br />
+  $(&quot;input[type=button]&quot;).click(function(){<br />
+  //克隆自己，并且克隆单击的行为，然后将克隆出的元素插入到自己的后面<br />
+  $(this).clone(ture).insertAfter(this);      <br />
+  });<br />
+  });</p>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>稀疏数组</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>稀疏数组</P>
+<P>包含从0开始的不连续索引的数组。</P>
+<P>通常，数组的length属性值代表数组中元素的个数。如果数组是稀疏的，length属性值大于元素的个数。</P>
+<P>可以用Array()构造函数或简单地指定数组的索引值大于当前的数组长度来创建稀疏数组。</P>
+<P>a = new Array(5);//数组没有元素，但是a.length是5；</P>
+<P>a = [];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //创建一个空数组length 
+= 0;</P>
+<P>a[1000] = 0;&nbsp;&nbsp;&nbsp;&nbsp; //赋值添加一个元素，但是设置length为1001；</P>
+<P>也可用delete操作符来产生稀疏数组。</P>
+<P>var a = [ , , ,];//数组是[undefined,undefined,undefined];]</P>
+<P>var a1 = [new Array(3);//数组根本没有元素；</P></BODY></HTML>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>浏览器判断</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>浏览器判断</P>
+<P>if(navigator.userAgent.indexOf("MSIE 6")&gt;-1)&nbsp; //IE6&nbsp;<FONT 
+size=+0><FONT size=+0><FONT size=+0></P></FONT></FONT></FONT>
+<P>if(navigator.userAgent.indexOf("MSIE 7")&gt;-1)&nbsp; //IE7&nbsp;</P>
+<P>if(navigator.userAgent.indexOf("MSIE 8")&gt;-1)&nbsp; //IE8</P>
+<P>if(navigator.userAgent.indexOf("MSIE 9")&gt;-1)&nbsp; //IE9 </P>
+<P>if(navigator.userAgent.indexOf("WebKit")&gt;-1)&nbsp;&nbsp;//safari.chrome.傲游3等webkit内核浏览器</P>
+<P>if(navigator.userAgent.indexOf("Gecko/")&gt;-1)&nbsp;&nbsp; 
+//firefox等gecok内核浏览器&nbsp;</P>
+<P>-----注：WebKit内核的浏览器也会返回(KHTML like Gecko),所以要加上“/”来区分。</P>
+<P>if(navigator.userAgent.indexOf("Opera")&gt;-1)&nbsp;&nbsp; 
+//Opera内核浏览器&nbsp;</P>
+<P>if(navigator.userAgent.indexOf("TheWorld")&gt;-1) //世界之窗</P>
+<P>&nbsp;</P>
+<P>判断在一定的范围内：</P>
+<P>IE9以下版本：</P>
+<P>if(!!(parseInt((navigator.userAgent).slice(navigator.userAgent.indexOf("MSIE")+5,navigator.userAgent.indexOf("MSIE")+9)) 
+&lt; 9))</P></BODY></HTML>

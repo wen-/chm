@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>事件流</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428">
+<STYLE>*{font-size:12px;line-height:18px;}
+</STYLE>
+</HEAD>
+<BODY>
+<P>　　事件流是指事件发生的顺序。分为冒泡型事件和捕获型事件。IE使用冒泡型事件，Netspace 
+Navigator则使用捕获型事件。DOM同时支持冒泡型和捕获型，但是，捕获型事件先发生。</P>
+<P>js阻止默认行为(window.event.returnValue&nbsp;=&nbsp;false;&nbsp;与e.preventDefault();)</P>
+<P>function&nbsp;stopDefault(&nbsp;e&nbsp;)&nbsp;{&nbsp;&nbsp;<BR>if&nbsp;(&nbsp;e&nbsp;&amp;&amp;&nbsp;e.preventDefault&nbsp;){</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>}else{&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;window.event.returnValue&nbsp;=&nbsp;false;&nbsp;</P>
+<P>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>return&nbsp;false;&nbsp;&nbsp;</P>
+<P>}</P>
+<P>JS阻止冒泡出现(cancelBubble=true;与stopPropagation&nbsp;&nbsp;<BR>//阻止冒泡调用parent&nbsp;<BR>var&nbsp;e&nbsp;=&nbsp;(event)&nbsp;?&nbsp;event&nbsp;:&nbsp;window.event;&nbsp;if&nbsp;(window.event)&nbsp;{</P>
+<P>//IE&nbsp;</P>
+<P>e.cancelBubble=true;&nbsp;</P>
+<P>}&nbsp;else&nbsp;{&nbsp;</P>
+<P>//FF&nbsp;<BR>e.stopPropagation();&nbsp;</P>
+<P>}&nbsp;</P></BODY></HTML>

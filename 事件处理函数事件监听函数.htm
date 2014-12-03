@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>事件处理函数,事件监听函数</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521">
+<STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　用于响应某个事件而调用的函数，称为事件处理函数，DOM称之为事件监听函数。</P>
+<P>　　事件处理函数有两种分配方式：在JavaScript中或在HTML中。<BR>　　如果在JavaScript中分配事件处理函数，则需要首先获得要处理的对象的引用，然后将函数赋值给对应的事件处理函数属性，如：<BR>&nbsp;var 
+oDiv = document.getElementById("div1");<BR>oDiv.onclick = 
+function(){……};<BR>　　如果在HTML中分配事件处理函数，则只要在HTML标签中添加事件处理函数的特性，并在其中包含合适的脚本作为特性值就可以了。如：<BR>&lt;div 
+onclick="alert('……')"&gt;&lt;/div&gt;</P>
+<P>　　分配多个事件处理函数：<BR>　　1、IE<BR>　　附加事件处理函数attachEvent()，分享事件处理函数detachEvent()。每个方法都有两个参数：要分配的事件处理函数的名字（例如onclick）及一个函数。<BR>oDiv.attachEvent("onclick",fnClick1);<BR>oDiv.attachEvent("onclick",fnClick2);<BR>……<BR>oDiv.detachEvent("onclick",fnClick1);<BR>oDiv.detachEvent("onclick",fnClick2);<BR>……<BR>　　正如前面所述，这种方法可用来添加多个事件处理函数，按照添加它们的顺序进行调用。</P>
+<P>　　2、DOM<BR>　　DOM用方法addEventListener()和removeEventListener()来分配和移除事件处理函数。与IE不同，这些方法需要用三个参数：事件名称，要分配的函数和处理函数是用于冒泡阶段还是捕获阶段。如果事件处理函数是用于捕获阶段，第三个参数为true；用于冒泡阶段，则为false。<BR>oDiv.addEventListener("click",fnClick1,false);<BR>oDiv.addEventListener("click",fnClick2,false);<BR>……<BR>oDiv.removeEventListener("click",fnClick1,false);<BR>oDiv.removeEventListener("click",fnClick2,false);<BR>……</P>
+<P>&nbsp;</P><FONT size=+0><FONT size=+0>
+<P></FONT></FONT><STRONG>函数<FONT color=#ff0000>fnClick1</FONT>如果<FONT 
+color=#ff0000>有参数</FONT>的话，改为：function(){<FONT 
+color=#ff0000>fnClick1(参数)</FONT>}</STRONG></P>
+<P><STRONG>取消默认的滚动事件：evt.preventDefault();</STRONG></P>
+<P><STRONG>兼容写法：</STRONG></P>
+<P>var addEventListener = function(elementId,eventType,listener){</P>
+<P>try{</P>
+<P>var element = document.getElementById(elementId);</P>
+<P>if(element.addEventListener){</P>
+<P>element.addEventListener(eventType,listener,false);</P>
+<P>}else if(element.attachEvent){</P>
+<P>element.attachEvent("on"+eventType,listener);</P>
+<P>}</P>
+<P>}catch(e){}</P>
+<P>};</P>
+<P>var removeEventListener = function(elementId,eventType,listener){</P>
+<P>try{</P>
+<P>var element = document.getElementById(elementId);</P>
+<P>if(element.removeEventListener){</P>
+<P>element.removeEventListener(eventType,listener,false);</P>
+<P>}else if(element.detachEvent){</P>
+<P>element.detachevent("on"+eventType,listener);</P>
+<P>}</P>
+<P>}cath(e){ }</P>
+<P>};</P>
+<P><STRONG><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0>&nbsp;</P></FONT></FONT></FONT></FONT></FONT></STRONG></BODY></HTML>

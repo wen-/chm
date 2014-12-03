@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>rpm包安装</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>rpm包安装</P>
+<DIV class=multicntwrap>
+<DIV class=multicnt>
+<DIV>
+<H3 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: normal; MARGIN: 34px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; WHITE-SPACE: normal; FONT-SIZE: 16px; OVERFLOW: hidden; WORD-BREAK: break-all; PADDING-TOP: 0px" 
+class="title pre fs1"><SPAN 
+style="LINE-HEIGHT: 38px; FONT-FAMILY: 'Hiragino Sans GB W3', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, Helvetica, simsun, 宋体; FONT-SIZE: 26px; FONT-WEIGHT: bold" 
+class=tcnt>centos的软件安装方法rpm和yum</SPAN>&nbsp;&nbsp;<SPAN 
+style="BACKGROUND-COLOR: rgb(238,238,238); COLOR: rgb(169,169,169); FONT-SIZE: 12px; FONT-WEIGHT: normal" 
+class="bgc0 fc07 fw0 fs0"></SPAN></H3>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; MARGIN: 0px 0px 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; COLOR: rgb(169,169,169); PADDING-TOP: 0px" 
+class="tdep clearfix nbw-act fc06"><SPAN style="FLOAT: left" class=pleft><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>2012-10-12 11:55:52</SPAN><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>|&nbsp;&nbsp;分类：</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(28,103,172); CURSOR: pointer; TEXT-DECORATION: none" 
+class="fc03 m2a" title=Linux/Unix 
+href="http://blog.163.com/yang_jianli/blog/#m=0&t=1&c=fks_087074083095084075081094083095085080080074093086086067082">Linux/Unix</A></SPAN><SPAN 
+style="FLOAT: right; COLOR: rgb(169,169,169)" class="pright fc07 ztag"><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>|</SPAN><SPAN 
+style="COLOR: rgb(28,103,172); CURSOR: pointer; TEXT-DECORATION: none" 
+id=$_spanReport class="fc03 m2a">举报</SPAN></SPAN><SPAN 
+style="FLOAT: right; COLOR: rgb(169,169,169)" class="pright fc07 ztag"><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>|</SPAN><SPAN 
+style="POSITION: relative; COLOR: rgb(28,103,172); CURSOR: default" 
+id=$_fontswitch class="zihao fc03">字号</SPAN></SPAN><SPAN 
+style="FLOAT: right; COLOR: rgb(28,103,172); CURSOR: pointer" 
+id=$_blog_subscribe class="pright pnt fc03"><SPAN 
+style="BACKGROUND-IMAGE: url(http://b2.bst.126.net/newpage/images/icon.png?v=20120531); LINE-HEIGHT: 20px; WIDTH: 20px; ZOOM: 1; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: -360px -380px; HEIGHT: 20px" 
+class="iblock icn0 icn0-919">&nbsp;</SPAN><A 
+style="COLOR: rgb(28,103,172); CURSOR: pointer; TEXT-DECORATION: none" 
+class=m2a>订阅</A></SPAN></P></DIV></DIV></DIV>
+<DIV></DIV>
+<DIV class=nbw-blog-start></DIV>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 5px; LINE-HEIGHT: 28px; MARGIN: 15px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; COLOR: rgb(56,56,56); FONT-SIZE: 16px; OVERFLOW: hidden; PADDING-TOP: 5px" 
+class="bct fc05 fc11 nbw-blog ztag"><B style="LINE-HEIGHT: 28px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>centos的软件安装大致可以分为两种类型：</FONT></B>
+<UL 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 5px 0px 5px 40px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+  color=#000000>[centos]rpm文件安装，使用rpm指令&nbsp; 
+  类似[ubuntu]deb文件安装，使用dpkg指令</FONT></LI>
+  <LI style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+  color=#000000>[centos]yum安装&nbsp;&nbsp; 
+类似[ubuntu]apt-get安装</FONT></LI></UL><STRONG style="LINE-HEIGHT: 28px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000><FONT style="LINE-HEIGHT: 42px" 
+size=5>rpm命令</FONT><BR style="LINE-HEIGHT: 28px"></FONT></STRONG>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000><STRONG 
+style="LINE-HEIGHT: 28px">(一)查询系统装已经安装的软件信息</STRONG></FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>对于一个rpm包来说，都是有<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(128,0,0)">"</SPAN><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(128,0,0)">-</SPAN><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(128,0,0)">"</SPAN>和<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(128,0,0)">"</SPAN><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(128,0,0)">.</SPAN><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(128,0,0)">"</SPAN><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">构成的，基本上有以下几部分组成： </SPAN>*<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)"> 包名 </SPAN>*<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)"> 版本信息 </SPAN>*<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)"> 发布版本号 </SPAN>* 运行平台，当出现noarch,代表的是软件可以平台兼容</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>1）查询系统中已经安装的软件</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qa </FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>&nbsp;2）查询一个已经安装的文件属于哪个软件包；</FONT></P>
+<DIV style="LINE-HEIGHT: 28px">
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qf 文件名的绝对路径</FONT></PRE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>3）查询已安装软件包都安装到何处；</FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000><STRONG 
+style="LINE-HEIGHT: 28px">软件名定义是:rpm包去除平台信息和后缀后的信息</STRONG></FONT></P>
+<DIV style="LINE-HEIGHT: 28px">
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -ql 软件名</FONT></PRE></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>4）查询一个已安装软件包的信息</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm  -qi 软件名</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>5）查看一下已安装软件的配置文件；</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qc 软件名</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>6）查看一个已经安装软件的文档安装位置：</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qd 软件名</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>7）查看一下已安装软件所依赖的软件包及文件；</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qR 软件名</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000></FONT>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000><STRONG 
+style="LINE-HEIGHT: 28px">(二)对于未安装的软件包信息查询</STRONG></FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>1）查看一个软件包的用途、版本等信息；</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qpi rpm文件</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>2）查看一件软件包所包含的文件；</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qpl rpm文件</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>3）查看软件包的文档所在的位置；</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qpd rpm文件</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>4）查看一个软件包的配置文件；</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qpc rpm文件</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>5）查看一个软件包的依赖关系</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -qpR rpm文件</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000></FONT>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000><STRONG 
+style="LINE-HEIGHT: 28px">(三)软件包的安装、升级、删除等</STRONG></FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>1)安装或者升级一个rpm包</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">ivh rpm文件【安装】 rpm </SPAN>-Uvh rpm文件【更新】</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>2)删除一个rpm 包</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm -e 软件名</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>&nbsp;如何需要不管依赖问题，强制删除软件，在如上命令其后加上 
+--nodeps</FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000></FONT>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000><STRONG 
+style="LINE-HEIGHT: 28px">(四)签名导入</STRONG></FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>rpm --<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">import 签名文件  rpm </SPAN>--import RPM-GPG-KEY</FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 42px" size=5><B style="LINE-HEIGHT: 42px"><FONT 
+style="LINE-HEIGHT: 42px" color=#000000>&nbsp;yum命令</FONT></B></FONT></P>
+<DIV style="LINE-HEIGHT: 28px" id=xspace-showmessage><FONT 
+style="LINE-HEIGHT: 28px" color=#000000 size=4><STRONG 
+style="LINE-HEIGHT: 28px"><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">(一)yum基本概念</SPAN></STRONG></FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" color=#000000 
+size=4><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">1)yum是什么</SPAN></FONT></DIV><FONT 
+style="LINE-HEIGHT: 28px" color=#000000></FONT>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>yum =<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)"> Yellow dog Updater, Modified  主要功能是更方便的添加</SPAN>/删除/<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">更新RPM包.  它能自动解决包的倚赖性问题.  它能便于管理大量系统的更新问题</SPAN></FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000 size=4><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">2)yum的特点<BR 
+style="LINE-HEIGHT: 28px"></SPAN></FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">可以同时配置多个资源库(Repository)  简洁的配置文件(</SPAN>/etc/<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">yum.conf  自动解决增加或删除rpm包时遇到的倚赖性问题  使用方便  保持与RPM数据库的一致性</SPAN></FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000 size=4><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">3)yum安装</SPAN></FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000>CentOS自带(yum-*<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">.noarch.rpm) #rpm </SPAN>-ivh yum-*<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">.noarch.rpm 在第一次启用yum之前首先需要导入系统的RPM</SPAN>-GPG-<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">KEY：<BR style="LINE-HEIGHT: 28px"></SPAN></FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium"></SPAN></FONT>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000 size=4><STRONG 
+style="LINE-HEIGHT: 28px"><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">(二)yum指令的使用</SPAN></STRONG></FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000 size=4><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">当第一次使用yum管理软件时，yum会自动下载所需要的headers放置在/var/cache/yum目录下；<BR 
+style="LINE-HEIGHT: 28px"></SPAN></FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000 size=4><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">1) rpm包的更新<BR 
+style="LINE-HEIGHT: 28px"></SPAN></FONT></P>
+<DIV style="LINE-HEIGHT: 28px">
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#000000><SPAN style="LINE-HEIGHT: 28px"><A 
+style="LINE-HEIGHT: 28px; COLOR: rgb(28,103,172); TEXT-DECORATION: none" 
+title=复制代码 rel=nofollow><BR style="LINE-HEIGHT: 28px"><FONT 
+size=4></FONT></A></SPAN></FONT></DIV><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">#检查可以更新的软件包 <BR style="LINE-HEIGHT: 28px">yum check</SPAN>-<SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">update <BR style="LINE-HEIGHT: 28px">#更新所有的软件包 <BR style="LINE-HEIGHT: 28px">yum update <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#更新特定的软件包 <BR style="LINE-HEIGHT: 28px">yum update kernel <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#大规模的升级 <BR style="LINE-HEIGHT: 28px">yum upgrade</SPAN></FONT></PRE>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#000000><SPAN style="LINE-HEIGHT: 28px"><A 
+style="LINE-HEIGHT: 28px; COLOR: rgb(28,103,172); TEXT-DECORATION: none" 
+title=复制代码 rel=nofollow><BR 
+style="LINE-HEIGHT: 28px"></A></SPAN></FONT></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000 size=4><SPAN 
+style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0); FONT-SIZE: medium">2) 
+rpm包的安装和删除</SPAN></FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">#rpm包的安装和删除 <BR style="LINE-HEIGHT: 28px">yum install xxx【服务名】 <BR style="LINE-HEIGHT: 28px">yum remove xxx【服务名】</SPAN></FONT></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>3) yum缓存的相关信息</FONT></P>
+<DIV style="LINE-HEIGHT: 28px">
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#000000><SPAN style="LINE-HEIGHT: 28px"><A 
+style="LINE-HEIGHT: 28px; COLOR: rgb(28,103,172); TEXT-DECORATION: none" 
+title=复制代码 rel=nofollow><BR style="LINE-HEIGHT: 28px"></A></SPAN></FONT></DIV><PRE style="LINE-HEIGHT: 28px; WHITE-SPACE: pre-wrap"><FONT style="LINE-HEIGHT: 28px" color=#000000><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">#清楚缓存中rpm包文件 <BR style="LINE-HEIGHT: 28px">yum clean packages <BR style="LINE-HEIGHT: 28px">#清楚缓存中rpm的头文件 <BR style="LINE-HEIGHT: 28px">yum clean  headers <BR style="LINE-HEIGHT: 28px">#清除缓存中旧的头文件 <BR style="LINE-HEIGHT: 28px">yum clean old headers <BR style="LINE-HEIGHT: 28px">#清除缓存中旧的rpm头文件和包文件 <BR style="LINE-HEIGHT: 28px">yum clean all</SPAN></FONT></PRE>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#000000><SPAN style="LINE-HEIGHT: 28px"><A 
+style="LINE-HEIGHT: 28px; COLOR: rgb(28,103,172); TEXT-DECORATION: none" 
+title=复制代码 rel=nofollow><BR 
+style="LINE-HEIGHT: 28px"></A></SPAN></FONT></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="LINE-HEIGHT: 28px" color=#000000>4)软件包信息查询</FONT></P>
+<DIV style="LINE-HEIGHT: 28px"><PRE style="TEXT-ALIGN: left; LINE-HEIGHT: 28px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(198,201,206); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; WHITE-SPACE: pre-wrap; LETTER-SPACING: normal; COLOR: rgb(56,56,56); FONT-SIZE: 16px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><FONT style="LINE-HEIGHT: 28px" color=#000000><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)">#列出资源库中所有可以安装或更新的rpm包 <BR style="LINE-HEIGHT: 28px">yum list <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出资源库中特定的可以安装或更新以及已经安装的rpm包 <BR style="LINE-HEIGHT: 28px">yum list firfox*</SPAN><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)"> <BR style="LINE-HEIGHT: 28px">N:可以在rpm包名中使用通配符,查询类似的rpm包<BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出资源库中所有可以更新的rpm包 <BR style="LINE-HEIGHT: 28px">yum list updates <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出已经安装的所有的rpm包 <BR style="LINE-HEIGHT: 28px">yum list installed <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出已经安装的但是不包含在资源库中的rpm包 <BR style="LINE-HEIGHT: 28px">yum list extras <BR style="LINE-HEIGHT: 28px">N:通过如网站下载安装的rpm包  <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#rpm包信息显示(info参数同list)，列出资源库中所有可以安装或更新的rpm包的信息 <BR style="LINE-HEIGHT: 28px">yum info <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出资源库中特定的可以安装或更新以及已经安装的rpm包的信息 <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">yum info firefox*</SPAN><SPAN style="LINE-HEIGHT: 28px; COLOR: rgb(0,0,0)"> <BR style="LINE-HEIGHT: 28px">N:可以在rpm包名中使用匹配符 <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出资源库中所有可以更新的rpm包的信息<BR style="LINE-HEIGHT: 28px">yum info updates <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出已经安装的所有的rpm包的信息<BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">&nbsp;yum info installed <BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#列出已经安装的但是不包含在资源库中的rpm包的信息 <BR style="LINE-HEIGHT: 28px">yum info extras <BR style="LINE-HEIGHT: 28px">N:通过如网站下载安装的rpm包的信息<BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">#搜索匹配特定字符的rpm包<BR style="LINE-HEIGHT: 28px">yum search firofox<BR style="LINE-HEIGHT: 28px">#搜索包含特定文件的rpm包<BR style="LINE-HEIGHT: 28px">yum provides firefox</SPAN></FONT></PRE><BR 
+class=Apple-interchange-newline></DIV></DIV></BODY></HTML>

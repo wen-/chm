@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>事件类型</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521">
+<STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P>事件的类型：<BR>　　鼠标事件、键盘事件、HTML事件、突变事件</P>
+<P>鼠标事件：<BR>　　click、dbclick、mousedown、mouseover、mouseup、mousemove。</P>
+<P>鼠标事件的属性：<BR>每个鼠标事件都会给以下event对象的属性填入值：<BR>·<STRONG><FONT 
+color=#ff0000>坐标属性（例如clientX和clientY及pageX、pageY）；</FONT></STRONG></P>
+<P><STRONG>clientX、clientY在IE9以下的鼠标触发滚动条事件scroll坐标值是不变的，IE9及以上和其它现代浏览器返回undefined</STRONG></P>
+<P><STRONG>pageX、pageY在IE9以下的鼠标触发滚动条事件scroll坐标值是实时坐标，随鼠标改变；IE9及以上和其它现代浏览器返回undefined</STRONG></P>
+<P><STRONG><FONT color=#ff0000>$(window).scroll(function(e){</FONT>//IE9以下<FONT 
+color=#ff0000>e.pageY,e.pageX</FONT>有值，IE9及以上和其它现代浏览器返回undefined</STRONG></P>
+<P><STRONG><FONT color=#ff0000>//xxxx</FONT></STRONG></P>
+<P><STRONG><FONT color=#ff0000>})</FONT><FONT style=""></STRONG></P></FONT>
+<P>&nbsp;</P>
+<P><BR>·type属性；<BR>·target（DOM）或srcElement（IE）属性；<BR>·shiftKdy、ctrlKey、altKey和metaKey（DOM）属性；<BR>·button属性（只在mousedown、mouseover、mouseout、mousemove和mouseup事件中）。</P>
+<P>键盘事件：<BR>keydown、keypress、keyup</P>
+<P>键盘事件的属性：<BR>·keyCode属性<BR>·charCode属性（仅DOM）<BR>·target（DOM）或者srcElement（IE）属性<BR>·shiftKey、ctrlKey、altKey和metaKey（DOM）属性<BR>注意：按下Shift、Ctrl、Alt或者meta键时，除设置相应的属性为true外，还都会引发keydown事件。</P>
+<P>HTMl事件：<BR>·load事件<BR>·unload事件<BR>·abort事件<BR>·error事件<BR>·select事件（&lt;input 
+/&gt;或者&lt;textarea /&gt;事件）<BR>·change事件（&lt;input /&gt;或者&lt;textarea 
+/&gt;事件）<BR>·submit事件<BR>·reset事件<BR>·resize事件<BR>·scroll事件<BR>·focus事件<BR>·blur事件</P></BODY></HTML>

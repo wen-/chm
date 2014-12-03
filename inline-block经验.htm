@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>inline-block经验</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY>
+<P>inline-block经验</P>
+<P>inline-block只能对行元素起作用，</P>
+<P>在IE7,6中对行元素定义inline-block,可以定义宽度，内外边距，以行内块的形式展现，</P>
+<P>但如果对块(如DIV、TABLE)元素定义inline-block,则无效，元素还是以块形式展现．</P>
+<P><FONT color=#ff0000>*----TABLE----*</FONT></P>
+<P>table要以行形式展现，设为样式为：display:inline-table;</P>
+<P>inline-block是不行的，另外IE6\7下要设成inline;不然还是会以块形式展现。</P></BODY></HTML>

@@ -1,0 +1,1371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>vi用法</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580">
+</HEAD>
+<BODY>
+<P>vi用法</P>
+<H1 
+style="TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; MARGIN-BOTTOM: 10px; LETTER-SPACING: normal; COLOR: rgb(75,75,75); FONT-SIZE: 14px; FONT-WEIGHT: bold; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+class=postTitle><A style="COLOR: rgb(26,139,200); TEXT-DECORATION: none" 
+id=cb_post_title_url class=postTitle2 
+href="http://www.cnblogs.com/ssgblue/archive/2011/08/02/2125123.html">centos下vi的用法大全</A></H1>
+<DIV 
+style="TEXT-TRANSFORM: none; TEXT-INDENT: 0px; FONT: 13px/19px Verdana, Geneva, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; MARGIN-BOTTOM: 20px; LETTER-SPACING: normal; COLOR: rgb(75,75,75); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+id=cnblogs_post_body>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 21pt; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp; vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">编辑器是所有</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Unix</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">及</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Linux</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">系统下标准的编辑器，它的强大不逊色于任何最新的文本编辑器，这里只是简单地介绍一下它的用法和一小部分指令。由于对</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Unix</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">及</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Linux</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">系统的任何版本，</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">编辑器是完全相同的，因此您可以在其他任何介绍</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">的地方进一步了解它。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">也是</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Linux</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">中最基本的文本编辑器，学会它后，您将在</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Linux</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">的世界里畅行无阻。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif"><SPAN style="LINE-HEIGHT: 1.5" 
+lang=EN-US><?xml:namespace prefix = o /><o:p></o:p></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>1</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">的基本概念</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><BR></SPAN></STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　基本上</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">可以分为三种状态，分别是命令模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）、插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）和底行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>last line 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">），各模式的功能区分如下：</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>&nbsp;&nbsp;&nbsp; 
+1)<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">命令行模式</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　控制屏幕光标的移动，字符、字或行的删除，移动复制某区段及进入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">下，或者到</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>last line mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>&nbsp;&nbsp;&nbsp; 
+2)<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　只有在</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">下，才可以做文字输入，按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ESC</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键可回到命令行模式。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>&nbsp;&nbsp;&nbsp; 
+3)<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">底行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>last line 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　将文件保存或退出</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，也可以设置编辑环境，如寻找字符串、列出行号</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>……</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">等。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;&nbsp;&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">不过一般我们在使用时把</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">简化成两个模式，就是将底行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>last line 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）也算入命令行模式</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>2</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">的基本操作</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;</SPAN></STRONG><STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><BR></SPAN></STRONG><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>a)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">进入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>&nbsp;&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　在系统提示符号输入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">及文件名称后，就进入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">全屏幕编辑画面：</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　　</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>$ vi myfile<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　不过有一点要特别注意，就是您进入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">之后，是处于「命令行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」，您要切换到「插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」才能够输入文字。初次使用</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">的人都会想先用上下左右键移动光标，结果电脑一直哔哔叫，把自己气个半死，所以进入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">后，先不要乱动，转换到「插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」再说吧！</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>b)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">切换至插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）编辑文件</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　在「命令行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」下按一下字母「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>i</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」就可以进入「插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」，这时候你就可以开始输入文字了。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>c) Insert<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">的切换</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　您目前处于「插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」，您就只能一直输入文字，如果您发现输错了字！想用光标键往回移动，将该字删除，就要先按一下「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ESC</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键转到「命令行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」再删除文字。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>d)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">退出</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">及保存文件</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　在「命令行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」下，按一下「：」冒号键进入「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Last line 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」，例如：</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>: w filename<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">（输入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>w 
+filename</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」将文章以指定的文件名</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>filename</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">保存）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>: wq (</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">输入「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>wq</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」，存盘并退出</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi)<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>: q! (</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">输入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>q!</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">不存盘强制退出</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi)<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><BR>3</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、命令行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）功能键</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>1</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">插入模式</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>i</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」切换进入插入模式「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>insert 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」，按</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"i"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">进入插入模式后是从光标当前位置开始输入文件；</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>a</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」进入插入模式后，是从目前光标所在位置的下一个位置开始输入文字；</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>o</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」进入插入模式后，是插入新的一行，从行首开始输入文字。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>2</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">从插入模式切换为命令行模式</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ESC</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>3</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">移动光标</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">可以直接用键盘上的光标来上下左右移动，但正规的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">是用小写英文字母「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>h</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」、「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>j</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」、「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>k</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」、「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>l</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」，分别控制光标左、下、上、右移一格。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ctrl</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>+</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>b</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：屏幕往</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">后</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">移动一页。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ctrl</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>+</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>f</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：屏幕往</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">前</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">移动一页。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ctrl</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>+</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>u</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：屏幕往</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">后</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">移动半页。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ctrl</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>+</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>d</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：屏幕往</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">前</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">移动半页。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按数字「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>0</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：移到文章的开头。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>G</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：移动到文章的最后。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>$</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：移动到光标所在行的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行尾</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>^</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：移动到光标所在行的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行首</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>"<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>w</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：光标跳到下个字的开头</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>e</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：光标跳到下个字的字尾</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>b</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：光标回到上个字的开头</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#l</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：光标移到该行的第</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个位置，如：</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>5l,56l</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>4</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">删除文字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>x</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：每按一次，删除光标所在位置的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">后面</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">一个字符。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#x</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：例如，「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>6x</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」表示删除光标所在位置的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">后面</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"6</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个字符。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>X</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：大写的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>X</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，每按一次，删除光标所在位置的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">前面</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">一个字符。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#X</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：例如，「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>20X</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」表示删除光标所在位置的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">前面</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"20</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个字符。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>dd</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：删除光标所在行。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#dd</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：从光标所在行开始删除</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>5</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">复制</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>yw</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：将光标所在之处到字尾的字符复制到缓冲区中。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#yw</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：复制</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个字到缓冲区</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>yy</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：复制光标所在行到缓冲区。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#yy</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：例如，「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>6yy</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」表示拷贝从光标所在的该行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">往下数</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"6</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行文字。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>p</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：将缓冲区内的字符贴到光标所在位置。注意：所有与</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"y"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">有关的复制命令都必须与</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"p"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">配合才能完成复制与粘贴功能。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>6</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">替换</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>r</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：替换光标所在处的字符。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>R</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：替换光标所到之处的字符，直到按下「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ESC</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键为止。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>7</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">回复上一次操作</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>u</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：如果您误执行一个命令，可以马上按下「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>u</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」，回到上一个操作。按多次</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"u"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">可以执行多次回复。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>8</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">更改</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>cw</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：更改光标所在处的字到字尾处</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>c#w</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：例如，「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>c3w</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」表示更改</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>3</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>9</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">跳至指定的行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ctrl</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>+</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>g</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」列出光标所在行的行号。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#G</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：例如，「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>15G</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」，表示移动光标至文章的第</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>15</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行行首。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>4</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Last line 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">下命令简介</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　　在使用「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>last line 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」之前，请记住先按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ESC</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键确定您已经处于「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」下后，再按「：」冒号即可进入「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>last line 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>A)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">列出行号</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>set nu</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：输入「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>set nu</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」后，会在文件中的每一行前面列出行号。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>B)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">跳到文件中的某一行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」号表示一个数字，在冒号后输入一个数字，再按回车键就会跳到该行了，如输入数字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>15</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，再回车，就会跳到文章的第</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>15</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>C)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">查找字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>/</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">关键字」：先按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>/</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键，再输入您想寻找的字符，如果第一次找的关键字不是您想要的，可以一直按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>n</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」会往后寻找到您要的关键字为止。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>?</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">关键字」：先按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>?</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键，再输入您想寻找的字符，如果第一次找的关键字不是您想要的，可以一直按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>n</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」会往前寻找到您要的关键字为止。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif"><SPAN style="LINE-HEIGHT: 1.5" 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>D)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">保存文件</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>w</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：在冒号输入字母「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>w</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」就可以将文件保存起来。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>E)<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">离开</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>q</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>q</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」就是退出，如果无法离开</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，可以在「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>q</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」后跟一个「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>!</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」强制离开</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">　「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>qw</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」：一般建议离开时，搭配「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>w</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」一起使用，这样在退出的时候还可以保存文件。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>5</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">命令列表</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>1</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、下表列出命令模式下的一些键的功能：</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>h<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">左移光标一个字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>l<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">右移光标一个字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>k<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">光标上移一行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>j<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">光标下移一行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>^<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">光标移动至行首</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>0<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">数字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>"0"</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，光标移至文章的开头</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>G<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">光标移至文章的最后</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>$<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">光标移动至行尾</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Ctrl+f<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">向前翻屏</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Ctrl+b<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">向后翻屏</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Ctrl+d<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">向前翻半屏</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Ctrl+u<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">向后翻半屏</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>i<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">在光标位置前插入字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>a<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">在光标所在位置的后一个字符开始增加</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>o<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">插入新的一行，从行首开始输入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ESC<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">从输入状态退至命令状态</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>x<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">删除光标后面的字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#x<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">删除光标后的＃个字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>X<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>(</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">大写</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>X)</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，删除光标前面的字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#X<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">删除光标前面的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个字符</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>dd<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">删除光标所在的行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#dd<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">删除从光标所在行数的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>yw<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">复制光标所在位置的一个字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#yw<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">复制光标所在位置的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>yy<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">复制光标所在位置的一行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#yy<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">复制从光标所在行数的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">行</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>p<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">粘贴</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>u<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">取消操作</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>cw<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">更改光标所在位置的一个字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#cw<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">更改光标所在位置的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>#</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">个字</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><BR>2</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、下表列出行命令模式下的一些指令</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>w filename<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">储存正在编辑的文件为</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>filename<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>wq filename<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">储存正在编辑的文件为</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>filename</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，并退出</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>q!<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">放弃所有修改，退出</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>vi<o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>set nu<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">显示行号</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>/</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">或</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>?<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">查找，在</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>/</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">后输入要查找的内容</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>n<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">与</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>/</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">或</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>?</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">一起使用，如果查找的内容不是想要找的关键字，按</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>n</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">或向后（与</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>/</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">联用）或向前（与</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>?</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">联用）继续查找，直到找到为止。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 19px; TEXT-INDENT: 0px; MARGIN: 0cm 0cm 0pt; FONT-SIZE: 13px" 
+class=MsoNormal align=left><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><BR></SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">对于第一次用</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">，有几点注意要提醒一下：</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>1</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、用</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>vi</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">打开文件后，是处于「命令行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」，您要切换到「插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」才能够输入文字。切换方法：在「命令行模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>command 
+mode</SPAN><SPAN style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」下按一下字母「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>i</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」就可以进入「插入模式（</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>Insert 
+mode</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）」，这时候你就可以开始输入文字了。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>2</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、编辑好后，需从插入模式切换为命令行模式才能对文件进行保存，切换方法：按「</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>ESC</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">」键。</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>3</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">、保存并退出文件：在命令模式下输入</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>:wq</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">即可！（别忘了</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>wq</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">前面的</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" lang=EN-US>:</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: 宋体">）</SPAN><SPAN 
+style="LINE-HEIGHT: 1.5; FONT-FAMILY: &#718;&#805;, serif" 
+lang=EN-US>&nbsp;</SPAN></P></DIV></BODY></HTML>

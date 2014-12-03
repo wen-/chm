@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>iphone使用高清图片</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>iphone使用高清图片</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>假设你程序中使用了<FONT 
+color=#ff0000>icon.png</FONT>这张图，那么为了能适配所有的机型，那么你需要在你的项目中为icon.png添加一个高清的版本<FONT 
+color=#ff0000>，@2x</FONT>，“<FONT 
+color=#ff0000>icon@2x.png</FONT>”，那么在程</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>序在iphone4中进行运行的时候就会自动索引@2x的对应图片，那么对此Himi要提醒重要的一点：</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><BR><FONT 
+size=4></FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>&nbsp; &nbsp; 
+以上@2x的方式是抛开cocos2d，单单说的iOS的系统API，那么如果在cocos2d中使用的图片也类似需要添加一个高清的版本，-hd，“icon-hd.png”；这里一定不能</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>搞错；</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4></FONT></SPAN></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>CSS样式文件中应用高清图片：</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>@media all and 
+(-webkit-min-device-pixel-ratio:1.5){</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>.logo a{</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>&nbsp;&nbsp;&nbsp; background-image:url(<A 
+href="mailto:../images/icon2@x2.png">../images/icon2@x2.png</A>);</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>}</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+size=3>.logo a:hover{</FONT></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+size=3>&nbsp;&nbsp;&nbsp; background-image:url(<A 
+href="mailto:../images/icon2ver@x2.png">../images/icon2ver@x2.png</A>);</FONT></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+size=3>}<SPAN style="FONT-FAMILY: KaiTi_GB2312"><SPAN 
+style="FONT-SIZE: 13px"><FONT size=4></FONT></SPAN></SPAN></FONT></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4>}</FONT></SPAN></SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4></FONT></SPAN></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 11px Menlo; PADDING-LEFT: 0px; MARGIN: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-FAMILY: KaiTi_GB2312"><SPAN style="FONT-SIZE: 13px"><FONT 
+size=4></FONT></SPAN></SPAN>&nbsp;</P></BODY></HTML>

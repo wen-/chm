@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>phonegap IOS调试</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>phonegap IOS调试</P>
+<DIV id=ibm-leadspace-head 
+style="BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BACKGROUND-IMAGE: none; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(229,229,229) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: medium/19px Arial, sans-serif; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; DISPLAY: block; LETTER-SPACING: normal; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV id=ibm-leadspace-body 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; POSITION: relative; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px auto; MIN-HEIGHT: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 940px">
+<H1 
+style="FONT-SIZE: 2em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 10px !important; PADDING-TOP: 5px; OUTLINE-STYLE: none; PADDING-LEFT: 0px !important; CLEAR: both; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1em; PADDING-RIGHT: 10px !important; WIDTH: 920px !important; text-shadow: rgb(255, 255, 255) 0px 1px 0px">在移动设备上调试 
+PhoneGap 程序</H1></DIV>
+<DIV id=dw-summary-area class=dw-summary-columns 
+style="OVERFLOW: hidden; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 20px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px auto; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 940px">
+<DIV class=ibm-col-6-4 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: none; MARGIN: 0px 20px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 620px">
+<P 
+style="FONT-SIZE: 0.95em; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(51,51,51); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.3em; PADDING-RIGHT: 0px; WIDTH: 620px">PhoneGap 
+作为一个优秀的移动开发框架，可以使用 HTM5 与 CSS3 快速开发出本地移动应用程序。然而，移动开发工具中（如 Xcode 与 Eclipse），对 
+JavaScript 的调试却没有很好的支持。本文将介绍几种调试方法与工具，解决移动平台上的 JavaScript 调试难题。</P>
+<P class="ibm-no-print ibm-ind-link" 
+style="FONT-SIZE: 0.95em; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(51,51,51); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.3em; PADDING-RIGHT: 0px; WIDTH: 620px"><SPAN 
+id=nCmts 
+style="BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: -2px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px"><IMG 
+class=dw-cmts-arrow 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 1px; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px -1px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="" src="http://dw1.s81c.com/developerworks/i/v17/dw-cmts-arrow.png" width=7 
+height=7><SPAN class=Apple-converted-space>&nbsp;</SPAN><A class=dw-cmt-link 
+style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 1em; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,82,141); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; TEXT-DECORATION: none; MARGIN: 15px 0px 0px; DISPLAY: inline; OUTLINE-COLOR: invert; LINE-HEIGHT: 1em; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; opacity: 0.8" 
+href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#icomments">评论：</A></SPAN></P></DIV>
+<DIV class="ibm-col-6-2 dw-toc-margin" 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: none; MARGIN: 0px 5px 30px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 290px">
+<P class=dw-summary-author 
+style="FONT-SIZE: 0.8em; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(51,51,51); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 4px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.2em; PADDING-RIGHT: 0px; WIDTH: 290px"><A 
+class=ibm-popup-link 
+style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 1em; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BACKGROUND-IMAGE: url(http://1.www.s81c.com/i/v17/icons/ibm_sprite_links_blue_ON.png); BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -601px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; TEXT-DECORATION: none; MARGIN: 15px 0px 0px; DISPLAY: inline; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; opacity: 0.8" 
+href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#authorN1001C">赖 
+勤毅</A>, 软件开发工程师, 恒生电子</P>
+<P class=dw-summary-date 
+style="FONT-SIZE: 0.8em; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(51,51,51); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 12px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.2em; PADDING-RIGHT: 0px; WIDTH: 290px">2012 
+年 9 月 27 日</P>
+<DIV aria-hidden=true id=dw-toc class=ibm-container 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(204,204,204) 1px solid; POSITION: absolute; COLOR: rgb(102,102,102); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 10px 0px 0px; BORDER-LEFT: rgb(204,204,204) 1px solid; Z-INDEX: 900; OUTLINE-COLOR: invert; PADDING-RIGHT: 5px; WIDTH: 290px; BACKGROUND-COLOR: rgb(255,255,255)">
+<DIV class=ibm-container-body 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">
+<UL class=ibm-twisty 
+style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; HEIGHT: 26px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; DISPLAY: block; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">
+  <LI 
+  style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 5px !important; PADDING-TOP: 5px !important; OUTLINE-STYLE: none; PADDING-LEFT: 3px !important; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 4px !important"><A 
+  class="ibm-twisty-trigger ibm-twisty-trigger-closed" 
+  style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 16px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BACKGROUND-IMAGE: url(http://www.ibm.com/i/v17/icons/_icons/ibm_icon_blue_minimize.png); BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: 0px; FLOAT: left; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; DISPLAY: block; OUTLINE-COLOR: invert; PADDING-RIGHT: 4px; WIDTH: 16px" 
+  href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#toggle"><IMG 
+  style="BORDER-TOP: 0px; HEIGHT: 16px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 16px" 
+  alt=+ src="http://www.ibm.com/i/c.gif"></A><SPAN class=ibm-twisty-head 
+  style="CURSOR: pointer; FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 16px; BORDER-LEFT: 0px; DISPLAY: block; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">内容</SPAN></LI></UL></DIV></DIV></DIV></DIV></DIV>
+<DIV id=ibm-pcon 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: normal; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 0px; FONT: medium/19px Arial, sans-serif; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 20px auto; BORDER-LEFT: 0px; LETTER-SPACING: normal; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 980px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV id=ibm-content 
+style="FONT-SIZE: 0.8em; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 980px">
+<DIV id=ibm-content-body 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+<DIV id=ibm-content-main 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: left; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; WIDTH: 980px">
+<DIV class=ibm-columns 
+style="OVERFLOW: hidden; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 10px; CLEAR: both; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 10px; WIDTH: 960px">
+<DIV class=ibm-col-1-1 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: none; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 10px; CLEAR: both; MARGIN: 0px; MIN-HEIGHT: 1px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 10px; WIDTH: 940px">
+<H2 id=major1 
+style="FONT-SIZE: 1.6em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">背景</H2>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">PhoneGap 
+作为一个目标远大的移动开发框架，可以让开发人员专注于业务应用开发，并让应用程序实现一次开发，多个移动平台运行。现在 PhoneGap 已经被纳入 Apache 
+基金会的<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://incubator.apache.org/cordova/">Cordova 
+项目</A>进行孵化，很多旧的文档与插件可能已经过时。本文将使用 Xcode 来演示 PhoneGap 开发 iOS 
+应用程序的调试问题，其它平台的开发工具与调试方法也应该如出一辙。</P>
+<DIV class=ibm-alternate-rule 
+style="BORDER-TOP: 0px; HEIGHT: 1px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 10px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(204,204,204)"></DIV>
+<P class="ibm-ind-link ibm-back-to-top" 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; HEIGHT: 22px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; TEXT-ALIGN: right; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px"><A 
+class=ibm-anchor-up-link 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BACKGROUND-IMAGE: url(http://1.www.s81c.com/i/v17/icons/ibm_sprite_arrow_blue_ON.png); BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -401px; FONT-WEIGHT: bold; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 16px; TEXT-DECORATION: none; MARGIN: 0px; DISPLAY: inline; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.06em; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; opacity: 0.8" 
+href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#ibm-pcon">回页首</A></P>
+<H2 id=major2 
+style="FONT-SIZE: 1.6em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">准备工作</H2>
+<H3 id=minor2.1 
+style="FONT-SIZE: 1.4em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">开发工具准备</H3>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: -2px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">在 
+iOS 平台上做开发 , 需要安装 XCode 作为开发工具，你可以打开 AppStore 搜索 
+Xcode，获取最新版本的开发工具。如果需要在真机上调试，那还需要 Apple iOS 设备和 iOS 开发者证书。</P>
+<H3 id=minor2.2 
+style="FONT-SIZE: 1.4em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">安装 
+PhoneGap 开发环境</H3>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: -2px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">安装 
+PhoneGap 非常简单，你只要从<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://phonegap.com/download">官方下载</A>PhoneGap 安装文件并解压，打开文件 
+lib/ios/Cordova-1.x.x.dmg 进行安装。</P>
+<H3 id=minor2.3 
+style="FONT-SIZE: 1.4em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">开发 
+PhoneGap 程序</H3>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: -2px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">打开 
+XCode, 新建项目时 , 选择 Application 下面的 Cordova-based Application 模板 ,</P>
+<H5 id=fig1 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+1. 选择项目模板</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 1. 选择项目模板" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image001.jpg" 
+width=429>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">点击下一步，注意：不要选择项目的 
+Use Automatic Reference Counting （ARC）特性。</P>
+<H5 id=fig2 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+2. 不使用 ARC</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 2. 不使用 ARC" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image002.jpg" 
+width=452>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">最后，将 
+www 拖入项目中，这就完成了一个简单的 PhoneGap 应用。最后，你可以使用 iOS 
+模拟器运行这个项目。如果上面过程遇到问题，可以参阅更加详细的<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://docs.phonegap.com/en/1.9.0/guide_getting-started_ios_index.md.html#Getting%20Started%20with%20iOS">入门步骤</A>。</P>
+<H3 id=minor2.4 
+style="FONT-SIZE: 1.4em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">更多的 
+PhoneGap API</H3>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: -2px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">PhoneGap 
+包含很多本地接口调用，其中主要包括加速感应、摄像头、录像录音、联系人、通知提醒、文件存储等。<A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://docs.phonegap.com/en/1.9.0/index.html">官方文档</A>已经罗列了所有的 API 
+以及简单的代码示例。不过，Apache Cordova 还没有用户组的邮件列表，只有开发者和贡献者的邮件列表，在 IRC 的 #phonegap 频道与 
+Google Group<A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="https://groups.google.com/group/phonegap/">讨论组</A>里，你可以找到活跃的用户和许多有用的帮助（请参阅 
+:<A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#_ 讨论">讨论部分</A>）。</P>
+<DIV class=ibm-alternate-rule 
+style="BORDER-TOP: 0px; HEIGHT: 1px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 10px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(204,204,204)"></DIV>
+<P class="ibm-ind-link ibm-back-to-top" 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; HEIGHT: 22px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; TEXT-ALIGN: right; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px"><A 
+class=ibm-anchor-up-link 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BACKGROUND-IMAGE: url(http://1.www.s81c.com/i/v17/icons/ibm_sprite_arrow_blue_ON.png); BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -401px; FONT-WEIGHT: bold; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 16px; TEXT-DECORATION: none; MARGIN: 0px; DISPLAY: inline; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.06em; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; opacity: 0.8" 
+href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#ibm-pcon">回页首</A></P>
+<H2 id=major3 
+style="FONT-SIZE: 1.6em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">代理模式调试技术</H2>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">由于移动设备的硬件与架构限制，无法像 
+PC 一样在宿主机器上安装测试工具或运行辅助脚本。特别是在 iOS 平台上，XCode 与模拟器只能对 Objective-C 进行调试；对于 
+JavaScript，只能使用 alert 或者 console.log 函数进行跟踪，这让 PhoneGap 的开发人员苦不堪言。</P>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">通过代理模式，使用 
+HTTP 协议发送命令，可以完成远程调试工作。在移动端只需要注入 JavaScript 目标脚本，不断轮询访问代理服务器；客户端使用 PC 
+浏览器连接代理服务器，将需要执行的命令发给代理服务器。通过代理服务器中转，PC 浏览器就可移动端的应用程序进行命令与数据传输。</P>
+<H5 id=fig3 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+3. 代理模式</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 3. 代理模式" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image003.jpg" 
+width=552>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px"><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://people.apache.org/~pmuellr/weinre/docs/latest/">Weinre</A>就是使用代理技术实现的调试工具。它不仅可以用于 
+PhoneGap 应用程序调试，也可以用于移动版的网页调试。</P>
+<H3 id=minor3.1 
+style="FONT-SIZE: 1.4em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">安装运行 
+weinre</H3>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: -2px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">首先，下载<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://nodejs.org/">nodejs 官方</A>的安装包 node-v0.x.pkg 进行安装。然后，以管理员模式打开 
+Terminal，通过下面的命令安装 weinre：</P>
+<H5 id=listing1 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">清单 
+1. 安装 weinre</H5>
+<DIV class=codesection 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px"><PRE class=displaycode style="OVERFLOW: auto; FONT-SIZE: 11px; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: 'Andale Mono', 'Lucida Console', Monaco, Liberation, fixed, monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 5px !important; PADDING-TOP: 5px !important; OUTLINE-STYLE: none; PADDING-LEFT: 3px !important; MARGIN: 0px 0px 6px; BORDER-LEFT: rgb(204,204,204) 1px solid; OUTLINE-COLOR: invert; PADDING-RIGHT: 10px !important; WIDTH: 780px; BACKGROUND-COLOR: rgb(247,247,247)"> sudo npm -g install weinre</PRE></DIV>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">使用下面的命令行运行 
+weinre：</P>
+<H5 id=listing2 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">清单 
+2. 运行 weinre</H5>
+<DIV class=codesection 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px"><PRE class=displaycode style="OVERFLOW: auto; FONT-SIZE: 11px; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: 'Andale Mono', 'Lucida Console', Monaco, Liberation, fixed, monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 5px !important; PADDING-TOP: 5px !important; OUTLINE-STYLE: none; PADDING-LEFT: 3px !important; MARGIN: 0px 0px 6px; BORDER-LEFT: rgb(204,204,204) 1px solid; OUTLINE-COLOR: invert; PADDING-RIGHT: 10px !important; WIDTH: 780px; BACKGROUND-COLOR: rgb(247,247,247)"> weinre --httpPort 8080 --boundHost 192.168.1.101</PRE></DIV>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">其中 
+192.168.1.101 为本地网络 IP 地址。</P>
+<H3 id=minor3.2 
+style="FONT-SIZE: 1.4em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">在项目中使用 
+weinre</H3>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: -2px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">打开“Supporting 
+Files/Cordova.plist”文件，将当前 IP 地址作为 whitelist 添加到 ExternalHost 中。</P>
+<H5 id=fig4 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+4. 添加 whitelist</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 4. 添加 whitelist" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image004.jpg" 
+width=513>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">在 
+index.html 中链接代码：</P>
+<DIV class=codesection 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px"><PRE class=displaycode style="OVERFLOW: auto; FONT-SIZE: 11px; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: 'Andale Mono', 'Lucida Console', Monaco, Liberation, fixed, monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 5px !important; PADDING-TOP: 5px !important; OUTLINE-STYLE: none; PADDING-LEFT: 3px !important; MARGIN: 0px 0px 6px; BORDER-LEFT: rgb(204,204,204) 1px solid; OUTLINE-COLOR: invert; PADDING-RIGHT: 10px !important; WIDTH: 780px; BACKGROUND-COLOR: rgb(247,247,247)"> &lt;script src="http://192.168.1.101:8080/target/target-script-min.js#anonymous"&gt;&lt;/script&gt;</PRE></DIV>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">启动 
+iOS 模拟器，如果 XCode 调试窗口出现以下错误，请检查 ExternalHost 配置和网络设置（确保绕过网络代理服务器，可以访问 IP）。</P>
+<DIV class=codesection 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px"><PRE class=displaycode style="OVERFLOW: auto; FONT-SIZE: 11px; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: 'Andale Mono', 'Lucida Console', Monaco, Liberation, fixed, monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 5px !important; PADDING-TOP: 5px !important; OUTLINE-STYLE: none; PADDING-LEFT: 3px !important; MARGIN: 0px 0px 6px; BORDER-LEFT: rgb(204,204,204) 1px solid; OUTLINE-COLOR: invert; PADDING-RIGHT: 10px !important; WIDTH: 780px; BACKGROUND-COLOR: rgb(247,247,247)"> ERROR whitelist rejection: url='http://192.168.1.101:8080/target/target-script-min.js'</PRE></DIV>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">打开 
+Chrome 浏览器，访问 http://192.168.1.101:8080/，可以查看概要文档与辅助代码。</P>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">打开调试链接：http://192.168.1.101:8080/client/#anonymous，就会看到 
+Remote 选项卡，Targets 列表中会列出所有远程的目标应用，如果连接成功，链接将显示成绿色。</P>
+<H5 id=fig5 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+5. PC 端界面</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 5. PC 端界面" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image005.jpg" 
+width=447>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">Elements 
+选项卡中，可以双击修改 dom 属性，并且在模拟器中可以立即显示修改效果。</P>
+<H5 id=fig6 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+6. 修改 dom</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 6. 修改 dom" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image006.jpg" 
+width=443>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">Resources 
+选项卡中，可以查看和修改所有的数据库、表、本地存储和会话存储。选中一个数据库，可以执行相应的 SQL。</P>
+<H5 id=fig7 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+7. 存储和数据库</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 7. 存储和数据库" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image007.jpg" 
+width=499>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">Console 
+选项卡中，可以执行 JavaScript 脚本，模拟器会立即响应执行结果。如果有一些日子或者错误，也会显示在这里。</P>
+<H5 id=fig8 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+8. 终端命令行</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 8. 终端命令行" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image008.jpg" 
+width=466>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">这些功能对于熟悉 
+Web 调试的开发人员不过是老生常谈。与桌面浏览器调试相比，Weinre 还缺少 JavaScript 脚本动态调试功能。Console 
+选项卡的脚本执行只能对全局变量进行修改，无法对每个方法内部设定断点进行调试，这需要脚本引擎提供远程调试功能，目前在 iOS 平台上还没有实现。</P>
+<DIV class=ibm-alternate-rule 
+style="BORDER-TOP: 0px; HEIGHT: 1px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 10px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(204,204,204)"></DIV>
+<P class="ibm-ind-link ibm-back-to-top" 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; HEIGHT: 22px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; TEXT-ALIGN: right; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px"><A 
+class=ibm-anchor-up-link 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BACKGROUND-IMAGE: url(http://1.www.s81c.com/i/v17/icons/ibm_sprite_arrow_blue_ON.png); BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -401px; FONT-WEIGHT: bold; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 16px; TEXT-DECORATION: none; MARGIN: 0px; DISPLAY: inline; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.06em; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; opacity: 0.8" 
+href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#ibm-pcon">回页首</A></P>
+<H2 id=major4 
+style="FONT-SIZE: 1.6em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">Mock 
+模式调试技术</H2>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">由于 
+Weinre 无法实现 JavaScript 动态调试，而 PC 版本的浏览器却有非常强大的调试功能，因此可以隔离 PhoneGap API，重写一套 Mock 
+对象来模拟 PhoneGap 对象。这样 , 就可以使用 PC 浏览器调试应用程序了。</P>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">在 
+WebKit 的浏览器中 ( 如 Safari、Chrome 等 )，都存在 Web SQL Database、Storage 等 HTML5 标准 
+API，但是没有通讯录、提醒震动、文件操作等移动设备 API，相应的这些接口需要实现一套 Mock API 来模拟移动设备的特性。</P>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">因此，需要重写部分 
+PhoneGap API，便可以实现桌面模拟调试。<A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="https://github.com/jxp/phonegap-desktop">Phonegap-desktop 项目</A>已经完成了大部分 
+Mock API，只需要将 PhoneGap 的引入的文件 cordova.js 替换为 phonegap-desktop.js，就可以在桌面上调试 
+PhoneGap 应用程序。</P>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">如果项目中存在 
+PhoneGap 插件，也需要相应地重写一套 desktop API。如果是 Native UI 的插件，可以使用 div 
+元素来模拟，如果是数据交互，可以使用静态 JSON 数据来代替。</P>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">访问 
+phonegap-desktop 的<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://jxp.github.com/phonegap-desktop/demo/">demo</A>，你可以查看大部分 API 
+在桌面上的模拟效果。</P>
+<H5 id=fig9 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">图 
+9. phonegap-desktop-demo</H5><IMG 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+alt="图 9. phonegap-desktop-demo" 
+src="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/image009.jpg" 
+width=319>
+<DIV class=ibm-alternate-rule 
+style="BORDER-TOP: 0px; HEIGHT: 1px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 10px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(204,204,204)"></DIV>
+<P class="ibm-ind-link ibm-back-to-top" 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; HEIGHT: 22px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; TEXT-ALIGN: right; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px"><A 
+class=ibm-anchor-up-link 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: baseline; BACKGROUND-IMAGE: url(http://1.www.s81c.com/i/v17/icons/ibm_sprite_arrow_blue_ON.png); BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -401px; FONT-WEIGHT: bold; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 16px; TEXT-DECORATION: none; MARGIN: 0px; DISPLAY: inline; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.06em; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; opacity: 0.8" 
+href="http://www.ibm.com/developerworks/cn/opensource/os-cn-phonegap-debug/#ibm-pcon">回页首</A></P>
+<H2 id=major5 
+style="FONT-SIZE: 1.6em !important; BORDER-TOP: 0px; FONT-FAMILY: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px">未来之路：远程调试</H2>
+<P 
+style="FONT-SIZE: 1.16em !important; BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(34,34,34); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">上面两种调试方法各有千秋，但都不是完美至极。对开发人员来说，如果能够一目了然的看见每个变量和堆栈那是再好不过了。目前 
+WebKit 项目已经发布了<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://www.webkit.org/blog/1875/announcing-remote-debugging-protocol-v1-0/">远程调试协议 
+v1.0</A>，并且 BlackBerry PlayBook 和 Android 平台上的 Chrome 已经支持远程调试。Google 的 V8 
+引擎有自己的<A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://code.google.com/p/v8/wiki/DebuggerProtocol">远程调试协议</A>。但在 iOS 
+平台上还没有可用的远程调试方法，有些开发人员也会<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-TOP: 0px; FONT-FAMILY: Arial, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(116,82,133); OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://atnan.com/blog/2011/11/17/enabling-remote-debugging-via-private-apis-in-mobile-safari/">另辟蹊径</A>，变相让 
+XCode 支持 JavaScript 的调试功能。</P></DIV></DIV></DIV></DIV></DIV></DIV></BODY></HTML>

@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>文本框</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19088"><style>*{font-size:12px;line-height:18px;}</style></HEAD>
+<BODY>
+<P>　　在HTML中有两种不同类型的文本框：单行的&lt;input type="text" /&gt;和多行的&lt;textarea 
+/&gt;，尽管它们是不同的元素，但它们均用value特性来获取包含在文本框内的文本。</P>
+<P>　　因为value特性是个字符串，可以使用任何字符串的特性和方法。例如，可以使用length特性来获取文本框中的文本长度：oTextbox1.value.length。</P>
+<P>　　两种类型的文本框都支持select()方法，这个方法可选中文本框中的所有文本。为了达到这个功能，文本框必须已经获得焦点。为了保证文本框已获取焦点，必须 
+在调用select()前调用另一个方法focus()。（并不是所有的浏览器都要求这样，但安全起见，最好每次都选调用）</P>
+<P>　　两种文本框都支持blur、focus、change等方法。</P>
+<P>&nbsp;</P></BODY></HTML>

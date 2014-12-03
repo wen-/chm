@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:o = "urn:schemas-microsoft-com:office:office" xmlns:st1 = 
+"urn:schemas-microsoft-com:office:smarttags"><HEAD><TITLE>字符串及常用方法</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:20px;}</STYLE>
+</HEAD>
+<BODY>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　　字符串具有</SPAN><SPAN 
+lang=EN-US>length</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">属性，它返回字符串中字符的个数，例如：</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2>　　var sMyString=”Hello world”;</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2>　　alert(sMyString.length);</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><o:p><FONT 
+size=2>&nbsp;</FONT></o:p></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　　如果希望获得指定位置的字符，可以使用</SPAN><SPAN 
+lang=EN-US>charAt()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">方法。第</SPAN><SPAN 
+lang=EN-US>1</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">个字符的位置为</SPAN><SPAN 
+lang=EN-US>0</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，第</SPAN><SPAN 
+lang=EN-US>2</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">个字符的位置为</SPAN><SPAN 
+lang=EN-US>1</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。例如：</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2><SPAN style="mso-spacerun: yes">&nbsp;　　</SPAN>var sMyString="<st1:place 
+w:st="on"><st1:PlaceName w:st="on">Tsinghua</st1:PlaceName> <st1:PlaceType 
+w:st="on">University</st1:PlaceType></st1:place>";</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;　　</SPAN>alert(sMystring.charAt(4)); 
+</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2></FONT></SPAN>&nbsp;</P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　　如果需要从某个字符串中取出其中的一段子字符串，可以采用</SPAN><SPAN 
+lang=EN-US>slice()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">、</SPAN><SPAN 
+lang=EN-US>substring()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">或</SPAN><SPAN 
+lang=EN-US>substr()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">方法。</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　　其中</SPAN><SPAN 
+lang=EN-US>slice()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">和</SPAN><SPAN 
+lang=EN-US>substring()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">都接受两个参数，分别为子字符串的起始位置和终于位置，返回这两者之间的子字符串，不包括终止位置的那个字符。如果第二个参数不设置，则默认为从起始位置到字符串的末尾。这两个方法的区别主要是对于负数的处理不同。对于</SPAN><SPAN 
+lang=EN-US>substr()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">方法，两个参数分别为起始字符串的位置和子字符串的长度。如：</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2><SPAN style="mso-spacerun: yes">&nbsp;　　</SPAN>var sMyString="<st1:place 
+w:st="on"><st1:PlaceName w:st="on">Tsinghua</st1:PlaceName> <st1:PlaceType 
+w:st="on">University</st1:PlaceType></st1:place>";</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2><SPAN 
+style="mso-spacerun: yes">&nbsp;　　</SPAN>alert(sMyString.substr(2,3));</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2></FONT></SPAN>&nbsp;</P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　　搜索操作对于字符串来说十分地平常，</SPAN><SPAN 
+lang=EN-US>JaveScript</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">提供了</SPAN><SPAN 
+lang=EN-US>indexOf()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">和</SPAN><SPAN 
+lang=EN-US>lastIndexOf()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">两种方法。它们的不同之处在于前者从前往后搜，后者则相反。它们的返回值都是子字符串开始的位置（从</SPAN><SPAN 
+lang=EN-US>0</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">开始计数），如果找不到则返回</SPAN><SPAN 
+lang=EN-US>-1</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。例：</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2>&lt;script type="text/javascript"&gt;</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT size=2>var 
+smyString="<st1:place w:st="on"><st1:PlaceName 
+w:st="on">Tsinghua</st1:PlaceName> <st1:PlaceType 
+w:st="on">University</st1:PlaceType></st1:place>";</FONT></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+lang=EN-US>document.write(sMyString.indfexOf(i)+"&lt;br /&gt;") //</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">从前往后</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+lang=EN-US>document.write(sMyString.indfexOf(i,3)+"&lt;br /&gt;") //</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">从前往后，可选参数，从第几个字符开始往后找</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+lang=EN-US>document.write(sMyString.lastIndfexOf(i)+"&lt;br /&gt;") 
+//</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">从后往前</SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><FONT size=2><SPAN 
+lang=EN-US>document.write(sMyString.lastIndfexOf(i,3)+"&lt;br /&gt;") 
+//</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">从后往前，可选参数，从第几个字符开始往后找</SPAN><SPAN 
+lang=EN-US> </SPAN></FONT></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><SPAN lang=EN-US><FONT 
+size=2>&lt;/script&gt; </FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12pt; MARGIN: 0cm 0cm 0pt; mso-char-indent-count: 2.0" 
+class=MsoBodyTextFirstIndent><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P style="LINE-HEIGHT: 12pt; MARGIN: 0cm 0cm 0pt; mso-char-indent-count: 2.0" 
+class=MsoBodyTextFirstIndent><SPAN lang=EN-US>　　JavaScript</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">提供了</SPAN><SPAN 
+lang=EN-US>toUpperCase()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">和</SPAN><SPAN 
+lang=EN-US>toLowerCase()</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">这两种转换字符串大小写的方法。</SPAN> 
+</P>
+<P style="LINE-HEIGHT: 12pt; MARGIN: 0cm 0cm 0pt; mso-char-indent-count: 2.0" 
+class=MsoBodyTextFirstIndent>　　</P>
+<P style="LINE-HEIGHT: 12pt; MARGIN: 0cm 0cm 0pt; mso-char-indent-count: 2.0" 
+class=MsoBodyTextFirstIndent>　　用toString()方法，可以将数组转换为字符串。如：alert(aMap.toString())，警告框显示China,USA,Britain。<BR>　　如果不希望用逗号进行数组转换后的连接，可以用join()方法，该方法接受一个参数，用来连接数组项的字符串，无参数则等同于toString()。如：document.write(aMap.join("-")+"&lt;br 
+/&gt;")。页面输出China-USA-Britain。</P>
+<P style="LINE-HEIGHT: 12pt; MARGIN: 0cm 0cm 0pt; mso-char-indent-count: 2.0" 
+class=MsoBodyTextFirstIndent>&nbsp;</P>
+<P style="LINE-HEIGHT: 12pt; MARGIN: 0cm 0cm 0pt; mso-char-indent-count: 2.0" 
+class=MsoBodyTextFirstIndent>　　对于字符串，split()方法将之转换成数组。split()接受一个参数，为分隔字符串的标识。例：<BR>&nbsp;&nbsp;&nbsp; 
+var sFruit = "apple,pear,peach,orange"; <BR>&nbsp;&nbsp;&nbsp; var aFruit = 
+sFruit.split(","); <BR></P></BODY></HTML>

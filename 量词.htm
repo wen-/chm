@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>量词</TITLE><style>*{font-size:12px;line-height:18px;}</style>
+</HEAD>
+<BODY>
+<p><strong>1、简单量词</strong><br>
+  下表列出了指定特定模式数量的几种不同方法：<br>
+  <strong>代码　　描述</strong><br>
+  ?　　　　出现零次或一次<br>
+  *　　　　出现零次或多次（任意次）<br>
+  +　　　　出现一次或多次（至少出现一次）<br>
+  {n}　　　一定出现n次<br>
+  {n,m}　　至少出现n次但不超过m次<br>
+  {n,}　　 至少出现n次
+  <br>
+举例：<br>
+<img src="images/23.jpg" width="676" height="163"></p>
+<p><strong>2、贪婪的、惰性的、支配性的量词</strong><br>
+　　贪婪量词先看整个的字符串是否匹配。如果没有发现匹配，它去掉该字符串中的最后一个字符，并再次尝试。如果还是没有发现匹配，那么再次去掉最后一个字符，如此反复，直到获得一个匹配或匹配工作完成。<br>
+　　惰性量词先看字符串中的第一个字母是否匹配。如果单独这一个字符还不够，就读入下一个字符再次尝试，如此反复，直到获得一个匹配，然后继续匹配余下字符串，直至匹配结束。惰性量词和贪婪量词的工作方式恰好相反。<br>
+　　支配量词只尝试匹配整个字符串。如果整个字符串不能产生匹配，不做进一步尝试a。支配量词其实简单地说，就是一刀切。<br>
+　　怎样表示贪婪、惰性和支配量词呢？正是完全使用星号、加号和问号。例如，单独一个问号（?）是贪婪的，但一个问号后面再跟一个问号（??）就是惰性的。要使问号成为支配量词，在后面加上一个加号（?+）。<br>
+　　下表列出了贪婪、惰性和支配性的量词：<br>
+<img src="images/24.jpg" width="691" height="182"></p>
+</BODY>
+</HTML>

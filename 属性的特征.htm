@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>属性的特征</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>属性的特征</P>
+<P>特征检测：</P>
+<P>var o = {a:1,b:2};</P><PRE style="POSITION: fixed; LEFT: -1000px"><STRONG><FONT color=#ff0000>Object.getOwnPropertyDescriptor(O,"b");</FONT></STRONG></PRE><PRE style="POSITION: fixed; LEFT: -1000px">通常返回以下特征</PRE>
+<P>4个特征：</P>
+<P><STRONG>值（value）</STRONG></P>
+<P><STRONG>可写性（writable）</STRONG></P>
+<P><STRONG>可枚举性（enumerable）</STRONG></P>
+<P><STRONG>可配置性（configurable）</STRONG></P>
+<P>&nbsp;</P>
+<P><FONT color=#ff0000>存取器属性的特征：</FONT></P>
+<P><STRONG>读取（get）</STRONG></P>
+<P><STRONG>写入（set）</STRONG></P>
+<P><STRONG>可枚举性（enumerable）</STRONG></P>
+<P><STRONG>可配置性（configurable）</STRONG></P>
+<P>&nbsp;</P>
+<P>让新建属性具有某些特性：</P>
+<P>Object.defineProperty()</P>
+<P>例：</P>
+<P>var o = {};</P>
+<P>Object.defineProperty(o,"x",{</P>
+<P>value:1,</P>
+<P>writatle:true,</P>
+<P>enumerable:false,</P>
+<P>configurable:true</P>
+<P>});</P>
+<P>创建一个空对象，添加一个不可枚举的属性X，并赋值为1</P>
+<P>属性是存在的，但不可枚举；</P>
+<P>o.x;&nbsp;&nbsp; //=1</P>
+<P>Objcet.keys(o);&nbsp;&nbsp;&nbsp;//==[]</P>
+<P>对属性修改，让它变成只读：</P>
+<P>Object.defineProperty(o,"x",{writable:false});</P>
+<P>o.x = 2 ;&nbsp;&nbsp; //操作失败，但不报错，在严格模式中抛出类型错误导演</P>
+<P>o.x;&nbsp;&nbsp; //还是1</P>
+<P>属性依然是可配置的，因此可以通过这种方式对它进行修改：</P>
+<P>Object.defineProperty(o,"x",{value:2});</P>
+<P>o.x;&nbsp;&nbsp; //变成2</P>
+<P>现在将X从数据属性修改成存取器属性：</P>
+<P>Object.defineProperty(o,"x",{get:function(){return 0;}});</P>
+<P>o.x;&nbsp; //等于0；</P>
+<P>&nbsp;</P>
+<P>如果要同时修改或创建多个属性，则需要使用:</P>
+<P>Object.defineProperties()</P>
+<P>例：</P>
+<P><STRONG><FONT color=#ff0000>var p = 
+Object.defineProperties({},{</FONT></STRONG></P>
+<P><STRONG><FONT 
+color=#ff0000>x:{value:1,writable:true,enumerable:true,configurable:true},</FONT></STRONG></P>
+<P><STRONG><FONT 
+color=#ff0000>y:{value:1,writable:true,enumerable:true,configurable:true},</FONT></STRONG></P>
+<P><STRONG><FONT color=#ff0000>r:{get:function(){return 
+Math.sqrt(this.x*this.x+this.y*this.y)},enumerable:true,configurable:true}</FONT></STRONG></P>
+<P><STRONG><FONT color=#ff0000>})</FONT></P></STRONG>
+<P>以上代码从一个空对象开始，然后给它添加属性，最后返回修改后的对象。</P>
+<P><STRONG>1、如果对象是不可扩展的，则可以编辑已有的自有属性，但不能给它添加新属性；</STRONG></P>
+<P><STRONG>2、如果属性是不可配置的，则不能修改它的可配置性和可枚举性；</STRONG></P>
+<P><STRONG>3、如果存取器属性是不可配置的，则不能修改在getter和segter方法，也不能将它转换为数据属性；</STRONG></P>
+<P><STRONG>4、如果数据属性是不可配置的，则不能将它的可写性从false修改true,但可以从true修改为false;</STRONG></P>
+<P><STRONG>5、如果数据属性是不可配置且不可写的，则不能修改它的值。然而可配置但不可写属性 
+的值是可以修改的（实际上是先将它标记为可写的，然后修改它的值，最后转换为不可写的）。</STRONG></P>
+<P>//复制属性的特征</P>
+<P>Object.defineProperty(Object.prototype,"extend",{//定义属性extend</P>
+<P>writable:true,</P>
+<P>enumerable:false,</P>
+<P>configurable:true,</P>
+<P>value:function(o){</P>
+<P>var names = Object.getOwnPropertyNames(o);//获取所有自有属性</P>
+<P>for(var i = 0; i&lt;names.length;i++){</P>
+<P>if(names[i] in this) continue;</P>
+<P>var desc = Object.getOwnPropertyDescriptor(o,names[i]);//返回属性描述符</P>
+<P>Object.defineProperty(this,names[i],desc);//赋值</P>
+<P>}</P>
+<P>}</P>
+<P>});</P></BODY></HTML>

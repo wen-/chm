@@ -1,0 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>数组索引与属性名的区分</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>数组索引与属性名的区分</P>
+<P>var a = [1,2,3,4,5];</P>
+<P>a[1] =2;</P>
+<P>所有的索引都是属性名，但只有在0~2的32次方－2之间的整数属性名才是索引。</P>
+<P>如果数组使用的属性名为数组的索引，则数组会自动更新length值 。</P>
+<P>a[-1.23] = true;//创建一个名为“－1.23”的属性；</P>
+<P>a["1000"] = 0 ;//这是数组的第1001个元素；</P>
+<P>a[1.000];//和a[1]相等；</P>
+<P>&nbsp;</P></BODY></HTML>

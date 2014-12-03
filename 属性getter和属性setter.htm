@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>属性getter和属性setter</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>属性getter和属性setter</P>
+<P>var p={</P>
+<P>x:1.0,</P>
+<P>y:1.0,</P>
+<P>//r是可读可写的存取器属性</P>
+<P>get r(){return Math.sqrt(this.x*this.x + this.y*this.y)},</P>
+<P>set r(newvalue){var oldvalue = Math.sqrt(this.x*this.x&nbsp;+ 
+this.y*this.y);</P>
+<P>var ratio = newvalue/oldvalue;</P>
+<P>this.x*=ratio;</P>
+<P>this.y*=ratio;</P>
+<P>},</P>
+<P>//theta是只读存取器属性</P>
+<P>get theta(){return Math.atan2(this.y,this.x);}</P>
+<P>};&nbsp;</P></BODY></HTML>

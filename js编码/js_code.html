@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>js_code</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<STYLE type=text/css>
+/*浮动与清除浮动*/
+.lfloat{
+        float:left;
+        display: inline;
+}
+
+.rfloat{
+        float:right;
+        display: inline;
+}
+.clearfix:before, 
+.clearfix:after { 
+  content: ""; 
+  display: table; 
+}
+.clearfix:after { 
+  clear: both; 
+  overflow:hidden;
+}
+.clearfix { 
+  zoom: 1; 
+}
+.clear{
+	clear:both;
+}
+
+body{
+	width:960px;
+	margin:0 auto;
+	font-size:14px;
+}
+.js_box{
+	padding-bottom:30px;
+	margin-bottom:30px;
+	border-bottom:dashed 1px #ccc;
+}
+.js_box h1{
+	font-size:14px;
+}
+.js_box textarea{
+	width:400px;
+	height:150px;
+	font-size:12px;
+	resize:none;
+	border:solid 1px #ccc;
+}
+.js_box .js_btn{
+	margin-top:10px;
+}
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<DIV class="js_escape js_box">
+<H1>js_escape编码：</H1>
+<DIV class="in_out clearfix"><TEXTAREA id=code_in class=lfloat>代码输入</TEXTAREA> <TEXTAREA id=code_out class=rfloat>代码输出</TEXTAREA> </DIV>
+<DIV class=js_btn><BUTTON id=escape_btn class=js_in>escape编码</BUTTON><BUTTON 
+id=unescape_btn class=js_out>unescape解码</BUTTON> </DIV>
+<P>注释：ECMAScript v3 反对使用该方法，应用使用 encodeURI()/decodeURI() 和 
+encodeURIComponent()/decodeURIComponent() 替代它。</P></DIV>
+<DIV class="js_encodeURI js_box">
+<H1>js_encodeURI编码：</H1>
+<DIV class="in_out clearfix"><TEXTAREA id=code_in1 class=lfloat>代码输入</TEXTAREA> <TEXTAREA id=code_out1 class=rfloat>代码输出</TEXTAREA> </DIV>
+<DIV class=js_btn><BUTTON id=encodeURI_btn 
+class=js_in>encodeURI编码</BUTTON><BUTTON id=decodeURI_btn 
+class=js_out>decodeURI解码</BUTTON> </DIV></DIV>
+<DIV class="js_encodeURIComponent js_box">
+<H1>js_encodeURIComponent编码：</H1>
+<DIV class="in_out clearfix"><TEXTAREA id=code_in2 class=lfloat>代码输入</TEXTAREA> <TEXTAREA id=code_out2 class=rfloat>代码输出</TEXTAREA> </DIV>
+<DIV class=js_btn><BUTTON id=encodeURIComponent_btn 
+class=js_in>encodeURIComponent编码</BUTTON><BUTTON id=decodeURIComponent_btn 
+class=js_out>decodeURIComponent解码</BUTTON> </DIV></DIV>
+<DIV class="js_Unicode js_box">
+<H1>Unicode 编码：</H1>
+<DIV class="in_out clearfix"><TEXTAREA id=code_in3 class=lfloat>代码输入</TEXTAREA> <TEXTAREA id=code_out3 class=rfloat>代码输出</TEXTAREA> </DIV>
+<DIV class=js_btn><BUTTON id=charCodeAt_btn 
+class=js_in>charCodeAt编码</BUTTON><BUTTON id=fromCharCode_btn 
+class=js_out>fromCharCode解码</BUTTON>&nbsp;</DIV></DIV> </BODY></HTML>

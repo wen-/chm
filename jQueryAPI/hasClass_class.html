@@ -1,0 +1,10 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>hasClass(class)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="hasClass"><h2><span>返回值:Boolean</span>hasClass(class)</h2><h3>概述</h3><div class="desc"><p>检查当前的元素是否含有某个特定的类，如果有，则返回true。</p><div class="longdesc"><pre>这其实就是 is("." + class)。</pre></div></div><h3>参数</h3><div><h4><strong>class</strong><span>String</span></h4><p>用于匹配的类名</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">给包含有某个类的元素进行一个动画。</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;div class="protected"&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("div").click(function(){
+  if ( $(this).hasClass("protected") )
+    $(this)
+      .animate({ left: -10 })
+      .animate({ left: 10 })
+      .animate({ left: -10 })
+      .animate({ left: 10 })
+      .animate({ left: 0 });
+});</code></pre></div></div></div></body></html>

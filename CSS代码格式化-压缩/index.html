@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Css代码压缩/解压缩格式化</title>
+<meta name="keywords" content="Css压缩,Css格式化"><meta name="description" content="Css在线压缩和格式化"><link rel="icon" href="chinaz.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="css/index.css" media="all">
+</head>
+<body>
+<div class="wrap">
+<!--top-->
+
+<!--menu-->
+
+
+<!--sub menu-->
+<div style="left: 342px; top: 145px; display: none;" id="menu3" class="menu-list">
+<ul>
+<li><a href="http://alexa.chinaz.com/" target="_top">ALEXA排名查询</a></li>
+<li><a href="http://tool.chinaz.com/Links/">死链接检测</a></li>
+<li><a href="http://tool.chinaz.com/Tools/Density.aspx">关键词密度检测</a></li>
+<li><a href="http://tool.chinaz.com/Tools/MetaCheck.aspx">META信息检测</a></li>
+<li><a href="http://tool.chinaz.com/Gzips/">网页GZIP压缩</a></li>
+<li><a href="http://tool.chinaz.com/ExportPR/">PR输出值查询</a></li>
+<li><a href="http://tool.chinaz.com/Tools/PageCode.aspx">查看网页源代码</a></li>
+<li><a href="http://tool.chinaz.com/Tools/webcheck.aspx">网站被黑检测</a></li>
+</ul>
+</div>
+
+<div style="left: 440px; top: 145px; display: none;" id="menu4" class="menu-list">
+<ul>
+<li><a href="http://seo.chinaz.com/">SEO综合查询</a></li>
+<li><a href="http://link.chinaz.com/">友情链接检测</a></li>
+<li><a href="http://tool.chinaz.com/KeyWords/">关键词排名查询</a></li>
+<li><a href="http://seo.chinaz.com/kwbatch/">关键词批量查询</a></li>
+<li><a href="http://tool.chinaz.com/kwevaluate/">关键词优化分析</a></li>
+<li><a href="http://tool.chinaz.com/baidu/">百度近日收录</a></li>
+<li><a href="http://pr.chinaz.com/">PR查询</a></li>
+<li><a href="http://mytool.chinaz.com/baidusort.aspx" target="_top">百度权重查询</a></li>
+<li><a href="http://tool.chinaz.com/baidu/words.aspx">百度指数分析</a></li>
+<li><a href="http://outlink.chinaz.com/">反链查询</a></li>
+<li><a href="http://tool.chinaz.com/seocheck">SEO优化建议</a></li>
+
+</ul>
+</div>
+
+<div id="menu5" class="menu-list">
+<ul>
+<li><a href="http://tool.chinaz.com/DomainDel/">域名删除时间</a></li>
+<li><a href="http://ip.chinaz.com/">IP查询</a></li>
+<li><a href="http://whois.chinaz.com/">WHOIS查询</a></li>
+ <li><a href="http://whois.chinaz.com/reverse">WHOIS反查</a></li>   
+<li><a href="http://del.chinaz.com/" target="_top">过期域名查询</a></li>
+<li><a href="http://tool.chinaz.com/Same/">同IP网站查询</a></li>
+<li><a href="http://tool.chinaz.com/beian.aspx">网站备案查询</a></li>
+<li><a href="http://tool.chinaz.com/dns/">DNS查询</a></li>
+<li><a href="http://tool.chinaz.com/nslookup/">NsLookup</a></li>
+</ul>
+</div>
+
+<div id="menu6" class="menu-list">
+<ul>
+<li><a href="http://tool.chinaz.com/Tools/MD5.aspx">MD5加密</a></li>
+<li><a href="http://tool.chinaz.com/js.aspx">JS综合工具</a></li>
+<li><a href="http://tool.chinaz.com/robots/">robots.txt生成</a></li>
+<li><a href="http://tool.chinaz.com/regex/">正则表达式测试</a></li>
+<li><a href="http://tool.chinaz.com/Tools/URLEncode.aspx">URL编码/解码</a></li>
+<li><a href="http://tool.chinaz.com/Tools/CssFormat.aspx">Css压缩格式化</a></li>
+<li><a href="http://tool.chinaz.com/Tools/JsFormat.aspx">HTML/JS格式化</a></li>
+</ul>
+</div>
+
+<div id="menu7" class="menu-list">
+<ul>
+<li><a href="http://tool.chinaz.com/history/">网站历史记录</a></li>
+<li><a href="http://ping.chinaz.com/">超级Ping</a></li>
+<li><a href="http://tool.chinaz.com/Tracert/">路由器追踪</a></li>
+<li><a href="http://tool.chinaz.com/pagestatus/">HTTP状态查询</a></li>
+<li><a href="http://s.chinaz.com/" target="_top">常用软件下载</a></li>
+<li><a href="http://tool.chinaz.com/port/">端口扫描</a></li>
+<li><a href="http://tool.chinaz.com/speedtest.aspx">网速测试</a></li>
+</ul>
+</div>
+
+<!--sub menu-->
+<!--main-->
+<div class="main"><script type="text/javascript"> 
+<!--
+    var lCSSCoder = {
+        format: function (s) {//格式化代码
+            s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+            s = s.replace(/;\s*;/g, ";"); //清除连续分号
+            s = s.replace(/\,[\s\.\#\d]*{/g, "{");
+            s = s.replace(/([^\s])\{([^\s])/g, "$1 {\n\t$2");
+            s = s.replace(/([^\s])\}([^\n]*)/g, "$1\n}\n$2");
+            s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2");
+            return s;
+        },
+        pack: function (s) {//压缩代码
+            s = s.replace(/\/\*(.|\n)*?\*\//g, ""); //删除注释
+            s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+            s = s.replace(/\,[\s\.\#\d]*\{/g, "{"); //容错处理
+            s = s.replace(/;\s*;/g, ";"); //清除连续分号
+            s = s.match(/^\s*(\S+(\s+\S+)*)\s*$/); //去掉首尾空白
+            return (s == null) ? "" : s[1];
+        }
+    };
+    function CSS(s) {
+        //$("#Code_2").val(lCSSCoder[s]($("#Code_1").val()));
+		document.getElementById("Code_2").value = lCSSCoder[s](document.getElementById("Code_1").value);
+    }
+//-->
+</script>
+<div class="box">
+  <div id="b_1">
+    <h1><div class="titleft"><a href="http://tool.chinaz.com/Tools/CssFormat.aspx">Css压缩/格式化</a></div></h1>
+    <div class="box1" style="text-align: center;">
+    <span class="info3">
+        <table align="center" cellpadding="0" cellspacing="0" width="750"> 
+<tbody><tr> 
+<td width="389">请粘贴要格式化或者压缩的Css代码：<br><textarea id="Code_1" rows="25" cols="47"></textarea></td> 
+<td>转换后的Css代码：<br><textarea id="Code_2" rows="25" cols="47"></textarea></td> 
+</tr> 
+</tbody></table> 
+    </span>
+    <div id="detail" class="info1">
+    <input value="格式化代码" onclick="CSS('format');" type="button">&nbsp; <input value="压缩代码" onclick="CSS('pack');" type="button">
+    </div>
+    </div>
+  </div>
+    <script type="text/javascript">
+		document.getElementById("Code_1").focus();
+		document.getElementById("Code_1").select();
+       // $('#Code_1').focus();
+       // $('#Code_1').select();
+  </script>
+</div>
+
+
+
+</div>
+<div class="box">
+<h1><div style="float: left;">工具导航地图</div></h1>
+<div class="box1">
+<ul class="toolist" style="border-bottom: 0px none; padding-bottom: 3px;">
+<li>网站信息查询：<a href="http://alexa.chinaz.com/" target="_top" class="imt">ALEXA排名查询</a></li><li>-</li>
+<li><a href="http://pr.chinaz.com/" target="_top" class="imt">Google PR查询</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Seos/Sites.aspx" target="_top" class="imt">收录/反链查询</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Links/" target="_top" class="imt">死链接检测/全站PR查询</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Gzips/" target="_top">网页GZIP压缩检测</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/ExportPR/" target="_top" class="imt">PR输出值查询</a></li></ul>
+<ul class="toolist">
+<li>搜索优化查询：<a href="http://tool.chinaz.com/baidu/words.aspx" target="_top">长尾关键字</a></li>
+<li><a href="http://link.chinaz.com/" target="_top" class="imt">友情链接检测</a></li>
+<li><a href="http://tool.chinaz.com/KeyWords/" target="_top" class="imt">关键词排名查询</a></li>
+<li><a href="http://tool.chinaz.com/Tools/Density.aspx" target="_top" class="imt">关键词密度查询</a></li>
+<li><a href="http://tool.chinaz.com/Tools/Robot.aspx" target="_top" class="imt">搜索引擎模拟</a></li>
+<li><a href="http://tool.chinaz.com/Tools/MetaCheck.aspx" target="_top">网页META信息</a></li>
+<li><a href="http://tool.chinaz.com/baidu/" target="_top">百度收录</a></li>
+<li><a href="http://mytool.chinaz.com/baidusort.aspx" target="_top" class="imt">百度权重查询</a></li>
+</ul>
+<ul class="toolist">
+<li>域名IP类查询：<a href="http://tool.chinaz.com/DomainDel/" target="_top" class="imt">域名删除时间查询</a></li>
+<li><a href="http://whois.chinaz.com/" target="_top" class="imt">域名WHOIS查询</a></li>
+<li><a href="http://ip.chinaz.com/" target="_top" class="imt">IP查询</a></li>
+<li><a href="http://tool.chinaz.com/ipWhois/" target="_top">IP WHOIS查询</a></li>
+<li><a href="http://tool.chinaz.com/Same/" target="_top" class="imt">同IP网站查询</a></li>
+<li><a href="http://tool.chinaz.com/beian.aspx" target="_top" class="imt">备案查询</a></li>
+<li><a href="http://del.chinaz.com/" target="_top" style="color: Red;">过期域名查询</a></li>
+<li><a href="http://tool.chinaz.com/dns" target="_top" style="color: Red;" class="imt">Dns查询</a></li>
+<li><a href="http://tool.chinaz.com/nslookup" target="_top" style="color: Red;" class="imt">NsLookup</a></li>
+</ul>
+<ul class="toolist">
+<li>加密解密相关：<a href="http://tool.chinaz.com/Tools/MD5.aspx" target="_top" class="imt">MD5加密</a></li>
+<li><a href="http://tool.chinaz.com/Tools/TextEncrypt.aspx" target="_top">文字加密解密</a></li>
+<li><a href="http://tool.chinaz.com/Tools/Escape.aspx" target="_top">ESCAPE加/解密</a></li>
+<li><a href="http://tool.chinaz.com/Tools/Base64.aspx" target="_top">散列/哈希/BASE64</a></li>
+<li><a href="http://tool.chinaz.com/Tools/UrlCrypt.aspx" target="_top">URL加密</a></li>
+<li><a href="http://tool.chinaz.com/Tools/Thunder_FlashGet.aspx" target="_top">迅雷,快车,旋风URL加/解密</a></li>
+<li><a href="http://tool.chinaz.com/fullhalf" target="_top">全角半角转换</a></li>
+</ul>
+<ul class="toolist">
+<li>编码转换相关：<a href="http://tool.chinaz.com/Tools/native_ascii.aspx" target="_top" style="color: blue;">Ascii/Native编码互转</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/Unicode.aspx" target="_top">Unicode编码</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/UTF-8.aspx" target="_top">UTF-8编码</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/Gb_big.aspx" target="_top">简繁体火星文互转</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/Word_Spell.aspx" target="_top">汉字转换拼音</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/unixtime.aspx" target="_top">Unix时间戳</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/URLEncode.aspx" target="_top" class="imt">URL编码/解码</a></li>
+</ul>
+<ul class="toolist">
+<li>HTML相关类： <a href="http://tool.chinaz.com/Tools/Html_Js.aspx" target="_top" class="imt">HTML/JS互转</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/Html_Ubb.aspx" target="_top">HTML/UBB代码转换</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/htmlcheck.aspx" target="_top" class="imt">HTML标签检测</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/HtmlCodeCov.aspx" target="_top">HTML代码转换器</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/JsFormat.aspx" target="_top" class="imt">JS/HTML格式化</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/HtmlChar.aspx" target="_top" class="imt">HTML特殊符号对照表</a></li>
+</ul>
+<ul class="toolist">
+<li>Js/Css相关类： <a href="http://tool.chinaz.com/Tools/ScriptEncode.aspx" target="_top" class="imt">JS加/解密</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/JsCodeConfusion.aspx" target="_top">JS代码混淆</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/CssDesigner.aspx" target="_top">CSS在线编辑器</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/CssFormat.aspx" target="_top" class="imt">Css压缩/格式化</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/js.aspx" target="_top" class="imt">JS混淆加密压缩</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/regex" target="_top" style="color: Red;" class="imt">正则在线测试</a></li>
+<li><a href="http://tool.chinaz.com/htmlfilter" target="_top" style="color: Red;" class="imt">HTML/JS/CSS过滤</a></li>
+</ul>
+<ul class="toolist">
+<li>其他常用测试：<a href="http://tool.chinaz.com/Tools/PageCode.aspx" target="_top" class="imt">查看网页源代码</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/PinYinDictionary.aspx" target="_top">拼音字典</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/OpenWeb.aspx" target="_top" class="imt">OPEN参数生成器</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/Webdebugger.aspx" target="_top">网页代码调试器</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/OnlineColor.aspx" target="_top">在线调色板</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/PageColor.aspx" target="_top">网页颜色选择器</a></li><li>-</li>
+<li><a href="http://tool.chinaz.com/Tools/SelectColor.aspx" target="_top" class="imt">颜色代码查询</a></li>
+</ul>
+<ul class="toolist">
+<li>其他类别查询：<a href="http://mytool.chinaz.com/seoreport.aspx" target="_top" style="color: Red;" class="imt">SEO数据风向标</a></li>
+<li><a href="http://mytool.chinaz.com/prhistory.aspx" target="_top" class="imt">PR更新历史</a></li>
+<li><a href="http://tool.chinaz.com/Tools/lowercase-uppercase.aspx" target="_top">大小写转换</a></li>
+<li><a href="http://tool.chinaz.com/Tracert/" target="_top">路由器追踪</a></li>
+<li><a href="http://tool.chinaz.com/pagestatus/" target="_top">HTTP状态查询</a></li>
+<li><a href="http://ping.chinaz.com/" target="_top" class="imt">超级Ping</a></li>
+<li><a href="http://tool.chinaz.com/port/" target="_top" class="imt">端口扫描</a></li>
+<li><a href="http://tool.chinaz.com/speedtest.aspx" target="_top">网速测试</a></li>
+<li><a href="http://www.idc123.com/" target="_top">虚拟主机评测</a></li>
+<li><a href="http://www.91cha.com/" target="_top">91查</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

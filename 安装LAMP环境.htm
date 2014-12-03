@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>安装LAMP环境</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>安装LAMP环境</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(211,223,240) 1px dashed; PADDING-BOTTOM: 10px; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 638px; PADDING-RIGHT: 0px; FONT: 12px/18px 'Lucida Grande', Helvetica, Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; PADDING-TOP: 20px; -webkit-text-stroke-width: 0px" 
+class=inners>
+<H1 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(204,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px">CentOS 
+6.0 系统 LAMP(Apache+MySQL+PHP)安装步骤</H1></DIV>
+<DIV 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 10px; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 10px auto 0px; PADDING-LEFT: 0px; WIDTH: 638px; PADDING-RIGHT: 0px; FONT: 12px/18px 'Lucida Grande', Helvetica, Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px" 
+class=times><SPAN style="POSITION: relative; MARGIN-RIGHT: 15px">作者：<EM 
+style="FONT-STYLE: normal; MARGIN-RIGHT: 60px">匿名</EM><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="POSITION: absolute; WIDTH: 14px; BACKGROUND: url(http://down.chinaz.com/style/img/ditu.png) no-repeat -32px -10px; HEIGHT: 15px; COLOR: rgb(51,51,51); TOP: 1px; RIGHT: 30px; TEXT-DECORATION: none" 
+class=hi onclick="openDialog('/max-dialogs/hail.aspx?uid=743697')" 
+href="javascript:;"></A><A 
+style="POSITION: absolute; WIDTH: 14px; BACKGROUND: url(http://down.chinaz.com/style/img/ditu.png) no-repeat -9px -10px; HEIGHT: 15px; COLOR: rgb(51,51,51); RIGHT: 10px; TEXT-DECORATION: none" 
+class=peo onclick="openDialog('/max-dialogs/friend-tryadd.aspx?uid=743697')" 
+href="javascript:;"></A></SPAN><SPAN 
+style="POSITION: relative; MARGIN-RIGHT: 15px">来源：<EM 
+style="FONT-STYLE: normal; MARGIN-RIGHT: 10px">ShunYea Studio</EM></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="POSITION: relative; MARGIN-RIGHT: 15px">浏览：<EM 
+style="FONT-STYLE: normal; MARGIN-RIGHT: 10px" 
+id=allhits>32152次</EM></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="POSITION: relative; MARGIN-RIGHT: 15px">2011-9-4 14:39:15</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="POSITION: relative; MARGIN-RIGHT: 15px" id=fonts>字号：<A 
+style="COLOR: rgb(51,51,51); TEXT-DECORATION: none" id=18px 
+href="javascript:;">大</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(51,51,51); TEXT-DECORATION: none" id=14px 
+href="javascript:;">中</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(51,51,51); TEXT-DECORATION: none" id=12px 
+href="javascript:;">小</A></SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 5px auto 0px; PADDING-LEFT: 0px; WIDTH: 638px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Lucida Grande', Helvetica, Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=con>
+<DIV 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 22px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 640px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 14px; OVERFLOW: hidden; PADDING-TOP: 0px" 
+class=lisofttext>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">&nbsp;　　先来解释一下，什么是 
+LAMP。正如标题所言，LAMP 实际上就是 Linux、Apache、MySQL、PHP 四个名称的缩写，当然最后一个 “P” 还有其他说法是 Perl 或者 
+Python。不用多说了，本文讲解的就是 Linux、Apache、MySQL、PHP 这四个东西，所以就这样解释了。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　自己很早就在做网站，最初玩的是 
+ASP，后来主要研究 .Net，也用 .Net 
+搞过类似的开发。但是自己最主要还是想把网站做起来，于是乎就将主要精力花在了网站运营上了，当然建站就选用了市面上成熟的一些 CMS 或者是博客程序。目前的 CMS 
+和博客程序实际上都可以融入到一起，因为其内容的表现形式上相当的接近，故选择哪一块来做，完全看自己的特长了。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　由于 
+Linux 和 PHP 的免费，在国外是相当的流行。国内大部分主机都是 Windows 平台，而我学的 ASP 和 .Net 
+刚好能搭配运行起来。后来由于种种原因，我的网站都移民到了国外，而在国外找一个性价比好的 Windows 
+主机实在是件难事，不光语言上的阻碍，国外版权意识很好，所以很少有性价比好的 Windows 主机。我不得不转向了 Linux 平台。而且非常流行的 
+WordPress 吸引了我，故目前主要注意力就集中在 Linux 主机和 PHP 上。虽然自己对 PHP 基本不了解，呵呵。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　虽然 
+Linux 平台上好的组件不止 Apache 一个，例如俄罗斯人开发的 Nginx，还有性能超强的 LiteSpeed 
+等等，这两者我都用过，前者以高效、资源占用低为特点，据说腾讯网就是基于此运行的，后者是以性能强大著称，同样据说这是 WordPress 官方推荐的用来运行 
+WordPress 最佳组件。但是呢，各种网上资料表明，虽然 Apache 性能、资源占用不如其他组件，但是 Apache 
+开发的目标就是以稳定为主。任何一个网站难道不是希望能够稳定运行？所以我还是选择学习 Apache 
+来作为网站的服务器环境。学会了一个，其他就能够举一反三了。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　一般情况下，安装的都是最新的正式版，除非你有特殊需求，要安装指定的版本，本文暂不讨论。从最基础的开始，一点点完成一个可用的 
+Linux 主机。这里就开始介绍如何在 CentOS 6.0 上安装 LAMP 组件。经过如下语句安装，目前安装到的版本为：</P>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px; PADDING-LEFT: 40px; PADDING-RIGHT: 40px; FONT-SIZE: 14px; PADDING-TOP: 0px">
+  <LI>PHP：5.3.2 
+  <LI>Apache：2.2.15 
+  <LI>MySQL：5.1.52</LI></UL>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">一、安装 
+MySQL</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">首先来进行 
+MySQL 的安装。打开超级终端，输入：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># yum install mysql mysql<SPAN class=sh_symbol>-</SPAN>server</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">安装完毕，让 
+MySQL 能够随系统自动启动：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># chkconfig <SPAN class=sh_symbol>--</SPAN>levels <SPAN style="FONT-STYLE: normal; COLOR: rgb(255,0,255); FONT-WEIGHT: normal" class=sh_number>235</SPAN> mysqld on
+<SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># <SPAN style="FONT-STYLE: normal; COLOR: rgb(255,0,255); FONT-WEIGHT: normal" class=sh_regexp>/etc/i</SPAN>nit<SPAN class=sh_symbol>.</SPAN><SPAN class=sh_normal>d</SPAN><SPAN class=sh_symbol>/</SPAN>mysqld start</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">设置 
+MySQL 数据 root 账户的密码：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># mysql_secure_installation</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">当出现如下提示时候直接按回车：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code">Enter current password <SPAN style="FONT-STYLE: normal; COLOR: rgb(165,42,42); FONT-WEIGHT: normal" class=sh_keyword>for</SPAN> root</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">出现如下再次回车：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code">Set root password<SPAN class=sh_symbol>?</SPAN> <SPAN class=sh_symbol>[</SPAN><SPAN class=sh_normal>Y</SPAN><SPAN class=sh_symbol>/</SPAN>n<SPAN class=sh_symbol>]</SPAN></PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">出现如下提示输入你需要设置的密码，回车后在输入一次确认：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code">New password<SPAN class=sh_symbol>:</SPAN></PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">接下来还会有四个确认，分别是：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code">Remove anonymous users<SPAN class=sh_symbol>?</SPAN> <SPAN class=sh_symbol>[</SPAN><SPAN class=sh_normal>Y</SPAN><SPAN class=sh_symbol>/</SPAN>n<SPAN class=sh_symbol>]</SPAN>
+Disallow root login remotely<SPAN class=sh_symbol>?</SPAN> <SPAN class=sh_symbol>[</SPAN><SPAN class=sh_normal>Y</SPAN><SPAN class=sh_symbol>/</SPAN>n<SPAN class=sh_symbol>]</SPAN>
+Remove test database and access to it<SPAN class=sh_symbol>?</SPAN> <SPAN class=sh_symbol>[</SPAN><SPAN class=sh_normal>Y</SPAN><SPAN class=sh_symbol>/</SPAN>n<SPAN class=sh_symbol>]</SPAN>
+Reload privilege tables now<SPAN class=sh_symbol>?</SPAN> <SPAN class=sh_symbol>[</SPAN><SPAN class=sh_normal>Y</SPAN><SPAN class=sh_symbol>/</SPAN>n<SPAN class=sh_symbol>]</SPAN></PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">直接回车即可。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">二、安装 
+Apache 组件</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　由于 
+CentOS 已经封装了 Apache，直接运行安装：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># yum install httpd</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">同样配置系统让 
+Apache 随系统启动：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># chkconfig <SPAN class=sh_symbol>--</SPAN>levels <SPAN style="FONT-STYLE: normal; COLOR: rgb(255,0,255); FONT-WEIGHT: normal" class=sh_number>235</SPAN> httpd on</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">配置完毕，启动 
+Apache：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># <SPAN style="FONT-STYLE: normal; COLOR: rgb(255,0,255); FONT-WEIGHT: normal" class=sh_regexp>/etc/i</SPAN>nit<SPAN class=sh_symbol>.</SPAN><SPAN class=sh_normal>d</SPAN><SPAN class=sh_symbol>/</SPAN>httpd start</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　此时已经可以访问你的服务器，不出意外的话，能够看到 
+“Apache 2 Test Page powered by CentOS” 
+的测试页面。注意，如果其他机器访问这台服务无法显示这个页面，而直接在这台服务器上可以访问的话，一般情况下是 CentOS 
+自带的防火墙禁止了。你只需要进入防火墙，将 “WWW” 对应的 “80” 端口打开即可。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px" 
+align=center><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: inline; MAX-WIDTH: 640px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px" 
+alt="" src="http://down.chinaz.com/upload/2011/9/4/20119414391756653.jpg" 
+width=560 original="/upload/2011/9/4/20119414391756653.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　注意：在 
+CentOS 中 Apache 的默认根目录是 /var/www/html，配置文件 /etc/httpd/conf/httpd.conf。其他配置存储在 
+/etc/httpd/conf.d/ 目录。<BR><BR><STRONG>三、安装 PHP</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">输入如下指令安装 
+PHP:</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># yum install php</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">需要重新启动 
+Apache 服务：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># <SPAN style="FONT-STYLE: normal; COLOR: rgb(255,0,255); FONT-WEIGHT: normal" class=sh_regexp>/etc/i</SPAN>nit<SPAN class=sh_symbol>.</SPAN><SPAN class=sh_normal>d</SPAN><SPAN class=sh_symbol>/</SPAN>httpd restart</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px"><STRONG>四、测试 
+PHP 相关信息</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　这步实际上可以省略，但是为了测试是否安装成功，你可以新建一个 
+PHP 页面进行测试，使用 vim 编辑器新建：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># <SPAN class=sh_normal>vi </SPAN><SPAN class=sh_symbol>/</SPAN><SPAN style="FONT-STYLE: normal; COLOR: rgb(165,42,42); FONT-WEIGHT: normal" class=sh_keyword>var</SPAN><SPAN style="FONT-STYLE: normal; COLOR: rgb(255,0,255); FONT-WEIGHT: normal" class=sh_regexp>/www/</SPAN><SPAN class=sh_normal>html</SPAN><SPAN class=sh_symbol>/</SPAN>info<SPAN class=sh_symbol>.</SPAN>php</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">按 
+“i” 键进行编辑，输入：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>&lt;?</SPAN>php
+<SPAN style="FONT-STYLE: normal; COLOR: rgb(0,0,0); FONT-WEIGHT: bold" class=sh_function>phpinfo</SPAN><SPAN class=sh_symbol>();</SPAN>
+<SPAN class=sh_symbol>?&gt;</SPAN></PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">编辑完毕，按 
+“ESC” 键退出编辑模式，接着输入：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>:</SPAN>wq</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">然后回车，即保存并退出。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　此时你可以访问你的站点地址，例如 
+“http://192.168.1.2/info.php”，查看是否能看到相关的 PHP 信息。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px" 
+align=center><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: inline; MAX-WIDTH: 640px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px" 
+alt="" src="http://down.chinaz.com/upload/2011/9/4/20119414391720627.jpg" 
+original="/upload/2011/9/4/20119414391720627.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　看到这样的图，就说明 
+PHP 安装成功了。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px"><STRONG>五、将 
+PHP 模块和 MySQL 模块关联起来</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　还需要将 
+PHP 和 MySQL 关联起来，才能正常工作。搜索模块：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># yum search php</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">安装相关模块：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># yum install php<SPAN class=sh_symbol>-</SPAN>mysql php<SPAN class=sh_symbol>-</SPAN>gd php<SPAN class=sh_symbol>-</SPAN>imap php<SPAN class=sh_symbol>-</SPAN>ldap php<SPAN class=sh_symbol>-</SPAN>odbc php<SPAN class=sh_symbol>-</SPAN>pear php<SPAN class=sh_symbol>-</SPAN>xml php<SPAN class=sh_symbol>-</SPAN>xmlrpc curl curl-devel</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">需要重启 
+Apache 模块才能生效：</P><PRE style="BORDER-BOTTOM: rgb(187,187,187) 1px dashed; BORDER-LEFT: rgb(187,187,187) 5px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; MARGIN: 8px; PADDING-LEFT: 3px; WIDTH: 600px; PADDING-RIGHT: 3px; FONT-FAMILY: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: rgb(187,187,187) 1px dashed; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(187,187,187) 1px dashed; PADDING-TOP: 3px" class="sh_javascript sh_sourceCode" name="code"><SPAN class=sh_symbol>[</SPAN>root@localhost <SPAN class=sh_symbol>~]</SPAN># <SPAN style="FONT-STYLE: normal; COLOR: rgb(255,0,255); FONT-WEIGHT: normal" class=sh_regexp>/etc/i</SPAN>nit<SPAN class=sh_symbol>.</SPAN><SPAN class=sh_normal>d</SPAN><SPAN class=sh_symbol>/</SPAN>httpd restart</PRE>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　再次刷新刚才建立的 
+“info.php” 页面，往下拉找到相关 MySQL 模块，看是否检测到相关信息。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px" 
+align=center><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: inline; MAX-WIDTH: 640px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px" 
+alt="" src="http://down.chinaz.com/upload/2011/9/4/20119414391869423.jpg" 
+width=560 original="/upload/2011/9/4/20119414391869423.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">如果看到如上图相关信息，则说明 
+MySQL 工作正常了。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px"><STRONG>六、总结</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　到这里就结束了，本文阐述了在 
+CentOS 6.0 系统下 LAMP 组件（Apache+MySQL+PHP） 的详细安装步骤，可以让更多新手熟悉服务器配置环境。</P>
+<P 
+style="PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 14px; PADDING-TOP: 5px">　　但是到这里，还只是将环境配置完毕，很多东西还有欠缺，而且还是一些重要的问题，例如目录的权限配置问题，或者是管理上的问题，像建立 
+FTP 等。这些内容随后会慢慢谈到。</P></DIV></DIV></BODY></HTML>

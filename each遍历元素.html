@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>each(callback)方法主要用于对选择器中的元素进行遍历，它接受一个函数作为参数，该函数接受一个参数，指代元素的序号，对于标记的属性而言，可以利用each的方法配合this关键字来获取或设置选择器中每个元素相对应的属性值。例如：<br />
+  $(finciton(){<br />
+  $(&quot;img&quot;).each(function(index){<br />
+  this.title=&quot;这是第&quot; + index + &quot;幅图,id是：&quot; + this.id;<br />
+  });<br />
+  });</p>
+</body>
+</html>

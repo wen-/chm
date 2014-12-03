@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>webstorm相关</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>webstorm相关</P>
+<DIV class=header 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 7px; PADDING-TOP: 7px; FONT: 14px/20px 'Lao MN', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Wenquanyi Micro Hei', 'Microsoft Yahei', Arial, sans-serif; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; box-shadow: rgb(224, 224, 224) 0px 1px 0px"><SPAN 
+class=topic_full_title 
+style="FONT-SIZE: 20px; FONT-WEIGHT: 700; MARGIN-TOP: 8px; DISPLAY: inline-block; LINE-HEIGHT: 2em">webstorm里直接调用命令行</SPAN> 
+
+<DIV class=changes 
+style="FONT-SIZE: 11px; COLOR: rgb(131,131,131); MARGIN-LEFT: 10px; MARGIN-TOP: 10px">
+<DIV>发布于 2013-5-18 04:17</DIV></DIV></DIV>
+<DIV class="inner topic" 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 14px/2em 'Lao MN', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Wenquanyi Micro Hei', 'Microsoft Yahei', Arial, sans-serif; PADDING-LEFT: 10px; LETTER-SPACING: normal; PADDING-RIGHT: 10px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV class=topic_content style="MARGIN: 10px 0px">
+<DIV class=markdown-text>
+<P 
+style="WORD-WRAP: break-word; FONT-SIZE: 15px; FONT-FAMILY: 'Lao MN', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Wenquanyi Micro Hei', 'Microsoft Yahei', Arial, sans-serif; WHITE-SPACE: pre-wrap; MARGIN: 0px 0px 2em; LINE-HEIGHT: 2em">写代码写到一半要切换窗口出去敲命令行？webstorm的external 
+tools可以帮你省下一点时间<BR>举例说明，比如我要直接使用npm：<BR>ctrl+alt+s打开<STRONG 
+style="FONT-WEIGHT: 700">setting</STRONG>菜单，找到<STRONG 
+style="FONT-WEIGHT: 700">external tools</STRONG><BR>点+号，在tool 
+setting里填空：<BR>program -&gt; 外部命令所在位置，填入npm的完整路径<BR>parameters -&gt; 参数，这里设为 
+$Prompt$运行命令时表示弹个窗口让你输入<BR>Working Directory -&gt; 
+在哪个目录下运行这条命令，输入$ProjectFileDir$表示在当前项目的根目录下运行。<BR>点右边的insert 
+macro可以看到更多的选项，除了macro的说明，webstorm还会告诉你对应macro在当前环境下是个什么值的，不怕看不懂e文了。<BR><A 
+class=content_img 
+style="OVERFLOW: hidden; TEXT-DECORATION: none; MAX-WIDTH: 600px; VERTICAL-ALIGN: middle; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; COLOR: rgb(102,102,102); MARGIN: 10px 0px; DISPLAY: inline-block; box-shadow: rgba(140, 140, 140, 0.6) 0px 1px 2px" 
+href="im.jpg"><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=1 
+src="images/webstorm_1.jpg"></A><BR>最后给这个命令起个名字，叫npm保存完事，在顶部菜单找到tools就可以看到刚保存的npm。点击它就会弹出个窗口，输入install 
+express试试吧。<BR><A class=content_img 
+style="OVERFLOW: hidden; TEXT-DECORATION: none; MAX-WIDTH: 600px; VERTICAL-ALIGN: middle; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; COLOR: rgb(102,102,102); MARGIN: 10px 0px; DISPLAY: inline-block; box-shadow: rgba(140, 140, 140, 0.6) 0px 1px 2px" 
+href="http://ww2.sinaimg.cn/large/7327f6d5gw1e4siqh4em2j205p06ewep.jpg"><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=2 
+src="images/webstorm_2.jpg"></A><BR><A 
+class=content_img 
+style="OVERFLOW: hidden; TEXT-DECORATION: none; MAX-WIDTH: 600px; VERTICAL-ALIGN: middle; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; COLOR: rgb(102,102,102); MARGIN: 10px 0px; DISPLAY: inline-block; box-shadow: rgba(140, 140, 140, 0.6) 0px 1px 2px" 
+href="http://ww4.sinaimg.cn/large/7327f6d5gw1e4siqz9rkgj20br03s0st.jpg"><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=3 
+src="images/webstorm_3.jpg"></A></P></DIV></DIV></DIV></BODY></HTML>

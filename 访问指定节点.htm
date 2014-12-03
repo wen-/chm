@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>访问指定节点</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521">
+<STYLE>*{font-size:12px;line-height:18px;font-family:arial;}</STYLE>
+</HEAD>
+<BODY>
+<P>1、getElementsByTagName()<BR>　　用来返回一个包含所有的tabName（标签名）特性等于某个指定值的元素的NodeList。例：<BR>var 
+oImgs = 
+document.getElementsByTagName("img");<BR>　　当参数是一个星号的时候，IE6.0并不返回所有的元素。必须使用document.all来代替它。</P>
+<P>2、getElementsByName()<BR>　　IE6.0和Oprea7.5在这个方法的使用上还存在一些错误。首先，它们还会返回id等于给定名称的元素。第二，它们仅仅检查&lt;input/&gt;和&lt;img/&gt;元素。</P>
+<P>3、getElementById()<BR>　　如果给定的ID匹配某个元素的name特性，IE6.0还会返回这个元素。这也是一个bug，必须小心。</P>
+<P>4、getElementById().innerHTML 可以获取子节点内容，但是如果子节点含有标签，会连标签一同显示。</P>
+<P>5、<FONT color=#ff0000>getElementById().innerText</FONT> 
+可以获取子节点内容，就算子节点含有标签，标签不会显示，只显示内容，但是只支持IE。</P>
+<P>6、<FONT color=#ff0000>getElementById().textContent</FONT> 
+可以获取子节点内容，就算子节点含有标签，标签不会显示，只显示内容，支持非IE。<BR></P></BODY></HTML>

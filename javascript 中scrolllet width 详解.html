@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE></TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<STYLE type=text/css>
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18999"></HEAD>
+<BODY><SPAN style="FONT-FAMILY: verdana, geneva; FONT-SIZE: 12px">
+<P><SPAN 
+style="FONT-FAMILY: verdana, geneva; FONT-SIZE: 12px">核心提示：HTML:scrollLeft,scrollWidth,clientWidth,offsetWidth到底指的哪到哪的距离之完全详解 
+<BR>·scrollHeight: 获取对象的滚动高度。 <BR>·scrollLeft:设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离 
+<BR>·scrollTop:设置或获取位于对象最顶端和窗口中可见内容的最顶端.....</SPAN></P>
+<H2><SPAN 
+style="FONT-FAMILY: verdana, geneva; FONT-SIZE: 12px"></SPAN>&nbsp;</H2></SPAN>
+<P><IMG align=baseline src="images/untitled.bmp"></P>
+<DIV><SPAN 
+style="FONT-FAMILY: verdana, geneva; FONT-SIZE: 12px">HTML:scrollLeft,scrollWidth,clientWidth,offsetWidth到底指的哪到哪的距离之完全详解 
+
+<DIV><SPAN style="FONT-FAMILY: verdana, geneva; FONT-SIZE: 12px">scrollHeight: 
+获取对象的滚动高度。<BR>scrollLeft:设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离<BR>scrollTop:设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离<BR>scrollWidth:获取对象的滚动宽度<BR>offsetHeight:获取对象相对于版面或由父坐标 
+offsetParent 属性指定的父坐标的高度<BR>offsetLeft:获取对象相对于版面或由 offsetParent 
+属性指定的父坐标的计算左侧位置<BR>offsetTop:获取对象相对于版面或由 offsetTop 
+属性指定的父坐标的计算顶端位置<BR>event.clientX 相对文档的水平座标<BR>event.clientY 相对文档的垂直座标</SPAN> 
+</DIV>
+<DIV><SPAN style="FONT-FAMILY: verdana, geneva; FONT-SIZE: 12px">event.offsetX 
+相对容器的水平坐标<BR>event.offsetY 相对容器的垂直坐标<BR>document.documentElement.scrollTop 
+垂直方向滚动的值<BR>event.clientX+document.documentElement.scrollTop 
+相对文档的水平座标+垂直方向滚动的量</SPAN> </DIV>
+<DIV><SPAN style="FONT-FAMILY: verdana, geneva; FONT-SIZE: 12px">以上主要指 
+IE之中，FireFox差异如下：<BR>IE6.0、FF1.06+：<BR>clientWidth = width + 
+padding<BR>clientHeight = height + padding<BR>offsetWidth = width + padding + 
+border<BR>offsetHeight = height + padding + border<BR>IE5.0/5.5：<BR>clientWidth 
+= width - border<BR>clientHeight = height - border<BR>offsetWidth = 
+width<BR>offsetHeight = 
+height<BR>(需要提一下：CSS中的margin属性，与clientWidth、offsetWidth、clientHeight、offsetHeight均无关)</SPAN> 
+</DIV></SPAN></DIV></BODY></HTML>

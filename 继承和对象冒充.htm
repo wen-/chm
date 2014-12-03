@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>继承和对象冒充</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>继承和对象冒充</P>
+<P><STRONG>继承</STRONG></P>
+<P><FONT color=#ff0000>function a(){};<BR>a.prototype={<BR>&nbsp;&nbsp;&nbsp; 
+b:{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+abc:function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log("bbb");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+a.prototype.c();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; },<BR>&nbsp;&nbsp;&nbsp; 
+c:function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log("ccc");<BR>&nbsp;&nbsp;&nbsp; }<BR>};<BR>var s = new 
+a();<BR>s.b.abc();</FONT></P>
+<P><STRONG>对象冒充</STRONG></P><PRE style="POSITION: fixed; LEFT: -1000px">function a(){};<BR>a.prototype={<BR>    b:{<BR>        abc:function(){<BR>            console.log("bbb");<BR>            if(this instanceof a){<BR>                this.c();<BR>            }<BR>        }<BR>    },<BR>    c:function(){<BR>        console.log("ccc");<BR>    }<BR>};<BR>var s = new a();<BR>s.b.abc.call(s);</PRE><PRE style="POSITION: fixed; LEFT: -1000px">function a(){};<BR>a.prototype={<BR>    b:{<BR>        abc:function(){<BR>            console.log("bbb");<BR>            if(this instanceof a){<BR>                this.c();<BR>            }<BR>        }<BR>    },<BR>    c:function(){<BR>        console.log("ccc");<BR>    }<BR>};<BR>var s = new a();<BR>s.b.abc.call(s);</PRE><FONT 
+color=#ff0000>function a(){};<BR>a.prototype={<BR>&nbsp;&nbsp;&nbsp; 
+b:{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+abc:function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log("bbb");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if(this instanceof 
+a){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+this.c();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+},<BR>&nbsp;&nbsp;&nbsp; 
+c:function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log("ccc");<BR>&nbsp;&nbsp;&nbsp; }<BR>};<BR>var s = new 
+a();<BR>s.b.abc.call(s);</FONT></BODY></HTML>

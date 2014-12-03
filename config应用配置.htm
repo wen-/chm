@@ -1,0 +1,1226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>config应用配置</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>config应用配置文件</P>
+<P>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</P>
+<P>&lt;!-- config.xml reference: <A 
+href="https://build.phonegap.com/docs/config-xml">https://build.phonegap.com/docs/config-xml</A> 
+--&gt;<BR>&lt;widget xmlns&nbsp;&nbsp;&nbsp;&nbsp; = "<A 
+href="http://www.w3.org/ns/widgets">http://www.w3.org/ns/widgets</A>"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+xmlns:gap = "<A 
+href="http://phonegap.com/ns/1.0">http://phonegap.com/ns/1.0</A>"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 
+"com.phonegap.hello-world"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+version&nbsp;&nbsp; = "1.0.0"&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;name&gt;Hello World&lt;/name&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; 
+&lt;description&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hello World 
+sample application that responds to the deviceready event.<BR>&nbsp;&nbsp;&nbsp; 
+&lt;/description&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;author href="<A 
+href="http://phonegap.com">http://phonegap.com</A>" email="<A 
+href="mailto:support@phonegap.com">support@phonegap.com</A>"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+PhoneGap Team<BR>&nbsp;&nbsp;&nbsp; &lt;/author&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;!--<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Enable individual API permissions 
+here.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The "device" permission is 
+required for the 'deviceready' event.<BR>&nbsp;&nbsp;&nbsp; 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;feature name="<A 
+href="http://api.phonegap.com/1.0/device">http://api.phonegap.com/1.0/device</A>" 
+/&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;!--<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If 
+you do not want any permissions to be added to your app, add 
+the<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; following tag to your 
+config.xml; you will still have the 
+INTERNET<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; permission on your app, 
+which PhoneGap requires.<BR>&nbsp;&nbsp;&nbsp; --&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;preference 
+name="permissions"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="none"/&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;!-- Customize your app and platform with the 
+preference element. --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="phonegap-version"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="2.9.0" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- all: current version of PhoneGap --&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;preference 
+name="orientation"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="default" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- all: 
+default means both landscape and portrait are enabled 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="target-device"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="universal" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- all: possible 
+values handset, tablet, or universal --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="fullscreen"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="true" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- all: hides the status bar at the top of the screen 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="webviewbounce"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="true" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- ios: control whether the screen 'bounces' when scrolled beyond the top 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="prerendered-icon"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="true" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's 
+icon on the user's home screen --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="stay-in-webview"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="false" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- ios: external links should open in the default browser, 'true' would use 
+the webview the app lives in --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="ios-statusbarstyle"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="black-opaque" /&gt;&nbsp;&nbsp; &lt;!-- ios: black-translucent will 
+appear black because the PhoneGap webview doesn't go beneath the status bar 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="detect-data-types"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="true" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- ios: controls whether data types (such as phone no. and dates) are 
+automatically turned into links by the system --&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;preference 
+name="exit-on-suspend"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="false" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- ios: if set to true, app will terminate when home button is pressed 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference name="show-splash-screen-spinner" 
+value="true" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- ios: if set to false, the spinner won't appear on the splash screen 
+during app loading --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="auto-hide-splash-screen"&nbsp;&nbsp;&nbsp; value="true" 
+/&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- ios: 
+if set to false, the splash screen must be hidden using a JavaScript API 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="disable-cursor"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value="false" /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="android-minSdkVersion"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value="7" 
+/&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;!-- android: MIN SDK version supported on the target device. MAX version is 
+blank by default. --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;preference 
+name="android-installLocation"&nbsp;&nbsp;&nbsp; value="auto" 
+/&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!-- 
+android: app install location. 'auto' will choose. 'internalOnly' is device 
+memory. 'preferExternal' is SDCard. --&gt;</P>
+<P><BR>&nbsp;&lt;!--本地构建时需要下面两行来配置启动画面--&gt;<BR>&nbsp;&lt;preference 
+name="splashscreen" value="splash" /&gt;<BR>&nbsp;&lt;preference 
+name="splashScreenDelay" value="10000" /&gt;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;gap:plugin name="Example" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A list of available plugins 
+are available at <A 
+href="https://build.phonegap.com/docs/plugins">https://build.phonegap.com/docs/plugins</A><BR>&nbsp;&nbsp;&nbsp; 
+--&gt;</P>
+<P>&lt;!-- Plugins can also be added here.插件按照上面这样放这里好像不行，改为下方法即可 --&gt;<BR></P>
+<P>&nbsp;&nbsp;&nbsp; &lt;!--</P>
+<P>&nbsp;&nbsp;&nbsp; 
+&lt;!--相机--value为plugins文件夹里对应的插件文件夹名称<BR>&nbsp;&nbsp;&nbsp; &lt;feature 
+name="Camera"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;param 
+name="android-package" value="org.apache.cordova.camera" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/feature&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;!--设备信息<BR>&nbsp;&nbsp;&nbsp; &lt;feature 
+name="Device"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;param 
+name="android-package" value="org.apache.cordova.device" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/feature&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;!--传感器<BR>&nbsp;&nbsp;&nbsp; &lt;feature 
+name="Accelerometer"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;param 
+name="android-package" value="org.apache.cordova.device-motion" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/feature&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; --&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;!-- Define app icon for each platform. 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon src="icon.png" /&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;icon src="res/icon/android/icon-36-ldpi.png"&nbsp;&nbsp; 
+gap:platform="android"&nbsp;&nbsp;&nbsp; gap:density="ldpi" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/android/icon-48-mdpi.png"&nbsp;&nbsp; 
+gap:platform="android"&nbsp;&nbsp;&nbsp; gap:density="mdpi" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/android/icon-72-hdpi.png"&nbsp;&nbsp; 
+gap:platform="android"&nbsp;&nbsp;&nbsp; gap:density="hdpi" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/android/icon-96-xhdpi.png"&nbsp; 
+gap:platform="android"&nbsp;&nbsp;&nbsp; gap:density="xhdpi" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/blackberry/icon-80.png"&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="blackberry" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/blackberry/icon-80.png"&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="blackberry" gap:state="hover"/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/ios/icon-57.png"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="57" 
+height="57" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/ios/icon-72.png"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="72" 
+height="72" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/ios/icon-57-2x.png"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="114" 
+height="114" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/ios/icon-72-2x.png"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width="144" 
+height="144" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/webos/icon-64.png"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="webos" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon 
+src="res/icon/windows-phone/icon-48.png"&nbsp; gap:platform="winphone" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;icon src="res/icon/windows-phone/icon-173.png" 
+gap:platform="winphone"&nbsp;&nbsp; gap:role="background" /&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;!-- Define app splash screen for each platform. 
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/android/screen-ldpi-portrait.png"&nbsp; gap:platform="android" 
+gap:density="ldpi" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/android/screen-mdpi-portrait.png"&nbsp; gap:platform="android" 
+gap:density="mdpi" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/android/screen-hdpi-portrait.png"&nbsp; gap:platform="android" 
+gap:density="hdpi" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" 
+gap:density="xhdpi" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/blackberry/screen-225.png"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="blackberry" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/ios/screen-iphone-portrait.png"&nbsp;&nbsp;&nbsp; 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp; width="320" height="480" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/ios/screen-iphone-portrait-2x.png" 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp; width="640" height="960" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/ios/screen-ipad-portrait.png"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp; width="768" height="1024" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/ios/screen-ipad-landscape.png"&nbsp;&nbsp;&nbsp;&nbsp; 
+gap:platform="ios"&nbsp;&nbsp;&nbsp;&nbsp; width="1024" height="768" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;gap:splash 
+src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" 
+/&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;!--<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Define access to external domains.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;access 
+/&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - a 
+blank access tag denies access to all external 
+resources.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;access origin="*" 
+/&gt; - a wildcard access tag allows access to all external resource.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, you can specify 
+specific domains:<BR>&nbsp;&nbsp;&nbsp; --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;access 
+origin="<A href='http://127.0.0.1*"/'>http://127.0.0.1*"/</A>&gt; &lt;!-- allow 
+local pages --&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;!--<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;access origin="<A 
+href="http://phonegap.com">http://phonegap.com</A>" 
+/&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+- allow any secure requests to <A 
+href="http://phonegap.com/">http://phonegap.com/</A><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;access origin="<A href="http://phonegap.com">http://phonegap.com</A>" 
+subdomains="true" /&gt;&nbsp; - same as above, but including subdomains, such as 
+<A 
+href="http://build.phonegap.com/">http://build.phonegap.com/</A><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;access origin="<A href="http://phonegap.com">http://phonegap.com</A>" 
+browserOnly="true" /&gt; - only allows <A 
+href="http://phonegap.com">http://phonegap.com</A> to be opened by the child 
+browser.<BR>&nbsp;&nbsp;&nbsp; --&gt;</P>
+<P>&lt;/widget&gt;<BR></P>
+<P>&nbsp;</P>
+<P><STRONG><FONT color=#ff0000 size=5>详细说明：</FONT></STRONG></P>
+<H1 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(238,238,238) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 16px; FONT: 300 32px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Using 
+config.xml</H1>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Apps 
+built using Adobe&reg; PhoneGap&#8482; Build can be set up either through our web 
+interface, or by using a<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE>. 
+The<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>file, as specified in the<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+href="http://www.w3.org/TR/widgets/">W3C widget specification</A>, allows 
+developers to easily specify metadata about their applications. You can see a 
+sample<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>with our<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+href="https://github.com/phonegap/phonegap-start/blob/master/www/config.xml">PhoneGap 
+Start</A><SPAN class=Apple-converted-space>&nbsp;</SPAN>application.</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">One 
+thing to note: please ensure that your<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>file is at the top level of your 
+application (the same level as your<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">index.html</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>file). Otherwise it will not be loaded 
+correctly.</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">We're 
+continually adding features to cour<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>support, to give PhoneGap Build 
+developers more power to customize their apps. If there are any specific 
+features you'd like to see support for,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+href="http://getsatisfaction.com/nitobi/products/nitobi_phonegap_build">please 
+let us know</A>.</P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; FONT-STYLE: normal; PADDING-TOP: 16px; PADDING-LEFT: 0px; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Essential 
+Properties</H2>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;widget&gt;</CODE>: 
+  The widget element must be the root of your XML document - it lets us know 
+  that you are following the W3C specification. When using PhoneGap Build, 
+  ensure you have the following attributes set on your widget element:</P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">id</CODE>: 
+    the unique identifier for your application. To support all supported 
+    platforms, this<SPAN class=Apple-converted-space>&nbsp;</SPAN><EM 
+    style="BOX-SIZING: border-box">must</EM><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>be reverse-domain name style 
+    (e.g.<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">com.yourcompany.yourapp</CODE>) 
+
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">version</CODE>: 
+    for best results, use a major/minor/patch style version, with three numbers, 
+    such as<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">0.0.1</CODE> 
+
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">versionCode</CODE>: 
+    (optional) when building for Android, you can set the versionCode by 
+    specifying it in your<SPAN class=Apple-converted-space>&nbsp;</SPAN><EM 
+    style="BOX-SIZING: border-box">config.xml</EM>. For more information on 
+    Android's versionCode attribute, see<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><A 
+    style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+    href="http://developer.android.com/guide/publishing/versioning.html">the 
+    Android documentation</A>.</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;name&gt;</CODE>: 
+  The name of the application.</P>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;description&gt;</CODE>: 
+  A description for your application.</P></LI></UL>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Notes:</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">BlackBerry 
+only supports latin characters in the<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;name&gt;</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>attribute.</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">BlackBerry 
+should keep the<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;description&gt;</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>element at a reasonable length</P>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Usage:</H4><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+    &lt;widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.example"
+        versionCode="10" 
+        version   = "1.0.0"&gt;
+
+    &lt;!-- versionCode is optional and Android only --&gt;
+
+    &lt;name&gt;PhoneGap Example&lt;/name&gt;
+
+    &lt;description&gt;
+        An example for phonegap build docs. 
+    &lt;/description&gt;
+
+    &lt;author href="https://build.phonegap.com" email="support@phonegap.com"&gt;
+        Hardeep Shoker 
+    &lt;/author&gt;
+
+&lt;/widget&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=platform><FONT style="BACKGROUND-COLOR: #eeeeee"></FONT></A></P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; FONT-STYLE: normal; PADDING-TOP: 16px; PADDING-LEFT: 0px; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Platform 
+Build Selection</H2>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">By 
+default PhoneGap Build builds your application for every platform. If you only 
+want to build for certain platforms you can specify these platforms with 
+the<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">gap:platform</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>tag.</P>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;gap:platform 
+  /&gt;</CODE>:You can have zero or more of these elements present in your<CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE>. 
+  If you specify none, all platforms will be built.</P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">name</CODE>: 
+    platform to build - one of<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android, 
+    ios, winphone, blackberry, webos, symbian</CODE></LI></UL></LI></UL>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Usage:</H4><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:platform name="ios" /&gt;
+&lt;gap:platform name="android" /&gt;
+&lt;gap:platform name="webos" /&gt;
+&lt;gap:platform name="symbian" /&gt;
+&lt;gap:platform name="blackberry" /&gt;
+&lt;gap:platform name="winphone" /&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=preferences><FONT style="BACKGROUND-COLOR: #eeeeee"></FONT></A></P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; FONT-STYLE: normal; PADDING-TOP: 16px; PADDING-LEFT: 0px; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Preferences</H2>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">See<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+href="http://docs.phonegap.com/en/3.0.0/config_ref_index.md.html#Configuration%20Reference">the 
+Configuration Reference section in the main PhoneGap docs</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>for all of the preferences supported by 
+PhoneGap (and PhoneGap Build). In addition to these, the following is a list of 
+custom preferences supported by PhoneGap Build.</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">You 
+can have zero or more<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference&gt;</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>elements in your<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE>. 
+If you specify none, default properties maybe applied. Supported attributes are 
+name<CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">(required) 
+and</CODE>value` (required).</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">The</P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Multi-Platform</H3>
+<P>
+<TABLE 
+style="BOX-SIZING: border-box; WIDTH: 636px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; BORDER-SPACING: 0px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <TBODY style="BOX-SIZING: border-box">
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">phonegap-version</CODE></TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Currently 
+      supported versions are<SPAN class=Apple-converted-space>&nbsp;</SPAN><B 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: bold">2.5.0</B>,<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><B 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: bold">2.7.0</B>,<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><B 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: bold">2.9.0</B>, and<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><B 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: bold">3.0.0</B><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>(default) -- all versions prior 
+      to 2.5.0 have been deprecated. If you don't specify a version in your 
+      config, it will be set to the current default version. Your app will not 
+      build if you specify an unsupported version number.<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="phonegap-version" value="3.0.0" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">orientation</CODE></TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Device 
+      orientation; possible values are<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">default, 
+      landscape, or portrait</CODE>. Please note that<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">default</CODE><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>means<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><B 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: bold">both</B><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>landscape and portrait are 
+      enabled. If you want to use each platform's default settings (usually 
+      portrait only), remove this tag from your config.xml file.<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="orientation" value="landscape" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">fullscreen</CODE></TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Makes 
+      your app full screen, with values<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">true 
+      or false</CODE>. This hides the status bar at the top, and is false by 
+      default.<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="fullscreen" value="true" /&gt;</CODE></TD></TR></TBODY></TABLE></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">iOS 
+Only</H3>
+<P>
+<TABLE 
+style="BOX-SIZING: border-box; WIDTH: 636px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; BORDER-SPACING: 0px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <TBODY style="BOX-SIZING: border-box">
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">target-device</CODE><BR 
+      style="BOX-SIZING: border-box">(ios only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">For 
+      targeting a specific device; possible values are<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">handset, 
+      tablet, or universal</CODE>. Note that this currently only applies to iOS 
+      builds; by default all builds are universal.<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="target-device" value="universal" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">prerendered-icon</CODE><BR 
+      style="BOX-SIZING: border-box">(ios only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">This 
+      will cause iOS to not apply its gloss to the app's icon on the user's home 
+      screen; possible values are<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">true 
+      or false</CODE>, default is false.<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="prerendered-icon" value="true" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">ios-statusbarstyle</CODE><BR 
+      style="BOX-SIZING: border-box">(ios only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Set 
+      the iOS status bar style with values<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">default, 
+      black-opaque or black-translucent</CODE>. The default is a grey status 
+      bar, black-opaque will appear black. Although `black-translucent` is 
+      supported, the PhoneGap webview does not extend beneath the status bar, so 
+      it will appear identical to black-opaque once your app is running.<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="ios-statusbarstyle" value="black-opaque" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">detect-data-types</CODE><BR 
+      style="BOX-SIZING: border-box">(ios only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Controls 
+      whether certain data types (such as phone numbers and dates) are 
+      automatically turned into links by the system. Defaults to "true" (as does 
+      the system web view). In preference to this, try using meta-tags:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>And use detect-data-types if meta 
+      tags don't work for you.<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="detect-data-types" value="true" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">exit-on-suspend</CODE><BR 
+      style="BOX-SIZING: border-box">(ios only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">If 
+      set to true, app will terminate when suspended, for example when home 
+      button is pressed; default is<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><B 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: bold">false</B>.<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="exit-on-suspend" value="true" /&gt;</CODE></TD></TR></TBODY></TABLE></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Android 
+Only</H3>
+<P>
+<TABLE 
+style="BOX-SIZING: border-box; WIDTH: 636px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; BORDER-SPACING: 0px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <TBODY style="BOX-SIZING: border-box">
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android-minSdkVersion</CODE><BR 
+      style="BOX-SIZING: border-box">(android only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Minimum 
+      Android SDK version. Corresponds to the `usesSdk` attributes in the 
+      `AndroidManifest.xml` file - more details are in [the Android 
+      documentation](http://developer.android.com/guide/topics/manifest/uses-sdk-element.html). 
+      Defaults to 7 (Android 2.1).<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="android-minSdkVersion" value="10" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android-maxSdkVersion</CODE><BR 
+      style="BOX-SIZING: border-box">(android only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Maximum 
+      Android SDK version. Corresponds to the `usesSdk` attributes in the 
+      `AndroidManifest.xml` file - more details are in [the Android 
+      documentation](http://developer.android.com/guide/topics/manifest/uses-sdk-element.html). 
+      Unset by default.<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="android-maxSdkVersion" value="15" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android-targetSdkVersion</CODE><BR 
+      style="BOX-SIZING: border-box">(android only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Corresponds 
+      to the `usesSdk` attributes in the `AndroidManifest.xml` file -- an 
+      integer designating the API Level that the application targets. If not 
+      set, the default value equals that given to minSdkVersion. More details 
+      are in [the Android 
+      documentation](http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#target). 
+      Unset by default.<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="android-targetSdkVersion" value="12" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android-installLocation</CODE><BR 
+      style="BOX-SIZING: border-box">(android only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Where 
+      an app can be installed - defaults to<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">internalOnly</CODE><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>(as the Android SDK).<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">auto</CODE><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>or<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">preferExternal</CODE><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>allow the app to be installed on 
+      an SD card - this can lead to unexpected behavior. More details available 
+      in [the Android 
+      documentation](http://developer.android.com/guide/appendix/install-location.html).<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="android-installLocation" value="auto" /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android-windowSoftInputMode</CODE><BR 
+      style="BOX-SIZING: border-box">(android only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">How 
+      the main window of the activity interacts with the window containing the 
+      on-screen soft keyboard. More details, and possible values, available in 
+      [the Android 
+      documentation](http://developer.android.com/guide/topics/manifest/activity-element.html#wsoft).<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="android-windowSoftInputMode" value="stateVisible|adjustResize" 
+      /&gt;</CODE></TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">splash-screen-duration</CODE><BR 
+      style="BOX-SIZING: border-box">(android only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Duration 
+      that the splash screen remains visible; defaults to 5000 (ms). For 
+      auto-hide behaviour call navigator.splashscreen.hide() in the deviceready 
+      callback.<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="splash-screen-duration" 
+value="10000"/&gt;</CODE></TD></TR></TBODY></TABLE></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Blackberry 
+Only</H3>
+<P>
+<TABLE 
+style="BOX-SIZING: border-box; WIDTH: 636px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; BORDER-SPACING: 0px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <TBODY style="BOX-SIZING: border-box">
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)" 
+    vAlign=top><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">disable-cursor</CODE><BR 
+      style="BOX-SIZING: border-box">(blackberry only)</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; PADDING-BOTTOM: 6px; TEXT-ALIGN: left; PADDING-TOP: 6px; PADDING-LEFT: 8px; BORDER-LEFT: rgb(238,238,238) 1px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(255,255,255)">Prevents 
+      a mouse-icon/cursor from being displayed on the app - desugars to<CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;rim:navigation 
+      /&gt;</CODE>. See<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+      style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+      href="https://bdsc.webapps.blackberry.com/html5/documentation/ww_developing/rim_navigation_element_1582456_11.html">the 
+      BlackBerry documentation</A><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>for more details. Defaults to 
+      false.<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><BR 
+      style="BOX-SIZING: border-box">Example:<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="BOX-SIZING: border-box"><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;preference 
+      name="disable-cursor" value="true" /&gt;</CODE></TD></TR></TBODY></TABLE></P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; FONT-STYLE: normal; PADDING-TOP: 16px; PADDING-LEFT: 0px; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Other 
+Useful Elements</H2>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=icons></A></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Icon 
+Support</H3>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;icon&gt;</CODE>: 
+  You can have zero or more of these elements present in your<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE>. 
+  If you do not specify a icon then the PhoneGap logo will be used as your 
+  application's icon. 
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">src</CODE>: 
+    (required) specifies the location of the image file, relative to your<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">www</CODE>directory 
+
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">width</CODE>: 
+    (optional) but recommended to include, width in pixels 
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">height</CODE>: 
+    (optional) but recommended to include, height in pixels</LI></UL></LI></UL>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Usage 
+and Additional Information:</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Unless 
+otherwise specified in a config.xml, each platform will try to use the 
+default<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">icon.png</CODE>during 
+compilation. To define platform specific icons please use the guide provided 
+below.</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Icon 
+files should be the file formats specified in the examples below, other file 
+types are not guaranteed to work across platforms.</P>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Default</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">The 
+default icon must be named<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">icon.png</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and must reside in the root of your 
+application folder.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;icon src="icon.png" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">iOS</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">We 
+support classic, retina, iPad displays (and retina iPad displays in PhoneGap 
+2.5.0+). The following will define icons for each specific screen type.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;icon src="icons/ios/icon.png" gap:platform="ios" width="57" height="57" /&gt;
+&lt;icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" /&gt;
+&lt;icon src="icons/ios/icon_at_2x.png" gap:platform="ios" width="114" height="114" /&gt;
+
+&lt;!-- retina iPad support: PhoneGap 2.5.0+ only --&gt;
+&lt;icon src="icons/ios/icon-72_at_2x.png" gap:platform="ios" width="144" height="144" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Android</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">We 
+support ldpi, mdpi, hdpi, and xhdpi displays; the following will define icons 
+for each specific screen type.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;icon src="icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" /&gt;
+&lt;icon src="icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" /&gt;
+&lt;icon src="icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" /&gt;
+&lt;icon src="icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">BlackBerry</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">BlackBerry 
+icons<SPAN class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">must be smaller</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>then 16kb. BlackBerry also defines an 
+optional hover state; this state allows for a separate icon to be displayed when 
+a user uses the trackpad to roll over your icon image. By default the non-hover 
+icon will be used as the hover state.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;icon src="icons/bb/icon.png" gap:platform="blackberry" /&gt;
+&lt;icon src="icons/bb/icon_hover.png" gap:platform="blackberry" gap:state="hover"/&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Windows 
+Phone</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">We 
+support two icons for Windows Phone, a regular icon and a tile image.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;icon src="icons/winphone/icon.png" gap:platform="winphone" /&gt;
+&lt;icon src="icons/winphone/tileicon.png" gap:platform="winphone" gap:role="background" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">WebOS</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">WebOs 
+supports a default icon and a mini icon which can be used for notifications.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;icon src="icons/webos/icon.png" gap:platform="webos" /&gt;
+&lt;icon src="icons/webos/miniicon.png" gap:platform="webos" gap:role="mini" /&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=splashes><FONT style="BACKGROUND-COLOR: #eeeeee"></FONT></A></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Splash 
+Screens</H3>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">You 
+can have zero or more of these elements present in your<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE>. 
+This element can have<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">src</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">gap:platform</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">width</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">height</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>attributes, just like the<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;icon&gt;</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>element above. Like icon files, your 
+splash screens should be saved as<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">png</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>files.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:splash src="splash/ios/Default-568h@2x~iphone.png" gap:platform="ios" width="320" height="480" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Usage 
+and Additional Information:</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Unless 
+otherwise specified in a config.xml, each platform will try to use the 
+default<CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">splash.png</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>during compilation. To define platform 
+specific splash screens please use the guide provided below.</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Splash 
+files should be the file formats specified in the examples below. Any other file 
+type is not guaranteed to work across platforms.</P>
+<H5 
+style="BOX-SIZING: border-box; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Warning:</H5>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">If 
+you do not supply the<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">gap:platform</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>attribute, the referenced image will be 
+copied to ALL platforms, increasing the size of their application packages.</P>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Default</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">The 
+default splash must be named<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">splash.png</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and must reside in the root of your 
+application folder.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:splash src="splash.png" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">iOS</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">We 
+support classic, retina, iPhone 5 and iPad displays; the following will define 
+splash screens for each of those. Standard iPads have two different splash 
+screens, portrait, landscape. Retina iPads have two additional splash screens, 
+retina portrait and retina landscape (PhoneGap 2.5.0+ only).</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:splash src="splash/ios/Default.png" gap:platform="ios" width="320" height="480" /&gt;
+&lt;gap:splash src="splash/ios/Default_at_2x.png" gap:platform="ios" width="640" height="960" /&gt;
+&lt;gap:splash src="splash/ios/Default_iphone5.png" gap:platform="ios" width="640" height="1136" /&gt;
+&lt;gap:splash src="splash/ios/Default-Landscape.png" gap:platform="ios" width="1024" height="748" /&gt;
+&lt;gap:splash src="splash/ios/Default-Portrait.png" gap:platform="ios" width="768" height="1004" /&gt;
+
+&lt;!-- retina iPad support: PhoneGap 2.5.0+ only --&gt;
+&lt;gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" /&gt;
+&lt;gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Android</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">We 
+support ldpi, mdpi, hdpi and xhdpi displays; the following will define splash 
+screens for each specific screen type.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:splash src="splash/android/ldpi.png" gap:platform="android" gap:density="ldpi" /&gt;
+&lt;gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:density="mdpi" /&gt;
+&lt;gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" /&gt;
+&lt;gap:splash src="splash/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">BlackBerry</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">BlackBerry 
+supports a single splash image and can be defined as below.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:splash src="splash/bb/splash.png" gap:platform="blackberry" /&gt;
+</FONT></CODE></PRE>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Windows 
+Phone</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Windows 
+Phone supports a single splash image and can be defined as below. Unlike the 
+other supported platforms, Windows Phone splash screen should be in<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">jpg</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>format</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:splash src="splash/winphone/splash.jpg" gap:platform="winphone" /&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=url_schemes><FONT style="BACKGROUND-COLOR: #eeeeee"></FONT></A></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Custom 
+URL Schemes</H3>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">iOS 
+Only. Allows registration of<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+href="https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/AdvancedAppTricks/AdvancedAppTricks.html#//apple_ref/doc/uid/TP40007072-CH7-SW50">custom 
+URL schemes</A>.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;gap:url-scheme name="com.acme.myscheme" role="None"&gt;
+  &lt;scheme&gt;pgbr&lt;/scheme&gt;
+  &lt;scheme&gt;pgbw&lt;/scheme&gt;
+&lt;/gap:url-scheme&gt;
+</FONT></CODE></PRE>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">multiple<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">gap:url-scheme</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>elements can be present. 
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">name</CODE>, 
+  optional, defaults to the application bundle id. This has to be unique. If a 
+  duplicate is found the build will fail. 
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">role</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>must be<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">Editor</CODE>,<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">Viewer</CODE>,<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">Shell</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>or<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">None</CODE>, 
+  optional, defaults to<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">None</CODE>. 
+
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">at least one<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">scheme</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>must be present.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=features></A></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Features</H3>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;feature&gt;</CODE>: 
+  the feature element can be used to specify which features your application is 
+  using. If you specify features of the PhoneGap API, those will be expanded to 
+  the appropriate permissions for you application.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=debug></A></P>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Custom 
+Debug Server</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">The<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">debug-server</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>feature allows you to use a custom 
+Weinre instance for your application. By default PhoneGap Build uses<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://debug.build.phonegap.com</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>however this can be changed by adding 
+the following to your<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">config.xml</CODE>.</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;feature name="debug-server" required="true"&gt;
+   &lt;param name="domain" value="http://debug.custom.com"/&gt;
+   &lt;param name="key" value="some_unique_key"/&gt;
+&lt;/feature&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Don't 
+forget to change the domain and key to the appropriate values.</P>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">API 
+Features</H4>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Currently 
+supported through this interface are the following feature names:</P>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/battery</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:BROADCAST_STICKY</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>permission</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/camera</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:CAMERA</CODE>,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">winphone:ID_CAP_ISV_CAMERA</CODE>, 
+    and<CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">winphone:ID_HW_FRONTCAMERA</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>permissions</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/contacts</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:READ_CONTACTS</CODE>,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:WRITE_CONTACTS</CODE>,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:GET_ACCOUNTS</CODE>, 
+    and<CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">winphone:ID_CAP_CONTACTS</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>permissions</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/file</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">WRITE_EXTERNAL_STORAGE</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>permission</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/geolocation</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:ACCESS_COARSE_LOCATION</CODE>,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:ACCESS_FINE_LOCATION</CODE>,<CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:ACCESS_LOCATION_EXTRA_COMMANDS</CODE>, 
+    and<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">winphone:ID_CAP_LOCATION</CODE>permissions</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/media</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:RECORD_AUDIO</CODE>,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:RECORD_VIDEO</CODE>,<CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:MODIFY_AUDIO_SETTINGS</CODE>, 
+    and<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">winphone:ID_CAP_MICROPHONE</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>permissions</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/network</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">android:ACCESS_NETWORK_STATE</CODE>, 
+    and<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">winphone:ID_CAP_NETWORKING</CODE>permissions</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/notification</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">VIBRATE</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>permission</LI></UL>
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">
+  <P style="BOX-SIZING: border-box"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">http://api.phonegap.com/1.0/device</CODE></P>
+  <UL style="BOX-SIZING: border-box">
+    <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">maps to<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">winphone:ID_CAP_IDENTITY_DEVICE</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>permission</LI></UL></LI></UL>
+<H4 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Usage</H4><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;!-- If you do not want any permissions to be added to your app, add the
+    following tag to your config.xml; you will still have the INTERNET
+    permission on your app, which PhoneGap requires. --&gt;
+&lt;preference name="permissions" value="none"/&gt;
+
+&lt;!-- to enable individual permissions use the following examples --&gt;
+&lt;feature name="http://api.phonegap.com/1.0/battery"/&gt;
+&lt;feature name="http://api.phonegap.com/1.0/camera"/&gt;
+&lt;feature name="http://api.phonegap.com/1.0/contacts"/&gt;
+&lt;feature name="http://api.phonegap.com/1.0/file"/&gt;
+&lt;feature name="http://api.phonegap.com/1.0/geolocation"/&gt;
+&lt;feature name="http://api.phonegap.com/1.0/media"/&gt;
+&lt;feature name="http://api.phonegap.com/1.0/network"/&gt;
+&lt;feature name="http://api.phonegap.com/1.0/notification"/&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=plugins><FONT style="BACKGROUND-COLOR: #eeeeee"></FONT></A></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Plugins</H3>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;gap:plugin&gt;</CODE>: 
+  specifies a PhoneGap plugin for PhoneGap Build to include in your generated 
+  apps.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">At 
+present, to include a plugin, you will to ensure:</P>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">the plugin is supported 
+  by PhoneGap Build; and 
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px">any JavaScript script 
+  tags are present in your<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">index.html</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>file.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">More 
+details, including a list of available plugins, are in our<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+href="https://build.phonegap.com/docs/plugins">plugins documentation</A>.</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+name=access></A></P>
+<H3 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 16px; FONT: bold 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Access 
+Element</H3>
+<UL 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box; MARGIN-BOTTOM: 8px"><CODE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;access&gt;</CODE>: 
+  the access element provides your app with access to resources on other domains 
+  - in particular, it allows your app to load pages from external domains that 
+  can take over your entire webview.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">A 
+blank access tag -<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;access 
+/&gt;</CODE><SPAN class=Apple-converted-space>&nbsp;</SPAN>- denies access to 
+any external resources. A wildcard -<CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">&lt;access 
+origin="*" /&gt;</CODE><SPAN class=Apple-converted-space>&nbsp;</SPAN>- allows 
+access to any external resource. Otherwise, you can specify allowed domains 
+individually:</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;access origin="https://build.phonegap.com" /&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">You 
+can also allow subdomains, using the<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: monospace, serif">subdomains</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>attribute:</P><PRE style="BOX-SIZING: border-box; WORD-WRAP: break-word; BORDER-TOP: rgb(224,224,224) 1px solid; BORDER-RIGHT: rgb(224,224,224) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(224,224,224) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; FONT: 300 18px monospace, serif; PADDING-LEFT: 12px; BORDER-LEFT: rgb(224,224,224) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 12px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: monospace, serif"><FONT style="BACKGROUND-COLOR: #eeeeee">&lt;access origin="http://phonegap.com" subdomains="true" /&gt;
+</FONT></CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 300 18px adobe-clean, 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">The 
+behaviour of the access element is heavily dependent on the platform you're 
+deploying to - we have a<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 300; COLOR: rgb(12,157,183)" 
+href="https://build.phonegap.com/blog/access-tags">blog post</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>with more information. It is also 
+likely to vary between different releases of PhoneGap - we'll work to maintain 
+sane defaults and configurability for PhoneGap Build users.</P></BODY></HTML>

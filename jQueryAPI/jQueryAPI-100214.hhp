@@ -1,0 +1,13 @@
+[OPTIONS]
+Compatibility=1.1
+Compatibility=1.1 Or later
+Default Window=Main
+Contents file=jqapichm.hhc
+Index file=jqapichm.hhk
+Default font=宋体,9,1
+Language=0x804 中文(中国)
+
+[WINDOWS]
+Main="jQueryAPI-100214","jqapichm.hhc","jqapichm.hhk",,,,,,,0x20,150,0x104E,[400,1,800,451],0x0,0x0,,,,,0
+
+[FILES]

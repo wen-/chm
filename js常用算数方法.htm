@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js常用算数方法</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16450"></HEAD>
+<BODY>
+<P>&nbsp;</P>
+<P><STRONG><FONT size=6>Math 对象</FONT></STRONG></P>
+<DIV id=intro>
+<P>Math 对象用于执行数学任务。</P>
+<H3>使用 Math 的属性和方法的语法：</H3><PRE>var pi_value=Math.PI;
+var sqrt_value=Math.sqrt(15);</PRE>
+<P class=note><SPAN>注释：</SPAN>Math 对象并不像 Date 和 String 那样是对象的类，因此没有构造函数 Math()，像 
+Math.sin() 这样的函数只是函数，不是某个对象的方法。您无需创建它，通过把 Math 作为对象使用就可以调用其所有属性和方法。</P></DIV>
+<DIV>
+<H2>Math 对象属性</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">属性</TH>
+    <TH style="WIDTH: 66%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_e.html">E</A></TD>
+    <TD>返回算术常量 e，即自然对数的底数（约等于2.718）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_ln2.html">LN2</A></TD>
+    <TD>返回 2 的自然对数（约等于0.693）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_ln10.html">LN10</A></TD>
+    <TD>返回 10 的自然对数（约等于2.302）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_log2e.html">LOG2E</A></TD>
+    <TD>返回以 2 为底的 e 的对数（约等于 1.414）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_log10e.html">LOG10E</A></TD>
+    <TD>返回以 10 为底的 e 的对数（约等于0.434）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_pi.html">PI</A></TD>
+    <TD>返回圆周率（约等于3.14159）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_sqrt1_2.html">SQRT1_2</A></TD>
+    <TD>返回返回 2 的平方根的倒数（约等于 0.707）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_sqrt2.html">SQRT2</A></TD>
+    <TD>返回 2 的平方根（约等于 1.414）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Math 对象方法</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">方法</TH>
+    <TH style="WIDTH: 66%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_abs.html">abs(x)</A></TD>
+    <TD>返回数的绝对值。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_acos.html">acos(x)</A></TD>
+    <TD>返回数的反余弦值。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_asin.html">asin(x)</A></TD>
+    <TD>返回数的反正弦值。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_atan.html">atan(x)</A></TD>
+    <TD>以介于 -PI/2 与 PI/2 弧度之间的数值来返回 x 的反正切值。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_atan2.html">atan2(y,x)</A></TD>
+    <TD>返回从 x 轴到点 (x,y) 的角度（介于 -PI/2 与 PI/2 弧度之间）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_ceil.html">ceil(x)</A></TD>
+    <TD>对数进行上舍入。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_cos.html">cos(x)</A></TD>
+    <TD>返回数的余弦。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_exp.html">exp(x)</A></TD>
+    <TD>返回 e 的指数。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_floor.html">floor(x)</A></TD>
+    <TD>对数进行下舍入。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_log.html">log(x)</A></TD>
+    <TD>返回数的自然对数（底为e）。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_max.html">max(x,y)</A></TD>
+    <TD>返回 x 和 y 中的最高值。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_min.html">min(x,y)</A></TD>
+    <TD>返回 x 和 y 中的最低值。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_pow.html">pow(x,y)</A></TD>
+    <TD>返回 x 的 y 次幂。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_random.html">random()</A></TD>
+    <TD>返回 0 ~ 1 之间的随机数。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_round.html">round(x)</A></TD>
+    <TD>把数四舍五入为最接近的整数。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_sin.html">sin(x)</A></TD>
+    <TD>返回数的正弦。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_sqrt.html">sqrt(x)</A></TD>
+    <TD>返回数的平方根。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_tan.html">tan(x)</A></TD>
+    <TD>返回角的正切。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_tosource_math.html">toSource()</A></TD>
+    <TD>返回该对象的源代码。</TD>
+    <TD>1</TD>
+    <TD>-</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_valueof_math.html">valueOf()</A></TD>
+    <TD>返回 Math 对象的原始值。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR></TBODY></TABLE></DIV></BODY></HTML>

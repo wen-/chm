@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>属性选择器的语法是在标记的后面用中括号“[”和“]”添加相关的属性，然后再赋予不同的逻辑关系。如为含title属性的超链接添加myClass样式：<br />
+  $(function(){<br />
+  $(&quot;a[title]&quot;).addClass(&quot;myClass&quot;);<br />
+  });<br />
+  如果希望根据属性的值进行判断，例如为href属性值等于“10-9.html”的超链接添加myClass样式风格，可使用如下代码：<br />
+  $(&quot;a[href=10-9.html]&quot;).addClass(&quot;myClass&quot;);<br />
+  jQuery还可以根据属性值的某一部分进行匹配，例如下面的代码表示href属性值以“http://”开头的所有超链接：<br />
+  $(&quot;a[href^=http://]&quot;).addClass(&quot;myClass&quot;);<br />
+  既然可以根据属性值的开头来匹配选择，自然也可以根据属性值的结尾来进行匹配，如下代码表示href值以“html”结尾的超链接集合：<br />
+  $(&quot;a[her$=html]&quot;) .addClass(&quot;myClass&quot;);<br />
+  另外，还可以利用“*=”进行任意匹配。</p>
+<p><br />
+  jQuery支持的CSS最基本的选择器</p>
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="79" align="center" valign="middle">      选择器 </td>
+    <td width="653" valign="middle"><p align="center">说明</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">*</p></td>
+    <td width="653"><p>所有标记</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E</p></td>
+    <td width="653"><p>所有名称为E的标记</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E F</p></td>
+    <td width="653"><p>所有名称为F的标记，并且是E标记的子标记（包括孙、重孙等）</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E&gt;F</p></td>
+    <td width="653"><p>所有名称为F的标记，并且是E标记的子标记（不包括孙标记等）</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E+F</p></td>
+    <td width="653"><p>所有名称为F的标记，并且该标记紧接着前面的E标记</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E~F</p></td>
+    <td width="653"><p>所有名称为F的标记，并且该标记前面有一个E标记</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E:has(F)</p></td>
+    <td width="653"><p>所有名称为E的标记，并且该标记包含F标记</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E.C</p></td>
+    <td width="653"><p>所有名称为E的标记，属性类别为C，如果去掉E，就是属性选择器.C</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E#I</p></td>
+    <td width="653"><p>所有名称为E的标记，id为I，如果去掉E，就是id选择器#I</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E[A]</p></td>
+    <td width="653"><p>所有名称为E的标记，并且设置了属性A</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E[A=V]</p></td>
+    <td width="653"><p>所有名称为E的标记，并且属性A的值等于V</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E[A^=V]</p></td>
+    <td width="653"><p>所有名称为E的标记，并且属性A的值以V开头</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E[A$=V]</p></td>
+    <td width="653"><p>所有名称为E的标记，并且属性A的值以V结尾</p></td>
+  </tr>
+  <tr>
+    <td width="79"><p align="center">E[A*=V]</p></td>
+    <td width="653"><p>所有名称为E的标记，并且属性A的值中包含V</p></td>
+  </tr>
+</table>
+<p >jQuery支持的CSS3位置选择器</p>
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="103"><br />
+      选择器 </td>
+    <td width="629"><p align="center">说明</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>prev()</p></td>
+    <td width="629"><p>上一个兄弟元素。例如$(this).prev()选择当前元素的上一个兄弟元素</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>next()</p></td>
+    <td width="629"><p>下一个兄弟元素。例如$(this).next()选择当前元素的下一个兄弟元素</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:first</p></td>
+    <td width="629"><p>第1个元素，例如div    p:first选中页面中所有P元素的第一个，且该p元素是&nbsp;div的子元素</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:last</p></td>
+    <td width="629"><p>最后一个元素，例如div p:last</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:first-child</p></td>
+    <td width="629"><p>第一个子元素，例如ul:first-child选中所有ul元素，且该ul元素是其父元素的第一个子元素</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:last-child</p></td>
+    <td width="629"><p>最后一个子元素，例如ul:last-child</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:only-child</p></td>
+    <td width="629"><p>所有没有兄弟的元素，例如p:only-child选中所有p元素，且该P元素是其父元素的惟一子元素</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:nth-child(n)</p></td>
+    <td width="629"><p>第n个子元素，例如li:nth-child(2)选中所有li元素，且该li元素是其父元素的第2个子元素（从1开始计）</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:nth-child(odd|even)</p></td>
+    <td width="629"><p>所有奇数号或偶数号的子元素。例如li:nth-child(odd)选中所有li元素，且这些li元素为其父元素的第奇数个元素（从1开始计）</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:nth-child(nX+Y)</p></td>
+    <td width="629"><p>利用公式来计算子元素的位置，例如li:nth-child(5n+1)选中所有li元素，且这些元素为其父亲元素的第5n+1个元素（1,6,11,16…）</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:odd或者:even</p></td>
+    <td width="629"><p>对于整个页面而言的奇数号或偶数号元素，例如p:even为页面中所有排在偶数的元素（从0开如计）</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:eq(n)</p></td>
+    <td width="629"><p>页面中第n个元素，例如p:eq(4)为页面中的第5个p元素</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:gt(n)</p></td>
+    <td width="629"><p>页面中第n个元素之后所有元素（不包括第n个本身），例如p:gt(0)为页面中第1个元素后的所有p元素</p></td>
+  </tr>
+  <tr>
+    <td width="103"><p>:lt(n)</p></td>
+    <td width="629"><p>页面中第n个元素之前的所有元素（不包括第n个本身），例如p:lt(2)为页面中第3个元素之前所有的P元素</p></td>
+  </tr>
+</table>
+<p><br />
+jQuery中常用的过滤选择器</p>
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="115"><br />
+      选择器 </td>
+    <td width="617"><p align="center">说明</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:animated</p></td>
+    <td width="617"><p>所有处于动画中的元素</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:button</p></td>
+    <td width="617"><p>所有按钮，包括input[type=button]、input[type=submit]、input[type=reset]和&lt;button&gt;标记</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:checkbox</p></td>
+    <td width="617"><p>所有复选框，等同于input[type=checkbox]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:contains(foo)</p></td>
+    <td width="617"><p>选择所有包含了文本“foo”的元素</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:disabled</p></td>
+    <td width="617"><p>页面中被禁用了的元素</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:enabled</p></td>
+    <td width="617"><p>页面中没有被禁用的元素</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:file</p></td>
+    <td width="617"><p>上传文件的元素，等同于input[type=file]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:header</p></td>
+    <td width="617"><p>选中所有标题元素，例如&lt;h1&gt;~&lt;h6&gt;</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:hidden</p></td>
+    <td width="617"><p>页面中被隐藏了的元素</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:image</p></td>
+    <td width="617"><p>图片提交按钮，等同于input[type=image]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:input</p></td>
+    <td width="617"><p>表单元素，包括&lt;input&gt;、&lt;select&gt;、&lt;textarea&gt;、&lt;button&gt;</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:not(filter)</p></td>
+    <td width="617"><p>反向选择</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:parent</p></td>
+    <td width="617"><p>所有拥有子元素（包括文本）的元素，空元素将被排除</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:password</p></td>
+    <td width="617"><p>密码文本框，等同于input[type=password]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:radio</p></td>
+    <td width="617"><p>单选按钮，等同于input[type=radio]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:reset</p></td>
+    <td width="617"><p>重置按钮，包括input[type=reset]和button[type=reset]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:selected</p></td>
+    <td width="617"><p>下拉菜单中被选中的项</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:submit</p></td>
+    <td width="617"><p>提交按钮，包括input[type=submit]和button[type=submit]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:tex</p></td>
+    <td width="617"><p>文本输入框，等同于input[type=text]</p></td>
+  </tr>
+  <tr>
+    <td width="115"><p>:visible</p></td>
+    <td width="617"><p>页面中所有可见元素</p></td>
+  </tr>
+</table>
+<p>在上述过滤选择器中，:not(filter)过滤器可以进行反向的选择，其中，filter参数可以是任意其他的过滤器。<br />
+  另外，过滤选择器还可以迭代使用：<br />
+  $(&quot;:input:not(:checkbox):not(radio)&quot;).addClass(&quot;myClass&quot;);<br />
+  表示所有&lt;input&gt;、&lt;select&gt;、&lt;textarea&gt;或&lt;button&gt;中非checkbox和非radio的元素。<br />
+  注意：在:not(filter)中，filter参数必须是过滤选择器，而不能是其他的选择器，下面的代码是典型的错误语法：<br />
+  div:not(p:hidden) 正确的写法为：<br />
+div p:not(:hidden)</p>
+</body>
+</html>

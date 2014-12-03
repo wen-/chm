@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>浏览器内部对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:20px;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　使用浏览器的内部对象，可以与HTML文档进行交互。浏览器内部对象的主要作用是将相关元素组织包装起来，提供给程序设计人员使用，从而减少编程人员的工作量，提高<BR>设计Web网页的效率。</P>
+<P><STRONG>1 
+浏览器对象树</STRONG><BR>　　除了前面提到过的document（文档）对象外，浏览器中还提供了window（窗口）对象、history（历史）对象和location（位置）对象等。<BR>　　浏览器对象树被组织成具有两个顶层对象的层次结构，这两个顶层对象是navigator和window。<BR>　　下面对对象树中各对象的作用说明如下：<BR>　　· 
+浏览器对象（navigator）：提供有关浏览器的信息。<BR>　　· 
+窗口对象（window）：window对象处于对象层次的顶端，它提供了处理navigator窗口的方法和属性。<BR>　　· 
+历史对象（history）：history对象提供了与历史清单有关的信息。<BR>　　· 
+文档对象（document）：document对象包含了与文档元素（elements）一起工作的对象，它将这些元素封装起来供编程人员使用。<BR>　　· 
+锚对象（anchors）：anchors对象包含了对锚进行操作的一些工具。<BR>　　· 
+表单对象（forms）：提供了使用表单和创建交互式表单的属性和方法。<BR>　　· 链接对象（links）：提供了操作链接所需的方法。<BR>　　· 
+位置对象（location）：location对象提供了与当前打开的URL一起工作的方法和属性，它是一个静态对象。<BR>　　编程人员利用这些对象，可以对浏览器环境中的事件进行控制并作出处理。在JavaScript中提供了非常丰富的内部方法和属性，从而减轻了编程人员的工作负荷，提高了编程效率。这正是基于对象与面向对象的根本区别所在。在这些对象系统中，文档对象非常重要，它位于最低层，但对于实现Web网页信息交互起着关键性的作用。它是浏览器对象系统的核心部分。<BR>　　注意：不同的浏览器所支持的对象模型往往有所不同，Netscape浏览器和IE浏览器所支持的对象树就在许多地方存在差别。</P>
+<P><STRONG>2 
+navigator对象</STRONG><BR>　　navigator对象提供了6个属性和1个方法，它们提供关于整个navigator环境的信息：<BR>　　· 
+appName：反映了用字符串表示的浏览器名称。<BR>　　· 
+appVersion：反映了浏览器的版本号，该版本号用VersionNumber(Platform;Version)的字符串形式来表示。其中，VersionNumber是浏览器的版本号，Platform是运行该浏览器所用的操作系统，而Version指出该浏览器是国际版本还是国内版本。<BR>　　· 
+appCodeName：反映了用字符串表示的当前浏览器的代码名字。例如，对于Netscape 
+navigator的所有版本来说，navigator.appCodeName具有值“Mozilla”。<BR>　　· javaEnable( 
+)：返回一个布尔值，用于指示Java是否能在该客户端浏览器内使用。<BR>　　· userAgent：反映浏览器完整的用户代理标识。<BR>　　· 
+mimeTypes：反映在浏览器中可以使用的mime类型，这些类型存放在一个由mimeType对象组成的数组中。<BR>　　· 
+plugins：反映了在navigator中可以得到的插件（plugins），它们存放在一个由plugin对象组成的数组中。<BR>　　navigator对象属性最受人欢迎的用途之一是在一个网页中反映用户的信息，许多网页能够让用户知道他们所使用的浏览器类型。另外，也可以根据用户正在使用的浏览器版本定制网页的内容。<BR></P>
+<P><STRONG>3 
+window对象</STRONG><BR>　　window对象是每一个已打开的浏览器窗口以及在该窗口内装载的document、location对象和history清单的父对象。<BR>　　一般来说，并不需要显式地引用window对象，因为它是任何对象、属性或方法引用的假定的父对象，例如，可以用document而不是window.document来引用document对象，用confirm( 
+)而不是window.confirm( )来引用confirm( 
+)方法。<BR>　　可以使用特殊关键字self来引用当前窗口，例如，self.location将引用当前窗口的location对象。<BR>　　window对象的属性和方法如下：<BR>　　· 
+frames：一个frame对象的数组，它记录一个窗口中每个框架的信息。<BR>　　· 
+opener：窗口的名字，该窗口保存了用window.open()打开当前窗口时调用的文档。<BR>　　· 
+status：在窗口状态栏中显示的一个字符串，可用来向用户显示信息。<BR>　　· 
+defaultstatus：一个字符串，它反映了显示在窗口状态栏里的默认值。<BR>　　· alert( 
+)：在具有【确定】按钮的对话框内显示一条信息，它以单个字符串为参量并将它显示在对话框中。<BR>　　· blur( 
+)：将焦点从当前窗口撤消，在大多数操作系统中这样做会将窗口送至后台。<BR>　　· confirm( 
+)：在一个具有【确定】按钮和【取消】按钮的对话框里显示信息，当用户单击【确定】按钮时返回真值，否则返回假值。它以单个字符串为参量并将它显示在对话框中。<BR>　　· 
+close( )：关闭当前窗口。<BR>　　· focus( )：将焦点赋予当前窗口，在大多数操作系统中这样做将会把窗口带至前台。<BR>　　· open( 
+)：用指定的文档打开一个新窗口，或者在一个已存在的具有名字的窗口里打开指定的文档，它采用三个参量：文档的URL或名字、窗口的名字和一个由参数组成的字符串，该字符串定义新窗口的外观。<BR>　　· 
+prompt( 
+)：在一个具有文本输入区和【确定】按钮的对话框里显示信息，当用户单击【确定】按钮时，该方法返回文本输入区内的值，它采用两个字符串变量作参数：一条为显示给用户的信息，另一条为文本输入区内默认的初始内容。<BR>　　· 
+scroll( )：将窗口滚动到规定的XY坐标处，两个坐标作为参数传递给该方法。<BR>　　· setTimeout( 
+)：用规定的毫秒数设置一个定时器，当定时器结束计时后，对一个表达式求值。当定时器倒计时的时候，程序操作继续执行。它采用了两个参数，一个等待求值的字符串和一个以毫秒为单位规定延迟时间的整数。<BR>　　· 
+clearTimeout( )：取消以前设置的定时操作。</P>
+<P><STRONG>4 
+history对象<BR></STRONG>　　history对象提供了使用窗口或框架的历史清单的属性和方法。<BR>　　为了安全起见，history对象实际上并不向脚本提供历史清单的具体内容，这样做是为防止通过脚本获得有关用户浏览习惯的信息并将这些信息返回到服务器上。另外，某些URL实际上将密码和其他信息编码到URL中，这种URL需要受到保护，以防止恶意脚本的侵害。<BR>　　其实，history对象的方法和属性是用来在历史清单中进行导向的。<BR>　　history对象的方法和属性如下：<BR>　　· 
+length：一个反映历史清单长度的整数。<BR>　　· back：装载历史清单中的前一个URL。<BR>　　· 
+forward：装载历史清单中的下一个URL。<BR>　　· go( 
+)：装载距离历史清单当前位置指定偏移量的URL。<BR>　　例如，history.back( 
+)返回前一个文档，而history.go(2)则在历史清单中向前跳过两个文档。<BR>　　还可以向go( 
+)方法传递字符串变量参数，这将下载历史清单中含有该字符串的最近文档。这里进行的字符串匹配是不区分大小写的。<BR><STRONG></STRONG></P>
+<P><STRONG>5 
+document对象<BR></STRONG>　　在浏览器对象树中，document对象是核心，同时也是最重要的。document对象把和基本的网页元素（如links，anchors等）有关的属性、方法包装起来，提供给编程人员使用。<BR>　　从另一个角度看，document对象也是由属性和方法组成的。<BR>1. 
+document 
+中的主要对象<BR>　　在document中主要有anchors，links，forms和location等重要对象：<BR>　　（1）anchors对象<BR>　　anchor对象指的是在HTML源代码中使用&lt;a 
+Name=...&gt; 
+&lt;/a&gt;标记创建的对象。这个对象包含着文档中所有的anchors信息。<BR>　　（2）links对象<BR>　　link即用&lt;a 
+href=...&gt; 
+&lt;/a&gt;标记的链接。links对象包含了网页中全部链接的URL信息。<BR>　　（3）forms对象<BR>　　表单对象是文档对象的一个元素，它含有多种格式的对象存储信息，使用它可以在JavaScript脚本中编写程序进行文字输入，并可以用来动态改变文档的行为。它是一个数组，数组的各项为网页中的各个form（表单）对象。通过document.forms[index]可以使得在同一个网页上有多个相同的表单，使用forms[]数组要比使用表单名字方便得多。<BR>　　（4）location对象<BR>　　location对象和links对象很相似，区别在于它是反映当前文档的URL，而不是反映一个链接的URL。它具有与links对象相同的属性，但是没有target属性。另外，它还增加了若干<BR>方法，如下：<BR>　　· 
+reload( )：重新加载当前文档。<BR>　　· replace( 
+)：用历史清单中的某一项替代当前文档，它以一个字符串为参数，该字符串指明将要加载到历史清单当前位置的URL。<BR>2. document 
+对象中的外观样式属性<BR>　　document对象中的外观样式属性，主要用于在引用href标记时，控制有关颜色的格式和有关文档标题、文档原文件的URL以及文档最后更新的日期。这部分元素的主要含义如下：<BR>　　（1）alinkcolor：链接颜色<BR>　　当选取一个链接时，链接对象本身的颜色就按alinkcolor指定的值改变。<BR>　　（2）linkcolor：链接颜色<BR>　　链接在被访问前，链接文字的颜色会按linkcolor所指定的颜色更新。<BR>　　（3）vlinkcolor：访问过的链接的颜色<BR>　　该属性表示的是已被浏览器存储为已浏览过的链接的颜色。<BR>　　（4）bgcolor：背景颜色<BR>　　该元素包含文档背景的颜色。<BR>　　（5）fgcolor：前景颜色<BR>　　该元素包含HTML文档中文本的前景颜色。<BR>3. 
+document 
+对象的基本元素<BR>　　（1）forms属性<BR>　　forms属性是与HTML文档中标记&lt;form&gt;和&lt;/form&gt;相对应的一组对象。在HTML文档中所创建的form数目，由length指定，通过document.forms.length反映该文档中所创建的表单数目。<BR>　　（2）anchors属性<BR>　　该属性反映了网页文档中锚点的情况，锚点是在HTML文档中使用标记&lt;A&gt;以形如Name=linkName的语句进行定义的。网页上锚点的数目保存在document.anchors.length中。<BR>　　（3）links属性<BR>　　链接属性是指在HTML文档中&lt;a&gt;和&lt;/a&gt; 
+标记之间的href属性内容，其数目保存在document.links.length中。</P></BODY></HTML>

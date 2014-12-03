@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>关于DOM节点</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY>
+<P>关于DOM节点</P>
+<DIV id=intro>
+<P><STRONG>nodeName、nodeValue 以及 nodeType 包含有关于<FONT 
+style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>的信息。</STRONG></P></DIV>
+<DIV>
+<H2><FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>信息</H2>
+<P>每个<FONT style="BACKGROUND-COLOR: #3399ff" 
+color=#ffffff>节点</FONT>都拥有包含着关于<FONT style="BACKGROUND-COLOR: #3399ff" 
+color=#ffffff>节点</FONT>某些信息的属性。这些属性是：</P>
+<UL>
+  <LI>nodeName（<FONT style="BACKGROUND-COLOR: #3399ff" 
+  color=#ffffff>节点</FONT>名称） 
+  <LI>nodeValue（<FONT style="BACKGROUND-COLOR: #3399ff" 
+  color=#ffffff>节点</FONT>值） 
+  <LI>nodeType（<FONT style="BACKGROUND-COLOR: #3399ff" 
+  color=#ffffff>节点</FONT>类型） </LI></UL></DIV>
+<DIV>
+<H2>nodeName</H2>
+<P>nodeName 属性含有某个<FONT style="BACKGROUND-COLOR: #3399ff" 
+color=#ffffff>节点</FONT>的名称。</P>
+<UL>
+  <LI>元素<FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>的 
+  nodeName 是标签名称 
+  <LI>属性<FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>的 
+  nodeName 是属性名称 
+  <LI>文本<FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>的 
+  nodeName 永远是 #text 
+  <LI>文档<FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>的 
+  nodeName 永远是 #document </LI></UL>
+<P class=note><SPAN>注释：</SPAN>nodeName 所包含的 XML 元素的标签名称永远是大写的</P></DIV>
+<DIV>
+<H2>nodeValue</H2>
+<P>对于文本<FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>，nodeValue 
+属性包含文本。</P>
+<P>对于属性<FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>，nodeValue 
+属性包含属性值。</P>
+<P>nodeValue 属性对于文档<FONT style="BACKGROUND-COLOR: #3399ff" 
+color=#ffffff>节点</FONT>和元素<FONT style="BACKGROUND-COLOR: #3399ff" 
+color=#ffffff>节点</FONT>是不可用的。</P></DIV>
+<DIV>
+<H2>nodeType</H2>
+<P>nodeType 属性可返回<FONT style="BACKGROUND-COLOR: #3399ff" 
+color=#ffffff>节点</FONT>的类型。</P>
+<P>最重要的<FONT style="BACKGROUND-COLOR: #3399ff" color=#ffffff>节点</FONT>类型是：</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH>元素类型</TH>
+    <TH><FONT style="BACKGROUND-COLOR: #3399ff" 
+color=#ffffff>节点</FONT>类型</TH></TR>
+  <TR>
+    <TD>元素</TD>
+    <TD>1</TD></TR>
+  <TR>
+    <TD>属性</TD>
+    <TD>2</TD></TR>
+  <TR>
+    <TD>文本</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD>注释</TD>
+    <TD>8</TD></TR>
+  <TR>
+    <TD>文档</TD>
+    <TD>9</TD></TR></TBODY></TABLE></DIV></BODY></HTML>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:o = "urn:schemas-microsoft-com:office:office" xmlns:v = 
+"urn:schemas-microsoft-com:vml"><HEAD><TITLE>js正则限制输入方式</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>js正则限制输入方式</P>
+<P class=MsoNormal style="MARGIN: 7.05pt 0cm; TEXT-AUTOSPACE: "><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-US 
+style="FONT-SIZE: 21pt; mso-bidi-font-size: 10.0pt"><FONT 
+face="Times New Roman">Js </FONT></SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 21pt; FONT-FAMILY: 宋体; mso-bidi-font-size: 10.0pt; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">正则限制只能输入数字、中文、屏蔽输入法等</SPAN></B><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: "><SPAN 
+lang=EN-US><FONT face="Times New Roman">Javascript </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">利用正则表达式限制文本框只能输入数字或中文或屏蔽输入法以及实现了</SPAN><SPAN 
+lang=EN-US><FONT face="Times New Roman">Enter</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">回车光标跳到下一个输入框。</SPAN><SPAN 
+lang=EN-US><BR><FONT face="Times New Roman"><SPAN 
+style="mso-spacerun: yes">&nbsp;</SPAN><v:shapetype id=_x0000_t75 
+coordsize="21600,21600" o:spt="75" o:preferrelative="t" 
+path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f"> 
+</v:shapetype></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman"><SPAN 
+style="mso-spacerun: yes">&nbsp;</SPAN>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD 
+XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;html 
+xmlns="http://www.w3.org/1999/xhtml"&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT 
+face="Times New Roman">&lt;head&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;meta 
+http-equiv="Content-Type" content="text/html; charset=gb2312" 
+/&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT 
+face="Times New Roman">&lt;/head&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT 
+face="Times New Roman">&lt;body&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT 
+face="Times New Roman">ENTER</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">键可以让光标移到下一个输入框</SPAN><SPAN 
+lang=EN-US style="COLOR: black"><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;input 
+onkeydown="if(event.keyCode==13)event.keyCode=9" 
+&gt;&lt;br&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><o:p><FONT 
+face="Times New Roman">&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">只能输入中文</SPAN><SPAN 
+lang=EN-US style="COLOR: black"><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;input 
+onkeyup="value=value.replace(/[^\u4e00-\u9fa5]/g,'')"&gt; 
+&lt;br&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><o:p><FONT 
+face="Times New Roman">&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">屏蔽了输入法</SPAN><SPAN 
+lang=EN-US style="COLOR: black"><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;input 
+style="ime-mode:disabled"&gt; &lt;br&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><o:p><FONT 
+face="Times New Roman">&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">只能输入英文和数字</SPAN><SPAN 
+lang=EN-US style="COLOR: black"><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;input 
+onkeyup="value=value.replace(/[^a-zA-Z\d]/g,'')"&gt; 
+&lt;br&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><o:p><FONT 
+face="Times New Roman">&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">只能是数字</SPAN><SPAN 
+lang=EN-US style="COLOR: black"><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;input 
+onkeyup="value=value.replace(/[^\d]/g,'')"&gt;&lt;br&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><o:p><FONT 
+face="Times New Roman">&nbsp;</FONT></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">只能显示，不能修改的文本框</SPAN><SPAN 
+lang=EN-US style="COLOR: black"><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT face="Times New Roman">&lt;input readOnly 
+value="</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">只能显示，不能修改</SPAN><SPAN 
+lang=EN-US style="COLOR: black"><FONT 
+face="Times New Roman">"&gt;&lt;br&gt;&lt;br&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT 
+face="Times New Roman">&lt;/body&gt;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt; TEXT-AUTOSPACE: " align=left><SPAN 
+lang=EN-US style="COLOR: black"><FONT 
+face="Times New Roman">&lt;/html&gt;</FONT></SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P>&nbsp;</P></BODY></HTML>

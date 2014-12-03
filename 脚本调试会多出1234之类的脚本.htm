@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>脚本调试会多出1234之类的脚本</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>脚本调试会多出1234之类的脚本</P>
+<P>是由于对DOM节点script进行的操作（移动、包裹等）</P>
+<P>如：</P>
+<P>&lt;body&gt;</P>
+<P>&lt;h1&gt;1111111&lt;/h1&gt;</P>
+<P>&lt;script src="xxx.js"&gt;&lt;/script&gt;</P>
+<P>&lt;/body&gt;</P>
+<P>$("body").children().wrapAll('&lt;div class="box"&gt;&lt;/div&gt;');</P>
+<P>执行上面这句操作后，脚本处就会发现除了xxx.js外还有一个1，这个1的代码和xxx.js是一样的。</P>
+<P>存在脚本出错的可能。应避免以上操作或排除script标签：</P>
+<P>$("body").children(':not(script)').wrapAll('&lt;div 
+class="box"&gt;&lt;/div&gt;');</P></BODY></HTML>

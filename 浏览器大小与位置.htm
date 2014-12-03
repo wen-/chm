@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>浏览器大小与位置</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;font-family:arial;}</STYLE>
+</HEAD>
+<BODY>
+<P><STRONG>移动或调整浏览器窗口的大小：<BR></STRONG>&nbsp;&nbsp;&nbsp; 
+moveBy(dx,dy)——把浏览器窗口相对当前水平移动dx个像素，垂直移动dy个像素。<BR>&nbsp;&nbsp;&nbsp; 
+moveTo(dx,dy)——移动浏览器窗口，使它的左上角位于用户屏幕的(x,y)处。<BR>&nbsp;&nbsp;&nbsp; 
+resizeBy(dw,dh)——相对于浏览器窗口的当前大小，把它的宽度调整dw个像素，高度调整dy个像素。<BR>&nbsp;&nbsp;&nbsp; 
+resizeTo(w,h)——把窗口的宽度调整为w，高度调整为h。</P>
+<P><STRONG>窗口在屏幕上的位置及它的尺寸：<BR></STRONG>&nbsp;&nbsp;&nbsp; 
+·IE提供了window.screenLeft和window.screenTop对象来判断窗口的位置，但未提供判断窗口大小的方法。用document.body.offsetWidth和document.body.offsetHeight属性可以获取视口的大小（显示HTML页的区域），但它们不是标准属性。<BR>&nbsp;&nbsp;&nbsp; 
+·Mozilla提供widnow.screenX和window.screenY属性来判断窗口的位置。它还提供了window.innerWidth和window.innerHeight属性来判断视口的大小，window.outerWidth和window.outerHeight属性判断浏览器窗口自身的大小 
+。<BR>&nbsp;&nbsp;&nbsp; ·Opera和Safari提供与Mozilla相同的工具。</P></BODY></HTML>

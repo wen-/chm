@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>数学计算Math对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.18702">
+<STYLE>*{font-size:12px;}</STYLE>
+</HEAD>
+<BODY>
+<P>Math对象提供除加、减、乘、除以外的一些数学运算，如对数、平方根等，它是静态对象。</P>
+<P><STRONG>1. 主要属性<BR></STRONG>Math对象有6个属性，它们是数学中经常用到的几个常数，如下：<BR>· 常数e<BR>· 
+10的自然对数ln10<BR>· 2的自然对数ln2<BR>· PI：取值3.14159<BR>· 1/2的平方根：SQRT1/2<BR>· 
+2的平方根：SQRT2</P>
+<P><STRONG>2. 主要方法<BR></STRONG>主要的几个方法如下：<BR>· 绝对值：abs( )<BR>· 正弦余弦值：sin( )和cos( 
+)<BR>· 反正弦反余弦：asin( )和acos( )<BR>· 正切反正切：tan( )和atan( )<BR>· 四舍五入：round( )<BR>· 
+平方根：sqrt( )<BR>· 基于几次方的值：Pow(base,exponent)</P>
+<P>min()和max()方法用来反回一组数中的最大值或最小值，均可接受任意多个参数。<BR>var 
+iMax=Math.max(18,78,14,54);<BR>var 
+iMin=Math.min(18,78);<BR><BR>小数转为整数的方法分别是：ceil()、floor()、round()。ceil()向上舍入，floor()向下舍入，round()四舍五入。<BR>var 
+iNum=round(1.4);<BR><BR>Math对象另一个非常实用的方法是生成随机数的radom()方法，该方法返回一个0~1之间的随机数，不包括0和1。<BR>返回一个1到100的随机数：<BR>var 
+iNum=Math.floor(Math.random()*100+1);<BR>返回一个2~98的数字，第一个值为2：<BR>var 
+iNum=Math.floor(Math.random()*98+2);<BR><BR>返回x的绝对值：<BR>Math.abs(x);<BR><BR>返回x的y次方：<BR>Math.pow(x,y);</P></BODY></HTML>

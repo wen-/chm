@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>在jQuery中，可以通过attr(name)方法获取属性的值。如果没有匹配项则返回undefined。例：<br />
+$(function(){<br />
+       var  sTietle=$(&quot;em&quot;).attr(&quot;title&quot;);    //获取第一个&lt;em&gt;元素的title属性值<br />
+       $(&quot;span&quot;).text(sTitle);<br />
+});<br />
+如果希望获取第2个&lt;em&gt;标记的title属性值，可以通过位置选择器来完成，如：<br />
+var sTitle=$(&quot;em:aq(1)&quot;).attr(&quot;titld&quot;);</p>
+</body>
+</html>

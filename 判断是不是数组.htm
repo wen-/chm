@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>判断是不是数组</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>判断是不是数组</P>
+<P>var isArray = Function.isArray || function(o){</P>
+<P>return typeof o === "object" &amp;&amp; Object.prototype.toString.call(o) === 
+"[object Array]";</P>
+<P>};</P>
+<P>var a = [1,2,3,4];</P>
+<P>isArray(a);//true</P></BODY></HTML>

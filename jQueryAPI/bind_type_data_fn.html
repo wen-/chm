@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>bind(type, [data], fn)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="bind"><h2><span>返回值:jQuery</span>bind(type, <em class="optional">[data]</em>, fn)</h2><h3>概述</h3><div class="desc"><p>为每个匹配元素的特定事件绑定事件处理函数。</p><div class="longdesc"><pre>.bind() 方法是用于往文档上附加行为的主要方式。所有JavaScript事件对象，比如focus, mouseover, 和 resize，都是可以作为type参数传递进来的。
+		
+jQuery还提供了一些绑定这些标准事件类型的简单方式，比如.click()用于简化.bind('click')。一共有以下这些：blur, focus, focusin, focusout, load, resize, scroll, unload, click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseout, mouseenter, mouseleave, change, select, submit, keydown, keypress, keyup, error 。
+
+任何作为type参数的字符串都是合法的；如果一个字符串不是原生的JavaScript事件名，那么这个事件处理函数会绑定到一个自定义事件上。这些自定义事件绝对不会由浏览器触发，但可以通过使用.trigger()或者.triggerHandler()在其他代码中手动触发。
+
+如果type参数的字符串中包含一个点(.)字符，那么这个事件就看做是有命名空间的了。这个点字符就用来分隔事件和他的命名空间。举例来说，如果执行 .bind('click.name', handler) ，那么字符串中的 click 是事件类型，而字符串 name 就是命名空间。命名空间允许我们取消绑定或者触发一些特定类型的事件，而不用触发别的事件。参考unbind()来获取更多信息。
+
+当一个事件传到一个元素上，所有绑定在上面的针对哪个事件的处理函数都会触发。如果注册了多个事件处理函数，总是按照绑定的顺序依次触发。当所有绑定的事件处理函数执行完毕后，事件继续沿着普通的事件冒泡途径上浮。
+
+.bind()最基本的用法是：
+
+&lt;pre&gt;
+$('#foo').bind('click', function() {
+  alert('User clicked on "foo."');
+});
+&lt;/pre&gt;
+
+这个代码能使ID为foo的元素响应click事件。当用户点击元素内部之后，就会弹出一个警告框。
+
+'''多个事件'''
+
+依次可以绑定多个事件类型，每个事件类型用空格分隔：
+
+&lt;pre&gt;
+$('#foo').bind('mouseenter mouseleave', function() {
+  $(this).toggleClass('entered');
+});
+&lt;/pre&gt;
+
+这个代码让一个&amp;lt;div id="foo"&amp;gt;元素（初始情况下class没有设置成entered），当鼠标移进去的时候，在class中加上entered，而当鼠标移出这个div的时候，则去除这个class值。
+
+在jQuery 1.4中，我们也可以通过传入一个映射对来一次绑定多个事件处理函数：
+
+&lt;pre&gt;
+$('#foo').bind({
+  click: function() {
+    // do something on click
+  },
+  mouseenter: function() {
+    // do something on mouseenter
+  }
+});
+&lt;/pre&gt;
+
+'''事件处理函数'''
+
+fn这个参数接受一个回调函数，就像先前展示的那样。在这个事件处理函数内部，this指向这个函数绑定的DOM元素。如果要让这个元素变成jQuery对象来使用jQuery的方法，可以把这个对象传入 $() 重新封装。比如说：
+
+&lt;pre&gt;$('#foo').bind('click', function() {
+  alert($(this).text());
+});
+&lt;/pre&gt;
+
+这个代码执行之后，当用户点击了ID为foo的元素内部之后，他的文本内容就会出现在一个警告框中。
+
+'''事件对象'''
+
+fn这个参数的回调函数还可以接受一个参数。当这个函数被调用时，一个JavaScript事件对象会作为一个参数传进来。
+
+这个事件对象通常是没有必要且可以省略的参数，因为当这个事件处理函数绑定的时候就能够明确知道他在触发的时候应该做些什么，通常就已经可以获得充分的信息了。然而在有些时候，在事件初始化的时候需要获取更多关于用户环境的信息。可以参考完整的关于&lt;a href="/category/events/event-object/"&gt;事件对象&lt;/a&gt;的内容（英文）。
+
+在事件处理函数内返回false就等价于执行事件对象上的.preventDefault()和.stopPropagation()。
+
+可以像这样在事件处理函数内使用事件对象：
+
+&lt;pre&gt;$(document).ready(function() {
+  $('#foo').bind('click', function(event) {
+    alert('The mouse cursor is at ('
+      + event.pageX + ', ' + event.pageY + ')');
+  });
+});
+&lt;/pre&gt;
+
+注意，这个参数添加到了一个匿名函数上。这个代码可以让用户在点击ID为foo的元素时，报告鼠标点击时相对于页面的坐标。
+
+'''传递事件数据'''
+
+可选的第二个参数data通常用的很少。如果提供了这个参数，那么我们就能把一些附加信息传递给事件处理函数了。这个参数有个很好的用处，就是处理闭包带来的问题。比如我们有两个事件处理函数要指向同一个内部变量：
+
+&lt;pre&gt;var message = 'Spoon!';
+$('#foo').bind('click', function() {
+  alert(message);
+});
+message = 'Not in the face!';
+$('#bar').bind('click', function() {
+  alert(message);
+});
+&lt;/pre&gt;
+
+由于这两个函数在他们各自的环境中都有message，所以触发时显示的消息都是 Not in the face! 。变量值被改变了。为了回避这个问题，我们可以把message变量作为data参数传递进去：
+
+&lt;pre&gt;var message = 'Spoon!';
+$('#foo').bind('click', {msg: message}, function(event) {
+  alert(event.data.msg);
+});
+message = 'Not in the face!';
+$('#bar').bind('click', {msg: message}, function(event) {
+  alert(event.data.msg);
+});
+&lt;/pre&gt;
+
+这时在函数内部不再直接指向这个变量了；取而代之的是按值传递给了data参数，他能保持绑定事件时的值。第一个函数现在会显示Spoon!，而第二个则显示Not in the face!
+
+注意，如果这个对象按引用传递给了函数，那么将会使情况变得极其复杂。
+
+另外，可以参考.trigger()方法来了解如何在事件触发时传递数据，而不是在事件绑定的时候传递数据。
+
+在jQuery 1.4中，不再支持把数据以及事件附加到一个object、embed或者applet元素上面。因为当往Java applet元素上附加数据时，会触发一个严重错误警告。
+		</pre></div></div><h3>参数</h3><div><h4><strong>type</strong><span>String</span></h4><p>含有一个或多个事件类型的字符串，比如"click"或"submit"，还可以是自定义事件名。</p><h4><strong>data<em> (可选)</em></strong><span>Object</span></h4><p>作为event.data属性值传递给事件对象的额外数据对象</p><h4><strong>fn</strong><span>Function</span></h4><p>绑定到每个匹配元素的事件上面的处理函数</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">当每个段落被点击的时候，弹出其文本。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("p").bind("click", function(){
+  alert( $(this).text() );
+});</code></pre><h4 xmlns="">描述:</h4><p xmlns="">你可以在事件处理之前传递一些附加的数据。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>function handler(event) {
+  alert(event.data.foo);
+}
+$("p").bind("click", {foo: "bar"}, handler)</code></pre><h4 xmlns="">描述:</h4><p xmlns="">通过返回false来取消默认的行为并阻止事件起泡。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("form").bind("submit", function() { return false; })</code></pre><h4 xmlns="">描述:</h4><p xmlns="">通过使用 preventDefault() 方法只取消默认的行为。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("form").bind("submit", function(event){
+  event.preventDefault();
+});</code></pre><h4 xmlns="">描述:</h4><p xmlns="">通过使用 stopPropagation() 方法只阻止一个事件起泡。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("form").bind("submit", function(event){
+  event.stopPropagation();
+});</code></pre></div></div></div></body></html>

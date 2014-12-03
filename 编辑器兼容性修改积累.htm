@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>编辑器兼容性修改积累</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>编辑器兼容性修改积累</P>
+<P>1、<STRONG>重新声明常量属性</STRONG>－－－报错。&nbsp; 原因：声明了与关键字相同的变量名如 var <FONT 
+color=#ff0000>history</FONT> = new Object;</P>
+<P>&nbsp;</P>
+<P><STRONG>2、加载事件报错：</STRONG></P>
+<P><FONT color=#ff0000>function document.onreadystatechange</FONT>(){</P>
+<P>//xxx</P>
+<P>}&nbsp;</P>
+<P>修改为：</P>
+<P><FONT color=#ff0000>document.onreadystatechange</FONT> = function(){ </P>
+<P>/xxx</P>
+<P>}</P>
+<P>&nbsp;</P>
+<P><STRONG>3、遍历所有元素报错：</STRONG></P>
+<P>for (i=0; i&lt;<FONT 
+color=#ff0000>document.body.all</FONT>.length;i++){<BR>&nbsp;&nbsp;curr=document.body.all[i];</P>
+<P>//xxx</P>
+<P>}</P>
+<P>修改为：</P>
+<P>for (i=0; i&lt;<FONT 
+color=#ff0000>document.getElementsByTagName("*")</FONT>.length;i++){<BR>&nbsp;&nbsp;curr=document.getElementsByTagName("*")[i];</P>
+<P>//xxx</P>
+<P>}</P></BODY></HTML>

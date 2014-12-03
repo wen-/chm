@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>jQuery提供了toggleClass(name)来对元素的CSS类别name进行开关控制。例如：<br />
+  $(function(){<br />
+  //找到所有li标记中包含的ul标记<br />
+  //然后找到紧挨着它的前一个标记（即&lt;a&gt;），添加click()事件<br />
+  $(&quot;li&quot;).find(&quot;ul&quot;).prev().click(function(){<br />
+  //单击&lt;a&gt;时，让它后面的兄弟（即&lt;ul&gt;）切换CSS样式<br />
+  $(this).next().toggleClass(&quot;myHide&quot;);<br />
+  });<br />
+  });<br />
+  注意：toggleClass(name)方法中，只能设定一种CSS类别，不能同时对多个CSS类别进行切换。</p>
+</body>
+</html>

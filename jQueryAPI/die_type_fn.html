@@ -1,0 +1,13 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>die([type], [fn])</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="die"><h2><span>返回值:jQuery</span>die(<em class="optional">[type]</em>, <em class="optional">[fn]</em>)</h2><h3>概述</h3><div class="desc"><p>jQuery 1.3新增。此方法与live正好完全相反。</p><div class="longdesc"><pre>如果不带参数，则所有绑定的live事件都会被移除。
+
+你可以解除用live注册的自定义事件。
+
+如果提供了type参数，那么会移除对应的live事件。
+
+如果也指定了第二个参数function,则只移出指定的事件处理函数。</pre></div></div><h3>参数</h3><div><h4><strong>type<em> (可选)</em></strong><span>String</span></h4><p>要解除绑定的live事件</p><h4><strong>fn<em> (可选)</em></strong><span>Function</span></h4><p>要解除绑定的特定处理函数</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">给按钮解除click事件</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>function aClick() {
+      $("div").show().fadeOut("slow");
+  }
+  $("#unbind").click(function () {
+      $("#theone").die("click", aClick)
+  });</code></pre></div></div></div></body></html>

@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>数组</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16441">
+<STYLE>*{font-size:12px;line-height:20px;}</STYLE>
+</HEAD>
+<BODY>
+<P><FONT size=2>　　数组用关键字Array来声明。例：var aTeam = new 
+Array();与字符串一样，数组也可以通过length属性来获取其长度。<BR>　　除了Array()对象，数组还可以用括号“[”和“]”来定义，项与项之间用逗号分隔。例：<BR>var 
+aMap = 
+["China","USA","Britain"];<BR>　　用toString()方法，可以将数组转换为字符串。如：alert(aMap.toString())，警告框显示China,USA,Britain。<BR>　　如果不希望用逗号进行数组转换后的连接，可以用join()方法，该方法接受一个参数，用来连接数组项的字符串，无参数则等同于toString()。如：document.write(aMap.join("-")+"&lt;br 
+/&gt;")。页面输出China-USA-Britain。对于字符串，split()方法将之转换成数组。split()接受一个参数，为分隔字符串的标识。例：<BR>&nbsp;&nbsp;&nbsp; 
+var sFruit = "apple,pear,peach,orange"; <BR>&nbsp;&nbsp;&nbsp; var aFruit = 
+sFruit.split(","); <BR>　　reverse()方法可以将数组元素反序。 sort()方法可以将数组元素按字母顺序排序。 
+push()和pop()方法可以实现栈的功能 ，将数组看作一个堆栈，通过push()和pop()做压栈和出栈的处理。例：<BR>var stack= new 
+Array; stack.push("red"); <BR>stack.push("green"); stack.push("blue");<BR>var 
+vItem = stack.pop();<BR>document.write(vItem+"&lt;br /&gt;"); 
+//输出blue<BR>document.write(stack.toString()); //输出red,green </FONT></P>
+<P><FONT 
+size=2>　　Array对象具有两个String类具有的方法，即concat()和slice()方法。<BR>　　concat()方法处理数组的方式几乎与它处理字符串的方式完全一样。参数将被附加在数组末尾，返回的函数值 
+是新的Array对象（包括原始数组中的项和新的项）。<BR>　　slice()方法也与String类的中slice()方法非常相似，返回的是具有特定项的新数组。<BR>　　splice()方法拥有三个或以上参数，除第一个外，其余是可选参数。这它的参数按位置分别对应起始位置、要删除数组项的个数、插入的数组项。例：<BR>arr.splice(0,0,"插入项1","插入项2")<BR>　　上面这句代码将在数组的0位置处，删除0项，插入两项。</FONT></P>
+<P><FONT 
+size=2>　　Array还提供了操作第一项的方法。方法shift()将删除数组中的第一个项，将其作为函数值返回。另一个方法是unshift()方法，它把一个项放在数组的第一个位置，然后把余下的项向下移动一个位置。<BR></FONT></P>
+<P><FONT size=7 face=04b_20>数组的操作</FONT></P><FONT size=2>
+<DIV 
+style="MARGIN: 5px 0px; DISPLAY: block; FONT: 20px/30px 'Microsoft YaHei'; COLOR: rgb(0,0,0)" 
+class=article_title>
+<H3 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FONT: 20px/30px 'Microsoft YaHei'; VERTICAL-ALIGN: middle; PADDING-TOP: 0px"><SPAN 
+class=link_title><A style="COLOR: rgb(0,0,0); TEXT-DECORATION: none" 
+href="http://blog.csdn.net/ksjsoftwlb/article/details/5898632"><FONT 
+size=5>利用jQuery操作对象数组</FONT></A></SPAN></H3></DIV>
+<DIV 
+style="TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 12px/24px Arial; COLOR: rgb(153,153,153); PADDING-TOP: 5px" 
+class=article_manage><FONT size=+0><FONT style=""><FONT size=+0><FONT 
+style=""><FONT size=+0><FONT style=""><FONT size=+0><FONT style=""><FONT 
+size=+0><FONT style=""><FONT size=+0><FONT style=""><FONT size=+0><FONT 
+style=""><FONT size=+0><FONT style=""><FONT size=+0><FONT style=""><FONT 
+size=+0><FONT style=""><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT 
+size=+0><FONT size=+0><FONT size=+0><SPAN style="MARGIN: 0px 5px" 
+class=link_report></SPAN></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>&nbsp;</DIV>
+<DIV style="MARGIN: 20px 0px 0px; FONT: 14px/26px Arial" id=article_content 
+class=article_content>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+style="" size=+0>&lt;script src="js/jquery.js" &gt;&lt;/script&gt;</FONT></P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&lt;script&gt;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/**</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+从对象数组中删除属性为objPropery，值为objValue元素的对象</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param Array arrPerson&nbsp; 数组对象</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param String objPropery&nbsp; 对象的属性</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param String objPropery&nbsp; 对象的值</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@return Array 过滤后数组</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">*/</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">function 
+remove(arrPerson,objPropery,objValue)</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">{</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp; 
+return $.grep(arrPerson, function(cur,i){</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return cur[objPropery]!=objValue;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+});</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">}</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/**</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+从对象数组中获取属性为objPropery，值为objValue元素的对象</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param Array arrPerson&nbsp; 数组对象</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param String objPropery&nbsp; 对象的属性</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param String objPropery&nbsp; 对象的值</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@return Array 过滤后的数组</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">*/</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">function 
+get(arrPerson,objPropery,objValue)</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">{</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp; 
+return $.grep(arrPerson, function(cur,i){</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return cur[objPropery]==objValue;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+});</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">}</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">/**</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+显示对象数组信息</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param String info&nbsp; 提示信息</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">* 
+@param Array arrPerson&nbsp; 对象数组</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">*/</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">function 
+showPersonInfo(info,arrPerson)</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">{</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp; 
+$.each(arrPerson, function(index,callback){</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+info+="Person id:" + arrPerson[index].id + " name:" +&nbsp; 
+arrPerson[index].name+ " sex:"+ arrPerson[index].sex+" age:"+&nbsp; 
+arrPerson[index].age+"/r/t";</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp; 
+});</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp; 
+alert(info);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">}</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">//测试数据</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">var 
+arrPerson=new Array();</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">var 
+person=new Object();</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.id=1;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.name="帅哥";</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.sex="男";</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.age=30;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrPerson.push(person);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person=new 
+Object();</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.id=2;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.name="美眉甲";</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.sex="女";</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.age=28;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrPerson.push(person);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person=new 
+Object();</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.id=3;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.name="美眉乙";</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.sex="女";</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">person.age=20;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrPerson.push(person);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">//测试删除</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">showPersonInfo("原始数组：/r/t",arrPerson);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrPerson=remove(arrPerson,"id",1);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">showPersonInfo("删除之后：/r/t",arrPerson);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">//测试获取</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrPerson=get(arrPerson,"id",3);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">showPersonInfo("只获取ID为3的元素：/r/t",arrPerson);</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">&lt;/script&gt;</P><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">jquery下json数组的操作用法实例：<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">jquery中操作JSON数组的情况中遍历方法用的比较多，但用添加移除这些好像就不是太多了。<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">试过json[i].remove(),json.remove(i)之后都不行，看网页的DOM对象中好像JSON数据是以数组的形式出现的，下面是一些实例，仅供参考。<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">1、数组的创建<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">var 
+arrayObj = new Array();　//创建一个数组<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">var 
+arrayObj = new Array([size]);　//创建一个数组并指定长度，注意不是上限，是长度<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">var 
+arrayObj = new Array([element0[, element1[, ...[, 
+elementN]]]]);　//创建一个数组并赋值<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">要说明的是，虽然第二种方法创建数组指定了长度，但实际上所有情况下数组都是变长的，也就是说即使指定了长度为5，仍然可以将元素存储在规定长度以外的，注意：这时长度会随之改变。<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">2、数组的元素的访问<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">var 
+testGetArrValue=arrayObj[1]; //获取数组的元素值<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj[1]= 
+"这是新值"; //给数组元素赋予新的值<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">3、数组元素的添加<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj. 
+push([item1 [item2 [. . . [itemN ]]]]);// 将一个或多个新元素添加到数组结尾，并返回数组新长度<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.unshift([item1 
+[item2 [. . . [itemN ]]]]);// 将一个或多个新元素添加到数组开始，数组中的元素自动后移，返回数组新长度<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.splice(insertPos,0,[item1[, 
+item2[, . . . [,itemN]]]]);//将一个或多个新元素插入到数组的指定位置，插入位置的元素自动后移，返回""。<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">4、数组元素的删除<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.pop(); 
+//移除最后一个元素并返回该元素值<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.shift(); 
+//移除最前一个元素并返回该元素值，数组中元素自动前移<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.splice(deletePos,deleteCount); 
+//删除从指定位置deletePos开始的指定数量deleteCount的元素，数组形式返回所移除的元素<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">5、数组的截取和合并<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.slice(start, 
+[end]); //以数组的形式返回数组的一部分，注意不包括 end 对应的元素，如果省略 end 将复制 start 之后的所有元素<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.concat([item1[, 
+item2[, . . . [,itemN]]]]); //将多个数组（也可以是字符串，或者是数组和字符串的混合）连接为一个数组，返回连接好的新的数组<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">6、数组的拷贝<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.slice(0); 
+//返回数组的拷贝数组，注意是一个新的数组，不是指向<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.concat(); 
+//返回数组的拷贝数组，注意是一个新的数组，不是指向<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">7、数组元素的字符串化<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.join(separator); 
+//返回字符串，这个字符串将数组的每一个元素值连接在一起，中间用 separator 隔开。<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">toLocaleString 
+、toString 、valueOf：可以看作是join的特殊用法，不常用<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">8、数组元素的排序<SPAN 
+class=Apple-converted-space><FONT size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.reverse(); 
+//反转元素（最前的排到最后、最后的排到最前），返回数组地址<SPAN class=Apple-converted-space><FONT 
+size=3>&nbsp;</FONT></SPAN></SPAN><BR 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 14px/26px Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">arrayObj.sort(); 
+//对数组元素排序，返回数组地址</SPAN><BR 
+class=Apple-interchange-newline></DIV></FONT></BODY></HTML>

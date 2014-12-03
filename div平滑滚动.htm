@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>div平滑滚动</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19019">
+<style>
+*{font-size:12px;}
+</style>
+</HEAD>
+<BODY>
+<P>如下方法结合了CSS和JavaScript的办法，解决了以上的问题。<BR>CSS部份：</P>
+<P>&lt;style type="text/css"&gt;<BR>*{margin: 0px;padding: 
+0px;}<BR>body{<BR>_background-image: 
+url(about:blank);/*用浏览器空白页面作为背景*/<BR>_background-attachment: fixed;/*prevent 
+screen flash in IE6 确保滚动条滚动时，元素不闪动*/<BR>}<BR>#topNav 
+<BR>{<BR>font-size:18pt;<BR>color:#fff;<BR>font-weight:bold;<BR>width:auto;<BR>z-index: 
+100;/*设置浮动层次*/<BR>overflow: visible;<BR>position: fixed;<BR>top: 
+50px;/*其他浏览器下定位，在这里可设置坐标*/<BR>_position: absolute;/*IE6 
+用absolute模拟fixed*/<BR>_top: expression(documentElement.scrollTop + 50 + "px"); 
+/*IE6 动态设置top位置*/<BR>/*documentElement.scrollTop 设置浮动元素始终在浏览器最顶，可以加一个数值达到排版效果 
+*/<BR>background-color:#008000;<BR>height: 
+31px;<BR>}<BR>.show{position:absolute;top:500px;left:400px;border:#ff0000 1px 
+solid;}<BR>&lt;/style&gt;</P>
+<P><BR>HTML部份：</P>
+<P>&lt;html xmlns="<A 
+href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>"&gt;<BR>&lt;head&gt;<BR>&lt;meta 
+http-equiv="Content-Type" content="text/html; charset=gb2312" 
+/&gt;<BR>&lt;title&gt;Samxy.com IE6 
+fixed&lt;/title&gt;<BR>&lt;/head&gt;<BR>&lt;body&gt;<BR>&lt;div 
+class="samxy_menu" id="topNav"&gt;Samxy.com&lt;/div&gt;<BR>&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;<BR>&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br 
+/&gt;&lt;br /&gt;<BR>&lt;div 
+class="show"&gt;show&lt;/div&gt;<BR>&lt;/body&gt;<BR>&lt;/html&gt;</P>
+<P><BR>主要作用是在：CSS的BODY中加入</P>
+<P><BR>body{<BR>_background-image: 
+url(about:blank);/*用浏览器空白页面作为背景*/<BR>_background-attachment: fixed;/*prevent 
+screen flash in IE6 确保滚动条滚动时，元素不闪动*/<BR>}</P>
+<P>以上只实现了垂直方向的fixed。<BR>若要实现水平方向的fixed，设置_left:expression(documentElement.scrollLeft 
++ "px");</P>
+<P>利用给&lt;body&gt;设置固定的背景，防止滚动条滚动时的闪动；如果&lt;body&gt;中要设置滚动的背景而产生冲突，可以把代码写在html选择器里面<BR>如：<BR><BR>html 
+{<BR>_background-image: url(about:blank);<BR>_background-attachment: fixed; /* 
+prevent screen flash in IE6 */<BR>}<BR>body {<BR>background-image: 
+url(1.jpg);<BR>background-attachment: scroll;<BR>}</P>
+<P></P></BODY></HTML>

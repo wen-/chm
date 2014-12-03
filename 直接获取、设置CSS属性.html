@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>与attr()方法完全类似，jQuery提供了css()方法来直接获取、设置元素的样式风格。该方法的使用几乎和attr()一样，例如可以通过css(name)来获取某种样式风格的值，通过css(properties)列表来同时设置元素的多种样式，通过css(name,value)来设置元素的某种样式。<br />
+另外值得一提的是，css()方法提供了透明度的opccity属性，并且解决了浏览器的兼容性问题，不需要针对IE和Firefox分别开发。opacity属性的值取值范围为0.0~1.0，如：<br />
+$(function(){<br />
+       $(&quot;img&quot;).mouseover(fA)                      //代码形式1<br />
+function fA(){<br />
+              $(this).css(&quot;opacity&quot;,&quot;0.5&quot;);<br />
+};<br />
+$(&quot;img&quot;).mouseout(function(){            //代码形式2<br />
+       $(this).css(&quot;opacity&quot;,&quot;1.0&quot;);<br />
+});<br />
+});<br />
+另外，还可以通过hasClass(name)方法来判断某个元素是否设置了某个CSS类别，如果设置了则返回true，否则为false。例：<br />
+$(&quot;li:last&quot;).hasClass(&quot;myClass&quot;)<br />
+上述代码等同于：<br />
+$(&quot;li:last&quot;).is(&quot;.myClass&quot;)</p>
+</body>
+</html>

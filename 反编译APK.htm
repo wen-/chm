@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>反编译APK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>反编译APK</P>
+<P>
+<TABLE 
+style="WORD-WRAP: break-word; WHITE-SPACE: normal; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(68,68,68); EMPTY-CELLS: show; FONT: 12px/18px 'Microsoft Yahei', Tahoma, Simsun; LETTER-SPACING: normal; WIDTH: 1119px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+cellSpacing=0 cellPadding=0>
+  <TBODY style="WORD-WRAP: break-word">
+  <TR style="WORD-WRAP: break-word">
+    <TD id=postmessage_919043 class=t_f 
+    style="WORD-WRAP: break-word; FONT-SIZE: 14px">有时候我们想借鉴别人的优秀作品，或者想学习学习。在只有APK的情况下如何来实现呢？ 
+      其实也有办法，那就是反编译APK。<BR style="WORD-WRAP: break-word">如下的内容也是我从别的朋友那里找来的， 
+      不属于本人原创，但是任然发上来供各位朋友参考，希望能给你的学习带来方便。<BR style="WORD-WRAP: break-word"><BR 
+      style="WORD-WRAP: break-word">一.反编译Apk得到Java源代码&nbsp;&nbsp;<BR 
+      style="WORD-WRAP: break-word">工具下载：需用到dex2jar和JD-GUI这2个工具<BR 
+      style="WORD-WRAP: break-word">dex2jar下载地址：http://laichao.googlecode.com/files/dex2jar-0.0.7-SNAPSHOT.zip<BR 
+      style="WORD-WRAP: break-word"><BR 
+      style="WORD-WRAP: break-word">JD-GUI下载地址：<BR 
+      style="WORD-WRAP: break-word">&nbsp;&nbsp;windows版JD-GUI：http://laichao.googlecode.com/files/jdgui.zip<BR 
+      style="WORD-WRAP: break-word"><BR 
+      style="WORD-WRAP: break-word">&nbsp;&nbsp;Linux版JD-GUI：http://laichao.googlecode.com/files/jd-gui-0.3.2.linux.i686.tar.gz<BR 
+      style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">步骤：<BR 
+      style="WORD-WRAP: break-word">1.首先找到Android软件安装包中的classes.dex<BR 
+      style="WORD-WRAP: break-word">把.apk文件改名为.zip，然后解压缩,得到其中的classes.dex文件，它就是java文件编译再通过dx工具打包成的,所以现在我们就用上述提到的2个工具来逆方向导出java源文件<BR 
+      style="WORD-WRAP: break-word"><BR 
+      style="WORD-WRAP: break-word">2.把classes.dex拷贝到dex2jar.bat所在目录。<BR 
+      style="WORD-WRAP: break-word">在命令行模式下定位到dex2jar.bat所在目录，运行 dex2jar.bat 
+      classes.dex&nbsp;&nbsp;，生成classes.dex.dex2jar.jar<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="WORD-WRAP: break-word">3.运行JD-GUI工具（它是绿色无须安装的）<BR 
+      style="WORD-WRAP: break-word">打开上面的jar文件，即可看到源代码<BR 
+      style="WORD-WRAP: break-word">---------------------------------------------------------------------------------<BR 
+      style="WORD-WRAP: break-word">二.反编译apk生成程序的源代码和图片、XML配置、语言资源等文件。<BR 
+      style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">工具下载：<BR 
+      style="WORD-WRAP: break-word">在http://code.google.com/p/android-apktool/下 
+      载获得，apktool-1.0.0.tar.bz2和apktool-install-windows-2.1_r01-1.zip两个包都要下。<BR 
+      style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">步骤：<BR 
+      style="WORD-WRAP: break-word">1.解压缩下载的两个文件包，apktool-install-windows-2.1_r01-1.zip解压缩后得到的包里有aapt.exe 
+      和apktool.bat.（注意要把apktool-1.0.0.tar.bz2解压后的一个.jar 文件copy进来）<BR 
+      style="WORD-WRAP: break-word">2.打开命令窗口 （开始 &gt; 
+      运行，输入cmd，回车。）进入到apktool.bat的文件夹里。<BR style="WORD-WRAP: break-word">输入：<BR 
+      style="WORD-WRAP: break-word">apktool d 
+      C:\***.apk&nbsp;&nbsp;C:\***文件夹<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR 
+      style="WORD-WRAP: break-word">（命令行解释：apktool d 要反编译的文件 输出文件夹）<BR 
+      style="WORD-WRAP: break-word">特别注意：你要反编译的文件一定要放在C盘的根目录里，<BR 
+      style="WORD-WRAP: break-word">3.打开 C:\***文件夹 就可以得到我们学院的各种资源了。<BR 
+      style="WORD-WRAP: break-word"><BR 
+      style="WORD-WRAP: break-word">三.将反编译完的文件重新打包成apk<BR 
+      style="WORD-WRAP: break-word">很简单，只要输入：<BR 
+      style="WORD-WRAP: break-word">&nbsp; &nbsp;&nbsp;&nbsp;apktood b 
+      c:***文件夹（你编译出来文件夹）</TD></TR></TBODY></TABLE></P></BODY></HTML>

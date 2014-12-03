@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>在jQuery中采用unbind()来移除事件，该方法可以接受两个可选的参数，也可以不设置任何参数，例如下面的代码表示移除&lt;div&gt;标记的所有事件<br />
+  $(&quot;div&quot;).unbind();<br />
+  而下面的代码则表示删除&lt;p&gt;标记的所有单击事件。<br />
+  $(&quot;p&quot;).unbind(&quot;click&quot;);<br />
+  如果希望移除某个指定的事件，则必须使用unbind(eventType,listener)方法，监听函数不能采用匿名函数的方式，例如：<br />
+  $(&quot;p&quot;).bind(&quot;click&quot;,myFunc);        //myFunc为监听函数名<br />
+  $(&quot;p&quot;).unbing(&quot;click&quot;,myFunc);</p>
+</body>
+</html>

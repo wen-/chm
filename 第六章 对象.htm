@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>第六章 对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>第六章 对象</P>
+<P>&nbsp;</P>
+<P>对象的创建：</P>
+<P>1.对象直接量：var o1 = {};</P>
+<P>2.通过new创建：var o2 = new Object();</P>
+<P>3.Object create():var o3 = Object create({x:1,y:2});//----------IE9及以下才支持</P>
+<P><STRONG>第三种方法创建的对象不能用delete o3[y]或delete o3.y删除属性，</STRONG></P>
+<P><STRONG>而其它两种方法用delete o3["y"]或delete 
+o3.y删除属性,访问删除的属性返回undefined</STRONG></P>
+<P><STRONG><FONT color=#ff0000>o3是继承属性对象<FONT style=""><FONT style=""><FONT 
+style=""><FONT style=""><FONT style=""><FONT style=""><FONT style=""><FONT 
+style=""></P></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></STRONG>
+<P></FONT>原型：</P>
+<P>prototype</P>
+<P>每一个对象（除null）都有另一个对象与之相关联，‘另一个’对象就是原型，每个对象都从原型中继承属性。</P>
+<P>Object.prototype没有原型，其它对象都是普通对象，都有原型。如：</P>
+<P>new Date()就继承了Date.prototype和Object.prototype,</P>
+<P>new Array()就继承了Array.prototype和Object.prototype。</P></BODY></HTML>

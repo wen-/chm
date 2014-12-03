@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>jQuery中提供了append()方法，可直接为某个元素添加新的子元素，例如：<br />
+  $(function(){<br />
+  $(&quot;p:eq(1)&quot;).append(&quot;&lt;b&gt;直接添加&lt;/b&gt;&quot;);          //在第2个p后面添加html代码<br />
+  });<br />
+  除了直接添加HTML代码，append()方法还可以用来移动或复制已有的节点。如：<br />
+  $(&quot;p:eq(0)&quot;).append($(&quot;a:eq(2)&quot;));        //将页面的第2个超链接，作为子元素移动到第一个&lt;p&gt;的最后<br />
+  $(&quot;p&quot;.append(&quot;a:eq(0)&quot;));                     //将页面的第1个超链接，作为子元素，复制到所有&lt;p&gt;的最后<br />
+  即：如果目标&lt;p&gt;是唯一的一个&lt;p&gt;元素，那么$(&quot;a&quot;)将会作为子元素被移动到&lt;p&gt;的所有子元素的后面；如果目标&lt;p&gt;是多个元素，那么$(&quot;a&quot;)将会作为子元素复制到每个&lt;p&gt;的所有子元素的后面。<br />
+  除了append()方法外，jQuery还提供了appendTo(target)方法，用来将元素添加为指定目标的子元素，它的使用方法和运行结果与append()完全类似。<br />
+  与append()和appendTo(target)相对应，jQuery还提供了prepend()和prependTo(target)方法。这两种方法是将元素添加到目标的所有子元素之前，也遵循多个目标则复制、单个目标则移动的添加原则<br />
+  before()或after()，与insertBefore()或insertAfter()，用来将元素直接添加到某节点之前或之后，而不是作为子元素插入。例：<br />
+  $(fuinction(){<br />
+  $(&quot;p&quot;).after($(&quot;a:eq(0)&quot;));             //添加目标为多个&lt;p&gt;，复制<br />
+  $(&quot;p:eq(1)&quot;).after($(&quot;a:eq(1)&quot;));     //添加目标为单个&lt;p&gt;，移动<br />
+  });</p>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>移动设备窗口大小</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY>
+<P>移动设备窗口大小</P>
+<P>document.documentElement 和 screen</P>
+<P>screen对象有4个属性：width\height 和 availWidth\availHeight 
+后两个是去除操作系统工具栏后的可用空间。通常他们都相同。</P>
+<P>document.documentElement.clientWidth 
+(横屏到直立)\document.documentElement.clientHeight(直立到横屏)</P>
+<P>方向变化事件：</P>
+<P>safari-----onorientationchange和onresize（苹果系列)</P>
+<P>BlackBerry----document.onresize(部分设备)</P>
+<P>Android----onresize(安卓及其他）</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+face=Simsun></FONT>&nbsp;</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>iPhone</STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>1.设置viewpoint，固定显示页面：</STRONG><BR>当我们在Safari中打开一个网站时，默认情况下会缩放显示网页，而这会影响Web 
+App的体验，所以通过以下代码来关闭缩放：</P>
+<BLOCKQUOTE 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+  <P>&lt;meta name = “viewport” content = “user-scalable=no, 
+  width=device-width”&gt;或</P><SPAN 
+  style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: -2px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: 12px Consolas, 'Lucida Console', monospace; WHITE-SPACE: pre-wrap; ORPHANS: 2; FLOAT: none; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: none; -webkit-text-stroke-width: 0px">&lt;meta 
+  name="viewport" 
+  content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"&gt;</SPAN> 
+
+  <P 
+  style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">属性的介绍：</P>
+  <BLOCKQUOTE 
+  style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+    <P>user-scalable – 用户是否可以手动缩放；<BR>width – 定义viewport宽度(默认为980像素) 
+    ，例子中值为device-width是指设置为设备显示宽度；<BR>height – viewport的高度；<BR>initial-scale – 
+    初始的缩放比例 (范围从 0 到10)；<BR>minimum-scale – 允许用户缩放到的最小比例；<BR>maximum-scale – 
+    允许用户缩放到的最大比例；</P>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>设置快捷方式图标，快速启动：<BR 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">在使用Safari浏览网站的时候，用户可以把一个网站添加到主屏幕，下次打开就直接点击主屏幕上的图标进入该网站</SPAN></STRONG></P>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">这个功能不仅方便用户而且会使我们的WebApp网站更像一个原生程序，设置代码：</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;link rel=”apple-touch-icon” href=”icon.png” /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">iOS系统会自动将图标生成具有高光、圆角和阴影效果</P>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">所以用于在主屏幕显示的图标只用制作一个57×57矩形PNG图片就OK了，当然如果你不想要自动生成的效果，可以这样定义：</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;link rel=”apple-touch-icon-precomposed” href=”icon.png” 
+    /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">其实苹果不同的设备其图标尺寸也有区别，我们可以通过sizes属性来有针对性的优化图标：</P>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">通用设置：图片尺寸：57×57像素</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;link rel=”apple-touch-icon” href=”touch-icon-iphone.png” 
+    /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">iPad，图标尺寸：72×72像素</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;link rel=”apple-touch-icon” sizes=”72×72″ 
+      href=”touch-icon-ipad.png” /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">iPhone4，图标尺寸：114×114像素</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;link rel=”apple-touch-icon” sizes=”114×114″ 
+      href=”touch-icon-iphone4.png” /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">图标的名称会自动选取网站title，并有13字符的长度限制</P>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG><SPAN 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; DISPLAY: inline !important; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">为了在主屏达到最好的显示效果，title最好限制在6个中文长度内，文字超长会被隐藏</SPAN></SPAN></STRONG></P>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>隐藏safari导航栏以及工具栏，全屏显示网页：</STRONG><BR>因为我们的Web 
+    App是为了iPhone、iPad定制的网站，所以Safari的顶部导航栏以及底部工具栏的作用不大，可以用以下代码隐藏它们，让网站像原生应用一样全屏显示：</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;meta name=”apple-mobile-web-app-capable” content=”yes” 
+    /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>设置状态栏风格：</STRONG><BR>为了配合网站的风格，我们还可以改变状态栏的风格(iPad无效)：</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;meta name=”apple-mobile-web-app-status-bar-style” content=”grey” 
+      /&gt;<BR>&lt;meta name=”apple-mobile-web-app-status-bar-style” 
+      content=”black” /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>其他细节设置：</STRONG><BR><STRONG>启动画面</STRONG><BR>当用户点击图标打开网站时，系统会优先显示该网站的截图，从视觉上减少用户等待的感觉，但这种“视觉欺骗”方式有时会事得其反，那就是当网站载入比较慢时，只是看到截图的用户会误以为网站已经载入完成并开始操作，可以想象对于这个“假死”的网站用户的心情肯定不会好，所以在网站载入比较耗时的情况下可以为我们的网站增加启动画面：</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;link rel=”apple-touch-startup-image” href=”Startup.png” 
+    /&gt;</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">iphone尺寸：320×460像素<BR>ipad尺寸：768×1004像素<BR>注：如果图片尺寸不对将无法显示。</P>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">[2011.2.1]如果想让一个webapp在iphone和ipad中同时具有启动画面，我们借助js来完成，首先判断UA，然后更改href的值指向对应的图片路径：</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>var ua = 
+      navigator.userAgent.toLowerCase();<BR>if(ua.match(/iPad/i)==”ipad”) 
+      {<BR>$(“link[rel=apple-touch-startup-image]“).attr(“href”,”images/startup_ipad.png”);<BR>}</P></BLOCKQUOTE>
+    <P 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>屏蔽iPhone下的拨号链接</STRONG><BR>iPhone下会自动将连串数字转换为拨号超链接，如果没特别的需要还是将这个功能屏蔽为好：</P>
+    <BLOCKQUOTE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: medium Simsun; WHITE-SPACE: normal; ORPHANS: 2; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <P>&lt;meta name= 
+    ”format-detection”content=”telephone=no”/&gt;</P></BLOCKQUOTE>
+    <P>&nbsp;</P>
+    <P>&nbsp;</P>
+    <P>&nbsp;</P>
+    <DIV 
+    style="TEXT-ALIGN: left; FILTER: none; BORDER-LEFT: rgb(139,151,161) 5px solid; OVERFLOW-X: hidden; OVERFLOW-Y: hidden; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 8px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: bold 14px/26px Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(85,91,110); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+    class=tit>iphone/ipod手机网页开发教程及实例技巧</DIV>
+    <DIV 
+    style="TEXT-ALIGN: left; FILTER: none; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 8px 12px; LETTER-SPACING: normal; ZOOM: 1 !important; FONT: 12px/18px Verdana; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; VISIBILITY: visible !important; COLOR: rgb(136,136,136); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+    class=date>2012-02-07 11:21</DIV>
+    <P>
+    <TABLE 
+    style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; WIDTH: 878px; LETTER-SPACING: normal; FONT-FAMILY: Arial; ORPHANS: 2; TABLE-LAYOUT: fixed; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+      <TBODY>
+      <TR>
+        <TD 
+        style="FILTER: none; LINE-HEIGHT: 18px; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">
+          <DIV 
+          style="POSITION: relative !important; FILTER: none; LINE-HEIGHT: 18px; OVERFLOW-X: hidden; OVERFLOW-Y: hidden; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all" 
+          id=blog_text class=cnt>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P 
+          style="LINE-HEIGHT: normal">现在很多新手开发手机网页都不知道从何入手，下面就讲述如何开发iphone/ipod手机网页。</P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">1.侦测iPhone/iPod</STRONG></P>
+          <P 
+          style="LINE-HEIGHT: normal">&nbsp;开发特定设备的移动网站，首先要做的就是设备侦测了。下面是使用Javascript侦测iPhone/iPod的UA，然后转向到专属URL。</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Js代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;</DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">if</SPAN>((navigator.userAgent.match(/iPhone/i))&nbsp;||&nbsp;(navigator.userAgent.match(/iPod/i)))&nbsp;{&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">if</SPAN>&nbsp;(document.cookie.indexOf(<SPAN 
+            style="LINE-HEIGHT: normal">"iphone_redirect=false"</SPAN>)&nbsp;==&nbsp;-1)&nbsp;{&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">window.location&nbsp;=&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">"http://m.example.com"</SPAN>;&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">}&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">}&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal">&nbsp;</SPAN><SPAN 
+          style="LINE-HEIGHT: normal">虽然Javascript是可以在水果设备上运行的，但是用户还是可以禁用。它也会造成客户端刷新和额外的数据传输，所以下面是服务器端侦测和转向：</SPAN></P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Js代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;<A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(98,0,145); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 
+href="http://justcoding.iteye.com/blog/1175573"></A></DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">if</SPAN>(strstr($_SERVER[<SPAN 
+            style="LINE-HEIGHT: normal">'HTTP_USER_AGENT'</SPAN>],<SPAN 
+            style="LINE-HEIGHT: normal">'iPhone'</SPAN>)&nbsp;||&nbsp;strstr($_SERVER[<SPAN 
+            style="LINE-HEIGHT: normal">'HTTP_USER_AGENT'</SPAN>],<SPAN 
+            style="LINE-HEIGHT: normal">'iPod'</SPAN>))&nbsp;{&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">header(<SPAN 
+            style="LINE-HEIGHT: normal">'Location:&nbsp;http://yoursite.com/iphone'</SPAN>);&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">exit();&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">}&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">2.设置viewpoint和屏幕等宽</STRONG></P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>如果不设置viewpoint，网站在viewpoint就会显示成缩略形式。如果你专门为iPhone/iPod开发网站，这一条很有用，而且很简单，只需要插入到head里就可以：</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Html代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;<A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(98,0,145); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 
+href="http://justcoding.iteye.com/blog/1175573"></A></DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&lt;</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">meta</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">name</SPAN>=<SPAN 
+            style="LINE-HEIGHT: normal">"viewport"</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">content</SPAN>=<SPAN 
+            style="LINE-HEIGHT: normal">"width=device-width;&nbsp;initial-scale=1.0;&nbsp;maximum-scale=1.0;"</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">&gt;</SPAN>&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">3.使用iPhone规格图标</STRONG></P>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>如果你的用户将你的网站添加到home 
+          screen，iPhone会使用网站的缩略图作为图标。然而你可以提供一个自己设计的图标，这样当然更好。图片是57×57大小，png格式。不需要自己做圆角和反光，系统会自动完成这些工作。然后将下面这条加入head中：</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Html代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;<A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(98,0,145); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 
+href="http://justcoding.iteye.com/blog/1175573"></A></DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&lt;</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">rel</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">rel</SPAN>=<SPAN 
+            style="LINE-HEIGHT: normal">"apple-touch-icon"</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">href</SPAN>=<SPAN 
+            style="LINE-HEIGHT: normal">"images/youricon.png"</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">/&gt;</SPAN>&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">4.阻止旋转屏幕时自动调整字体大小</STRONG></P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>-webkit-text-size-adjust是webkit的私有css：</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Html代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;<A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(98,0,145); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 
+href="http://justcoding.iteye.com/blog/1175573"></A></DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">html,&nbsp;body,&nbsp;form,&nbsp;fieldset,&nbsp;p,&nbsp;div,&nbsp;h1,&nbsp;h2,&nbsp;h3,&nbsp;h4,&nbsp;h5,&nbsp;h6&nbsp;{-webkit-text-size-adjust:none;}&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">5.侦测设备旋转方向</STRONG></P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>iPhone可以在横屏状态下浏览网页，有时候你会想知道用户设备的手持状态来增强可用性和功能。下面一段Javascript可以判断出设备向哪个方向旋转，并且替换css：</P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal">Java代码&nbsp;</SPAN><EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never"><SPAN 
+          style="LINE-HEIGHT: normal">&nbsp;</SPAN><A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(75,89,111); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 href="http://justcoding.iteye.com/blog/1175573"></A></P>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">window.onload&nbsp;=&nbsp;function&nbsp;initialLoad()&nbsp;{updateOrientation();}&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">function&nbsp;updateOrientation(){&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">var&nbsp;contentType&nbsp;=&nbsp;“show_”;&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">switch</SPAN>(window.orientation){&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">case</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal; COLOR: rgb(192,0,0)">0</SPAN>:&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">contentType&nbsp;+=&nbsp;“normal”;&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">break</SPAN>;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">case</SPAN>&nbsp;-<SPAN 
+            style="LINE-HEIGHT: normal; COLOR: rgb(192,0,0)">90</SPAN>:&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">contentType&nbsp;+=&nbsp;“right”;&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">break</SPAN>;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">case</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal; COLOR: rgb(192,0,0)">90</SPAN>:&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">contentType&nbsp;+=&nbsp;“left”;&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">break</SPAN>;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&nbsp;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">case</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal; COLOR: rgb(192,0,0)">180</SPAN>:&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">contentType&nbsp;+=&nbsp;“flipped”;&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">break</SPAN>;&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">}&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">document.getElementById(“page_wrapper”).setAttribute(“<SPAN 
+            style="LINE-HEIGHT: normal">class</SPAN>”,&nbsp;contentType);&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">}&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">6.iPhone才识别的CSS</STRONG></P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>如果不想设备侦测，可以用CSS媒体查询来专为iPhone/iPod定义样式。</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Html代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;<A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(98,0,145); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 
+href="http://justcoding.iteye.com/blog/1175573"></A></DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">@media&nbsp;screen&nbsp;and&nbsp;(max-device-width:&nbsp;480px)&nbsp;{}&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">7.缩小图片</STRONG></P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>网站的大图通常宽度都超过480像素，如果用前面的代码限制了缩放，这些图片在iPhone版显示显然会超过屏幕。好在iPhone机能还够，我们可以用CSS让iPhone自动将大图片缩小显示。</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Html代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;</DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">@media&nbsp;screen&nbsp;and&nbsp;(max-device-width:&nbsp;480px){&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">img{max-width:100%;height:auto;}&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">}&nbsp;&nbsp;</SPAN></LI></OL>
+          <P 
+          style="LINE-HEIGHT: normal">&nbsp;注意如果原图片非常大，或一个页面非常多图，最好还是在服务器端缩放到480像素宽，iPhone只需要在正常浏览时缩略到320像素。这样不会消耗太多流量和机能。</P>
+          <P style="LINE-HEIGHT: normal">&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">8.默认隐藏工具栏</STRONG></P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>iPhone的浏览器工具栏会在页面最顶端，卷动网页后才隐藏。这样在加载网页完成后显得很浪费空间，特别是横向屏幕时。我们可以让它自动卷动上去。</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Js代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;<A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(98,0,145); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 
+href="http://justcoding.iteye.com/blog/1175573"></A></DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">window.addEventListener(<SPAN 
+            style="LINE-HEIGHT: normal">'load'</SPAN>,&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">function</SPAN>()&nbsp;{&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">setTimeout(scrollTo,&nbsp;0,&nbsp;0,&nbsp;1);&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">},&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">false</SPAN>);&nbsp;&nbsp;</SPAN></LI></OL>
+          <P style="LINE-HEIGHT: normal"><SPAN 
+          style="LINE-HEIGHT: normal"></SPAN>&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">9.使用特殊链接</STRONG></P>
+          <P style="LINE-HEIGHT: normal">&nbsp;<SPAN 
+          style="LINE-HEIGHT: normal">Html代码</SPAN><SPAN 
+          style="LINE-HEIGHT: normal">&nbsp;</SPAN><EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never"><SPAN 
+          style="LINE-HEIGHT: normal">&nbsp;</SPAN><A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(75,89,111); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 href="http://justcoding.iteye.com/blog/1175573"></A></P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&lt;</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">a</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">href</SPAN>=<SPAN 
+            style="LINE-HEIGHT: normal">"tel:12345654321"</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">&gt;</SPAN>打电话给我<SPAN 
+            style="LINE-HEIGHT: normal">&lt;/</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">a</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">&gt;</SPAN>&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">&lt;</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">a</SPAN>&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">href</SPAN>=<SPAN 
+            style="LINE-HEIGHT: normal">"sms:12345654321"</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">&gt;</SPAN>发短信<SPAN 
+            style="LINE-HEIGHT: normal">&lt;/</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">a</SPAN><SPAN 
+            style="LINE-HEIGHT: normal">&gt;</SPAN>&nbsp;&nbsp;</SPAN></LI></OL></DIV>
+          <P style="LINE-HEIGHT: normal">&nbsp;</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"><STRONG 
+          style="LINE-HEIGHT: normal">10.模拟:hover伪类:<SPAN 
+          style="LINE-HEIGHT: normal"></SPAN></STRONG>因为iPhone并没有鼠标指针，所以没有hover事件。那么CSS 
+          :hover伪类就没用了。但是iPhone有Touch事件，onTouchStart 类似 onMouseOver，onTouchEnd 
+          类似 onMouseOut。所以我们可以用它来模拟hover。使用Javascript：</P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <P style="LINE-HEIGHT: normal"></P>
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">
+          <DIV 
+          style="FILTER: none; LINE-HEIGHT: normal; ZOOM: 1 !important; FONT-FAMILY: Arial; WORD-WRAP: break-word; VISIBILITY: visible !important; FONT-SIZE: 12px; WORD-BREAK: break-all">Js代码&nbsp;<EMBED 
+          style="LINE-HEIGHT: normal" height=15 
+          type=application/x-shockwave-flash 
+          pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+          src=http://justcoding.iteye.com/s/syntaxhighlighter/clipboard_new.swf 
+          allownetworking="none" allowscriptaccess="never">&nbsp;<A 
+          style="LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: rgb(98,0,145); FONT-SIZE: 12px; FONT-WEIGHT: normal; TEXT-DECORATION: none" 
+          title=收藏这段代码 
+href="http://justcoding.iteye.com/blog/1175573"></A></DIV>
+          <OL style="LINE-HEIGHT: normal">
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">var</SPAN>&nbsp;myLinks&nbsp;=&nbsp;document.getElementsByTagName(<SPAN 
+            style="LINE-HEIGHT: normal">'a'</SPAN>);&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">for</SPAN>(<SPAN 
+            style="LINE-HEIGHT: normal">var</SPAN>&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;myLinks.length;&nbsp;i++){&nbsp;&nbsp;</SPAN> 
+
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">myLinks[i].addEventListener(’touchstart’,&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">function</SPAN>(){<SPAN 
+            style="LINE-HEIGHT: normal">this</SPAN>.className&nbsp;=&nbsp;“hover”;},&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">false</SPAN>);&nbsp;&nbsp;</SPAN> 
+            <LI style="LINE-HEIGHT: normal"><SPAN 
+            style="LINE-HEIGHT: normal">myLinks[i].addEventListener(’touchend’,&nbsp;<SPAN 
+            style="LINE-HEIGHT: normal">function</SPAN></SPAN></LI></OL></DIV></DIV></DIV>
+          <LI 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0.5em; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 15px/22px Verdana, Arial, 微软雅黑; WHITE-SPACE: normal; ORPHANS: 2; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(24,24,24); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial; border-image: initial"><STRONG 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><BR 
+          class=Apple-interchange-newline>最重要的一点就是文字一定要足够大，不要让用户进行缩放才能看清正文。</STRONG><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">iPhone 
+          4的的屏幕分辨率是640×960，大多数的电脑显示器的横向分辨率都只是它的2～3倍，但物理宽度却是它的4倍以上，这也就意味着iPhone上的像素点比电脑显示器上要小很多。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">或者更精确地说，Mac上的默认DPI是72，PC上是96，iPhone 
+          3GS是163，而iPhone 
+          4是326（横向比较像素大小时仍计算成163）。因此不做调整的话，iPhone将会很难看清针对电脑屏幕设计的网页。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">实际上iPhone的Safari浏览器也考虑到了这个问题，因此会自动对字体大小进行调整，避免太小了而不方便浏览。但这也造成了一个问题：medium字号会比large和larger显示得更大，你得用x-large来表示大号字体。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">解决办法就是禁用自动调整：<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><PRE style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><CODE style="PADDING-BOTTOM: 0.5em; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 8px 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0.5em; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0.5em; DISPLAY: block; FONT: 1em/1.3em 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(248,248,248); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0.5em; background-origin: initial; background-clip: initial; border-image: initial; box-shadow: rgba(0, 0, 0, 0.699219) 3px 3px 3px" class=css data-result="[object Object]"><SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(137,189,255); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=tag>body</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=rules>{<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=rule><SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>-webkit-text-size-adjust</SPAN>:<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(207,106,76); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value> none</SPAN>;</SPAN><SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=rule>}</SPAN></SPAN></CODE></PRE>或者干脆用px作单位。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">此外还要注意别让横向分辨率过大，因为Safari会自动把横向分辨率当成980像素来进行缩放，这样虽然能较完整地显示网页，但却使文字变小了。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">我的处理方法是在head元素里加上这段代码：<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><PRE style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><CODE style="PADDING-BOTTOM: 0.5em; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 8px 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0.5em; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0.5em; DISPLAY: block; FONT: 1em/1.3em 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(248,248,248); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0.5em; background-origin: initial; background-clip: initial; border-image: initial; box-shadow: rgba(0, 0, 0, 0.699219) 3px 3px 3px" class="html xml" data-result="[object Object]" data-second_best="[object Object]"><SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(137,189,255); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=tag>&lt;<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=title>meta</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>name</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"viewport"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>content</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"width=device-width"</SPAN>/&gt;</SPAN></CODE></PRE>而在切换成横屏时，屏幕也会自动放大，可以将maximum-scale设为1来禁止这个行为，但也会导致用户无法自行缩放。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">Safari还支持一些其他的meta，详细情况可以去看Safari的<A 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(3,167,235); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+          href="http://developer.apple.com/library/safari/#documentation%2Fappleapplications%2Freference%2FSafariHTMLRef%2FArticles%2FMetaTags.html">Supported 
+          Meta Tags文档</A>。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">
+          <LI 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0.5em; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 15px/22px Verdana, Arial, 微软雅黑; WHITE-SPACE: normal; ORPHANS: 2; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(24,24,24); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial; border-image: initial"><STRONG 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">第二重要的就是便于用户点击链接。</STRONG><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">触摸屏操作和鼠标操作有很大的不同，鼠标可以轻松点击和选择，而手指却没法精确地点击一块区域。因此，为了避免误操作，必须让链接足够大，且相互之间有足够的间距（可以通过设定line-height、height、padding和margin来达到这个目的）。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">苹果的建议是可点击区域不要小于44×44像素。<A 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(3,167,235); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+          href="https://www.google.com/reader/i/">Google 
+          Reader</A>的feed是33像素高，item是70像素高，使用中明显感觉到后者比前者更适合点击，所以我认为每个可点击区域的高度在60像素以上时比较合适。不过考虑到设备之间的DPI差异，可能用pt、cm、in作单位更好。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">除了链接，checkbox、radio 
+          button和button等控件也需要这样设置。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">
+          <LI 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0.5em; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 15px/22px Verdana, Arial, 微软雅黑; WHITE-SPACE: normal; ORPHANS: 2; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(24,24,24); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial; border-image: initial"><STRONG 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">为各种设备设置不同的样式表。</STRONG><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">iPhone 
+          Safari支持CSS Media Query，可以用这种方式引入样式：<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><PRE style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><CODE style="PADDING-BOTTOM: 0.5em; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 8px 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0.5em; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0.5em; DISPLAY: block; FONT: 1em/1.3em 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(248,248,248); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0.5em; background-origin: initial; background-clip: initial; border-image: initial; box-shadow: rgba(0, 0, 0, 0.699219) 3px 3px 3px" class="html xml" data-result="[object Object]" data-second_best="[object Object]"><SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(137,189,255); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=tag>&lt;<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=title>link</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>media</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"only screen and (max-device-width: 480px)"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>href</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"iphone.css"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>type</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"text/css"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>rel</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"stylesheet"</SPAN>/&gt;</SPAN></CODE></PRE>值得一提的是，iPhone 
+          4的横向分辨率虽然超过480px，但仍然可以正常载入。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">但如果要区分iPhone 
+          3GS和iPhone 4的话，就需要用到-webkit-min-device-pixel-ratio了：<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><PRE style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><CODE style="PADDING-BOTTOM: 0.5em; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 8px 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0.5em; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0.5em; DISPLAY: block; FONT: 1em/1.3em 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(248,248,248); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0.5em; background-origin: initial; background-clip: initial; border-image: initial; box-shadow: rgba(0, 0, 0, 0.699219) 3px 3px 3px" class="html xml" data-result="[object Object]" data-second_best="[object Object]"><SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(137,189,255); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=tag>&lt;<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=title>link</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>media</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"screen and (-webkit-min-device-pixel-ratio:1)"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>href</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"iphone3.css"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>type</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"text/css"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>rel</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"stylesheet"</SPAN>/&gt;</SPAN>
+<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(137,189,255); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=tag>&lt;<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=title>link</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>media</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"screen and (-webkit-min-device-pixel-ratio:2)"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>href</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"iphone4.css"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>type</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"text/css"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>rel</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"stylesheet"</SPAN>/&gt;</SPAN></CODE></PRE>这个东西指的是屏幕的densities，可理解为精细程度，越高则越精细。Android上只允许设为0.75、1和1.5，可见它是达不到retina的程度的。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">
+          <LI 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0.5em; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 15px/22px Verdana, Arial, 微软雅黑; WHITE-SPACE: normal; ORPHANS: 2; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(24,24,24); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial; border-image: initial"><STRONG 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">利用触摸屏。</STRONG><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">触摸屏的操作方式使得iPhone 
+          Safari事件与电脑上的浏览器不同，详情可见<A 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(3,167,235); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" 
+          href="http://developer.apple.com/library/safari/#documentation%2Fappleapplications%2Freference%2Fsafariwebcontent%2FHandlingEvents%2FHandlingEvents.html">Handling 
+          Events文档</A>。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">里面的说明很详细，甚至可以用来做一个相当于鼠标手势的玩意。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">如果要让用户无法移动viewport，可以捕捉ontouchmove事件，让它调用event.preventDefault()。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">iPhone上没有hover，但是点击链接时仍可以配合active伪类。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">
+          <LI 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0.5em; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; FONT: 15px/22px Verdana, Arial, 微软雅黑; WHITE-SPACE: normal; ORPHANS: 2; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(24,24,24); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial; border-image: initial"><STRONG 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">添加主屏幕图标。</STRONG><BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">电脑上的浏览器可以把网站添加到收藏夹里，并显示它的favicon图标（16×16像素，256色）。而iPhone上则可以添加到主屏幕，而且可以显示一个57×57像素的真彩图标。不过如果不进行设置的话，Safari只会将当前页的截屏保存为图标。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">要自定义的话，可以做一个该大小的图标，命名为apple-touch-icon.png，并放在网站根目录下。iPhone会自动为其添加高光效果，如果不需要该效果的话，保存为apple-touch-icon-precomposed.png即可。<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial">此外，iPhone 
+          4支持114×114像素的图标，iPad支持72×72像素，需要用meta标签来设置：<BR 
+          style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><PRE style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial"><CODE style="PADDING-BOTTOM: 0.5em; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: rgb(0,0,0); MARGIN: 8px 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0.5em; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0.5em; DISPLAY: block; FONT: 1em/1.3em 'Droid Sans Mono', 'DejaVu Sans Mono', 'Lucida Console', 'Courier New', monospace; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(248,248,248); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0.5em; background-origin: initial; background-clip: initial; border-image: initial; box-shadow: rgba(0, 0, 0, 0.699219) 3px 3px 3px" class="html xml" data-result="[object Object]"><SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(137,189,255); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=tag>&lt;<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=title>link</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>rel</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"apple-touch-icon"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>sizes</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"114*114"</SPAN> <SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=attribute>href</SPAN>=<SPAN style="PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; MARGIN: 0px; OUTLINE-COLOR: ; PADDING-LEFT: 0px; OUTLINE-WIDTH: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(101,176,66); VERTICAL-ALIGN: baseline; BORDER-LEFT-WIDTH: 0px; PADDING-TOP: 0px; background-origin: initial; background-clip: initial; border-image: initial" class=value>"/apple-touch-icon-iphone4.png"</SPAN>/&gt;</SPAN></CODE></PRE></LI></TD></TR></TBODY></TABLE></P></BLOCKQUOTE></BLOCKQUOTE></BODY></HTML>

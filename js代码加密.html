@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js????????</TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<div class="js_escape js_box">
+	<h1>js_escape编码：</h1>
+    <div class="in_out clearfix">
+    	<textarea id="code_in" class="lfloat">代码输入</textarea>
+    	<textarea id="code_out" class="rfloat">代码输出</textarea>
+    </div>
+    <div class="js_btn">
+    	<button id="escape_btn" class="js_in" type="button">escape编码</button>
+        <button id="unescape_btn" class="js_out" type="button">unescape解码</button>
+    </div>
+    <p>注释：ECMAScript v3 反对使用该方法，应用使用 encodeURI()/decodeURI() 和 encodeURIComponent()/decodeURIComponent() 替代它。</p>
+</div>
+
+<div class="js_encodeURI js_box">
+	<h1>js_encodeURI编码：</h1>
+    <div class="in_out clearfix">
+    	<textarea id="code_in1" class="lfloat">代码输入</textarea>
+    	<textarea id="code_out1" class="rfloat">代码输出</textarea>
+    </div>
+    <div class="js_btn">
+    	<button id="encodeURI_btn" class="js_in" type="button"> encodeURI编码</button>
+        <button id="decodeURI_btn" class="js_out" type="button">decodeURI解码</button>
+    </div>
+</div>
+
+<div class="js_encodeURIComponent js_box">
+	<h1>js_encodeURIComponent编码：</h1>
+    <div class="in_out clearfix">
+    	<textarea id="code_in2" class="lfloat">代码输入</textarea>
+    	<textarea id="code_out2" class="rfloat">代码输出</textarea>
+    </div>
+    <div class="js_btn">
+    	<button id="encodeURIComponent_btn" class="js_in" type="button">encodeURIComponent编码</button>
+        <button id="decodeURIComponent_btn" class="js_out" type="button">decodeURIComponent解码</button>
+    </div>
+</div>
+
+<div class="js_Unicode js_box">
+	<h1>Unicode 编码：</h1>
+    <div class="in_out clearfix">
+    	<textarea id="code_in3" class="lfloat">代码输入</textarea>
+    	<textarea id="code_out3" class="rfloat">代码输出</textarea>
+    </div>
+    <div class="js_btn">
+    	<button id="charCodeAt_btn" class="js_in" type="button">charCodeAt编码</button>
+        <button id="fromCharCode_btn" class="js_out" type="button">fromCharCode解码</button>
+    </div>
+</div>
+<script type="text/javascript">
+var codeIn = document.getElementById("code_in"),
+	codeOut = document.getElementById("code_out"),
+	escapeBtn = document.getElementById("escape_btn"),
+	unescapeBtn = document.getElementById("unescape_btn");
+var codeIn1 = document.getElementById("code_in1"),
+	codeOut1 = document.getElementById("code_out1"),
+	encodeURIBtn = document.getElementById("encodeURI_btn"),
+	decodeURIBtn = document.getElementById("decodeURI_btn");
+var codeIn2 = document.getElementById("code_in2"),
+	codeOut2 = document.getElementById("code_out2"),
+	encodeURIComponentBtn = document.getElementById("encodeURIComponent_btn"),
+	decodeURIComponentBtn = document.getElementById("decodeURIComponent_btn");
+var codeIn3 = document.getElementById("code_in3"),
+	codeOut3 = document.getElementById("code_out3"),
+	charCodeAtBtn = document.getElementById("charCodeAt_btn"),
+	fromCharCodeBtn = document.getElementById("fromCharCode_btn");
+//--------------escape编码---------------	
+escapeBtn.addEventListener("click",function(){
+	if(code_in.value == "代码输入"||code_in.value == ""){
+		alert("请输入要编码的代码");
+	}else{
+		var codeIn_val = codeIn.value;
+		codeOut.value = escape(codeIn_val);
+	};		
+});
+unescapeBtn.addEventListener("click",function(){
+	if(code_in.value == "代码输入"||code_in.value == ""){
+		alert("请输入要解码的代码");
+	}else{
+		var codeIn_val = codeIn.value;
+		codeOut.value = unescape(codeIn_val);
+	};
+});
+//--------------encodeURI编码---------------	
+encodeURIBtn.addEventListener("click",function(){
+	if(code_in1.value == "代码输入"||code_in1.value == ""){
+		alert("请输入要编码的代码");
+	}else{
+		var codeIn1_val = codeIn1.value;
+		codeOut1.value = encodeURI(codeIn1_val);
+	};		
+});
+decodeURIBtn.addEventListener("click",function(){
+	if(code_in1.value == "代码输入"||code_in1.value == ""){
+		alert("请输入要解码的代码");
+	}else{
+		var codeIn1_val = codeIn1.value;
+		codeOut1.value = decodeURI(codeIn1_val);
+	};
+});
+//--------------encodeURIComponent编码---------------	
+encodeURIComponentBtn.addEventListener("click",function(){
+	if(code_in2.value == "代码输入"||code_in2.value == ""){
+		alert("请输入要编码的代码");
+	}else{
+		var codeIn2_val = codeIn2.value;
+		codeOut2.value = encodeURI(codeIn2_val);
+	};		
+});
+decodeURIComponentBtn.addEventListener("click",function(){
+	if(code_in2.value == "代码输入"||code_in2.value == ""){
+		alert("请输入要解码的代码");
+	}else{
+		var codeIn2_val = codeIn2.value;
+		codeOut2.value = decodeURIComponent(codeIn2_val);
+	};
+});
+//--------------Unicode编码---------------	
+charCodeAtBtn.addEventListener("click",function(){
+	if(code_in3.value == "代码输入"||code_in3.value == ""){
+		alert("请输入要编码的代码");
+	}else{
+		var s = [];
+		var codeIn3_val = codeIn3.value;
+		for(i=0;i<codeIn3_val.length;i++){
+			s.push(codeIn3_val.charCodeAt(i));
+		};
+		codeOut3.value = s.join();
+	};		
+});
+fromCharCodeBtn.addEventListener("click",function(){
+	if(code_in3.value == "代码输入"||code_in3.value == ""){
+		alert("请输入要解码的代码");
+	}else{
+		var s1 =[];
+		var codeIn3_val = codeIn3.value.split(",");
+		for(i=0;i<codeIn3_val.length;i++){
+			s1.push(String.fromCharCode(codeIn3_val[i]));
+		};
+		codeOut3.value = s1.join("");
+	};
+});
+
+</script>
+</BODY></HTML>

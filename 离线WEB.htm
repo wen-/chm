@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>离线WEB</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>离线WEB</P>
+<P>1、每个需要离线使用的网页都指定一个后缀为.manifest的文本文件。该文件列出了当前页面所需的所有资源（HTML，图片，CSS,JS）</P>
+<P>2、&lt;html lang="en" manifest = "/offline.manifest"&gt;文件名随意，后缀是.manifest</P>
+<P>3、每个页面的HTML标签中都要添加</P>
+<P>4、apache服务器还要修改.htaccess文件，追加一行代码：AddType text/cache-manifest .manifest</P>
+<P>5、可以再加入:</P>
+<P>&lt;Files offline.manifest&gt;</P>
+<P>ExpiresActive On</P>
+<P>ExpiresDefault "access"</P>
+<P>&lt;/Files&gt;</P>
+<P>作用是阻止浏览器缓存该文本文件。</P>
+<P>6、offline.manifest文件内容如下：</P>
+<P>CACHE MANIFEST&nbsp;&nbsp;&nbsp; ---------文件必须以些开头</P>
+<P>#v1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+---------版本注释</P>
+<P>CACHE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+---------列出所需文件</P>
+<P>xxx.html</P>
+<P>css/main.css</P>
+<P>images/a.pgn</P>
+<P>NETWORK:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---------列出不需要被缓存的文件</P>
+<P>*</P>
+<P>FALLBACK:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+---------定义URL模板，作用是访问每个页面时都会问“缓存中有这个页面吗”，有则显示，没有则显示指定的</P>
+<P>//offline.html</P></BODY></HTML>

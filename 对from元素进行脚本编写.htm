@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>对from元素进行脚本编写</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19088">
+<STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P><STRONG>获取表单的引用</STRONG><BR>　　首先，可使用典型的DOM树中的定位元素的方法getElementByID()，只需传入表单的ID：<BR>var 
+oForm = 
+document.getElementById("from1");<BR>　　另外，还可用document的form集合，并通过表单在form集合中的位置或表单的name特性来进行引用：<BR>var 
+oForm = document.forms[0];//获取第一个表单<BR>var oOtherForm = 
+document.forms["formZ"];//获取表单名为“formz”的表单</P>
+<P><STRONG>访问表单字段</STRONG><BR>　　每个表单字段，不论它是按钮、文本框或者其他的内容，均包含在表单的elements集合中。可以用它们的name特性或是它们在集合中的位置来访问不同的字段：<BR>var 
+oFirstField = oForm.elements[0];//获取第一个表单字段<BR>var oTextbox1 = 
+oForm.elements["textbox1"];//获取名字为“textbox1”的字段<BR>　　还可以直接通过名字来访问字段：<BR>var oTextbox1 = 
+  oForm.textbox1;//获取名字为“textbox1”的字段<BR>　　如果名字中有空格，则可以使用方括号标记：<BR>var 
+oTextbox1 = oForm["text box 1"];//获取名字为“textbox1”的字段</P>
+<P><STRONG>表单字段的共性</STRONG><BR>　　有所有的表单字段（除了隐藏字段）都包含同样的特性、方法和事件：<BR>　　·disabled特性可有来获取或设置表单控件是否被禁用<BR>　　·form特性用来指向字段所在的表单<BR>　　·blur()方法可以使表单字段失去焦点，发生blur事件，执行onblur事件处理函数<BR>　　·focus()方法会让表单字段获取焦点，发生focus事件，执行onfocus事件处理函数<BR>　　隐藏字段只支持form特性。</P>
+<P><STRONG>提交表单<BR></STRONG>　　在普通的HTML中，必须使用提交按钮或是扮演按钮角色的图像来提交表单。如果想提交表单，又不想使用前面提到的按钮，可使用submit()方法。要用这个方法，首先要通过getElementByID()或者document.forms集合来获取&lt;form 
+/&gt;元素的引用。在获取表单引用后，即可以直接调用submit()方法：oForm.submit();实际上，也可以通过创建一般按钮，并给它分配onclick事件处理函数来提交表单：&lt;input 
+type="button" value="Submit Form" onclick="document.forms[0].submit()" 
+/&gt;</P></BODY></HTML>

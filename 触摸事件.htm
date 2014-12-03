@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>触摸事件</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P><STRONG>触摸事件</STRONG></P>
+<P>共4类：touchstart\touchmove\touchend\touchcancel</P>
+<P>document.body.onload = initEvent;</P>
+<P>function initEvent(){</P>
+<P>var obj = document.getElementById("obj");</P>
+<P>obj.addEventListener("touchstart",updateInfo,false);</P>
+<P>obj.addEventListener("touchmove",updateInfo,false);</P>
+<P>obj.addEventListener("touchend",updateInfo,false);</P>
+<P>obj.addEventListener("touchcancel",updateInfo,false);</P>
+<P>}</P>
+<P>function updateInfo(evt){</P>
+<P>evt.preventDefault();//取消默认的滚动事件</P>
+<P>var info = document.getElementById("info");</P>
+<P>//要执行的代码xxxxx</P>
+<P>}</P>
+<P><STRONG>手势事件：</STRONG></P>
+<P>gesturestart:手势开始；</P>
+<P>gestureend:手势结束；</P>
+<P>gesturechange:手势发生变化时触发。</P>
+<P><STRONG>触点属性：</STRONG></P>
+<P>touches://touch对象的集合，触摸屏幕上的每个手指都是一个touch对象；</P>
+<P>targetTouches://与touches类似，但它只包含对目标元素的touch对象，而不是整个页面。</P>
+<P>changedTouches://包含发生变化的TOUCH对象，可能是一只手指也可能是多只。</P>
+<P>三个属性的值都是touchlist,可以用length获取度。相应对象的获取语法：</P>
+<P>var oTouch = evt.targetTouches[0];</P>
+<P>或</P>
+<P>var oTouch = evt.targetTouches.item(0);</P>
+<P><STRONG>缩放与旋转属性：</STRONG></P>
+<P>scale://手势缩放，不缩放值为1，缩小时值小于1，放大时值大于1；</P>
+<P>rotate://旋转角度，顺时针为正值，逆时针为负值；</P>
+<P><STRONG>触点ID:</STRONG></P>
+<P><STRONG></STRONG>&nbsp;</P></BODY></HTML>

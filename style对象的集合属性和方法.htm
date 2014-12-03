@@ -1,0 +1,1197 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Language" content="zh-cn" />
+
+<meta name="robots" content="all" />
+
+<meta name="author" content="w3school.com.cn" />
+<meta name="Copyright" content="Copyright W3school.com.cn All Rights Reserved." />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="false" />
+
+<link rel="stylesheet" type="text/css" href="c3.css" />
+
+<title>HTML DOM 节点树</title>
+</head>
+
+<body class="browserscripting">
+<div id="wrapper">
+<div id="navsecond">
+
+<div id="course">
+<h2>HTML DOM</h2>
+<ul>
+<li><a href="index.asp.html" title="DOM教程首页">DOM 首页</a></li>
+<li><a href="dom_intro.asp.html" title="DOM简介">DOM 简介</a></li>
+<li><a href="dom_nodes.asp.html" title="HTML DOM 节点">DOM 节点</a></li>
+<li><a href="dom_nodetree.asp.html" title="HTML DOM 节点树">DOM 节点树</a></li>
+<li><a href="dom_nodes_access.asp.html" title="HTML DOM 访问节点">DOM 节点访问</a></li>
+<li><a href="dom_nodes_info.asp.html" title="HTML DOM 节点信息">DOM 节点信息</a></li>
+<li><a href="dom_example.asp.html" title="一个 HTML DOM 实例">DOM How To</a></li>
+<li><a href="htmldom_reference.asp.html" title="">DOM 参考</a></li>
+<li><a href="dom_summary.asp.html" title="">DOM 总结</a></li>
+</ul>
+
+<h2>DOM 实例</h2>
+<ul>
+<li><a href="http://www.w3school.com.cn/example/hdom_examples.asp" title="">DOM 实例</a></li>
+</ul>
+
+<h2>DOM 对象</h2>
+<ul class="small">
+<li><a href="dom_obj_window.asp.html" title="HTML DOM Window 对象">DOM Window</a></li>
+<li><a href="dom_obj_navigator.asp.html" title="HTML DOM Navigator 对象">DOM Navigator</a></li>
+<li><a href="dom_obj_screen.asp.html" title="HTML DOM Screen 对象">DOM Screen</a></li>
+<li><a href="dom_obj_history.asp.html" title="HTML DOM History 对象">DOM History</a></li>
+<li><a href="dom_obj_location.asp.html" title="HTML DOM Location 对象">DOM Location</a></li>
+<li class="list_apart"><a href="dom_obj_document.asp.html" title="HTML DOM Document 对象">DOM Document</a></li>
+<li class="list_apart"><a href="dom_obj_anchor.asp.html" title="HTML DOM Anchor 对象">DOM Anchor</a></li>
+<li><a href="dom_obj_area.asp.html" title="HTML DOM Area 对象">DOM Area</a></li>
+<li><a href="dom_obj_base.asp.html" title="HTML DOM Base 对象">DOM Base</a></li>
+<li><a href="dom_obj_body.asp.html" title="HTML DOM Body 对象">DOM Body</a></li>
+<li><a href="dom_obj_pushbutton.asp.html" title="HTML DOM Button 对象">DOM Button</a></li>
+<li><a href="dom_obj_event.asp.html" title="HTML DOM Event 对象">DOM Event</a></li>
+<li><a href="dom_obj_form.asp.html" title="HTML DOM Form 对象">DOM Form</a></li>
+<li><a href="dom_obj_frame.asp.html" title="HTML DOM Frame 对象">DOM Frame</a></li>
+<li><a href="dom_obj_frameset.asp.html" title="HTML DOM Frameset 对象">DOM Frameset</a></li>
+<li><a href="dom_obj_iframe.asp.html" title="HTML DOM IFrame 对象">DOM IFrame</a></li>
+<li><a href="dom_obj_image.asp.html" title="HTML DOM Image 对象">DOM Image</a></li>
+<li><a href="dom_obj_button.asp.html" title="HTML DOM Button 对象">DOM Input Button</a></li>
+<li><a href="dom_obj_checkbox.asp.html" title="HTML DOM Checkbox 对象">DOM Input Checkbox</a></li>
+<li><a href="dom_obj_fileupload.asp.html" title="HTML DOM FileUpload 对象">DOM Input File</a></li>
+<li><a href="dom_obj_hidden.asp.html" title="HTML DOM Hidden 对象">DOM Input Hidden</a></li>
+<li><a href="dom_obj_password.asp.html" title="HTML DOM Password 对象">DOM Input Password</a></li>
+<li><a href="dom_obj_radio.asp.html" title="HTML DOM Radio 对象">DOM Input Radio</a></li>
+<li><a href="dom_obj_reset.asp.html" title="HTML DOM Reset 对象">DOM Input Reset</a></li>
+<li><a href="dom_obj_submit.asp.html" title="HTML DOM Submit 对象">DOM Input Submit</a></li>
+<li><a href="dom_obj_text.asp.html" title="HTML DOM Text 对象">DOM Input Text</a></li>
+<li><a href="dom_obj_link.asp.html" title="HTML DOM Link 对象">DOM Link</a></li>
+<li><a href="dom_obj_meta.asp.html" title="HTML DOM Meta 对象">DOM Meta</a></li>
+<li><a href="dom_obj_object.asp.html" title="HTML DOM Object 对象">DOM Object</a></li>
+<li><a href="dom_obj_option.asp.html" title="HTML DOM Option 对象">DOM Option</a></li>
+<li><a href="dom_obj_select.asp.html" title="HTML DOM Select 对象">DOM Select</a></li>
+<li><a href="dom_obj_style.asp.html" title="HTML DOM Style 对象">DOM Style</a></li>
+<li><a href="dom_obj_table.asp.html" title="HTML DOM Table 对象">DOM Table</a></li>
+<li><a href="dom_obj_tabledata.asp.html" title="HTML DOM TableCell 对象">DOM TableCell</a></li>
+<li><a href="dom_obj_tablerow.asp.html" title="HTML DOM TableRow 对象">DOM TableRow</a></li>
+<li><a href="dom_obj_textarea.asp.html" title="HTML DOM Textarea 对象">DOM Textarea</a></li>
+</ul>
+</div>
+</div>
+<div id="maincontent">
+
+<h1>HTML DOM Style 对象</h1>
+
+<div>
+<h2>Style 对象</h2>
+
+<p>Style 对象代表一个单独的样式声明。可从应用样式的文档或元素访问Style 对象。</p>
+
+
+<h3>使用Style 对象属性的语法：</h3>
+<pre>document.getElementById(&quot;id&quot;).style.property=&quot;值&quot;</pre>
+
+
+<h3>Style 对象的属性：</h3>
+<ul>
+  <li><a href="#background">背景</a></li>
+  <li><a href="#border">边框和边距</a></li>
+  <li><a href="#layout">布局</a></li>
+  <li><a href="#list">列表</a></li>
+  <li><a href="#misc">杂项</a></li>
+  <li><a href="#positioning">定位</a></li>
+  <li><a href="#printing">打印</a></li>
+  <li><a href="#scrollbar">滚动条</a></li>
+  <li><a href="#table">表格</a></li>
+  <li><a href="#text">文本</a></li>
+  <li><a href="#std">规范</a></li>
+</ul>
+
+<p><em>IE:</em> Internet Explorer, <em>M:</em> 仅适用于 Mac IE, <em>W:</em> 仅适用于 Windows IE, <em>F:</em> Firefox, <em>O:</em> Opera</p>
+<p><em>W3C:</em> 万维网联盟 World Wide Web Consortium (Internet 标准).</p>
+
+
+
+<h3><a name="background">Background 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_background.asp.html">background</a></td>
+    <td>在一行中设置所有的背景属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_backgroundattachment.asp.html">backgroundAttachment</a></td>
+    <td>设置背景图像是否固定或随页面滚动</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_backgroundcolor.asp.html">backgroundColor</a></td>
+    <td>设置元素的背景颜色</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_backgroundimage.asp.html">backgroundImage</a></td>
+    <td>设置元素的背景图像</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_backgroundposition.asp.html">backgroundPosition</a></td>
+    <td>设置背景图像的起始位置</td>
+    <td>4</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_backgroundpositionx.asp.html">backgroundPositionX</a></td>
+    <td>设置backgroundPosition属性的X坐标</td>
+    <td>4</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_backgroundpositiony.asp.html">backgroundPositionY</a></td>
+    <td>设置backgroundPosition属性的Y坐标</td>
+    <td>4</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_backgroundrepeat.asp.html">backgroundRepeat</a></td>
+    <td>设置是否及如何重复背景图像</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
+
+
+<h3><a name="border">Border 和 Margin 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_border.asp.html">border</a></td>
+    <td>在一行设置四个边框的所有属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderbottom.asp.html">borderBottom</a></td>
+    <td>在一行设置底边框的所有属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderbottomcolor.asp.html">borderBottomColor</a></td>
+    <td>设置底边框的颜色</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_borderbottomstyle.asp.html">borderBottomStyle</a></td>
+    <td>设置底边框的样式</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_borderbottomwidth.asp.html">borderBottomWidth</a></td>
+    <td>设置底边框的宽度</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_bordercolor.asp.html">borderColor</a></td>
+    <td>设置所有四个边框的颜色 (可设置四种颜色)</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderleft.asp.html">borderLeft</a></td>
+    <td>在一行设置左边框的所有属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderleftcolor.asp.html">borderLeftColor</a></td>
+    <td>设置左边框的颜色</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_borderleftstyle.asp.html">borderLeftStyle</a></td>
+    <td>设置左边框的样式</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_borderleftwidth.asp.html">borderLeftWidth</a></td>
+    <td>设置左边框的宽度</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderright.asp.html">borderRight</a></td>
+    <td>在一行设置右边框的所有属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderrightcolor.asp.html">borderRightColor</a></td>
+    <td>设置右边框的颜色</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_borderrightstyle.asp.html">borderRightStyle</a></td>
+    <td>设置右边框的样式</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_borderrightwidth.asp.html">borderRightWidth</a></td>
+    <td>设置右边框的宽度</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_borderstyle.asp.html">borderStyle</a></td>
+    <td>设置所有四个边框的样式 (可设置四种样式)</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_bordertop.asp.html">borderTop</a></td>
+    <td>在一行设置顶边框的所有属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_bordertopcolor.asp.html">borderTopColor</a></td>
+    <td>设置顶边框的颜色</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_bordertopstyle.asp.html">borderTopStyle</a></td>
+    <td>设置顶边框的样式</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+	<tr>
+    <td><a href="prop_style_bordertopwidth.asp.html">borderTopWidth</a></td>
+    <td>设置顶边框的宽度</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderwidth.asp.html">borderWidth</a></td>
+    <td>设置所有四条边框的宽度 (可设置四种宽度)</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_margin.asp.html">margin</a></td>
+    <td>设置元素的边距 (可设置四个值)</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_marginbottom.asp.html">marginBottom</a></td>
+    <td>设置元素的底边距</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_marginleft.asp.html">marginLeft</a></td>
+    <td>设置元素的左边距</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_marginright.asp.html">marginRight</a></td>
+    <td>设置元素的右边据</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_margintop.asp.html">marginTop</a></td>
+    <td>设置元素的顶边距</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_outline.asp.html">outline</a></td>
+    <td>在一行设置所有的outline属性</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_outlinecolor.asp.html">outlineColor</a></td>
+    <td>设置围绕元素的轮廓颜色</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_outlinestyle.asp.html">outlineStyle</a></td>
+    <td>设置围绕元素的轮廓样式</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_outlinewidth.asp.html">outlineWidth</a></td>
+    <td>设置围绕元素的轮廓宽度</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_padding.asp.html">padding</a></td>
+    <td>设置元素的填充 (可设置四个值)</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_paddingbottom.asp.html">paddingBottom</a></td>
+    <td>设置元素的下填充</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_paddingleft.asp.html">paddingLeft</a></td>
+    <td>设置元素的左填充</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_paddingright.asp.html">paddingRight</a></td>
+    <td>设置元素的右填充</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_paddingtop.asp.html">paddingTop</a></td>
+    <td>设置元素的顶填充</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
+
+
+<h3><a name="layout">Layout 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_clear.asp.html">clear</a></td>
+    <td>设置在元素的哪边不允许其他的浮动元素</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_clip.asp.html">clip</a></td>
+    <td>设置元素的形状</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_content.asp.html">content</a></td>
+    <td>设置元信息</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>counterIncrement</td>
+    <td>设置其后是正数的计数器名称的列表。其中整数指示每当元素出现时计数器的增量。默认是1。</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>counterReset</td>
+    <td>设置其后是正数的计数器名称的列表。其中整数指示每当元素出现时计数器被设置的值。默认是0。</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_cssfloat.asp.html">cssFloat</a></td>
+    <td>设置图像或文本将出现（浮动）在另一元素中的何处。</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_cursor.asp.html">cursor</a></td>
+    <td>设置显示的指针类型</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_direction.asp.html">direction</a></td>
+    <td>设置元素的文本方向</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_display.asp.html">display</a></td>
+    <td>设置元素如何被显示</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_height.asp.html">height</a></td>
+    <td>设置元素的高度</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>markerOffset</td>
+    <td>设置marker box的principal box距离其最近的边框边缘的距离</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>marks</td>
+    <td>设置是否cross marks或crop marks应仅仅被呈现于page box边缘之外</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_maxheight.asp.html">maxHeight</a></td>
+    <td>设置元素的最大高度</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_maxwidth.asp.html">maxWidth</a></td>
+    <td>设置元素的最大宽度</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_minheight.asp.html">minHeight</a></td>
+    <td>设置元素的最小高度</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_minwidth.asp.html">minWidth</a></td>
+    <td>设置元素的最小宽度</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_overflow.asp.html">overflow</a></td>
+    <td>规定如何处理不适合元素盒的内容</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_verticalalign.asp.html">verticalAlign</a></td>
+    <td>设置对元素中的内容进行垂直排列</td>
+    <td>4</td>
+    <td>1</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_visibility.asp.html">visibility</a></td>
+    <td>设置元素是否可见</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_width.asp.html">width</a></td>
+    <td>设置元素的宽度</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  </table>
+
+
+
+<h3><a name="list">List 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_liststyle.asp.html">listStyle</a></td>
+    <td>在一行设置列表的所有属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_liststyleimage.asp.html">listStyleImage</a></td>
+    <td>把图像设置为列表项标记</td>
+    <td>4</td>
+    <td>1</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_liststyleposition.asp.html">listStylePosition</a></td>
+    <td>改变列表项标记的位置</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_liststyletype.asp.html">listStyleType</a></td>
+    <td>设置列表项标记的类型</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  </table>
+
+
+
+<h3><a name="positioning">Positioning 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_bottom.asp.html">bottom</a></td>
+    <td>设置元素的底边缘距离父元素底边缘的之上或之下的距离</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_left.asp.html">left</a></td>
+    <td>置元素的左边缘距离父元素左边缘的左边或右边的距离</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_position.asp.html">position</a></td>
+    <td>把元素放置在static, relative, absolute 或 fixed 的位置</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_right.asp.html">right</a></td>
+    <td>置元素的右边缘距离父元素右边缘的左边或右边的距离</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_top.asp.html">top</a></td>
+    <td>设置元素的顶边缘距离父元素顶边缘的之上或之下的距离</td>
+
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_zindex.asp.html">zIndex</a></td>
+    <td>设置元素的堆叠次序</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
+
+
+<h3><a name="printing">Printing 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td>orphans</td>
+    <td>设置段落留到页面底部的最小行数</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>page</td>
+    <td>设置显示某元素时使用的页面类型</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_pagebreakafter.asp.html">pageBreakAfter</a></td>
+    <td>设置某元素之后的分页行为</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_pagebreakbefore.asp.html">pageBreakBefore</a></td>
+    <td>设置某元素之前的分页行为</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_pagebreakinside.asp.html">pageBreakInside</a></td>
+    <td>设置某元素内部的分页行为</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>size</td>
+    <td>设置页面的方向和尺寸</td>
+    <td>&nbsp;</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>widows</td>
+    <td>设置段落必须留到页面顶部的最小行数</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  </table>
+
+
+
+<h3><a name="scrollbar">Scrollbar 属性</a> (IE-only)</h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbar3dlightcolor.asp.html">scrollbar3dLightColor</a></td>
+    <td>设置箭头和滚动条左侧和顶边的颜色</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbararrowcolor.asp.html">scrollbarArrowColor</a></td>
+    <td>设置滚动条上的箭头颜色</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbarbasecolor.asp.html">scrollbarBaseColor</a></td>
+    <td>设置滚动条的底色</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbardarkshadowcolor.asp.html">scrollbarDarkShadowColor</a></td>
+    <td>设置箭头和滚动条右侧和底边的颜色</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbarfacecolor.asp.html">scrollbarFaceColor</a></td>
+    <td>设置滚动条的表色</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbarhighlightcolor.asp.html">scrollbarHighlightColor</a></td>
+    <td>设置箭头和滚动条左侧和顶边的颜色，以及滚动条的背景</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbarshadowcolor.asp.html">scrollbarShadowColor</a></td>
+    <td>设置箭头和滚动条右侧和底边的颜色</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_scrollbartrackcolor.asp.html">scrollbarTrackColor</a></td>
+    <td>设置滚动条的背景色</td>
+    <td>5W</td>
+    <td>No</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  </table>
+
+
+
+<h3><a name="table">Table 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_bordercollapse.asp.html">borderCollapse</a></td>
+    <td>设置表格边框是否合并为单边框，或者像在标准的HTML中那样分离。</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_borderspacing.asp.html">borderSpacing</a></td>
+    <td>设置分隔单元格边框的距离</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_captionside.asp.html">captionSide</a></td>
+    <td>设置表格标题的位置</td>
+    <td>5M</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_emptycells.asp.html">emptyCells</a></td>
+    <td>设置是否显示表格中的空单元格</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_tablelayout.asp.html">tableLayout</a></td>
+    <td>设置用来显示表格单元格、行以及列的算法</td>
+    <td>5</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+</table>
+
+
+
+<h3><a name="text">Text 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_style_color.asp.html">color</a></td>
+    <td>设置文本的颜色</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_font.asp.html">font</a></td>
+    <td>在一行设置所有的字体属性</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_fontfamily.asp.html">fontFamily</a></td>
+    <td>设置元素的字体系列。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_fontsize.asp.html">fontSize</a></td>
+    <td>设置元素的字体大小。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_fontsizeadjust.asp.html">fontSizeAdjust</a></td>
+    <td>设置/调整文本的尺寸</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_fontstretch.asp.html">fontStretch</a></td>
+    <td>设置如何紧缩或伸展字体</td>
+    <td>5M</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_fontstyle.asp.html">fontStyle</a></td>
+    <td>设置元素的字体样式</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_fontvariant.asp.html">fontVariant</a></td>
+    <td>用小型大写字母字体来显示文本</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_fontweight.asp.html">fontWeight</a></td>
+    <td>设置字体的粗细</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_letterspacing.asp.html">letterSpacing</a></td>
+    <td>设置字符间距</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_lineheight.asp.html">lineHeight</a></td>
+    <td>设置行间距</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_quotes.asp.html">quotes</a></td>
+    <td>设置在文本中使用哪种引号</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_textalign.asp.html">textAlign</a></td>
+    <td>排列文本</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_textdecoration.asp.html">textDecoration</a></td>
+    <td>设置文本的修饰</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_textindent.asp.html">textIndent</a></td>
+    <td>缩紧首行的文本</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>textShadow</td>
+    <td>设置文本的阴影效果</td>
+    <td>5M</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_texttransform.asp.html">textTransform</a></td>
+    <td>对文本设置大写效果</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>unicodeBidi</td>
+    <td>&nbsp;</td>
+    <td>5</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_whitespace.asp.html">whiteSpace</a></td>
+    <td>设置如何设置文本中的折行和空白符</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_style_wordspacing.asp.html">wordSpacing</a></td>
+    <td>设置文本中的词间距</td>
+    <td>6</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  </table>
+
+
+
+<h3><a name="std">Standard 属性</a></h3>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th style="width:5%">IE</th>
+    <th style="width:5%">F</th>
+    <th style="width:5%">O</th>
+    <th style="width:8%">W3C</th>
+  </tr>
+  <tr>
+    <td><a href="prop_dir.asp.html">dir</a></td>
+    <td>设置或返回文本的方向</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_lang.asp.html">lang</a></td>
+    <td>设置或返回元素的语言代码</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td><a href="prop_title.asp.html">title</a></td>
+    <td>设置或返回元素的咨询性的标题</td>
+    <td>5</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+</table>
+</div>
+
+<div>
+<h2>其他属性</h2>
+<h3>cssText 属性</h3>
+<p>它是一组样式属性及其值的文本表示。这个文本格式化为一个 CSS 样式表，去掉了包围属性和值的元素选择器的花括号。将这一属性设置为非法的值将会抛出一个代码为 SYNTAX_ERR 的 DOMException 异常。当 CSS2Properties 对象是只读的时候，试图设置这一属性将会抛出一个代码为 NO_MODIFICATION_ALLOWED_ERR 的 DOMException 异常。</p>
+</div>
+
+<div>
+<h2>关于 CSS2Properties 对象</h2>
+
+<p>CSS2Properties 对象表示一组 CSS 样式属性及其值。它为 CSS 规范所定义的每一个 CSS 属性都定义了 JavaScript 属性。一个 HTMLElement 的 style 属性是一个可读可写的 CSS2Properties 对象，就好像 CSSRule 对象的 style 属性一样。</p>
+<p>不过，Window.getComputedStyle() 的返回值是一个 CSS2Properties 对象，其属性是只读的。</p>
+</div>
+
+</div>
+
+
+</div>
+</body>
+</html>
+

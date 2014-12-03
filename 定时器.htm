@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>时间间隔和暂停(定时器)</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;font-family:arial;}</STYLE>
+</HEAD>
+<BODY>
+<P>用window对象的setTimeout()方法设置暂停。<BR>　　该方法接受两个参数，要执行的代码和在执行它之前要等待的毫秒数。第一个参数可是是代码串，也可以是函数指针。例如，下面的代码都在一秒后显示一条警告：<BR>setTimeout(”alert(’Hello 
+world!’)”,1000);<BR>setTimeout(function(){alert(”Hello 
+world!”);},1000);<BR>function sayHelloWorld () {<BR>&nbsp;&nbsp;&nbsp; 
+alert(”Hello world!”);<BR>}<BR>setTimeout(sayHelloWorld,1000);</P>
+<P>　　调用setTimeout()时，它创建一个数字暂停ID，与操作系统中的进程ID相似。要取消还未执行的暂停，可调用clearTimeout()方法，并将暂停ID传递给它：<BR>var 
+iTimeoutId = setTimeout(”alert(’Hello 
+world!’)”,1000);<BR>//nevermind<BR>clearTimeout(iTimeoutId);</P>
+<P>　　时间间隔setInterval()方法与setTimeout()类似。循环执行相应代码，而不是只执行一次。</P></BODY></HTML>

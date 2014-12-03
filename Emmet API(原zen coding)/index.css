@@ -1,0 +1,100 @@
+/* ::::: http://docs.emmet.io/20130318103316/c/main.css ::::: */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary { display: block; }
+audio:not([controls]) { display: none; height: 0px; }
+html { font-family: sans-serif; }
+body { margin: 0px; }
+a:focus { outline: thin dotted; }
+a:active, a:hover { outline: 0px none; }
+h1 { font-size: 2em; }
+b, strong { font-weight: 700; }
+code, kbd, pre, samp { font-family: monospace,serif; font-size: 1em; }
+svg:not(:root) { overflow: hidden; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0px none; padding: 0px; }
+button.btn::-moz-focus-inner, input.btn[type="submit"]::-moz-focus-inner { padding: 0px; border: 0px none; }
+.cm-keymap-fat-cursor pre.CodeMirror-cursor:not(#nonsense_id) {  }
+html { height: 100%; }
+body { font: 300 14px/1.5 Lato,"Helvetica Neue",Helvetica,Arial,sans-serif; color: rgb(85, 85, 85); height: 100%; -moz-box-sizing: border-box; }
+h1, h2, h3, h4, h5, h6, p, ul, ol, table, pre, dl { margin: 0px 0px 20px; }
+h1, h2, h3 { line-height: 1.1; }
+h2, h3, h4, h5, h6 { margin-top: 2em; margin-bottom: 0.2em; }
+h1 { color: rgb(34, 34, 34); font-size: 2em; margin-bottom: 20px; }
+h2 { color: rgb(57, 57, 57); }
+h3, h4, h5, h6 { color: rgb(73, 73, 73); }
+p:last-child { margin-bottom: 0px; }
+a { color: rgb(51, 153, 204); text-decoration: none; }
+a:hover { color: rgb(0, 102, 153); }
+code, pre { font-family: Monaco,Bitstream Vera Sans Mono,"Lucida Console",Terminal; color: rgb(51, 51, 51); font-size: 0.9em; }
+dt { color: rgb(68, 68, 68); font-weight: 700; font-size: 1.2em; }
+dd { margin-left: 0px; padding-left: 0px; margin-bottom: 1.5em; }
+strong { color: rgb(34, 34, 34); font-weight: 700; }
+.wrapper { width: 80%; max-width: 1000px; margin: 0px auto; min-height: 100%; position: relative; }
+.nav { list-style-type: none; margin: 0px; padding: 0px; line-height: 1.2em; }
+.nav .nav { margin-left: 30px; margin-top: 5px; margin-bottom: 20px; font-size: 12px; }
+.nav__item { margin-bottom: 15px; line-height: 1.2; }
+.nav__item .nav__item { margin-bottom: 5px; }
+.clear { clear: both; height: 0px; }
+.page-header { width: 270px; margin-right: -270px; float: left; margin-bottom: 10em; padding-top: 50px; }
+.page-content { margin-left: 300px; padding-top: 50px; padding-bottom: 50px; }
+.page-footer { width: 270px; clear: both; position: absolute; bottom: 50px; }
+.small-text { font-size: 0.8em; color: rgb(119, 119, 119); margin-bottom: 0.7em; }
+.site-title a { color: rgb(0, 0, 0); text-decoration: underline; }
+:hover > .anchor, .anchor:hover { opacity: 1; }
+.back-to-main { font-size: 11px; position: relative; margin: 20px 0px; font-weight: 700; }
+.back-to-main:before { content: "←"; position: absolute; display: inline-block; left: -1.5em; }
+@media print, screen and (max-width: 960px) {
+	body { padding: 50px; }
+	.wrapper { width: auto; margin: 0px; }
+	.page-header, .page-content, .page-footer { float: none; position: static; width: auto; }
+	.page-header { padding-top: 0px; padding-right: 320px; margin-right: 0px; margin-bottom: 0px; }
+	.page-content { border-style: solid; border-color: rgb(229, 229, 229); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 1px 0px; padding: 20px 0px; margin: 0px 0px 20px; }
+	.page-footer { padding-bottom: 10px; }
+}
+@media print, screen and (max-width: 720px) {
+	body { word-wrap: break-word; }
+	.page-header { padding: 0px; }
+	pre, code { word-wrap: normal; }
+}
+@media print, screen and (max-width: 480px) {
+	body { padding: 15px; }
+	.back-to-main:before { content: ""; }
+}
+/* ::::: http://docs.emmet.io/20130225110653/c/cheatsheet.css ::::: */
+
+body { background: none repeat scroll 0% 0% rgb(44, 45, 50); padding: 0px ! important; }
+.back-to-main { display: none; }
+.wrapper { width: auto; max-width: none; }
+.page-header { float: none; width: auto; padding: 10px 30px; margin: 0px; background: none repeat scroll 0% 0% rgb(0, 0, 0); color: rgb(255, 255, 255); }
+.site-title { margin: 0px; font-size: 1.3em; padding-left: 1.5em; }
+.site-title a { color: rgb(255, 255, 255); }
+.site-title a:before { content: "← "; display: inline-block; width: 1.5em; margin-left: -1.5em; }
+.nav { display: none; }
+.page-content { margin-left: 0px; padding: 30px; border: 0px none; }
+.page-footer { display: none; }
+.ch-snippet { font-family: Monaco,Bitstream Vera Sans Mono,"Lucida Console",Terminal; margin-bottom: 10px; font-size: 11px; }
+.ch-snippet__name { font-size: 1em; font-weight: 400; float: left; padding: 0px; margin: 0px 15px 0px 0px; min-width: 12em; color: rgb(255, 255, 255); }
+.ch-snippet__value { white-space: pre-wrap; overflow: hidden; margin: 0px; padding: 1px 0px 1px 20px; color: rgb(119, 119, 119); }
+.ch-tabstop { background: none repeat scroll 0% 0% rgb(142, 182, 50); display: inline-block; padding: 0px 5px; color: rgb(255, 255, 255); text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); border-radius: 4px 4px 4px 4px; }
+.ch-caret { border-left: 2px solid rgb(87, 143, 227); margin: 0px 2px -0.1em; display: inline-block; height: 1.1em; }
+.ch-section { margin-bottom: 40px; clear: both; }
+.ch-section:last-of-type { margin-bottom: 0px; }
+.ch-section__desc p { margin-bottom: 0.4em; }
+.ch-section__desc code { color: rgb(238, 238, 238); }
+.ch-section__content { -moz-column-count: 3; -moz-column-gap: 30px; }
+.ch-section__title { margin: 0px 0px 0.5em; page-break-after: avoid; color: rgb(148, 192, 47); }
+.ch-subsection { clear: both; }
+.ch-subsection__title { margin: 20px 0px 5px; page-break-after: avoid; background-color: rgb(27, 28, 32); color: rgb(237, 237, 237); padding: 5px; border-radius: 3px 3px 3px 3px; }
+.ch-subsection:first-child .ch-subsection__title { margin-top: 0px; }
+.cn-snippet__alias { font-size: 10px; color: rgb(76, 77, 81); margin: 5px 0px; }
+.cn-snippet__alias-abbr { color: rgb(96, 96, 100); }
+.ch-section_syntax .ch-snippet__name, .ch-section_html .ch-snippet__name, .ch-section_xsl .ch-snippet__name { float: none; }
+.ch-section_syntax .ch-snippet, .ch-section_html .ch-snippet, .ch-section_xsl .ch-snippet { margin-bottom: 20px; }
+.ch-section_css .ch-snippet__name { min-width: 7em; }
+@media print, screen and (max-width: 870px) {
+	.ch-section__content { -moz-column-count: 2; }
+	.page-content { padding: 10px; }
+}
+@media print, screen and (max-width: 500px) {
+	.ch-section__content { -moz-column-count: 1; }
+	.page-content { padding: 5px; }
+}

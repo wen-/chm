@@ -1,0 +1,12 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>stop([clearQueue], [gotoEnd])</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="stop"><h2><span>返回值:jQuery</span>stop(<em class="optional">[clearQueue]</em>, <em class="optional">[gotoEnd]</em>)</h2><h3>概述</h3><div class="desc"><p>停止所有在指定元素上正在运行的动画。</p><div class="longdesc"><pre>如果队列中有等待执行的动画(并且clearQueue没有设为true)，他们将被马上执行</pre></div></div><h3>参数</h3><div><h4><strong>clearQueue<em> (可选)</em></strong><span>Boolean</span></h4><p>如果设置成true，则清空队列。可以立即结束动画。</p><h4><strong>gotoEnd<em> (可选)</em></strong><span>Boolean</span></h4><p>让当前正在执行的动画立即完成，并且重设show和hide的原始样式，调用回调函数等。</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">点击Go之后开始动画,点Stop之后会在当前位置停下来</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;button id="go"&gt;Go&lt;/button&gt; &lt;button id="stop"&gt;STOP!&lt;/button&gt;
+&lt;div class="block"&gt;&lt;/div&gt;&lt;button id="go"&gt;Go&lt;/button&gt; &lt;button id="stop"&gt;STOP!&lt;/button&gt;
+&lt;div class="block"&gt;&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>// 开始动画
+$("#go").click(function(){
+  $(".block").animate({left: '+200px'}, 5000);
+});
+
+// 当点击按钮后停止动画
+$("#stop").click(function(){
+  $(".block").stop();
+});</code></pre></div></div></div></body></html>

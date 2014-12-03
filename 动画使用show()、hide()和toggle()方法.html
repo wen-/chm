@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>show()和hide()方法还可以接受参数来控制显隐的过程，语法如下：<br />
+  show(duration,[callback]);<br />
+  hide(duration,[claaback]);<br />
+  其中,duration表示动画执行的时间长短，可以是表示速度的字符串slow、normal、fast，也可以是表示时间的整数（毫秒）。callback为可选的回调函数，在动画完成后执行。如：<br />
+  $(function(){<br />
+  $(&quot;input:first&quot;).click(fucntion(){<br />
+  $(&quot;img&quot;).hide(3000);      //逐渐隐藏<br />
+  });<br />
+  $(&quot;input:last&quot;).click(function(){<br />
+  $(&quot;img&quot;).show(5000);    //逐渐显示<br />
+  });<br />
+  });<br />
+  与show()和hide()方法一样，toggle()方法也可以接受两个参数，制作成动画的效果。</p>
+</body>
+</html>

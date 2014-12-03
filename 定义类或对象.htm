@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>定义类或对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　使用预定义对象的能力只是面向对象语言能力的一部分，它真正的强大之处在于能够创建自己专用的类和对象。与ECMAScript中的许多特性一样，可以用各种方法实现这一点。<BR>　　因为对象的属性可在对象创建后动态定义，所以许多开发者都在初次引入JavaScript时遍写类似下面的代码：<BR>　　　　var 
+oCar = new Object;<BR>　　　　oCar.color = “red”;<BR>　　　　oCar.doors = 
+4;<BR>　　　　oCar.mpg = 23;<BR>　　　　oCar.showColor = function () 
+{<BR>　　　　　　alert(this.color);<BR>　　　　};<BR>　　如果要创建多个car对象，上面代码无法胜任且不象一个“对象”。下面几种常用方式中，使用最广泛的是第四种混合的构造函数/原型方式。</P>
+<P>1.工厂函数方式<BR>　　（略）</P>
+<P>2.构造函数方式<BR>　　function Car(sColor, iDoors, iMpg) {<BR>　　　　this.color = 
+sColor;<BR>　　　　this.doors = iDoors;<BR>　　　　this.mpg = 
+iMpg;<BR>　　　　this.showColor = function 90 
+{<BR>　　　　　　alert(this.color);<BR>　　　　};<BR>　　}<BR>　　var oCar1 = new Car(”red”, 
+4, 23);<BR>　　var oCar2 = nes Car(”blue”, 3, 25);</P>
+<P>3.原型方式<BR>　　（略）</P>
+<P>4.混合的原型/构造方式<BR>&nbsp;&nbsp;&nbsp; 
+创建类的最好方式是用构造函数定义类的属性，用原型方式定义方法。<BR>function Car(sColor, iDoors, iMpg) 
+{<BR>&nbsp;&nbsp;&nbsp; this.color = sColor;<BR>&nbsp;&nbsp;&nbsp; this.doors = 
+iDoors;<BR>&nbsp;&nbsp;&nbsp; this.mpg = iMpg;<BR>&nbsp;&nbsp;&nbsp; 
+this.drivers = new Array(”Mike”,”Sue”);<BR>}<BR>car.prototype.showColor = 
+function () {<BR>&nbsp;&nbsp;&nbsp; alert(this.color);<BR>}<BR>var oCar1 = new 
+Car(”red”, 4, 23);<BR>var oCar2 = nes Car(”blue”, 3, 
+25);<BR>oCar1.drivers.push(”matt”);</P>
+<P>alert(oCar1.drivers);//outputs 
+“Mike,Sue,Matt”<BR>alert(oCar2.drivers);//outputs “Mike,Sue”</P>
+<P>（object.prototype属性是创建对象的新属性或方法。）</P>
+<P>5.动态原型方法<BR>　　（略）</P>
+<P>6.混合工厂方式<BR>　　（略）<BR></P></BODY></HTML>

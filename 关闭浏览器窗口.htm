@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>关闭浏览器窗口</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16421"></HEAD>
+<BODY>
+<P>关闭浏览器窗口</P>
+<P>IE</P>
+<P>var closeW = 
+document.getElementById("close_window");<BR>closeW.addEventListener("click",function(){&nbsp; 
+//------IE678用另外的事件监听方法--------<BR>&nbsp;aa = 
+window.open("js_code.html");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//------加入另一个参数“_self”则在当前窗口打开<BR>&nbsp;window.opener 
+= null;</P>
+<P>&nbsp;parent.window.open('','_parent','');<BR>&nbsp;parent.window.close();<BR>},true);</P>
+<P>打开新窗口并关闭父窗口</P>
+<P>火狐下open()打开的窗口可以用close()方法关闭，用户点开的窗口侧不能用close()关闭。</P></BODY></HTML>

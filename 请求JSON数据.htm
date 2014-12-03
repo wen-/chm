@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>请求JSON数据</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>请求JSON数据</P>
+<P>$.ajax({<BR>&nbsp;&nbsp;type: "POST",<BR>&nbsp;&nbsp;url: 
+"json/json_1.json",<BR>&nbsp;&nbsp;dataType: "<FONT 
+color=#ff0000>json</FONT>",<BR>&nbsp;&nbsp;error: 
+function(){<BR>&nbsp;&nbsp;&nbsp;console.log("msg");<BR>&nbsp;&nbsp;},<BR>&nbsp;&nbsp;success:function(json){<BR>&nbsp;&nbsp;&nbsp;alert(json.name)<BR>&nbsp;&nbsp;}<BR>&nbsp;}); 
+</P>
+<P>注意事项：</P>
+<P>请求的JSON数据必须格式正确，否则返回的数据不可操作：</P>
+<P>正常格式<FONT color=#008000>：{"name":"aa"}</FONT></P>
+<P>错误格式<FONT color=#ff0000>：{"name":aa}/{name:"aa"}/{name:aa}</FONT></P>
+<P><STRONG>比较一下json与jsonp格式的区别：</STRONG></P>
+<P><STRONG>json格式：</STRONG></P>
+<P>{<BR>&nbsp;"message":"获取成功",<BR>&nbsp;"state":"1",<BR>&nbsp;"result":{"name":"工作组1","id":1,"description":"11"}<BR>}</P>
+<P><STRONG>jsonp格式：</STRONG></P>
+<P>callback({<BR>&nbsp;"message":"获取成功",<BR>&nbsp;"state":"1",<BR>&nbsp;"result":{"name":"工作组1","id":1,"description":"11"}<BR>})</P></BODY></HTML>

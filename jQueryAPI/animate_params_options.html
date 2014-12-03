@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>animate(params, options)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="animate"><h2><span>返回值:jQuery</span>animate(params, options)</h2><h3>概述</h3><div class="desc"><p>用于创建自定义动画的函数。</p><div class="longdesc"><pre>这个函数的关键在于指定动画形式及结果样式属性对象。这个对象中每个属性都表示一个可以变化的样式属性（如“height”、“top”或“opacity”）。注意：所有指定的属性必须用骆驼形式，比如用marginLeft代替margin-left. 
+
+而每个属性的值表示这个样式属性到多少时动画结束。如果是一个数值，样式属性就会从当前的值渐变到指定的值。如果使用的是“hide”、“show”或“toggle”这样的字符串值，则会为该属性调用默认的动画形式。
+
+在 jQuery 1.2 中，你可以使用 em 和 % 单位。另外，在 jQuery 1.2 中，你可以通过在属性值前面指定 "&lt;em&gt;+=&lt;/em&gt;" 或 "&lt;em&gt;-=&lt;/em&gt;" 来让元素做相对运动。</pre></div></div><h3>参数</h3><div><h4><strong>params</strong><span>Options</span></h4><p>一组包含作为动画属性和终值的样式属性和及其值的集合</p><h4><strong>options</strong><span>Options</span></h4><p>一组包含动画选项的值的集合。</p></div><h3>选项</h3><div><h4><strong>duration</strong><span>String,Number</span></h4><p>(默认值: "normal") 三种预定速度之一的字符串("slow", "normal", or "fast")或表示动画时长的毫秒数值(如：1000)</p><h4><strong>easing</strong><span>String</span></h4><p>(默认值: "swing") 要使用的擦除效果的名称(需要插件支持).默认jQuery提供"linear" 和 "swing".</p><h4><strong>complete</strong><span>Function</span></h4><p>在动画完成时执行的函数</p><h4><strong>step</strong><span>Callback</span></h4><p></p><h4><strong>queue</strong><span>Boolean</span></h4><p>(默认值: true) 设定为false将使此动画不进入动画队列 (jQuery 1.2中新增)</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">第一个按钮按了之后展示了不在队列中的动画。在div扩展到90%的同时也在增加字体，一旦字体改变完毕后，边框的动画才开始。</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;button id="go1"&gt;&#187; Animate Block1&lt;/button&gt;
+&lt;button id="go2"&gt;&#187; Animate Block2&lt;/button&gt;
+&lt;div id="block1"&gt;Block1&lt;/div&gt;&lt;div id="block2"&gt;Block2&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("#go1").click(function(){
+  $("#block1").animate( { width: "90%"}, { queue: false, duration: 5000 } )
+     .animate( { fontSize: '10em' } , 1000 )
+     .animate( { borderWidth: 5 }, 1000);
+});
+
+$("#go2").click(function(){
+  $("#block2").animate( { width: "90%"}, 1000 )
+     .animate( { fontSize: '10em' } , 1000 )
+     .animate( { borderWidth: 5 }, 1000);
+});</code></pre><h4 xmlns="">描述:</h4><p xmlns="">第二个按钮按了之后就是一个传统的链式动画，即等前一个动画完成后，后一个动画才会开始.</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;button id="go1"&gt;&#187; Animate Block1&lt;/button&gt;
+&lt;button id="go2"&gt;&#187; Animate Block2&lt;/button&gt;
+&lt;div id="block1"&gt;Block1&lt;/div&gt;&lt;div id="block2"&gt;Block2&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("#go1").click(function(){
+  $("#block1").animate( { width: "90%"}, { queue: false, duration: 5000 } )
+     .animate( { fontSize: '10em' } , 1000 )
+     .animate( { borderWidth: 5 }, 1000);
+});
+
+$("#go2").click(function(){
+  $("#block2").animate( { width: "90%"}, 1000 )
+     .animate( { fontSize: '10em' } , 1000 )
+     .animate( { borderWidth: 5 }, 1000);
+});</code></pre><h4 xmlns="">描述:</h4><p xmlns="">用600毫秒切换段落的高度和透明度</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("p").animate({
+   height: 'toggle', opacity: 'toggle'
+ }, { duration: "slow" });</code></pre><h4 xmlns="">描述:</h4><p xmlns="">用500毫秒将段落移到left为50的地方并且完全清晰显示出来（透明度为1）</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("p").animate({
+   left: 50, opacity: 'show'
+ }, { duration: 500 });</code></pre><h4 xmlns="">描述:</h4><p xmlns="">一个使用“easein”函数提供不同动画样式的例子。只有使用了插件来提供这个“easein”函数，这个参数才起作用。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("p").animate({
+   opacity: 'show'
+ }, { duration: "slow", easing: "easein" });</code></pre></div></div></div></body></html>

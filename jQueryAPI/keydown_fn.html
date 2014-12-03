@@ -1,0 +1,10 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>keydown(fn)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="keydown"><h2><span>返回值:jQuery</span>keydown(fn)</h2><h3>概述</h3><div class="desc"><p>在每一个匹配元素的keydown事件中绑定一个处理函数。</p><div class="longdesc"><pre>keydown事件会在键盘按下时触发。</pre></div></div><h3>参数</h3><div><h4><strong>fn</strong><span>Function</span></h4><p>在每一个匹配元素的keydown事件中绑定的处理函数。</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">在页面内对键盘按键做出回应，可以使用如下代码:</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$(window).keydown(function(event){
+  switch(event.keyCode) {
+    // ...
+    // 不同的按键可以做不同的事情
+    // 不同的浏览器的keycode不同
+    // 更多详细信息:     http://unixpapa.com/js/key.html
+    // ...
+  }
+});</code></pre></div></div></div></body></html>

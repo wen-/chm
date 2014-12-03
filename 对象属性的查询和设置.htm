@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>对象属性的查询和设置</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P><STRONG>对象属性的查询和设置</STRONG></P>
+<P>var o1 = {x:1,y:2,"call me":12345,z:function(){},xx:"123"};</P>
+<P><STRONG>获取x值：</STRONG></P>
+<P><FONT color=#ff0000>o1.x <FONT color=#000000>或者</FONT> o1["x"]</FONT></P>
+<P><STRONG>获取z值：</STRONG></P>
+<P><FONT color=#ff0000>o1.z() <FONT color=#000000>或者</FONT> 
+<STRONG>o1["z"]()</STRONG></FONT></P>
+<P><STRONG>获取“call me”的值：</STRONG></P>
+<P>只能是 <FONT color=#ff0000>o1["call me"]</FONT></P>
+<P>获取不存在的属性的长度时会报错，以下写法可避免：</P>
+<P>var len = o1 &amp;&amp; o1.xx &amp;&amp; o1.xx.length;</P>
+<P>数值属性的长度都是: undefined</P>
+<P>对象遍历：</P>
+<P>for(i in o1){</P>
+<P>console.log(o1[i]);</P>
+<P>}</P></BODY></HTML>

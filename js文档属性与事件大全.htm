@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js文档属性与事件大全</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY>
+<P>js文档属性与事件大全</P>
+<P>
+<TABLE 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; LETTER-SPACING: normal; FONT: 12px Arial, Helvetica, sans-serif; WORD-WRAP: break-word; WHITE-SPACE: normal; ORPHANS: 2; TABLE-LAYOUT: fixed; COLOR: rgb(51,51,51); WORD-BREAK: break-all; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+cellSpacing=3 cellPadding=3 width=650 align=center>
+  <TBODY>
+  <TR>
+    <TD style="BORDER-BOTTOM: rgb(211,211,211) 1px solid" class=bdb1>
+      <TABLE 
+      style="FONT-FAMILY: Arial, Helvetica, sans-serif; WORD-WRAP: break-word; TABLE-LAYOUT: fixed; COLOR: rgb(51,51,51); FONT-SIZE: 12px; WORD-BREAK: break-all" 
+      cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD style="COLOR: rgb(0,0,0); FONT-SIZE: 13px; FONT-WEIGHT: bold" 
+          class="f13 fbold" vAlign=bottom>标题:js文档属性与事件大全</TD>
+          <TD width=180 align=center><IMG 
+            style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+            alt=阿里西西 src="http://www.alixixi.com/Images/178X50LOGo.jpg" 
+            width=178 height=50></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD style="BORDER-BOTTOM: rgb(211,211,211) 1px solid; COLOR: rgb(0,0,0)" 
+    class=bdb1>正文:<BR>
+      <P>对象属性</P>
+      <P>document.title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //设置文档标题等价于HTML的&lt;title&gt;标签</P>
+      <P>document.bgColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //设置页面背景色</P>
+      <P>document.fgColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //设置前景色(文本颜色)</P>
+      <P>document.linkColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //未点击过的链接颜色</P>
+      <P>document.alinkColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //激活链接(焦点在此链接上)的颜色</P>
+      <P>document.vlinkColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //已点击过的链接颜色</P>
+      <P>document.URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //设置URL属性从而在同一窗口打开另一网页</P>
+      <P>document.fileCreatedDate&nbsp;&nbsp; //文件建立日期，只读属性</P>
+      <P>document.fileModifiedDate&nbsp; //文件修改日期，只读属性</P>
+      <P>document.fileSize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //文件大小，只读属性</P>
+      <P>document.cookie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //设置和读出cookie</P>
+      <P>document.charset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //设置字符集 简体中文:gb2312</P>
+      <P>---------------------------------------------------------------------</P>
+      <P>对象方法</P>
+      <P>document.write()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //动态向页面写入内容</P>
+      <P>document.createElement(Tag)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //创建一个html标签对象</P>
+      <P>document.getElementById(ID)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //获得指定ID值的对象</P>
+      <P>document.getElementsByName(Name)&nbsp; //获得指定Name值的对象</P>
+      <P>---------------------------------------------------------------------</P>
+      <P>&nbsp;</P>
+      <P>images集合(页面中的图象)</P>
+      <P>&nbsp;</P>
+      <P>a)通过集合引用</P>
+      <P>document.images&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //对应页面上的&lt;img&gt;标签</P>
+      <P>document.images.length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //对应页面上&lt;img&gt;标签的个数</P>
+      <P>document.images[0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //第1个&lt;img&gt;标签</P>
+      <P>document.images[i]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //第i-1个&lt;img&gt;标签</P>
+      <P>&nbsp;</P>
+      <P>b)通过nane属性直接引用</P>
+      <P>&lt;img name="oImage"&gt;</P>
+      <P>document.images.oImage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //document.images.name属性</P>
+      <P>&nbsp;</P>
+      <P>c)引用图片的src属性</P>
+      <P>document.images.oImage.src&nbsp; //document.images.name属性.src</P>
+      <P>&nbsp;</P>
+      <P>d)创建一个图象</P>
+      <P>var oImage</P>
+      <P>oImage = new Image()</P>
+      <P>document.images.oImage.src="http://www.pushad.com/1.jpg"</P>
+      <P>//同时在页面上建立一个&lt;img&gt;标签与之对应就可以显示</P>
+      <P>&nbsp;</P>
+      <P>&lt;html&gt;</P>
+      <P>&lt;img name=oImage&gt;</P>
+      <P>&lt;script language="javascript"&gt;</P>
+      <P>&nbsp;&nbsp; var oImage</P>
+      <P>&nbsp;&nbsp; oImage = new Image()</P>
+      <P>&nbsp;&nbsp; 
+      document.images.oImage.src="http://www.pushad.com/1.jpg"</P>
+      <P>&lt;/script&gt;</P>
+      <P>&lt;/html&gt;</P>
+      <P>&nbsp;</P>
+      <P>----------------------------------------------------------------------</P>
+      <P>&nbsp;</P>
+      <P>forms集合(页面中的表单)</P>
+      <P>&nbsp;</P>
+      <P>a)通过集合引用</P>
+      <P>document.forms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //对应页面上的&lt;form&gt;标签</P>
+      <P>document.forms.length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //对应页面上&lt;form&gt;标签的个数</P>
+      <P>document.forms[0]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //第1个&lt;form&gt;标签</P>
+      <P>document.forms[i]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //第i-1个&lt;form&gt;标签</P>
+      <P>document.forms[i].length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //第i-1个&lt;form&gt;中的控件数</P>
+      <P>document.forms[i].elements[j]&nbsp; //第i-1个&lt;form&gt;中第j-1个控件</P>
+      <P>&nbsp;</P>
+      <P>b)通过标签name属性直接引用</P>
+      <P>&lt;form name="Myform"&gt;&lt;input name="myctrl"&gt;&lt;/form&gt;</P>
+      <P>document.Myform.myctrl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //document.表单名.控件名</P>
+      <P>&nbsp;</P>
+      <P>-----------------------------------------------------------------------</P>
+      <P>&lt;html&gt;</P>
+      <P>&lt;!--Text控件相关Script--&gt;</P>
+      <P>&lt;form name="Myform"&gt;</P>
+      <P>&lt;input type="text" name="oText"&gt;</P>
+      <P>&lt;input type="password" name="oPswd"&gt;</P>
+      <P>&lt;form&gt;</P>
+      <P>&lt;script language="javascript"&gt;</P>
+      <P>//获取文本密码框的值</P>
+      <P>document.write(document.Myform.oText.value)</P>
+      <P>document.write(document.Myform.oPswd.value)</P>
+      <P>&lt;/script&gt;</P>
+      <P>&lt;/html&gt;</P>
+      <P>-----------------------------------------------------------------------</P>
+      <P>&lt;html&gt;</P>
+      <P>&lt;!--Select控件相关Script--&gt;</P>
+      <P>&lt;form name="Myform"&gt;</P>
+      <P>&lt;select name="oSelect"&gt;</P>
+      <P>&lt;option value="1"&gt;1&lt;/option&gt;</P>
+      <P>&lt;option value="2"&gt;2&lt;/option&gt;</P>
+      <P>&lt;option value="3"&gt;3&lt;/option&gt;</P>
+      <P>&lt;/select&gt;</P>
+      <P>&lt;/form&gt;</P>
+      <P>&nbsp;</P>
+      <P>&lt;script language="javascript"&gt;</P>
+      <P>&nbsp;&nbsp; //遍历select控件的option项</P>
+      <P>&nbsp;&nbsp; var length</P>
+      <P>&nbsp;&nbsp; length=document.Myform.oSelect.length</P>
+      <P>&nbsp;&nbsp; for(i=0;i&lt;length;i++)</P>
+      <P>&nbsp;&nbsp; document.write(document.Myform.oSelect[i].value)</P>
+      <P>&lt;/script&gt;</P>
+      <P>&nbsp;</P>
+      <P>&lt;script language="javascript"&gt;</P>
+      <P>&nbsp;&nbsp; //遍历option项并且判断某个option是否被选中</P>
+      <P>&nbsp;&nbsp; for(i=0;i&lt;document.Myform.oSelect.length;i++){</P>
+      <P>&nbsp;&nbsp; if(document.Myform.oSelect[i].selected!=true)</P>
+      <P>&nbsp;&nbsp; document.write(document.Myform.oSelect[i].value)</P>
+      <P>&nbsp;&nbsp; else</P>
+      <P>&nbsp;&nbsp; document.write("&lt;font 
+      color=red&gt;"+document.Myform.oSelect[i].value+"&lt;/font&gt;")&nbsp;&nbsp;</P>
+      <P>&nbsp;&nbsp; }</P>
+      <P>&lt;/script&gt;</P>
+      <P>&nbsp;</P>
+      <P>&lt;script language="javascript"&gt;</P>
+      <P>&nbsp;&nbsp; //根据SelectedIndex打印出选中的option</P>
+      <P>&nbsp;&nbsp; //(0到document.Myform.oSelect.length-1)</P>
+      <P>&nbsp;&nbsp; i=document.Myform.oSelect.selectedIndex</P>
+      <P>&nbsp;&nbsp; document.write(document.Myform.oSelect[i].value)</P>
+      <P>&lt;/script&gt;</P>
+      <P>&nbsp;</P>
+      <P>&lt;script language="javascript"&gt;</P>
+      <P>&nbsp;&nbsp; //动态增加select控件的option项</P>
+      <P>&nbsp;&nbsp; var oOption = document.createElement("OPTION");</P>
+      <P>&nbsp;&nbsp; oOption.text="4";</P>
+      <P>&nbsp;&nbsp; oOption.value="4";</P>
+      <P>&nbsp;&nbsp; document.Myform.oSelect.add(oOption);</P>
+      <P>&lt;/script&gt;</P>
+      <P>&lt;html&gt;</P>
+      <P>-----------------------------------------------------------------------</P>
+      <P>&lt;Div id="oDiv"&gt;Text&lt;/Div&gt;</P>
+      <P>document.all.oDiv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //引用图层oDiv</P>
+      <P>document.all.oDiv.style&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+      <P>document.all.oDiv.style.display=""&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      //图层设置为可视</P>
+      <P>document.all.oDiv.style.display="none"&nbsp; //图层设置为隐藏</P>
+      <P>/*document.all表示document中所有对象的集合</P>
+      <P>只有ie支持此属性，因此也用来判断浏览器的种类*/</P>
+      <P>input元素</P>
+      <P>input元素用于定义文本实体对象，包含有对输入文本内容的格式、数据类型、长度、值、变量名等多种属性的具体规定。当用户输入满足input元素的规定时，则接收输入信息，并赋给指定的变量灵活进行相应的操作、处理；否则，就通过浏览器给出具体的处理意见，并进行是单个输入处理或变量初始化操作，比如刷新卡片以让用户重新输入，或给用户指出输入错误所在并等待进一步的处理指令等。input元素是WML编程中处理用户交互活动的重要元素，它通过单独的&lt;input/&gt;标签进行定义，其语法格式如下：</P>
+      <P>&lt;input name="variable" title="label" type="type" value="value" 
+      default="default" format="specifier" emptyok="false|true" size="n" 
+      maxlength="n" tabindex="n"/&gt;</P>
+      <P>其中除了name属性是必选的以外，其他属性都是可选的。这些属性的功能和用法介绍如下： 
+      1）name。该属性用于指定用来保存用户输入文本的变量和名称。定义name属性后WML将根据该属性也即变量名，为即将输入的文本实体对象与之存储空间，以便接收用户输入。</P>
+      <P>2）title。该属性用于input元素的标签，通常是位于输入框前的提示信息。</P>
+      <P>3）type。用于指定文本输入区的类型，有text和password两种选择。默认值为text，指定的用户可以输入文本，而且输入的文本会同时逐渐响应并显示在浏览器中。如果选择password，则指定用户输入的文本作为密码文本处理，WML程序按文本实体接收输入的数据，而浏览器上响应用户输入显示时逐渐均为星号(*)，由此起到保密的目的。</P>
+      <P>4）value。该属性用于指定name属性所定义变量的值，它将显示在输入框中。</P>
+      <P>5）default。该属性用于指定name属性所定义变量的默认值。</P>
+      <P>6）format。该属性用于格式化输入的数据。</P>
+      <P>7）maxlength。该属性用于指定用户可输入字符串的最大长度。该属性的上限为256，最多不能超过256个字符。</P>
+      <P>8）emptyok。用于指定用户是否可以不在输入框内输入内容。</P>
+      <P>9）size。该属性用于指定输入框的宽度，宽度值为字符个数。</P>
+      <P>10）tabindex。用于指定多个输入框存在时，类似于HTML中Tab键的具体位置。&nbsp;</P>
+      <P>&nbsp;</P>
+      <P>onabort 当用户中断下载图像时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onactivate 
+      当对象设置为活动元素时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onafterprint 
+      对象所关联的文档打印或打印预览后立即在对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onafterupdate 
+      当成功更新数据源对象中的关联对象后在数据绑定对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforeactivate 
+      对象要被设置为当前元素前立即触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforecopy 
+      当选中区复制到系统剪贴板之前在源对象触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforecut 
+      当选中区从文档中删除之前在源对象触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforedeactivate 在 
+      activeElement 从当前对象变为父文档其它对象之前立即触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforeeditfocus 
+      在包含于可编辑元素内的对象进入用户界面激活状态前或可编辑容器变成控件选中区前触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforepaste 
+      在选中区从系统剪贴板粘贴到文档前在目标对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforeprint 
+      对象的关联文档打印或打印预览前在对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforeunload 
+      在页面将要被卸载前触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbeforeupdate 
+      当成功更新数据源对象中的关联对象前在数据绑定对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onblur 在对象失去输入焦点时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onbounce 当 marquee 对象的 
+      behavior 属性设置为"alternate"且字幕的内容到达窗口一边时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>oncellchange 
+      在数据供应者中的数据变更时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onchange 
+      当对象或选中区的内容改变时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onclick 
+      在用户用鼠标左键单击对象时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>oncontextmenu 
+      在用户使用鼠标右键单击客户区打开上下文菜单时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>oncontrolselect 
+      当用户将要对该对象制作一个控件选中区时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>oncopy 
+      当用户复制对象或选中区，将其添加到系统剪贴板上时在源元素上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>oncut 
+      当对象或选中区从文档中删除并添加到系统剪贴板上时在源元素上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondataavailable 
+      每当异步传输数据的数据源对象的数据到达时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondatasetchanged 
+      当数据源对象对应的数据集发生变更时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondatasetcomplete 
+      触发就表明数据源对象所有数据都可用。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondblclick 当用户双击对象时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondeactivate 当 activeElement 
+      从当前对象变为父文档其它对象时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondrag 
+      当进行拖曳操作时在源对象上持续触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondragend 
+      当用户在拖曳操作结束后释放鼠标时在源对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondragenter 
+      当用户拖曳对象到一个合法拖曳目标时在目标元素上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondragleave 
+      当用户在拖曳操作过程中将鼠标移出合法拖曳目标时在目标对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondragover 
+      当用户拖曳对象划过合法拖曳目标时持续在目标元素上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondragstart 
+      当用户开始拖曳文本选中区或选中对象时在源对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>ondrop 
+      当鼠标按钮在拖曳操作过程中释放时在目标对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onerror 当对象装载过程中发生错误时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onerrorupdate 
+      更新数据源对象中的关联数据出错时在数据绑定对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onfilterchange 
+      当可视滤镜更改状态或完成转换时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onfinish 当字幕循环完成后触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onfocus 当对象获得焦点时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onfocusin 
+      当元素将要被设置为焦点之前触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onfocusout 
+      在移动焦点到其它元素之后立即触发于当前拥有焦点的元素上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onhelp 当用户在浏览器为当前窗口时按 F1 
+      键时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onkeydown 
+      当用户按下键盘按键时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onkeypress 
+      当用户按下字面键时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onkeyup 
+      当用户释放键盘按键时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onlayoutcomplete 
+      当打印或打印预览版面处理完成用来自于源文档的内容填充当前 LayoutRect 对象时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onload 在浏览器完成对象的装载后立即触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onlosecapture 
+      当对象失去鼠标捕捉时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmousedown 
+      当用户用任何鼠标按钮单击对象时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmouseenter 
+      当用户将鼠标指针移动到对象内时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmouseleave 
+      当用户将鼠标指针移出对象边界时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmousemove 
+      当用户将鼠标划过对象时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmouseout 
+      当用户将鼠标指针移出对象边界时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmouseover 
+      当用户将鼠标指针移动到对象内时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmouseup 
+      当用户在鼠标位于对象之上时释放鼠标按钮时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onmousewheel 
+      当鼠标滚轮按钮旋转时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onmove 
+      当对象移动时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onmoveend 
+      当对象停止移动时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onmovestart 
+      当对象开始移动时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onpaste 
+      当用户粘贴数据以便从系统剪贴板向文档传送数据时在目标对象上触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onpropertychange 
+      当在对象上发生对象上发生属性更改时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onreadystatechange 
+      当对象状态变更时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onreset 
+      当用户重置表单时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onresize 
+      当对象的大小将要改变时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onresizeend 
+      当用户更改完控件选中区中对象的尺寸时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onresizestart 
+      当用户开始更改控件选中区中对象的尺寸时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onrowenter 
+      触发就表明当前行已经在数据源中更改，对象上有可用的新数据值。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onrowexit 
+      当数据源控件更改对象当前行前触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onrowsdelete 
+      当行将要从记录集中被删除时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onrowsinserted 
+      当在当前记录集中插入新行后触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onscroll 当用户滚动对象的滚动条时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onselect 当当前选中区改变时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onselectionchange 
+      当文档的选中状态改变时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onselectstart 
+      对象将要被选中时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onstart 在 
+      marquee 对象的每次循环开始时触发。<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>onstop 当用户单击停止按钮或离开 Web 
+      页面时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onsubmit 
+      当表单将要被提交时触发。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>onunload 
+      在对象卸载前立即触发。</P></TD></TR></TBODY></TABLE><BR 
+class=Apple-interchange-newline></P></BODY></HTML>

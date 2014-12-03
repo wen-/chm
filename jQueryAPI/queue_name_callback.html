@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>queue(name, callback)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="queue"><h2><span>返回值:jQuery</span>queue(name, callback)</h2><h3>概述</h3><div class="desc"><p>在匹配的元素的队列最后添加一个函数</p><div class="longdesc"><pre></pre></div></div><h3>参数</h3><div><h4><strong>name</strong><span>String</span></h4><p>队列名，默认为fx</p><h4><strong>callback</strong><span>Function</span></h4><p>要添加进队列的函数</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">插入一个自定义函数
+如果函数执行后要继续队列，则执行 jQuery(this).dequeue();</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;style&gt;
+  div { margin:3px; width:40px; height:40px;
+        position:absolute; left:0px; top:30px; 
+        background:green; display:none; }
+  div.newcolor { background:blue; }
+  &lt;/style&gt;
+  Click here...
+  &lt;div&gt;&lt;/div&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$(document.body).click(function () {
+      $("div").show("slow");
+      $("div").animate({left:'+=200'},2000);
+      $("div").queue(function () {
+          $(this).addClass("newcolor");
+          $(this).dequeue();
+      });
+      $("div").animate({left:'-=200'},500);
+      $("div").queue(function () {
+          $(this).removeClass("newcolor");
+          $(this).dequeue();
+      });
+      $("div").slideUp();
+});</code></pre></div></div></div></body></html>

@@ -1,0 +1,36 @@
+/* ::::: http://tool.chinaz.com/template/default/styles/toolsite.css?ver=2011_11 ::::: */
+
+body { background: url('../images/bg.gif') repeat-x scroll 0% 0% rgb(240, 247, 252); text-align: left; color: rgb(51, 51, 51); font: 13px/16px Verdana,Tahoma,Arial,Helvetica,sans-serif; margin: 0px; padding: 0px; }
+td, input, textarea, select, button { color: rgb(51, 51, 51); line-height: 16px; }
+input, textarea, select, button { vertical-align: middle; }
+ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0px; padding: 0px; }
+h1, h2, h3, h4, h5, h6 { font-size: 1em; }
+ul, ol { list-style: none outside none; }
+img { vertical-align: middle; border: 0px none; }
+a { color: rgb(13, 140, 33); text-decoration: none; }
+a:hover { color: red; text-decoration: underline; }
+.box h1 { line-height: 37px; height: 37px; padding-left: 20px; background: url('../images/h1-bg.gif') repeat-x scroll 0% 0% transparent; color: rgb(0, 102, 204); border-width: 1px 1px 0px; border-style: solid solid none; border-color: rgb(197, 226, 242) rgb(197, 226, 242) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; font-size: 14px; font-weight: normal; }
+.box h1 a { color: rgb(51, 51, 255); }
+.box .titright { float: right; padding-right: 10px; }
+.box .titleft { float: left; }
+.wrap { margin: auto; width: 900px; clear: both; }
+div.menu-list { position: absolute; width: 100px; padding: 0px 0px 5px; display: none; background: none repeat scroll 0% 0% rgb(255, 255, 255); border: 1px solid rgb(214, 214, 214); }
+div.menu-list ul li { padding: 0px; margin: 5px 2px 0px; list-style-type: none; }
+div.menu-list ul li a { display: block; width: 100%; height: 25px; line-height: 25px; text-align: center; color: rgb(0, 0, 0); text-decoration: none; cursor: pointer; }
+div.menu-list ul li a:hover { color: rgb(255, 255, 255); background: url('../images/bg-left.jpg') no-repeat scroll 0px 0px rgb(93, 152, 212); }
+.box { clear: both; }
+.box1 { background: url('../images/box1-bg.gif') repeat-x scroll left top rgb(255, 255, 255); border-right: 1px solid rgb(187, 215, 230); border-width: 0px 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(187, 215, 230) rgb(187, 215, 230); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; padding: 3px 15px; line-height: 30px; }
+.info1 { line-height: 26px; color: rgb(119, 119, 119); display: block; padding: 5px 0px; }
+.toolist { clear: both; border-bottom: 1px solid rgb(229, 239, 248); }
+.toolist li { line-height: 22px; height: 22px; float: left; padding: 3px 5px; list-style: none outside none; }
+.toolist .imt { color: rgb(51, 51, 255); }
+.info3 { line-height: 22px; color: rgb(51, 51, 51); margin-top: 5px; display: block; font-size: 14px; padding-bottom: 5px; margin-bottom: 5px; border-bottom: 1px solid rgb(229, 239, 248); }
+@media not all {
+}
+#gotop { bottom: 120px; cursor: pointer; position: fixed; display: none; z-index: 100; }
+/* ::::: http://tool.chinaz.com/template/default/styles/topbar.css ::::: */
+
+/* ::::: http://img.chinaz.com/max-templates/passport/styles/topbar.css ::::: */
+
+/* ::::: http://img.chinaz.com/max-templates/default/styles/dialog.css ::::: */
+

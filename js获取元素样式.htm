@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js获取元素样式</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>js获取元素样式</P>
+<P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">当出现相同的样式时，优先级是内联大于嵌入式样式, 
+嵌入式样式大于外部样式。<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">---------------------------------------------------------------<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">当js获取这三种样式时,style只能获取内联样式，获取不到外部样式和嵌入式样式,因此要用currentStyle属性，而currentStyle在FF下不支持<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">下面介绍二种 
+兼容FF和IE和正确获取样式的方法<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></P>
+<DIV class=codetitle 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: url(http://www.codesky.net/skin/blue/images/button_bg.gif); WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/22px Simsun; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 3px; WIDTH: 550px; BACKGROUND-COLOR: rgb(242,246,251); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+onclick="doCopy('code45649')" 
+style="CURSOR: pointer; FLOAT: right"><U>复制代码</U></SPAN>代码如下:</DIV>
+<DIV id=code45649 class=codebody 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(0,153,204) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/22px Simsun; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 3px; WIDTH: 550px; BACKGROUND-COLOR: rgb(242,246,251); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P><BR>var $=function(id){return document.getElementById(id) };<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>方法一<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>/*<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>* @string id<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>* @string styleName 样式名<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>*/<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>function 
+getEyeJsStyle(id,styleName){<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>if($(id).currentStyle){//ie<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>return 
+$(id).currentStyle[styleName];<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>}else{ //ff<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>var 
+$arr=$(id).ownerDocument.defaultView.getComputedStyle($(id), null);<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>return $arr[styleName];<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></P>
+<P><SPAN class=Apple-converted-space></SPAN>&nbsp;</P>
+<P>document.getElementById("open_agreement").onclick=function(){<BR>&nbsp;if(!!document.body.currentStyle){<BR>&nbsp;&nbsp;if(document.getElementById("card_agreement").currentStyle.display 
+== 
+"block"){<BR>&nbsp;&nbsp;&nbsp;document.getElementById("card_agreement").style.display 
+= 
+"none";<BR>&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;document.getElementById("card_agreement").style.display 
+= 
+"block";<BR>&nbsp;&nbsp;};<BR>&nbsp;}else{<BR>&nbsp;&nbsp;if(window.getComputedStyle(document.getElementById("card_agreement")).display 
+== 
+"block"){<BR>&nbsp;&nbsp;&nbsp;document.getElementById("card_agreement").style.display 
+= 
+"none";<BR>&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;document.getElementById("card_agreement").style.display 
+= "block";<BR>&nbsp;&nbsp;};<BR>&nbsp;}<BR>}<BR><BR></P></DIV>
+<P><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">方法二:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></P>
+<DIV class=codetitle 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: url(http://www.codesky.net/skin/blue/images/button_bg.gif); WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/22px Simsun; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 3px; WIDTH: 550px; BACKGROUND-COLOR: rgb(242,246,251); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+onclick="doCopy('code37363')" 
+style="CURSOR: pointer; FLOAT: right"><U>复制代码</U></SPAN>代码如下:</DIV>
+<DIV id=code37363 class=codebody 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(0,153,204) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/22px Simsun; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 3px; WIDTH: 550px; BACKGROUND-COLOR: rgb(242,246,251); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>HTMLElement.prototype.__defineGetter__("currentStyle", 
+function () {<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>return 
+this.ownerDocument.defaultView.getComputedStyle(this, null);<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>});<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV>
+<P><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">讲述一下getComputedStyle函数的用法<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这个函数有两个参数：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">第一个参数为需要获取样式的元素对象；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">第二个参数为伪元素，如:hover, 
+:first-letter, :before等等，<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">如果不需要伪元素则该参数为null。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">getComputedStyle()函数可以从 
+document.defaultView 对象中访问到，即可以这样调用该函数<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">--------------------------------------------------------------------------------------------<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">顺便说一下runtimeStyle属性，首页该属性只在IE中支持,在FF不支持<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">runtimeStyle 
+运行时的样式！如果与style的属性重叠，将覆盖style的属性！<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">意思就是当指定了runtimeStyle，那么当前显示的样式以runtimeStyle为准</SPAN><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">，如果取消了runtimeStyle，那么当前显示样式就恢复到currentStyle的样式。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">案例:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); FONT: 14px/22px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,252,254); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">设置document.getElementById("eyejs").runtimeStyle.width="400px"; 
+那该元素的宽度就是400px,，将覆盖style的属性<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN></P></BODY></HTML>

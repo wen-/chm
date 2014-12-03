@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>jQuery通过bind()对事件进行绑定，相当于IE浏览器的atttachEvent()和标准DOM浏览器的addEventListener()，使用方法也基本相同。例：<br />
+  $(function(){<br />
+  $(&quot;img&quot;)<br />
+  .bind(&quot;click&quot;,function(){<br />
+  $(&quot;#show&quot;).append(&quot;&lt;div&gt;点击事件1&lt;/div&gt;&quot;);<br />
+  });<br />
+  .bind(&quot;click&quot;,function(){<br />
+  $(&quot;#show&quot;).append(&quot;&lt;div&gt;点击事件2&lt;/div&gt;&quot;);<br />
+  });</p>
+<p>.bind(&quot;click&quot;,function(){<br />
+  $(&quot;#show&quot;).append(&quot;&lt;div&gt;点击事件3&lt;/div&gt;&quot;);<br />
+  });</p>
+<p>});<br />
+  bind()方法的通用语法为：<br />
+  bind(eventType,[data],Listener)<br />
+  如果想多个事件共同使用一个监听函数，可以同时添加在eventType中，事件之间用空格分离。data是可选参数，用来传递一些特殊的数据供监听函数使用，Listenner为事件监听函数。<br />
+  事件的类型：blur、focus、load、resize、scroll、unload、click、dbclick、mousedown、mouseup、mousemove、mouseover、mouseout、mouseenter、mouseleave、change、select、submit、keydown、keypress、keyup、error。<br />
+  另外，一些特殊的事件类型可以直接利用事件名称作为绑定函数，接受参数为监听函数，例如前面反复使用的：<br />
+  $(&quot;p&quot;).click(function(){<br />
+  //添加click事件的监听函数<br />
+  });<br />
+  可以使用的事件名包括：blur、focus、load、resize、scroll、unload、click、dbclick、mousedown、mouseup、mousemove、mouseover、mouseout、change、select、submit、keydown、keypress、keyup、error等。<br />
+  除了bind()外，jQuery还提供了一个很实用的one()方法来绑定事件。该方法绑定的事件触发了一次后会自动删除，不再生效。例，只执行一次的事件监听函数：<br />
+  $(function(){<br />
+  //首先创建10个&lt;div&gt;块<br />
+  for(var i=0;i&lt;10;i++)<br />
+  $(document.body).append($(&quot;&lt;div&gt;Click&lt;br  /&gt;Me!&lt;/div&gt;&quot;));<br />
+  var ICounter=1;<br />
+  //每个都用one添加click事件<br />
+  $(&quot;div&quot;).one(&quot;click&quot;,fonction(){<br />
+  $(this).css({background:&quot;#8f0000&quot;,color:&quot;#ffffff&quot;}).html(&quot;Clicked!&lt;br  /&gt;&quot;+(iCounter++));<br />
+  });<br />
+  });</p>
+</body>
+</html>

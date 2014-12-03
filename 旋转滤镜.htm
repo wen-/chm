@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>旋转滤镜</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>旋转滤镜</P>
+<P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">顺时针旋转90度 
+：</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">-moz-transform:rotate(90deg); 
+</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">-webkit-transform:rotate(90deg); 
+</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">-o-transform:rotate(90deg); 
+</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">transform:rotate(90deg); 
+</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);//(rotation取值为0，1，2，3.－－－1为90度，2为180度，3为270度)</SPAN></P><SPAN 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px Simsun; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV class=title 
+style="HEIGHT: 50px; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); TEXT-ALIGN: center; FONT: 12px/50px Simsun; MARGIN: 0px auto; LETTER-SPACING: normal; WIDTH: 686px; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H1 
+style="FONT-SIZE: 15px; COLOR: rgb(34,89,166); PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 21px; PADDING-RIGHT: 0px">IE矩阵Matrix滤镜旋转与缩放及如何结合transform</H1></DIV>
+<DIV id=content 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(68,68,68); TEXT-ALIGN: center; FONT: 14px/25px Simsun; MARGIN: 10px auto; LETTER-SPACING: normal; WIDTH: 658px; BACKGROUND-COLOR: rgb(207,225,237); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><STRONG>一、Matrix滤镜简介</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>基本语法如下：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR>
+<DIV class=msgheader 
+style="OVERFLOW: hidden; FONT-SIZE: 12px; BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(242,246,251)">
+<DIV class=right style="FLOAT: right"><SPAN onclick="copycode($('phpcode7'));" 
+style="CURSOR: pointer"><U>复制代码</U></SPAN></DIV>代码如下:</DIV>
+<DIV id=phpcode7 class=msgborder 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; FONT-SIZE: 14px; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; WORD-BREAK: break-all; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(221,237,251)"><BR>filter: 
+progid:DXImageTransform.Microsoft.Matrix( enabled= bEnabled , SizingMethod= 
+sMethod , FilterType= sType , Dx= fDx , Dy= fDy , M11= fM11 , M12= fM12 , M21= 
+fM21 , M22= fM22 )<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV><BR>其中参数多多，而且名称稀奇古怪的，很容易吓着新手。所以我干脆直接简化了下，把与实现旋转与缩放功能不相关的不需要关系的参数全部一脚踹掉，于是有：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR>
+<DIV class=msgheader 
+style="OVERFLOW: hidden; FONT-SIZE: 12px; BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(242,246,251)">
+<DIV class=right style="FLOAT: right"><SPAN onclick="copycode($('phpcode8'));" 
+style="CURSOR: pointer"><U>复制代码</U></SPAN></DIV>代码如下:</DIV>
+<DIV id=phpcode8 class=msgborder 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; FONT-SIZE: 14px; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; WORD-BREAK: break-all; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(221,237,251)"><BR>filter: 
+progid:DXImageTransform.Microsoft.Matrix( SizingMethod= sMethod , M11= fM11 , 
+M12= fM12 , M21= fM21 , M22= fM22 )<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV><BR>其中SizingMethod这里死活就是"auto 
+expand"了，也就是说我们要实现元素的旋转与缩放只要关心M11, M12, M21, 
+M22，这几个参数就是2×2矩阵中的的四个数值。虽然大学中学过线性代数还考了90多分，但是几年不碰都已经还给老师了，所以这几个参数如何实现拉伸我也是不清楚的。但是，幸好实现旋转以及缩放效果我们不需要知道的太多，我们只需要套用下面的格式就可以了。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR>
+<DIV class=msgheader 
+style="OVERFLOW: hidden; FONT-SIZE: 12px; BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(242,246,251)">
+<DIV class=right style="FLOAT: right"><SPAN onclick="copycode($('phpcode9'));" 
+style="CURSOR: pointer"><U>复制代码</U></SPAN></DIV>代码如下:</DIV>
+<DIV id=phpcode9 class=msgborder 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; FONT-SIZE: 14px; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; WORD-BREAK: break-all; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(221,237,251)"><BR>filter:progid:DXImageTransform.Microsoft.Matrix(M11=cos(roation),M12=-sin(roation),M21=sin(roation),M22=cos(roation),SizingMethod='auto 
+expand');<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV><BR>只要把你需要旋转的角度将上面的roation值代替并计算出来就可以了，这个在“图片旋转效果的一些研究、jQuery插件及实例” 
+一文中已经有过介绍了，这里就不赘述了。现在来看看如何实现比例的缩放。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>如同变魔术般，一旦知道了原理就觉得很一般。同样的这里实现比例的改变也非常简单。就是将M11, 
+M12, M21, M22的每个值分别乘以你希望缩放的比例就可以了。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>例如，您想要把一个元素只是单纯的旋转135度的话直接就是(cos(135) 
+= -0.707)：<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR><BR>
+<DIV class=msgheader 
+style="OVERFLOW: hidden; FONT-SIZE: 12px; BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(242,246,251)">
+<DIV class=right style="FLOAT: right"><SPAN onclick="copycode($('phpcode10'));" 
+style="CURSOR: pointer"><U>复制代码</U></SPAN></DIV>代码如下:</DIV>
+<DIV id=phpcode10 class=msgborder 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; FONT-SIZE: 14px; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; WORD-BREAK: break-all; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(221,237,251)"><BR>filter:progid:DXImageTransform.Microsoft.Matrix(M11=-0.707,M12=-0.707,M21=0.707,M22=-0.707,SizingMethod='auto 
+expand');}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV><BR>但是，同时你希望元素还放大两倍，那该怎么办呢，很简单，M11, 
+M12, M21, M22同时乘以2就可以了，也就是：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR>
+<DIV class=msgheader 
+style="OVERFLOW: hidden; FONT-SIZE: 12px; BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(242,246,251)">
+<DIV class=right style="FLOAT: right"><SPAN onclick="copycode($('phpcode11'));" 
+style="CURSOR: pointer"><U>复制代码</U></SPAN></DIV>代码如下:</DIV>
+<DIV id=phpcode11 class=msgborder 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; FONT-SIZE: 14px; BORDER-RIGHT: rgb(0,153,204) 1px solid; BACKGROUND-IMAGE: none; BACKGROUND-ATTACHMENT: scroll; BORDER-BOTTOM: rgb(0,153,204) 1px solid; WORD-BREAK: break-all; BACKGROUND-POSITION: 0% 0%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; PADDING-RIGHT: 3px; WIDTH: 600px; BACKGROUND-COLOR: rgb(221,237,251)">
+<P><BR>filter:progid:DXImageTransform.Microsoft.Matrix(M11=-1.414,M12=-1.414,M21=0.1.414,M22=-1.414,SizingMethod='auto 
+expand');}<SPAN class=Apple-converted-space>&nbsp;</SPAN></P>
+<P align=left><SPAN class=Apple-converted-space>圆点偏移量计算：</SPAN></P>
+<P align=left><SPAN 
+class=Apple-converted-space>计算对角线长度，得出旋转后的大小，减去原先长度得到增量，增量减半等于偏移量。</SPAN></P>
+<P align=left><SPAN class=Apple-converted-space>工式：W = |sin(a)*h| + 
+|cos(a)*w|,&nbsp;&nbsp; W-原先宽，再除以2</SPAN></P>
+<P align=left><SPAN class=Apple-converted-space>H = |sin(a)*w| + 
+|cos(a)*h，&nbsp; H－原先高，再以2</SPAN></P>
+<P align=left><SPAN class=Apple-converted-space></SPAN>&nbsp;</P>
+<P><BR></P></DIV><BR>很简单吧。这就是IE矩阵滤镜Matrix下旋转与缩放的实现。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV></SPAN></BODY></HTML>

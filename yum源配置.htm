@@ -1,0 +1,788 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>yum源配置</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>yum源配置</P>
+<H1 
+style="BORDER-BOTTOM: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: bold 14px/24px verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=postTitle><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(57,154,178); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+id=cb_post_title_url class=postTitle2 
+href="http://www.cnblogs.com/mchina/archive/2013/01/04/2842275.html">CentOS yum 
+源的配置与使用</A></H1>
+<DIV 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 13px/24px verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); CLEAR: both; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=clear></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/1.8 verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=postBody>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+id=cnblogs_post_body>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(128,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px">一、yum 
+简介</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　yum，是Yellow 
+dog Updater, Modified 的简称，是杜克大学为了提高RPM 软件包安装性而开发的一种软件包管理器。起初是由yellow dog 
+这一发行版的开发者Terra Soft 研发，用python 写成，那时还叫做yup(yellow dog updater)，后经杜克大学的Linux@Duke 
+开发团队进行改进，遂有此名。yum 的宗旨是自动化地升级，安装/移除rpm 包，收集rpm 包的相关信息，检查依赖性并自动提示用户解决。yum 
+的关键之处是要有可靠的repository，顾名思义，这是软件的仓库，它可以是http 或ftp 站点，也可以是本地软件池，但必须包含rpm 
+的header，header 包括了rpm 包的各种信息，包括描述，功能，提供的文件，依赖性等。正是收集了这些header 
+并加以分析，才能自动化地完成余下的任务。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　yum 
+的理念是使用一个中心仓库(repository)管理一部分甚至一个distribution 
+的应用程序相互关系，根据计算出来的软件依赖关系进行相关的升级、安装、删除等等操作，减少了Linux 用户一直头痛的dependencies 
+的问题。这一点上，yum 和apt 相同。apt 原为debian 的deb 类型软件管理所使用，但是现在也能用到RedHat 门下的rpm 了。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　yum 
+主要功能是更方便的添加/删除/更新RPM 包，自动解决包的倚赖性问题，便于管理大量系统的更新问题。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　yum 
+可以同时配置多个资源库(Repository)，简洁的配置文件（/etc/yum.conf），自动解决增加或删除rpm 包时遇到的依赖性问题，保持与RPM 
+数据库的一致性。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(128,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">二、yum 
+安装</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">CentOS 
+默认已经安装了yum，不需要另外安装，这里为了实验目的，先将yum 卸载再重新安装。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">1、查看系统默认安装的yum</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+rpm -qa|grep yum</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02144946-e2ca5b6e413d401580510f4b4114e8ba.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2、卸载yum</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+rpm -e yum-fastestmirror-1.1.16-14.el5.centos.1 
+yum-metadata-parser-1.1.2-3.el5.centos yum-3.2.22-33.el5.centos</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02144955-44692d4b368d41e6895aafb96d1e1d8b.jpg" 
+width=900></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">3、重新安装yum</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">这里可以通过wget 
+从网上下载相关包安装，也可以挂载系统安装光盘进行安装，这里选择挂载系统安装光盘进行安装。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+mount /dev/cdrom /mnt/cdrom/</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+rpm -ivh yum-3.2.22-33.el5.centos.noarch.rpm 
+yum-fastestmirror-1.1.16-14.el5.centos.1.noarch.rpm 
+yum-metadata-parser-1.1.2-3.el5.centos.i386.rpm</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+yum -v</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">yum 
+的基础安装包包括：</P>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px 0px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">yum　　//RPM 
+  installer/updater</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">yum-fastestmirror　　//Yum 
+  plugin which chooses fastest repository from a mirrorlist</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">yum-metadata-parser　　//A 
+  fast metadata parser for yum</LI></UL>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">其他安装包根据自己需要安装。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02145023-dd63e6d1b4c24336862a57c05333001b.jpg" 
+width=900></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(128,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">三、yum 
+配置</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">yum 
+的配置文件分为两部分：main 和repository</P>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px 0px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">main 
+  部分定义了全局配置选项，整个yum 配置文件应该只有一个main。常位于/etc/yum.conf 中。</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">repository 
+  部分定义了每个源/服务器的具体配置，可以有一到多个。常位于/etc/yum.repo.d 目录下的各文件中。</LI></UL>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">yum.conf 
+文件一般位于/etc目录下，一般其中只包含main部分的配置选项。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+cat /etc/yum.conf</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px">[main]
+cachedir=/var/cache/yum<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//yum 缓存的目录，yum 在此存储下载的rpm 包和数据库，默认设置为/var/cache/yum
+keepcache=0<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//安装完成后是否保留软件包，0为不保留（默认为0），1为保留
+debuglevel=2<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//Debug 信息输出等级，范围为0-10，缺省为2
+logfile=/var/log/yum.log<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//yum 日志文件位置。用户可以到/var/log/yum.log 文件去查询过去所做的更新。
+pkgpolicy=newest<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//包的策略。一共有两个选项，newest 和last，这个作用是如果你设置了多个repository，而同一软件在不同的repository 中同时存在，yum 应该安装哪一个，如果是newest，则yum 会安装最新的那个版本。如果是last，则yum 会将服务器id 以字母表排序，并选择最后的那个服务器上的软件安装。一般都是选newest。<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">distroverpkg=redhat-release<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//指定一个软件包，yum 会根据这个包判断你的发行版本，默认是redhat-release，也可以是安装的任何针对自己发行版的rpm 包。
+tolerant=1<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//有1和0两个选项，表示yum 是否容忍命令行发生与软件包有关的错误，比如你要安装1,2,3三个包，而其中3此前已经安装了，如果你设为1,则yum 不会出现错误信息。默认是0。
+exactarch=1<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//有1和0两个选项，设置为1，则yum 只会安装和系统架构匹配的软件包，例如，yum 不会将i686的软件包安装在适合i386的系统中。默认为1。
+retries=6<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//网络连接发生错误后的重试次数，如果设为0，则会无限重试。默认值为6.<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">obsoletes=1<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//这是一个update 的参数，具体请参阅yum(8)，简单的说就是相当于upgrade，允许更新陈旧的RPM包。
+plugins=1<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　//是否启用插件，默认1为允许，0表示不允许。我们一般会用yum-fastestmirror这个插件。
+bugtracker_url=http://bugs.centos.org/set_project.php?project_id=16&amp;ref=http://bugs.centos.org/bug_report_page.php?category=yum
+
+# Note: yum-RHN-plugin doesn't honor this.
+metadata_expire=1h
+
+installonly_limit = 5
+
+# PUT YOUR REPOS HERE OR IN separate files named file.repo
+# in /etc/yum.repos.d</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">除了上述之外，还有一些可以添加的选项，如：</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　exclude=selinux*　　//&nbsp;排除某些软件在升级名单之外，可以用通配符，列表中各个项目要用空格隔开，这个对于安装了诸如美化包，中文补丁的朋友特别有用。<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">　　gpgcheck=1　　//&nbsp;有1和0两个选择，分别代表是否是否进行gpg(GNU 
+Private Guard) 校验，以确定rpm 包的来源是有效和安全的。这个选项如果设置在[main]部分，则对每个repository 
+都有效。默认值为0。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(128,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">四、配置本地yum源</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">1、挂载系统安装光盘</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+mount /dev/cdrom /mnt/cdrom/</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2、配置本地yum源</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+cd /etc/yum.repos.d/</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+ls</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">会看到四个repo 
+文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02161702-13be6e07506743d4a079d61f13a069af.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">CentOS-Base.repo&nbsp;是yum 
+网络源的配置文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">CentOS-Media.repo 
+是yum&nbsp;本地源的配置文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">修改CentOS-Media.repo</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+cat CentOS-Media.repo</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px"># CentOS-Media.repo
+#
+# This repo is used to mount the default locations for a CDROM / DVD on
+#  CentOS-5.  You can use this repo and yum to install items directly off the
+#  DVD ISO that we release.
+#
+# To use this repo, put in your DVD and use it with the other repos too:
+#  yum --enablerepo=c5-media [command]
+#  
+# or for ONLY the media repo, do this:
+#
+#  yum --disablerepo=\* --enablerepo=c5-media [command]
+ 
+[c5-media]
+name=CentOS-$releasever - Media
+baseurl=file:///media/CentOS/
+        file:///mnt/cdrom/
+        file:///media/cdrecorder/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">在baseurl 
+中修改第2个路径为/mnt/cdrom（即为光盘挂载点）</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">将enabled=0改为1</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">3、禁用默认的yum 
+网络源</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">将yum 
+网络源配置文件改名为CentOS-Base.repo.bak，否则会先在网络源中寻找适合的包，改名之后直接从本地源读取。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">4、执行yum 
+命令</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+yum install postgresql</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02163552-8dc2dcbe31e04844aa1f15ce3b5820e1.jpg"></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02163602-79f3e3139ea54fdfb1978735548a7fa0.jpg" 
+width=900></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">关于repo 
+文件的格式</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">所有repository&nbsp;服务器设置都应该遵循如下格式：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px">[serverid]
+name=Some name for this server
+baseurl=url://path/to/repository/</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px 0px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">serverid 
+  是用于区别各个不同的repository，必须有一个独一无二的名称；</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">name 
+  是对repository 的描述，支持像$releasever $basearch这样的变量；</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">baseurl 
+  是服务器设置中最重要的部分，只有设置正确，才能从上面获取软件。它的格式是：</LI></UL>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px">baseurl=url://server1/path/to/repository/
+　　　　 url://server2/path/to/repository/
+　　　　 url://server3/path/to/repository/</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">其中url 
+支持的协议有 http:// ftp://&nbsp;file://&nbsp;三种。baseurl 
+后可以跟多个url，你可以自己改为速度比较快的镜像站，但baseurl 只能有一个，也就是说不能像如下格式：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px">baseurl=url://server1/path/to/repository/
+baseurl=url://server2/path/to/repository/
+baseurl=url://server3/path/to/repository/</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">其中url 
+指向的目录必须是这个repository header 目录的上一级，它也支持$releasever $basearch 这样的变量。<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">url 
+之后可以加上多个选项，如gpgcheck、exclude、failovermethod 等，比如：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px">[updates-released]
+name=Fedora Core $releasever - $basearch - Released Updates
+baseurl=http://download.atrpms.net/mirrors/fedoracore/updates/$releasever/$basearch
+　　　　 http://redhat.linux.ee/pub/fedora/linux/core/updates/$releasever/$basearch
+　　　　 http://fr2.rpmfind.net/linux/fedora/core/updates/$releasever/$basearch
+gpgcheck=1
+exclude=gaim
+failovermethod=priority</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">其中gpgcheck，exclude 
+的含义和[main] 部分相同，但只对此服务器起作用，failovermethode 有两个选项roundrobin 
+和priority，意思分别是有多个url可供选择时，yum 选择的次序，roundrobin 是随机选择，如果连接失败则使用下一个，依次循环，priority 
+则根据url 的次序从第一个开始。如果不指明，默认是roundrobin。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(128,0,0); FONT-SIZE: 16px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 16px; PADDING-TOP: 0px">五、配置国内yum源</SPAN></STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">系统默认的yum 
+源速度往往不尽人意，为了达到快速安装的目的，在这里修改yum源为国内源。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">上海交通大学yum源</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">a. 
+修改/etc/yum.repos.d/CentOS-Base.repo为：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px"># CentOS-Base.repo
+#
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client.  You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the 
+# remarked out baseurl= line instead.
+#
+#
+
+[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os
+baseurl=http://ftp.sjtu.edu.cn/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#released updates 
+[updates]
+name=CentOS-$releasever - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates
+baseurl=http://ftp.sjtu.edu.cn/centos/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras
+baseurl=http://ftp.sjtu.edu.cn/centos/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus
+baseurl=http://ftp.sjtu.edu.cn/centos/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+#contrib - packages by Centos Users
+[contrib]
+name=CentOS-$releasever - Contrib
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=contrib
+baseurl=http://ftp.sjtu.edu.cn/centos/$releasever/contrib/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">关于变量</P>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: disc; MARGIN: 0px 0px 0px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">$releasever：代表发行版的版本，从[main]部分的distroverpkg获取，如果没有，则根据redhat-release包进行判断。</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">$arch：cpu体系，如i686,athlon等</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">$basearch：cpu的基本体系组，如i686和athlon同属i386，alpha和alphaev6同属alpha。</LI></UL>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">b.&nbsp;导入GPG 
+KEY</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">yum 
+可以使用gpg 对包进行校验，确保下载包的完整性，所以我们先要到各个repository 站点找到gpg 
+key，一般都会放在首页的醒目位置，一些名字诸如RPM-GPG-KEY-CentOS-5 之类的纯文本文件，把它们下载下来，然后用rpm --import 
+RPM-GPG-KEY-CentOS-5&nbsp;命令将key 导入。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">c.&nbsp;执行yum 
+命令</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02195444-169e4e7d0e144142b39578e6f75ea63c.jpg" 
+width=900></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">其他国内yum源列表如下：</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">1. 
+企业贡献：</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">搜狐开源镜像站：</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors.sohu.com/">http://mirrors.sohu.com/</A><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">网易开源镜像站：</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors.163.com/">http://mirrors.163.com/</A></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2. 
+大学教学：</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">北京理工大学：</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror.bit.edu.cn/">http://mirror.bit.edu.cn</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv4 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror.bit6.edu.cn/">http://mirror.bit6.edu.cn</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv6 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">北京交通大学：</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror.bjtu.edu.cn/">http://mirror.bjtu.edu.cn</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv4 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror6.bjtu.edu.cn/">http://mirror6.bjtu.edu.cn</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv6 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://debian.bjtu.edu.cn/">http://debian.bjtu.edu.cn</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv4+IPv6)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">兰州大学：</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror.lzu.edu.cn/">http://mirror.lzu.edu.cn/</A><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">厦门大学：</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors.xmu.edu.cn/">http://mirrors.xmu.edu.cn/</A><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">清华大学：</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors.tuna.tsinghua.edu.cn/">http://mirrors.tuna.tsinghua.edu.cn/</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv4+IPv6)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors.6.tuna.tsinghua.edu.cn/">http://mirrors.6.tuna.tsinghua.edu.cn/</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv6 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors.4.tuna.tsinghua.edu.cn/">http://mirrors.4.tuna.tsinghua.edu.cn/</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv4 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">天津大学：</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror.tju.edu.cn/">http://mirror.tju.edu.cn/</A><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">中国科学技术大学：</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors.ustc.edu.cn/">http://mirrors.ustc.edu.cn/</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv4+IPv6)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors4.ustc.edu.cn/">http://mirrors4.ustc.edu.cn/</A><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirrors6.ustc.edu.cn/">http://mirrors6.ustc.edu.cn/</A><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">东北大学：</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror.neu.edu.cn/">http://mirror.neu.edu.cn/</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv4 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://mirror.neu6.edu.cn/">http://mirror.neu6.edu.cn/</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;(IPv6 
+only)</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">电子科技大学：</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://ubuntu.uestc.edu.cn/">http://ubuntu.uestc.edu.cn/</A><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 16px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(128,0,0); PADDING-TOP: 0px">六、使用第三方软件库</SPAN></STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Centos/RHEL默认的yum软件仓库非常有限，仅仅限于发行版本那几张盘里面的常规包和一些软件包的更新，利用RpmForge，可以增加非常多的第三方rpm软件包。RpmForge库现在已经拥有超过10000种的CentOS的软件包，被CentOS社区认为是最安全也是最稳定的一个第三方软件库。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">1、安装yum-priorities插件</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">这个插件是用来设置yum在调用软件源时的顺序的。因为官方提供的软件源，都是比较稳定和被推荐使用的。因此，官方源的顺序要高于第三方源的顺序。如何保证这个顺序，就需要安装yum-priorities这插件了。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+yum -y install yum-priorities</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02204151-aa1395b880d746cb84bed46976a156a1.jpg" 
+width=900></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">2、安装完yum-priorities插件后需要设置/etc/yum.repos.d/ 
+目录下的.repo相关文件（如CentOS-Base.repo），在这些文件中插入顺序指令：priority=N 
+（N为1到99的正整数，数值越小越优先）</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">一般配置[base],&nbsp;[addons],&nbsp;[updates],&nbsp;[extras] 
+的priority=1，[CentOSplus],&nbsp;[contrib] 的priority=2，其他第三的软件源为：priority=N 
+（推荐N&gt;10）</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">以CentOS-Base.repo 
+为例：</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px">[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os
+baseurl=http://ftp.sjtu.edu.cn/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+priority=1</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">3、下载与安装相应rpmforge的rpm文件包</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+wget<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm">http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm</A></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">4、安装DAG的PGP 
+Key</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+rpm --import<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://apt.sw.be/RPM-GPG-KEY.dag.txt">http://apt.sw.be/RPM-GPG-KEY.dag.txt</A></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">5、验证rpmforge的rpm文件包</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+rpm -K rpmforge-release-0.5.2-2.el5.rf.*.rpm</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">6、安装rpmforge的rpm文件包</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+rpm -i rpmforge-release-0.5.2-2.el5.rf.i386.rpm</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02210852-3f7781d7c9f7431e8d1fc090f4b83162.jpg" 
+width=900></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">7、设置/etc/yum.repos.d/rpmforge.repo文件中源的级别</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">[root@TS-DEV 
+yum.repos.d]# cat rpmforge.repo&nbsp;</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; PADDING-TOP: 5px" 
+class=cnblogs_code>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px">### Name: RPMforge RPM Repository for RHEL 5 - dag
+### URL: http://rpmforge.net/
+[rpmforge]
+name = RHEL $releasever - RPMforge.net - dag
+baseurl = http://apt.sw.be/redhat/el5/en/$basearch/rpmforge
+mirrorlist = http://apt.sw.be/redhat/el5/en/mirrors-rpmforge
+#mirrorlist = file:///etc/yum.repos.d/mirrors-rpmforge
+enabled = 1
+protect = 0
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag
+gpgcheck = 1
+priority=12</PRE>
+<DIV 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245); MARGIN: 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=cnblogs_code_toolbar><SPAN 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.8; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; FONT-SIZE: 12px !important; PADDING-TOP: 0px" 
+class=cnblogs_code_copy><A 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 0px" 
+title=复制代码 onclick=copyCnblogsCode(this) href="javascript:void(0);"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(245,245,245) !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">8、测试安装</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"># 
+yum install htop</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+alt="" 
+src="http://images.cnitblog.com/blog/370046/201301/02212020-80d96b6885a54f0ba99b6a25ec653fdf.jpg" 
+width=900></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">参考&nbsp;<A 
+style="BORDER-BOTTOM: rgb(51,51,51) 1px dotted; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(0,0,0); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://wiki.centos.org/AdditionalResources/Repositories/RPMForge#head-5aabf02717d5b6b12d47edbc5811404998926a1b" 
+target=_blank>http://wiki.centos.org/AdditionalResources/Repositories/RPMForge#head-5aabf02717d5b6b12d47edbc5811404998926a1b</A></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">其他第三方软件库如&nbsp;EPEL(Extra 
+Packages for&nbsp;Enterprise&nbsp;Linux&nbsp;) 和&nbsp;RPMFusion 
+的安装与使用和RPMForge类似，可自行查找资料安装。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">&nbsp;</P></DIV></DIV></BODY></HTML>

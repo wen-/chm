@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>jQuery提供了animate()方法，让开发者自定义动画。</p>
+animate()方法一共有两种形式，第一种形式比较常用，如：<br />
+animate(params,[duration],[easing],[callback])<br />
+其中params为希望进行变幻的CSS属性列表，以及希望变化到的最终值。duration为可选项，表示动画执行的长短，easing为可选参数，用来控制变化过程的节奏，jQuery只提供了linear和swing两个值。callback为可选的回调函数，在动画完成后触发。<br />
+需要特别指出，params中的变量遵循camel命名的方式，例如paddingLeft不能写成padding-left。另个,params只能是css中用数值表示的属性，例：<br />
+$(function(){<br />
+$(&quot;button&quot;).click(function(){<br />
+$(&quot;#block&quot;).animate({<br />
+opacity:&quot;0.5&quot;,<br />
+width:&quot;80%&quot;,<br />
+hight:&quot;100px&quot;<br />
+},2000);<br />
+});<br />
+});<br />
+在params的CSS属性列表中，jQuery还允许使用“+=”或“-=”来表示相对变化。
+</body>
+</html>

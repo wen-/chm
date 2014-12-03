@@ -1,0 +1,940 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>post原理</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>post原理</P>
+<P>nodejs-post文件上传原理详解<BR>基础知识</P>
+<P><A title=http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,85,128); OUTLINE-WIDTH: 0px; TEXT-ALIGN: left; FONT: 14px/20px 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Wenquanyi Micro Hei', Arial, sans-serif; OUTLINE-STYLE: none; TEXT-DECORATION: underline; LETTER-SPACING: normal; OUTLINE-COLOR: invert; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" 
+target=_blank>浅谈HTTP中Get与Post的区别</A></P>
+<P><BR><A title=http://blog.csdn.net/microtong/article/details/4155706 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,85,128); OUTLINE-WIDTH: 0px; TEXT-ALIGN: left; FONT: 14px/20px 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Wenquanyi Micro Hei', Arial, sans-serif; OUTLINE-STYLE: none; TEXT-DECORATION: underline; LETTER-SPACING: normal; OUTLINE-COLOR: invert; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+href="http://blog.csdn.net/microtong/article/details/4155706" 
+target=_blank>HTTP请求报文格式：</A></P>
+<P>简单介绍下，如下图：&lt;!--more--&gt;</P>
+<P>其中请求报文中的开始行和首部行包含了常见的各种信息，比如http协议版本，方法（GET/POST）</P>
+<P>，accept-language，cookie等等。 而'实体主体'一般在post中使用，比如我们用表单上传文件，</P>
+<P>文件数据就是在这个'实体主体'当中。</P>
+<P><BR>引子</P>
+<P>写这篇教程的起因是因为在学习nodejs的过程中，想要自己实现一些文件上传的功能，于是不得不</P>
+<P>去研究POST。</P>
+<P>如果你写过一点PHP，那么你肯定记得，在PHP里面，进行文件上传的时候，我们可以直接使用全局</P>
+<P>变量 $_FILE['name' ]来获取已经被临时存储的文件信息。</P>
+<P>但是实际上，POST数据实体，会根据数据量的大小进行分包传送，然后再从这些数据包里面分析出</P>
+<P>哪些是文件的元数据，那些是文件本身的数据。</P>
+<P>PHP是底层做了封装，但是在nodejs里面，这个看似常见的功能却是需要自己来实现的。这篇文章主</P>
+<P>要就是介绍如何使用nodejs来解析post数据。</P>
+<P>&nbsp;</P>
+<P><BR>正文</P>
+<P>&nbsp;</P>
+<P>总体上来说，对于post文件上传这样的过程，主要有以下几个部分：</P>
+<P>&nbsp;</P>
+<P>获取http请求报文肿的头部信息，我们可以从中获得是否为POST方法，实体主体的总大小，边界字</P>
+<P>符串等，这些对于实体主体数据的解析都是非常重要的</P>
+<P>&nbsp;</P>
+<P><BR>获取POST数据（实体主体）</P>
+<P>&nbsp;</P>
+<P><BR>对POST数据进行解析</P>
+<P>&nbsp;</P>
+<P><BR>将数据写入文件</P>
+<P>&nbsp;</P>
+<P><BR>获取http请求报文头部信息</P>
+<P>&nbsp;</P>
+<P>利用nodejs中的 http.ServerRequest中获取&lt;sup&gt;1)&lt;/sup&gt;:</P>
+<P>&nbsp;</P>
+<P>request.method</P>
+<P>&nbsp;</P>
+<P>用来标识请求类型</P>
+<P>&nbsp;</P>
+<P>request.headers</P>
+<P>&nbsp;</P>
+<P>其中我们关心两个字段：</P>
+<P>&nbsp;</P>
+<P>content-type</P>
+<P>&nbsp;</P>
+<P>包含了表单类型和边界字符串（下面会介绍）信息。</P>
+<P>&nbsp;</P>
+<P>content-length</P>
+<P>&nbsp;</P>
+<P>post数据的长度</P>
+<P>&nbsp;</P>
+<P><BR>关于content-type</P>
+<P>&nbsp;</P>
+<P>get请求的headers中没有content-type这个字段</P>
+<P>&nbsp;</P>
+<P><BR>post 的 content-type 有两种</P>
+<P><BR>application/x-www-form-urlencoded<BR>这种就是一般的文本表单用post传地数据，只要将得到的data用querystring解析下就可以了</P>
+<P>&nbsp;</P>
+<P><BR>multipart/form-data<BR>文件表单的传输，也是本文介绍的重点</P>
+<P>&nbsp;</P>
+<P><BR>获取POST数据</P>
+<P>前面已经说过，post数据的传输是可能分包的，因此必然是异步的。post数据的接受过程如下：</P>
+<P>&nbsp;&nbsp;&nbsp; var postData = '';<BR>&nbsp;&nbsp;&nbsp; 
+request.addListener("data", function(postDataChunk) {&nbsp; // 
+有新的数据包到达就执行<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; postData += 
+postDataChunk;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log("Received POST data 
+chunk '"+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; postDataChunk + 
+"'.");<BR>&nbsp;&nbsp;&nbsp; });</P>
+<P>&nbsp;&nbsp;&nbsp; request.addListener("end", function() {&nbsp; // 
+数据传输完毕<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log('post data finish 
+receiving: ' + postData );<BR>&nbsp;&nbsp;&nbsp; });</P>
+<P>注意，对于非文件post数据，上面以字符串接收是没问题的，但其实 postDataChunk 是一个 </P>
+<P>buffer 类型数据，在遇到二进制时，这样的接受方式存在问题。</P>
+<P>&nbsp;</P>
+<P><BR>POST数据的解析（multipart/form-data）</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>在解析POST数据之前，先介绍一下post数据的格式：</P>
+<P>&nbsp;</P>
+<P><BR>multipart/form-data类型的post数据</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>例如我们有表单如下</P>
+<P>&lt;FORM action="<A 
+href="http://server.com/cgi/handle">http://server.com/cgi/handle</A>"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+enctype="multipart/form-data"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+method="post"&gt;<BR>&nbsp;&nbsp; &lt;P&gt;<BR>&nbsp;&nbsp; What is your name? 
+&lt;INPUT type="text" name="submit-name"&gt;&lt;BR&gt;<BR>&nbsp;&nbsp; What 
+files are you sending? &lt;INPUT type="file" 
+name="files"&gt;&lt;BR&gt;<BR>&nbsp;&nbsp; &lt;INPUT type="submit" 
+value="Send"&gt; &lt;INPUT type="reset"&gt;<BR>&nbsp;&lt;/FORM&gt;</P>
+<P>若用户在text字段中输入‘Neekey'，并且在file字段中选择文件‘text.txt',那么服务器端收到的</P>
+<P>post数据如下：</P>
+<P>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; Content-Disposition: form-data; 
+name="submit-name"</P>
+<P>&nbsp;&nbsp; Neekey<BR>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; 
+Content-Disposition: form-data; name="files"; 
+filename="file1.txt"<BR>&nbsp;&nbsp; Content-Type: text/plain</P>
+<P>&nbsp;&nbsp; ... contents of file1.txt ...<BR>&nbsp;&nbsp; --AaB03x--</P>
+<P>若file字段为空：</P>
+<P>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; Content-Disposition: form-data; 
+name="submit-name"</P>
+<P>&nbsp;&nbsp; Neekey<BR>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; 
+Content-Disposition: form-data; name="files"; filename=""<BR>&nbsp;&nbsp; 
+Content-Type: text/plain</P>
+<P>&nbsp;&nbsp; --AaB03x--</P>
+<P>若将file 的 input修改为可以多个文件一起上传：</P>
+<P>&lt;FORM action="<A 
+href="http://server.com/cgi/handle">http://server.com/cgi/handle</A>"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+enctype="multipart/form-data"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+method="post"&gt;<BR>&nbsp;&nbsp; &lt;P&gt;<BR>&nbsp;&nbsp; What is your name? 
+&lt;INPUT type="text" name="submit-name"&gt;&lt;BR&gt;<BR>&nbsp;&nbsp; What 
+files are you sending? &lt;INPUT type="file" name="files" 
+multiple="multiple"&gt;&lt;BR&gt;<BR>&nbsp;&nbsp; &lt;INPUT type="submit" 
+value="Send"&gt; &lt;INPUT type="reset"&gt;<BR>&nbsp;&lt;/FORM&gt;</P>
+<P>那么在text中输入‘Neekey',并在file字段中选中两个文件’a.jpg'和'b.jpg'后：</P>
+<P>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; Content-Disposition: form-data; 
+name="submit-name"</P>
+<P>&nbsp;&nbsp; Neekey<BR>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; 
+Content-Disposition: form-data; name="files"; filename="a.jpg"<BR>&nbsp;&nbsp; 
+Content-Type: image/jpeg</P>
+<P>&nbsp;&nbsp; / data of a.jpg /<BR>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; 
+Content-Disposition: form-data; name="files"; filename="b.jpg"<BR>&nbsp;&nbsp; 
+Content-Type: image/jpeg</P>
+<P>&nbsp;&nbsp; / data of b.jpg /<BR>&nbsp;&nbsp; --AaB03x--</P>
+<P>// 可以发现 两个文件数据部分，他们的name值是一样的</P>
+<P>&nbsp;</P>
+<P><BR>数据规则</P>
+<P>简单总结下post数据的规则</P>
+<P>不同字段数据之间以边界字符串分隔：</P>
+<P>&nbsp;--boundary\r\n // 注意，如上面的headers的例子，分割字符串应该是 ------</P>
+<P>WebKitFormBoundaryuP1WvwP2LyvHpNCi\r\n</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><BR>每一行数据用”CR LF”（\r\n)分隔</P>
+<P>&nbsp;</P>
+<P><BR>数据以 边界分割符 后面加上 –结尾，如：</P>
+<P>&nbsp;------WebKitFormBoundaryuP1WvwP2LyvHpNCi--\r\n</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><BR>每个字段数据的header信息（content-disposition/content-type）和字段数据以一个空行分隔：</P>
+<P>\r\n\r\n</P>
+<P>&nbsp;</P>
+<P>更加详细的信息可以参考W3C的文档Forms，不过文档中对于 multiple=“multiple” 的文件表单的</P>
+<P>post数据格式使用了二级边界字符串，但是在实际测试中，multiple类型的表单和多个单文件表单</P>
+<P>上传数据的格式一致，有更加清楚的可以交流下：</P>
+<P>If the user selected a second (image) file "file2.gif", the user agent might 
+construct </P>
+<P>the parts as follows:</P>
+<P>&nbsp;&nbsp; Content-Type: multipart/form-data; boundary=AaB03x</P>
+<P>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; Content-Disposition: form-data; 
+name="submit-name"</P>
+<P>&nbsp;&nbsp; Larry<BR>&nbsp;&nbsp; --AaB03x<BR>&nbsp;&nbsp; 
+Content-Disposition: form-data; name="files"<BR>&nbsp;&nbsp; Content-Type: 
+multipart/mixed; boundary=BbC04y</P>
+<P>&nbsp;&nbsp; --BbC04y<BR>&nbsp;&nbsp; Content-Disposition: file; 
+filename="file1.txt"<BR>&nbsp;&nbsp; Content-Type: text/plain</P>
+<P>&nbsp;&nbsp; ... contents of file1.txt ...<BR>&nbsp;&nbsp; 
+--BbC04y<BR>&nbsp;&nbsp; Content-Disposition: file; 
+filename="file2.gif"<BR>&nbsp;&nbsp; Content-Type: image/gif<BR>&nbsp;&nbsp; 
+Content-Transfer-Encoding: binary</P>
+<P>&nbsp;&nbsp; ...contents of file2.gif...<BR>&nbsp;&nbsp; 
+--BbC04y--<BR>&nbsp;&nbsp; --AaB03x--</P>
+<P>&nbsp;</P>
+<P><BR>数据解析基本思路</P>
+<P>&nbsp;</P>
+<P>必须使用buffer来进行post数据的解析<BR>利用文章一开始的方法（data += chunk， data为字符串 
+），可以利用字符串的操作，轻易地解析</P>
+<P>出各自端的信息，但是这样有两个问题：</P>
+<P><BR>文件的写入需要buffer类型的数据</P>
+<P>&nbsp;</P>
+<P><BR>二进制buffer转化为string，并做字符串操作后，起索引和字符串是不一致的（若原始数据就是字</P>
+<P>符串，一致），因此是先将不总的buffer数据的toString()复制给一个字符串，再利用字符串解析</P>
+<P>出个数据的start，end位置这样的方案也是不可取的。</P>
+<P><BR>利用边界字符串来分割各字段数据</P>
+<P>&nbsp;</P>
+<P><BR>每个字段数据中，使用空行（\r\n\r\n)来分割字段信息和字段数据</P>
+<P>&nbsp;</P>
+<P><BR>所有的数据都是以\r\n分割</P>
+<P>&nbsp;</P>
+<P><BR>利用上面的方法，我们以某种方式确定了数据在buffer中的start和end，利用buffer.splice( </P>
+<P>start, end ) 便可以进行文件写入了</P>
+<P>&nbsp;</P>
+<P><BR>文件写入</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>比较简单，使用 File System 模块（nodejs的文件处理，我很弱很弱….)</P>
+<P>&nbsp;&nbsp;&nbsp; var fs = new require( 'fs' 
+).writeStream,<BR>&nbsp;&nbsp;&nbsp; file = new fs( filename 
+);<BR>&nbsp;&nbsp;&nbsp; fs.write( buffer, 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+fs.end();<BR>&nbsp;&nbsp;&nbsp; });</P>
+<P>&nbsp;</P>
+<P><BR>node-formidable模块源码分析</P>
+<P>&nbsp;</P>
+<P>node-formidable是比较流行的处理表单的nodejs模块。github主页</P>
+<P>项目中的lib目录</P>
+<P>lib<BR>&nbsp; |-file.js<BR>&nbsp; |-incoming_form.js<BR>&nbsp; 
+|-index.js<BR>&nbsp; |-multipart_parser.js<BR>&nbsp; 
+|-querystring_parser.js<BR>&nbsp; |-util.js</P>
+<P>&nbsp;</P>
+<P><BR>各文件说明</P>
+<P>&nbsp;</P>
+<P>file.js</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>file.js主要是封装了文件的写操作</P>
+<P>&nbsp;</P>
+<P><BR>incoming_from.js</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>模块的主体部分</P>
+<P>&nbsp;</P>
+<P><BR>multipart_parser.js</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>封装了对于POST数据的分段读取与解析的方法</P>
+<P>&nbsp;</P>
+<P><BR>querystring_parser.js</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>封装了对于GET数据的解析</P>
+<P>&nbsp;</P>
+<P><BR>总体思路</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>与我上面提到的思路不一样，node-formidable是边接受数据边进行解析。</P>
+<P>&nbsp;</P>
+<P>上面那种方式是每一次有数据包到达后, 添加到buffer中,等所有数据都到齐后,再对数据进行解析.</P>
+<P>这种方式,在每次数据包到达的间隙是空闲的.</P>
+<P>第二种方式使用边接收边解析的方式,对于大文件来说,能大大提升效率.</P>
+<P>模块的核心文件主要是 multipart_parser.js 和 incoming_from.js 两个文件, 宏观上, </P>
+<P>multipartParser 用于解析数据, 比如给定一个buffer, 将在解析的过程中调用相应的回调函数.比</P>
+<P>如解析到字段数据的元信息(文件名,文件类型等), 将会使用 this.onHeaderField( buffer, </P>
+<P>start, end ) 这样的形式来传输信息. 而这些方法的具体实现则是在 incoming_form.js 文件中实</P>
+<P>现的. 下面着重对这两个文件的源码进行分析 </P>
+<P>&nbsp;</P>
+<P><BR>multipart_form.js</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>这个模块是POST数据接受的核心。起核心思想是对每个接受到的partData进行解析，并触发相应时</P>
+<P>间，由于每次write方法的调用都将产生内部私有方法，所以partData将会被传送到各个触发事件当</P>
+<P>中，而触发事件（即对于partData的具体处理）的具体实现则是在incoming_form中实现，从这一点</P>
+<P>来说，两个模块是高度耦合的。</P>
+<P>multipart_form 的源码读起来会比较吃力。必须在对post数据结构比较清楚的情况下，在看源码。</P>
+<P>源码主要是四个部分：</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>全局变量（闭包内）</P>
+<P>&nbsp;</P>
+<P><BR>构造函数</P>
+<P>&nbsp;</P>
+<P><BR>初始化函数（initWithBoundary）</P>
+<P>&nbsp;</P>
+<P><BR>解析函数（write）</P>
+<P>&nbsp;</P>
+<P>其中全局变量，构造函数比较简单。</P>
+<P>初始化函数用 用传进的 边界字符串 构造boundary的buffer，主要用于在解析函数中做比较。 下</P>
+<P>面主要介绍下解析函数</P>
+<P>&nbsp;</P>
+<P><BR>几个容易迷惑的私有方法</P>
+<P>&nbsp;</P>
+<P>make( name )</P>
+<P>&nbsp;</P>
+<P>将当前索引（对buffer的遍历）复制给 this[ name ]. 这个方法就是做标记，用于记录一个数据段</P>
+<P>在buffer中的开始位置</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>callback( name , buffer, start, end )</P>
+<P>&nbsp;</P>
+<P>调用this的onName方法，并传入buffer和start以及end三个参数。 比如当文件post数据中的文件部</P>
+<P>分的数据解析完毕，则通过callback( 'partData', buffer, start, end ) 将该数据段的首尾位置</P>
+<P>和buffer传递给 this.onPartData 方法，做进一步处理。</P>
+<P>&nbsp;</P>
+<P>dataCallback( name, clear )</P>
+<P>&nbsp;</P>
+<P>前面的callback，如果不看后面的三个参数，其本质不过是一个调用某个方法的桥接函数。而</P>
+<P>dataCallback则是对callback的一个封装，他将start和end传递给callback。</P>
+<P>从源码中可以看到，start是通过mark(name)的返回值获得，而end则可能是当前遍历到的索引或者</P>
+<P>是buffer的末尾。</P>
+<P>因此dataCallback被调用有二种情况：</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>在解析的数据部分的末尾在当前buffer的内部，这个时候mark记录的开始点和当前遍历到的i这个区</P>
+<P>段就是需要的数据，因此start = mark(name), end = i， 并且由于解析结束，需要将mark清除掉</P>
+<P>。</P>
+<P>&nbsp;</P>
+<P><BR>在当前buffer内，解析的数据部分尚未解析完毕（剩下的内容在下一个buffer里），因此start = </P>
+<P>mark(name), end = buffer.length</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><BR>解析的主要部分</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>解析的主要部分是对buffer进行遍历，然后对于每一个字符，都根据当前的状态进行switch的各个</P>
+<P>case进行操作。</P>
+<P>switch的每一个case都是一个解析状态。</P>
+<P>具体看源码和注释，然后对照post的数据结构就会比较清楚。</P>
+<P>其中 在状态：S.PART_DATA 这边，node-formidable做了一些处理，应该是针对 文章一开始介绍</P>
+<P>post数据格式中提到的 二级边界字符串 类型的数据处理。我没有深究，有兴趣的可以再研究下。</P>
+<P>var Buffer = require('buffer').Buffer,<BR>&nbsp;&nbsp;&nbsp; s = 
+0,<BR>&nbsp;&nbsp;&nbsp; S =<BR>&nbsp;&nbsp;&nbsp; { PARSER_UNINITIALIZED: s++, 
+// 解析尚未初始化<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; START: s++,&nbsp; // 
+开始解析<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; START_BOUNDARY: s++, // 
+开始找到边界字符串<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEADER_FIELD_START: s++, // 
+开始解析到header field<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEADER_FIELD: 
+s++,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEADER_VALUE_START: s++, // 开始解析到header 
+value<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEADER_VALUE: 
+s++,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEADER_VALUE_ALMOST_DONE: s++, // header 
+value 解析完毕<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HEADERS_ALMOST_DONE: s++, // header 
+部分 解析完毕<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PART_DATA_START: s++, // 开始解析 
+数据段<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PART_DATA: 
+s++,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PART_END: 
+s++,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END: s++,<BR>&nbsp;&nbsp;&nbsp; },</P>
+<P>&nbsp;&nbsp;&nbsp; f = 1,<BR>&nbsp;&nbsp;&nbsp; F =<BR>&nbsp;&nbsp;&nbsp; { 
+PART_BOUNDARY: f,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LAST_BOUNDARY: f = 
+2,<BR>&nbsp;&nbsp;&nbsp; },</P>
+<P>&nbsp;&nbsp;&nbsp; / 一些字符的ASCII值 /<BR>&nbsp;&nbsp;&nbsp; LF = 
+10,<BR>&nbsp;&nbsp;&nbsp; CR = 13,<BR>&nbsp;&nbsp;&nbsp; SPACE = 
+32,<BR>&nbsp;&nbsp;&nbsp; HYPHEN = 45,<BR>&nbsp;&nbsp;&nbsp; COLON = 
+58,<BR>&nbsp;&nbsp;&nbsp; A = 97,<BR>&nbsp;&nbsp;&nbsp; Z = 122,</P>
+<P>&nbsp;&nbsp;&nbsp; / 将所有大写小写字母的ascii一律转化为小写的ascii值 /<BR>&nbsp;&nbsp;&nbsp; 
+lower = function(c) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return c | 
+0x20;<BR>&nbsp;&nbsp;&nbsp; };</P>
+<P>for (var s in S) {<BR>&nbsp; exports[s] = S[s];<BR>}</P>
+<P>/ 构造函数 /<BR>function MultipartParser() {<BR>&nbsp; this.boundary = 
+null;<BR>&nbsp; this.boundaryChars = null;<BR>&nbsp; this.lookbehind = 
+null;<BR>&nbsp; this.state = S.PARSER_UNINITIALIZED;</P>
+<P>&nbsp; this.index = null;<BR>&nbsp; this.flags = 
+0;<BR>};<BR>exports.MultipartParser = MultipartParser;</P>
+<P>/ 给定边界字符串以初始化 /<BR>MultipartParser.prototype.initWithBoundary = function(str) 
+{<BR>&nbsp; this.boundary = new Buffer(str.length+4);<BR>&nbsp; 
+this.boundary.write('\r\n--', 'ascii', 0);<BR>&nbsp; this.boundary.write(str, 
+'ascii', 4);<BR>&nbsp; this.lookbehind = new 
+Buffer(this.boundary.length+8);<BR>&nbsp; this.state = S.START;</P>
+<P>&nbsp; this.boundaryChars = {};<BR>&nbsp; for (var i = 0; i &lt; 
+this.boundary.length; i++) {<BR>&nbsp;&nbsp;&nbsp; 
+this.boundaryChars[this.boundary[i]] = true;<BR>&nbsp; }<BR>};</P>
+<P>/ 每个数据段到达时的处理函数 /<BR>MultipartParser.prototype.write = function(buffer) 
+{<BR>&nbsp; var self = this,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i = 
+0,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; len = 
+buffer.length,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prevIndex = 
+this.index,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = 
+this.index,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+this.state,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flags = 
+this.flags,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lookbehind = 
+this.lookbehind,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boundary = 
+this.boundary,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boundaryChars = 
+this.boundaryChars,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boundaryLength = 
+this.boundary.length,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boundaryEnd = 
+boundaryLength - 1,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bufferLength = 
+buffer.length,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+c,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cl,</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 标记了name这个标记点的buffer偏移 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mark = function(name) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self[name+'Mark'] = 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 清除标记 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clear = function(name) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delete 
+self[name+'Mark'];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+},<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 
+回调函数，将调用onName,并传入对应的buffer和对应的offset区间，可知这些回调都在 </P>
+<P>incoming_form 模块中被具体实现 /<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; callback = 
+function(name, buffer, start, end) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (start !== undefined 
+&amp;&amp; start === end) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var callbackSymbol = 
+'on'+name.substr(0, 
+1).toUpperCase()+name.substr(1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (callbackSymbol in self) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self[callbackSymbol](buffer, start, 
+end);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; },<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 数据回调 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dataCallback = function(name, clear) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var markSymbol = 
+name+'Mark';<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!(markSymbol in 
+self)) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!clear) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 
+传入回调的名称，buffer，buffer的开始位置（可见mark方法就是用来存储offset的），</P>
+<P>end为数据的重点 /<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback(name, buffer, self[markSymbol], 
+buffer.length);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self[markSymbol] = 0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 区别是 end 
+的值为i，在一个数据已经判断到达其结束位置时，就删除这个mark点，因为</P>
+<P>这个时候已经知道了这个数据的起始位置 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; callback(name, 
+buffer, self[markSymbol], 
+i);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delete 
+self[markSymbol];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };</P>
+<P>&nbsp; / 对buffer逐个字节遍历，进行解析判断，并触发相应事件 /<BR>&nbsp; for (i = 0; i &lt; len; 
+i++) {<BR>&nbsp;&nbsp;&nbsp; c = buffer[i];<BR>&nbsp;&nbsp;&nbsp; switch (state) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.PARSER_UNINITIALIZED:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.START:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+S.START_BOUNDARY;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.START_BOUNDARY:<BR>&nbsp;&nbsp;&nbsp; /**<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+对于边界的判断 ====<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这里看了很多次，一直很迷惑<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+因为首先：除了最后一个边界字符串，其他（包括第一个边界字符串）都是这个样子：<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+--boundary\r\t<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+但是在初始化函数中，对于this.boundary的赋值是这样的：<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+\r\n--boundary<BR>&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+但是仔细看下面部分的代码，作者只是为了初始化方便，或者出于其他的考虑<BR>&nbsp;&nbsp;&nbsp;&nbsp; /</P>
+<P>&nbsp;&nbsp;&nbsp; /<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+判断是否到了边界字符串的结尾\r处<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果当前字符与 \r不匹配，则return 
+，算是解析出错了<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注意，虽然this.boundary != --boundary\r\n 
+但是长度是一致的，因此这里的判断是没有</P>
+<P>问题的<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (index == boundary.length - 
+2) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c != CR) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+index++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+判断是否到了边界字符串的结尾\n处<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果是，则置index = 
+0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 回调 partBegin，并将状态设置为还是header 的 field 
+信息的读取状态<BR>&nbsp;&nbsp;&nbsp;&nbsp; /<BR>&nbsp;&nbsp;&nbsp; else if (index - 1 
+== boundary.length - 2) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c != LF) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('partBegin');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+state = 
+S.HEADER_FIELD_START;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; /<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+除了boundary的最后的\r\n外，其他字符都要进行检查<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注意这里用的是 index+2 
+进行匹配，证实了<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 作者是因为某种意图将 
+boundary设置成\r\n--boundary的形式<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+（其实这种形式也没有错，对处第一个边界字符串外的其他边界字符串，这个形式都是适用</P>
+<P>的）<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c != boundary[index+2]) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+index++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / 对于header 
+field的扫描开始，这里记录了标记了开始点在buffer中的位置 /<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.HEADER_FIELD_START:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+S.HEADER_FIELD;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mark('headerField');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / header field的扫描过程 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case S.HEADER_FIELD:<BR>&nbsp;&nbsp;&nbsp; / 
+这里是header和data中间的那个空行，所以第一个字符就是\r 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == CR) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+clear('headerField');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+state = 
+S.HEADERS_ALMOST_DONE;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index++;<BR>&nbsp;&nbsp;&nbsp; / 
+如果是小横线 '-' 比如在 Content-Disposition 
+*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == HYPHEN) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果是冒号，那么说明 
+field结束了<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dataCallback，注意第二个参数为true，则它将调用this.onHeaderField,并且将buffer，</P>
+<P>start(之前mark(headerField)记录的位置)，end(当前的i)传递过去，最后将这个mark清理掉<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+之后进入 header value 的开始阶段<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == COLON) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (index == 1) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // empty 
+header 
+field<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dataCallback('headerField', 
+true);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+S.HEADER_VALUE_START;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; /<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+对于所有其他不是冒号和小横线的字符，必须为字母，否则解析结束<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cl = 
+lower(c);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (cl &lt; A || cl &gt; 
+Z) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value 
+的读取开始<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+做记号，设置state<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.HEADER_VALUE_START:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == 
+SPACE) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mark('headerValue');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+S.HEADER_VALUE;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/**<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value 
+的分析阶段<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case S.HEADER_VALUE:<BR>&nbsp;&nbsp;&nbsp; 
+/**<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果是 
+\r，则value结束<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同样是调用 
+dataCallback，参数为true<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注意这里还 callback了 
+headerEnd，没有给定任何参数，这里是作为一个trigger抛出一行</P>
+<P>header结束的事件<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == CR) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dataCallback('headerValue', 
+true);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('headerEnd');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+state = 
+S.HEADER_VALUE_ALMOST_DONE;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/**<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value 结束的检查，之前是检查到了 \r 
+，如果下一个字符不是 \n 肯定问题<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+一个value结束，可能下面还是一行header，所以不会直接 header done，而是重新进入扫</P>
+<P>描 fields的阶段<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.HEADER_VALUE_ALMOST_DONE:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c 
+!= LF) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+S.HEADER_FIELD_START;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 同样是先检查一下字符是否有误（看一下 case 
+S.HEADER_FIELD 的第一个if ）<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+抛出headers解析完毕的事件<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.HEADERS_ALMOST_DONE:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c != 
+LF) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('headersEnd');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+S.PART_DATA_START;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+开始解析post数据<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+设置状态，做记号<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.PART_DATA_START:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+S.PART_DATA<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mark('partData');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/**<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+进入post数据的解析状态<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上一次设置index是在 
+HEADER_FIELD_START中设置为0<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case S.PART_DATA:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prevIndex = index;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (index == 0) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // boyer-moore 
+derrived algorithm to safely skip non-boundary 
+data<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i += 
+boundaryEnd;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (i 
+&lt; bufferLength &amp;&amp; !(buffer[i] in boundaryChars)) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i += 
+boundaryLength;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i -= 
+boundaryEnd;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c = 
+buffer[i];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (index &lt; boundary.length) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (boundary[index] 
+== c) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(index == 0) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dataCallback('partData', 
+true);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+index++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (index == 
+boundary.length) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+index++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == CR) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // CR = 
+part 
+boundary<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+flags |= 
+F.PART_BOUNDARY;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+else if (c == HYPHEN) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+HYPHEN = end 
+boundary<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+flags |= 
+F.LAST_BOUNDARY;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+else {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+index = 0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (index - 1 == 
+boundary.length)&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (flags &amp; 
+F.PART_BOUNDARY) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c 
+== LF) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// unset the PART_BOUNDARY 
+flag<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+flags &amp;= 
+~F.PART_BOUNDARY;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('partEnd');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('partBegin');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+state = 
+S.HEADER_FIELD_START;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (flags 
+&amp; F.LAST_BOUNDARY) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == 
+HYPHEN) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('partEnd');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('end');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+state = 
+S.END;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } 
+else 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+index = 0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (index &gt; 0) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // when matching a 
+possible boundary, keep a lookbehind 
+reference<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // in case 
+it turns out to be a false 
+lead<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+lookbehind[index-1] = c;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if 
+(prevIndex &gt; 0) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// if our boundary turned out to be rubbish, the captured 
+lookbehind<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // belongs 
+to partData<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+callback('partData', lookbehind, 0, 
+prevIndex);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prevIndex 
+= 0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+mark('partData');</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // reconsider the 
+current character even so it interrupted the 
+sequence<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // it could 
+be the beginning of a new 
+sequence<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+i--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+S.END:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+default:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+i;<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }<BR>&nbsp; /<BR>&nbsp;&nbsp;&nbsp; 
+下面这三个是在当前数据段解析完全后调用的。<BR>&nbsp;&nbsp;&nbsp; 
+如果一个数据部分（比如如field信息）已经在上面的解析过程中解析完毕，那么自然已经调用</P>
+<P>过clear方法，那下面的dataCallback将什么也不做<BR>&nbsp;&nbsp;&nbsp; 
+否则，下面的调用将会把这次数据段中的数据部分传递到回调函数中<BR>&nbsp;&nbsp; /<BR>&nbsp; 
+dataCallback('headerField');<BR>&nbsp; dataCallback('headerValue');<BR>&nbsp; 
+dataCallback('partData');</P>
+<P>&nbsp; this.index = index;<BR>&nbsp; this.state = state;<BR>&nbsp; this.flags 
+= flags;</P>
+<P>&nbsp; return len;<BR>};</P>
+<P>MultipartParser.prototype.end = function() {<BR>&nbsp; if (this.state != 
+S.END) {<BR>&nbsp;&nbsp;&nbsp; return new Error('MultipartParser.end(): stream 
+ended unexpectedly');<BR>&nbsp; }<BR>};</P>
+<P>&nbsp;</P>
+<P><BR>incoming_form.js</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>上图是incoming_form解析的主要过程（文件类型），其中</P>
+<P>&nbsp;</P>
+<P><BR>parse</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>根据传入的requeset对象开始启动整个解析的过程</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>writeHeaders</P>
+<P>&nbsp;</P>
+<P>从request对象中获取post数据长度，解析出边界字符串，用来初始化multipartParser</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>为request对象添加监听事件</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><BR>write</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>request对象的 'data'时间到达会调用该方法，而write方法实质上是调用multipartParser.write</P>
+<P>&nbsp;</P>
+<P><BR>_initMultipart</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>利用边界字符串初始化multipartParser，并实现在multipart_form.js中write解析方法中会触发的</P>
+<P>事件回调函数</P>
+<P>具体细节看源码会比较清楚。</P>
+<P>if (global.GENTLY) require = GENTLY.hijack(require);</P>
+<P>var util = require('./util'),<BR>&nbsp;&nbsp;&nbsp; path = 
+require('path'),<BR>&nbsp;&nbsp;&nbsp; File = 
+require('./file'),<BR>&nbsp;&nbsp;&nbsp; MultipartParser = 
+require('./multipart_parser').MultipartParser,<BR>&nbsp;&nbsp;&nbsp; 
+QuerystringParser = 
+require('./querystring_parser').QuerystringParser,<BR>&nbsp;&nbsp;&nbsp; 
+StringDecoder = require('string_decoder').StringDecoder,<BR>&nbsp;&nbsp;&nbsp; 
+EventEmitter = require('events').EventEmitter;</P>
+<P>function IncomingForm() {<BR>&nbsp; if (!(this instanceof IncomingForm)) 
+return new IncomingForm;<BR>&nbsp; EventEmitter.call(this);</P>
+<P>&nbsp; this.error = null;<BR>&nbsp; this.ended = false;</P>
+<P>&nbsp; this.maxFieldsSize = 2&nbsp; 1024&nbsp; 1024;&nbsp; // 
+设置最大文件限制<BR>&nbsp; this.keepExtensions = false;<BR>&nbsp; this.uploadDir = 
+'/tmp';&nbsp; // 设置文件存放目录<BR>&nbsp; this.encoding = 'utf-8';<BR>&nbsp; 
+this.headers = null;&nbsp; // post请求的headers信息<BR>&nbsp; // 
+收到的post数据类型（一般的字符串数据，还是文件）<BR>&nbsp; this.type = null;</P>
+<P>&nbsp; this.bytesReceived = null;&nbsp; // 已经接受的字节<BR>&nbsp; 
+this.bytesExpected = null;&nbsp; // 预期接受的字节</P>
+<P>&nbsp; this._parser = null;<BR>&nbsp; this._flushing = 0;<BR>&nbsp; 
+this._fieldsSize = 0;<BR>};<BR>util.inherits(IncomingForm, 
+EventEmitter);<BR>exports.IncomingForm = IncomingForm;</P>
+<P>IncomingForm.prototype.parse = function(req, cb) {<BR>&nbsp; // 
+每次调用都重新建立方法，用于对req和cb的闭包使用<BR>&nbsp; this.pause = function() 
+{<BR>&nbsp;&nbsp;&nbsp; try {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+req.pause();<BR>&nbsp;&nbsp;&nbsp; } catch (err) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // the stream was 
+destroyed<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!this.ended) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // before it was completed, 
+crash &amp; burn<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+this._error(err);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;<BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; return true;<BR>&nbsp; };</P>
+<P>&nbsp; this.resume = function() {<BR>&nbsp;&nbsp;&nbsp; try 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; req.resume();<BR>&nbsp;&nbsp;&nbsp; } catch 
+(err) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // the stream was 
+destroyed<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!this.ended) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // before it was completed, 
+crash &amp; burn<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+this._error(err);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; return true;<BR>&nbsp; };</P>
+<P>&nbsp; // 记录下headers信息<BR>&nbsp; this.writeHeaders(req.headers);</P>
+<P>&nbsp; var self = this;<BR>&nbsp; req<BR>&nbsp;&nbsp;&nbsp; .on('error', 
+function(err) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self._error(err);<BR>&nbsp;&nbsp;&nbsp; })<BR>&nbsp;&nbsp;&nbsp; .on('aborted', 
+function() {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.emit('aborted');<BR>&nbsp;&nbsp;&nbsp; })<BR>&nbsp;&nbsp;&nbsp; // 
+接受数据<BR>&nbsp;&nbsp;&nbsp; .on('data', function(buffer) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.write(buffer);<BR>&nbsp;&nbsp;&nbsp; 
+})<BR>&nbsp;&nbsp;&nbsp; // 数据传送结束<BR>&nbsp;&nbsp;&nbsp; .on('end', function() 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (self.error) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var err = 
+self._parser.end();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (err) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self._error(err);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+});</P>
+<P>&nbsp; // 若回调函数存在<BR>&nbsp; if (cb) {<BR>&nbsp;&nbsp;&nbsp; var fields = {}, 
+files = {};<BR>&nbsp;&nbsp;&nbsp; this<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+一个字段解析完毕，触发事件<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .on('field', function(name, 
+value) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fields[name] = 
+value;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; })<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+一个文件解析完毕，处罚事件<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .on('file', function(name, file) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; files[name] = 
+file;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; })<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+.on('error', function(err) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+cb(err, fields, files);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+})<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+所有数据接收完毕，执行回调函数<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .on('end', function() 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cb(null, fields, 
+files);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; });<BR>&nbsp; }</P>
+<P>&nbsp; return this;<BR>};</P>
+<P>// 保存header信息<BR>IncomingForm.prototype.writeHeaders = function(headers) 
+{<BR>&nbsp; this.headers = headers;<BR>&nbsp; // 从头部中解析数据的长度和form类型<BR>&nbsp; 
+this._parseContentLength();<BR>&nbsp; this._parseContentType();<BR>};</P>
+<P>IncomingForm.prototype.write = function(buffer) {<BR>&nbsp; if 
+(!this._parser) {<BR>&nbsp;&nbsp;&nbsp; this._error(new Error('unintialized 
+parser'));<BR>&nbsp;&nbsp;&nbsp; return;<BR>&nbsp; }</P>
+<P>&nbsp; / 累加接收到的信息 /<BR>&nbsp; this.bytesReceived += buffer.length;<BR>&nbsp; 
+this.emit('progress', this.bytesReceived, this.bytesExpected);</P>
+<P>&nbsp; // 解析数据<BR>&nbsp; var bytesParsed = 
+this._parser.write(buffer);<BR>&nbsp; if (bytesParsed !== buffer.length) 
+{<BR>&nbsp;&nbsp;&nbsp; this._error(new Error('parser error, '+bytesParsed+' of 
+'+buffer.length+' bytes </P>
+<P>parsed'));<BR>&nbsp; }</P>
+<P>&nbsp; return bytesParsed;<BR>};</P>
+<P>IncomingForm.prototype.pause = function() {<BR>&nbsp; // this does nothing, 
+unless overwritten in IncomingForm.parse<BR>&nbsp; return false;<BR>};</P>
+<P>IncomingForm.prototype.resume = function() {<BR>&nbsp; // this does nothing, 
+unless overwritten in IncomingForm.parse<BR>&nbsp; return false;<BR>};</P>
+<P>/<BR>&nbsp; 
+开始接受数据（这个函数在headers被分析完成后调用，这个时候剩下的data还没有解析过来<BR>&nbsp;/<BR>IncomingForm.prototype.onPart 
+= function(part) {<BR>&nbsp; // this method can be overwritten by the 
+user<BR>&nbsp; this.handlePart(part);<BR>};</P>
+<P>IncomingForm.prototype.handlePart = function(part) {<BR>&nbsp; var self = 
+this;</P>
+<P>&nbsp; / post数据不是文件的情况 /<BR>&nbsp; if (!part.filename) 
+{<BR>&nbsp;&nbsp;&nbsp; var value = ''<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 
+decoder = new StringDecoder(this.encoding);<BR>&nbsp;&nbsp;&nbsp; / 有数据过来时 
+/<BR>&nbsp;&nbsp;&nbsp; part.on('data', function(buffer) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self._fieldsSize += 
+buffer.length;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (self._fieldsSize &gt; 
+self.maxFieldsSize) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self._error(new Error('maxFieldsSize exceeded, received '+self._fieldsSize+' 
+</P>
+<P>bytes of field data'));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+value += decoder.write(buffer);<BR>&nbsp;&nbsp;&nbsp; });</P>
+<P>&nbsp;&nbsp;&nbsp; part.on('end', function() 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.emit('field', part.name, 
+value);<BR>&nbsp;&nbsp;&nbsp; });<BR>&nbsp;&nbsp;&nbsp; return;<BR>&nbsp; }</P>
+<P>&nbsp; this._flushing++;</P>
+<P>&nbsp; // 创建新的file实例<BR>&nbsp; var file = new File({<BR>&nbsp;&nbsp;&nbsp; 
+path: this._uploadPath(part.filename),<BR>&nbsp;&nbsp;&nbsp; name: 
+part.filename,<BR>&nbsp;&nbsp;&nbsp; type: part.mime,<BR>&nbsp; });</P>
+<P>&nbsp; this.emit('fileBegin', part.name, file);</P>
+<P>&nbsp; file.open();</P>
+<P>&nbsp; / 当文件数据达到，一点一点写入文件 /<BR>&nbsp; part.on('data', function(buffer) 
+{<BR>&nbsp;&nbsp;&nbsp; self.pause();<BR>&nbsp;&nbsp;&nbsp; file.write(buffer, 
+function() {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.resume();<BR>&nbsp;&nbsp;&nbsp; });<BR>&nbsp; });</P>
+<P>&nbsp; // 一个文件的数据解析完毕，出发事件<BR>&nbsp; part.on('end', function() 
+{<BR>&nbsp;&nbsp;&nbsp; file.end(function() {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self._flushing--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.emit('file', part.name, 
+file);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self._maybeEnd();<BR>&nbsp;&nbsp;&nbsp; 
+});<BR>&nbsp; });<BR>};<BR>/<BR>&nbsp; 解析表单类型<BR>&nbsp; 
+如果为文件表单，则解析出边界字串，初始化multipartParser<BR>&nbsp;*/<BR>IncomingForm.prototype._parseContentType 
+= function() {<BR>&nbsp; if (!this.headers['content-type']) 
+{<BR>&nbsp;&nbsp;&nbsp; this._error(new Error('bad content-type header, no 
+content-type'));<BR>&nbsp;&nbsp;&nbsp; return;<BR>&nbsp; }</P>
+<P>&nbsp; // 如果是一般的post数据<BR>&nbsp; if 
+(this.headers['content-type'].match(/urlencoded/i)) {<BR>&nbsp;&nbsp;&nbsp; 
+this._initUrlencoded();<BR>&nbsp;&nbsp;&nbsp; return;<BR>&nbsp; }</P>
+<P>&nbsp; // 如果为文件类型<BR>&nbsp; if 
+(this.headers['content-type'].match(/multipart/i)) {<BR>&nbsp;&nbsp;&nbsp; var 
+m;<BR>&nbsp;&nbsp;&nbsp; if (m = 
+this.headers['content-type'].match(/boundary=(?:"([^"]+)"|([^;]+))/i)) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+解析出边界字符串，并利用边界字符串初始化multipart组件<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+this._initMultipart(m[1] || m[2]);<BR>&nbsp;&nbsp;&nbsp; } else 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this._error(new Error('bad content-type 
+header, no multipart boundary'));<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+return;<BR>&nbsp; }</P>
+<P>&nbsp; this._error(new Error('bad content-type header, unknown content-type: 
+'+this.headers</P>
+<P>['content-type']));<BR>};</P>
+<P>IncomingForm.prototype._error = function(err) {<BR>&nbsp; if (this.error) 
+{<BR>&nbsp;&nbsp;&nbsp; return;<BR>&nbsp; }</P>
+<P>&nbsp; this.error = err;<BR>&nbsp; this.pause();<BR>&nbsp; this.emit('error', 
+err);<BR>};</P>
+<P>// 从 this.headers 中获取数据总长度<BR>IncomingForm.prototype._parseContentLength = 
+function() {<BR>&nbsp; if (this.headers['content-length']) 
+{<BR>&nbsp;&nbsp;&nbsp; this.bytesReceived = 0;<BR>&nbsp;&nbsp;&nbsp; 
+this.bytesExpected = parseInt(this.headers['content-length'], 10);<BR>&nbsp; 
+}<BR>};</P>
+<P>IncomingForm.prototype._newParser = function() {<BR>&nbsp; return new 
+MultipartParser();<BR>};<BR>// 初始化multipartParset 
+组件<BR>IncomingForm.prototype._initMultipart = function(boundary) {<BR>&nbsp; 
+this.type = 'multipart';</P>
+<P>&nbsp; // 实例化组件<BR>&nbsp; var parser = new 
+MultipartParser(),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self = 
+this,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+headerField,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+headerValue,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; part;</P>
+<P>&nbsp; parser.initWithBoundary(boundary);<BR>&nbsp; /<BR>&nbsp;&nbsp;&nbsp; 
+下面这些方法便是multipartParser中的callback以及dataCallback调用的函书<BR>&nbsp;&nbsp;&nbsp; 
+当开始解析一个数据段（比如一个文件..)<BR>&nbsp;&nbsp;&nbsp; 并重置相关信息<BR>&nbsp;&nbsp; /<BR>&nbsp; 
+parser.onPartBegin = function() {<BR>&nbsp;&nbsp;&nbsp; part = new 
+EventEmitter();<BR>&nbsp;&nbsp;&nbsp; part.headers = {};<BR>&nbsp;&nbsp;&nbsp; 
+part.name = null;<BR>&nbsp;&nbsp;&nbsp; part.filename = 
+null;<BR>&nbsp;&nbsp;&nbsp; part.mime = null;<BR>&nbsp;&nbsp;&nbsp; headerField 
+= '';<BR>&nbsp;&nbsp;&nbsp; headerValue = '';<BR>&nbsp; };<BR>&nbsp; 
+/<BR>&nbsp;&nbsp;&nbsp; 数据段的头部信息解析完毕（或者数据段的头部信息在当前接受到的数据段的尾部，并且尚未</P>
+<P>结束）<BR>&nbsp;&nbsp;&nbsp; 下面的onHeaderValue和onPartData也是一样的道理<BR>&nbsp;&nbsp; 
+/<BR>&nbsp; parser.onHeaderField = function(b, start, end) 
+{<BR>&nbsp;&nbsp;&nbsp; headerField += b.toString(self.encoding, start, 
+end);<BR>&nbsp; };</P>
+<P>&nbsp; / 数据段的头部信息value的解析过程 /<BR>&nbsp; parser.onHeaderValue = function(b, 
+start, end) {<BR>&nbsp;&nbsp;&nbsp; headerValue += b.toString(self.encoding, 
+start, end);<BR>&nbsp; };</P>
+<P>&nbsp; / header信息（一行）解析完毕，并储存起来 /<BR>&nbsp; parser.onHeaderEnd = function() 
+{<BR>&nbsp;&nbsp;&nbsp; headerField = 
+headerField.toLowerCase();<BR>&nbsp;&nbsp;&nbsp; part.headers[headerField] = 
+headerValue;</P>
+<P>&nbsp;&nbsp;&nbsp; var m;<BR>&nbsp;&nbsp;&nbsp; if (headerField == 
+'content-disposition') {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (m = 
+headerValue.match(/name="([^"]+)"/i)) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; part.name = 
+m[1];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (m = 
+headerValue.match(/filename="([^;]+)"/i)) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; part.filename = 
+m[1].substr(m[1].lastIndexOf('\') + 1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; } else if (headerField == 'content-type') 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; part.mime = 
+headerValue;<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; / 重置，准备解析下一个header信息 /<BR>&nbsp;&nbsp;&nbsp; headerField = 
+'';<BR>&nbsp;&nbsp;&nbsp; headerValue = '';<BR>&nbsp; };</P>
+<P>&nbsp; / 整个headers信息解析完毕 /<BR>&nbsp; parser.onHeadersEnd = function() 
+{<BR>&nbsp;&nbsp;&nbsp; self.onPart(part);<BR>&nbsp; };</P>
+<P>&nbsp; / 数据部分的解析 /<BR>&nbsp; parser.onPartData = function(b, start, end) 
+{<BR>&nbsp;&nbsp;&nbsp; part.emit('data', b.slice(start, end));<BR>&nbsp; };</P>
+<P>&nbsp; / 数据段解析完毕 /<BR>&nbsp; parser.onPartEnd = function() 
+{<BR>&nbsp;&nbsp;&nbsp; part.emit('end');<BR>&nbsp; };</P>
+<P>&nbsp; parser.onEnd = function() {<BR>&nbsp;&nbsp;&nbsp; self.ended = 
+true;<BR>&nbsp;&nbsp;&nbsp; self._maybeEnd();<BR>&nbsp; };</P>
+<P>&nbsp; this._parser = parser;<BR>};</P>
+<P>/ 初始化，处理application/x-www-form-urlencoded类型的表单 
+*/<BR>IncomingForm.prototype._initUrlencoded = function() {<BR>&nbsp; this.type 
+= 'urlencoded';</P>
+<P>&nbsp; var parser = new QuerystringParser()<BR>&nbsp;&nbsp;&nbsp; , self = 
+this;</P>
+<P>&nbsp; parser.onField = function(key, val) {<BR>&nbsp;&nbsp;&nbsp; 
+self.emit('field', key, val);<BR>&nbsp; };</P>
+<P>&nbsp; parser.onEnd = function() {<BR>&nbsp;&nbsp;&nbsp; self.ended = 
+true;<BR>&nbsp;&nbsp;&nbsp; self._maybeEnd();<BR>&nbsp; };</P>
+<P>&nbsp; this._parser = parser;<BR>};</P>
+<P>/<BR>&nbsp; 根据给定的文件名，构造出path<BR>&nbsp;/<BR>IncomingForm.prototype._uploadPath 
+= function(filename) {<BR>&nbsp; var name = '';<BR>&nbsp; for (var i = 0; i &lt; 
+32; i++) {<BR>&nbsp;&nbsp;&nbsp; name += Math.floor(Math.random() * 
+16).toString(16);<BR>&nbsp; }</P>
+<P>&nbsp; if (this.keepExtensions) {<BR>&nbsp;&nbsp;&nbsp; name += 
+path.extname(filename);<BR>&nbsp; }</P>
+<P>&nbsp; return path.join(this.uploadDir, name);<BR>};</P>
+<P>IncomingForm.prototype._maybeEnd = function() {<BR>&nbsp; if (!this.ended || 
+this._flushing) {<BR>&nbsp;&nbsp;&nbsp; return;<BR>&nbsp; }</P>
+<P>&nbsp; this.emit('end');<BR>};</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><BR>&lt;sup&gt;1)&lt;/sup&gt; 参考文档-</P>
+<P>http.ServerRequest:http://nodejs.org/docs/v0.5.4/api/http.html#http.ServerRequest</P>
+<P><BR>&nbsp;</P></BODY></HTML>

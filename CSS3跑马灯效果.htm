@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>CSS3跑马灯效果</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>CSS3跑马灯效果</P>
+<H1 id=sgtitle title="CSS3 跑馬燈 | Marquee" 
+style="FONT-SIZE: 1.6em; BORDER-TOP: transparent 1px solid; HEIGHT: 80px; FONT-FAMILY: Georgia, Tahoma, Latha, Verdana, Arial, serif; BORDER-RIGHT: transparent 1px solid; FONT-VARIANT: normal; WHITE-SPACE: normal; BORDER-BOTTOM: transparent 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(160,27,28); FONT-STYLE: normal; PADDING-LEFT: 80px; BORDER-LEFT: transparent 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; text-shadow: rgb(102, 102, 102) 1px 1px 1px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">CSS3 
+跑馬燈 | Marquee</H1>
+<H2 
+style="FONT-SIZE: 1.4em; FONT-FAMILY: Georgia, Tahoma, Latha, Verdana, Arial, serif; FONT-VARIANT: normal; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,204); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; text-shadow: rgb(102, 102, 102) 1px 1px 1px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">overflow-style</H2>
+<P>
+<TABLE class=table-one 
+style="BORDER-TOP: rgb(102,102,102) 1px solid; BORDER-RIGHT: rgb(102,102,102) 1px solid; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(102,102,102) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; MARGIN-LEFT: auto; BORDER-LEFT: rgb(102,102,102) 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; WIDTH: 785px; BACKGROUND-COLOR: rgb(208,224,176); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; box-shadow: black 2px 2px 2px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px">
+  <TBODY>
+  <TR>
+    <TD class=tdl 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 246px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">屬　性</TD>
+    <TD class=tdr 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 525px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">設定值</TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=sname 
+      style="FONT-WEIGHT: bold; COLOR: red; BACKGROUND-COLOR: white">overflow-style</SPAN><BR>溢出方式</TD>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">auto</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">marquee-line</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">marquee-block</SPAN></TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" 
+    colSpan=2>預設值：auto<BR>適用於：與 overflow 
+相同(區塊型元素或置換型元素)<BR>繼承性：無</TD></TR></TBODY></TABLE></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); TEXT-ALIGN: justify; FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 2px; TEXT-INDENT: 2em; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">用來指定當<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(0,0,204); TEXT-DECORATION: underline; text-shadow: none" 
+href="http://blog.beyes.tw/category/css3">CSS</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>跑馬燈溢出元素時，首選的滾動(移動)方式。其值所代表的意義：</P>
+<UL 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">auto</B>：由 UA(User Agent, 使用者代理) 
+  自行選擇的滾動機制。跑馬燈與捲軸是常見的機制，但 UA 也有可能使用其它的方式。 
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">marquee-line</B>：選擇跑馬燈為水平移動(例如內容移動到左邊或右邊)。 
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">marquee-block</B>：選擇跑馬燈為垂直移動(例如內容往 Box 
+  上方或下方移動)。</LI></UL><PRE class=code-example style="BORDER-TOP: rgb(0,0,0) 1px dotted; BORDER-RIGHT: rgb(0,0,0) 1px dotted; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; FONT: 15px 'Courier New', Courier, monospace; PADDING-LEFT: 5px; MARGIN-LEFT: auto; CLEAR: both; BORDER-LEFT: rgb(0,0,0) 1px dotted; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 5px; WIDTH: 787px; BACKGROUND-COLOR: rgb(240,255,224); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">.demo {
+	overflow-style: auto;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+
+	overflow: -webkit-marquee;	<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari <SPAN class=red style="COLOR: rgb(204,0,0)">必加</SPAN>(非標準用法) */</SPAN>
+	-webkit-marquee-direction: auto;<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari (非標準用法) */</SPAN>
+}
+</PRE>
+<H2 
+style="FONT-SIZE: 1.4em; FONT-FAMILY: Georgia, Tahoma, Latha, Verdana, Arial, serif; FONT-VARIANT: normal; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,204); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; text-shadow: rgb(102, 102, 102) 1px 1px 1px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">marquee-style</H2>
+<P>
+<TABLE class=table-one 
+style="BORDER-TOP: rgb(102,102,102) 1px solid; BORDER-RIGHT: rgb(102,102,102) 1px solid; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(102,102,102) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; MARGIN-LEFT: auto; BORDER-LEFT: rgb(102,102,102) 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; WIDTH: 785px; BACKGROUND-COLOR: rgb(208,224,176); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; box-shadow: black 2px 2px 2px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px">
+  <TBODY>
+  <TR>
+    <TD class=tdl 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 246px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">屬　性</TD>
+    <TD class=tdr 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 525px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">設定值</TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=sname 
+      style="FONT-WEIGHT: bold; COLOR: red; BACKGROUND-COLOR: white">marquee-style</SPAN><BR>跑馬燈移動類型</TD>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">scroll</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">slide</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">alternate</SPAN></TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" 
+    colSpan=2>預設值：scroll<BR>適用於：與 overflow 
+  相同(區塊型元素或置換型元素)<BR>繼承性：無</TD></TR></TBODY></TABLE></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); TEXT-ALIGN: justify; FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 2px; TEXT-INDENT: 2em; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">其值所代表的意義：</P>
+<UL 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">scroll</B>：內容從這一端跑到另一端，內容會完全「跑進」後，再重新開始。 
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">slide</B>：內容從這一端跑到另一端，內容碰到另一端後，就馬上重新開始。 
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">alternate</B>：類似 slide 方式，不過其內容是在兩端之間跑來跑去。</LI></UL>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); TEXT-ALIGN: justify; FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 2px; TEXT-INDENT: 2em; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><IMG 
+style="BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px" 
+alt="" src="http://i19.photobucket.com/albums/b152/skyfate/cblog/mq.png"></P><PRE class=code-example style="BORDER-TOP: rgb(0,0,0) 1px dotted; BORDER-RIGHT: rgb(0,0,0) 1px dotted; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; FONT: 15px 'Courier New', Courier, monospace; PADDING-LEFT: 5px; MARGIN-LEFT: auto; CLEAR: both; BORDER-LEFT: rgb(0,0,0) 1px dotted; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 5px; WIDTH: 787px; BACKGROUND-COLOR: rgb(240,255,224); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">.demo {
+	overflow-style: marquee-line;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+	marquee-style: scroll;			<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+	marquee-play-count: infinite;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+
+	overflow: -webkit-marquee;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari <SPAN class=red style="COLOR: rgb(204,0,0)">必加</SPAN> */</SPAN>
+	-webkit-marquee-style: scroll;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari */</SPAN>
+	-webkit-marquee-repetition: infinite;	<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari */</SPAN>
+}
+</PRE>
+<H2 
+style="FONT-SIZE: 1.4em; FONT-FAMILY: Georgia, Tahoma, Latha, Verdana, Arial, serif; FONT-VARIANT: normal; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,204); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; text-shadow: rgb(102, 102, 102) 1px 1px 1px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">marquee-play-count</H2>
+<P>
+<TABLE class=table-one 
+style="BORDER-TOP: rgb(102,102,102) 1px solid; BORDER-RIGHT: rgb(102,102,102) 1px solid; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(102,102,102) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; MARGIN-LEFT: auto; BORDER-LEFT: rgb(102,102,102) 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; WIDTH: 785px; BACKGROUND-COLOR: rgb(208,224,176); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; box-shadow: black 2px 2px 2px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px">
+  <TBODY>
+  <TR>
+    <TD class=tdl 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 246px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">屬　性</TD>
+    <TD class=tdr 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 525px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">設定值</TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=sname 
+      style="FONT-WEIGHT: bold; COLOR: red; BACKGROUND-COLOR: white">marquee-play-count</SPAN><BR>跑馬燈重複次數</TD>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">&lt;正整數&gt;</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">infinite</SPAN></TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" 
+    colSpan=2>預設值：1<BR>適用於：與 overflow 
+相同(區塊型元素或置換型元素)<BR>繼承性：無</TD></TR></TBODY></TABLE></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); TEXT-ALIGN: justify; FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 2px; TEXT-INDENT: 2em; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">用來指定跑馬燈重複(重新)移動的次數。其值所代表的意義：</P>
+<UL 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+  <LI style="LETTER-SPACING: 2px">正整數：例如其值為 7 時，表示重複七次。 
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">infinite</B>：表示重複無限次，雖然用負值(例如-1)也可以，但不建議如此做。</LI></UL><PRE class=code-example style="BORDER-TOP: rgb(0,0,0) 1px dotted; BORDER-RIGHT: rgb(0,0,0) 1px dotted; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; FONT: 15px 'Courier New', Courier, monospace; PADDING-LEFT: 5px; MARGIN-LEFT: auto; CLEAR: both; BORDER-LEFT: rgb(0,0,0) 1px dotted; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 5px; WIDTH: 787px; BACKGROUND-COLOR: rgb(240,255,224); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">marquee-play-count: infinite;			<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+-webkit-marquee-repetition: infinite;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari */</SPAN>
+</PRE>
+<H2 
+style="FONT-SIZE: 1.4em; FONT-FAMILY: Georgia, Tahoma, Latha, Verdana, Arial, serif; FONT-VARIANT: normal; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,204); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; text-shadow: rgb(102, 102, 102) 1px 1px 1px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">marquee-direction</H2>
+<P>
+<TABLE class=table-one 
+style="BORDER-TOP: rgb(102,102,102) 1px solid; BORDER-RIGHT: rgb(102,102,102) 1px solid; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(102,102,102) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; MARGIN-LEFT: auto; BORDER-LEFT: rgb(102,102,102) 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; WIDTH: 785px; BACKGROUND-COLOR: rgb(208,224,176); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; box-shadow: black 2px 2px 2px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px">
+  <TBODY>
+  <TR>
+    <TD class=tdl 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 246px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">屬　性</TD>
+    <TD class=tdr 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 525px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">設定值</TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=sname 
+      style="FONT-WEIGHT: bold; COLOR: red; BACKGROUND-COLOR: white">marquee-direction</SPAN><BR>跑馬燈移動方向</TD>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">forward</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">reverse</SPAN></TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" 
+    colSpan=2>預設值：forward<BR>適用於：與 overflow 
+  相同(區塊型元素或置換型元素)<BR>繼承性：有</TD></TR></TBODY></TABLE></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); TEXT-ALIGN: justify; FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 2px; TEXT-INDENT: 2em; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">用來指定跑馬燈移動的方向。下表中，紅色文字表示設定值。</P>
+<P>
+<TABLE 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; MARGIN-LEFT: auto; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; WIDTH: 688px; MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+  <TBODY>
+  <TR>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">overflow-style 
+      屬性</TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">有 
+      direction 屬性時</TD>
+    <TD class="tdBG ac red" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; COLOR: rgb(204,0,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><B>forward</B></TD>
+    <TD class="tdBG ac red" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; COLOR: rgb(204,0,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><B>reverse</B></TD></TR>
+  <TR>
+    <TD class="tdBG ac red" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; COLOR: rgb(204,0,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" 
+    rowSpan=2><B>marquee-line</B></TD>
+    <TD class="tdBG ac red" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; COLOR: rgb(204,0,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><B>ltr</B></TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">往左前進</TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">往右前進</TD></TR>
+  <TR>
+    <TD class="tdBG ac red" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; COLOR: rgb(204,0,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><B>rtl</B></TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">往右前進</TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">往左前進</TD></TR>
+  <TR>
+    <TD class="tdBG ac red" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; COLOR: rgb(204,0,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><B>marquee-block</B></TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">　</TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">往下前進</TD>
+    <TD class="tdBG ac" 
+    style="BORDER-TOP: rgb(147,169,207) 1px solid; BORDER-RIGHT: rgb(147,169,207) 1px solid; BORDER-BOTTOM: rgb(147,169,207) 1px solid; TEXT-ALIGN: center; BORDER-LEFT: rgb(147,169,207) 1px solid; BACKGROUND-COLOR: rgb(195,217,255); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">往上前進</TD></TR></TBODY></TABLE></P><PRE class=code-example style="BORDER-TOP: rgb(0,0,0) 1px dotted; BORDER-RIGHT: rgb(0,0,0) 1px dotted; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; FONT: 15px 'Courier New', Courier, monospace; PADDING-LEFT: 5px; MARGIN-LEFT: auto; CLEAR: both; BORDER-LEFT: rgb(0,0,0) 1px dotted; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 5px; WIDTH: 787px; BACKGROUND-COLOR: rgb(240,255,224); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">.demo {
+	overflow-style: marquee-block;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+	marquee-style: scroll;			<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+	marquee-play-count: infinite;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+	marquee-direction: reverse;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+
+	overflow: -webkit-marquee;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari <SPAN class=red style="COLOR: rgb(204,0,0)">必加</SPAN> */</SPAN>
+	-webkit-marquee-style: scroll;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari */</SPAN>
+	-webkit-marquee-repetition: infinite;	<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari */</SPAN>
+	-webkit-marquee-direction: up;		<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari */</SPAN>
+}
+</PRE>
+<H2 
+style="FONT-SIZE: 1.4em; FONT-FAMILY: Georgia, Tahoma, Latha, Verdana, Arial, serif; FONT-VARIANT: normal; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,204); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; text-shadow: rgb(102, 102, 102) 1px 1px 1px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">marquee-speed</H2>
+<P>
+<TABLE class=table-one 
+style="BORDER-TOP: rgb(102,102,102) 1px solid; BORDER-RIGHT: rgb(102,102,102) 1px solid; WHITE-SPACE: normal; BORDER-BOTTOM: rgb(102,102,102) 1px solid; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; MARGIN-LEFT: auto; BORDER-LEFT: rgb(102,102,102) 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; WIDTH: 785px; BACKGROUND-COLOR: rgb(208,224,176); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; box-shadow: black 2px 2px 2px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px">
+  <TBODY>
+  <TR>
+    <TD class=tdl 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 246px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">屬　性</TD>
+    <TD class=tdr 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); TEXT-ALIGN: center; BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; WIDTH: 525px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px">設定值</TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=sname 
+      style="FONT-WEIGHT: bold; COLOR: red; BACKGROUND-COLOR: white">marquee-speed</SPAN><BR>跑馬燈移動速度</TD>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px"><SPAN 
+      class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">slow</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">normal</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><SPAN class=svals 
+      style="COLOR: rgb(0,0,153); BACKGROUND-COLOR: white">fast</SPAN></TD></TR>
+  <TR>
+    <TD class=tdBG-one 
+    style="FONT-SIZE: 13px; BORDER-TOP: rgb(144,160,96) 1px solid; FONT-FAMILY: Verdana, sans-serif; BORDER-RIGHT: rgb(144,160,96) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(144,160,96) 1px solid; COLOR: rgb(0,48,0); BORDER-LEFT: rgb(144,160,96) 1px solid; LETTER-SPACING: 0px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(224,240,192); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" 
+    colSpan=2>預設值：normal<BR>適用於：與 overflow 
+  相同(區塊型元素或置換型元素)<BR>繼承性：無</TD></TR></TBODY></TABLE></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); TEXT-ALIGN: justify; FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: 2px; TEXT-INDENT: 2em; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">用來指定跑馬燈移動的速度。其值所代表的意義：</P>
+<UL 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); FONT: 16px 'Times New Roman', Georgia, 新細明體, serif; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">slow</B>：較慢速度。 
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">normal</B>：正常速度。 
+  <LI style="LETTER-SPACING: 2px"><B class=red 
+  style="COLOR: rgb(204,0,0)">fast</B>：較快速度。 
+  <LI style="LETTER-SPACING: 2px"><FONT color=#ff0000>ms</FONT>:毫秒。 
+  <LI style="LETTER-SPACING: 2px"><FONT color=#ff0000>s</FONT>:秒。 
+  <LI style="LETTER-SPACING: 2px"><FONT 
+  color=#ff0000>10px/10ms</FONT>:每十秒跑十像素。</LI></UL><PRE class=code-example style="BORDER-TOP: rgb(0,0,0) 1px dotted; BORDER-RIGHT: rgb(0,0,0) 1px dotted; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; FONT: 15px 'Courier New', Courier, monospace; PADDING-LEFT: 5px; MARGIN-LEFT: auto; CLEAR: both; BORDER-LEFT: rgb(0,0,0) 1px dotted; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 5px; WIDTH: 787px; BACKGROUND-COLOR: rgb(240,255,224); MARGIN-RIGHT: auto; TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">marquee-speed: fast;				<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* W3C(標準用法) */</SPAN>
+-webkit-marquee-speed: fast;			<SPAN class=code-two style="FONT-SIZE: 13px; COLOR: rgb(0,144,0); BACKGROUND-COLOR: white">/* Chrome, Safari */</SPAN></PRE>
+<P>&nbsp;</P>
+<P>跑马灯兼容效果：</P>
+<P>&lt;div class="sort_live"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;div class="w_half"&gt;&lt;a href="#" class="ui_bar_a2"&gt;&lt;img 
+src="images/ico_1.png" alt="" 
+/&gt;&lt;span&gt;银医服务&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;</P>
+<P>&lt;/div&gt;</P>
+<P>.sort_live span{<BR>&nbsp;display:inline-block;<BR>&nbsp;overflow: 
+-webkit-marquee;&nbsp;&nbsp;<BR>&nbsp;-webkit-marquee-style: 
+alternate;&nbsp;<BR>&nbsp;-webkit-marquee-speed:normal;&nbsp;<BR>&nbsp;-webkit-marquee-repetition: 
+infinite;<BR>}</P>
+<P>window.onload = 
+function(){<BR>&nbsp;&nbsp;//根据屏幕尺寸修改项目名称的显示效果<BR>&nbsp;&nbsp;$(window).resize(function(){<BR>&nbsp;&nbsp;&nbsp;$("div.sort_live 
+&gt; div").each(function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;var $item = 
+$(this).find("span");<BR>&nbsp;&nbsp;&nbsp;&nbsp;var item_name = 
+$item.text();<BR>&nbsp;&nbsp;&nbsp;&nbsp;//清除旧的显示效果<BR>&nbsp;&nbsp;&nbsp;&nbsp;$item.css("width","auto").find("marquee").replaceWith(item_name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;//设置新的显示效果<BR>&nbsp;&nbsp;&nbsp;&nbsp;var 
+max_width = $(this).find("a").innerWidth();<BR>&nbsp;&nbsp;&nbsp;&nbsp;var 
+img_width = $(this).find("img").outerWidth(true);<BR>&nbsp;&nbsp;&nbsp;&nbsp;var 
+span_width = $item.outerWidth(true);<BR>&nbsp;&nbsp;&nbsp;&nbsp;var able_width = 
+parseInt((max_width-img_width)*0.96);<BR>&nbsp;&nbsp;&nbsp;&nbsp;var cut_width = 
+able_width - span_width;<BR>&nbsp;&nbsp;&nbsp;&nbsp;if (cut_width&gt;0) return 
+true;<BR>&nbsp;&nbsp;&nbsp;&nbsp;$item.replaceWith("&lt;span&gt;&lt;marquee 
+scrollamount=\"2\" 
+behavior=\"alternate\"&gt;"+item_name+"&lt;/marquee&gt;&lt;/span&gt;");<BR>&nbsp;&nbsp;&nbsp;&nbsp;$(this).find("span").css("width", 
+able_width+"px");<BR>&nbsp;&nbsp;&nbsp;});<BR>&nbsp;&nbsp;}).resize(); 
+<BR>&nbsp;};</P></BODY></HTML>

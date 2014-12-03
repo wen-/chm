@@ -1,0 +1,9 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>hover(over, out)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="hover"><h2><span>返回值:jQuery</span>hover(over, out)</h2><h3>概述</h3><div class="desc"><p>一个模仿悬停事件（鼠标移动到一个对象上面及移出这个对象）的方法。这是一个自定义的方法，它为频繁使用的任务提供了一种“保持在其中”的状态。</p><div class="longdesc"><pre>当鼠标移动到一个匹配的元素上面时，会触发指定的第一个函数。当鼠标移出这个元素时，会触发指定的第二个函数。而且，会伴随着对鼠标是否仍然处在特定元素中的检测（例如，处在div中的图像），如果是，则会继续保持“悬停”状态，而不触发移出事件（修正了使用mouseout事件的一个常见错误）。</pre></div></div><h3>参数</h3><div><h4><strong>over</strong><span>Function</span></h4><p>鼠标移到元素上要触发的函数</p><h4><strong>out</strong><span>Function</span></h4><p>鼠标移出元素要触发的函数</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">鼠标悬停的表格加上特定的类</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("td").hover(
+  function () {
+    $(this).addClass("hover");
+  },
+  function () {
+    $(this).removeClass("hover");
+  }
+);</code></pre></div></div></div></body></html>

@@ -1,0 +1,6 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>对象属性访问出错的可能</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P><STRONG>对象属性访问出错的可能</STRONG></P><PRE style="POSITION: fixed; LEFT: -1000px">var aa = {"a":"1","b":"2"};<BR>aa.c;</PRE><PRE style="POSITION: fixed; LEFT: -1000px">访问不存在的属性返回  undefined</PRE><PRE style="POSITION: fixed; LEFT: -1000px"><FONT color=#ff0000>aa.length; <STRONG><FONT color=#000000>返回 </FONT></STRONG>undefined</FONT></PRE><PRE style="POSITION: fixed; LEFT: -1000px">获取不存在的属性的长度会报错：</PRE><PRE style="POSITION: fixed; LEFT: -1000px">var len = aa.c.length;<FONT color=#ff0000>报错</FONT></PRE><PRE style="POSITION: fixed; LEFT: -1000px"><FONT face=Simsun>避免出错的方法：</FONT></PRE><PRE style="POSITION: fixed; LEFT: -1000px"><FONT face=宋体>var len = aa &amp;&amp; aa.c &amp;&amp; aa.c.length;</FONT></PRE><PRE style="POSITION: fixed; LEFT: -1000px"><FONT face=Simsun>遇到不存在的属性时就返回</FONT><FONT face=NSimsun>undefined</FONT></PRE></BODY></HTML>

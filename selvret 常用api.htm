@@ -1,0 +1,582 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>selvret 常用api</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16434"></HEAD>
+<BODY>
+<P>selvret 常用api</P>
+<P><BR>Java Servlet API中文说明文档<BR>译者前言：<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+近来在整理有关Servlet资料时发现，在网上竟然找不到一份中文的Java Servlet API的说明文档，而在有一本有关JSP的书后面附的Java 
+Servlet 
+API说明竟然不全，而这份文档的2.1a版在1998年的11月份就已定稿。所以我决定翻译一份中文的文档（其中一些与技术关系不大的部分已被略去），有兴趣的读者可以从http: 
+//java.sun.com/products/servlet/2.1/servletspec-2.1.zip下载原文阅读。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java Servlet 
+API说明文档（2.1a版）<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1998年11月</P>
+<P>绪言<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这是一份关于2.1版Java Servlet 
+API的说明文档，作为对这本文档的补充，你可以到[url]http://java.sun.com/products/servlet 
+/index.html[/url]下面下载Javadoc格式的文档。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 谁需要读这份文档<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这份文档描述了Java Servlet API的最新版本2.1版。所以，这本书对于Servlet的开发者及servlet引擎的开发者同样适用。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java Servlet 
+API的组成<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java Servlet 
+API由两个软件包组成：一个是对应HTTP的软件包，另一个是不对应HTTP的通用的软件包。这两个软件包的同时存在使得Java Servlet 
+API能够适应将来的其他请求-响应的协议。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这份文档以及刚才提及的Javadoc格式的文档都描述了这两个软件包，Javadoc格式的文档还描述了你应该如何使用这两个软件包中的所有方法。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 有关规范<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+你也许对下面的这些Internet规范感兴趣，这些规范将直接影响到Servlet API的发展和执行。你可以从http: 
+//info.internet.isi.edu/7c/in-notes/rfc/.cache 
+找到下面提到的所有这些RFC规范。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 1738 统一资源定位器(URL) 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 1808 相关统一资源定位器 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 1945 超文本传输协议--HTTP/1.0 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2045 
+多用途Internet邮件扩展(多用途网际邮件扩充协议(MIME))第一部分:Internet信息体格式 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2046 
+多用途Internet邮件扩展(多用途网际邮件扩充协议(MIME))第二部分:媒体类型 <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+RFC 2047 多用途网际邮件扩充协议(MIME)(多用途Internet邮件扩展)第三部分:信息标题扩展用于非ASCII文本 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2048 
+多用途Internet邮件扩展(多用途网际邮件扩充协议(MIME))第四部分: 注册步骤 <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+RFC 2049 多用途Internet邮件扩展(多用途网际邮件扩充协议(MIME))第五部分:一致性标准和例子 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2068 超文本传输协议 -- HTTP/1.1 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2069 一个扩展HTTP:摘要访问鉴定 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2109 HTTP状态管理机制 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2145 HTTP 版本号的使用和解释 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RFC 2324 超文本Coffee Pot控制协议 
+(HTCPCP/1.0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+万维网协会（[url]http://www.w3.org[/url]）管理着这些协议的规范和执行。</P>
+<P><BR>有关Java Servlets<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; JavaTM servlets 
+是一个不受平台约束的Java小程序，它可以被用来通过多种方法扩充一个Web服务器的功能。你可以把Servlet理解成Server上的 
+applets，它被编译成字节码，这样它就可以被动态地载入并用效地扩展主机的处理能力。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet与applets不同的地方是，它不运行在Web浏览器或其他图形化的用户界面上。Servlet通过servlet引擎运行在Web服务器中，以执行请求和响应，请求、响应的典型范例是HTTP协议。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+一个客户端程序，可以是一个Web浏览器，或者是非其他的可以连接上Internet的程序，它会访问Web服务器并发出请求。这个请求被运行在Web服务器上的Servlet引擎处理，并返回响应到Servlet。Servlet通过HTTP将这个响应转发到客户端。<BR>在功能上，Servlet与 
+CGI、NSAPI有点类似，但是，与他们不同的是：Servlet具有平台无关性。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java 
+Servlet概论<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet与其他普通的server扩展机制有以下进步：<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+因为它采用了不同的进程处理模式，所以它比CGI更快。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+它使用了许多Web服务器都支持的标准的API。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+它继承了Java的所有优势，包括易升级以及平台无关性。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+它可以调用Java所提供的大量的API的功能模块。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这份文档说明了Java Servlet 
+API的类和接口的方法。有关更多的信息，请参看下面的API说明。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Servlet的生命周期<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+一个Java servlet具有一个生命周期，这个生命周期定义了一个Servlet如何被载入并被初始化，如何接收请求并作出对请求的响应，如何被从服务中清除。 
+Servlet的生命周期被javax.servlet.Servlet这个接口所定义。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+所有的Java Servlet都会直接地或间接地执行javax.servlet.Servlet接口，这样它才能在一个Servlet引擎中运行。 
+Servlet引擎是Web 服务器按照Java Servlet 
+API定制的扩展。Servlet引擎提供网络服务，能够理解MIME请求，并提供一个运行Servlet的容器。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+javax.servlet.Servlet接口定义了在Servlet的生命周期中特定时间以及特定顺序被调用的方法。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet的解析和载入<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet引擎解析并载入一个Servlet，这个过程可以发生在引擎启动时，需要一个Servlet去响应请求时，以及在此之间的任何时候。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet引擎利用Java类载入工具载入一个Servlet，Servlet引擎可以从一个本地的文件系统、一个远程的文件系统以及网络载入 
+Servlet。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Servlet的初始化<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet引擎载入Servlet后，Servlet引擎必须对Servlet进行初始化，在这一过程中，你可以读取一些固定存储的数据、初始化 
+JDBC的连接以及建立与其他资源的连接。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在初始化过程中，javax.servlet.Servlet接口的init()方法提供了Servlet的初始化信息。这样，Servlet可以对自己进行配置。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+init()方法获得了一个Servlet配置对象（ServletConfig）。这个对象在Servlet引擎中执行，并允许Servlet通过它获处相关参数。这个对象使得Servlet能够访问ServletContext对象。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Servlet处理请求<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet被初始化之后，它已经可以处理来自客户端的请求，每一个来自客户端的请求都被描述成一个ServletRequest对象，Servlet 
+的响应被描述成一个ServletResponse对象。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+当客户端发出请求时，Servlet引擎传递给Servlet一个ServletRequest对象和一个ServletResponse对象，这两个对象作为参数传递到service()方法中。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet 
+也可以执行ServletRequest接口和ServletResponse接口。ServletRequest接口使得Servlet有权使用客户端发出的请求。Servlet可以通过ServletInputStream对象读取请求信息。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ServletResponse接口允许Servlet建立响应头和状态代码。通过执行这个接口，Servlet有权使用 
+ServletOutputStream类来向客户端返回数据。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 多线程和映射<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在多线程的环境下，Servlet必须能处理许多同时发生的请求。例外的情况是这个Servlet执行了SingleThreadModel接口，如果是那样的话，Servlet只能同时处理一个请求。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet依照Servlet引擎的映射来响应客户端的请求。一个映射对包括一个Servlet实例以及一个Servlet返回数据的URL，例如：HelloServlet 
+with /hello/index.html。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+然而，一个映射可能是由一个URL和许多Servlet实例组成，例如：一个分布式的Servlet引擎可能运行在不止一个的服务器中，这样的话，每一个服务器中都可能有一个Servlet实例，以平衡进程的载入。作为一个Servlet的开发者，你不能假定一个Servlet只有一个实例。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Servlet的卸载<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet引擎并不必需保证一个Servlet在任何时候或在服务开启的任何时候都被载入。Servlet引擎可以自由的在任何时候使用或清除一个 
+Servlet。因此，我们不能依赖一个类或实例来存储重要的信息。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+当Servlet引擎决定卸载一个Servlet时（例如，如果这个引擎被关闭或者需要让资源），这个引擎必须允许Servlet释放正在使用的资源并存储有关资料。为了完成以上工作，引擎会调用Servlet的destroy()方法。 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在卸载一个Servlet之前，Servlet引擎必须等待所有的service()方法完成或超时结束（Servlet引擎会对超时作出定义）。当一个 
+Servlet被卸载时，引擎将不能给Servlet发送任何请求。引擎必须释放Servlet并完成无用存储单元的收集</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Servlet映射技术<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+作为一个Servlet引擎的开发者，你必须对于如何映射客户端的请求到Servlet有大量的适应性。这份说明文档不规定映射如何发生。但是，你必须能够自由地运用下面的所有技术：</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+映射一个Servlet到一个URL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+例如，你可以指定一个特殊的Servlet它仅被来自/feedback/index.html的请求调用。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+映射一个Servlet到以一个指定的目录名开始的所有URL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+例如，你可以映射一个Servlet到/catalog，这样来自/catalog/、 /catalog/garden和 
+/catalog/housewares/index.html的请求都会被映射到这个Servlet。但是来自/catalogtwo 或 
+/catalog.html的请求没被映射。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+映射一个Servlet到所有以一个特定的字段结尾的所有URL<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+例如，你可以映射一个来自于所有以in.thtml结尾的请求到一个特定的Servlet。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 映射一个Servlet到一个特殊的URL 
+/servlet/servlet_name。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+例如，如果你建立了一个名叫listattributes的Servlet，你可以通过使用/servlet/listattributes来访问这个 
+Servlet。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+通过类名调用Servlet<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+例如，如果Servlet引擎接收了来自/servlet/com.foo.servlet.MailServlet的请求，Servlet引擎会载入这个com.foo.servlet.MailServlet类，建立实例，并通过这个Servlet来处理请求。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Servlet环境<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ServletContext 
+接口定义了一个Servlet环境对象，这个对象定义了一个在Servlet引擎上的Servlet的视图。通过使用这个对象，Servlet可以记录事件、得到资源并得到来自Servlet引擎的类（例如RequestDispatcher对象）。一个Servlet只能运行在一个Servlet环境中，但是不同的Servlet可以在Servlet引擎上有不同的视图。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果Servlet引擎支持虚拟主机，每个虚拟主机有一个Servlet环境。一个Servlet环境不能在虚拟主机之间共享。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet引擎能够允许一个Servlet环境有它自己的活动范围。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+例如，一个Servlet环境是属于bank应用的，它将被映射到/bank目录下。在这种情况下，一个对getContext方法的调用会返回 
+/bank的Servlet环境。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTTP会话<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+HTTP是一个没有状态的协议。要建立一个有效的Web服务应用，你必须能够识别一个连续的来自远端的客户机的唯一的请求。随着时间的过去，发展了许多会话跟踪的技术，但是使用起来都比较麻烦。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Java Servlet API提供了一个简单的接口，通过这个接口，Servlet引擎可以有效地跟踪用户的会话。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 建立Session<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+因为HTTP是一个请求-响应协议，一个会话在客户机加入之前会被认为是一个新的会话。加入的意思是返回会话跟踪信息到服务器中，指出会话已被建立。在客户端加入之前，我们不能判断下一个客户端请求是目前会话的一部分。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在下面的情况下，Session会被认为是新的Session。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+客户端的Session在此之前还不知道<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+客户端选择不加入Session，例如，如果客户端拒绝接收来自服务器的cookie<BR>作为一个Servlet的开发者，你必须决定你的Web应用是否处理客户机不加入或不能加入Session。服务器会在Web服务器或Servlet规定的时间内维持一个Session对象。当Session终止时，服务器会释放Session对象以及所有绑定在Session上的对象。<BR>绑定对象到 
+Session中<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果有助于你处理应用的数据需求，你也许需要绑定对象到Session中，你可以通过一个唯一的名字绑定任何的对象到Session中，这时，你需要使用 
+HttpSession对象。任何绑定到Session上的对象都可以被处理同一会话的Servlet调用。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+有些对象可能需要你知道什么时候会被放置到Session中或从Session中移开。你可以通过使用 
+HttpSessionBindingListener接口获得这些信息。当你的应用存储数据到Session中，或从Session中清除数据，Servlet都会通过HttpSessionBindingListener检杳什么类被绑定或被取消绑定。这个接口的方法会通报被绑定或被取消绑定的对象。<BR>API对象的说明<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这一部分包含了对Java Servlet API的全部类和接口的详细说明。这个说明与Javadoc 
+API差不多，但是这份文档提供了更多的信息。<BR>API包含了两个软件包，十二个接口和九个类。<BR>软件包：javax.servlet 
+<BR>所包含的接口：RequestDispatcher；Servlet；ServletConfig；ServletContext；ServletRequest；ServletResponse；SingleThreadModel。<BR>所包含的类：GenericServlet；ServletInputStream；ServletOutputStream；ServletException；UnavailableException。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+一、RequestDispatcher接口：<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义：<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public interface 
+RequestDispatcher;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义一个对象，从客户端接收请求，然后将它发给服务器的可用资源（例如Servlet、CGI、HTML文件、JSP文件）。Servlet引擎创建 request 
+dispatcher对象，用于封装由一个特定的URL定义的服务器资源。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个接口是专用于封装Servlet的，但是一个Servlet引擎可以创建request 
+dispatcher对象用于封装任何类型的资源。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; request 
+dispatcher对象是由Servlet引擎建立的，而不是由Servlet开发者建立的。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1、forward<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+public void forward(ServletRequest request, ServletReponse 
+response)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+throws ServletException, IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+被用来从这个Servlet向其它服务器资源传递请求。当一个Servlet对响应作了初步的处理，并要求其它的对象对此作出响应时，可以使用这个方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+当request对象被传递到目标对象时，请求的URL路径和其他路径参数会被调整为反映目标对象的目标URL路径。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果已经通过响应返回了一个ServletOutputStream对象或PrintWriter对象，这个方法将不能使用，否则，这个方法会抛出一个 
+IllegalStateException。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、include<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void include(ServletRequest 
+request, ServletResponse 
+response)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+throws ServletException, IOException<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+用来包括发送给其他服务器资源的响应的内容。本质上来说，这个方法反映了服务器端的内容。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+请求对象传到目标对象后会反映调用请求的请求URL路径和路径信息。这个响应对象只能调用这个Servlet的ServletOutputStream对象和PrintWriter对象。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+一个调用include的Servlet不能设置头域，如果这个Servlet调用了必须设置头域的方法（例如cookie），这个方法将不能保证正常使用。作为一个Servlet开发者，你必须妥善地解决那些可能直接存储头域的方法。例如，即使你使用会话跟踪，为了保证session的正常工作，你必须在一个调用include的Servlet之外开始你的session</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 二、Servlet接口。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public interface 
+Servlet<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个接口定义了一个Servlet：一个在Web服务器上继承了这个功能的Java类。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1、init<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+public void init(ServletConfig config) throws 
+ServletException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet引擎会在Servlet实例化之后，置入服务之前精确地调用init方法。在调用service方法之前，init方法必须成功退出。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果init方法抛出一个ServletException，你不能将这个Servlet置入服务中，如果init方法在超时范围内没完成，我们也可以假定这个Servlet是不具备功能的，也不能置入服务中。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、service<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void service(ServletRequest 
+request, ServletResponse 
+response)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+throws ServletException, IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet引擎调用这个方法以允许Servlet响应请求。这个方法在Servlet未成功初始化之前无法调用。在Servlet被初始化之前，Servlet引擎能够封锁未决的请求。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在一个Servlet对象被卸载后，直到一个新的Servelt被初始化，Servlet引擎不能调用这个方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3、destroy<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+destroy();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+当一个Servlet被从服务中去除时，Servlet引擎调用这个方法。在这个对象的service方法所有线程未全部退出或者没被引擎认为发生超时操作时，destroy方法不能被调用。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4、getServletConfig<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletConfig 
+getServletConfig();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个ServletConfig对象，作为一个Servlet的开发者，你应该通过init方法存储ServletConfig对象以便这个方法能返回这个对象。为了你的便利，GenericServlet在执行这个接口时，已经这样做了。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5、getServletInfo<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getServletInfo();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+允许Servlet向主机的Servlet运行者提供有关它本身的信息。返回的字符串应该是纯文本格式而不应有任何标志（例如HTML，XML等）。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+三、ServletConfig接口<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public interface 
+ServletConfig<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个接口定义了一个对象，通过这个对象，Servlet引擎配置一个Servlet并且允许Servlet获得一个有关它的ServletContext 
+接口的说明。每一个ServletConfig对象对应着一个唯一的Servlet。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1、getInitParameter<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getInitParameter(String name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法返回一个包含Servlet指定的初始化参数的String。如果这个参数不存在，返加空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、getInitParameterNames<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Enumeration 
+getInitParameterNames();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法返回一个列表String对象，该对象包括Servlet的所有初始化参数名。如果Servlet没有初始化参数，getInitParameterNames返回一个空的列表。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3、getServletContext<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletContext 
+getServletContext();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回这个Servlet的ServletContext对象。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+四、ServletContext接口<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public interface 
+ServletContext<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义了一个Servlet的环境对象，通过这个对象，Servlet引擎向Servlet提供环境信息。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+一个Servlet的环境对象必须至少与它所驻留的主机是一一对应的。在一个处理多个虚拟主机的Servlet引擎中（例如，使用了HTTP1.1的主机头域），每一个虚拟主机必须被视为一个单独的环境。此外，Servlet引擎还可以创建对应于一组Servlet的环境对象。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法 <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1、getAttribute<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Object 
+getAttribute(String name); <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回Servlet环境对象中指定的属性对象。如果该属性对象不存在，返回空值。这个方法允许访问有关这个Servlet引擎的在该接口的其他方法中尚未提供的附加信息。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、getAttributeNames<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Enumeration 
+getAttributeNames();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个Servlet环境对象中可用的属性名的列表。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3、getContext<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletContext 
+getContext(String uripath);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个Servlet环境对象，这个对象包括了特定URI路径的Servlets和资源，如果该路径不存在，则返回一个空值。URI路径格式是/dir 
+/dir/filename.ext。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+为了安全，如果通过这个方法访问一个受限制的Servlet的环境对象，会返回一个空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4、getMajorVersion<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int 
+getMajorVersion();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 返回Servlet引擎支持的Servlet 
+API的主版本号。例如对于2.1版，这个方法会返回一个整数2。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5、getMinorVersion<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int 
+getMinorVersion();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 返回Servlet引擎支持的Servlet 
+API的次版本号。例如对于2.1版，这个方法会返回一个整数2。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6、getMimeType<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String getMimeType(String 
+file);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回指定文件的MIME类型，如果这种MIME类型未知，则返回一个空值。MIME类型是由Servlet引擎的配置决定的。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+7、getRealPath<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String getRealPath(String 
+path);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+一个符合URL路径格式的指定的虚拟路径的格式是：/dir/dir/filename.ext。用这个方法，可以返回与一个符合该格式的虚拟路径相对应的真实路径的String。这个真实路径的格式应该适合于运行这个Servlet引擎的计算机（包括其相应的路径解析器）。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+不管是什么原因，如果这一从虚拟路径转换成实际路径的过程不能执行，该方法将会返回一个空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+8、getResource<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public URL getResource(String 
+uripath);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个URL对象，该对象反映位于给定的URL地址（格式：/dir/dir/filename.ext）的Servlet环境对象已知的资源。无论 
+URLStreamHandlers对于访问给定的环境是不是必须的，Servlet引擎都必须执行。如果给定的路径的Servlet环境没有已知的资源，该方法会返回一个空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法和java.lang.Class的getResource方法不完全相同。 
+java.lang.Class的getResource方法通过装载类来寻找资源。而这个方法允许服务器产生环境变量给任何资源的任何Servlet，而不必依赖于装载类、特定区域等等。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+9、getResourceAsStream<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public InputStream 
+getResourceAsStream(String uripath);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个InputStream对象，该对象引用指定的URL的Servlet环境对象的内容。如果没找到Servlet环境变量，就会返回空值，URL 
+路径应该具有这种格式：/dir/dir/filename.ext。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法是一个通过getResource方法获得URL对象的方便的途径。请注意，当你使用这个方法时，meta-information（例如内容长度、内容类型）会丢失。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+10、getRequestDispatcher<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public 
+RequestDispatcher getRequestDispatcher(String 
+uripath);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果这个指定的路径下能够找到活动的资源(例如一个Servlet，JSP页面，CGI等等)就返回一个特定URL的RequestDispatcher 
+对象，否则，就返回一个空值，Servlet引擎负责用一个request dispatcher对象封装目标路径。这个 request 
+dispatcher对象可以用来完全请求的传送。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+11、getServerInfo<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getServerInfo();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个String对象，该对象至少包括Servlet引擎的名字和版本号。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+12、log<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void log(String 
+msg);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void log(String msg, Throwable 
+t);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void log(Exception exception, 
+String msg); // 这种用法将被取消<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+写指定的信息到一个Servlet环境对象的log文件中。被写入的log文件由Servlet引擎指定，但是通常这是一个事件log。当这个方法被一个异常调用时，log中将包括堆栈跟踪。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+13、setAttribute<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+setAttribute(String name, Object o);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+给予Servlet环境对象中你所指定的对象一个名称。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+14、removeAttribute<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+removeAttribute(String name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+从指定的Servlet环境对象中删除一个属性。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+注：以下几个方法将被取消<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+15、getServlet<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Servlet getServlet(String 
+name) throws ServletException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+最初用来返回一个指定名称的Servlet，如果没找到就返回一个空值。如果这个Servlet能够返回，这就意味着它已经被初始化，而且已经可以接受 
+service请求。这是一个危险的方法。当调用这个方法时，可能并不知道Servlet的状态，这就可能导致有关服务器状态的问题。而允许一个 
+Servlet访问其他Servlet的这个方法也同样的危险。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+现在这个方法返回一个空值，为了保持和以前版本的兼容性，现在这个方法还没有被取消。在以后的API版本中，该方法将被取消。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+16、getServletNames<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Enumeration 
+getServletNames();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+最初用来返回一个String对象的列表，该列表表示了在这个Servlet环境下所有已知的Servlet对象名。这个列表总是包含这个Servlet 
+自身。<BR>基于与上一个方法同样的理由，这也是一个危险的方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+现在这个方法返回一个空的列表。为了保持和以前版本的兼容性，现在这个方法还没有被取消。在以后的API版本中，该方法将被取消。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+17、getServlets<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Enumeration 
+getServlets();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+最初用来返回在这个Servelet环境下所有已知的Servlet对象的列表。这个列表总是包含这个Servlet自身。<BR>基于与 
+getServlet方法同样的理由，这也是一个危险的方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+现在这个方法返回一个空的列表。为了保持和以前版本的兼容性，现在这个方法还没有被取消。在以后的API版本中，该方法将被取消。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+五、ServletRequest接口<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public interface 
+ServletRequest<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义一个Servlet引擎产生的对象，通过这个对象，Servlet可以获得客户端请求的数据。这个对象通过读取请求体的数据提供包括参数的名称、值和属性以及输入流的所有数据。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1、getAttribute<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Object 
+getAttribute(String name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回请求中指定属性的值，如果这个属性不存在，就返回一个空值。这个方法允许访问一些不提供给这个接口中其他方法的请求信息以及其他Servlet放置在这个请求对象内的数据。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、getAttributeNames<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Enumeration 
+getAttributeNames();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回包含在这个请求中的所有属性名的列表。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3、getCharacterEncoding<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getCharacterEncoding();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回请求中输入内容的字符编码类型，如果没有定义字符编码类型就返回空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4、getContentLength<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int 
+getContentLength();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+请求内容的长度，如果长度未知就返回-1。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5、getContentType<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getContentType();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回请求数据体的MIME类型，如果类型未知返回空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6、getInputStream<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletInputStream 
+getInputStream() throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个输入流用来从请求体读取二进制数据。如果在此之前已经通过getReader方法获得了要读取的结果，这个方法会抛出一个 
+IllegalStateException。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+7、getParameter<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getParameter(String name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+以一个String返回指定的参数的值，如果这个参数不存在返回空值。例如，在一个HTTP 
+Servlet中，这个方法会返回一个指定的查询语句产生的参数的值或一个被提交的表单中的参数值。如果一个参数名对应着几个参数值，这个方法只能返回通过getParameterValues方法返回的数组中的第一个值。因此，如果这个参数有（或者可能有）多个值，你只能使用 
+getParameterValues方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+8、getParameterNames<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Enumeration 
+getParameterNames();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回所有参数名的String对象列表，如果没有输入参数，该方法返回一个空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+9、getParameterValues<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String[] 
+getParameterValues(String name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+通过一个String对象的数组返回指定参数的值，如果这个参数不存在，该方法返回一个空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+10、getProtocol<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getProtocol();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回这个请求所用的协议，其形式是协议/主版本号.次版本号。例如对于一个HTTP1.0的请求，该方法返回HTTP/1.0。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+11、getReader<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public BufferedReader getReader() 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这个方法返回一个buffered 
+reader用来读取请求体的实体，其编码方式依照请求数据的编码方式。如果这个请求的输入流已经被getInputStream调用获得，这个方法会抛出一个IllegalStateException。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+12、getRemoteAddr<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getRemoteAddr();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回发送请求者的IP地址。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+13、getRemoteHost<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getRemoteHost();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回发送请求者的主机名称。如果引擎不能或者选择不解析主机名（为了改善性能），这个方法会直接返回IP地址。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+14、getScheme<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getScheme();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回请求所使用的URL的模式。例如，对于一个HTTP请求，这个模式就是http。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+15、getServerName<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getServerName();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回接收请求的服务器的主机名。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+16、getServerPort<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int 
+getServerPort();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回接收请求的端口号。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+17、setAttribute<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+setAttribute(String name, Object object);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法在请求中添加一个属性，这个属性可以被其他可以访问这个请求对象的对象（例如一个嵌套的Servlet）使用。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+注：以下方法将被取消<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+getRealPath<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String getRealPath(String 
+path);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回与虚拟路径相对应的真实路径，如果因为某种原因，这一过程不能进行，该方法将返回一个空值。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法和ServletContext接口中的getRealPath方法重复。在2.1版中，ServletContext接口将阐明一个 
+Servlet所能用的所有的路径的映射。该方法执行的结果将会与ServletContext中getRealPath方法的结果完全一样。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+六、ServletResponse接口<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public interface 
+ServletResponse<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义一个Servlet引擎产生的对象，通过这个对象，Servlet对客户端的请求作出响应。这个响应应该是一个MIME实体，可能是一个HTML页、图象数据或其他MIME的格式。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1、getCharacterEncoding<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getCharacterEncoding();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回MIME实体的字符编码。这个字符编码可以是指定的类型，也可以是与请求头域所反映的客户端所能接受的字符编码最匹配的类型。在HTTP协议中，这个信息被通过Accept-Charset传送到Servlet引擎。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+有关字符编码和MIME的更多信息请参看RFC 2047。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、getOutputStream<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletOutputStream 
+getOutputStream() throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个记录二进制的响应数据的输出流。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果这个响应对象已经调用getWriter，将会抛出IllegalStateException。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3、getWriter<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public PrintWriter getWriter 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法返回一个PringWriter对象用来记录格式化的响应实体。如果要反映使用的字符编码，必须修改响应的MIME类型。在调用这个方法之前，必须设定响应的content类型。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果没有提供这样的编码类型，会抛出一个UnsupportedEncodingException，如果这个响应对象已调用 
+getOutputStream，会抛出一个getOutputStream。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4、setContentLength<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+setContentLength(int length);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+设置响应的内容的长度，这个方法会覆盖以前对内容长度的设定。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+为了保证成功地设定响应头的内容长度，在响应被提交到输出流之前必须调用这个方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5、setContentType<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+setContentType(String type);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个方法用来设定响应的content类型。这个类型以后可能会在另外的一些情况下被隐式地修改，这里所说的另外的情况可能当服务器发现有必要的情况下对 
+MIME的字符设置。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+为了保证成功地设定响应头的content类型，在响应被提交到输出流之前必须调用这个方法。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+七、SingleThreadModel接口<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public interface 
+SingleThreadModel;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这是一个空接口，它指定了系统如何处理对同一个Servlet的调用。如果一个Servlet被这个接口指定，那么在这个Servlet中的 
+service方法中将不会有两个线程被同时执行。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet可以通过维持一个各自独立的Servlet实例池，或者通过只让Servlet的service中只有一个线程的方法来实现这个保证。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+八、GenericServlet类<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public abstract class 
+GenericServlet implements 
+Servlet,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ServletConfig, Serializable;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个类的存在使得编写Servlet更加方便。它提供了一个简单的方案，这个方案用来执行有关Servlet生命周期的方法以及在初始化时对 
+ServletConfig对象和ServletContext对象进行说明。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1、destroy<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+public void destroy();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在这里destroy方法不做任何其他的工作。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、getInitParameter<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getInitParameter(String name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这是一个简便的途径，它将会调用ServletConfig对象的同名的方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3、getInitParameterNames<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Enumeration 
+getInitParameterNames();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这是一个简便的途径，它将会调用ServletConfig对象的同名的方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4、getServletConfig<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletConfig 
+getServletConfig();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个通过这个类的init方法产生的ServletConfig对象的说明。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5、getServletContext<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletContext 
+getServletContext();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这是一个简便的途径，它将会调用ServletConfig对象的同名的方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6、getServletInfo<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public String 
+getServletInfo();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回一个反映Servlet版本的String。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+7、init<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void init() throws 
+ServletException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+init(ServletConfig config) throws 
+ServletException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; init(ServletConfig 
+config)方法是一个对这个Servlet的生命周期进行初始化的简便的途径。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+init()方法是用来让你对GenericServlet类进行扩充的，使用这个方法时，你不需要存储config对象，也不需要调用 
+super.init(config)。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; init(ServletConfig 
+config)方法会存储config对象然后调用init()。如果你重载了这个方法，你必须调用super.init(config)，这样 
+GenericServlet类的其他方法才能正常工作。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+8、log<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void log(String 
+msg);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void log(String msg, Throwable 
+cause);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通过Servlet 
+content对象将Servlet的类名和给定的信息写入log文件中。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+9、service<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public abstract void 
+service(ServletRequest request, 
+ServletResponse<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+response) throws ServletException, 
+IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这是一个抽象的方法，当你扩展这个类时，为了执行网络请求，你必须执行它。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+九、ServletInputStream类<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public abstract class ServletInputStream 
+extends InputStream<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个类定义了一个用来读取客户端的请求信息的输入流。这是一个Servlet引擎提供的抽象类。一个Servlet通过使用ServletRequest 
+接口获得了对一个ServletInputStream对象的说明。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个类的子类必须提供一个从InputStream接口读取有关信息的方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1、readLine<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int readLine(byte[] b, int 
+off, int len) throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+从输入流的指定的偏移量开始将指定长度的字节读入到指定的数组中。如果该行所有请求的内容都已被读取，这个读取的过程将结束。如果是遇到了新的一行，新的一行的首个字符也将被读入到数组中。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+十、ServletOutputStream类<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public abstract class ServletOutputStream 
+extends OutputStream<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这是一个由Servlet引擎使用的抽象类。Servlet通过使用ServletResponse接口的使用获得了对一个这种类型的对象的说明。利用这个输出流可以将数据返回到客户端。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+这个类的子类必须提供一个向OutputStream接口写入有关信息的方法。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+在这个接口中，当一个刷新或关闭的方法被调用时。所有数据缓冲区的信息将会被发送到客户端，也就是说响应被提交了。请注意，关闭这种类型的对象时不一定要关闭隐含的socket流。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1、print<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+public void print(String s) throws 
+IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void print(boolean b) 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void print(char c) 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void print(int i) 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void print(long l) 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void print(float f) 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void print(double 
+d) throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+输出变量到输出流中<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、println<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void println() throws 
+IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void println(String s) 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void 
+println(boolean b) throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public 
+void println(char c) throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+public void println(int i) throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+public void println(long l) throws 
+IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void println(float f) 
+throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void println(double 
+d) throws IOException;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+输出变量到输出流中，并增加一个回车换行符</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+十一、ServletException类<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public class ServletException extends 
+Exception<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+当Servlet遇到问题时抛出的一个异常。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+构造函数<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public 
+ServletException();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public 
+ServletException(String message);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public 
+ServletException(String message, Throwable 
+cause);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public ServletException(Throwable 
+cause);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+构造一个新的ServletException，如果这个构造函数包括一个Throwable参数，这个Throwable对象将被作为可能抛出这个异常的原因。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1、getRootCause<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Throwable 
+getRootCause();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果配置了抛出这个异常的原因，这个方法将返回这个原因，否则返回一个空值。</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+十二、UnavailableException类<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+定义<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public class UnavailableException extends 
+ServletException<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+不论一个Servlet是永久地还是临时地无效，都会抛出这个异常。Servlet会记录这个异常以及Servlet引擎所要采取的相应措施。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+临时的无效是指Servlet在某一时间由于一个临时的问题而不能处理请求。例如，在另一个不同的应用层的服务（可能是数据库）无法使用。这个问题可能会自行纠正或者需要采取其他的纠正措施。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+永久的无效是指除非管理员采取措施，这个Servlet将不能处理客户端的请求。例如，这个Servlet配置信息丢失或Servlet的状态被破坏。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Servlet 
+引擎可以安全地处理包括永久无效在内的这两种异常，但是对临时无效的正常处理可以使得Servlet引擎更健壮。特别的，这时对Servlet的请求只是被阻止（或者是被延期）一段时间，这显然要比在service自己重新启动前完全拒绝请求更为科学。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+构造函数<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public UnavailableException(Servlet 
+servlet, String message);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public 
+UnavailableException(int seconds, Servlet servlet, 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String 
+message);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+构造一个包含指定的描述信息的新的异常。如果这个构造函数有一个关于秒数的参数，这将给出Servlet发生临时无效后，能够重新处理请求的估计时间。如果不包含这个参数，这意味着这个Servlet永久无效。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+方法<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1、getServlet<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Servlet 
+getServlet();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回报告无效的Servlet。这被Servlet引擎用来识别受到影响的Servlet。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2、getUnavailableSeconds<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public int 
+getUnavailableSeconds();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+返回Servlet预期的无效时间，如果这个Servlet是永久无效，返回-1。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3、isPermanent<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public boolean 
+isPermanent();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+如果这个Servlet永久无效，返回布尔值true，指示必须采取一些管理行动以使得这个Servlet可用。 </P>
+<P>servlet生成验证码jsp 笔记 2010-01-03 21:01:51 阅读15 评论0&nbsp;&nbsp; 字号：大中小 订阅 .</P>
+<P>package com.xasxt.validate;</P>
+<P>import java.awt.Color;<BR>import java.awt.Font;<BR>import 
+java.awt.Graphics;<BR>import java.awt.image.BufferedImage;<BR>import 
+java.io.IOException;<BR>import java.io.PrintWriter;<BR>import 
+java.util.Random;</P>
+<P>import javax.imageio.ImageIO;<BR>import 
+javax.servlet.ServletException;<BR>import 
+javax.servlet.http.HttpServlet;<BR>import 
+javax.servlet.http.HttpServletRequest;<BR>import 
+javax.servlet.http.HttpServletResponse;<BR>import 
+javax.servlet.http.HttpSession;</P>
+<P>public class myvalidate extends HttpServlet {</P>
+<P>&nbsp;&nbsp;&nbsp; Random rd = new Random();<BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; public void doGet(HttpServletRequest request, 
+HttpServletResponse 
+response)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+throws ServletException, IOException {<BR>/**<BR>&nbsp;* 
+设置浏览器不要缓存，当有缓存时，验证码刷新时不变！<BR>&nbsp;*/<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+response.setHeader("Pragma","No-cache");&nbsp;&nbsp;&nbsp; 
+<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+response.setHeader("Cache-Control","no-cache");&nbsp;&nbsp;&nbsp; 
+<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+response.setDateHeader("Expires", 0); 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+response.setContentType("image/png");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+String code = codeRandom(4);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+HttpSession session = 
+request.getSession();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+session.setAttribute("validate", 
+code);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BufferedImage image = new 
+BufferedImage(130,40,BufferedImage.TYPE_INT_BGR);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Graphics g = image.getGraphics();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.setColor(Color.gray);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.fillRect(0,0, image.getWidth(), 
+image.getHeight());<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//干扰线<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int 
+i=0;i&lt;20;i++){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.setColor(new 
+Color(rd.nextInt(256),rd.nextInt(256),rd.nextInt(256)));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.drawOval(rd.nextInt(70), rd.nextInt(20), rd.nextInt(40), 
+rd.nextInt(60));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//输出文字<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Color[] cs = new 
+Color[]{Color.red,Color.blue,Color.green,Color.yellow};<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for (int i = 0; i &lt;code.length(); i++) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String s 
+= code.charAt(i) + 
+"";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.setFont(new 
+Font("IMPACT",Font.BOLD,18));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.setColor(Color.BLACK);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+int y = 
+rd.nextInt(10);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.drawString(s, image.getWidth()/code.length()*i + 2+2, 
+20+y+2);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.setColor(cs[rd.nextInt(4)]);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+g.drawString(s, image.getWidth()/code.length()*i + 2, 
+20+y);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ImageIO.write(image, "png", 
+response.getOutputStream());<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; public void 
+doPost(HttpServletRequest request, HttpServletResponse 
+response)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+throws ServletException, IOException {</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+doGet(request,response);<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private&nbsp; String codeRandom(int 
+n){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String s = 
+"123456789ABCDEFGHKMNPQSYXRZWTUVW";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+String code = "";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int 
+i=0;i&lt;n;i++){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+code += 
+s.charAt(rd.nextInt(s.length()));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+code;<BR></P></BODY></HTML>

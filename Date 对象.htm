@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Date 对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16450"></HEAD>
+<BODY>
+<DIV>
+<H2>Date 对象</H2>
+<P>Date 对象用于处理日期和时间。</P>
+<H3>创建 Date 对象的语法：</H3><PRE>var myDate=new Date()</PRE>
+<P class=note><SPAN>注释：</SPAN>Date 对象会自动把当前日期和时间保存为其初始值。</P></DIV>
+<DIV>
+<H2>Date 对象属性</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 25%">属性</TH>
+    <TH style="WIDTH: 61%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_constructor_date.html">constructor</A></TD>
+    <TD>返回对创建此对象的 Date 函数的引用。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_prototype_date.html">prototype</A></TD>
+    <TD>使您有能力向对象添加属性和方法。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Date 对象方法</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 25%">方法</TH>
+    <TH style="WIDTH: 61%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_Date.html">Date()</A></TD>
+    <TD>返回当日的日期和时间。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getDate.html">getDate()</A></TD>
+    <TD>从 Date 对象返回一个月中的某一天 (1 ~ 31)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getDay.html">getDay()</A></TD>
+    <TD>从 Date 对象返回一周中的某一天 (0 ~ 6)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getMonth.html">getMonth()</A></TD>
+    <TD>从 Date 对象返回月份 (0 ~ 11)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getFullYear.html">getFullYear()</A></TD>
+    <TD>从 Date 对象以四位数字返回年份。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getYear.html">getYear()</A></TD>
+    <TD><SPAN class=deprecated>请使用 getFullYear() 方法代替。</SPAN></TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getHours.html">getHours()</A></TD>
+    <TD>返回 Date 对象的小时 (0 ~ 23)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getMinutes.html">getMinutes()</A></TD>
+    <TD>返回 Date 对象的分钟 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getSeconds.html">getSeconds()</A></TD>
+    <TD>返回 Date 对象的秒数 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getMilliseconds.html">getMilliseconds()</A></TD>
+    <TD>返回 Date 对象的毫秒(0 ~ 999)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getTime.html">getTime()</A></TD>
+    <TD>返回 1970 年 1 月 1 日至今的毫秒数。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getTimezoneOffset.html">getTimezoneOffset()</A></TD>
+    <TD>返回本地时间与格林威治标准时间 (GMT) 的分钟差。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCDate.html">getUTCDate()</A></TD>
+    <TD>根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCDay.html">getUTCDay()</A></TD>
+    <TD>根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCMonth.html">getUTCMonth()</A></TD>
+    <TD>根据世界时从 Date 对象返回月份 (0 ~ 11)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCFullYear.html">getUTCFullYear()</A></TD>
+    <TD>根据世界时从 Date 对象返回四位数的年份。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCHours.html">getUTCHours()</A></TD>
+    <TD>根据世界时返回 Date 对象的小时 (0 ~ 23)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCMinutes.html">getUTCMinutes()</A></TD>
+    <TD>根据世界时返回 Date 对象的分钟 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCSeconds.html">getUTCSeconds()</A></TD>
+    <TD>根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD class=no_wrap><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_getUTCMilliseconds.html">getUTCMilliseconds()</A></TD>
+    <TD>根据世界时返回 Date 对象的毫秒(0 ~ 999)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_parse.html">parse()</A></TD>
+    <TD>返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setDate.html">setDate()</A></TD>
+    <TD>设置 Date 对象中月的某一天 (1 ~ 31)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setMonth.html">setMonth()</A></TD>
+    <TD>设置 Date 对象中月份 (0 ~ 11)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setFullYear.html">setFullYear()</A></TD>
+    <TD>设置 Date 对象中的年份（四位数字）。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setYear.html">setYear()</A></TD>
+    <TD><SPAN class=deprecated>请使用 setFullYear() 方法代替。</SPAN></TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setHours.html">setHours()</A></TD>
+    <TD>设置 Date 对象中的小时 (0 ~ 23)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setMinutes.html">setMinutes()</A></TD>
+    <TD>设置 Date 对象中的分钟 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setSeconds.html">setSeconds()</A></TD>
+    <TD>设置 Date 对象中的秒钟 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setMilliseconds.html">setMilliseconds()</A></TD>
+    <TD>设置 Date 对象中的毫秒 (0 ~ 999)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setTime.html">setTime()</A></TD>
+    <TD>以毫秒设置 Date 对象。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setUTCDate.html">setUTCDate()</A></TD>
+    <TD>根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setUTCMonth.html">setUTCMonth()</A></TD>
+    <TD>根据世界时设置 Date 对象中的月份 (0 ~ 11)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setUTCFullYear.html">setUTCFullYear()</A></TD>
+    <TD>根据世界时设置 Date 对象中的年份（四位数字）。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setUTCHours.html">setUTCHours()</A></TD>
+    <TD>根据世界时设置 Date 对象中的小时 (0 ~ 23)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setUTCMinutes.html">setUTCMinutes()</A></TD>
+    <TD>根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setUTCSeconds.html">setUTCSeconds()</A></TD>
+    <TD>根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_setUTCMilliseconds.html">setUTCMilliseconds()</A></TD>
+    <TD>根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_tosource_boolean.html">toSource()</A></TD>
+    <TD>返回该对象的源代码。</TD>
+    <TD>1</TD>
+    <TD>-</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toString_date.html">toString()</A></TD>
+    <TD>把 Date 对象转换为字符串。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toTimeString.html">toTimeString()</A></TD>
+    <TD>把 Date 对象的时间部分转换为字符串。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toDateString.html">toDateString()</A></TD>
+    <TD>把 Date 对象的日期部分转换为字符串。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toGMTString.html">toGMTString()</A></TD>
+    <TD><SPAN class=deprecated>请使用 toUTCString() 方法代替。</SPAN></TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toUTCString.html">toUTCString()</A></TD>
+    <TD>根据世界时，把 Date 对象转换为字符串。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toLocaleString.html">toLocaleString()</A></TD>
+    <TD>根据本地时间格式，把 Date 对象转换为字符串。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toLocaleTimeString.html">toLocaleTimeString()</A></TD>
+    <TD>根据本地时间格式，把 Date 对象的时间部分转换为字符串。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toLocaleDateString.html">toLocaleDateString()</A></TD>
+    <TD>根据本地时间格式，把 Date 对象的日期部分转换为字符串。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_utc.html">UTC()</A></TD>
+    <TD>根据世界时返回 1997 年 1 月 1 日 到指定日期的毫秒数。</TD>
+    <TD>1</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_valueOf_date.html">valueOf()</A></TD>
+    <TD>返回 Date 对象的原始值。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR></TBODY></TABLE></DIV></BODY></HTML>

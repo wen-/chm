@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>unbind([type], [fn])</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="unbind"><h2><span>返回值:jQuery</span>unbind(<em class="optional">[type]</em>, <em class="optional">[fn]</em>)</h2><h3>概述</h3><div class="desc"><p>bind()的反向操作，从每一个匹配的元素中删除绑定的事件。</p><div class="longdesc"><pre>如果没有参数，则删除所有绑定的事件。
+
+你可以将你用bind()注册的自定义事件取消绑定。
+
+如果提供了事件类型作为参数，则只删除该类型的绑定事件。
+
+如果把在绑定时传递的处理函数作为第二个参数，则只有这个特定的事件处理函数会被删除。</pre></div></div><h3>参数</h3><div><h4><strong>type<em> (可选)</em></strong><span>String</span></h4><p>事件类型</p><h4><strong>fn<em> (可选)</em></strong><span>Function</span></h4><p>要从每个匹配元素的事件中反绑定的事件处理函数</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">把所有段落的所有事件取消绑定</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("p").unbind()</code></pre><h4 xmlns="">描述:</h4><p xmlns="">将段落的click事件取消绑定</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("p").unbind( "click" )</code></pre><h4 xmlns="">描述:</h4><p xmlns="">删除特定函数的绑定，将函数作为第二个参数传入</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>var foo = function () {
+  // 处理某个事件的代码
+};
+
+$("p").bind("click", foo); // ... 当点击段落的时候会触发 foo 
+
+$("p").unbind("click", foo); // ... 再也不会被触发 foo</code></pre></div></div></div></body></html>

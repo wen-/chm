@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js禁止选择页面文字</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>全选文字是：</P>
+<P>this.<STRONG><FONT style="COLOR: red">select()</FONT></STRONG>;&nbsp; 
+this--指要选择对象。</P>
+<P>js禁止选择页面文字</P>
+<P><SPAN>&lt;div style="-moz-user-select:none;" onselectstart="javascript:return 
+false;"&gt;</SPAN></P>
+<P><SPAN><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>&lt;input 
+type="text" value="</SPAN><SPAN>不能选择我</SPAN><SPAN>"/&gt;</SPAN></P>
+<P><SPAN><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>&lt;ul&gt;</SPAN></P>
+<P><SPAN><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>&lt;li&gt;</SPAN><SPAN>不能选择我</SPAN><SPAN>&lt;/li&gt;</SPAN></P>
+<P><SPAN><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>&lt;li&gt;</SPAN><SPAN>不能选择我</SPAN><SPAN>&lt;/li&gt;</SPAN></P>
+<P><SPAN><SPAN>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>&lt;/ul&gt;</SPAN></P>
+<P><SPAN><SPAN></SPAN>&lt;/div&gt;</SPAN></P>
+<P><SPAN></SPAN>&nbsp;</P>
+<P><SPAN>-moz-user-select:none;火狐专用样式，禁止选择文字；</SPAN></P>
+<P><SPAN>onselectstart="javascript:return false;"&nbsp; IE下脚本，禁止选择文字；</SPAN></P>
+<P><SPAN></SPAN>&nbsp;</P><SPAN>
+<P><SPAN>该属性可以说有三个属性值：</SPAN><SPAN></SPAN></P>
+<P style="MARGIN-LEFT: 18pt; TEXT-INDENT: -18pt"><SPAN><SPAN>1、<SPAN> 
+</SPAN></SPAN></SPAN><SPAN>none</SPAN><SPAN>：在</SPAN><SPAN>FF2.0</SPAN><SPAN>测试</SPAN><SPAN>,</SPAN><SPAN>用</SPAN><SPAN>none,</SPAN><SPAN>子元素所有的文字都不能选择，包括</SPAN><SPAN>input</SPAN><SPAN>输入框中的文字也不能选择。</SPAN> 
+<SPAN></SPAN></P>
+<P style="MARGIN-LEFT: 18pt; TEXT-INDENT: -18pt"><SPAN><SPAN>2、<SPAN> 
+</SPAN></SPAN></SPAN><SPAN>-moz-all</SPAN><SPAN>：子元素所有的文字都可以被选择，但是</SPAN><SPAN>input</SPAN><SPAN>输入框中的文字不可以被选择。</SPAN><SPAN></SPAN></P>
+<P style="MARGIN-LEFT: 18pt; TEXT-INDENT: -18pt"><SPAN><SPAN>3、<SPAN> 
+</SPAN></SPAN></SPAN><SPAN>-moz-none</SPAN><SPAN>：子元素所有的文字都不能选择，但是</SPAN><SPAN>input</SPAN><SPAN>输入框中的文字除外（已经过测试）。</SPAN><SPAN></SPAN></P>
+<P><SPAN></SPAN></P>
+<P><SPAN>关系列表：</SPAN><SPAN></SPAN></P>
+<P>
+<TABLE 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; BORDER-BOTTOM: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: black 1pt solid; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN></SPAN></P><BR></TD>
+    <TD 
+    style="BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; BORDER-BOTTOM: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>Input</SPAN><SPAN>表单中文字</SPAN><SPAN></SPAN></P></TD>
+    <TD 
+    style="BORDER-TOP: black 1pt solid; BORDER-RIGHT: black 1pt solid; BORDER-BOTTOM: black 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>一般页面文字</SPAN><SPAN></SPAN></P></TD></TR>
+  <TR>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: 1pt solid; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>设置</SPAN><SPAN>none</SPAN></P></TD>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>不可选</SPAN><SPAN></SPAN></P></TD>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>不可选</SPAN><SPAN></SPAN></P></TD></TR>
+  <TR>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: 1pt solid; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>设置</SPAN><SPAN>moz-none</SPAN></P></TD>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>可选</SPAN><SPAN></SPAN></P></TD>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>不可选</SPAN><SPAN></SPAN></P></TD></TR>
+  <TR>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: 1pt solid; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>设置</SPAN><SPAN>moz-all</SPAN></P></TD>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>不可选</SPAN><SPAN></SPAN></P></TD>
+    <TD 
+    style="BORDER-TOP: medium none; BORDER-RIGHT: 1pt solid; BORDER-BOTTOM: 1pt solid; PADDING-BOTTOM: 0cm; PADDING-TOP: 0cm; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; WIDTH: 110.7pt" 
+    vAlign=top width=148>
+      <P><SPAN>可选</SPAN></P></TD></TR></TBODY></TABLE></P>
+<P><STRONG>页面中选择了哪些文本：</STRONG></P>
+<P>function getSelectedText(){</P>
+<P>if(window.getSelection){//html5</P>
+<P>return window.getSelection().toString();</P>
+<P>}else if(document.selection){//ie</P>
+<P>return document.selection.createRange().text;</P>
+<P>}</P>
+<P>以上html5方法不能返回文本框中选择的文本，改用以下方法</P>
+<P>elt.value.substring(elt.selectionStart,elt.selectionEnd);//ie8及以下不支持</P></SPAN></BODY></HTML>

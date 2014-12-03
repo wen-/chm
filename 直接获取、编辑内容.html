@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>在jQuery中，主要是通过html()和text()两个方法来获取和编辑页面内容的。其中html()则当于获取节点的innerHTML属性，添加参数html(text)时，则为设置innerHTML；而text()则用来获取元素的纯文本，text(content)为设置纯文本。<br />
+  例：用text()与html()方法编辑内容<br />
+  $(function(){<br />
+  $(&quot;p&quot;).click(function(){<br />
+  var sHtmlStr=$(this).html();<br />
+  $(this).text(sHtmlStr);<br />
+  });<br />
+  });</p>
+</body>
+</html>

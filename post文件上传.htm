@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE></TITLE>
+<META charset=gb2312>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY><FONT style="">
+<P><BR>Node.js + express 实现图片上传功能<BR>2012-12-21</P>
+<P>在开发自己的博客引擎的过程中，遇到的第一个问题就是如何实现图片的上传。</P>
+<P>如果对express中的app.post('/', function (req, res))方法熟悉的话，方法中的req.files已经</P>
+<P>代表的是上传的文件，打印出来之后可以看到文件的一系列属性，比如说通过上传的路由，重命名</P>
+<P>之后的名称，存放的路径，文件的大小等等：</P>
+<P>{ <BR>&nbsp;size: 74643,<BR>&nbsp; &nbsp;path: 
+'/tmp/8ef9c52abe857867fd0a4e9a819d1876',<BR>&nbsp; &nbsp;name: 
+'edge.png',<BR>&nbsp; &nbsp;type: 'image/png',<BR>&nbsp; &nbsp;hash: 
+false,<BR>&nbsp; &nbsp;lastModifiedDate: Thu Aug 09 2012 20:07:51 GMT-0700 
+(PDT),<BR>&nbsp; &nbsp;_writeStream: <BR>&nbsp;&nbsp; &nbsp;{ <BR>&nbsp;&nbsp; 
+&nbsp;&nbsp;path: 
+'/tmp/8ef9c52abe857867fd0a4e9a819d1876',<BR>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;fd: 
+13,<BR>&nbsp;&nbsp;&nbsp; &nbsp;writable: false,<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;flags: 'w',<BR>&nbsp;&nbsp;&nbsp; &nbsp;encoding: 
+'binary',<BR>&nbsp;&nbsp;&nbsp; &nbsp;mode: 438,<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;bytesWritten: 74643,<BR>&nbsp;&nbsp;&nbsp; &nbsp;busy: 
+false,<BR>&nbsp;&nbsp;&nbsp; &nbsp;_queue: [],<BR>&nbsp;&nbsp;&nbsp; 
+&nbsp;_open: [Function],<BR>&nbsp;&nbsp;&nbsp; &nbsp;drainable: true 
+},<BR>&nbsp;&nbsp;&nbsp;length: [Getter],<BR>&nbsp; &nbsp;&nbsp;filename: 
+[Getter],<BR>&nbsp; &nbsp;&nbsp;mime: [Getter]<BR>&nbsp;}<BR>}</P>
+<P>但有几个非常常规的功能无法通过这些个参数实现的，比如</P>
+<P>&nbsp;&nbsp;&nbsp; 如何判断上传成功？<BR>&nbsp;&nbsp;&nbsp; 
+如何显示上传进度？<BR>&nbsp;&nbsp;&nbsp; 如何在上传之前限制图片的大小和分辨率？<BR>&nbsp;&nbsp;&nbsp; 
+如何重命名图片并且另取存放路径？</P>
+<P>并且解决以上的几个问题靠原生的框架是不够的，于是想到了 Modules，找到了star数比较多的</P>
+<P>node-formidable，按照tutorial，在app.post中的贴上了示例代码：</P>
+<P>var formidable = require('formidable');<BR>app.post('/upload', function (req, 
+res) {<BR>&nbsp;var form = new 
+formidable.IncomingForm({<BR>&nbsp;&nbsp;form.keepExtensions = false; //keep 
+.jpg/.png<BR>&nbsp;&nbsp;form.uploadDir = "upload/"; //upload 
+path<BR>&nbsp;});<BR>&nbsp;form.parse(req, function(err, fields, files) 
+{<BR>&nbsp;&nbsp;console.log("parse!");<BR>&nbsp;});<BR>&nbsp;//bind event 
+handler<BR>&nbsp;form.on("progress", function (err) 
+{<BR>&nbsp;})<BR>&nbsp;form.on("complete", function (err) 
+{<BR>&nbsp;})&nbsp;<BR>})</P>
+<P>但运行之后，发现所有的事件回调并没有被触发（因为所有handler中的 console.log都没有被打印</P>
+<P>出来）。 可图片却正常上传了! ，或许是 我们使用formidable的方式不对，忽略了什么吧。</P>
+<P>Google了几篇关于formidable使用的文章。确定我们使用formidable的方式是没有问题的。于是尝</P>
+<P>试把问题定位到是不是这个组件在整体架构中的问题，比如和express的组件有了冲突？</P>
+<P>首先看看是不是express的问题，先从和上传文件相关的 req.files 入手。果然，在关于 </P>
+<P>req.files 的 API 中看到，其实 bodyParser()和 node-formidable 模块其实早已经被整合在一起</P>
+<P>，甚至参数都已经可以通用：</P>
+<P>&nbsp;&nbsp;&nbsp; The bodyParser() middleware utilizes the node-formidable 
+module internally, and </P>
+<P>accepts the same options. An example of this is the keepExtensions formidable 
+option, </P>
+<P>defaulting to false which in this case gives you the filename </P>
+<P>"/tmp/8ef9c52abe857867fd0a4e9a819d1876" void of the ".png" extension. To 
+enable this, </P>
+<P>and others you may pass them to bodyParser():</P>
+<P>也就是说，我们在初始化 bodyParser() 的时候就可以设置有关上传的一些参数了，比如可以限制</P>
+<P>上传文件的大小，改变上传路径，自动重命名后保留文件后缀</P>
+<P>app.use(express.bodyParser({<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+uploadDir: "media/upload/",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+keepExtensions: true,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; limit: 
+10000000<BR>}));</P>
+<P>非常好！但是仍然不够，只有给上传的不同阶段绑定不同的处理函数，这样才能更灵活的控制。</P>
+<P>这次去express在github上托管的代码看看，看看在issue中有没有相同问题的人——果然是有的，</P>
+<P>比如这个 问题:</P>
+<P>&nbsp;&nbsp;&nbsp; Is there an event I can listen to to get the progress of 
+an file upload? Apologies </P>
+<P>for posting this as an issue.</P>
+<P>但是express的作者的回答差点让我石化了：</P>
+<P>&nbsp;&nbsp;&nbsp; not currently no. modern browsers and moving on in the 
+future the client-side can </P>
+<P>report progress fine so I feel like the average case wont really need this, 
+maybe even </P>
+<P>some do now, but that being said you can still disable the multipart support 
+and use </P>
+<P>formidable directly for the events. Maybe sometime I'll add some event 
+handlers but </P>
+<P>that wouldn't really be very middleware-like so it would be kinda awkward I 
+think.</P>
+<P>他认为现代浏览器在不远的将来就会有报告上传文件进度的功能，所以他反而删除了？但万幸的是</P>
+<P>他告诉我们如果真的有这个需求的话，可以在禁用multipart这个中间件(middleware)的同时，使用</P>
+<P>formidable。于是我尝试这么做:</P>
+<P>app.disable("multipart");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P>
+<P>但是没有起任何作用。</P>
+<P>继续按图索骥，考虑到multipart应该算作是一个属于connect的中间件，我们来到了multipart的 </P>
+<P>官方文档，找到了关于它的说明，更关键的说关于初始化时option的说明：</P>
+<P>&nbsp;&nbsp;&nbsp; The options passed are merged with formidable's 
+IncomingForm object, allowing you </P>
+<P>to configure the upload directory, size limits, etc. For example if you wish 
+to change </P>
+<P>the upload dir do the following.</P>
+<P>更关键的是关于它 defer 这个参数的说明：</P>
+<P>&nbsp;&nbsp;&nbsp; defer defers processing and exposes the Formidable form 
+object as req.form. next() </P>
+<P>is called without waiting for the form's "end" event. This option is useful 
+if you need </P>
+<P>to bind to the "progress" event, for example.</P>
+<P>一切豁然开朗了！只要开启defer这个参数，就可以开启关于各种上传事件的绑定。不多说了，展示</P>
+<P>完整的代码吧：</P>
+<P>app.configure(function () {<BR>&nbsp;&nbsp;&nbsp; 
+app.use(express.bodyParser({<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+keepExtensions: true,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+limit: 10000000, // 10M 
+limit<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defer: 
+true&nbsp; //enable 
+event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }));<BR>})</P>
+<P>app.post('/upload', function (req, res) {<BR>&nbsp;//bind event 
+handler<BR>&nbsp;&nbsp;&nbsp; req.form.on('progress', function(bytesReceived, 
+bytesExpected) {</P>
+<P>&nbsp;&nbsp;&nbsp; });<BR>&nbsp;&nbsp;&nbsp; req.form.on('end', function() 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log(req.files);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+res.send("done");<BR>&nbsp;&nbsp;&nbsp; });<BR>})</P>
+<P>所有的事件列表和事件的参数列表都可以参照 node-formidable 的文档，在这里就不多赘述了。</P>
+<P>最后回答文章开头的那几个问题：<BR>问：如何限制图片大小</P>
+<P>if(req.files.image.size &gt; 307200) // 300 * 1024<BR>{<BR>&nbsp;&nbsp;&nbsp; 
+msg += 'File size no accepted. Max: 300k;<BR>}</P>
+<P>问：如何显示上传进度</P>
+<P>req.form.on('progress', function(bytesReceived, bytesExpected) 
+{<BR>&nbsp;&nbsp;&nbsp; console.log(((bytesReceived / bytesExpected)*100) + "% 
+uploaded");<BR>});</P>
+<P>问：如何修改文件名</P>
+<P>var fs = require('fs');<BR>fs.renameSync(req.files.image.path, 
+'public/files/img' + new_name);</FONT></P></BODY></HTML>

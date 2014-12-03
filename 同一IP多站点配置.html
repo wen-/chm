@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>同一IP多站点配置</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>window下配置</P>
+<P>基于一个ip，一个端口，多个域名配置方法：</P>
+<P>要先改hosts文件。</P>
+<P>打开C:\WINDOWS\system32\drivers\etc文件夹下的hosts文件 在最后添加上自己的本地地址localhost 或者自己的ip 
+</P>
+<P>localhost local.zone.com </P>
+<P>192.168.1.100 local.guestbook.com </P>
+<P>192.168.1.100 local.cart.com </P>
+<P>192.168.1.100 local.crackedzone.com </P>
+<P>192.168.1.100 local.test.com </P>
+<P>&nbsp;</P>
+<P>方法1:</P>
+<P>&lt;VirtualHost *:80&gt;<BR>ServerName bbs.xxx.com #域名<BR>DocumentRoot 
+"F:/website/bbs" #该域名对应的目录地址<BR>&lt;Directory "F:/website/bbs"&gt; 
+#该节点是配置权限、默认首页啊等等东东。<BR>Options FollowSymLinks IncludesNOEXEC 
+Indexes<BR>DirectoryIndex index.php<BR>AllowOverride None<BR>Order 
+Deny,Allow<BR>Allow from all<BR>&lt;/Directory&gt;<BR>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost *:80&gt;<BR>ServerName blog.xxx.com<BR>DocumentRoot 
+"D:/PHPSite/wordpress"<BR>&lt;Directory "D:/PHPSite/wordpress"&gt;<BR>Options 
+FollowSymLinks IncludesNOEXEC Indexes<BR>DirectoryIndex 
+index.php<BR>AllowOverride None<BR>Order Deny,Allow<BR>Allow from 
+all<BR>&lt;/Directory&gt;<BR>&lt;/VirtualHost&gt;</P>
+<P>重启apache，就OK啦。当然你要修改你的hosts文件。</P>
+<P>方法2、修改PhpServerApache2.2confextrahttpd-vhosts.conf<BR>直接将上面一段copy到httpd-vhosts.conf的最后即可。<BR>实际上看名字就知道httpd-vhosts.conf是一个虚拟站点配置集中地，方便管理。<BR>也就是如下：</P>
+<P>#<BR># Virtual Hosts<BR>#<BR># If you want to maintain multiple 
+domains/hostnames on your<BR># machine you can setup VirtualHost containers for 
+them. Most configurations<BR># use only name-based virtual hosts so the server 
+doesn't need to worry about<BR># IP addresses. This is indicated by the 
+asterisks in the directives below.<BR>#<BR># Please see the documentation 
+at<BR># &lt;<A 
+href="http://httpd.apache.org/docs/2.2/vhosts/">URL:http://httpd.apache.org/docs/2.2/vhosts/</A>&gt;<BR># 
+for further details before you try to setup virtual hosts.<BR>#<BR># You may use 
+the command line option '-S' to verify your virtual host<BR># configuration.</P>
+<P>#<BR># Use name-based virtual hosting.<BR>#<BR>NameVirtualHost *:80</P>
+<P>#<BR># VirtualHost example:<BR># Almost any Apache directive may go into a 
+VirtualHost container.<BR># The first VirtualHost section is used for all 
+requests that do not<BR># match a ServerName or ServerAlias in any 
+&lt;VirtualHost&gt; block.<BR>#</P>
+<P>&lt;VirtualHost *:80&gt;<BR>ServerName bbs.xxx.com #域名<BR>DocumentRoot 
+"F:/website/bbs" #该域名对应的目录地址<BR>&lt;Directory "F:/website/bbs"&gt; 
+#该节点是配置权限、默认首页啊等等东东。<BR>Options FollowSymLinks IncludesNOEXEC 
+Indexes<BR>DirectoryIndex index.php<BR>AllowOverride None<BR>Order 
+Deny,Allow<BR>Allow from all<BR>&lt;/Directory&gt;<BR>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost *:80&gt;<BR>ServerName blog.xxx.com<BR>DocumentRoot 
+"D:/PHPSite/wordpress"<BR>&lt;Directory "D:/PHPSite/wordpress"&gt;<BR>Options 
+FollowSymLinks IncludesNOEXEC Indexes<BR>DirectoryIndex 
+index.php<BR>AllowOverride None<BR>Order Deny,Allow<BR>Allow from 
+all<BR>&lt;/Directory&gt;<BR>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost 127.0.0.1:80&gt;<BR>&nbsp;&nbsp;&nbsp; ServerAdmin <A 
+href="mailto:postmaster@dummy-host.localhost">postmaster@dummy-host.localhost</A><BR>&nbsp;&nbsp;&nbsp; 
+DocumentRoot "E:/wen/xampp/htdocs/ajax"<BR>&nbsp;&nbsp;&nbsp; ServerName 
+ajax.localhost<BR>&nbsp;&nbsp;&nbsp; ServerAlias <A 
+href="http://www.ajax.localhost">www.ajax.localhost</A><BR>&nbsp;&nbsp;&nbsp; 
+ErrorLog "logs/ajax.localhost-error.log"<BR>&nbsp;&nbsp;&nbsp; CustomLog 
+"logs/ajax.localhost-access.log" combined<BR>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost 127.0.0.1:80&gt;<BR>&nbsp;&nbsp;&nbsp; ServerAdmin <A 
+href="mailto:postmaster@dummy-host2.localhost">postmaster@dummy-host2.localhost</A><BR>&nbsp;&nbsp;&nbsp; 
+DocumentRoot "E:/wen/xampp/htdocs/d3"<BR>&nbsp;&nbsp;&nbsp; ServerName 
+d3.localhost<BR>&nbsp;&nbsp;&nbsp; ServerAlias <A 
+href="http://www.d3.localhost">www.d3.localhost</A><BR>&nbsp;&nbsp;&nbsp; 
+ErrorLog "logs/d3.localhost-error.log"<BR>&nbsp;&nbsp;&nbsp; CustomLog 
+"logs/d3.localhost-access.log" combined<BR>&lt;/VirtualHost&gt;</P>
+<P>重启apache。<BR>如果不行的话，看你的httpd.conf是否启用了vhost<BR>打开httpd.conf，找到<BR># Virtual 
+hosts<BR>Include conf/extra/httpd-vhosts.conf<BR>看是否启用，即去掉Include 
+conf/extra/httpd-vhosts.conf前的#<BR>重启apache<BR>==============================================================================================<BR>linux下配置<BR>Listen 
+80</P>
+<P>NameVirtualHost 61.139.72.10</P>
+<P>&lt;VirtualHost 61.139.72.10&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; DocumentRoot /var/www/html/chinaok.com</P>
+<P>&nbsp;&nbsp;&nbsp; ServerName <A href="http://www.a.com">www.a.com</A></P>
+<P>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost 61.139.72.10&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; DocumentRoot /var/www/html/home.com</P>
+<P>&nbsp;&nbsp;&nbsp; CustomLog /var/www/html/logs/home-access_log common</P>
+<P>&nbsp;&nbsp;&nbsp; ServerName <A href="http://www.b.com">www.b.com</A></P>
+<P>&lt;/VirtualHost&gt;</P>
+<P>=================================================================================================<BR>NameVirtualHost 
+127.0.0.1:80 <BR>&nbsp; <BR>&lt;VirtualHost 127.0.0.1:80&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; ServerAdmin <A 
+href="mailto:460203980@vip.qq.com">460203980@vip.qq.com</A> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; DocumentRoot F:/php/www 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; ServerName xiao.com <BR>&nbsp;&nbsp;&nbsp; 
+&lt;Directory "F:/php/www"&gt; <BR>&nbsp;&nbsp;&nbsp; Options Indexes 
+FollowSymLinks <BR>&nbsp;&nbsp;&nbsp; AllowOverride None <BR>&nbsp;&nbsp;&nbsp; 
+Order allow,deny <BR>&nbsp;&nbsp;&nbsp; Allow from all <BR>&nbsp;&nbsp;&nbsp; 
+&lt;/Directory&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp; ErrorLog logs/xiao.com-error_log 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; CustomLog logs/xiao.com-access_log common 
+<BR>&lt;/VirtualHost&gt; <BR>&nbsp; <BR>&lt;VirtualHost 127.0.0.1:80&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; ServerAdmin <A 
+href="mailto:460203980@vip.qq.com">460203980@vip.qq.com</A> 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; DocumentRoot F:/php/tm <BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+ServerName tm.com <BR>&nbsp;&nbsp;&nbsp; &lt;Directory "F:/php/tm"&gt; 
+<BR>&nbsp;&nbsp;&nbsp; Options Indexes FollowSymLinks <BR>&nbsp;&nbsp;&nbsp; 
+AllowOverride None <BR>&nbsp;&nbsp;&nbsp; Order allow,deny 
+<BR>&nbsp;&nbsp;&nbsp; Allow from all <BR>&nbsp;&nbsp;&nbsp; &lt;/Directory&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; ErrorLog logs/tm.com-error_log 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; CustomLog logs/tm.com-access_log common 
+<BR>&lt;/VirtualHost&gt; <BR>在 </P>
+<P>etc/hosts 里面填<BR>127.0.0.1 xiao.com<BR>127.0.0.1 tm.com</P>
+<P>=====================================================================<BR>&nbsp;NameVirtualHost&nbsp;&nbsp; 
+*:80&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp; 然后设置：&nbsp;&nbsp; <BR>&nbsp; 
+&lt;VirtualHost&nbsp;&nbsp; *:80&gt;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DirectoryIndex&nbsp;&nbsp; default.php&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ServerName&nbsp;&nbsp; "<A 
+href="http://www.host1.com">www.host1.com</A>"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DocumentRoot&nbsp;&nbsp; "D:/wwwroot/host1/"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ErrorLog&nbsp;&nbsp; 
+"H:/log/host1.log"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TransferLog&nbsp;&nbsp; "H:/log/host1access.log"&nbsp;&nbsp; <BR>&nbsp; 
+&lt;/VirtualHost&gt;&nbsp;&nbsp; <BR>&nbsp; &lt;VirtualHost&nbsp;&nbsp; 
+*:80&gt;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DirectoryIndex&nbsp;&nbsp; default.php&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ServerName&nbsp;&nbsp; "<A 
+href="http://www.host2.com">www.host2.com</A>"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DocumentRoot&nbsp;&nbsp; "E:/wwwroot/host2/"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ErrorLog&nbsp;&nbsp; 
+"H:/log/host2.log"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TransferLog&nbsp;&nbsp; "H:/log/host2access.log"&nbsp;&nbsp; <BR>&nbsp; 
+&lt;/VirtualHost&gt;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp; 
+另外，网站目录和日志目录必须存在，Apache不会自己建立目录的，不然Apache不能启动 
+<BR>=====================================================================================<BR>这个必须要有，不然不能运行虚拟主机&nbsp;&nbsp; 
+<BR>&nbsp; NameVirtualHost&nbsp;&nbsp; *:80&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp; 然后设置：&nbsp;&nbsp; <BR>&nbsp; &lt;VirtualHost&nbsp;&nbsp; 
+*:80&gt;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DirectoryIndex&nbsp;&nbsp; default.php&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ServerName&nbsp;&nbsp; "<A 
+href="http://www.host1.com">www.host1.com</A>"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DocumentRoot&nbsp;&nbsp; "D:/wwwroot/host1/"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ErrorLog&nbsp;&nbsp; 
+"H:/log/host1.log"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TransferLog&nbsp;&nbsp; "H:/log/host1access.log"&nbsp;&nbsp; <BR>&nbsp; 
+&lt;/VirtualHost&gt;&nbsp;&nbsp; <BR>&nbsp; &lt;VirtualHost&nbsp;&nbsp; 
+*:80&gt;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DirectoryIndex&nbsp;&nbsp; default.php&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ServerName&nbsp;&nbsp; "<A 
+href="http://www.host2.com">www.host2.com</A>"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+DocumentRoot&nbsp;&nbsp; "E:/wwwroot/host2/"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ErrorLog&nbsp;&nbsp; 
+"H:/log/host2.log"&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TransferLog&nbsp;&nbsp; "H:/log/host2access.log"&nbsp;&nbsp; <BR>&nbsp; 
+&lt;/VirtualHost&gt;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+<BR>===================================================================================<BR>APACHE同一IP配置多个域名，做web开发的应该非常熟悉了，不过还是总结一下防止以后搞忘了！<BR>下面直接说该如何操作吧：<BR>1.在windows2003下安装APACHE配置虚拟目录和UNIN下基本是一样的,就是修改httpd.conf文件(Apache2\conf\httpd.conf). 
+<BR>2.打开http.conf文件，在其最下发输入</P>
+<P>查看代码01 NameVirtualHost 218.17.19.19 #服务器IP地址&nbsp;&nbsp; </P>
+<P>02 &lt;VirtualHost 218.17.19.19&gt; #域名所指向的IP&nbsp;&nbsp; </P>
+<P>03 DocumentRoot "E:/webroot/phpernote" #域名所指向的目录,注意""不可少&nbsp;&nbsp; </P>
+<P>04 ServerName <A href="http://www.phpernote.com">www.phpernote.com</A> 
+#网站域名&nbsp;&nbsp; </P>
+<P>05 DirectoryIndex index.php index.html default.php index.html.var&nbsp;&nbsp; 
+</P>
+<P>06 &lt;/VirtualHost&gt;&nbsp;&nbsp; </P>
+<P>07&nbsp;&nbsp;&nbsp; </P>
+<P>08 &lt;VirtualHost 218.17.19.19&gt; #第二个网站域名所指向的IP&nbsp;&nbsp; </P>
+<P>09 DocumentRoot "E:/webroot/example" #www.example.com要指向的目录&nbsp; </P>
+<P>10 ServerName <A href="http://www.example.com">www.example.com</A>&nbsp; </P>
+<P>11 DirectoryIndex index.php index.htm index.html default.php 
+index.html.var&nbsp;&nbsp; </P>
+<P>1</P>
+<P>&nbsp; 另外，网站目录和日志目录必须存在，Apache不会自己建立目录的，不然Apache不能启动 </P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>同一IP多站点配置</P>
+<P>Apache下同一个IP配置多个虚拟主机</P>
+<P><BR>NameVirtualHost192.100.100.1</P>
+<P>&lt;VirtualHost192.100.100.1&gt;<BR><A 
+href="mailto:ServerAdminnjzadmin@sina.com">ServerAdminnjzadmin@sina.com</A><BR>DocumentRoot/wwwroot<BR>ServerNamewww.a.com<BR>ErrorLoglogs/a.com-error_log<BR>Customloglogs/a-Access_logcommon<BR>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost192.100.100.1&gt;<BR><A 
+href="mailto:ServerAdminsonymusic@china.com">ServerAdminsonymusic@china.com</A><BR>DocumentRoot/wwwroot2<BR>ServerNamewww.b.com<BR>ErrorLoglogs/b.com-error_log<BR>CustomLoglogs/b.com-access_logcommon<BR>&lt;/VirtualHost&gt;</P>
+<P><BR>Apache配置httpd.conf设置一个IP两个域名的方法 如何让两个域名对应同一个IP,然后能识别出不同的网站</P>
+<P>本身Virtual Hosting技术分IP-based和Host-based。IP-based Virtual 
+Hosting是指运行网站服务器的计算机有多个 IP地址(IP Address)，访问不同的IP地址就可以取得不同的网站。Host-based Virtual 
+Hosting则是指在DNS上多个网域 都是指向同一个IP地址，网页浏览器(WWW Browser)透过HTTP协定告知网页服务器要访问那个网站。</P>
+<P><BR>一个IP地址，多域名配置linux下配置：</P>
+<P>Listen 80</P>
+<P>NameVirtualHost 61.139.72.10</P>
+<P>&lt;VirtualHost 61.139.72.10&gt;<BR>DocumentRoot 
+/var/www/html/chinaok.com</P>
+<P>&nbsp;&nbsp;&nbsp; ServerName <A href="http://www.a.com"><FONT 
+color=>www.a.com</FONT></A></P>
+<P>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost 61.139.72.10&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; DocumentRoot /var/www/html/home.com</P>
+<P>&nbsp;&nbsp;&nbsp; CustomLog /var/www/html/logs/home-access_log common</P>
+<P>&nbsp;&nbsp;&nbsp; ServerName <A href="http://www.b.com"><FONT 
+color=>www.b.com</FONT></A></P>
+<P>&lt;/VirtualHost&gt;</P>
+<P>多IP多域名配置:</P>
+<P>&lt;VirtualHost 192.168.1.1:80&gt;</P>
+<P>DocumentRoot "/usr/local/apache/a"</P>
+<P>ServerName <A href="http://www.a.com">www.a.com</A></P>
+<P>ServerAlias a.com</P>
+<P>DirectoryIndex index.html index.php</P>
+<P>&lt;/VirtualHost&gt;</P>
+<P>NameVirtualHost 192.168.1.2:80</P>
+<P>&lt;VirtualHost 192.168.1.2:80&gt;</P>
+<P>DocumentRoot "/usr/local/apache/b"<BR>ServerName <A 
+href="http://www.b.com">www.b.com</A></P>
+<P>ServerAlias b.com</P>
+<P>DirectoryIndex index.php</P>
+<P>&lt;/VirtualHost&gt;</P>
+<P>&lt;VirtualHost 192.168.1.2:80&gt;</P>
+<P>DocumentRoot "/usr/local/apache/c"</P>
+<P>ServerName <A href="http://www.c.com">www.c.com</A></P>
+<P>ServerAlias c.com</P>
+<P>DirectoryIndex index.php</P>
+<P>&lt;/VirtualHost&gt;</P>
+<P>------------------------------------------------------------------------------------------</P>
+<P><BR>&nbsp;</P></BODY></HTML>

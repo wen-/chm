@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>手机网页缓存</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>手机网页缓存</P>
+<P>&lt;meta http-equiv ="Cache-Control" content="" /&gt;</P>
+<P>content属性的值可以定义为：</P>
+<P><IMG border=0 hspace=0 alt="" align=baseline src="images\content.png"></P>
+<P>&nbsp;</P>
+<P>将网页缓存为1小时：</P>
+<P>&lt;meta http-equiv="Cache-Control" content="max-age=3600" /&gt;</P>
+<P>HTTP1.0支持Pragma,HTTP1.1支持Cache-Control,所以通常两个都要写上：</P>
+<P>&lt;meta http-equiv="Pragma" content="max-age=3600" /&gt;</P>
+<P>&lt;meta http-equiv="Cache-Control" content="max-age=3600" /&gt;</P>
+<P>&nbsp;</P>
+<P>设置网页到期：</P>
+<P>&lt;meta http-equiv="Expires" content="Tue,20 Aug 1996 14:25:27 GMT" 
+/&gt;</P>
+<P>时间必须是GMT格式。</P>
+<P>将时间设置为0或－1将会使浏览器每次都请求最新的网页</P>
+<P>如果同时定义了max-age值 ，则以max-age值为准</P>
+<P>&nbsp;</P>
+<P>定义应用程序名称：</P>
+<P>&lt;meta http-equiv="application-name" content="建行微信" /&gt;</P>
+<P>不要设置自动跳转功能，即不要定义：</P>
+<P>&lt;meta http-equiv="Refresh" content="n;url=http://yourlink" 
+/&gt;</P></BODY></HTML>

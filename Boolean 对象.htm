@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Boolean 对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16450"></HEAD>
+<BODY>
+<DIV id=intro>
+<H2>Boolean 对象</H2>
+<P>Boolean 对象表示两个值："true" 或 "false"。</P>
+<H3>创建 Boolean 对象的语法：</H3><PRE>new Boolean(<I>value</I>);	<SPAN>//构造函数</SPAN>
+Boolean(<I>value</I>);		<SPAN>//转换函数</SPAN></PRE>
+<H3>参数</H3>
+<P>参数 <I>value</I> 由布尔对象存放的值或者要转换成布尔值的值。</P>
+<H3>返回值</H3>
+<P>当作为一个构造函数（带有运算符 new）调用时，Boolean() 将把它的参数转换成一个布尔值，并且返回一个包含该值的 Boolean 对象。</P>
+<P>如果作为一个函数（不带有运算符 new）调用时，Boolean() 只将把它的参数转换成一个原始的布尔值，并且返回这个值。</P>
+<P class=note><SPAN>注释：</SPAN>如果省略 value 参数，或者设置为 0、-0、null、""、false、undefined 或 
+NaN，则该对象设置为 false。否则设置为 true（即使 value 参数是字符串 "false"）。</P></DIV>
+<DIV>
+<H2>Boolean 对象属性</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">属性</TH>
+    <TH style="WIDTH: 66%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_constructor_boolean.html">constructor</A></TD>
+    <TD>返回对创建此对象的 Boolean 函数的引用</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_prototype_boolean.html">prototype</A></TD>
+    <TD>使您有能力向对象添加属性和方法。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Boolean 对象方法</H2>
+<P>FF: Firefox, IE: Internet Explorer</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">方法</TH>
+    <TH style="WIDTH: 66%">描述</TH>
+    <TH style="WIDTH: 7%">FF</TH>
+    <TH style="WIDTH: 7%">IE</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_tosource_boolean.html">toSource()</A></TD>
+    <TD>返回该对象的源代码。</TD>
+    <TD>1</TD>
+    <TD>-</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_toString_boolean.html">toString()</A></TD>
+    <TD>把逻辑值转换为字符串，并返回结果。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/js/jsref_valueOf_boolean.html">valueOf()</A></TD>
+    <TD>返回 Boolean 对象的原始值。</TD>
+    <TD>1</TD>
+    <TD>4</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Boolean 对象描述</H2>
+<P>在 JavaScript 中，布尔值是一种基本的数据类型。Boolean 对象是一个将布尔值打包的布尔对象。Boolean 
+对象主要用于提供将布尔值转换成字符串的 toString() 方法。</P>
+<P>当调用 toString() 方法将布尔值转换成字符串时（通常是由 JavaScript 隐式地调用），JavaScript 
+会内在地将这个布尔值转换成一个临时的 Boolean 对象，然后调用这个对象的 toString() 方法。</P></DIV></BODY></HTML>

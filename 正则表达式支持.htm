@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>正则表达式支持</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16441">
+<STYLE>*{font-size:12px;line-height:18px;}</STYLE>
+</HEAD>
+<BODY>
+<P>　　JavaScript对正则表达式的支持是通过ECMAScript中的RegExp类实现的。RegExp对象的构造函数可以带一个或两个参数。第一个参数（或只有一个参数）是描述需要进行匹配的模式字符串；如果还有第二个参数，这个参数则指定了额外的处理指令。</P>
+<P>　　最基本的正则表达式就是普通的字符串。例如，要匹配单词"cat"，可以这样定义正则表达式：<BR>var reCat = new 
+RegExp("cat");<BR>　　这个正则表达式只会匹配字符串中出现的第一个单词"cat"，而且，它是区分大小写的。</P>
+<P>var reCat = new 
+RegExp("cat","gi");<BR>　　这一行代码里，第二个参数"g"是global的缩写，表示要搜索字符串中出现的全部"cat"，而不是在找到第一个匹配后就停止。如果还要让模式不区分大小写，可以给第二个参数添加字符"i"（"i"是case-insensitive中后一个单词的缩写）。<BR>　　有些正则表达式字面量用perl风格的语法：<BR>var 
+reCat = 
+/cat/gi;<BR>　　正则表达式字面量邮一条斜线开始，跟着是字符串模式，然后是另一条斜线。如果还要指定额外的处理指令，如"g"和"i"，直接跟在第二个斜线的后面。</P>
+<P>　　创建一个RegExp对象后，把它应用到字符串上。RegExp和String的一些方法都可使用。</P>
+<P>　　RegExp有个test()方法，如果给定字符串（只有一个参数）匹配这个模式，它就返回true，否则返回false：<BR>var sTomatch 
+= "cat";<BR>var reCat = /cat/;<BR>alert(reCat.test(sTomatch));//outputs 
+"true"</P>
+<P>　　如果想访问模式的每一次出现，可以使用RegExp的exec()方法。RegExp的exec()方法，有一个字符串参数，返回一个数组。数组中的第一个条目是第一个匹配；其他的是反向引用。</P>
+<P>　　 
+如果想获得某个模式的所有出现，需要用到string对象的match()方法<BR>　　string对象的match()方法，它会返回一个包含在字符串中的所有匹配的数组。这个方法调用string对象，同时传给它一个RegExp对象：<BR>var 
+sTomatch = "a bat, a Cat, a fAt baT, a faT cat";<BR>var reAt = /at/gi;<BR>var 
+arrMatches = sTomathc.match(reAt);<BR>　　这段代码以数组的形式存储每一个匹配模式的字符串。 </P>
+<P>　　另一个叫做search()的字符串方法的行为与indexOf()有些类似，但是它使用一个RegExp对象而非仅仅一个子字符串。search()方法返回在字符串中出现的一个匹配的位置：<BR>var 
+sTomatch = "a bat, a Cat, a fAt baT, a faT cat";<BR>var reAt = 
+/at/gi;<BR>alert(sToMatch.search(reAt));　　//putputs "3"</P></BODY></HTML>

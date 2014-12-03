@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>toggle(fn, fn2, [fn3, fn4, ...])</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="toggle"><h2><span>返回值:jQuery</span>toggle(fn, fn2, <em class="optional">[fn3, fn4, ...]</em>)</h2><h3>概述</h3><div class="desc"><p>每次点击后依次调用函数。</p><div class="longdesc"><pre>如果点击了一个匹配的元素，则触发指定的第一个函数，当再次点击同一元素时，则触发指定的第二个函数，如果有更多函数，则再次触发，直到最后一个。随后的每次点击都重复对这几个函数的轮番调用。
+
+可以使用unbind("click")来删除。</pre></div></div><h3>参数</h3><div><h4><strong>fn</strong><span>Function</span></h4><p>第一数次点击时要执行的函数。</p><h4><strong>fn2</strong><span>Function</span></h4><p>第二数次点击时要执行的函数。</p><h4><strong>fn3, fn4, ...<em> (可选)</em></strong><span>Function</span></h4><p>更多次点击时要执行的函数。</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">对表格的切换一个类</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>  &lt;ul&gt;
+    &lt;li&gt;Go to the store&lt;/li&gt;
+    &lt;li&gt;Pick up dinner&lt;/li&gt;
+    &lt;li&gt;Debug crash&lt;/li&gt;
+    &lt;li&gt;Take a jog&lt;/li&gt;
+  &lt;/ul&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("td").toggle(
+  function () {
+    $(this).addClass("selected");
+  },
+  function () {
+    $(this).removeClass("selected");
+  }
+);</code></pre><h4 xmlns="">描述:</h4><p xmlns="">对列表的切换样式</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>  &lt;ul&gt;
+    &lt;li&gt;Go to the store&lt;/li&gt;
+    &lt;li&gt;Pick up dinner&lt;/li&gt;
+    &lt;li&gt;Debug crash&lt;/li&gt;
+    &lt;li&gt;Take a jog&lt;/li&gt;
+  &lt;/ul&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>    $("li").toggle(
+      function () {
+        $(this).css({"list-style-type":"disc", "color":"blue"});
+      },
+      function () {
+        $(this).css({"list-style-type":"disc", "color":"red"});
+      },
+      function () {
+        $(this).css({"list-style-type":", "color":"});
+      }
+    );</code></pre></div></div></div></body></html>

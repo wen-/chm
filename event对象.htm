@@ -1,0 +1,449 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>event对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY>
+<P>event对象</P>
+<DIV>
+<H2>Event 对象</H2>
+<P>Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。</P>
+<P>事件通常与函数结合使用，函数不会在事件发生前被执行！</P>
+<P class=note><SPAN>IE:</SPAN> Internet Explorer, <SPAN>F:</SPAN> Firefox, 
+<SPAN>O:</SPAN> Opera, <SPAN>W3C:</SPAN> W3C 标准.</P></DIV>
+<DIV>
+<H2>事件句柄　(Event Handlers)</H2>
+<P>HTML 4.0 的新特性之一是能够使 HTML 事件触发浏览器中的行为，比如当用户点击某个 HTML 元素时启动一段 
+JavaScript。下面是一个属性列表，可将之插入 HTML 标签以定义事件的行为。</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">属性</TH>
+    <TH>此事件发生在何时...</TH>
+    <TH style="WIDTH: 7%">IE</TH>
+    <TH style="WIDTH: 7%">F</TH>
+    <TH style="WIDTH: 7%">O</TH>
+    <TH style="WIDTH: 7%">W3C</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onabort.html" 
+      target=_top>onabort</A></TD>
+    <TD>图像的加载被中断。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onblur.html" 
+      target=_top>onblur</A></TD>
+    <TD>元素失去焦点。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onchange.html" 
+      target=_top>onchange</A></TD>
+    <TD>域的内容被改变。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onclick.html" 
+      target=_top>onclick</A></TD>
+    <TD>当用户点击某个对象时调用的事件句柄。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_ondblclick.html" 
+      target=_top>ondblclick</A></TD>
+    <TD>当用户双击某个对象时调用的事件句柄。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onerror.html" 
+      target=_top>onerror</A></TD>
+    <TD>在加载文档或图像时发生错误。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onfocus.html" 
+      target=_top>onfocus</A></TD>
+    <TD>元素获得焦点。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onkeydown.html" 
+      target=_top>onkeydown</A></TD>
+    <TD>某个键盘按键被按下。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>No</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onkeypress.html" 
+      target=_top>onkeypress</A></TD>
+    <TD>某个键盘按键被按下并松开。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onkeyup.html" 
+      target=_top>onkeyup</A></TD>
+    <TD>某个键盘按键被松开。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onload.html" 
+      target=_top>onload</A></TD>
+    <TD>一张页面或一幅图像完成加载。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onmousedown.html" 
+      target=_top>onmousedown</A></TD>
+    <TD>鼠标按钮被按下。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onmousemove.html">onmousemove</A></TD>
+    <TD>鼠标被移动。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onmouseout.html" 
+      target=_top>onmouseout</A></TD>
+    <TD>鼠标从某元素移开。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onmouseover.html" 
+      target=_top>onmouseover</A></TD>
+    <TD>鼠标移到某元素之上。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onmouseup.html" 
+      target=_top>onmouseup</A></TD>
+    <TD>鼠标按键被松开。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onreset.html" 
+      target=_top>onreset</A></TD>
+    <TD>重置按钮被点击。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onresize.html" 
+      target=_top>onresize</A></TD>
+    <TD>窗口或框架被重新调整大小。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onselect.html" 
+      target=_top>onselect</A></TD>
+    <TD>文本被选中。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onsubmit.html" 
+      target=_top>onsubmit</A></TD>
+    <TD>确认按钮被点击。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_onunload.html" 
+      target=_top>onunload</A></TD>
+    <TD>用户退出页面。</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>鼠标 / 键盘属性</H2>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">属性</TH>
+    <TH>描述</TH>
+    <TH style="WIDTH: 7%">IE</TH>
+    <TH style="WIDTH: 7%">F</TH>
+    <TH style="WIDTH: 7%">O</TH>
+    <TH style="WIDTH: 7%">W3C</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_altkey.html">altKey</A></TD>
+    <TD>返回当事件被触发时，"ALT" 是否被按下。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_button.html">button</A></TD>
+    <TD>返回当事件被触发时，哪个鼠标按钮被点击。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_clientx.html">clientX</A></TD>
+    <TD>返回当事件被触发时，鼠标指针的水平坐标。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_clienty.html">clientY</A></TD>
+    <TD>返回当事件被触发时，鼠标指针的垂直坐标。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_ctrlkey.html">ctrlKey</A></TD>
+    <TD>返回当事件被触发时，"CTRL" 键是否被按下。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_metakey.html">metaKey</A></TD>
+    <TD>返回当事件被触发时，"meta" 键是否被按下。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_relatedtarget.html">relatedTarget</A></TD>
+    <TD>返回与事件的目标节点相关的节点。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_screenx.html">screenX</A></TD>
+    <TD>返回当某个事件被触发时，鼠标指针的水平坐标。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_screeny.html">screenY</A></TD>
+    <TD>返回当某个事件被触发时，鼠标指针的垂直坐标。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_shiftkey.html">shiftKey</A></TD>
+    <TD>返回当事件被触发时，"SHIFT" 键是否被按下。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>IE 属性</H2>
+<P>除了上面的鼠标/事件属性，IE 浏览器还支持下面的属性：</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">属性</TH>
+    <TH>描述</TH></TR>
+  <TR>
+    <TD>cancelBubble</TD>
+    <TD>如果事件句柄想阻止事件传播到包容对象，必须把该属性设为 true。</TD></TR>
+  <TR>
+    <TD>fromElement</TD>
+    <TD>对于 mouseover 和 mouseout 事件，fromElement 引用移出鼠标的元素。</TD></TR>
+  <TR>
+    <TD>keyCode</TD>
+    <TD>对于 keypress 事件，该属性声明了被敲击的键生成的 Unicode 字符码。对于 keydown 和 keyup 
+      事件，它指定了被敲击的键的虚拟键盘码。虚拟键盘码可能和使用的键盘的布局相关。</TD></TR>
+  <TR>
+    <TD>offsetX,offsetY</TD>
+    <TD>发生事件的地点在事件源元素的坐标系统中的 x 坐标和 y 坐标。</TD></TR>
+  <TR>
+    <TD>returnValue</TD>
+    <TD>如果设置了该属性，它的值比事件句柄的返回值优先级高。把这个属性设置为 fasle，可以取消发生事件的源元素的默认动作。</TD></TR>
+  <TR>
+    <TD>srcElement</TD>
+    <TD>对于生成事件的 Window 对象、Document 对象或 Element 对象的引用。</TD></TR>
+  <TR>
+    <TD>toElement</TD>
+    <TD>对于 mouseover 和 mouseout 事件，该属性引用移入鼠标的元素。</TD></TR>
+  <TR>
+    <TD>x,y</TD>
+    <TD>事件发生的位置的 x 坐标和 y 坐标，它们相对于用CSS动态定位的最内层包容元素。</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>标准 Event 属性</H2>
+<P>下面列出了 2 级 DOM 事件标准定义的属性。</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">属性</TH>
+    <TH>描述</TH>
+    <TH style="WIDTH: 7%">IE</TH>
+    <TH style="WIDTH: 7%">F</TH>
+    <TH style="WIDTH: 7%">O</TH>
+    <TH style="WIDTH: 7%">W3C</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_bubbles.html">bubbles</A></TD>
+    <TD>返回布尔值，指示事件是否是起泡事件类型。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_cancelable.html">cancelable</A></TD>
+    <TD>返回布尔值，指示事件是否可拥可取消的默认动作。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_currenttarget.html">currentTarget</A></TD>
+    <TD>返回其事件监听器触发该事件的元素。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_eventphase.html">eventPhase</A></TD>
+    <TD>返回事件传播的当前阶段。</TD>
+    <TD></TD>
+    <TD></TD>
+    <TD></TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_target.html">target</A></TD>
+    <TD>返回触发此事件的元素（事件的目标节点）。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_timestamp.html">timeStamp</A></TD>
+    <TD>返回事件生成的日期和时间。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_type.html">type</A></TD>
+    <TD>返回当前 Event 对象表示的事件的名称。</TD>
+    <TD>6</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>标准 Event 方法</H2>
+<P>下面列出了 2 级 DOM 事件标准定义的方法。IE 的事件模型不支持这些方法：</P>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 20%">方法</TH>
+    <TH>描述</TH>
+    <TH style="WIDTH: 7%">IE</TH>
+    <TH style="WIDTH: 7%">F</TH>
+    <TH style="WIDTH: 7%">O</TH>
+    <TH style="WIDTH: 7%">W3C</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_initevent.html">initEvent()</A></TD>
+    <TD>初始化新创建的 Event 对象的属性。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_preventdefault.html">preventDefault()</A></TD>
+    <TD>通知浏览器不要执行与事件关联的默认动作。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR>
+  <TR>
+    <TD class=no_wrap><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/event_stoppropagation.html">stopPropagation()</A></TD>
+    <TD>不再派发事件。</TD>
+    <TD>No</TD>
+    <TD>1</TD>
+    <TD>9</TD>
+    <TD>Yes</TD></TR></TBODY></TABLE></DIV>
+<DIV id=sidebar>
+<DIV id=tools>
+<H5 id=tools_reference><A 
+href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/htmldom_reference.html">HTML 
+DOM 参考手册</A></H5>
+<H5 id=tools_example><A 
+href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/example/hdom_examples.html">HTML 
+DOM 实例</A></H5></DIV></DIV></BODY></HTML>

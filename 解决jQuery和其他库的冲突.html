@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE></TITLE>
+<META content="text/html; charset=unicode" http-equiv=Content-Type>
+<STYLE type=text/css>
+<!--
+body,td,th,p {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.18975"></HEAD>
+<BODY>1.jQuery库在其他库之后导入 
+<BR>　　可以在任何时来调用jQuery.noConfict()函数来将变量$的控制权移交给其他库。然后就可以在程序里将jQuery()函数作为jQuery对象的制造工厂。<BR>　　此外，还有另一种选择 
+，自定义一个快捷方式：<BR>　　var $j=jQuery.noConfilct();&nbsp;&nbsp;&nbsp;&nbsp; 
+//自定义一个快捷方式替代$<BR>　　可以自定义的备用名称包括：jq、$J、awesomequery等。 
+<P>2.jQuery在其他库之前导入<BR>　　那么可以直接用“jQuery”来做一些jQuery的工作，使用$()方法作为其他库的快捷方式，无需调用jQuery.noConflict()函数。</P></BODY></HTML>

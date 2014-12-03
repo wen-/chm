@@ -1,0 +1,8 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>jQuery.noConflict(extreme)</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="jQuery.noConflict"><h2><span>返回值:jQuery</span>jQuery.noConflict(extreme)</h2><h3>概述</h3><div class="desc"><p>将$和jQuery的控制权都交还给原来的库。用之前请考虑清楚!</p><div class="longdesc"><pre>这是相对于简单的 '''noConflict''' 方法更极端的版本，因为这将完全重新定义jQuery。这通常用于一种极端的情况，比如你想要将jQuery嵌入一个高度冲突的环境。'''注意:'''调用此方法后极有可能导致插件失效。</pre></div></div><h3>参数</h3><div><h4><strong>extreme</strong><span>Boolean</span></h4><p>传入 true 来允许彻底将jQuery变量还原</p></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">完全将 jQuery 移到一个新的命名空间。</p><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>var dom = {};
+dom.query = jQuery.noConflict(true);</code></pre><h5 xmlns="">结果:</h5><pre xmlns=""><code>// 新 jQuery 的代码
+dom.query("div p").hide();
+// 另一个库 $() 的代码
+$("content").style.display = 'none';
+// 另一个版本 jQuery 的代码
+jQuery("div &gt; p").hide();</code></pre></div></div></div></body></html>

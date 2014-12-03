@@ -1,0 +1,7 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>对象的类属性</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>对象的类属性</P>
+<P>只能通过间接方法toString()获得</P><PRE role=presentation class="objectBox inline objectBox-string ">[object class]</PRE><PRE role=presentation class="objectBox inline objectBox-string ">function classof(o){</PRE><PRE role=presentation class="objectBox inline objectBox-string ">if(o===null)return "Null";</PRE><PRE role=presentation class="objectBox inline objectBox-string ">if(o===undefined) return "Undefined";</PRE><PRE role=presentation class="objectBox inline objectBox-string ">return Object.prototype.toString.call(o).slice(8,-1);</PRE><PRE role=presentation class="objectBox inline objectBox-string ">}</PRE><PRE role=presentation class="objectBox inline objectBox-string ">&nbsp;</PRE></BODY></HTML>

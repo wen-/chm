@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>IE6支持max-</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>IE6支持max-</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; FONT: 14px/24px arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 6px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">对于ie6我们可以使用如下css代码</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; FONT: 14px/24px arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 6px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/*可用于块级元素的最大宽度*/</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; FONT: 14px/24px arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 6px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">#maxImgBox{width: 
+expression(this.offsetWidth &gt; 700 ? '700px': true); max-width: 700px; }</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; FONT: 14px/24px arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 6px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/*可用于可直接取到width的元素如img*/</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; FONT: 14px/24px arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 6px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">#maxWidthImg{width: 
+expression(this.width &gt; 200 ? '200px': true); max-width: 200px; }</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; FONT: 14px/24px arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 6px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/*从根节点取值*/</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; FONT: 14px/24px arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 6px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">#maxWidthDiv{width: 
+expression((documentElement.clientWidth &lt; 580) ? '580px' : 'auto' ); 
+max-width: 580px; }</P></BODY></HTML>

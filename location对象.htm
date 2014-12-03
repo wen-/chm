@@ -1,0 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>location对象</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;font-family:arial;}</STYLE>
+</HEAD>
+<BODY>
+<P><STRONG>　　</STRONG>location对象既是window对象的属性，也是document对象的属性。</P>
+<P><STRONG>　　location对象表示载入窗口的URL，此外，它还可以解析URL：</STRONG><BR>　　·hash——如果URL包含#，该方法将返回该符号之后的内容。<BR>　　·host——服务器的名字（如<A 
+href="http://www.wrox.com">www.wrox.com</A>）。<BR>　　·hostname——通常等于host，有时会省略前面的www。<BR>　　·href——当前载入页面的完整URL。<BR>　　·pathname——URL中主机名扣的部分。例如：<A 
+href="http://www.host.com/sub/index.htm">http://www.host.com/sub/index.htm</A>的pathname是“/sub/index.htm”。<BR>　　·port——URL中声明的请求的端口。<BR>　　·protocol——URL中使用的协议，即双斜杠之前 
+的部分，如http:、ftp:等。<BR>　　·search——执行GET请求的URL中的问号（？）后的部分，又称为查询字符串。</P>
+<P>　　location.href是最常用的属性，用于获取或设置窗口的URL（在这一点上，它类似于document.URL属性）。改变该属性的值，就可导航到新页面。 
+<BR>　　如果不想让包含脚本的页面能从浏览器历史中访问，可使用replace()方法，这样就不能通过浏览器的Back和Forward按钮访问它了。<BR>　　location对象还有一个reload()方法，可重新载入当前页面。reload()方法有两种模式，即从浏览器缓存中重载，或从服务器端重载。其参数如果是false，则从缓存中载入，如果是true，则从服务器端载入。如果省略参数，默认值为false。</P></BODY></HTML>

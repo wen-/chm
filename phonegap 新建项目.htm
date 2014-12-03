@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>phonegap 新建项目</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P><STRONG><FONT color=#ff0000>phonegap 3.1&nbsp;新建项目</FONT></STRONG></P>
+<P>phonegap create d:\xxx(路径) -n webapp(应用名称) -i obj.xxx.xxx(包，可省略）</P>
+<P>phonegap create d:\xxx(路径) --name webapp(应用名称) --id obj.xxx.xxx(包，可省略）</P>
+<P>执行流程：</P>
+<P>1、C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\lib\phonegap\create.js下的.create()方法</P>
+<P>2、C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\src\config.js在项目根目录写入.cordova\config.json文件</P>
+<P>3、C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\src\create.js在项目根目录创建所需文件及文件夹，并更新.cordova\config.json文件,解释config.json文件，如果文件存在<FONT 
+color=#ff0000>lib</FONT>与<FONT 
+color=#ff0000>lib.www</FONT>属性则执行C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\src\lazy_load.js下的custom方法，传入属性参数；</P>
+<P>如果不存在则执行C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\src\lazy_load.js下的<FONT 
+color=#ff0000>cordova</FONT>方法（），传入'<FONT color=#ff0000>www</FONT>'做为参数，并在<FONT 
+color=#ff0000>platforms.js</FONT>中找到与‘<FONT 
+color=#ff0000>www</FONT>’对应的值来组合<FONT color=#ff0000>url</FONT>地址后，执行<FONT 
+color=#ff0000>custom</FONT>方法；</P>
+<P>在<FONT 
+color=#ff0000>custom</FONT>方法中检查C:\Users\geong\.cordova\lib\www\phonegap\<FONT 
+color=#ff0000>3.1.0</FONT>\www目录（版本是参数指定的版本）是否存在，如果存在则将文件夹内所有文件复制到我们新建项目的www文件夹内，如果不存在则从给定的url地址下载指定的版本，下载完成后执行上步复制文件操作。</P>
+<P>复制www项目文件完成后检查config.xml文件是否存在，如果不存在则从模板文件夹中复制config.xml到www文件夹下，更改config.xml文件的id和name属性。之后完成操作。</P>
+<P><FONT 
+color=#ff0000><STRONG>执行的脚本在：</STRONG>C:\Users\geong\AppData\Roaming\npm\node_modules\cordova\src\create.js;</FONT></P>
+<P><FONT 
+color=#ff0000>复制www项目文件夹：C:\Users\geong\.cordova\lib\www\phonegap\3.1.0\www</FONT></P>
+<P><FONT color=#ff0000></FONT>&nbsp;</P>
+<P><FONT color=#000000></FONT>&nbsp;</P>
+<P><STRONG><FONT color=#ff0000>phonegap 3.4&nbsp;新建项目</FONT></STRONG></P>
+<P><STRONG><FONT color=#ff0000>bug:</FONT></STRONG></P>
+<P><STRONG><FONT 
+color=#ff0000>1、C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\src\create.js</FONT></STRONG></P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+(!fs.existsSync(configPath)) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var 
+template_config_xml = path.join(__dirname, '..', 'templates', 
+'config.xml');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+shell.cp(template_config_xml, 
+configPath);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Write out id and name to 
+config.xml<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var config = new 
+ConfigParser(configPath);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+config.setPackageName(id);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+config.setName(name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+config.write();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<FONT 
+color=#ff0000>else{//这是手动加上的<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var config = new 
+ConfigParser(configPath);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+config.setPackageName(id);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+config.setName(name);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+config.write();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT>}</P>
+<P><STRONG><FONT 
+color=#ff0000>2、C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\src\ConfigParser.js</FONT></STRONG></P>
+<P>getPreference: function(name) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var preferences = 
+this.doc.findall('preference');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var ret = null;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (var i = 0, ii 
+= preferences.length; i &lt; ii; ++i) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Take 
+the last one that 
+matches.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (preferences[i].attrib.name.toLowerCase() === name) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ret = <FONT color=#ff0000>preferences[i]</FONT>.attrib.value;//原先是：ret = 
+a.attrib.value;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+ret;<BR>&nbsp;&nbsp;&nbsp; },</P>
+<P>变化：</P>
+<P>把复制www文件夹内容的操作，移到C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\src\create.js中进行操作了，并且复制的config.xml文件并没有改ID和name,手动在最后加入了。</P>
+<P>最后一步检查<FONT 
+color=#ff0000>config.xml</FONT>文件是否存在，如果不存在则从模板文件夹中复制config.xml到www文件夹下，更改config.xml文件的id和name属性。这个模板文件夹移到了<FONT 
+color=#ff0000>C:\Users\geong\AppData\Roaming\npm\node_modules\phonegap\node_modules\cordova\templates</FONT></P>
+<P><STRONG><FONT color=#ff0000></FONT></STRONG>&nbsp;</P>
+<P><STRONG><FONT color=#ff0000></FONT></STRONG>&nbsp;</P>
+<P><STRONG><FONT color=#ff0000></FONT></STRONG>&nbsp;</P>
+<P><STRONG><FONT color=#ff0000></FONT></STRONG>&nbsp;</P></BODY></HTML>

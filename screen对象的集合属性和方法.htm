@@ -1,0 +1,206 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Language" content="zh-cn" />
+
+<meta name="robots" content="all" />
+
+<meta name="author" content="w3school.com.cn" />
+<meta name="Copyright" content="Copyright W3school.com.cn All Rights Reserved." />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="false" />
+
+<link rel="stylesheet" type="text/css" href="c3.css" />
+
+<title>HTML DOM 节点树</title>
+</head>
+
+<body class="browserscripting">
+<div id="wrapper">
+<div id="navsecond">
+
+<div id="course">
+<h2>HTML DOM</h2>
+<ul>
+<li><a href="index.asp.html" title="DOM教程首页">DOM 首页</a></li>
+<li><a href="dom_intro.asp.html" title="DOM简介">DOM 简介</a></li>
+<li><a href="dom_nodes.asp.html" title="HTML DOM 节点">DOM 节点</a></li>
+<li><a href="dom_nodetree.asp.html" title="HTML DOM 节点树">DOM 节点树</a></li>
+<li><a href="dom_nodes_access.asp.html" title="HTML DOM 访问节点">DOM 节点访问</a></li>
+<li><a href="dom_nodes_info.asp.html" title="HTML DOM 节点信息">DOM 节点信息</a></li>
+<li><a href="dom_example.asp.html" title="一个 HTML DOM 实例">DOM How To</a></li>
+<li><a href="htmldom_reference.asp.html" title="">DOM 参考</a></li>
+<li><a href="dom_summary.asp.html" title="">DOM 总结</a></li>
+</ul>
+
+<h2>DOM 实例</h2>
+<ul>
+<li><a href="http://www.w3school.com.cn/example/hdom_examples.asp" title="">DOM 实例</a></li>
+</ul>
+
+<h2>DOM 对象</h2>
+<ul class="small">
+<li><a href="dom_obj_window.asp.html" title="HTML DOM Window 对象">DOM Window</a></li>
+<li><a href="dom_obj_navigator.asp.html" title="HTML DOM Navigator 对象">DOM Navigator</a></li>
+<li><a href="dom_obj_screen.asp.html" title="HTML DOM Screen 对象">DOM Screen</a></li>
+<li><a href="dom_obj_history.asp.html" title="HTML DOM History 对象">DOM History</a></li>
+<li><a href="dom_obj_location.asp.html" title="HTML DOM Location 对象">DOM Location</a></li>
+<li class="list_apart"><a href="dom_obj_document.asp.html" title="HTML DOM Document 对象">DOM Document</a></li>
+<li class="list_apart"><a href="dom_obj_anchor.asp.html" title="HTML DOM Anchor 对象">DOM Anchor</a></li>
+<li><a href="dom_obj_area.asp.html" title="HTML DOM Area 对象">DOM Area</a></li>
+<li><a href="dom_obj_base.asp.html" title="HTML DOM Base 对象">DOM Base</a></li>
+<li><a href="dom_obj_body.asp.html" title="HTML DOM Body 对象">DOM Body</a></li>
+<li><a href="dom_obj_pushbutton.asp.html" title="HTML DOM Button 对象">DOM Button</a></li>
+<li><a href="dom_obj_event.asp.html" title="HTML DOM Event 对象">DOM Event</a></li>
+<li><a href="dom_obj_form.asp.html" title="HTML DOM Form 对象">DOM Form</a></li>
+<li><a href="dom_obj_frame.asp.html" title="HTML DOM Frame 对象">DOM Frame</a></li>
+<li><a href="dom_obj_frameset.asp.html" title="HTML DOM Frameset 对象">DOM Frameset</a></li>
+<li><a href="dom_obj_iframe.asp.html" title="HTML DOM IFrame 对象">DOM IFrame</a></li>
+<li><a href="dom_obj_image.asp.html" title="HTML DOM Image 对象">DOM Image</a></li>
+<li><a href="dom_obj_button.asp.html" title="HTML DOM Button 对象">DOM Input Button</a></li>
+<li><a href="dom_obj_checkbox.asp.html" title="HTML DOM Checkbox 对象">DOM Input Checkbox</a></li>
+<li><a href="dom_obj_fileupload.asp.html" title="HTML DOM FileUpload 对象">DOM Input File</a></li>
+<li><a href="dom_obj_hidden.asp.html" title="HTML DOM Hidden 对象">DOM Input Hidden</a></li>
+<li><a href="dom_obj_password.asp.html" title="HTML DOM Password 对象">DOM Input Password</a></li>
+<li><a href="dom_obj_radio.asp.html" title="HTML DOM Radio 对象">DOM Input Radio</a></li>
+<li><a href="dom_obj_reset.asp.html" title="HTML DOM Reset 对象">DOM Input Reset</a></li>
+<li><a href="dom_obj_submit.asp.html" title="HTML DOM Submit 对象">DOM Input Submit</a></li>
+<li><a href="dom_obj_text.asp.html" title="HTML DOM Text 对象">DOM Input Text</a></li>
+<li><a href="dom_obj_link.asp.html" title="HTML DOM Link 对象">DOM Link</a></li>
+<li><a href="dom_obj_meta.asp.html" title="HTML DOM Meta 对象">DOM Meta</a></li>
+<li><a href="dom_obj_object.asp.html" title="HTML DOM Object 对象">DOM Object</a></li>
+<li><a href="dom_obj_option.asp.html" title="HTML DOM Option 对象">DOM Option</a></li>
+<li><a href="dom_obj_select.asp.html" title="HTML DOM Select 对象">DOM Select</a></li>
+<li><a href="dom_obj_style.asp.html" title="HTML DOM Style 对象">DOM Style</a></li>
+<li><a href="dom_obj_table.asp.html" title="HTML DOM Table 对象">DOM Table</a></li>
+<li><a href="dom_obj_tabledata.asp.html" title="HTML DOM TableCell 对象">DOM TableCell</a></li>
+<li><a href="dom_obj_tablerow.asp.html" title="HTML DOM TableRow 对象">DOM TableRow</a></li>
+<li><a href="dom_obj_textarea.asp.html" title="HTML DOM Textarea 对象">DOM Textarea</a></li>
+</ul>
+</div>
+</div>
+<div id="maincontent">
+
+<h1>HTML DOM Screen 对象</h1>
+
+<div>
+<h2>Screen 对象</h2>
+<p>Screen 对象实际上是 JavaScript 对象，而不是 HTML DOM 对象。</p>
+<p>Screen 对象是由 JavaScript runtime engine 自动创建的，包含有关客户机显示屏幕的信息。</p>
+<p>每个 Window 对象的 screen 属性都引用一个 Screen 对象。Screen 对象中存放着有关显示浏览器屏幕的信息。JavaScript 程序将利用这些信息来优化它们的输出，以达到用户的显示要求。例如，一个程序可以根据显示器的尺寸选择使用大图像还是使用小图像，它还可以根据显示器的颜色深度选择使用 16 位色还是使用 8 位色的图形。另外，JavaScript 程序还能根据有关屏幕尺寸的信息将新的浏览器窗口定位在屏幕中间。</p>
+<p><em>IE:</em> Internet Explorer, <em>F:</em> Firefox, <em>O:</em> Opera.</p>
+</div>
+
+<div>
+<h2>Screen 对象的属性</h2>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_availheight.asp.html">availHeight</a></td>
+    <td>返回显示屏幕的高度 (除 Windows 任务栏之外)。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_availwidth.asp.html">availWidth</a></td>
+    <td>返回显示屏幕的宽度 (除 Windows 任务栏之外)。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_bufferdepth.asp.html">bufferDepth</a></td>
+    <td>设置或返回在 off-screen bitmap buffer 中调色板的比特深度。</td>
+    <td>4</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_colordepth.asp.html">colorDepth</a></td>
+    <td>返回目标设备或缓冲器上的调色板的比特深度。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_devicexdpi.asp.html">deviceXDPI</a></td>
+    <td>返回显示屏幕的每英寸水平点数。</td>
+    <td>6</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_deviceydpi.asp.html">deviceYDPI</a></td>
+    <td>返回显示屏幕的每英寸垂直点数。</td>
+    <td>6</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_fontsmoothingenabled.asp.html">fontSmoothingEnabled</a></td>
+    <td>返回用户是否在显示控制面板中启用了字体平滑。</td>
+    <td>4</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_height.asp.html">height</a></td>
+    <td>返回显示屏幕的高度。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_logicalxdpi.asp.html">logicalXDPI</a></td>
+    <td>返回显示屏幕每英寸的水平方向的常规点数。</td>
+    <td>6</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_logicalydpi.asp.html">logicalYDPI</a></td>
+    <td>返回显示屏幕每英寸的垂直方向的常规点数。</td>
+    <td>6</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_pixeldepth.asp.html">pixelDepth</a></td>
+    <td>返回显示屏幕的颜色分辨率（比特每像素）。</td>
+    <td>No</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_updateinterval.asp.html">updateInterval</a></td>
+    <td>设置或返回屏幕的刷新率。</td>
+    <td>4</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><a href="prop_screen_width.asp.html">width</a></td>
+    <td>返回显示器屏幕的宽度。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+  </tr>
+</table>
+</div>
+
+</div>
+
+
+</div>
+</body>
+</html>
+

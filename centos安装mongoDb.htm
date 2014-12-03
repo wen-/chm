@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>centos安装mongoDb</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>centos安装mongoDb</P>
+<DIV 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; FONT: 12px/18px Helvetica, Tahoma, Arial, sans-serif; WHITE-SPACE: normal; MARGIN-BOTTOM: 15px; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+class=blog_title>
+<H3 
+style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5em; MARGIN: 0px 0px 0.5em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; FONT-SIZE: 16px; PADDING-TOP: 10px"><A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" 
+href="http://lovebeyond.iteye.com/blog/1770323">CentOS安装配置MongoDB</A><EM 
+style="FONT-STYLE: italic" class=actions></EM></H3>
+<UL 
+style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+class=blog_categories><STRONG style="FONT-WEIGHT: bold">博客分类：</STRONG><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN> 
+  <LI 
+  style="PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px 5px 0px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-TOP: 0px"><A 
+  style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" 
+  href="http://lovebeyond.iteye.com/category/186469">项目管理/团队开发</A></LI></UL>
+<DIV 
+style="LINE-HEIGHT: 20px; MARGIN: 10px 0px 5px; DISPLAY: block; CLEAR: both" 
+class=news_tag><A 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(170,181,195); MARGIN: 0px 5px 5px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: inline-block; COLOR: rgb(255,255,255); TEXT-DECORATION: none; PADDING-TOP: 0px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.iteye.com/blogs/tag/mongodb">mongodb</A><A 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(170,181,195); MARGIN: 0px 5px 5px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: inline-block; COLOR: rgb(255,255,255); TEXT-DECORATION: none; PADDING-TOP: 0px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.iteye.com/blogs/tag/centos">centos</A><A 
+style="PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(170,181,195); MARGIN: 0px 5px 5px 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; DISPLAY: inline-block; COLOR: rgb(255,255,255); TEXT-DECORATION: none; PADDING-TOP: 0px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.iteye.com/blogs/tag/linux">linux</A>&nbsp;</DIV></DIV>
+<DIV 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; FONT: 14px/1.8em Helvetica, Tahoma, Arial, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+id=blog_content class=blog_content>1。下载安装包： 
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" 
+flashvars="clipboard=wget%20http%3A%2F%2Ffastdl.mongodb.org%2Flinux%2Fmongodb-linux-i686-2.0.3.tgz%20" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN style="COLOR: black">wget&nbsp;http:</SPAN><SPAN 
+  style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: auto; PADDING-RIGHT: 0px; COLOR: rgb(0,130,0); BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px" 
+  class=comment>//fastdl.mongodb.org/linux/mongodb-linux-i686-2.0.3.tgz&nbsp;</SPAN><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>2。解压： 
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" 
+flashvars="clipboard=tar%20-zxvf%20mongodb-linux-i686-2.0.3.tgz" quality="high" 
+allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">tar&nbsp;-zxvf&nbsp;mongodb-linux-i686-</SPAN><SPAN 
+  style="COLOR: rgb(192,0,0)" class=number>2.0</SPAN><SPAN 
+  style="COLOR: black">.</SPAN><SPAN style="COLOR: rgb(192,0,0)" 
+  class=number>3</SPAN><SPAN 
+  style="COLOR: black">.tgz&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR>3。指定安装目录： 
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" 
+flashvars="clipboard=mv%20mongodb-linux-i686-2.0.3.tgz%20%2Fusr%2Flocal%2Fmongodb" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">mv&nbsp;mongodb-linux-i686-</SPAN><SPAN 
+  style="COLOR: rgb(192,0,0)" class=number>2.0</SPAN><SPAN 
+  style="COLOR: black">.</SPAN><SPAN style="COLOR: rgb(192,0,0)" 
+  class=number>3</SPAN><SPAN 
+  style="COLOR: black">.tgz&nbsp;/usr/local/mongodb&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>4。新建mongodb数据文件存放目录： 
+
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" flashvars="clipboard=mkdir%20-p%20%2Fdata0%2Fmongodn%2Fdb" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">mkdir&nbsp;-p&nbsp;/data0/mongodn/db&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR>5。新建log文件存放目录： 
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" flashvars="clipboard=mkdir%20-p%20%2Fdata0%2Fmongodn%2Flogs" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">mkdir&nbsp;-p&nbsp;/data0/mongodn/logs&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>6。 
+
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" flashvars="clipboard=cd%20%2Fusr%2Flocal%2Fmongodb%2Fbin" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">cd&nbsp;/usr/local/mongodb/bin&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>7。新建配置文件，mongodb支持把参数写进配置文件，然后以配置文件的配置来启动，我们此处也使用此方式。执行： 
+
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" flashvars="clipboard=vi%20mongodb.conf" quality="high" 
+allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">vi&nbsp;mongodb.conf&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR>加入内容如下：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" 
+flashvars="clipboard=dbpath%20%3D%20%2Fdata0%2Fmongodb%2Fdb%20%23%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95%0A%0Alogpath%20%3D%20%2Fdata0%2Fmongodb%2Flogs%2Fmongodb.log%20%23%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95%0A%0Aport%20%3D%2027017%20%20%23%E7%AB%AF%E5%8F%A3%0A%0Afork%20%3D%20true%20%20%23%E4%BB%A5%E5%AE%88%E6%8A%A4%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E5%90%AF%E7%94%A8%EF%BC%8C%E5%8D%B3%E5%9C%A8%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%0A%0Anohttpinterface%20%3D%20true%0A" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">dbpath&nbsp;=&nbsp;/data0/mongodb/db&nbsp;#数据文件存放目录&nbsp;&nbsp;</SPAN></SPAN> 
+
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN> 
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">logpath&nbsp;=&nbsp;/data0/mongodb/logs/mongodb.log&nbsp;#日志文件存放目录&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN> 
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">port&nbsp;=&nbsp;<SPAN style="COLOR: rgb(192,0,0)" 
+  class=number>27017</SPAN><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;#端口&nbsp;&nbsp;</SPAN></SPAN> 
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN> 
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">fork&nbsp;=&nbsp;<SPAN 
+  style="COLOR: rgb(127,0,85); FONT-WEIGHT: bold" class=keyword>true</SPAN><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;#以守护程序的方式启用，即在后台运行&nbsp;&nbsp;</SPAN></SPAN> 
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN> 
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black">nohttpinterface&nbsp;=&nbsp;<SPAN 
+  style="COLOR: rgb(127,0,85); FONT-WEIGHT: bold" class=keyword>true</SPAN><SPAN 
+  style="COLOR: black">&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR>重新绑定mongodb的配置文件地址和访问IP：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" 
+flashvars="clipboard=%2Fusr%2Flocal%2Fmongodb%2Fbin%2Fmongod%20--bind_ip%20localhost%20-f%20%2Fusr%2Flocal%2Fmongodb%2Fbin%2Fmongodb.conf%20" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">/usr/local/mongodb/bin/mongod&nbsp;--bind_ip&nbsp;localhost&nbsp;-f&nbsp;/usr/local/mongodb/bin/mongodb.conf&nbsp;&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>8。启动Mongo程序，使用配置文件mongodb.conf定义的参数启动<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" flashvars="clipboard=.%2Fmongod%20--config%20mongodb.conf" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">./mongod&nbsp;--config&nbsp;mongodb.conf&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>9。测试，OK，安装成功！<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR><BR><BR>mongodb安装参照 
+http://gevin.me/289.html<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR><BR><BR>开机自动启动mongodb<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>执行 ： 
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" flashvars="clipboard=vi%20%2Fetc%2Frc.d%2Frc.local" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">vi&nbsp;/etc/rc.d/rc.local&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>在文件中加入：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>
+<DIV 
+style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
+class=dp-highlighter>
+<DIV class=bar>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 3px" 
+class=tools>Java代码<SPAN class=Apple-converted-space>&nbsp;</SPAN><EMBED 
+height=15 type=application/x-shockwave-flash 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=14 
+src=http://lovebeyond.iteye.com/javascripts/syntaxhighlighter/clipboard_new.swf 
+wmode="transparent" 
+flashvars="clipboard=%2Fusr%2Flocal%2Fmongodb%2Fbin%2Fmongod%20--config%20%2Fusr%2Flocal%2Fmongodb%2Fbin%2Fmongodb.conf" 
+quality="high" allowscriptaccess="always">&nbsp;<A 
+style="COLOR: rgb(16,138,198); TEXT-DECORATION: underline" title=收藏这段代码 
+onclick="code_favorites_do_favorite(this);return false;" 
+href="javascript:void()"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+class=star alt=收藏代码 
+src="http://lovebeyond.iteye.com/images/icon_star.png"></A></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: rgb(209,215,220) 1px solid; BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 2px; LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(43,145,175); FONT-SIZE: 1em; BORDER-TOP: rgb(209,215,220) 1px solid; BORDER-RIGHT: rgb(209,215,220) 1px solid; PADDING-TOP: 2px" 
+class=dp-j>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN 
+  style="COLOR: black">/usr/local/mongodb/bin/mongod&nbsp;--config&nbsp;/usr/local/mongodb/bin/mongodb.conf&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/20px 微软雅黑; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">重启一下系统测试下能不能自启</P>
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(245,245,245); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(204,204,204) 1px solid; WORD-SPACING: 0px; PADDING-TOP: 5px; -webkit-text-stroke-width: 0px" 
+class=cnblogs_code><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px"><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5 !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; PADDING-TOP: 0px">#进入mongodb的shell模式 
+</SPAN>/usr/local/mongodb/bin/mongo<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#查看数据库列表 <BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">show dbs<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#当前db版本 <BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.version();</PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/20px 微软雅黑; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><FONT 
+face=Helvetica></FONT>&nbsp;</P><BR><BR>注意：默认mongodb的数据目录对应的是/data/db下面。日志目录对于到/data/logs/mongodb.log，如果是目录结构有调整需要重新指定配置的路径</DIV></BODY></HTML>

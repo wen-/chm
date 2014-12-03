@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>在11.2.2节中，介绍了CSS样式风格的动态切换方法toggle()方法，对于单击事件click而言，jQuery同样提供了动态交替的toggle()方法。该方法接受两个参数，这两个参数均为监听函数，在click事件中交替使用，如：<br />
+  <a></a><a>$(function(){</a><br />
+  $(&quot;img&quot;).toggle(fnA,fnB);<br />
+  function fnA(oEvent){<br />
+  $(oEvent.target).css(&quot;opacity&quot;,&quot;0.5&quot;);<br />
+  }<br />
+  function fnB(oEvent){<br />
+  $(oEvent.target).css(&quot;opacity&quot;,&quot;1.0&quot;);<br />
+  }<br />
+  });</p>
+</body>
+</html>

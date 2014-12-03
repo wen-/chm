@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>键盘事件不影响页面input等输入框的写法</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428">
+</HEAD>
+<BODY>
+<P>键盘事件不影响页面input等输入框的写法</P>
+<P>$(window).bind('keydown', function(e){</P>
+<P>&nbsp;&nbsp;if (e.target &amp;&amp; 
+e.target.tagName.toLowerCase()!='input')</P>
+<P><FONT color=#ff0000>//判断键盘事件不是在input标签时才执行下面的代码；</FONT></P>
+<P><BR>&nbsp;&nbsp;&nbsp;if 
+(e.keyCode==37)<BR>&nbsp;&nbsp;&nbsp;&nbsp;$('#book').turn('previous');<BR>&nbsp;&nbsp;&nbsp;else 
+if (e.keyCode==39)<BR>&nbsp;&nbsp;&nbsp;&nbsp;$('#book').turn('next');</P>
+<P>&nbsp;});</P>
+<P>&nbsp;</P>
+<P>兼容IE7\8的监听事件：</P>
+<P>document.<FONT 
+color=#ff0000>attachEvent</FONT>("onclick",function(e){//监听event标签<BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+(e.<FONT 
+color=#ff0000>srcElement</FONT>.nodeName.toLowerCase()!='a'){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var 
+li = 
+div_nav.getElementsByTagName("li");//原先获取节点的方法不支持；<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var 
+k=0; k&lt;li.length; 
+k++){&nbsp;&nbsp;&nbsp;//对子节点进行操作，不管子节点有单个还是多个，都必须遍历操作<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;li[k].className 
+= "";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P>&nbsp;});</P>
+<P>DOM监听事件：</P>
+<P>oDiv.<FONT color=#ff0000>addEventListener</FONT>("click",fnClick1,<FONT 
+color=#ff0000>false</FONT>);最后一个参数决定是否冒泡<BR></P>
+<P>$(document).click(function(e){<BR>&nbsp;&nbsp;var e = e || 
+window.event;<BR>&nbsp;&nbsp;var targ = e.target || 
+e.srcElement;<BR>&nbsp;&nbsp;if( !$(targ).parents().is(".mod-pop") &amp;&amp; 
+targ.nodeName != "A" 
+){<BR>&nbsp;&nbsp;&nbsp;//xxxx<BR>&nbsp;&nbsp;}<BR>&nbsp;});</P></BODY></HTML>

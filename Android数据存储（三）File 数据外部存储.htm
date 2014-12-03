@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Android数据存储（三）File 数据外部存储</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428">
+</HEAD>
+<BODY>
+<P>Android数据存储（三）File 数据外部存储</P>
+<DIV class=article_title 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 20px/30px 'Microsoft YaHei'; MARGIN: 5px 0px; DISPLAY: block; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class="ico ico_type_Original" 
+style="HEIGHT: 19px; WIDTH: 19px; VERTICAL-ALIGN: middle; BACKGROUND-IMAGE: url(http://static.blog.csdn.net/images/ico_Original.gif); BACKGROUND-POSITION: 0px 0px; MARGIN: 0px 2px 0px 0px; DISPLAY: inline-block"></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>
+<H1 
+style="VERTICAL-ALIGN: middle; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 20px/30px 'Microsoft YaHei'; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><SPAN 
+class=link_title><A style="TEXT-DECORATION: none; COLOR: rgb(0,0,0)" 
+href="http://blog.csdn.net/lonelyroamer/article/details/7907986">Android数据存储（三）File 
+数据外部存储</A></SPAN></H1></DIV>
+<DIV class=article_manage 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(153,153,153); PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 5px; FONT: 12px/24px Arial; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=link_categories style="FLOAT: left; MARGIN: 0px 5px">分类：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(202,0,0)" 
+href="http://blog.csdn.net/LonelyRoamer/article/category/1221987">Android基础知识学习</A></SPAN><SPAN 
+class=link_postdate style="MARGIN: 0px 5px 0px 0px">2012-08-26 00:24</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=阅读次数 class=link_view 
+style="BACKGROUND-IMAGE: url(http://static.blog.csdn.net/images/ico_view.png); BACKGROUND-POSITION: 0% 50%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px">2094人阅读</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=评论次数 class=link_comments 
+style="BACKGROUND-IMAGE: url(http://static.blog.csdn.net/images/ico_comm.png); BACKGROUND-POSITION: 0% 50%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px"><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+style="TEXT-DECORATION: none; COLOR: rgb(202,0,0)" 
+href="http://blog.csdn.net/lonelyroamer/article/details/7907986#comments">评论</A>(0)</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=link_collect 
+style="MARGIN: 0px 5px"><A 
+onclick="javascript:_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shoucang']);collectArticle('Android数据存储（三）File 数据外部存储','7907986');return false;" 
+title=收藏 style="TEXT-DECORATION: none; COLOR: rgb(202,0,0)" 
+href="javascript:void(0);">收藏</A></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=link_report 
+style="MARGIN: 0px 5px"><A 
+onclick="javascript:_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_jubao']);report(7907986,2);return false;" 
+title=举报 style="TEXT-DECORATION: none; COLOR: rgb(202,0,0)" 
+href="http://blog.csdn.net/lonelyroamer/article/details/7907986#report">举报</A></SPAN></DIV>
+<DIV class=tag2box 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 12px Arial, Console, Verdana, 'Courier New'; MARGIN: 10px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; COLOR: rgb(202,0,0); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(238,238,238) 1px solid; DISPLAY: inline-block; LINE-HEIGHT: 12px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,238); MARGIN-RIGHT: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.csdn.net/tag/%e5%ad%98%e5%82%a8" target=_blank>存储</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; COLOR: rgb(202,0,0); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(238,238,238) 1px solid; DISPLAY: inline-block; LINE-HEIGHT: 12px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,238); MARGIN-RIGHT: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.csdn.net/tag/file" target=_blank>file</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; COLOR: rgb(202,0,0); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(238,238,238) 1px solid; DISPLAY: inline-block; LINE-HEIGHT: 12px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,238); MARGIN-RIGHT: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.csdn.net/tag/android" target=_blank>android</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; COLOR: rgb(202,0,0); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(238,238,238) 1px solid; DISPLAY: inline-block; LINE-HEIGHT: 12px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,238); MARGIN-RIGHT: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.csdn.net/tag/api" target=_blank>api</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; COLOR: rgb(202,0,0); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(238,238,238) 1px solid; DISPLAY: inline-block; LINE-HEIGHT: 12px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,238); MARGIN-RIGHT: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.csdn.net/tag/%e9%9f%b3%e4%b9%90" target=_blank>音乐</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; BORDER-TOP: rgb(238,238,238) 1px solid; BORDER-RIGHT: rgb(238,238,238) 1px solid; BORDER-BOTTOM: rgb(238,238,238) 1px solid; COLOR: rgb(202,0,0); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(238,238,238) 1px solid; DISPLAY: inline-block; LINE-HEIGHT: 12px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,238); MARGIN-RIGHT: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px" 
+href="http://www.csdn.net/tag/java" target=_blank>java</A></DIV>
+<DIV id=article_content class=article_content 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/26px Arial; MARGIN: 20px 0px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="COLOR: rgb(102,0,204)"><STRONG 
+style="BACKGROUND-COLOR: rgb(255,255,255)"><SPAN style="FONT-SIZE: 14px">三&nbsp; 
+File 数据外部存储</SPAN></STRONG></SPAN><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">每一个android设备支持一个共享“外部存储”,您可以使用它来保存文件。这可能是一个移动存储媒体(如一个SD卡)或一个内部(固定的)存储。文件保存到外部存储是公开的,可由用户修改他们。<BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">注意：外部存储设备上的文件，所有的应用程序都可以访问它，甚至可以连接在电脑上直接修改。<BR></P>
+<P class=caution 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,102,102)">1、检查外部存储设备是否可用</P>
+<P class=caution 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在你使用外部存储设备的时候，你应该总是先调用Environment.getExternalStorageState()的方法来检查外部存储设备的可用性。比如：</P>
+<P class=caution 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P><PRE class=prettyprint style="WORD-WRAP: break-word; WHITE-SPACE: pre-wrap" name="code"><SPAN class=kwd>boolean</SPAN><SPAN class=pln> mExternalStorageAvailable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>false</SPAN><SPAN class=pun>;</SPAN><SPAN class=pln>
+</SPAN><SPAN class=kwd>boolean</SPAN><SPAN class=pln> mExternalStorageWriteable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>false</SPAN><SPAN class=pun>;</SPAN><SPAN class=pln>
+</SPAN><SPAN class=typ>String</SPAN><SPAN class=pln> state </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> </SPAN><SPAN class=typ>Environment</SPAN><SPAN class=pun>.</SPAN><SPAN class=pln>getExternalStorageState</SPAN><SPAN class=pun>();</SPAN><SPAN class=pln>
+
+</SPAN><SPAN class=kwd>if</SPAN><SPAN class=pln> </SPAN><SPAN class=pun>(</SPAN><SPAN class=typ>Environment</SPAN><SPAN class=pun>.</SPAN><SPAN class=pln>MEDIA_MOUNTED</SPAN><SPAN class=pun>.</SPAN><SPAN class=pln>equals</SPAN><SPAN class=pun>(</SPAN><SPAN class=pln>state</SPAN><SPAN class=pun>))</SPAN><SPAN class=pln> </SPAN><SPAN class=pun>{</SPAN><SPAN class=pln>//已经插入了sd卡，并且可以读写</SPAN><SPAN class=pln>
+    mExternalStorageAvailable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> mExternalStorageWriteable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>true</SPAN><SPAN class=pun>;</SPAN><SPAN class=pln>
+</SPAN><SPAN class=pun>}</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>else</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>if</SPAN><SPAN class=pln> </SPAN><SPAN class=pun>(</SPAN><SPAN class=typ>Environment</SPAN><SPAN class=pun>.</SPAN><SPAN class=pln>MEDIA_MOUNTED_READ_ONLY</SPAN><SPAN class=pun>.</SPAN><SPAN class=pln>equals</SPAN><SPAN class=pun>(</SPAN><SPAN class=pln>state</SPAN><SPAN class=pun>))</SPAN><SPAN class=pln> </SPAN><SPAN class=pun>{</SPAN><SPAN class=pln>//已经插入了sd卡，但是是只读的情况</SPAN><SPAN class=pln>
+    mExternalStorageAvailable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>true</SPAN><SPAN class=pun>;</SPAN><SPAN class=pln>
+    mExternalStorageWriteable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>false</SPAN><SPAN class=pun>;</SPAN><SPAN class=pln>
+</SPAN><SPAN class=pun>}</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>else</SPAN><SPAN class=pln> </SPAN><SPAN class=pun>{</SPAN><SPAN class=pln>
+    </SPAN><SPAN class=com>//其他错误的状态。外部存储设备可能在其他的装备，但是我们要知道，在这一种情况下，我们不能对其进行读写。 </SPAN><SPAN class=pln>
+    mExternalStorageAvailable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> mExternalStorageWriteable </SPAN><SPAN class=pun>=</SPAN><SPAN class=pln> </SPAN><SPAN class=kwd>false</SPAN><SPAN class=pun>;</SPAN><SPAN class=pln>
+</SPAN><SPAN class=pun>}</SPAN></PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个例子只检查了外部存储设备是否可读写，它还有很多其他的状态，比如与电脑连接、没有设备、或者严重移除等等。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,102,102)">2、访问外部存储器的文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">如果使用API级别8或更高的版本，可以使用getExternalFilesDir()方法来打开一个File对象，它代表了应该保存文件的外部存储器目录。type表示你想要访问什么样的子目录，比如Environment.DIRECTORY_MUSIC，如果访问根目录，就传入null。如果需要，这个方法会创建合适的目录。通过指定目录的类型，确保Android的介质扫描器把文件正确的分类到系统中（例如，铃声被标识为铃声，而不是音乐）。如果用户卸载了应用程序，应用对应的目录和目录中所有的内容将会被删除。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">如果使用API级别7或更低的版本，使用getExternalStorageDirectory()方法来打开一个File对象，它代表了外部存储器的根目录，然后应该把数据写到下列目录中：</P>
+<DIV style="BACKGROUND-COLOR: rgb(250,250,250)">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,250,250)" 
+align=left>/Android/data/&lt;package_name&gt;/files/</P></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;package_name&gt;是Java样式的包名，如：com.example.android.app。如果用户的设备正在运行API级别8或更高的版本，并且卸载了应用程序，那么这个目录和其所有的内容将会被删除。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">例子：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P>
+<DIV class="dp-highlighter bg_java" 
+style="OVERFLOW: auto; FONT-SIZE: 12px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WIDTH: 936px; TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 18px 0px; BACKGROUND-COLOR: rgb(231,229,220)">
+<DIV class=bar style="PADDING-LEFT: 45px">
+<DIV class=tools 
+style="COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248)"><B>[java]</B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0% 0%; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; MARGIN: 0px 10px 0px 0px; BORDER-LEFT: medium none; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px" 
+href="http://blog.csdn.net/lonelyroamer/article/details/7907986#">view 
+plain</A><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0% 0%; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; MARGIN: 0px 10px 0px 0px; BORDER-LEFT: medium none; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px" 
+href="http://blog.csdn.net/lonelyroamer/article/details/7907986#">copy</A>
+<DIV 
+style="HEIGHT: 18px; WIDTH: 18px; POSITION: absolute; LEFT: 438px; Z-INDEX: 99; TOP: 1354px"><EMBED 
+id=ZeroClipboardMovie_1 name=ZeroClipboardMovie_1 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=18 width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+wmode="transparent" flashvars="id=1&amp;width=18&amp;height=18" 
+allowfullscreen="false" allowscriptaccess="always" bgcolor="#ffffff" 
+quality="best" menu="false" loop="false"></DIV></DIV></DIV>
+<OL class=dp-j 
+style="LIST-STYLE-TYPE: decimal; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px 45px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI class=alt 
+  style="BORDER-TOP-STYLE: none; LIST-STYLE-TYPE: decimal-leading-zero; LIST-STYLE-POSITION: outside; BORDER-BOTTOM-STYLE: none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; BORDER-RIGHT-STYLE: none; PADDING-LEFT: 10px !important; MARGIN: 0px; BORDER-LEFT: rgb(108,226,108) 3px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255)"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">File&nbsp;file&nbsp;=&nbsp;</SPAN><SPAN 
+  class=keyword 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; FONT-WEIGHT: bold; COLOR: rgb(0,102,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">new</SPAN><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">&nbsp;File(Environment.getExternalStorageDirectory()&nbsp;+filePathName);&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>这种方式得到的文件根路径 
+为mnt / sdcard<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P>
+<DIV class="dp-highlighter bg_java" 
+style="OVERFLOW: auto; FONT-SIZE: 12px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WIDTH: 936px; TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 18px 0px; BACKGROUND-COLOR: rgb(231,229,220)">
+<DIV class=bar style="PADDING-LEFT: 45px">
+<DIV class=tools 
+style="COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248)"><B>[java]</B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0% 0%; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; MARGIN: 0px 10px 0px 0px; BORDER-LEFT: medium none; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px" 
+href="http://blog.csdn.net/lonelyroamer/article/details/7907986#">view 
+plain</A><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0% 0%; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; MARGIN: 0px 10px 0px 0px; BORDER-LEFT: medium none; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px" 
+href="http://blog.csdn.net/lonelyroamer/article/details/7907986#">copy</A>
+<DIV 
+style="HEIGHT: 18px; WIDTH: 18px; POSITION: absolute; LEFT: 438px; Z-INDEX: 99; TOP: 1493px"><EMBED 
+id=ZeroClipboardMovie_2 name=ZeroClipboardMovie_2 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=18 width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+wmode="transparent" flashvars="id=2&amp;width=18&amp;height=18" 
+allowfullscreen="false" allowscriptaccess="always" bgcolor="#ffffff" 
+quality="best" menu="false" loop="false"></DIV></DIV></DIV>
+<OL class=dp-j 
+style="LIST-STYLE-TYPE: decimal; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px 45px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI class=alt 
+  style="BORDER-TOP-STYLE: none; LIST-STYLE-TYPE: decimal-leading-zero; LIST-STYLE-POSITION: outside; BORDER-BOTTOM-STYLE: none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; BORDER-RIGHT-STYLE: none; PADDING-LEFT: 10px !important; MARGIN: 0px; BORDER-LEFT: rgb(108,226,108) 3px solid; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255)"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">File&nbsp;file=getExternalFilesDir(</SPAN><SPAN 
+  class=keyword 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; FONT-WEIGHT: bold; COLOR: rgb(0,102,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">null</SPAN><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">);&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>这种方式得到的文件跟路径为&nbsp; 
+/mnt/sdcard/Android/data/包名/files<BR>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">既然得到了sdcard的路径，那么就可以用io流来操作文件存储数据了。<BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(0,153,0)">不过采用第二种方式得到路径时，一定要添加下面的权限。并且，对文件操作时，也要添加下面的权限。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="BACKGROUND-COLOR: rgb(0,153,0)">注意，还要加权限</SPAN><BR 
+style="BACKGROUND-COLOR: rgb(0,153,0)"><SPAN 
+style="BACKGROUND-COLOR: rgb(0,153,0)">&lt;!-- 在SD卡中创建与删除文件权限 --&gt;</SPAN><BR 
+style="BACKGROUND-COLOR: rgb(0,153,0)"><SPAN 
+style="BACKGROUND-COLOR: rgb(0,153,0)">&lt;uses-permission 
+android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/&gt;</SPAN><BR 
+style="BACKGROUND-COLOR: rgb(0,153,0)"><SPAN 
+style="BACKGROUND-COLOR: rgb(0,153,0)">&lt;!-- 向SD卡写入数据权限 --&gt;</SPAN><BR 
+style="BACKGROUND-COLOR: rgb(0,153,0)"><SPAN 
+style="BACKGROUND-COLOR: rgb(0,153,0)">&lt;uses-permission 
+android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;</SPAN><BR></P>
+<DIV class=sidebox-wrapper style="MARGIN-TOP: 3em">
+<DIV class=sidebox>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="BACKGROUND-COLOR: rgb(255,102,102)">3、对媒体浏览器隐藏你的文件</SPAN><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在文件名字前面加<STRONG>.&nbsp;</STRONG>&nbsp;&nbsp;&nbsp;&nbsp; 
+比如&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG>.</STRONG>图片1&nbsp;&nbsp;&nbsp;&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG>.</STRONG>图片2&nbsp; 等等<BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><BR></P></DIV></DIV>
+<H3 id=SavingSharedFiles 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,102,102)"><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="BACKGROUND-COLOR: rgb(255,102,102)">4、保存应该共享的文件</SPAN><BR></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">如果保存的文件不是应用程序所专有的，并且在应用程序被卸载时，不删除这些文件，那么就要把它们保存到外部存储器上的一个公共的目录上。这些目录位于外部存储器的根目录，如Music/、Pictures/、Ringtones/等等。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在API级别8或更高的版本中，使用getExternalStoragePublicDirectory()方法，把需要的公共目录类型传递给这个方法，如DIRECTORY_MUSIC、DIRECTORY_PICTURES、DIRECTORY_RINGTONES或其他的类型。如果需要，这个方法会创建适当的目录。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">如果使用API级别7或更低的版本，使用getExternalStorageDirectory()方法来打开一个File对象，它代表了外部存储器的根，然后把共享文件保存到下列目录之一中：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Music/---媒体扫描器把在这个目录中找到所有媒体文件作为用户音乐。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Podcasts/---媒体扫描器把在这个目录中找到的所有媒体文件作为音/视频的剪辑片段。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Ringtones/---媒体扫描器把在这个目录中找到的所有媒体文件作为铃声。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Alarms/---媒体扫描器把在这个目录中找到的所有媒体文件作为闹钟的声音。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Pictures/---所有的图片（不包括那些用照相机拍摄的照片）。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Movies/---所有的电影（不包括那些用摄像机拍摄的视频）。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Download/---其他下载的内容。</P><BR></H3>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,102,102)"><STRONG><SPAN 
+style="FONT-SIZE: 16px">5、保存缓存文件</SPAN></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="FONT-SIZE: 16px">如果使用<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">API</SPAN>级别<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">8</SPAN>或更高的版本，使用<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">getExternalCacheDir()</SPAN>来打开一个<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">File</SPAN>对象，它代表了保存缓存文件的外部存储器目录。如果卸载应用程序，这些文件会自动的被删除。但是，在应用的生存期间，应该自己管理这些缓存文件，并且为了保留存储空间，应在不需要的时候删除这些缓存文件。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="FONT-SIZE: 16px">如果使用<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">API</SPAN>级别<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">7</SPAN>或更低的版本，就要使用<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">getExternalStorageDirectory()</SPAN>方法来打开一个<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">File</SPAN>对象，它代表了外部存储器的根目录，然后把缓存数据写入下列目录中：</SPAN></P>
+<DIV style="BACKGROUND-COLOR: rgb(250,250,250)"><PRE style="WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; BACKGROUND-COLOR: rgb(250,250,250)"><SPAN style="FONT-SIZE: 16px; COLOR: rgb(0,112,0)">/Android/data/<EM>&lt;package_name&gt;</EM>/cache/</SPAN></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="FONT-SIZE: 16px"><SPAN 
+style="FONT-FAMILY: 'Times New Roman'">&lt;package_name&gt;</SPAN>是<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">Java</SPAN>样式的包名，如：<SPAN 
+style="FONT-FAMILY: 'Times New Roman'">com.example.android.app</SPAN>。</SPAN></P></DIV>
+<P><BR class=Apple-interchange-newline>&nbsp;</P></BODY></HTML>

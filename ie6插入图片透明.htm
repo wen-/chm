@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>ie6插入图片透明</TITLE>  <style>*{font-size:12px;line-height:20px;}</style>
+</HEAD>
+<BODY>
+<P>用法：</P>
+<P>新建一个1px×1px的透明GIF文件，放在images文件夹中（可在js里修改路径），然后在页面的&lt;head&gt;引入js文件即可。</P>
+<P>&nbsp;</P>
+<P>js代码：</P>
+<P>/* <BR>Correctly handle PNG transparency in Win IE 5.5 &amp; 6.<BR>Copyright 
+2007 Ignia, LLC<BR>Based in part on code from from <A 
+href="http://homepage.ntlworld.com/bobosola">http://homepage.ntlworld.com/bobosola</A>.</P>
+<P>Use in &lt;HEAD&gt; with DEFER keyword wrapped in conditional 
+comments:<BR>&lt;!--[if lt IE 7]&gt;<BR>&lt;script defer type="text/javascript" 
+src="pngfix.js"&gt;&lt;/script&gt;<BR>&lt;![endif]--&gt;</P>
+<P>*/</P>
+<P>function fixPng() {<BR>&nbsp; var arVersion = 
+navigator.appVersion.split("MSIE")<BR>&nbsp; var version = 
+parseFloat(arVersion[1])</P>
+<P>&nbsp; if ((version &gt;= 5.5 &amp;&amp; version &lt; 7.0) &amp;&amp; 
+(document.body.filters)) {<BR>&nbsp;&nbsp;&nbsp; for(var i=0; 
+i&lt;document.images.length; i++) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var img = 
+document.images[i];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var imgName = 
+img.src.toUpperCase();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(imgName.indexOf(".PNG") &gt; 0) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+var width = img.width;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var height 
+= img.height;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var sizingMethod = 
+(img.className.toLowerCase().indexOf("scale") &gt;= 0)? "scale" : "image"; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; img.runtimeStyle.filter = 
+"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + 
+img.src.replace('%23', '%2523').replace("'", "%27") + "', sizingMethod='" + 
+sizingMethod + "')";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; img.src = 
+"images/blank.gif";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; img.width = 
+width;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; img.height = 
+height;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp; }</P>
+<P>fixPng();</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

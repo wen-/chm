@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>避免使用属性</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<H2>避免 XML 属性？</H2>
+<P>因使用属性而引起的一些问题：</P>
+<UL>
+  <LI>属性无法包含多重的值（元素可以） 
+  <LI>属性无法描述树结构（元素可以） 
+  <LI>属性不易扩展（为未来的变化） 
+  <LI>属性难以阅读和维护 </LI></UL>
+<P>请尽量使用元素来描述数据。而仅仅使用属性来提供与数据无关的信息。</P>
+<P>第一个例子中使用了 date 属性：</P><PRE>&lt;note <CODE>date="08/08/2008"</CODE>&gt;
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt; 
+</PRE>
+<P>第二个例子中使用了 date 元素：</P><PRE>&lt;note&gt;
+<CODE>&lt;date&gt;08/08/2008&lt;/date&gt;</CODE>
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt; 
+</PRE>
+<P>第三个例子中使用了扩展的 date 元素（这是我的最爱）：</P><PRE>&lt;note&gt;
+<CODE>&lt;date&gt;
+  <SPAN class=marked>&lt;day&gt;08&lt;/day&gt;</SPAN>
+  <SPAN class=marked>&lt;month&gt;08&lt;/month&gt;</SPAN>
+  <SPAN class=marked>&lt;year&gt;2008&lt;/year&gt;</SPAN>
+&lt;/date&gt;</CODE>
+&lt;to&gt;George&lt;/to&gt;
+&lt;from&gt;John&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;
+</PRE>
+<DIV>
+<P>不要做这样的蠢事（这不是 XML 应该被使用的方式）：</P><PRE>&lt;note day="08" month="08" year="2008"
+to="George" from="John" heading="Reminder" 
+body="Don't forget the meeting!"&gt;
+&lt;/note&gt;
+</PRE></DIV></BODY></HTML>

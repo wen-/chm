@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>检测属性</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>检测属性</P>
+<P>检测自有属性：</P>
+<P>var aa = {"a":"1","bb":"2"};</P>
+<P>aa.hasOwnProperty("a")； <STRONG>返回true</STRONG>;</P>
+<P>var b = aa;</P>
+<P>b.c = "cc";</P>
+<P>b.propertyIsEnumerable("c");&nbsp; //返回true，自有属性并且可枚举；</P>
+<P>b.propertyIsEnumerable("a");&nbsp; //返回false,继承属性，不可枚举；</P>
+<P><FONT color=#ff0000>新方法：（IE9及以上版本支持）</FONT></P>
+<P><FONT color=#ff0000>Object.keys(aa); //返回数组，对象可枚举的自有属性</FONT></P>
+<P>Object.getOwnPropertyNames(aa);&nbsp; <FONT 
+color=#ff0000>//返回数组，对象所有自有属性－－－－两个其实差不多</FONT></P>
+<P><FONT color=#ff0000></FONT>&nbsp;</P></BODY></HTML>

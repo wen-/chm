@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>???????</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>&lt;div class="goTop" 
+style="margin-left:525px;"&gt;goTop&lt;/div&gt;<BR>&lt;style&gt;<BR>.goTop{<BR>&nbsp;display:none;<BR>&nbsp;height:50px;<BR>&nbsp;width:50px;<BR>&nbsp;background-color:red;<BR>&nbsp;position:fixed;<BR>&nbsp;_position:absolute;<BR>&nbsp;z-index:100;<BR>&nbsp;bottom:10px;<BR>&nbsp;left:50%;<BR>&nbsp;margin-left:525px;<BR>&nbsp;_top:expression(eval(documentElement.scrollTop 
++ document.documentElement.offsetHeight-80)); <BR>}</P>
+<P>&lt;/style&gt;<BR>&lt;script&gt;<BR>$(window).scroll(function(){<BR>&nbsp;if($(window).scrollTop() 
+&gt; 200){<BR>&nbsp;&nbsp;$(".goTop").fadeIn("slow");<BR>&nbsp;}else 
+if($(window).scrollTop() &lt; 
+200){<BR>&nbsp;&nbsp;$(".goTop").fadeOut("slow");<BR>&nbsp;};<BR>});<BR>$(".goTop").click(function(){<BR>&nbsp; 
+&nbsp;var sTOP = $(window).scrollTop();<BR>&nbsp; <BR>&nbsp;&nbsp; &nbsp;var 
+goTOP = window.setInterval(function(){<BR>&nbsp;&nbsp;if(sTOP &gt; 
+0){<BR>&nbsp;&nbsp;&nbsp;$(window).scrollTop(sTOP);<BR>&nbsp;&nbsp;&nbsp;sTOP -= 
+10;<BR>&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;$(window).scrollTop(0);<BR>&nbsp;&nbsp;&nbsp;window.clearInterval(goTOP);<BR>&nbsp;&nbsp;};<BR>&nbsp;&nbsp; 
+&nbsp;},10);<BR>});<BR>&lt;/script&gt;</P></BODY>
+</HTML>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>标签云</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<BODY>
+<P>标签云</P>
+<P>&lt;!DOCTYPE html&gt;<BR>&lt;html&gt;<BR>&lt;head&gt;<BR>&lt;meta 
+charset=utf-8 /&gt;<BR>&lt;title&gt;JS Bin&lt;/title&gt;</P>
+<P>&lt;style&gt;</P>
+<P>*{margin: 0;padding: 0;}<BR>body{background:#ccc;font-size: 
+14px;}<BR>#w{width:300px;margin:0 auto;overflow:hidden;}<BR>.item{padding:0 
+15px;background:#fff;float:left;border:1px solid 
+#000;margin-right:2px;}<BR>.cell{display:table-cell;width:2000px;background:#fff;border:1px 
+solid #000;text-align:center;*display:inline-block;*width: 
+auto;_position:relative;_left:-3px;_margin-right:-3px;}</P>
+<P>&lt;/style&gt;<BR>&lt;/head&gt;<BR>&lt;body&gt;<BR>&lt;div 
+id="w"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaare&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;div 
+class="item"&gt;aergreqqqqqqqqqqqqqqqqqqqqqqqqqqqqqger&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;div class="item"&gt;a&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;hahaasehahah&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;mss&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;rhreh&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;ahrgerh&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;mtjhtj&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;aergreqqqqqqqqqqqqqqqqqqqqqqqqqqqqqger&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;div class="item"&gt;mtjhtj&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;rreh&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;ahrgerh&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;mtjhtj&lt;/div&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;div 
+class="item"&gt;rreh&lt;/div&gt;<BR>&lt;/div&gt;<BR>&lt;script&gt;<BR>$(function(){<BR>&nbsp;var 
+$i = $("#w .item");<BR>&nbsp;$i.each(function(index, element) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var current_left = 
+$(this).offset().left;<BR>&nbsp;&nbsp;var next_left = 
+$(this).next().text()?$(this).next().offset().left:0;<BR>&nbsp;&nbsp;if(current_left 
+&gt; 
+next_left){<BR>&nbsp;&nbsp;&nbsp;$(this).removeClass("item").addClass("cell");<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;if(current_left 
+== 
+next_left){<BR>&nbsp;&nbsp;&nbsp;$(this).removeClass("item").addClass("cell").css({"display":"block","width":"auto"});<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp; 
+});<BR>&nbsp;if($i.last().prev().hasClass("cell")){<BR>&nbsp;&nbsp;$i.last().css({"display":"block","width":"auto"});<BR>&nbsp;}<BR>});<BR>&lt;/script&gt;</P>
+<P>&lt;/body&gt;<BR>&lt;/html&gt;</P></BODY>
+</HTML>

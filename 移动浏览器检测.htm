@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>移动浏览器检测</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>移动浏览器检测</P>
+<P><STRONG><FONT color=#ff0000>navigator</FONT>对象判断：</STRONG></P>
+<P>//判断是否是安卓设备<FONT color=#ff0000>（返回的字符串里是否含有对应关键字）</FONT></P>
+<P>var android = 
+(window.navigator.userAgent.toLowerCase().indexOf("android")&gt;=0);</P>
+<P>if(android){</P>
+<P>//执行后继代码；</P>
+<P>}</P>
+<P><STRONG><FONT 
+color=#ff0000>navigator</FONT>对象属性：appName(浏览器名称）、appVersion(浏览器版本)、mimeTypes（用数组表达支持的MIME类型）、plugin（用数组表达object标签支持插件）、platform(操作系统)以及userLanguage 
+</STRONG></P>
+<P><STRONG></STRONG>&nbsp;</P>
+<DIV>
+<H2>Navigator 对象属性</H2>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 21%">属性</TH>
+    <TH style="WIDTH: 58%">描述</TH>
+    <TH style="WIDTH: 7%">IE</TH>
+    <TH style="WIDTH: 7%">F</TH>
+    <TH style="WIDTH: 7%">O</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_appcodename.html">appCodeName</A></TD>
+    <TD>返回浏览器的代码名。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_appminorversion.html">appMinorVersion</A></TD>
+    <TD>返回浏览器的次级版本。</TD>
+    <TD>4</TD>
+    <TD>No</TD>
+    <TD>No</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_appname.html">appName</A></TD>
+    <TD>返回浏览器的名称。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_appversion.html">appVersion</A></TD>
+    <TD>返回浏览器的平台和版本信息。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_browserlanguage.html">browserLanguage</A></TD>
+    <TD>返回当前浏览器的语言。</TD>
+    <TD>4</TD>
+    <TD>No</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_cookieenabled.html">cookieEnabled</A></TD>
+    <TD>返回指明浏览器中是否启用 cookie 的布尔值。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_cpuclass.html">cpuClass</A></TD>
+    <TD>返回浏览器系统的 CPU 等级。</TD>
+    <TD>4</TD>
+    <TD>No</TD>
+    <TD>No</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_online.html">onLine</A></TD>
+    <TD>返回指明系统是否处于脱机模式的布尔值。</TD>
+    <TD>4</TD>
+    <TD>No</TD>
+    <TD>No</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_platform.html">platform</A></TD>
+    <TD>返回运行浏览器的操作系统平台。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_systemlanguage.html">systemLanguage</A></TD>
+    <TD>返回 OS 使用的默认语言。</TD>
+    <TD>4</TD>
+    <TD>No</TD>
+    <TD>No</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_useragent.html">userAgent</A></TD>
+    <TD>返回由客户机发送服务器的 user-agent 头部的值。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/prop_nav_userlanguage.html">userLanguage</A></TD>
+    <TD>返回 OS 的自然语言设置。</TD>
+    <TD>4</TD>
+    <TD>No</TD>
+    <TD>9</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Navigator 对象方法</H2>
+<TABLE class=dataintable>
+  <TBODY>
+  <TR>
+    <TH style="WIDTH: 21%">方法</TH>
+    <TH style="WIDTH: 58%">描述</TH>
+    <TH style="WIDTH: 7%">IE</TH>
+    <TH style="WIDTH: 7%">F</TH>
+    <TH style="WIDTH: 7%">O</TH></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/met_nav_javaenabled.html">javaEnabled()</A></TD>
+    <TD>规定浏览器是否启用 Java。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR>
+  <TR>
+    <TD><A 
+      href="mk:@MSITStore:E:\wen\e\技术文档\api\API\W3C_Javascript_2010-07-13.chm::/htmldom/met_nav_taintenabled.html">taintEnabled()</A></TD>
+    <TD>规定浏览器是否启用数据污点 (data tainting)。</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>9</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Navigator 对象描述</H2>
+<P>Navigator 对象包含的属性描述了正在使用的浏览器。可以使用这些属性进行平台专用的配置。</P>
+<P>虽然这个对象的名称显而易见的是 Netscape 的 Navigator 浏览器，但其他实现了 JavaScript 的浏览器也支持这个对象。</P>
+<P>Navigator 对象的实例是唯一的，可以用 Window 对象的 navigator 属性来引用它。</P></DIV></BODY></HTML>

@@ -1,0 +1,570 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Language" content="zh-cn" />
+
+<meta name="robots" content="all" />
+
+<meta name="author" content="w3school.com.cn" />
+<meta name="Copyright" content="Copyright W3school.com.cn All Rights Reserved." />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="false" />
+
+<link rel="stylesheet" type="text/css" href="c3.css" />
+
+<title>HTML DOM 节点树</title>
+</head>
+
+<body class="browserscripting">
+<div id="wrapper">
+<div id="navsecond">
+
+<div id="course">
+<h2>HTML DOM</h2>
+<ul>
+<li><a href="index.asp.html" title="DOM教程首页">DOM 首页</a></li>
+<li><a href="dom_intro.asp.html" title="DOM简介">DOM 简介</a></li>
+<li><a href="dom_nodes.asp.html" title="HTML DOM 节点">DOM 节点</a></li>
+<li><a href="dom_nodetree.asp.html" title="HTML DOM 节点树">DOM 节点树</a></li>
+<li><a href="dom_nodes_access.asp.html" title="HTML DOM 访问节点">DOM 节点访问</a></li>
+<li><a href="dom_nodes_info.asp.html" title="HTML DOM 节点信息">DOM 节点信息</a></li>
+<li><a href="dom_example.asp.html" title="一个 HTML DOM 实例">DOM How To</a></li>
+<li><a href="htmldom_reference.asp.html" title="">DOM 参考</a></li>
+<li><a href="dom_summary.asp.html" title="">DOM 总结</a></li>
+</ul>
+
+<h2>DOM 实例</h2>
+<ul>
+<li><a href="http://www.w3school.com.cn/example/hdom_examples.asp" title="">DOM 实例</a></li>
+</ul>
+
+<h2>DOM 对象</h2>
+<ul class="small">
+<li><a href="dom_obj_window.asp.html" title="HTML DOM Window 对象">DOM Window</a></li>
+<li><a href="dom_obj_navigator.asp.html" title="HTML DOM Navigator 对象">DOM Navigator</a></li>
+<li><a href="dom_obj_screen.asp.html" title="HTML DOM Screen 对象">DOM Screen</a></li>
+<li><a href="dom_obj_history.asp.html" title="HTML DOM History 对象">DOM History</a></li>
+<li><a href="dom_obj_location.asp.html" title="HTML DOM Location 对象">DOM Location</a></li>
+<li class="list_apart"><a href="dom_obj_document.asp.html" title="HTML DOM Document 对象">DOM Document</a></li>
+<li class="list_apart"><a href="dom_obj_anchor.asp.html" title="HTML DOM Anchor 对象">DOM Anchor</a></li>
+<li><a href="dom_obj_area.asp.html" title="HTML DOM Area 对象">DOM Area</a></li>
+<li><a href="dom_obj_base.asp.html" title="HTML DOM Base 对象">DOM Base</a></li>
+<li><a href="dom_obj_body.asp.html" title="HTML DOM Body 对象">DOM Body</a></li>
+<li><a href="dom_obj_pushbutton.asp.html" title="HTML DOM Button 对象">DOM Button</a></li>
+<li><a href="dom_obj_event.asp.html" title="HTML DOM Event 对象">DOM Event</a></li>
+<li><a href="dom_obj_form.asp.html" title="HTML DOM Form 对象">DOM Form</a></li>
+<li><a href="dom_obj_frame.asp.html" title="HTML DOM Frame 对象">DOM Frame</a></li>
+<li><a href="dom_obj_frameset.asp.html" title="HTML DOM Frameset 对象">DOM Frameset</a></li>
+<li><a href="dom_obj_iframe.asp.html" title="HTML DOM IFrame 对象">DOM IFrame</a></li>
+<li><a href="dom_obj_image.asp.html" title="HTML DOM Image 对象">DOM Image</a></li>
+<li><a href="dom_obj_button.asp.html" title="HTML DOM Button 对象">DOM Input Button</a></li>
+<li><a href="dom_obj_checkbox.asp.html" title="HTML DOM Checkbox 对象">DOM Input Checkbox</a></li>
+<li><a href="dom_obj_fileupload.asp.html" title="HTML DOM FileUpload 对象">DOM Input File</a></li>
+<li><a href="dom_obj_hidden.asp.html" title="HTML DOM Hidden 对象">DOM Input Hidden</a></li>
+<li><a href="dom_obj_password.asp.html" title="HTML DOM Password 对象">DOM Input Password</a></li>
+<li><a href="dom_obj_radio.asp.html" title="HTML DOM Radio 对象">DOM Input Radio</a></li>
+<li><a href="dom_obj_reset.asp.html" title="HTML DOM Reset 对象">DOM Input Reset</a></li>
+<li><a href="dom_obj_submit.asp.html" title="HTML DOM Submit 对象">DOM Input Submit</a></li>
+<li><a href="dom_obj_text.asp.html" title="HTML DOM Text 对象">DOM Input Text</a></li>
+<li><a href="dom_obj_link.asp.html" title="HTML DOM Link 对象">DOM Link</a></li>
+<li><a href="dom_obj_meta.asp.html" title="HTML DOM Meta 对象">DOM Meta</a></li>
+<li><a href="dom_obj_object.asp.html" title="HTML DOM Object 对象">DOM Object</a></li>
+<li><a href="dom_obj_option.asp.html" title="HTML DOM Option 对象">DOM Option</a></li>
+<li><a href="dom_obj_select.asp.html" title="HTML DOM Select 对象">DOM Select</a></li>
+<li><a href="dom_obj_style.asp.html" title="HTML DOM Style 对象">DOM Style</a></li>
+<li><a href="dom_obj_table.asp.html" title="HTML DOM Table 对象">DOM Table</a></li>
+<li><a href="dom_obj_tabledata.asp.html" title="HTML DOM TableCell 对象">DOM TableCell</a></li>
+<li><a href="dom_obj_tablerow.asp.html" title="HTML DOM TableRow 对象">DOM TableRow</a></li>
+<li><a href="dom_obj_textarea.asp.html" title="HTML DOM Textarea 对象">DOM Textarea</a></li>
+</ul>
+</div>
+</div>
+<div id="maincontent">
+
+<h1>HTML DOM Event 对象</h1>
+
+<div>
+<h2>实例</h2>
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=hdom_event_button">哪个鼠标按钮被点击？</a></p>
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=hdom_event_clientx">光标的坐标是？</a></p>
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=hdom_event_keycode">被按的按键的 unicode 是？</a></p>
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=hdom_event_screenxy">相对于屏幕，光标的坐标是？</a></p>
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=hdom_event_shiftkey">shift 键被按了吗？</a></p>
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=hdom_event_srcelement">哪个元素被点击了？</a></p>
+<p><a href="http://www.w3school.com.cn/tiy/t.asp?f=hdom_event_type">哪个事件类型发生了？</a></p>
+</div>
+
+<div>
+<h2>Event 对象</h2>
+<p>Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。</p>
+<p>事件通常与函数结合使用，函数不会在事件发生前被执行！</p>
+
+<p><em>IE:</em> Internet Explorer, <em>F:</em> Firefox, <em>O:</em> Opera, <em>W3C:</em> World Wide Web Consortium (Internet 标准).</p>
+</div>
+
+<div>
+<h2>事件句柄　(Event Handlers)</h2>
+<p>HTML 4.0 的新特性之一是能够使 HTML 事件触发浏览器中的行为，比如当用户点击某个 HTML 元素时启动一段 JavaScript。下面是一个属性列表，可将之插入 HTML 标签以定义事件的行为。</p>
+
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>此事件发生在何时...</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+    <th>W3C</th>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onabort.asp.html">onabort</a></td>
+	<td>图像的加载被中断。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onblur.asp.html">onblur</a></td>
+	<td>元素失去焦点。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onchange.asp.html">onchange</a></td>
+	<td>域的内容被改变。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onclick.asp.html">onclick</a></td>
+	<td>当用户点击某个对象时调用的事件句柄。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_ondblclick.asp.html">ondblclick</a></td>
+	<td>当用户双击某个对象时调用的事件句柄。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onerror.asp.html">onerror</a></td>
+	<td>在加载文档或图像时发生错误。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onfocus.asp.html">onfocus</a></td>
+	<td>元素获得焦点。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onkeydown.asp.html">onkeydown</a></td>
+	<td>某个键盘按键被按下。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onkeypress.asp.html">onkeypress</a></td>
+	<td>某个键盘按键被按下并松开。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onkeyup.asp.html">onkeyup</a></td>
+	<td>某个键盘按键被松开。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onload.asp.html">onload</a></td>
+	<td>一张页面或一幅图像完成加载。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onmousedown.asp.html">onmousedown</a></td>
+	<td>鼠标按钮被按下。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a href="event_onmousemove.asp.html">onmousemove</a></td>
+	<td>鼠标被移动。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onmouseout.asp.html">onmouseout</a></td>
+	<td>鼠标从某元素移开。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onmouseover.asp.html">onmouseover</a></td>
+	<td>鼠标移到某元素之上。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onmouseup.asp.html">onmouseup</a></td>
+	<td>鼠标按键被松开。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onreset.asp.html">onreset</a></td>
+	<td>重置按钮被点击。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onresize.asp.html">onresize</a></td>
+	<td>窗口或框架被重新调整大小。</td>
+    <td>4</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onselect.asp.html">onselect</a></td>
+	<td>文本被选中。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onsubmit.asp.html">onsubmit</a></td>
+	<td>确认按钮被点击。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+
+  <tr>
+	<td><a target="_top" href="event_onunload.asp.html">onunload</a></td>
+	<td>用户退出页面。</td>
+    <td>3</td>
+    <td>1</td>
+    <td>9</td>
+    <td>Yes</td>
+  </tr>
+</table>
+</div>
+
+<div>
+<h2>鼠标 / 键盘属性</h2>
+
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+    <th>W3C</th>
+  </tr>
+  <tr>
+		<td><a href="event_altkey.asp.html">altKey</a></td>
+		<td>返回当事件被触发时，&quot;ALT&quot; 是否被按下。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_button.asp.html">button</a></td>
+		<td>返回当事件被触发时，哪个鼠标按钮被点击。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td>
+          <a href="event_clientx.asp.html">clientX</a></td>
+		<td>返回当事件被触发时，鼠标指针的水平坐标。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_clienty.asp.html">clientY</a></td>
+		<td>返回当事件被触发时，鼠标指针的垂直坐标。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_ctrlkey.asp.html">ctrlKey</a></td>
+		<td>返回当事件被触发时，&quot;CTRL&quot; 键是否被按下。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td>
+          <a href="event_metakey.asp.html">metaKey</a></td>
+		<td>返回当事件被触发时，&quot;meta&quot; 键是否被按下。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_relatedtarget.asp.html">relatedTarget</a></td>
+		<td>返回与事件的目标节点相关的节点。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_screenx.asp.html">screenX</a></td>
+		<td>返回当某个事件被触发时，鼠标指针的水平坐标。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_screeny.asp.html">screenY</a></td>
+		<td>返回当某个事件被触发时，鼠标指针的垂直坐标。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_shiftkey.asp.html">shiftKey</a></td>
+		<td>返回当事件被触发时，&quot;SHIFT&quot; 键是否被按下。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+</table>
+</div>
+
+<div>
+<h2>IE 属性</h2>
+<p>除了上面的鼠标/事件属性，IE 浏览器还支持下面的属性：</p>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+  </tr>
+  <tr>
+		<td>cancelBubble</td>
+		<td>如果事件句柄想阻止事件传播到包容对象，必须把该属性设为 true。</td>
+  </tr>
+  <tr>
+		<td>fromElement</td>
+		<td>对于 mouseover 和 mouseout 事件，fromElement 引用移出鼠标的元素。</td>
+  </tr>
+  <tr>
+		<td>keyCode</td>
+		<td>对于 keypress 事件，该属性声明了被敲击的键生成的 Unicode 字符码。对于 keydown 和 keyup 事件，它指定了被敲击的键的虚拟键盘码。虚拟键盘码可能和使用的键盘的布局相关。</td>
+  </tr>
+  <tr>
+		<td>offsetX,offsetY</td>
+		<td>发生事件的地点在事件源元素的坐标系统中的 x 坐标和 y 坐标。</td>
+  </tr>
+  <tr>
+		<td>returnValue</td>
+		<td>如果设置了该属性，它的值比事件句柄的返回值优先级高。把这个属性设置为 fasle，可以取消发生事件的源元素的默认动作。</td>
+  </tr>
+  <tr>
+		<td>srcElement</td>
+		<td>对于生成事件的 Window 对象、Document 对象或 Element 对象的引用。</td>
+  </tr>
+  <tr>
+		<td>toElement</td>
+		<td>对于 mouseover 和 mouseout 事件，该属性引用移入鼠标的元素。</td>
+  </tr>
+  <tr>
+		<td>x,y</td>
+		<td>事件发生的位置的 x 坐标和 y 坐标，它们相对于用CSS动态定位的最内层包容元素。</td>
+  </tr>
+</table>
+</div>
+
+<div>
+<h2>标准 Event 属性</h2>
+<p>下面列出了 2 级 DOM 事件标准定义的属性。</p>
+<table class="dataintable">
+  <tr>
+    <th>属性</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+    <th>W3C</th>
+  </tr>
+  <tr>
+		<td><a href="event_bubbles.asp.html">bubbles</a></td>
+		<td>返回一个布尔值，指示事件是否是起泡事件类型。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_cancelable.asp.html">cancelable</a></td>
+		<td>返回一个指示布尔值，指示事件是否可拥可取消的默认动作。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td>
+          <a href="event_currenttarget.asp.html">currentTarget</a></td>
+		<td>返回其事件监听器触发该事件的元素。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_eventphase.asp.html">eventPhase</a></td>
+		<td>返回事件传播的当前阶段。</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_target.asp.html">target</a></td>
+		<td>返回触发此事件的元素（事件的目标节点）。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td>
+          <a href="event_timestamp.asp.html">timeStamp</a></td>
+		<td>返回事件生成的日期和时间。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_type.asp.html">type</a></td>
+		<td>返回当前 Event 对象表示的事件的名称。</td>
+		<td>6</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  </table>
+</div>
+
+<div>
+<h2>标准 Event 方法</h2>
+<p>下面列出了 2 级 DOM 事件标准定义的方法。IE 的事件模型不支持这些方法：</p>
+<table class="dataintable">
+  <tr>
+    <th>方法</th>
+    <th>描述</th>
+    <th>IE</th>
+    <th>F</th>
+    <th>O</th>
+    <th>W3C</th>
+  </tr>
+  <tr>
+		<td><a href="event_initevent.asp.html">initEvent()</a></td>
+		<td>初始化新创建的 Event 对象的属性。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td><a href="event_preventdefault.asp.html">preventDefault()</a></td>
+		<td>通知浏览器不要执行与事件关联的默认动作。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  <tr>
+		<td class="no_wrap"><a href="event_stoppropagation.asp.html">stopPropagation()</a></td>
+		<td>终止事件在传播过程的捕获、目标处理或起泡阶段进一步传播。调用该方法后，该节点上处理该事件的处理程序将被调用，事件不再被分派到其他节点。</td>
+		<td>No</td>
+		<td>1</td>
+		<td>9</td>
+		<td>Yes</td>
+  </tr>
+  </table>
+</div>
+
+</div>
+
+
+</div>
+</body>
+</html>
+

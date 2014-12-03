@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>CSS媒体类型及媒体查询语句</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 9.00.8112.16450"></HEAD>
+<BODY>
+<P>CSS媒体类型及媒体查询语句</P>
+<P>media type(媒体类型)是css 2中的一个非常有用的属性，通过media 
+type我们可以对不同的设备指定特定的样式，从而实现更丰富的界面。media query(媒体查询)是对media type的一种增强，是CSS 
+3的重要内容之一。随着移动互联网的发展，media query开始得到大家的重视。<SPAN id=more-12234></SPAN></P>
+<H2>media type</H2>
+<P>让我们先了解一下media type，其实这个大家会比较熟悉一点，我们通常会用到的media type会是all 
+和screen，然后是print，一些网站会专门通过print类型为页面的打印格式提供更友好的界面。<BR>其实，media type有很多种：</P>
+<P>
+<TABLE>
+  <THEAD>
+  <TR>
+    <TH>类型</TH>
+    <TH>解释</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD>all</TD>
+    <TD>所有设备</TD></TR>
+  <TR>
+    <TD>braille</TD>
+    <TD>盲文</TD></TR>
+  <TR>
+    <TD>embossed</TD>
+    <TD>盲文打印</TD></TR>
+  <TR>
+    <TD>handheld</TD>
+    <TD>手持设备</TD></TR>
+  <TR>
+    <TD>print</TD>
+    <TD>文档打印或打印预览模式</TD></TR>
+  <TR>
+    <TD>projection</TD>
+    <TD>项目演示，比如幻灯</TD></TR>
+  <TR>
+    <TD>screen</TD>
+    <TD>彩色电脑屏幕</TD></TR>
+  <TR>
+    <TD>speech</TD>
+    <TD>演讲</TD></TR>
+  <TR>
+    <TD>tty</TD>
+    <TD>固定字母间距的网格的媒体，比如电传打字机</TD></TR>
+  <TR>
+    <TD>tv</TD>
+    <TD>电视</TD></TR></TBODY></TABLE></P>
+<H3>media type的几种使用方法</H3>
+<P>我们可以通过几种方法来声明media type：</P>
+<H4>方法一</H4>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=html4strict><SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">link</SPAN> <SPAN style="COLOR: #000066">href</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"style.css"</SPAN> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"screen print"</SPAN> ...</SPAN></PRE></DIV></DIV>
+<H4>方法二</H4>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=xml><SPAN style="COLOR: #009900"><SPAN style="COLOR: #000000; FONT-WEIGHT: bold">&lt;?xml-stylesheet</SPAN> <SPAN style="COLOR: #000066">media</SPAN>=<SPAN style="COLOR: #ff0000">"screen"</SPAN> <SPAN style="COLOR: #000066">href</SPAN>=<SPAN style="COLOR: #ff0000">"style.css"</SPAN>...</SPAN></PRE></DIV></DIV>
+<H4>方法三</H4>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@import url("style.css") screen;</SPAN></PRE></DIV></DIV>
+<H4>方法四</H4>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=html4strict><SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">style</SPAN> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"screen"</SPAN>&gt;</SPAN>
+@import url("style.css");
+<SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #66cc66">/</SPAN><SPAN style="COLOR: #000000; FONT-WEIGHT: bold">style</SPAN>&gt;</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<H4>方法五</H4>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media screen{</SPAN>
+selector<SPAN style="COLOR: #00aa00">{</SPAN>rules<SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>当然，这几种方法各有利弊，而我们常用的是第一种和最后一种方法。</P>
+<H3>media type的浏览器支持</H3>
+<UL>
+  <LI>IE5.5/6/7不支持在@import中使用媒体类型 
+  <LI>Safari/firefox只支持all,screen,print三种类型(包括iphone) 
+  <LI>Opera 完全支持 
+  <LI>Opera mini&nbsp; 支持handheld，未指定则使用screen 
+  <LI>Windows Mobile系统中的IE支持handheld，其它支持不明…</LI></UL>
+<H2>media query</H2>
+<P>正如前文所说，media query是CSS 3对media type的增强，事实上我们可以将media query看成是media 
+type+css属性判断。</P>
+<P><STRONG>请注意，下面提到的一些关键字等内容，有些是在media type中就可用的，但是放到media 
+query中将能更好的发挥其作用，所以我就在适当的地方引入。</STRONG></P>
+<P>css属性判断可以只是某个CSS属性的名称，也可以是属性+值：</P>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=html4strict><SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">link</SPAN> <SPAN style="COLOR: #000066">rel</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"stylesheet"</SPAN> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"screen and (animation)” herf=“…”</SPAN></SPAN></PRE></DIV></DIV>
+<P>如果设备支持CSS动画，那么就能执行这个外部样式表文件。</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media screen and (max-width:240px){</SPAN>
+	body<SPAN style="COLOR: #00aa00">{</SPAN><SPAN style="COLOR: #000000; FONT-WEIGHT: bold">font-size</SPAN><SPAN style="COLOR: #00aa00">:</SPAN><SPAN style="COLOR: #993333">medium</SPAN><SPAN style="COLOR: #00aa00">;</SPAN><SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>如果设备的浏览器的最大宽度是240px，则页面将使用中号字体。</P>
+<P>PS:属性和值之间是用<SPAN class=red>冒号</SPAN>连接的，而不是等号，这与正常的CSS的写法一致。</P>
+<H3>媒体查询语句结构</H3>
+<P>我们可以将上述语句称为媒体查询语句，这样也更能理解一些。从上面的例子也可以看出，媒体查询语句一般由media 
+type+一到多个CSS属性判断组成，而多个CSS属性判断可以用关键字and连接：</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media screen and (min-width:1024px) and (max-width:1280px){</SPAN>
+	body<SPAN style="COLOR: #00aa00">{</SPAN><SPAN style="COLOR: #000000; FONT-WEIGHT: bold">font-size</SPAN><SPAN style="COLOR: #00aa00">:</SPAN><SPAN style="COLOR: #993333">medium</SPAN><SPAN style="COLOR: #00aa00">;</SPAN><SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>其中media type可以省略，属性值也可以为空：</P>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media (color:4){}</SPAN></PRE></DIV></DIV>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media (color){}</SPAN></PRE></DIV></DIV>
+<P>当然，请注意，有属性值和没有属性值的情况代表的意义是不一样的，所以上面的这两条规则<SPAN class=red>不是</SPAN>等价的。</P>
+<P>而针对多个媒体类型的CSS规则，可以用逗号来隔开：</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media handheld and (min-width:360px),screen and (min-width:480px){</SPAN>
+body<SPAN style="COLOR: #00aa00">{</SPAN><SPAN style="COLOR: #000000; FONT-WEIGHT: bold">font-size</SPAN><SPAN style="COLOR: #00aa00">:</SPAN><SPAN style="COLOR: #993333">large</SPAN><SPAN style="COLOR: #00aa00">;</SPAN><SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media screen and (min-width:800px),print and (min-width:7in){</SPAN>
+body<SPAN style="COLOR: #00aa00">{</SPAN><SPAN style="COLOR: #000000; FONT-WEIGHT: bold">font-size</SPAN><SPAN style="COLOR: #00aa00">:</SPAN>small<SPAN style="COLOR: #00aa00">;</SPAN><SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<H3>media query支持的属性</H3>
+<P>事实上，media query支持的属性和我们常用的CSS属性是不太一样的，它们是一些特别定义的条目：</P>
+<P>
+<TABLE>
+  <THEAD>
+  <TR>
+    <TH>属性</TH>
+    <TH>值</TH>
+    <TH>Min/Max</TH>
+    <TH>描述</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD>color</TD>
+    <TD>整数</TD>
+    <TD>yes</TD>
+    <TD>每种色彩的字节数</TD></TR>
+  <TR>
+    <TD>color-index</TD>
+    <TD>整数</TD>
+    <TD>yes</TD>
+    <TD>色彩表中的色彩数</TD></TR>
+  <TR>
+    <TD>device-aspect-ratio</TD>
+    <TD>整数/整数</TD>
+    <TD>yes</TD>
+    <TD>宽高比例</TD></TR>
+  <TR>
+    <TD>device-height</TD>
+    <TD>length</TD>
+    <TD>yes</TD>
+    <TD>设备屏幕的输出高度</TD></TR>
+  <TR>
+    <TD>device-width</TD>
+    <TD>length</TD>
+    <TD>yes</TD>
+    <TD>设备屏幕的输出宽度</TD></TR>
+  <TR>
+    <TD>grid</TD>
+    <TD>整数</TD>
+    <TD>no</TD>
+    <TD>是否是基于格栅的设备</TD></TR>
+  <TR>
+    <TD>height</TD>
+    <TD>length</TD>
+    <TD>yes</TD>
+    <TD>渲染界面的高度</TD></TR>
+  <TR>
+    <TD>monochrome</TD>
+    <TD>整数</TD>
+    <TD>yes</TD>
+    <TD>单色帧缓冲器中每像素字节</TD></TR>
+  <TR>
+    <TD>resolution</TD>
+    <TD>分辨率(“dpi/dpcm”)</TD>
+    <TD>yes</TD>
+    <TD>分辨率</TD></TR>
+  <TR>
+    <TD>scan</TD>
+    <TD>Progressive interlaced</TD>
+    <TD>no</TD>
+    <TD>tv媒体类型的扫描方式</TD></TR>
+  <TR>
+    <TD>width</TD>
+    <TD>length</TD>
+    <TD>yes</TD>
+    <TD>渲染界面的宽度</TD></TR>
+  <TR>
+    <TD>orientation</TD>
+    <TD>Portrait/landscape</TD>
+    <TD>no</TD>
+    <TD>横屏或竖屏</TD></TR></TBODY></TABLE></P>
+<P>从这些属性中我们可以看出，media query就是为了更好的适配各种设备而生的。</P>
+<H3>浏览器扩展</H3>
+<H4>webkit</H4>
+<P>webkit是最早实现media query支持的浏览器内核之一，同时它也根据自己的需要搞了一些特有的扩展属性，最常用的有：</P>
+<P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>transform-2d</TD>
+    <TD>只用于支持使用&nbsp;-webkit-transform实现2D变换的浏览器</TD></TR>
+  <TR>
+    <TD>transform-3d</TD>
+    <TD>只用于支持使用&nbsp;-webkit-transform实现3D变换的浏览器</TD></TR>
+  <TR>
+    <TD>transition</TD>
+    <TD>只用于支持使用-webkit-transition实现变换效果的浏览器</TD></TR>
+  <TR>
+    <TD>animation</TD>
+    <TD>只用于支持使用-webkit-animation实现动画的浏览器</TD></TR></TBODY></TABLE></P>
+<P>详情请看这里：<A 
+href="http://webkit.org/specs/MediaQueriesExtensions.html">http://webkit.org/specs/MediaQueriesExtensions.html</A></P>
+<H4>firefox</H4>
+<P>firefox也提供一些自己的扩展，不过由于firefox浏览器的手机版现在还很弱，所以很少会用到，感兴趣的同学可以到<A 
+href="https://developer.mozilla.org/En/CSS/Media_queries" 
+target=_parent>https://developer.mozilla.org/En/CSS/Media_queries</A>查阅。</P>
+<H3>max与min</H3>
+<P>细心的同学可能已经注意到前面用到的这两个关键词，他们是要配合支持它们的属性使用的，它们的意义与我们常用的max-width和minwidth等类似。</P>
+<P>各属性对max和min的支持在前面的属性列表中有给出，这里是一个详细的列表：</P>
+<P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>height</TD>
+    <TD>min-height</TD>
+    <TD>max-height</TD></TR>
+  <TR>
+    <TD>device-width</TD>
+    <TD>min-device-width</TD>
+    <TD>max-device-width</TD></TR>
+  <TR>
+    <TD>device-height</TD>
+    <TD>min-device-height</TD>
+    <TD>max-device-height</TD></TR>
+  <TR>
+    <TD>aspect-ratio</TD>
+    <TD>min-aspect-ratio</TD>
+    <TD>max-aspect-ratio</TD></TR>
+  <TR>
+    <TD>device-aspect-ratio</TD>
+    <TD>min-device-aspect-ratio</TD>
+    <TD>max-device-aspect-ratio</TD></TR>
+  <TR>
+    <TD>color</TD>
+    <TD>min-color</TD>
+    <TD>max-color</TD></TR>
+  <TR>
+    <TD>color-index</TD>
+    <TD>min-color-index</TD>
+    <TD>max-color-index</TD></TR>
+  <TR>
+    <TD>Monochrome</TD>
+    <TD>min-monochrome</TD>
+    <TD>max-monochrome</TD></TR>
+  <TR>
+    <TD>Resolution</TD>
+    <TD>min-resolution</TD>
+    <TD>max-resolution</TD></TR></TBODY></TABLE></P>
+<H3>not/only</H3>
+<P>媒体类型还支持 not和only关键字，它们可以用来更方便的定位某个媒体设备：</P>
+<P>not：排除某种制定的媒体类型</P>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media not print and (color){</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></DIV></DIV>
+<P>only：指定某种特定的媒体类型，可以用来排除不支持媒体查询的浏览器：</P>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media only screen and (color){</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></DIV></DIV>
+<H3>media query的浏览器支持：</H3>
+<UL>
+  <LI>IE 9以下不支持 
+  <LI>Firefox 3.5+(Gecko 1.9.1+)支持 
+  <LI>Opera 9.5+完全支持 
+  <LI>Opera mini 5支持 
+  <LI>webkit 支持大部分属性(safari 3.0的内核版本是522，iPhone 
+  1代的safari的内核版本是524，webkit大概从这个时候开始支持media query，但是对部分属性比如projection支持不好) 
+  <LI>iPhone OS 3.2之前的版本不支持orientation属性，iPad和iPhone 4支持该属性。 
+  <LI>iPhone Safari不支持orientation(iPhone 4支持)</LI></UL>
+<H2>实例：</H2>
+<P>现在让我们来看一些典型的例子：</P>
+<H3>检测iPhone safari：</H3>
+<DIV class=wp_syntax>
+<DIV class=code><PRE style="FONT-FAMILY: monospace" class=html4strict><SPAN style="COLOR: #009900"><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0>&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">link</SPAN></FONT> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN></FONT></FONT></FONT></FONT><SPAN style="COLOR: #ff0000"><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0>"only</FONT> screen and (max-device</FONT>-width</FONT>: 480px</FONT>)"</SPAN> <SPAN style="COLOR: #000066">href</SPAN></FONT><SPAN style="COLOR: #66cc66">=</SPAN></FONT></FONT></FONT></FONT></FONT></FONT></FONT><SPAN style="COLOR: #ff0000"><FONT size=+0><FONT size=+0><FONT size=+0>"style</FONT>.css</FONT></FONT>"</SPAN>&gt;</FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></SPAN></PRE></DIV></DIV>
+<P>这是apple官方网站推荐的一种定位iPhone 
+safari浏览器的方法，在iPhone一代和2代的时代，这条规则的确能够正确的判断出iPhone的浏览器，但是后来出现了Android的大屏幕手机，比如Nexus 
+One和HTC desire，这条规则也能适配这些480px宽度的机器。</P>
+<H3>Google的iPhone横屏样式：</H3>
+<P>Google之前通过以下方式为iPhone手机提供横屏样式(因为最早的3代iPhone手机不支持orientation属性)：</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+4
+5
+6
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="COLOR: #a1a100">@media screen and (max-height:300px){</SPAN>
+    <SPAN style="COLOR: #cc00cc">#linksDiv</SPAN><SPAN style="COLOR: #00aa00">{</SPAN>
+        <SPAN style="COLOR: #000000; FONT-WEIGHT: bold">margin-top</SPAN><SPAN style="COLOR: #00aa00">:</SPAN><SPAN style="COLOR: #933">10px</SPAN><SPAN style="COLOR: #00aa00">;</SPAN>
+    <SPAN style="COLOR: #00aa00">}</SPAN>
+    ...
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<H3>android手机的多分辨率问题：</H3>
+<P>android系统的开放性导致其终端的多样性，那么对于各种各样的android手机来说，屏幕分辨率的差异导致针对android手机的页面重构复杂性增加，那么我们可以用media 
+query为每种分辨率提供特定样式：</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers width=9><PRE>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><FONT size=+0><SPAN style="FONT-STYLE: italic; COLOR: #808080">/* for 240 px width screen */</SPAN>
+<SPAN style="COLOR: #a1a100">@media only screen and (max-device-width:240px){</SPAN></FONT>
+    selector<SPAN style="COLOR: #00aa00">{</SPAN></FONT>
+    <SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></FONT>
+&nbsp;
+<SPAN style="FONT-STYLE: italic; COLOR: #808080">/* for 360px width screen */</SPAN>
+</FONT><SPAN style="COLOR: #a1a100"><FONT size=+0>@media</FONT> only screen and (min-device-width:241px) and (max-device-width:360px){</SPAN>
+    selector<SPAN style="COLOR: #00aa00">{</SPAN>
+    <SPAN style="COLOR: #00aa00">}</SPAN></FONT>
+<SPAN style="COLOR: #00aa00">}</SPAN></FONT>
+&nbsp;
+<SPAN style="FONT-STYLE: italic; COLOR: #808080">/* for 480 px width screen */</SPAN>
+</FONT><SPAN style="COLOR: #a1a100"><FONT size=+0>@media</FONT> only screen and (min-device-width:361px) and (max-device-width:480px){</SPAN>
+    selector<SPAN style="COLOR: #00aa00">{</SPAN>
+    <SPAN style="COLOR: #00aa00">}</SPAN></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT>
+<SPAN style="COLOR: #00aa00">}</SPAN></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></PRE></TD></TR></TBODY></TABLE></DIV>
+<H3>device-aspect-ratio</H3>
+<P>device-aspect-ratio可以用来适配特定屏幕长宽比的设备，这也是一个很有用的属性，比如，我们的页面想要对长宽比为4:3的普通屏幕定义一种样式，然后对于16:9和16:10的宽屏，定义另一种样式，比如自适应宽度和固定宽度：</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="FONT-STYLE: italic; COLOR: #808080">/* for 4:3 screen */</SPAN>
+<SPAN style="COLOR: #a1a100">@media only screen and (device-aspect-ratio:4/3){</SPAN>
+    selector<SPAN style="COLOR: #00aa00">{</SPAN>
+    <SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN>
+&nbsp;
+<SPAN style="FONT-STYLE: italic; COLOR: #808080">/* for 16:9 and 16:10 screen */</SPAN>
+<SPAN style="COLOR: #a1a100">@media only screen and (device-aspect-ratio:16/9) and (device-aspect-ratio:16/10){</SPAN>
+    selector<SPAN style="COLOR: #00aa00">{</SPAN>
+    <SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>当然，对于手机也可以使用这个属性，比如对于480px*800px的Nexus One和Desire等手机，可以用下面的样式来匹配：</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+4
+5
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=css><SPAN style="FONT-STYLE: italic; COLOR: #808080">/* for 480px*800px width screen */</SPAN>
+<SPAN style="COLOR: #a1a100">@media only screen (device-aspect-ratio:5/3){</SPAN>
+    selector<SPAN style="COLOR: #00aa00">{</SPAN>
+    <SPAN style="COLOR: #00aa00">}</SPAN>
+<SPAN style="COLOR: #00aa00">}</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<H3>O’Reilly区分iPhone和iPad的方法</H3>
+<P>O’Reilly为其网站制作了针对iPad和iPhone设备的不同版本，从而提供最适合相关设备阅读的界面，他们的做法就是使用media 
+query：</P>
+<DIV class=wp_syntax>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=line_numbers><PRE>1
+2
+3
+4
+</PRE></TD>
+    <TD class=code><PRE style="FONT-FAMILY: monospace" class=html4strict><SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">link</SPAN> <SPAN style="COLOR: #000066">rel</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"stylesheet"</SPAN> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"all and (max-device-width: 480px)"</SPAN> <SPAN style="COLOR: #000066">href</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"iphone.css"</SPAN>&gt;</SPAN>
+<SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">link</SPAN> <SPAN style="COLOR: #000066">rel</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"stylesheet"</SPAN> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"</SPAN> <SPAN style="COLOR: #000066">href</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"ipad-portrait.css"</SPAN>&gt;</SPAN>
+<SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">link</SPAN> <SPAN style="COLOR: #000066">rel</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"stylesheet"</SPAN> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)"</SPAN> <SPAN style="COLOR: #000066">href</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"ipad-landscape.css"</SPAN>&gt;</SPAN>
+<SPAN style="COLOR: #009900">&lt;<SPAN style="COLOR: #000000; FONT-WEIGHT: bold">link</SPAN> <SPAN style="COLOR: #000066">rel</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"stylesheet"</SPAN> <SPAN style="COLOR: #000066">media</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"all and (min-device-width: 1025px)"</SPAN> <SPAN style="COLOR: #000066">href</SPAN><SPAN style="COLOR: #66cc66">=</SPAN><SPAN style="COLOR: #ff0000">"ipad-landscape.css"</SPAN>&gt;</SPAN></PRE></TD></TR></TBODY></TABLE></DIV>
+<P>详细介绍可以查看这里：<A 
+href="http://broadcast.oreilly.com/2010/04/using-css-media-queries-ipad.html">http://broadcast.oreilly.com/2010/04/using-css-media-queries-ipad.html</A></P>
+<H2>总结</H2>
+<P>CSS 3的media 
+query是一个很强大也很好用的工具，它为我们在不同的设备和环境下实现丰富的界面提供了一种快捷方法，虽然现在各个浏览器对它的支持还有些差异，但是大家都在改进，IE 
+9已经开始支持media query了。不过目前media query的最大舞台是在高端手持设备，相信随着移动互联网的快速发展，media 
+query也会很好发挥自己的作用。</P></BODY></HTML>

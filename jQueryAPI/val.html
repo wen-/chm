@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=gb2312"></meta><title>val()</title><link type="text/css" rel="stylesheet" rev="stylesheet" href="style/style.css" media="all"></link><script type="text/javascript" src="js/jquery.js"></script><script type="text/javascript" src="js/jquery-doc-split.js"></script></head><body id="split"><div id="content"><div rel="val"><h2><span>返回值:String,Array</span>val()</h2><h3>概述</h3><div class="desc"><p>获得第一个匹配元素的当前值。</p><div class="longdesc"><pre>在 jQuery 1.2 中,可以返回任意元素的值了。包括select。如果多选，将返回一个数组，其包含所选的值。</pre></div></div><div class="example"><h3>示例</h3><h4 xmlns="">描述:</h4><p xmlns="">获得单个select的值和多选select的值。</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;p&gt;&lt;/p&gt;&lt;br/&gt;
+&lt;select id="single"&gt;
+  &lt;option&gt;Single&lt;/option&gt;
+  &lt;option&gt;Single2&lt;/option&gt;
+&lt;/select&gt;
+&lt;select id="multiple" multiple="multiple"&gt;
+  &lt;option selected="selected"&gt;Multiple&lt;/option&gt;
+  &lt;option&gt;Multiple2&lt;/option&gt;
+  &lt;option selected="selected"&gt;Multiple3&lt;/option&gt;
+&lt;/select&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("p").append(
+  "&lt;b&gt;Single:&lt;/b&gt; "   + $("#single").val() +
+  " &lt;b&gt;Multiple:&lt;/b&gt; " + $("#multiple").val().join(", ")
+);</code></pre><h5 xmlns="">结果:</h5><pre xmlns=""><code>[ &lt;p&gt;&lt;b&gt;Single:&lt;/b&gt;Single&lt;b&gt;Multiple:&lt;/b&gt;Multiple, Multiple3&lt;/p&gt;]</code></pre><h4 xmlns="">描述:</h4><p xmlns="">获取文本框中的值</p><h5 xmlns="">HTML 代码:</h5><pre xmlns=""><code>&lt;input type="text" value="some text"/&gt;</code></pre><h5 xmlns="">jQuery 代码:</h5><pre xmlns=""><code>$("input").val();</code></pre><h5 xmlns="">结果:</h5><pre xmlns=""><code>some text</code></pre></div></div></div></body></html>

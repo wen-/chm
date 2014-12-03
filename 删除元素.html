@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	line-height:20px;
+}
+-->
+</style></head>
+
+<body>
+<p>在DOM编程中，要删除某个元素往往需要借助于它的父元素的removeChild()方法，而jQuery提供了remove()方法，可以直接将元素删除，例如下面的语句将删掉页面中的所有&lt;p&gt;标记：<br />
+  $(&quot;p&quot;).remove();<br />
+  reomove()也可以接受参数，例：用romove()删除元素<br />
+  $(function(){<br />
+  $('&quot;p&quot;).remove(&quot;:contains('大')&quot;)；              //将含有“大”字的&lt;p&gt;元素删除<br />
+  });<br />
+  虽然remove()方法可以接受参数，但通常还是建议在选择器阶段就将要删除的对象确定，然后用remove()删除，如：<br />
+  $('&quot;p:contains('大')&quot;).remove();<br />
+  jQuery提供了empty()方法来直接删除元素的所有子元素，如：<br />
+  $(function(){<br />
+  $(&quot;p&quot;).empty();      //删除所有子元素</p>
+});
+</body>
+</html>

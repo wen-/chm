@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>css3倒影</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>css3倒影</P>
+<H2 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 18px/22px 'Microsoft Yahei', arial; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">css3 
+倒影</H2>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="http://m1.img.libdd.com/farm2/172/5DBF139516741BF9B4353638F7A5C6AC_1_1.GIF" 
+width=1 height=1></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="http://m1.img.libdd.com/farm2/172/5DBF139516741BF9B4353638F7A5C6AC_1_1.GIF" 
+width=1 height=1></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>现在看到不少网站都用上了html5、css3的新特性，用这些新特性给页面确实丰富了不少效果，圆角投影渐变啥的对工作的效率也超级给力，像过去都得用图片来实现的效果现在简单的代码即可轻松实现，让复杂的工作一下变的快捷了许多，并且有些看上去的效果犹如是flash动画做出来的般，看了都让人激发下好奇心马上看看源代码学习下这是怎么实现的，下面也就聊聊用CSS3做的倒影效果。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">先上两张截图：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"></SPAN><SPAN 
+class=Apple-converted-space><IMG border=0 hspace=0 alt="" 
+src="images/F1A6E5989B1D0BA8CC00E439DF993C83_164_138.png">&nbsp;</SPAN><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/8BFE4F925DD408981D9C67CDBFF5F65B_239_149.PNG" width=239 
+height=149></SPAN></P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">不晓得大家看出这两个图有啥共同点，没错，这聊的是倒影自然就是标题都有用倒影的效果。（貌似设计师都爱这效果，哪里都爱加这个）。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">用常规方法自然是一块图片没说的，现在有CSS3可以看看有没有现成的属性可以挖掘的。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">box-reflect 
+就是它了。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/AD12A07B7F90836CCC00167E0AAD040F_196_99.PNG" 
+width=196 height=99></SPAN></P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">来看看这张蜂鸟的图片，你能分辨哪个是倒影麽？哈哈，这完全就是像照镜子一样</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">来看看它的写法box-reflect: 
+left，一个倒影就出来了，当然这样简单的效果离我们想要的效果还差许多，现实的例子没可能就个很直板的倒过来，就是做出来设计师那边也会好好的批一顿，那我们再好好优化它。下面的例子都是基于webkit核心的浏览器来测试效果。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">代码如下：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">-webkit-box-reflect: 
+left 1px -webkit-gradient(linear, 0% 100%,100% 100%, from(transparent), 
+to(white));</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">第一个属性 
+left 是倒影的方向，共有四个属性：above, below, left, right （上下左右）<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">第二个单位值是元素的倒影离元素的距离，可以为负值，不过其负值的效果倒影是在元素的下面层级的，不会覆盖本元素。<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">后面这个-webkit-gradient 
+熟悉css3渐变属性的同学一定很了解它了，这里简单介绍下<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">linear 
+是线性渐变，后面的两组数字是颜色渐变的方向，这和我们写背景定位的值很像，它是指由哪往哪开始做渐变效果，数字也可以用英文方位的单纯如：0% 100%,100% 
+100%, = left bottom, right bottom,后面的 from (…) &nbsp;to (…) 
+&nbsp;&nbsp;比较好理解，既刚才定了方向上颜色的取值。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">来看看效果：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">Safari 
+5.0：<SPAN class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/D96DD66420C1960F1073709599822E1F_195_98.PNG" 
+width=195 height=98></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN>Chorme 
+12.0：<SPAN class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/A7B687EBC26CEDAC5419503C200FC004_223_109.PNG" 
+width=223 height=109></SPAN></P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">好像Chorme 
+12.0对 ‘transparent’ 透明值 的表现不同了，记得之前的Chorme的版本是和Safari 
+5.0是一样的。先不理版本的问题，至少现在我们有了个倒影的思路，把倒影改个方向，渐变也按照倒影的逻辑改个渐变方向，来看看效果：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/F6604BE06EEA8F0B482346C137182D85_103_179.PNG" 
+width=103 height=179></SPAN></P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">代码：-webkit-box-reflect: 
+below -16px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), 
+to(white));</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">below：倒影方向在元素的下面，-16px 
+的单位值是把倒影和元素的距离近些，<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">渐变方向上的值：0 
+0, 0 100%,= left top, left bottom, 既方向由上往下，</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">倒影渐变还不是很满意所以得再稍微优化下：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/4CAFD5C9C611A76F3E1D461187F65F0C_96_159.PNG" 
+width=96 height=159></SPAN></P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">这和预期的就差不多了，来看看刚才优化的代码：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">-webkit-box-reflect: 
+below -16px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), 
+color-stop(.5, transparent), to(white));</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">加了color-stop(.5, 
+transparent) ，调整了下渐变的终止位置，效果明显好多了。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">除了图片可以做倒影，文字也是可以同样应用这个属性的，来看看文章开头的那截图：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/8BFE4F925DD408981D9C67CDBFF5F65B_239_149.PNG" 
+width=239 height=149></SPAN></P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">这标题用的效果用刚才介绍的方法可以很快的实现这效果。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><A 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; TEXT-DECORATION: none; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+href="http://qp.qq.com/cgi-bin/cgi_imgproxy?url=http%3A%2F%2Fcued.xunlei.com%2Fwp-content%2Fuploads%2F2011%2F06%2F2011-06-15_171745.png&size=0" 
+target=_blank><SPAN class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/33C6CFE6C1742288289CA9FBE58AA23E_139_61.PNG" 
+width=139 height=61></SPAN></A><BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">来看看代码：（代码省略了字体等别的样式）<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">&nbsp;-webkit-box-reflect: 
+below 6px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), 
+color-stop(.5, transparent), to(rgba(3,3,3,.2)));</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">这倒影倒是有模有样的，就是字体还得加个渐变，来继续优化：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+class=text-img-holder 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 600px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px" 
+src="images/025B6D3A8C90C7934AC77A4201C15AB8_135_59.PNG" 
+width=135 height=59></SPAN><BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">这个效果基本是可以接受的，不过字体大小的问题和ps里的字还是有些区别，把字体改小些露出锯齿型还真丑，先不考虑这个，先看看代码：</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">-webkit-box-reflect: 
+below 6px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), 
+color-stop(.5, transparent), to(rgba(3,3,3,.2)));<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">&nbsp;background: 
+-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(170,170,170, .9)), 
+to(rgba(20,22,21, 1)));<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">&nbsp;-webkit-background-clip: 
+text;<BR 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px">&nbsp;-webkit-text-fill-color: 
+transparent;</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">这效果基本和设计稿一样了，代码一大堆，先别晕，对文字渐变的原理和倒影倒影差不多，有兴趣的同学可以狗狗或百一下。</P>
+<P 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; WHITE-SPACE: normal; BORDER-BOTTOM: medium none; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(159,159,159); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/22px helvetica, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 5px 0px; BORDER-LEFT: medium none; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">当页面上的标题都用这倒影效果时就是件很省心的事情了，无需再切成图片又合并又定位了，给网站性能的提升、后期维护的便捷带来有大的帮助。不过对于大多数低版本IE浏览器的用户而言这些都是浮云般的效果，不过随着浏览器的发展，大家都按共同标准来整合自家产品的话，浮云终会有散开的一天。</P></BODY></HTML>

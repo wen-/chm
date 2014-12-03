@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>检测对象的原型</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<BODY>
+<P>检测对象的原型</P>
+<P>新方法：</P>
+<P>Object.getPrototypeOf();</P>
+<P>要检测一个对象是否为另一个对象的原型：</P>
+<P><STRONG>p.isPrototypeOf(o);</STRONG></P>
+<P>var p={x:1},</P>
+<P>var o=Object.create(p);</P>
+<P>p.isPrototypeOf(o);//返回true</P>
+<P>Object.prototype.isPrototypeOf(o);//返回true</P>
+<P>旧方法：</P>
+<P>o.constructor.prototype()</P>
+<P>&nbsp;</P></BODY></HTML>

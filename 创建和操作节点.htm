@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>创建和操作节点</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.19046">
+<STYLE>*{font-size:12px;line-height:18px;font-family:arial;}</STYLE>
+</HEAD>
+<BODY>
+<P>1、创建节点<BR>
+  　　创建文档碎片：createDocumentFragment()<BR>
+  　　创建文本节点：createTextNode(text)<BR>
+  　　创建标签名为tagName的元素节点：createElement(tagName) 
+</P>
+<P>2、创建一个含有文本的段落节点，并插入到&lt;body/&gt;中：<BR>var oP = 
+document.createElement("p");<BR>var oText = document.createTextNode("Hello 
+World!");<BR>oP.appendChild(oText);<BR>document.body.appendChild(oP);</P>
+<P>3、删除节点、替换节点、插入节点<BR>
+　　删除节点：removeChild()<br>
+var 
+oP = 
+documen.body.getElementsByName("p")[0];<BR>oP.parentNode.removeChild(oP);<BR>
+　　替换节点：replaceChild(newNode, 
+oldNode)<br>
+oldNode.parentNode.replaceChild(newNode, 
+oldNode);<BR>
+　　插入到子节点的最后：appendChild(oNode)<BR>
+　　将一个子节点插入到特定的子节点前：insertBefore(oNew,oOld)<BR>oOld.parentNode.inserBefore(oNew,oOld);</P>
+<P>4、插入文档碎片<BR>
+  　　向页面插入多个元素，会多次刷新页面。可先将元素插入一个文档碎片，再将文档碎片插入到页面。<BR>var 
+arrText = ["1","2","3","4","5","6","7","8","9","10"];<BR>var oFragment = 
+document.createDocumentFragment();<BR>for (var i=0; i&lt;arrText.length; i++) 
+{<BR>&nbsp;&nbsp;&nbsp; var op = 
+document.createElement("p");<BR>&nbsp;&nbsp;&nbsp; var oText = 
+document.createTextNode(arrText[i]);<BR>&nbsp;&nbsp;&nbsp; 
+oP.appendChild(oText);<BR>&nbsp;&nbsp;&nbsp; 
+oFragment.appendChild(op);<BR>}<BR>document.body.appendChild(oFragment);</P></BODY></HTML>

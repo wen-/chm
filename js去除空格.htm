@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js去除空格</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.16428">
+<STYLE>*{font-size:12px}</STYLE>
+</HEAD>
+<BODY>
+<P>//去除前后空格(vv为原文件值)<BR>var aa=vv.replace(/(^\s*)|(\s*$)/g, "");</P>
+<P><BR>//去除所有空格<BR>var aa=vv.replace(/\s/g,"")</P>
+<P><BR>//去左空格; <BR>var aa=vv.replace(/(^\s*)/g, "");</P>
+<P><BR>//去右空格; <BR>var aa=vv.replace(/(\s*$)/g, "");<BR></P>
+<P>//去除首尾空格；</P>
+<P>if (!String.prototype.trim) {<BR>&nbsp; String.prototype.trim = function() 
+{<BR>&nbsp;&nbsp;&nbsp; return this.replace(/^\s+/, "").replace(/\s+$/, 
+"");<BR>&nbsp; }<BR>}<BR><BR>var str = " \t\n test string ".trim();<BR>alert(str 
+== "test string"); // alerts "true"</P></BODY>
+</HTML>

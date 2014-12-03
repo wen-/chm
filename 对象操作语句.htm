@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>对象操作语句</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.18702">
+<STYLE>*{font-size:12px;line-height:20px}</STYLE>
+</HEAD>
+<BODY>
+<P><STRONG><FONT size=5><FONT size=2>有关对象操作的语句</FONT></FONT></STRONG></P>
+<P>在JavaScript中用于对象操作的语句、关键字及运算符如下：</P>
+<P><BR><STRONG>1. for...in 语句</STRONG><BR>格式如下：<BR>　　for(变量名 in 
+已知对象名)<BR>说明：<BR>　　该语句对已知对象的所有属性进行循环操作，它将一个已知对象的所有属性依次循环赋值给一个变量，而不是使用计数器来实现循环。<BR>　　该语句的优点是无需知道对象中属性的个数即可进行操作。<BR>　　例如，下列函数用于显示数组中的内容，是使用计数器来实现循环的，代码如下：<BR>function 
+showData(object) {<BR>for (var X=0; 
+X&lt;30;X++)<BR>document.write(object[i]);}<BR>　　该函数通过数组下标的顺序值来访问每个对象的属性，使用这种方式首先必须知道数组的下标值，否则若超出范围，就会发生错误。而使用for...in语句，根本不需要知道对象属性的个数，示例如下：<BR>function 
+showData(object) {<BR>for(var prop in 
+object)<BR>document.write(object[prop]);}<BR>使用该函数时，在循环体中，for能自动将对象的属性取出来，直到取完最后一个属性为止。<BR>注意，document.write( 
+)是输出函数。<BR></P>
+<P><STRONG>2. with 
+语句</STRONG><BR>　　使用该语句的意义是——在该语句体内，任何对变量的引用都被认为是这个对象的属性，这样可以节省一些代码。<BR>　　with语句的格式如下：<BR>with 
+object{<BR>...<BR>}<BR>　　所有在with语句后的花括号中的语句，都是object对象的作用域。</P>
+<P><BR><STRONG>3. this 
+关键字</STRONG><BR>　　由于对象的引用是多层次、多方位的，往往一个对象的引用中又需要引用另一个对象，而另一个对象有可能又引用了其他对象，这样有可能造成混乱，所以JavaScript提供了一个用于指定当前对象的关键字this来避免这种现象。</P>
+<P><BR><STRONG>4. new 
+运算符<BR></STRONG>　　虽然在JavaScript中对象的功能已经非常强大，但设计人员按照需求来创建自己的对象以满足特定的要求仍然是非常必要的。使用new运算符可以创建一个新对象。创建新对象<BR>的格式如下：<BR>NewObject=new 
+Object(Parameters table);<BR>　　其中：<BR>· NewObject：创建的新对象的名称<BR>· 
+Object：已经存在的对象，或者说“类”，这一般是JavaScript创建好的对象<BR>· Parameters 
+table：参数表<BR>　　其实创建新对象的过程，只是创建内部动态对象的实例。<BR>　　下面的例子创建两个新的日期对象，代码如下：<BR>newDate=new 
+Date()<BR>birthday=new Date (December 
+12,1998)<BR>　　之后就可使newDate，birthday作为一个新的日期对象了。</P>
+<P><STRONG>5&nbsp;解构一个对象<BR></STRONG>　　使用如下代码创建一个对象实例：<BR>var now = new 
+Date();<BR>　　则之后可以使用如下代码来解构这个对象实例：<BR>now = 
+null;<BR>　　对象被解构之后就不再存在。</P></STYLE></BODY></HTML>

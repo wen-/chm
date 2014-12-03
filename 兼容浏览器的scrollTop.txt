@@ -1,0 +1,21 @@
+兼容Safari,Chrome,IE6,IE7,IE8,Firefox2(FF2),Firefox3(FF3)的scrollTop
+
+scrollTop-滚动条高度，滚动条在网页窗口中已滚动的距离，即滚动条距离网页顶端的距离，经常用于保证弹出层在浏览器中显示时的垂直居中。
+
+除了webkit内核的浏览器，一般情况下，使用
+
+document.documentElement.scrollTop
+
+在webkit内核的浏览器如chrome、safari中，方法失效，这时需要用到
+
+window.pageYOffset
+
+document.body.scrollTop
+就是滚动条顶部到网页顶部的这段距离
+window.pageYOffset是NS专用属性，它的含义和IE下的document.body.scrollTop一样
+
+下面是完整的代码示例。
+
+var scrollTop =
+     document.documentElement.scrollTop || window.pageYOffset + "px";
+另外，在iphone中 safria的滚动条偏移量是包含上面的地址栏的，也就是说，在iphone的网页上你从最顶端滑动到地址栏刚刚看不到的位置时
