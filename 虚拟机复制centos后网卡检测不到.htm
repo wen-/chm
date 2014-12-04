@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>虚拟机复制centos后网卡检测不到</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>虚拟机复制centos后网卡检测不到</P>
+<P><SPAN 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">解决方法如下</SPAN><BR 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">修改/etc/udev/rules.d/70-persistent-net.rules</SPAN><BR 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">将eth0这行注释掉或者删除，这里记载的还是克隆系统时的MAC地址，但是新启动的系统MAC已经更改， 
+将NAME="eth1" 改为 “eth0”，ATTR 
+标记的MAC地址，这个是虚拟机为这个虚拟网卡分配的MAC，用上面的MAC替换掉&nbsp;/etc/sysconfig/network-scripts/ifcfg-eth0中的MAC</SPAN><BR 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">然后重启即可</SPAN><BR 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/21px simsun; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(50,62,50); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">还有一个办法，不用eth0,直接用eth1等，把/etc/sysconfig/network-scripts/ifcfg-eth0复制成/etc/sysconfig/network-scripts/ifcfg-eth1</SPAN></P></BODY></HTML>

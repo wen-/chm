@@ -2354,7 +2354,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="node.js">
 <PARAM NAME="Local" VALUE="nodejs.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2408,7 +2407,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mongodb">
 <PARAM NAME="Local" VALUE="mongodb.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2867,6 +2865,12 @@
 <PARAM NAME="Name" VALUE="rpm包安装">
 <PARAM NAME="Local" VALUE="rpm包安装.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="虚拟机复制centos后网卡检测不到">
+<PARAM NAME="Local" VALUE="虚拟机复制centos后网卡检测不到.htm">
 </OBJECT>
 </UL>
 </UL></body></html>
