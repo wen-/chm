@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>首页</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/main.css" />
+<script type="text/javascript" src="js/modernizr.custom-css.js"></script>
+</head>
+<body>
+<div class="manage_invest">
+    <div class="loan_t">
+        <ul>
+            <li class="current">贷款基本信息</li>
+            <li>还款明细查询</li>
+            <li>计划还款查询</li>
+        </ul>
+    </div>
+    <div class="loan_details">
+        <div class="loan_data loan_basic">
+            <table border="0">
+                <tr>
+                    <th>合同号：</th>
+                    <td>1023546879</td>
+                    <th>借据号：</th>
+                    <td>10235468654</td>
+                </tr>
+                <tr>
+                    <th>贷款支行：</th>
+                    <td>134001-杭州分行营业部</td>
+                    <th>贷款种类：</th>
+                    <td>个人信用贷款</td>
+                </tr>
+                <tr>
+                    <th>贷款期限：</th>
+                    <td>3年0月0天</td>
+                    <th>放款日期：</th>
+                    <td>2014-11-12</td>
+                </tr>
+                <tr>
+                    <th>到期日期：</th>
+                    <td>2015-11-12</td>
+                    <th>贷款金额：</th>
+                    <td><strong class="red">900,000.00</strong></td>
+                </tr>
+                <tr>
+                    <th>贷款余额：</th>
+                    <td><strong class="red">900,000.00</strong></td>
+                    <th>还款方式：</th>
+                    <td>等额本息</td>
+                </tr>
+                <tr>
+                    <th>还本周期：</th>
+                    <td>按月</td>
+                    <th>还息周期：</th>
+                    <td>按月</td>
+                </tr>
+                <tr>
+                    <th>还款账号：</th>
+                    <td>4561****3125</td>
+                    <th>执行利率(%)：</th>
+                    <td><strong class="red">以核准通知书为准</strong></td>
+                </tr>
+                <tr>
+                    <th>还款日：</th>
+                    <td>09</td>
+                    <th>贷款状态：</th>
+                    <td>结清</td>
+                </tr>
+            </table>
+            <div class="back_btn">
+                <a href="#">返回</a>
+            </div>
+        </div>
+        <div class="loan_data loan_refund">
+            <div class="invest_search">
+                <div class="search_date">
+                    <span class="red">*</span>查询时间：
+                    <input type="text" class="txt" id="formTime"> - <input type="text"  class="txt" id="toTime">
+                </div>
+                <button id="findBtn" type="button">查询</button>
+            </div>
+            <div class="manageInvest_info">
+                <div class="manageInvest_t investInfo_t">以下是您的还款明细记录信息</div>
+                <div class="manageInvest_m investInfo_m">
+                    <table border="0">
+                        <thead>
+                            <tr>
+                                <th>还款日期<em title="点击此处进行排序"></em></th>
+                                <th>本金<em title="点击此处进行排序"></em></th>
+                                <th>利息<em title="点击此处进行排序"></em></th>
+                                <th>罚息<em title="点击此处进行排序"></em></th>
+                                <th>复利<em title="点击此处进行排序"></em></th>
+                                <th>账户管理费<em title="点击此处进行排序"></em></th>
+                                <th>总额<em title="点击此处进行排序"></em></th>
+                                <th>期次</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2014-11-12</td>
+                                <td>100,000.00</td>
+                                <td>1,123.00</td>
+                                <td>0.00</td>
+                                <td>0.00</td>
+                                <td>0.00</td>
+                                <td>101,123.00</td>
+                                <td>0</td>
+                                <td>
+                                    <a>贷款正常还款，还款金额：101,123.00元，还款方式：2-当期还款</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="9">
+                                    <a href="#">打印本页</a>
+                                    <a href="#">TXT下载</a>
+                                    <a href="#">CVS下载</a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="back_btn">
+                        <a href="#">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loan_data loan_planRefund">
+            <div class="invest_search">
+                <div class="search_date">
+                    <span class="red">*</span>查询时间：
+                    <input type="text" class="txt" id="formTime1"> - <input type="text"  class="txt" id="toTime1">
+                </div>
+                <button id="findBtn1" type="button">查询</button>
+            </div>
+            <div class="manageInvest_info">
+                <div class="manageInvest_t investInfo_t">以下是您的还款计划记录信息</div>
+                <div class="manageInvest_m investInfo_m">
+                    <table border="0">
+                        <thead>
+                            <tr>
+                                <th>还款日期<em title="点击此处进行排序"></em></th>
+                                <th>本金<em title="点击此处进行排序"></em></th>
+                                <th>利息<em title="点击此处进行排序"></em></th>
+                                <th>账户管理费<em title="点击此处进行排序"></em></th>
+                                <th>总额<em title="点击此处进行排序"></em></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2014-12-12</td>
+                                <td>2,000.00</td>
+                                <td>90.00</td>
+                                <td>40.00</td>
+                                <td>200.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <a href="#">打印本页</a>
+                                    <a href="#">TXT下载</a>
+                                    <a href="#">CVS下载</a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="back_btn">
+                        <a href="#">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
