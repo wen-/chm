@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>首页</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/main.css" />
+<script type="text/javascript" src="js/modernizr.custom-css.js"></script>
+</head>
+<body>
+<div class="manage_invest">
+	<!--
+    <div class="invest_search">
+        <div class="search_date">
+            <span class="red">*</span>状态：
+            <select>
+                <option>--请选择--</option>
+                <option>逾期</option>
+                <option>正常</option>
+                <option>结清</option>
+            </select>
+        </div>
+        <button id="findBtn" type="button">查询</button>
+    </div>
+    -->
+    <div class="manageInvest_info">
+        <div class="manageInvest_t investInfo_t">以下是您的贷款记录信息</div>
+        <div class="manageInvest_m investInfo_m">
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>种类<em title="点击此处进行排序"></em></th>
+                        <th>贷款金额<em title="点击此处进行排序"></em></th>
+                        <th>起息日<em title="点击此处进行排序"></em></th>
+                        <th>到期日<em title="点击此处进行排序"></em></th>
+                        <th>还款方式<em title="点击此处进行排序"></em></th>
+                        <th>执行利率<em title="点击此处进行排序"></em></th>
+                        <th>贷款余额<em title="点击此处进行排序"></em></th>
+                        <th>状态</th>
+                        <th>详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>个人信用贷款</td>
+                        <td>900,000.00</td>
+                        <td>2014-11-12</td>
+                        <td>2015-11-12</td>
+                        <td>等额本息</td>
+                        <td>以核准通知书为准</td>
+                        <td>900,000.00</td>
+                        <td>正常</td>
+                        <td>
+                            <a href="#">变更还款账户</a>
+                            <a href="#">短信提醒变更</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>个人住房按揭贷款</td>
+                        <td>900,000.00</td>
+                        <td>2014-11-12</td>
+                        <td>2015-11-12</td>
+                        <td>一次还本付息</td>
+                        <td>6.580000</td>
+                        <td>900,000.00</td>
+                        <td>正常</td>
+                        <td>
+                            <a href="#">变更还款账户</a>
+                            <a href="#">短信提醒变更</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="popup_box pact_box">
+    <div class="pactBox_t">
+        <h1>还款账户变更</h1>
+        <span class="close_box"></span>
+    </div>
+    <div class="pactBox_m">
+        <table>
+            <tr>
+                <th>合同号：</th>
+                <td>651354687</td>
+                <th>借据号：</th>
+                <td>321546546879</td>
+            </tr>
+            <tr>
+                <th>贷款支行：</th>
+                <td>宁波分行营业部</td>
+                <th>贷款种类：</th>
+                <td>个人信用贷款</td>
+            </tr>
+            <tr>
+                <th>贷款期限：</th>
+                <td>2年0月0天</td>
+                <th>放款日期：</th>
+                <td>2014-11-12</td>
+            </tr>
+            <tr>
+                <th>到期日期：</th>
+                <td>2015-11-12</td>
+                <th>贷款金额：</th>
+                <td>10,000.00</td>
+            </tr>
+            <tr>
+                <th>贷款余额：</th>
+                <td>1,000.00</td>
+                <th>还款方式：</th>
+                <td>等额本息</td>
+            </tr>
+            <tr>
+                <th>还本周期：</th>
+                <td>按月</td>
+                <th>还息周期：</th>
+                <td>按月</td>
+            </tr>
+            <tr>
+                <th>还款日：</th>
+                <td>15</td>
+                <th>执行利率(%)：</th>
+                <td>以核准通知书为准</td>
+            </tr>
+            <tr>
+                <th>还款账号：</th>
+                <td>2341****9342</td>
+                <th>贷款状态：</th>
+                <td>正常</td>
+            </tr>
+            <tr>
+                <th><span class="red">*</span>变更后还款账户：</th>
+                <td colspan="3">
+                	<select>
+                    	<option>请选择</option>  
+                    	<option>5342****9342</option>  
+                    	<option>4353****4321</option>                    
+                    </select>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="recall_pt recall_success">
+            <div class="recall_pic">
+                <img src="" alt="" />
+            </div>
+            <div class="recall_txt">
+                <p>尊敬的客户，您的还款账户已变更成功！</p>
+            </div>
+        </div>
+    </div>
+    <div class="pactBox_b">
+        <button type="button">确认</button>
+        <button type="button">关闭</button>
+    </div>
+    <div class="invest_txt">
+        <p>说明：</p>
+        <ul>
+            <li>1、还款账号变更后实时生效。</li>
+        </ul>
+    </div>
+</div>
+
+<div class="popup_box pact_box">
+    <div class="pactBox_t">
+        <h1>还款短信提醒变更</h1>
+        <span class="close_box"></span>
+    </div>
+    <div class="pactBox_m">
+        <table>
+            <tr>
+                <th>合同号：</th>
+                <td>651354687</td>
+                <th>借据号：</th>
+                <td>321546546879</td>
+            </tr>
+            <tr>
+                <th>贷款支行：</th>
+                <td>宁波分行营业部</td>
+                <th>贷款种类：</th>
+                <td>个人信用贷款</td>
+            </tr>
+            <tr>
+                <th>贷款期限：</th>
+                <td>2年0月0天</td>
+                <th>放款日期：</th>
+                <td>2014-11-12</td>
+            </tr>
+            <tr>
+                <th>到期日期：</th>
+                <td>2015-11-12</td>
+                <th>贷款金额：</th>
+                <td>10,000.00</td>
+            </tr>
+            <tr>
+                <th>贷款余额：</th>
+                <td>1,000.00</td>
+                <th>还款方式：</th>
+                <td>等额本息</td>
+            </tr>
+            <tr>
+                <th>还本周期：</th>
+                <td>按月</td>
+                <th>还息周期：</th>
+                <td>按月</td>
+            </tr>
+            <tr>
+                <th>还款日：</th>
+                <td>15</td>
+                <th>执行利率(%)：</th>
+                <td>以核准通知书为准</td>
+            </tr>
+            <tr>
+                <th>还款账号：</th>
+                <td>2341****9342</td>
+                <th>贷款状态：</th>
+                <td>正常</td>
+            </tr>
+            <tr>
+                <th><span class="red">*</span>短信提醒状态：</th>
+                <td colspan="3">
+                	<label><input type="radio" name="message" />开启</label>
+                	<label><input type="radio" name="message" />关闭</label>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="recall_pt recall_success">
+            <div class="recall_pic">
+                <img src="" alt="" />
+            </div>
+            <div class="recall_txt">
+                <p>尊敬的客户，您的还款短信提醒已变更成功！</p>
+            </div>
+        </div>
+    </div>
+    <div class="pactBox_b">
+        <button type="button">确认</button>
+        <button type="button">关闭</button>
+    </div>
+    
+    <div class="invest_txt">
+        <p>说明：</p>
+        <ul>
+            <li>1、还款短信提醒变更后实时生效。</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
