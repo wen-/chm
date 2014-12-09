@@ -1,0 +1,507 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>centos系统下php服务器安装部署</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<BODY>
+<P>centos系统下php服务器安装部署</P>
+<P style="TEXT-ALIGN: center; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=center><SPAN style="FONT-SIZE: 22pt" lang=EN-US><FONT 
+face=Calibri>PHP</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 22pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">服务器安装部署</SPAN><SPAN 
+style="FONT-SIZE: 22pt" lang=EN-US><?xml:namespace prefix = o ns = 
+"urn:schemas-microsoft-com:office:office" /><o:p></o:p></SPAN></P>
+<P style="TEXT-ALIGN: center; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=center><SPAN style="FONT-SIZE: 22pt" lang=EN-US><o:p><FONT 
+face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; TEXT-INDENT: -36pt; MARGIN: 0cm 0cm 0pt 36pt; mso-char-indent-count: 0; mso-list: l3 level1 lfo1" 
+class=MsoListParagraph align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 14pt; mso-bidi-font-family: 宋体" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=Calibri>一、</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN></B><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 14pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">系统环境配置</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN style="FONT-SIZE: 14pt" 
+lang=EN-US><o:p></o:p></SPAN></B></P>
+<P 
+style="TEXT-ALIGN: left; TEXT-INDENT: -20.7pt; MARGIN: 0cm 0cm 0pt 2cm; mso-char-indent-count: 0; mso-list: l2 level1 lfo2" 
+class=MsoListParagraph align=left><SPAN 
+style="mso-bidi-font-size: 10.5pt; mso-fareast-font-family: Calibri; mso-bidi-font-family: Calibri" 
+lang=EN-US><SPAN style="mso-list: Ignore"><FONT face=Calibri>1．</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-size: 10.5pt">服务器操作系统</SPAN><SPAN 
+style="mso-bidi-font-size: 10.5pt" lang=EN-US><FONT 
+face=Calibri>centos6</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-size: 10.5pt">（</SPAN><SPAN 
+style="mso-bidi-font-size: 10.5pt" lang=EN-US><FONT face=Calibri>6.0 - 
+6.6</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-size: 10.5pt">）</SPAN><SPAN 
+style="mso-bidi-font-size: 10.5pt" lang=EN-US><o:p></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; TEXT-INDENT: -20.7pt; MARGIN: 0cm 0cm 0pt 2cm; mso-char-indent-count: 0; mso-list: l2 level1 lfo2" 
+class=MsoListParagraph align=left><SPAN 
+style="mso-bidi-font-size: 10.5pt; mso-fareast-font-family: Calibri; mso-bidi-font-family: Calibri" 
+lang=EN-US><SPAN style="mso-list: Ignore"><FONT face=Calibri>2．</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN><SPAN style="mso-bidi-font-size: 10.5pt" lang=EN-US><FONT 
+face=Calibri>apache</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-size: 10.5pt">版本</SPAN><SPAN 
+style="mso-bidi-font-size: 10.5pt" lang=EN-US><FONT 
+face=Calibri>2.2<o:p></o:p></FONT></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; TEXT-INDENT: -20.7pt; MARGIN: 0cm 0cm 0pt 2cm; mso-char-indent-count: 0; mso-list: l2 level1 lfo2" 
+class=MsoListParagraph align=left><SPAN 
+style="mso-bidi-font-size: 10.5pt; mso-fareast-font-family: Calibri; mso-bidi-font-family: Calibri" 
+lang=EN-US><SPAN style="mso-list: Ignore"><FONT face=Calibri>3．</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN><SPAN style="mso-bidi-font-size: 10.5pt" lang=EN-US><FONT 
+face=Calibri>php</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-size: 10.5pt">版本</SPAN><SPAN 
+style="mso-bidi-font-size: 10.5pt" lang=EN-US><FONT 
+face=Calibri>5.3.3<o:p></o:p></FONT></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; TEXT-INDENT: -36pt; MARGIN: 0cm 0cm 0pt 36pt; mso-char-indent-count: 0; mso-list: l3 level1 lfo1" 
+class=MsoListParagraph align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 14pt; mso-bidi-font-family: 宋体" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=Calibri>二、</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN></B><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 14pt" lang=EN-US><FONT face=Calibri>Apache</FONT></SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 14pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">安装</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN style="FONT-SIZE: 14pt" 
+lang=EN-US><o:p></o:p></SPAN></B></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-size: 10.5pt">命令行输入</SPAN><SPAN 
+style="mso-bidi-font-size: 10.5pt" lang=EN-US><o:p></o:p></SPAN></P>
+<DIV 
+style="BORDER-BOTTOM: #bbbbbb 1pt dashed; BORDER-LEFT: #bbbbbb 3pt solid; PADDING-BOTTOM: 2pt; PADDING-LEFT: 2pt; PADDING-RIGHT: 2pt; BACKGROUND: white; MARGIN-LEFT: 4.6pt; BORDER-TOP: #bbbbbb 1pt dashed; MARGIN-RIGHT: 4.6pt; BORDER-RIGHT: #bbbbbb 1pt dashed; PADDING-TOP: 2pt; mso-element: para-border-div; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt"><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN class=2Char><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US><SPAN style="mso-spacerun: yes"><STRONG>&nbsp;</STRONG></SPAN></SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-size: 12.0pt" lang=EN-US>[</SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>root@localhost </SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-size: 12.0pt" lang=EN-US>~]</SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US># yum -y install httpd<o:p></o:p></SPAN></PRE></DIV>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>让<SPAN lang=EN-US> Apache </SPAN>随系统启动：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<DIV 
+style="BORDER-BOTTOM: #bbbbbb 1pt dashed; BORDER-LEFT: #bbbbbb 3pt solid; PADDING-BOTTOM: 2pt; PADDING-LEFT: 2pt; PADDING-RIGHT: 2pt; BACKGROUND: white; MARGIN-LEFT: 4.6pt; BORDER-TOP: #bbbbbb 1pt dashed; MARGIN-RIGHT: 4.6pt; BORDER-RIGHT: #bbbbbb 1pt dashed; PADDING-TOP: 2pt; mso-element: para-border-div; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt"><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN class=shsymbol><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>[</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>root@localhost <SPAN class=shsymbol>~]</SPAN># chkconfig <SPAN class=shsymbol>--</SPAN>levels </SPAN><SPAN class=shnumber><SPAN style="FONT-FAMILY: Consolas; COLOR: fuchsia; FONT-SIZE: 8pt" lang=EN-US>235</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US> httpd on<o:p></o:p></SPAN></PRE></DIV>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>配置完毕，启动<SPAN lang=EN-US> Apache</SPAN>：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<DIV 
+style="BORDER-BOTTOM: #bbbbbb 1pt dashed; BORDER-LEFT: #bbbbbb 3pt solid; PADDING-BOTTOM: 2pt; PADDING-LEFT: 2pt; PADDING-RIGHT: 2pt; BACKGROUND: white; MARGIN-LEFT: 4.6pt; BORDER-TOP: #bbbbbb 1pt dashed; MARGIN-RIGHT: 4.6pt; BORDER-RIGHT: #bbbbbb 1pt dashed; PADDING-TOP: 2pt; mso-element: para-border-div; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt"><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN class=shsymbol><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>[</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>root@localhost <SPAN class=shsymbol>~]</SPAN># </SPAN><SPAN class=shregexp><SPAN style="FONT-FAMILY: Consolas; COLOR: fuchsia; FONT-SIZE: 8pt" lang=EN-US>/etc/i</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>nit<SPAN class=shsymbol>.</SPAN><SPAN class=shnormal>d</SPAN><SPAN class=shsymbol>/</SPAN>httpd start<o:p></o:p></SPAN></PRE></DIV>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">此时已经可以访问你的服务器，不出意外的话，能够看到</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=Calibri> </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">“</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri>Apache 2 Test Page powered by 
+CentOS</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">”</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=Calibri> </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">的测试页面。注意，如果其他机器访问这台服务无法显示这个页面，而直接在这台服务器上可以访问的话，一般情况下是</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri> CentOS </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">自带的防火墙禁止了。你只需要进入防火墙，将</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=Calibri> </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">“</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri>WWW</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">”</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=Calibri> </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">对应的</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=Calibri> </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">“</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri>80</FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">”</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=Calibri> </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">端口打开即可。</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">注意：在</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri> CentOS </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">中</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri> Apache </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">的默认根目录是</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri> </FONT><A name=OLE_LINK5></A><A 
+name=OLE_LINK4><SPAN style="mso-bookmark: OLE_LINK5"><FONT 
+face=Calibri>/var/www/html</FONT></SPAN></A></SPAN><SPAN 
+style="mso-bookmark: OLE_LINK5"></SPAN><SPAN 
+style="mso-bookmark: OLE_LINK4"></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">，配置文件</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri> </FONT><A name=OLE_LINK3><FONT 
+face=Calibri>/etc/httpd/conf/httpd.conf</FONT></A></SPAN><SPAN 
+style="mso-bookmark: OLE_LINK3"></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">。其他配置存储在</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri> /etc/httpd/conf.d/ </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">目录。</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p><FONT face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">打开配置文件</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri>/etc/httpd/conf/httpd.conf </FONT></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">找到</SPAN><A 
+name=OLE_LINK6><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri>AllowOverride None</FONT></SPAN></A><SPAN 
+style="mso-bookmark: OLE_LINK6"></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-bidi-font-family: Helvetica">修改为</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=Calibri>AllowOverride All<o:p></o:p></FONT></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><FONT face=Calibri><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-no-proof: yes" 
+lang=EN-US><?xml:namespace prefix = v ns = "urn:schemas-microsoft-com:vml" 
+/><v:shapetype id=_x0000_t75 stroked="f" filled="f" 
+path="m@4@5l@4@11@9@11@9@5xe" o:preferrelative="t" o:spt="75" 
+coordsize="21600,21600"><v:stroke joinstyle="miter"></v:stroke><v:formulas><v:f 
+eqn="if lineDrawn pixelLineWidth 0"></v:f><v:f eqn="sum @0 1 0"></v:f><v:f 
+eqn="sum 0 0 @1"></v:f><v:f eqn="prod @2 1 2"></v:f><v:f 
+eqn="prod @3 21600 pixelWidth"></v:f><v:f 
+eqn="prod @3 21600 pixelHeight"></v:f><v:f eqn="sum @0 0 1"></v:f><v:f 
+eqn="prod @6 1 2"></v:f><v:f eqn="prod @7 21600 pixelWidth"></v:f><v:f 
+eqn="sum @8 21600 0"></v:f><v:f eqn="prod @7 21600 pixelHeight"></v:f><v:f 
+eqn="sum @10 21600 0"></v:f></v:formulas><v:path o:connecttype="rect" 
+gradientshapeok="t" o:extrusionok="f"></v:path><o:lock aspectratio="t" 
+v:ext="edit"></o:lock></v:shapetype><v:shape 
+style="WIDTH: 415.5pt; HEIGHT: 73.5pt; VISIBILITY: visible" id=图片_x0020_10 
+type="#_x0000_t75" o:spid="_x0000_i1025"><v:imagedata o:title="" 
+src="file:///C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\msohtmlclip1\01\clip_image001.png"></v:imagedata></v:shape></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN style="FONT-SIZE: 14pt" lang=EN-US><o:p><FONT 
+face=Calibri>&nbsp;</FONT></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; TEXT-INDENT: -36pt; MARGIN: 0cm 0cm 0pt 36pt; mso-char-indent-count: 0; mso-list: l3 level1 lfo1" 
+class=MsoListParagraph align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 14pt; mso-bidi-font-family: 宋体" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=Calibri>三、</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN></B><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 14pt" lang=EN-US><FONT face=Calibri>PHP</FONT></SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 14pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">安装</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN style="FONT-SIZE: 14pt" 
+lang=EN-US><o:p></o:p></SPAN></B></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>安装<SPAN lang=EN-US>php</SPAN>及相关模块：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<DIV 
+style="BORDER-BOTTOM: #bbbbbb 1pt dashed; BORDER-LEFT: #bbbbbb 3pt solid; PADDING-BOTTOM: 2pt; PADDING-LEFT: 2pt; PADDING-RIGHT: 2pt; BACKGROUND: white; MARGIN-LEFT: 0cm; BORDER-TOP: #bbbbbb 1pt dashed; MARGIN-RIGHT: 4.6pt; BORDER-RIGHT: #bbbbbb 1pt dashed; PADDING-TOP: 2pt; mso-element: para-border-div; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt"><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>[root@localhost <SPAN class=shsymbol>~]</SPAN># yum -y install php php<SPAN class=shsymbol>-</SPAN>gd php<SPAN class=shsymbol>-</SPAN>imap php<SPAN class=shsymbol>-</SPAN>ldap php<SPAN class=shsymbol>-</SPAN>odbc php<SPAN class=shsymbol>-</SPAN>pear php<SPAN class=shsymbol>-</SPAN>xml php<SPAN class=shsymbol>-</SPAN>xmlrpc curl curl-devel<o:p></o:p></SPAN></PRE></DIV>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>重启<SPAN lang=EN-US>apache</SPAN>模块才能生效：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<DIV 
+style="BORDER-BOTTOM: #bbbbbb 1pt dashed; BORDER-LEFT: #bbbbbb 3pt solid; PADDING-BOTTOM: 2pt; PADDING-LEFT: 2pt; PADDING-RIGHT: 2pt; BACKGROUND: white; MARGIN-LEFT: 0cm; BORDER-TOP: #bbbbbb 1pt dashed; MARGIN-RIGHT: 4.6pt; BORDER-RIGHT: #bbbbbb 1pt dashed; PADDING-TOP: 2pt; mso-element: para-border-div; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt"><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN class=shsymbol><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>[</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>root@localhost <SPAN class=shsymbol>~]</SPAN># </SPAN><SPAN class=shregexp><SPAN style="FONT-FAMILY: Consolas; COLOR: fuchsia; FONT-SIZE: 8pt" lang=EN-US>/etc/i</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>nit<SPAN class=shsymbol>.</SPAN><SPAN class=shnormal>d</SPAN><SPAN class=shsymbol>/</SPAN>httpd restart<o:p></o:p></SPAN></PRE></DIV>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><STRONG><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">测试<SPAN 
+lang=EN-US> PHP </SPAN>相关信息</SPAN></STRONG><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>　　这步实际上可以省略，但是为了测试是否安装成功，你可以新建一个 <SPAN lang=EN-US>index_test.php 
+</SPAN>页面进行测试，页面内容如下：<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<DIV 
+style="BORDER-BOTTOM: #bbbbbb 1pt dashed; BORDER-LEFT: #bbbbbb 3pt solid; PADDING-BOTTOM: 2pt; PADDING-LEFT: 2pt; PADDING-RIGHT: 2pt; BACKGROUND: white; MARGIN-LEFT: 4.6pt; BORDER-TOP: #bbbbbb 1pt dashed; MARGIN-RIGHT: 4.6pt; BORDER-RIGHT: #bbbbbb 1pt dashed; PADDING-TOP: 2pt; mso-element: para-border-div; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt"><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN class=shsymbol><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>&lt;?</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>php<o:p></o:p></SPAN></PRE><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN class=shfunction><B><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>phpinfo</SPAN></B></SPAN><SPAN class=shsymbol><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>();</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US><o:p></o:p></SPAN></PRE><PRE style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0cm; LINE-HEIGHT: 12.65pt; MARGIN: 4.6pt 0cm; PADDING-LEFT: 0cm; PADDING-RIGHT: 0cm; BACKGROUND: white; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0cm; mso-border-alt: dashed #BBBBBB .5pt; mso-border-left-alt: solid #BBBBBB 3.0pt; mso-padding-alt: 2.0pt 2.0pt 2.0pt 2.0pt"><SPAN class=shsymbol><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US>?&gt;</SPAN></SPAN><SPAN style="FONT-FAMILY: Consolas; COLOR: black; FONT-SIZE: 8pt" lang=EN-US><o:p></o:p></SPAN></PRE></DIV>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>此时你可以访问你的站点地址，例如 “<SPAN 
+lang=EN-US>http://192.168.1.2/index_test.php</SPAN>”，查看是否能看到相关的<SPAN lang=EN-US> 
+PHP </SPAN>信息。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="TEXT-ALIGN: center; LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt" 
+align=center><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-no-proof: yes" 
+lang=EN-US><v:shape style="WIDTH: 415.5pt; HEIGHT: 312pt; VISIBILITY: visible" 
+id=图片_x0020_7 type="#_x0000_t75" o:spid="_x0000_i1026"><v:imagedata o:title="" 
+src="file:///C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\msohtmlclip1\01\clip_image003.png"></v:imagedata></v:shape></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>看到这样的图，就说明<SPAN lang=EN-US> PHP </SPAN>安装成功了。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p><FONT face=宋体>&nbsp;</FONT></o:p></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US>PHP</SPAN></B><B style="mso-bidi-font-weight: normal"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">服务器中依赖到了两个功能模块，一个是<SPAN 
+lang=EN-US>curl</SPAN>（向<SPAN lang=EN-US>IM</SPAN>服务器请求数据）<SPAN 
+lang=EN-US>,</SPAN>另一个是<SPAN lang=EN-US>mcrypt</SPAN>（对请求参数进行加密）。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></B></FONT></P>
+<P 
+style="LINE-HEIGHT: 12.65pt; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo3"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=宋体>1.</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; </SPAN></SPAN></SPAN><FONT 
+face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US>curl</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">模块在通过上面的安装命令已经安装好了，只需要将<SPAN 
+lang=EN-US>SElinux</SPAN>运行模式改为<SPAN 
+lang=EN-US>permissive,</SPAN>因为在强制模式（默认）下，如果<SPAN 
+lang=EN-US>IM</SPAN>服务器地址带端口号的情况下是请求不到数据的。修改方法如下<SPAN 
+lang=EN-US>(</SPAN>重启生效<SPAN lang=EN-US>)</SPAN>：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>打开<SPAN style="mso-bidi-font-weight: bold" 
+lang=EN-US>/etc/sysconfig/selinux</SPAN><SPAN lang=EN-US> </SPAN>把</FONT><A 
+name=OLE_LINK2></A><A name=OLE_LINK1><SPAN style="mso-bookmark: OLE_LINK2"><SPAN 
+lang=EN-US><FONT face=宋体>SELINUX=enforcing</FONT></SPAN></SPAN></A><FONT 
+face=宋体>改为<SPAN lang=EN-US>SELINUX=permissive 
+<o:p></o:p></SPAN></FONT></SPAN></P>
+<P 
+style="LINE-HEIGHT: 12.65pt; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 18pt; mso-list: l0 level1 lfo3"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=宋体>2.</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; </SPAN></SPAN></SPAN><FONT 
+face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US>mcrypt</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">模块在源上是没有的，所以无法通过<SPAN 
+lang=EN-US>yum</SPAN>来安装。只能通过源码包编译安装。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>第一步：<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>libmcrypt-2.5.8.tar.gz<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>mhash-0.9.9.9.tar.gz<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>mcrypt-2.6.8.tar.gz<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>按顺序安装三个包，<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>①<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>tar -axvf 
+libmcrypt-2.5.8.tar.gz<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>cd libmcrypt-2.5.8<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>./configure &amp;&amp; make &amp;&amp; make 
+install<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>②<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>tar -axvf 
+mhash-0.9.9.9.tar.gz<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>cd mhash-0.9.9.9<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>./configure &amp;&amp; make &amp;&amp; make 
+install<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>③<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>tar -axvf 
+mcrypt-2.6.8.tar.gz<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>cd mcrypt-2.6.8<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>LD_LIBRARY_PATH=/usr/local/lib ./configure &amp;&amp; 
+make &amp;&amp; make install<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p><FONT face=宋体>&nbsp;</FONT></o:p></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>第二步：<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt 18pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>在这里已经把<SPAN lang=EN-US>mcrypt.so</SPAN>模块生成好了，只需要执行两步操作：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P 
+style="LINE-HEIGHT: 12.65pt; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 36pt; mso-list: l1 level1 lfo4"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=宋体>①</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>复制<SPAN lang=EN-US>mcrypt.so</SPAN>到 <SPAN 
+lang=EN-US>/usr/lib64/php/modules </SPAN>文件夹下。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P 
+style="LINE-HEIGHT: 12.65pt; TEXT-INDENT: -18pt; MARGIN: 0cm 0cm 0pt 36pt; mso-list: l1 level1 lfo4"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=宋体>②</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; </SPAN></SPAN></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica"><FONT 
+face=宋体>复制<SPAN lang=EN-US>mcrypt.ini</SPAN>到 <SPAN lang=EN-US>/etc/php.d 
+</SPAN>文件夹下。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><o:p><FONT face=宋体>&nbsp;</FONT></o:p></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; TEXT-INDENT: -36pt; MARGIN: 0cm 0cm 0pt 36pt; mso-char-indent-count: 0; mso-list: l3 level1 lfo1" 
+class=MsoListParagraph align=left><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 14pt; mso-bidi-font-family: 宋体" lang=EN-US><SPAN 
+style="mso-list: Ignore"><FONT face=Calibri>四、</FONT><SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN></B><B style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 14pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri">文件部署</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN style="FONT-SIZE: 14pt" 
+lang=EN-US><o:p></o:p></SPAN></B></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt">将管理后台站点文件解压上传到 
+<SPAN lang=EN-US>/var/www/html </SPAN>，<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt">修改文件权限：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt" 
+lang=EN-US>cd /var/www/html<o:p></o:p></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt" 
+lang=EN-US>chmod 777 APP<SPAN style="mso-spacerun: yes">&nbsp; 
+</SPAN>//</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt">在这个文件夹下会生成<SPAN 
+lang=EN-US>runtime<o:p></o:p></SPAN></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt" 
+lang=EN-US>cd /Public<o:p></o:p></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt" 
+lang=EN-US>chmod 777 Uploads<SPAN style="mso-spacerun: yes">&nbsp;&nbsp; 
+</SPAN>//</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt">这个文件夹是上传的图片及文件<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt" 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt">重启<SPAN 
+lang=EN-US>apache</SPAN>。<SPAN lang=EN-US><o:p></o:p></SPAN></SPAN></P>
+<P style="TEXT-ALIGN: left; MARGIN: 0cm 0cm 0pt" class=MsoNormal 
+align=left><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica; mso-font-kerning: 0pt" 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P style="MARGIN: 0cm 0cm 0pt" class=MsoNormal><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-FAMILY: 宋体; FONT-SIZE: 14pt; mso-ascii-font-family: Calibri; mso-hansi-font-family: Calibri; mso-font-kerning: 0pt">站点文件简要说明</SPAN></B><B 
+style="mso-bidi-font-weight: normal"><SPAN 
+style="FONT-SIZE: 14pt; mso-font-kerning: 0pt" 
+lang=EN-US><o:p></o:p></SPAN></B></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>APP/Class<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>PHPExcel.class.php<SPAN style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">解释<SPAN 
+lang=EN-US>xls\xlsx<o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>PDES.class.php<SPAN 
+style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">加解密<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>Wimage.class.php<SPAN 
+style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">验证码<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>APP/Conf<o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>address.php<SPAN 
+style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>IM</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">服务器数据请求地址<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>config.php<SPAN 
+style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>thinkphp</SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">常用配置<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>verify.php<SPAN 
+style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">验证码配置<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><FONT face=宋体>APP/data<SPAN 
+style="mso-tab-count: 4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN><o:p></o:p></FONT></SPAN></P>
+<P style="LINE-HEIGHT: 12.65pt; MARGIN: 0cm 0cm 0pt"><FONT face=宋体><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica" 
+lang=EN-US><SPAN style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>Simhei.ttf<SPAN 
+style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="COLOR: black; FONT-SIZE: 8pt; mso-bidi-font-family: Helvetica">验证码字体<SPAN 
+lang=EN-US><o:p></o:p></SPAN></SPAN></FONT></P>
+<P>&nbsp;</P></BODY></HTML>
