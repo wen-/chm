@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>video属性</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
+<BODY>
+<P>video属性</P>
+<P>HTML5的Video标签的属性,方法和事件汇总</P>
+<P>时间:2013-07-24</P>
+<P>HTML5的Video标签的属性,方法和事件汇总&nbsp;</P>
+<P>&nbsp;<BR>&lt;video&gt;标签属性：<BR>src：视频的URL<BR>poster：视频封面，没有播放时显示的图片<BR>preload：预加载<BR>autoplay：自动播放<BR>loop：循环播放<BR>controls：浏览器自带的控制条<BR>width：视频宽度<BR>height：视频高度<BR>&nbsp;<BR>HTML5的audio标签的属性,方法和事件汇总<BR>&lt;audio&gt;标签属性：<BR>src：音乐的URL<BR>preload：预加载<BR>autoplay：自动播放<BR>loop：循环播放<BR>controls：浏览器自带的控制条<BR>&nbsp;<BR>Html代码 
+&nbsp;<BR>1.&lt;audio id="media" src="<A 
+href="http://www.sundxs.com/test.mp3">http://www.sundxs.com/test.mp3</A>" 
+controls&gt;&lt;/audio&gt; &nbsp;<BR>&nbsp;<BR>Html代码 &nbsp;<BR>1.&lt;video 
+id="media" src="<A 
+href="http://www.sundxs.com/test.mp4">http://www.sundxs.com/test.mp4</A>" 
+controls width="400px" heigt="400px"&gt;&lt;/video&gt; 
+&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>获取HTMLVideoElement和HTMLAudioElement对象<BR>Js代码 
+&nbsp;<BR>1. &nbsp; //audio可以直接通过new创建对象 &nbsp;<BR>2. &nbsp; Media = new 
+Audio("<A href="http://www.abc.com/test.mp3">http://www.abc.com/test.mp3</A>"); 
+&nbsp;<BR>3. &nbsp; //audio和video都可以通过JS获取对象,JS通过id获取video和audio的对象 &nbsp;<BR>4. 
+&nbsp; Media = document.getElementById("media"); 
+&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>Media方法和属性：<BR>HTMLVideoElement 和HTMLAudioElement 
+均继承自HTMLMediaElement<BR>&nbsp;Js代码 &nbsp;<BR>1. &nbsp; //错误状态 &nbsp;<BR>2. 
+&nbsp; &nbsp; &nbsp;Media.error; //null:正常 &nbsp;<BR>3. &nbsp; &nbsp; 
+&nbsp;Media.error.code; //1.用户终止 2.网络错误 3.解码错误 4.URL无效 &nbsp;<BR>4. &nbsp; 
+&nbsp;&nbsp;<BR>5. &nbsp; //网络状态 &nbsp;<BR>6. &nbsp; &nbsp; 
+&nbsp;Media.currentSrc; //返回当前资源的URL &nbsp;<BR>7. &nbsp; &nbsp; &nbsp;Media.src 
+= value; //返回或设置当前资源的URL &nbsp;<BR>8. &nbsp; &nbsp; 
+&nbsp;Media.canPlayType(type); //是否能播放某种格式的资源 &nbsp;<BR>9. &nbsp; &nbsp; 
+&nbsp;Media.networkState; //0.此元素未初始化 &nbsp;1.正常但没有使用网络 &nbsp;2.正在下载数据 
+&nbsp;3.没有找到资源 &nbsp;<BR>10. &nbsp; &nbsp; Media.load(); //重新加载src指定的资源 
+&nbsp;<BR>11. &nbsp; &nbsp; Media.buffered; //返回已缓冲区域，TimeRanges &nbsp;<BR>12. 
+&nbsp; &nbsp; Media.preload; //none:不预载 metadata:预载资源信息 auto: &nbsp;<BR>13. 
+&nbsp; &nbsp;<BR>14. &nbsp;//准备状态 &nbsp;<BR>15. &nbsp; &nbsp; Media.readyState; 
+&nbsp; &nbsp;//1:HAVE_NOTHING 2:HAVE_METADATA 3.HAVE_CURRENT_DATA 
+4.HAVE_FUTURE_DATA 5.HAVE_ENOUGH_DATA &nbsp;<BR>16. &nbsp; &nbsp; Media.seeking; 
+//是否正在seeking &nbsp;<BR>17. &nbsp; &nbsp;<BR>18. &nbsp;//回放状态 &nbsp;<BR>19. 
+&nbsp; &nbsp; Media.currentTime = value; //当前播放的位置，赋值可改变位置 &nbsp;<BR>20. &nbsp; 
+&nbsp; Media.startTime; //一般为0，如果为流媒体或者不从0开始的资源，则不为0 &nbsp;<BR>21. &nbsp; &nbsp; 
+Media.duration; //当前资源长度 流返回无限 &nbsp;<BR>22. &nbsp; &nbsp; Media.paused; //是否暂停 
+&nbsp;<BR>23. &nbsp; &nbsp; Media.defaultPlaybackRate = value;//默认的回放速度，可以设置 
+&nbsp;<BR>24. &nbsp; &nbsp; Media.playbackRate = value;//当前播放速度，设置后马上改变 
+&nbsp;<BR>25. &nbsp; &nbsp; Media.played; //返回已经播放的区域，TimeRanges，关于此对象见下文 
+&nbsp;<BR>26. &nbsp; &nbsp; Media.seekable; //返回可以seek的区域 TimeRanges 
+&nbsp;<BR>27. &nbsp; &nbsp; Media.ended; //是否结束 &nbsp;<BR>28. &nbsp; &nbsp; 
+Media.autoPlay; &nbsp;//是否自动播放 &nbsp;<BR>29. &nbsp; &nbsp; Media.loop; 
+&nbsp;//是否循环播放 &nbsp;<BR>30. &nbsp; &nbsp; Media.play(); &nbsp; &nbsp;//播放 
+&nbsp;<BR>31. &nbsp; &nbsp; Media.pause(); &nbsp; //暂停 &nbsp;<BR>32. &nbsp; 
+&nbsp;<BR>33. &nbsp;//控制 &nbsp;<BR>34. &nbsp; &nbsp; Media.controls;//是否有默认控制条 
+&nbsp;<BR>35. &nbsp; &nbsp; Media.volume = value; //音量 &nbsp;<BR>36. &nbsp; 
+&nbsp; Media.muted = value; //静音 &nbsp;<BR>37. &nbsp; &nbsp;<BR>38. &nbsp; 
+&nbsp; //TimeRanges(区域)对象 &nbsp;<BR>39. &nbsp; &nbsp; TimeRanges.length; //区域段数 
+&nbsp;<BR>40. &nbsp; &nbsp; TimeRanges.start(index) //第index段区域的开始位置 
+&nbsp;<BR>41. &nbsp; &nbsp; TimeRanges.end(index) //第index段区域的结束位置 
+&nbsp;<BR>&nbsp;<BR>&nbsp;<BR>相关的事件：<BR>Js代码 &nbsp;<BR>1. &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp;eventTester = function(e){ &nbsp;<BR>2. &nbsp; &nbsp; &nbsp; 
+Media.addEventListener(e,function(){ &nbsp;<BR>3. &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; console.log((new Date()).getTime(),e); &nbsp;<BR>4. &nbsp; &nbsp; &nbsp; 
+}); &nbsp;<BR>5. &nbsp; } &nbsp;<BR>6. &nbsp; &nbsp;&nbsp;<BR>7. &nbsp; 
+eventTester("loadstart"); &nbsp; //客户端开始请求数据 &nbsp;<BR>8. &nbsp; 
+eventTester("progress"); &nbsp; &nbsp;//客户端正在请求数据 &nbsp;<BR>9. &nbsp; 
+eventTester("suspend"); &nbsp; &nbsp; //延迟下载 &nbsp;<BR>10. 
+&nbsp;eventTester("abort"); &nbsp; &nbsp; &nbsp; //客户端主动终止下载（不是因为错误引起）， 
+&nbsp;<BR>11. &nbsp;eventTester("error"); &nbsp; &nbsp; &nbsp; //请求数据时遇到错误 
+&nbsp;<BR>12. &nbsp;eventTester("stalled"); &nbsp; &nbsp; //网速失速 &nbsp;<BR>13. 
+&nbsp;eventTester("play"); &nbsp; &nbsp; &nbsp; &nbsp;//play()和autoplay开始播放时触发 
+&nbsp;<BR>14. &nbsp;eventTester("pause"); &nbsp; &nbsp; &nbsp; //pause()触发 
+&nbsp;<BR>15. &nbsp;eventTester("loadedmetadata"); &nbsp;//成功获取资源长度 
+&nbsp;<BR>16. &nbsp;eventTester("loadeddata"); &nbsp;// &nbsp;<BR>17. 
+&nbsp;eventTester("waiting"); &nbsp; &nbsp; //等待数据，并非错误 &nbsp;<BR>18. 
+&nbsp;eventTester("playing"); &nbsp; &nbsp; //开始回放 &nbsp;<BR>19. 
+&nbsp;eventTester("canplay"); &nbsp; &nbsp; //可以播放，但中途可能因为加载而暂停 &nbsp;<BR>20. 
+&nbsp;eventTester("canplaythrough"); //可以播放，歌曲全部加载完毕 &nbsp;<BR>21. 
+&nbsp;eventTester("seeking"); &nbsp; &nbsp; //寻找中 &nbsp;<BR>22. 
+&nbsp;eventTester("seeked"); &nbsp; &nbsp; &nbsp;//寻找完毕 &nbsp;<BR>23. 
+&nbsp;eventTester("timeupdate"); &nbsp;//播放时间改变 &nbsp;<BR>24. 
+&nbsp;eventTester("ended"); &nbsp; &nbsp; &nbsp; //播放结束 &nbsp;<BR>25. 
+&nbsp;eventTester("ratechange"); &nbsp;//播放速率改变 &nbsp;<BR>26. 
+&nbsp;eventTester("durationchange"); &nbsp;//资源长度改变 &nbsp;<BR>27. 
+&nbsp;eventTester("volumechange"); &nbsp; &nbsp;//音量改变 </P></BODY></HTML>

@@ -1712,6 +1712,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1942,6 +1943,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML音频视频播放">
 <PARAM NAME="Local" VALUE="HTML音频视频播放.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="video属性">
+<PARAM NAME="Local" VALUE="video属性.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2772,7 +2779,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
