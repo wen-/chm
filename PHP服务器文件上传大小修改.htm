@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>PHP服务器文件上传大小修改</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588">
+</HEAD>
+<BODY>
+<P>PHP服务器文件上传大小修改</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/25px 宋体, Verdana, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px"><SPAN 
+style="LINE-HEIGHT: 18px; FONT-FAMILY: 'sans serif', tahoma, verdana, helvetica">前不久分享过一篇关于用 
+shell 命令解决 XAMPP 数据库导入文件大小限制的文章，被站长之家等网站转载，发现反响还不错，看来在本地安装 WordPress 或者在用 XAMPP 
+导入数据库时，文件大小的限制确实给我们带来了一些麻烦。但是这篇文章很可能把那些连什么是 shell 命令都不知道为何物的初学者拒之门外。</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">所以就有了这篇文章，用另一种方法，通过修改 
+Apache 的 php.ini 配置文件来改变上传导入数据库时的文件大小限制。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">首先，启动 
+Xampp 面板。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">然后，选择 
+Apache 右侧的 Config -&gt; PHP(php.ini)，如图：</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; MAX-WIDTH: 590px; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px" 
+onclick=javascript:window.open(this.src); border=0 alt="" 
+src="http://www.myhack58.com/Article/UploadPic/2013-9/201398342569733.jpg" 
+onload="return imgzoom(this,550);"></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">此时默认会用记事本打开 
+php.ini 这个配置文件，当然，你也可以在 "D:/xampp/php/php.ini" 这个安装目录对应的文件夹下找到这个文件。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">最后，有三个参数需要被修改，这三个配置参数以及它们的默认值分别是：</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; LETTER-SPACING: normal; COLOR: rgb(51,51,51); FONT-SIZE: 16px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">upload_max_filesize = 2M
+memory_limit = 128M
+post_max_size = 8M
+</PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">它们分别表示的意思已经可以从它们的名字上理解出来了。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">根据你要上传导入的数据库文件的实际大小来修改以上设置就可以了，如：</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; LETTER-SPACING: normal; COLOR: rgb(51,51,51); FONT-SIZE: 16px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">upload_max_filesize = 100M
+memory_limit = 1024M
+post_max_size = 100M
+</PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">最后的最后，不要忘记需要重启 
+Apache 才能生效哟。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">2013-02-02 
+Update</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/18px 'sans serif', tahoma, verdana, helvetica; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px">感谢楼下飞晏等同学的补充，当导入大数据库文件时，我们可能会遇到内存不足或者超时的提示，这时候我们就需要修改以下几个值，将它们适当加大即可：</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; LETTER-SPACING: normal; COLOR: rgb(51,51,51); FONT-SIZE: 16px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">max_execution_time = 30
+max_input_time = 60
+memory_limit = 32M</PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 15px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; FONT: 14px/25px 宋体, Verdana, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; PADDING-TOP: 15px; -webkit-text-stroke-width: 0px"><SPAN 
+style="LINE-HEIGHT: 18px; FONT-FAMILY: 'sans serif', tahoma, verdana, helvetica">&#8203;</SPAN></P></BODY></HTML>
