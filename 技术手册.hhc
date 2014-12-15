@@ -1718,6 +1718,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5 JS文件读取和保存操作">
 <PARAM NAME="Local" VALUE="HTML5 JS文件读取和保存操作.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1753,6 +1754,13 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="文件上传预览">
 <PARAM NAME="Local" VALUE="文件上传预览.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="异步上传文件">
+<PARAM NAME="Local" VALUE="异步上传文件.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
