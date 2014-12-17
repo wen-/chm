@@ -1718,7 +1718,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5 JS文件读取和保存操作">
 <PARAM NAME="Local" VALUE="HTML5 JS文件读取和保存操作.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1816,6 +1815,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSS3">
 <PARAM NAME="Local" VALUE="CSS3.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1912,6 +1912,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="css3倒影">
 <PARAM NAME="Local" VALUE="css3倒影.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="displya:box详解">
+<PARAM NAME="Local" VALUE="box详解.htm">
 </OBJECT>
 </UL>
 </UL>
