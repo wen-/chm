@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>windows下nginx安装、配置与使用</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
+<BODY>
+<P>windows下nginx安装、配置与使用</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">目前国内各大门户网站已经部署了Nginx，如新浪、网易、腾讯等；国内几个重要的视频分享网站也部署了Nginx，如六房间、酷6等。新近发现Nginx 
+技术在国内日趋火热，越来越多的网站开始部署Nginx。</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp; 
+相比apeach、iis，nginx以轻量级、高性能、稳定、配置简单、资源占用少等优势广受欢迎。</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">1)下载地址：</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　<A 
+style="COLOR: rgb(29,88,209); TEXT-DECORATION: none" 
+href="http://nginx.org/">http://nginx.org</A></P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">2)启动</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　解压至c:\nginx，运行nginx.exe(即nginx 
+-c conf\nginx.conf)，默认使用80端口，日志见文件夹C:\nginx\logs</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">3)使用</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　<A 
+style="COLOR: rgb(29,88,209); TEXT-DECORATION: none" 
+href="http://localhost/">http://localhost</A></P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">4)关闭</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　nginx 
+-s stop 或taskkill /F /IM nginx.exe &gt; nul<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>5)常用配置</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;　　C:\nginx\conf\nginx.conf,使用自己定义的conf文件如my.conf，命令为nginx 
+-c conf\my.conf</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　常用配置如下：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　Nginx.conf代码<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　http {<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 server {<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 #1.侦听80端口<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 listen 80;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 location / {<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 # 2. 
+默认主页目录在nginx安装目录的html子目录。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 
+root html;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 index index.html 
+index.htm;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 # 3. 
+没有索引页时，罗列文件和子目录<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 autoindex 
+on;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 autoindex_exact_size 
+on;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 autoindex_localtime 
+on;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 }<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 # 4.指定虚拟目录<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 location /tshirt {<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 alias 
+D:\programs\Apache2\htdocs\tshirt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 index index.html index.htm;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 }<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 }<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 # 5.虚拟主机www.emb.info配置<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 server {<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 listen 80;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 server_name www.emb.info;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 access_log 
+emb.info/logs/access.log;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 
+location / {<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 index 
+index.html;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 root 
+emb.info/htdocs;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 }<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 }<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　<BR>　　http {<BR>　　 server {<BR>　　 
+#1.侦听80端口<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>　　 listen 80;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　 location / {<BR>　　 # 2. 
+默认主页目录在nginx安装目录的html子目录。<BR>　　 root html;<BR>　　 index index.html 
+index.htm;<BR>　　 # 3. 没有索引页时，罗列文件和子目录<BR>　　 autoindex on;<BR>　　 
+autoindex_exact_size on;<BR>　　 autoindex_localtime on;<BR>　　 }<BR>　　 # 
+4.指定虚拟目录<BR>　　 location /tshirt {<BR>　　 alias 
+D:\programs\Apache2\htdocs\tshirt;<BR>　　 index index.html index.htm;<BR>　　 
+}<BR>　　 }<BR>　　 # 5.虚拟主机www.emb.info配置<BR>　　 server {<BR>　　 listen 80;<BR>　　 
+server_name www.emb.info;<BR>　　 access_log emb.info/logs/access.log;<BR>　　 
+location / {<BR>　　 index index.html;<BR>　　 root emb.info/htdocs;<BR>　　 }<BR>　　 
+}<BR>　　}<BR>　　<BR>　　小提示：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　运行nginx 
+-V可以查看该Win32平台编译版支持哪些模块。我这里的结果为：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　Log代码<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　nginx version: nginx/0.7.65<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　TLS SNI support enabled<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　configure arguments:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--builddir=objs.msvc8<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--crossbuild=win32<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-debug --prefix=<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--conf-path=conf/nginx.conf<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--pid-path=logs/nginx.pid<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-log-path=logs/access.log<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--error-log-path=logs/error.log<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--sbin-path=nginx.exe<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-client-body-temp-path=temp/client_body_temp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-proxy-temp-path=temp/proxy_temp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-fastcgi-temp-path=temp/fastcgi_temp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-cc-opt=-DFD_SETSIZE=1024<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-pcre=objs.msvc8/lib/pcre-7.9<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-openssl=objs.msvc8/lib/openssl-0.9.8k<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-openssl-opt=enable-tlsext<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-zlib=objs.msvc8/lib/zlib-1.2.3<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-select_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_ssl_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_realip_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_addition_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_sub_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_dav_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_stub_status_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_flv_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_gzip_static_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_random_index_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_secure_link_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-mail<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-mail_ssl_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-ipv6<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　<BR>　　nginx version: 
+nginx/0.7.65<BR>　　TLS SNI support enabled<BR>　　configure arguments:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--builddir=objs.msvc8<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--crossbuild=win32<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-debug --prefix=<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--conf-path=conf/nginx.conf<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--pid-path=logs/nginx.pid<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-log-path=logs/access.log<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--error-log-path=logs/error.log<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--sbin-path=nginx.exe<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-client-body-temp-path=temp/client_body_temp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-proxy-temp-path=temp/proxy_temp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--http-fastcgi-temp-path=temp/fastcgi_temp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-cc-opt=-DFD_SETSIZE=1024<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-pcre=objs.msvc8/lib/pcre-7.9<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-openssl=objs.msvc8/lib/openssl-0.9.8k<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-openssl-opt=enable-tlsext<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-zlib=objs.msvc8/lib/zlib-1.2.3<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-select_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_ssl_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_realip_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_addition_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_sub_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_dav_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_stub_status_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_flv_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_gzip_static_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_random_index_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-http_secure_link_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-mail<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-mail_ssl_module<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>　　--with-ipv6<BR>　　<BR>　　显然，最经常用的memcache, 
+rewrite模块都没在其中，因此该win32编译版本仅能供基本开发测试使用，对于产品平台，应该重新编译自己想要的win32版本，或者在linux下使用更方便。</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">6）查看nginx进程</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　tasklist 
+/fi "imagename eq 
+nginx.exe"，如下显示：<BR>映像名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+PID 
+会话名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+会话#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 内存使用<BR>========================= 
+======== ================ =========== 
+============<BR>nginx.exe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+8944 
+Console&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5,128 
+K<BR>nginx.exe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6712 
+Console&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5,556 K</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">7）nginx常用命令</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">nginx 
+-s stop 强制关闭<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>nginx -s quit 
+安全关闭<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>nginx -s reload 
+改变配置文件的时候，重启nginx工作进程，来时配置文件生效<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>nginx -s reopen 打开日志文件</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">8）其它<BR>　　可以通过配置文件开启多个nginx工作进程，但同时只有其中一个nginx工作进程在工作，其他的阻塞等待。<BR>　　一个nginx工作进程最多同时可以处理1024个连接。<BR>　　nginx中需要共享内存的cache或者模块无法在windows下正常使用。<BR>　　不过，nginx官方正在改进，将来nginx会以服务的方式运行，使用 
+I/O completion 
+ports代替select方法，使多个工作进程能并发工作。<BR>　　要使用nginx配合php-cgi使用，需要修改环境变量，否则，php-cgi运行一定次数就推出，需要重启，设置PHP_FCGI_MAX_REQUESTS这个变量为0即可。</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　以上在win7上通过。&nbsp;</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;8）nginx以windows服务形式启动</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　1.下载微软两个工具：</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　　　instsrv.exe 
+srvay.exe</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　2.执行命令:</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　　　instsrv 
+Nginxc:/nginx/srvany.exe</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　3.配置Nginx的运行参数</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　可以直接将配置导入到注册表</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">Windows 
+Registry Editor Version 5.00</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">[HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services/NGINX/Parameters]<BR>"Application"="C://nginx//nginx.exe"<BR>"AppParameters"=""<BR>"AppDirectory"="C://nginx//"</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　注意：windows 
+下的Nginx 内置的module 很多没有，用Nginx -V 命令查看。</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">9)Nginx下部署mono+asp.net环境</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　1、从Mono 
+for Windows中提取FastCGI-Mono-Server</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　2、Nginx 
+nginx.conf 的配置：&nbsp;</P>
+<P>
+<TABLE 
+style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; WIDTH: 600px; BORDER-COLLAPSE: collapse; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+border=2 cellSpacing=0 cellPadding=2 unselectable="on">
+  <TBODY>
+  <TR>
+    <TD 
+    style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; FONT-SIZE: 14px; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+    vAlign=top width=596>
+      <TABLE 
+      style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; WIDTH: 600px; BORDER-COLLAPSE: collapse; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid" 
+      border=2 cellSpacing=0 cellPadding=2 unselectable="on">
+        <TBODY>
+        <TR>
+          <TD 
+          style="BORDER-BOTTOM: silver 1px solid; BORDER-LEFT: silver 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BORDER-COLLAPSE: collapse; FONT-SIZE: 14px; BORDER-TOP: silver 1px solid; BORDER-RIGHT: silver 1px solid; PADDING-TOP: 3px" 
+          vAlign=top width=596>
+            <P style="TEXT-INDENT: 0px; MARGIN: 10px auto">worker_processes 
+            &nbsp;1;<BR>error_log &nbsp;logs/error-debug.log info;<BR><BR>events 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;worker_connections 
+            &nbsp;1024;<BR>}<BR><BR>http {<BR>&nbsp;&nbsp;&nbsp;&nbsp;include 
+            &nbsp; &nbsp; &nbsp; 
+            mime.types;<BR>&nbsp;&nbsp;&nbsp;&nbsp;default_type &nbsp; 
+            text/plain;<BR>&nbsp;&nbsp;&nbsp;&nbsp;sendfile &nbsp; &nbsp; &nbsp; 
+            &nbsp;on;<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;keepalive_timeout 
+            &nbsp;65;<BR>&nbsp;&nbsp;&nbsp;&nbsp;index &nbsp;index.html 
+            index.htm;<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;server 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen &nbsp; 
+            &nbsp; &nbsp; 
+            80;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;server_name 
+            yourdomain.com;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index 
+            index.aspx default.aspx;<BR><BR><SPAN style="COLOR: rgb(0,0,255)" 
+            color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;location 
+            / 
+            {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root 
+            &nbsp; 
+            D:\www/yourwebapp;<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fastcgi_pass 
+            &nbsp; 
+            127.0.0.1:8000;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fastcgi_param 
+            &nbsp;SCRIPT_FILENAME 
+            &nbsp;$document_root/$fastcgi_script_name;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include 
+            &nbsp; &nbsp; &nbsp; 
+            fastcgi_params;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</SPAN><BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}</P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;　　将上面的 
+FastCGI-Mono-Server 提取出来，所有文件全部注册到 GAC(否则 Web 应用会找不到他们，当然你也可以直接放到<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="TEXT-DECORATION: underline">webapp/bin</SPAN>)，然后解压到某个文件夹，这里假设为 
+D:/FastCGI-Mono-Server。</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　之后我们就可以按下列命令运行 
+FastCGI：<BR>　　fastcgi-mono-server2 /socket=tcp:127.0.0.1:8000 
+/root="D:\www\yourwebapp" /applications=yourdomain.com:/:. /multiplex=True</P>
+<P 
+style="TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; FONT: 14px/25px Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">　　最后执行运行 
+Nginx 服务器，我们的 ASP.Net 程序就能脱离 IIS。</P></BODY></HTML>
