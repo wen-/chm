@@ -2919,4 +2919,16 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="redis-of-windows">
+<PARAM NAME="Local" VALUE="redis-of-windows.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="redis-of-liunx">
+<PARAM NAME="Local" VALUE="redis-of-liunx.htm">
+</OBJECT>
+</UL>
 </UL></body></html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>redis-of-liunx</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
+<BODY>
+<P>redis-of-liunx</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">Linux系统:<A 
+style="COLOR: rgb(179,43,213); TEXT-DECORATION: underline" title=CentOS 
+href="http://www.linuxidc.com/topicnews.aspx?tid=14" 
+target=_blank>CentOS</A><SPAN class=Apple-converted-space>&nbsp;</SPAN>6.3</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">一、下载源码包<BR>wget 
+http://redis.googlecode.com/files/redis-2.2.12.tar.gz</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">二、安装<BR>1、解压：<BR>[root@localhost 
+~]# tar -zxvf redis-2.2.12.tar.gz</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">2、安装：<BR>[root@localhost 
+~]# cd redis-2.2.12<BR>[root@localhost redis-2.2.12]# make 
+PREFIX=/usr/local/redis install</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">3、建立需要的目录<BR>mkdir 
+-p /usr/local/redis/etc<BR>mkdir -p /usr/local/redis/var<BR>mkdir -p 
+/usr/local/redis/bin</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">4、cp文件<BR>cp 
+redis-server redis-cli redis-benchmark redis-stat /usr/local/redis/bin/<BR>cp 
+redis.conf /usr/local/redis/etc/</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">5、配置文件<BR>[root@localhost 
+redis-2.2.12]# cat /data/app/redis/etc/redis.conf<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>daemonize yes<BR>pidfile 
+/usr/local/redis/redis.pid<BR>port 6379<BR>bind 10.10.0.78<BR>#unixsocket 
+/tmp/redis.sock<BR>timeout 120<BR>#loglevel verbose<BR>#logfile 
+stdout<BR>&nbsp;#logfile /tmp/redis_6379.log<BR>&nbsp;databases 16<BR>save 1800 
+1<BR>#save 300 10<BR>#save 60 10000<BR>rdbcompression yes<BR>dbfilename 
+dump.rdb<BR>dir /usr/local/redis/var/<BR>slave-serve-stale-data 
+yes<BR>maxclients 12800<BR>slaveof 10.10.0.157 6379<BR>appendonly 
+no<BR>appendfsync no<BR>no-appendfsync-on-rewrite no<BR>slowlog-log-slower-than 
+10000<BR>Slowlog-max-len 1024<BR>vm-enabled no<BR>vm-swap-file 
+/tmp/redis.swap<BR>vm-max-memory 0<BR>vm-page-size 32<BR>vm-pages 
+134217728<BR>vm-max-threads 4<BR>hash-max-zipmap-entries 
+512<BR>hash-max-zipmap-value 64<BR>list-max-ziplist-entries 
+512<BR>list-max-ziplist-value 64<BR>set-max-intset-entries 
+512<BR>activerehashing yes<BR>########配置文件结束#########</P>
+<P 
+style="TEXT-ALIGN: justify; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(250,250,252); TEXT-INDENT: 0px; FONT: 14px/22px tahoma, 宋体; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">三、启动服务<BR>/usr/local/redis/bin/redis-server 
+/usr/local/redis/etc/redis.conf</P></BODY></HTML>
