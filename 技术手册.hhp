@@ -9,7 +9,7 @@ Index file=技术手册.hhk
 Display compile progress=Yes
 Binary Index=Yes
 Full-text search=Yes
-Language=0x804 中文(中国)
+Language=0x804 中文(简体，中国)
 
 [WINDOWS]
 Main="技术手册","技术手册.hhc","技术手册.hhk","CSS篇.html","CSS篇.html",,,,,0x420,150,0x104E,[400,1,800,451],0x0,0x0,,,,,0
@@ -75,6 +75,7 @@ box详解.htm
 build详解.htm
 C:\Users\geong\Desktop\login.html
 centos安装mongoDb.htm
+centos安装nodejs.htm
 centos安装nodejs.htm
 centos开放某个端口.htm
 centos系统php模块扩展.htm
@@ -1372,8 +1373,8 @@ Object create().htm
 packate_json.htm
 page speed.htm
 phonegap android插件开发.htm
-phonegap Android调试.htm
 phonegap android启动画面.htm
+phonegap Android调试.htm
 phonegap IOS调试.htm
 phonegap 包安装.htm
 phonegap 插件安装.htm
@@ -1511,11 +1512,11 @@ yum源配置.htm
 关于window.opener返回父窗口的问题.htm
 光标定位.htm
 滚动方式管理.htm
-函数调用.htm
+还原JQuery符号$.html
 函数名加括号与不加括号的区别.htm
+函数调用.htm
 汉字Unicode转码.htm
 黑莓模拟器代理设置.htm
-还原JQuery符号$.html
 火狐浏览器光标定位.htm
 获得当前日期与指定日期的时间差.html
 获取本地SESSION两次回调的问题.htm
@@ -1578,6 +1579,9 @@ yum源配置.htm
 手机号码正则.htm
 手机网页缓存.htm
 手机网页支持的js.htm
+属性getter和属性setter.htm
+属性的删除.htm
+属性的特征.htm
 数学计算Math对象.htm
 数组方法.htm
 数组索引与属性名的区分.htm
@@ -1622,9 +1626,6 @@ yum源配置.htm
 正则表达式支持.htm
 重要--你点击了哪个标签.htm
 主图解决方案.htm
-属性getter和属性setter.htm
-属性的删除.htm
-属性的特征.htm
 转义字符.htm
 状态栏.htm
 字符串操作.htm
