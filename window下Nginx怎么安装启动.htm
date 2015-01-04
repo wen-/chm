@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>window下Nginx怎么安装启动</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588">
+</HEAD>
+<BODY>
+<P>window下Nginx怎么安装启动</P>
+<P 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">Nginx有那么多有点，当然要试下了，window环境下，Nginx怎么安装启动呢？</P>
+<P 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp; 
+A)把下载的window下的安装包，解压到一个不包含空格的路径下，比如：d:/Nginx</P>
+<P 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp; 
+B)打开命令行窗口【win+R 输入cmd，然后确定】</P>
+<P 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp; 
+C)进入解压目录【cd /d D:/Nginx】</P>
+<P 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp; 
+D)输入：start nginx ，然后回车，开始运行Nginx</P>
+<P 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">&nbsp;&nbsp;&nbsp;&nbsp; 
+运行之后，怎么关闭呢，Nginx -s stop，即可。还有其他选项供选择：</P>
+<BLOCKQUOTE 
+style="BORDER-BOTTOM: medium none; TEXT-ALIGN: left; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0px 40px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); BORDER-TOP: medium none; BORDER-RIGHT: medium none; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P>&nbsp;&nbsp; &nbsp;Nginx -s[stop|quit|reopen|reload]</P></BLOCKQUOTE>
+<BLOCKQUOTE 
+style="BORDER-BOTTOM: medium none; TEXT-ALIGN: left; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0px 40px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); BORDER-TOP: medium none; BORDER-RIGHT: medium none; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <P>&nbsp;</P></BLOCKQUOTE>
+<P 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 14px/26px Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(51,51,51); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="LINE-HEIGHT: 17px; FONT-FAMILY: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Arial, Verdana, sans-serif; COLOR: rgb(85,85,85); FONT-SIZE: 14px"></SPAN></P><PRE style="BORDER-BOTTOM: rgb(255,255,255) 3px solid; TEXT-ALIGN: left; BORDER-LEFT: rgb(255,255,255) 3px solid; PADDING-BOTTOM: 0.5em; LINE-HEIGHT: 26px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(249,249,249); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px 4em 2em 2em; PADDING-LEFT: 0.5em; WIDTH: 749px; unicode-bidi: embed; PADDING-RIGHT: 0.5em; DISPLAY: block; WORD-WRAP: break-word; WHITE-SPACE: pre; LETTER-SPACING: normal; COLOR: rgb(85,85,85); FONT-SIZE: 12px; BORDER-TOP: rgb(255,255,255) 3px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(255,255,255) 3px solid; WORD-SPACING: 0px; PADDING-TOP: 0.5em; -webkit-text-stroke-width: 0px; background-origin: initial; background-clip: initial">  Nginx -s stop         快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
+  Nginx -s quit         平稳关闭Nginx，保存相关信息，有安排的结束web服务。
+  Nginx -s reload       因改变了Nginx相关配置，需要重新加载配置而重载。
+  Nginx -s reopen       重新打开日志文件。</PRE></BODY></HTML>

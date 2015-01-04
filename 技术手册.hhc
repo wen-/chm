@@ -2938,4 +2938,22 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="window下Nginx怎么安装启动">
+<PARAM NAME="Local" VALUE="window下Nginx怎么安装启动.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="centos下安装nginx">
+<PARAM NAME="Local" VALUE="centos下安装nginx.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx负载均衡">
+<PARAM NAME="Local" VALUE="nginx负载均衡.htm">
+</OBJECT>
+</UL>
 </UL></body></html>

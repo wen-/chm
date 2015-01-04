@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>centos下安装nginx</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
+<BODY>
+<P>centos下安装nginx</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">编译Nginx的要求如下：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">磁盘空间：需要保证有10MB以上的剩余磁盘空间。Nginx安装完毕后会占据4MB左右的磁盘空间，实际的磁盘空间需求会因编译设置和是否安装第三方模块而有所不同。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">GCC编译器及相关工具：</STRONG>GCC全称为GNU 
+Compiler Collection，&nbsp; 
+是GNU社区推出的功能强大、性能优越的用于编程开发的自由编译器，是GNU的代表作品之一，目前可以编译的语言包括：C、C++、Objective-C、Fortran、Java等。您必须确保您的操作系统安装有GCC编译器。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">另外，您还必须<STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">安装Autoconf和Automake工具</STRONG>，它们用于自动创建功能完善的Makefile，当前大多数软件包都是用这一工具生成Makefile的，Nginx也不例外。在CentOS系统下，您可以使用yum命令安装GCC编译器及相关工具：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>yum -y install gcc gcc-c++ autoconf automake</FONT></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">模块依赖性：</STRONG>Nginx的一些模块需要其他第三方库的支持，例如<STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">gzip模块需要zlib库，rewrite模块需要pcre库，ssl功能需要openssl库</STRONG>等。同样，如果是在CentOS系统下，我们可以使用yum命令安装或下载源码包编译安装这些模块依赖的库：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>yum -y install zlib zlib-devel openssl openssl--devel pcre 
+pcre-devel</FONT></STRONG><SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Nginx在Linux环境下可以通过<STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">编译源码的方式</STRONG>来安装，最简单的安装命令如下:</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>tar zxvf nginx-版本号.tar.gz<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">cd 
+nginx-版本号<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">./configure<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">make<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">make 
+install</FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">按照以上命令，Nginx将被默认安装到/usr/local/nginx目录下。您可以通过<STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#9b00d3>/configure --help</FONT></STRONG>命令查看Nginx可选择的编译选项。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">编译选项举例如下：</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">--prefix=&lt;path&gt;&nbsp;&nbsp; 
+Nginx安装路径。如果没有指定，默认为/usr/local/nginx<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">--sbin-path=&lt;path&gt;&nbsp;&nbsp; 
+Nginx可执行文件安装路径。只能安装时指定，如果没有指定，默认为&lt;prefix&gt;/sbin/nginx<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">--conf-path=&lt;path&gt;&nbsp;&nbsp; 
+在没有给定 –c 选项下默认的nginx.conf的路径。如果没有指定，默认为&lt;prefix&gt;/conf/nginx.conf<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">--pid-path=&lt;path&gt;&nbsp;&nbsp;&nbsp;&nbsp; 
+在nginx.conf中没有指定pid指令的情况下，默认的Nginx.pid的路径。如果没有指定，默认为&lt;prerix&gt;/logs/nginx.pid</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">等等</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#ff0000 size=4><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Nginx的启动，停止，平滑重启</STRONG></FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#ff0000>启动Nginx</FONT></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">启动Nginx，可以执行以下命令。假设Nginx安装在/usr/locaUnginx/目录中，<STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#000000>那么启动Nginx的命令就是：<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"></FONT>/usr/local/nginx/sbin/nginx&nbsp; 
+-c /usr/local/nginx/conf/nginx.conf<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"></FONT></STRONG>参数“-c”指定了配置文件的路径，如果不加“-c”参数，Nginx会默认加载其安装目录的conf子目录中的nginx.conf文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#ff0000>Nginx的停止</FONT></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Nginx的停止方法有很多种，一般通过发送系统信号给Nginx主进程的方式来停止Nginx。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">我们可以通过ps命令来查找Nginx的主进程号：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">ps 
+–ef | grep nginx</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://img1.51cto.com/attachment/201110/29/3447586_1319912077W3Gk.png" 
+target='\"_blank\"'></A></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">从图中可以看到，1个Nginx进程的备注信息为“master 
+process”，表示它为主进程，另外的1个进程备注信息为“worker process”，表示它们为子进程。32244为主进程号。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">如果在nginx.conf配置文件中指定了pid文件存放的路径(例如：/usr/local/webserver/nginx/logs/nginx.pid;)，该文件中存放的就是Nginx当前的主进程号。如果没有指定pid文件存放的路径，nginx.pid文件默认存放在Nginx安装目录的logs目录下。所以，我们也可以直接通过以下命令来完成，省下寻找Nginx主进程号的步骤：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#000000>kill -信号类型&nbsp; 
+`/usr/local/webserver/nginx/logs/nginx.pid`</FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#9b00d3>（1）从容停止Nginx。</FONT></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>kill - QUIT Nginx主进程号&nbsp; 或者&nbsp;&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">kill 
+-QUIT `/usr/local/webserver/nginx/logs/nginx.pid`</STRONG></FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#9b00d3>（2）快速停止Nginx</FONT></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>kill - TERM Nginx主进程号 或者&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">kill 
+-TERM `/usr/local/webserver/nginx/logs/nginx.pid`</STRONG></FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>kill - INT Nginx主进程号&nbsp;&nbsp;&nbsp; 或者&nbsp;&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">kill 
+-INT `/usr/local/webserver/nginx/logs/nginx.pid`</STRONG></FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#9b00d3>（3）强制停止所有Nginx进程</FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>pkill –9 nginx</FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#ff0000>Nginx的平滑重启</FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">如果改变了Nginx的配置文件(nginx 
+conf)，想重启Nginx，同样可以通过发送系统信号给Nginx主进程的方式来进行。不过，重启之前，要确认Nginx配置文件(nginx.conf)的语法是正确的，否则Nginx将不会加载新的配置文件。通过以下命令可以<FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#000000><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">判断Nginx配置文件是否正确：</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"></FONT><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#000000><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">/usr/local/webserver/nginx/sbin/nginx 
+–t -c<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">/usr/local/webserver/nginx/conf/nginx.conf</STRONG></FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">如果配置文件不正确，屏幕将会提示配置文件的第几行出错：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">[emerg]：unknown 
+directive”abc“in /usr/local/webserver/nginx/conf/nginx.conf:55</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">configuration 
+file /usr/local/webserver/nginx/conf/nginx.conf test failed</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">如果配置文件正确，屏幕将提示以下两行信息：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">the 
+configuration file /usr/local/webserver/nginx/conf/nginx.conf&nbsp; syntax is 
+OK<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">configuration 
+file /usr/local/webserver/nginx/conf/nginx.conf&nbsp; test is successful</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">这时候，就可以平滑重启Nginx了。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>kill -HUP Nginx主进程号<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">kill一HUP&nbsp;&nbsp; 
+`/usr/local/webserver/nginx/logs/nginx.pid`</FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">当Nginx接收到HUP信号时，它会尝试先解析配置文件，如果成功，就应用新的配置文件（例如，重新打开日志文件或监听的套接字）。之后，Nginx运行新的工作进程并从容关闭旧的工作进程。通知工作进程关闭监听套接字，但是继续为当前连接的客户提供服务。所有客户端的服务完成后，旧的工作进程被关闭。如果新的配置文件应用失败，Nginx将继续使用旧的配置进行工作。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">Nginx支持以下几种信号类型：</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">·TERM，INT快速关闭；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">·QUIT从容关闭；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">·HUP平滑重启，重新加载配置文件；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">·USR1重新打开日志文件，在切割日志时用途较大；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">·USR2平滑升级可执行程序；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">·WINCH从容关闭工作进程。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#ff0000>Nginx的平滑升级</FONT></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">当需要将正在运行中的Nginx升级、添加，删除服务器模块时，可以在不中断服务的情况下，使用新版本、重编译的Nginx可执行程序替换旧版本的可执行程序。步骤如下：</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">(1)使用新的可执行程序替换旧的可执行程序，对于编译安装的Nginx，可以将新版本编译安装到旧版本的Nginx安装路径中。替换之前，您最好备份一下旧的可执行文件。</P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">(2)发送以下指令：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>kill –USR2 旧版本的nginx主进程号</FONT></STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">(3)旧版本Nginx的主进程将重命名它的.pid文件为.oldbin(例如：/usr/local/webserver/nginx/logs/nginx.pid.oldbin)，然后执行新版本的Nginx可执行程序，依次启动新的主进程和新的工作进程。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://img1.51cto.com/attachment/201110/29/3447586_13199120788JFk.png" 
+target='\"_blank\"'></A></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">(4)此时，新、旧版本的Nginx实例会同时运行，共同处理输入的请求。<STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">要逐步停止旧版本的Nginx实例，你必须发送WINCH信号给旧的主进程</STRONG>，然后，它的工作进程就将开始从容关闭：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>kill -WINCH 旧版本的Nginx主进程号</FONT></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">(5) 
+一段时间后，旧的工作进程(worker process)处理了所有已连接的请求后退出，仅由新的工作进程来处理输入的请求了：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://img1.51cto.com/attachment/201110/29/3447586_1319912079eGsJ.png" 
+target='\"_blank\"'></A></P>
+<P 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/28px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: auto; COLOR: rgb(85,85,85); CLEAR: both; OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">(6)这时候，我们可以决定是使用新版本，还是恢复到旧版本：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><FONT 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" 
+color=#0000ff>kill –HUP&nbsp;&nbsp;&nbsp;&nbsp; 
+旧的主进程号：Nginx将在不重载配置文件的情况下启动它的工作进程；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">kill 
+–QUIT&nbsp;&nbsp;&nbsp; 新的主进程号：从容关闭其工作进程(worker process)；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">kill 
+–TERM&nbsp;&nbsp; 新的主进程号：强制退出；<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">kill&nbsp; 
+新的主进程号或旧的主进程号：如果因为某些原因新的工作进程不能退出，则向其发送kill信号。</FONT></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">新的主进程退出后，旧的主进程会移除.oldbin前缀，恢复为它的.pid文件，这样，一切就都恢复到升级之前了。如果尝试升级成功，而你也希望保留新的服务器时，可发送QUIT信号给旧的主进程，使其退出而只留下新的服务器运行：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://img1.51cto.com/attachment/201110/29/3447586_1319912081ZhKf.png" 
+target='\"_blank\"'></A></P></BODY></HTML>

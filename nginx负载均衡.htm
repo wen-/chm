@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>nginx负载均衡</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
+<BODY>
+<P>nginx负载均衡</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">前言</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">用Nginx给网站做反向代理和负载均衡，是广泛使用的一种Web技术，不仅能够保证后端服务器的隐蔽性，还可以提高网站情况，部署灵活，而且以来源软件实现负载均衡性价比非常高。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">不过今天要讲一下，如何用Nginx给Websocket服务器实现反向代理和负载均衡。我也是第一次做这样的尝试，所以仅把功能实现，优化以后再说。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">目录</STRONG></P>
+<OL 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 35px; PADDING-RIGHT: 0px; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">
+  <LI 
+  style="LIST-STYLE: decimal none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0px 0px 5px; PADDING-LEFT: 0px !important; PADDING-RIGHT: 0px; PADDING-TOP: 0px">反向代理和负载均衡</LI>
+  <LI 
+  style="LIST-STYLE: decimal none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0px 0px 5px; PADDING-LEFT: 0px !important; PADDING-RIGHT: 0px; PADDING-TOP: 0px">创建基于Node的websocket服务器端</LI>
+  <LI 
+  style="LIST-STYLE: decimal none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0px 0px 5px; PADDING-LEFT: 0px !important; PADDING-RIGHT: 0px; PADDING-TOP: 0px">创建websocket客户端</LI>
+  <LI 
+  style="LIST-STYLE: decimal none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0px 0px 5px; PADDING-LEFT: 0px !important; PADDING-RIGHT: 0px; PADDING-TOP: 0px">用Nginx实现反向代理</LI>
+  <LI 
+  style="LIST-STYLE: decimal none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0px 0px 5px; PADDING-LEFT: 0px !important; PADDING-RIGHT: 0px; PADDING-TOP: 0px">用Nginx实现多websocket服务器的负载均衡</LI></OL>
+<H2 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 25px 0px 10px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: bold 20px/26px 'Helvetica Neue', Helvetica, Arial, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(67,67,67); WORD-SPACING: 0px; TEXT-DECORATION: none; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px; transition: color 0.2s linear; -webkit-transition: color 0.2s linear">1. 
+反向代理和负载均衡</H2>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">反向代理（Reverse 
+Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">负载均衡 
+（Load Balancing） 
+负载均衡建立在现有网络结构之上，它提供了一种廉价有效透明的方法扩展网络设备和服务器的带宽、增加吞吐量、加强网络数据处理能力、提高网络的灵活性和可用性。</P>
+<H2 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 25px 0px 10px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: bold 20px/26px 'Helvetica Neue', Helvetica, Arial, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(67,67,67); WORD-SPACING: 0px; TEXT-DECORATION: none; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px; transition: color 0.2s linear; -webkit-transition: color 0.2s linear">2. 
+创建基于Node的websocket服务器端</H2>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">系统环境：</P>
+<UL 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: none; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 0pt 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">win7 
+  64bit</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">npm 
+  1.2.19</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">node 
+  v0.10.5</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">bower 
+  1.1.2</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">nginx 
+  1.5.11</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">redis 
+  2.4.6</LI></UL>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">创建基于Node的websocket服务器端</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="http://blog.fens.me/wp-content/uploads/2014/03/ws1.png"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0pt" 
+class="alignnone size-full wp-image-5762" alt=ws1 
+src="http://blog.fens.me/wp-content/uploads/2014/03/ws1.png" width=468 
+height=159></A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">新建工程</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+D:\workspace\javascript&gt;mkdir nginx-websocket &amp;&amp; cd nginx-websocket
+D:\workspace\javascript\nginx-websocket&gt;npm install socket.io
+socket.io@0.9.16 node_modules\socket.io
+├── base64id@0.1.0
+├── policyfile@0.0.4
+├── redis@0.7.3
+└── socket.io-client@0.9.16 (xmlhttprequest@1.4.2, uglify-js@1.2.5, active-x-obfuscator@0.0.1, ws@0.4.31)
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">服务器端启动文件app1.js</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+~ vi app1.js
+
+var port = 3100;
+var io = require('socket.io').listen(port);
+
+io.sockets.on('connection', function (socket) {
+    socket.emit('server', {
+        server: 'Server1',
+        port: port
+    });
+});
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">启动程序</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">node app1.js</CODE></PRE>
+<H2 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 25px 0px 10px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: bold 20px/26px 'Helvetica Neue', Helvetica, Arial, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(67,67,67); WORD-SPACING: 0px; TEXT-DECORATION: none; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px; transition: color 0.2s linear; -webkit-transition: color 0.2s linear">3. 
+创建websocket客户端</H2>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">通过bower安装socket.io-client库和jquery库</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+#下载socket.io-client
+D:\workspace\javascript\nginx-websocket&gt;bower install socket.io-client
+bower socket.io-client#*        cached git://github.com/LearnBoost/socket.io-client.git#0.9.16
+bower socket.io-client#*      validate 0.9.16 against git://github.com/LearnBoost/socket.io-client.git#*
+bower socket.io-client#~0.9.16 install socket.io-client#0.9.16
+
+socket.io-client#0.9.16 bower_components\socket.io-client
+
+#下载jquery
+D:\workspace\javascript\nginx-websocket&gt;bower install jquery
+bower jquery#*                  cached git://github.com/jquery/jquery.git#2.1.0
+bower jquery#*                validate 2.1.0 against git://github.com/jquery/jquery.git#*
+bower jquery#*                     new version for git://github.com/jquery/jquery.git#*
+bower jquery#*                 resolve git://github.com/jquery/jquery.git#*
+bower jquery#*                download https://github.com/jquery/jquery/archive/2.1.0.tar.gz
+bower jquery#*                progress received 0.3MB of 0.7MB downloaded, 46%
+bower jquery#*                progress received 0.3MB of 0.7MB downloaded, 50%
+bower jquery#*                progress received 0.4MB of 0.7MB downloaded, 56%
+bower jquery#*                progress received 0.4MB of 0.7MB downloaded, 61%
+bower jquery#*                progress received 0.5MB of 0.7MB downloaded, 67%
+bower jquery#*                progress received 0.5MB of 0.7MB downloaded, 72%
+bower jquery#*                progress received 0.5MB of 0.7MB downloaded, 77%
+bower jquery#*                progress received 0.6MB of 0.7MB downloaded, 81%
+bower jquery#*                progress received 0.6MB of 0.7MB downloaded, 86%
+bower jquery#*                progress received 0.6MB of 0.7MB downloaded, 91%
+bower jquery#*                progress received 0.6MB of 0.7MB downloaded, 94%
+bower jquery#*                progress received 0.7MB of 0.7MB downloaded, 99%
+bower jquery#*                 extract archive.tar.gz
+bower jquery#*                resolved git://github.com/jquery/jquery.git#2.1.0
+bower jquery#~2.1.0            install jquery#2.1.0
+jquery#2.1.0 bower_components\jquery
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">创建静态的html文件，作为websocket客户端：client.html</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+~ vi client.html
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Websocket Client&lt;/title&gt;
+&lt;script src="bower_components/socket.io-client/dist/socket.io.min.js"&gt;&lt;/script&gt;
+&lt;script src="bower_components/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Socket.IO Client&lt;/h1&gt;
+&lt;div id="content"&gt;connecting....&lt;/div&gt;
+
+&lt;script&gt;
+var socket = io.connect('http://localhost:3100');
+socket.on('server', function (data) {
+console.log(data);
+$('#content').html(JSON.stringify(data));
+});
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">用浏览器打开client.html，查看websocket通讯情况。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="http://blog.fens.me/wp-content/uploads/2014/03/websocket1.png"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0pt" 
+class="alignnone size-full wp-image-5739" alt=websocket1 
+src="http://blog.fens.me/wp-content/uploads/2014/03/websocket1.png" width=706 
+height=651></A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">服务器端和客户端通讯成功。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">接下来，我们用Nginx实现Websocket服务器的反向代理。</P>
+<H2 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 25px 0px 10px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: bold 20px/26px 'Helvetica Neue', Helvetica, Arial, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(67,67,67); WORD-SPACING: 0px; TEXT-DECORATION: none; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px; transition: color 0.2s linear; -webkit-transition: color 0.2s linear">4. 
+用Nginx实现反向代理</H2>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">看文官说明Nginx在1.3以后的版本支持websocket反向代理，但我在Nginx1.4版本测试时失败，nginx1.5.11版本测试成功。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="http://blog.fens.me/wp-content/uploads/2014/03/ws2.png"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0pt" 
+class="alignnone size-full wp-image-5763" alt=ws2 
+src="http://blog.fens.me/wp-content/uploads/2014/03/ws2.png" width=688 
+height=158></A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">操作步骤：</P>
+<UL 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: none; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 0pt 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">1). 
+  下载安装Nginx</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">2). 
+  修改Nginx配置文件，配置反向代理</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">3). 
+  启动Nginx服务器</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">4). 
+  修改app1.js，增加超时的设置</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">5). 
+  修改client.html，修改nginx访问端口</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">6). 
+  启动Node的Websocket服务器</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">7). 
+  浏览器访问测试</LI></UL>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">1). 
+下载安装Nginx</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">下载地址：<A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="http://nginx.org/en/download.html" target=_blank 
+ref="nofollow">http://nginx.org/en/download.html</A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">2). 
+修改Nginx配置文件，配置反向代理</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">修改nginx配置文件：nginx.conf</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+http {
+
+    // ...省略
+
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        ''      close;
+    }
+
+    server {
+
+	    listen       3102;  #监听3102 
+	    server_name localhost;
+
+        location / {
+            proxy_pass http://localhost:3100; #代理3100 
+
+            proxy_set_header X-Real-IP $remote_addr;
+	    proxy_set_header Host $host;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+	    proxy_http_version 1.1;
+	    proxy_set_header Upgrade $http_upgrade;
+	    proxy_set_header Connection "upgrade";
+        }
+    }
+
+    // ...省略
+}
+</CODE></PRE>
+<UL 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: none; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 0pt 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">设置nginx的访问端口：3102</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">设置nginx的代理端口：3100</LI></UL>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">3). 
+启动Nginx服务器</STRONG></P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+D:\toolkit\nginx-1.5.11&gt;nginx.exe
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">4). 
+修改app1.js，增加超时的设置</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">修改启动文件：app1.js</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+var port = 3100;
+var io = require('socket.io').listen(port);
+
+io.enable('browser client minification');  // send minified client
+io.enable('browser client etag');          // apply etag caching logic based on version number
+io.enable('browser client gzip');          // gzip the file
+//io.set('log level', 1);                    // reduce logging
+
+io.set('transports', [ 'websocket','flashsocket','htmlfile','xhr-polling','jsonp-polling']);
+
+io.sockets.on('connection', function (socket) {
+
+    socket.emit('server', {
+        server: 'Server1',
+        port: port
+    });
+});
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">5). 
+修改client.html，修改nginx访问端口</STRONG></P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Websocket Client&lt;/title&gt;
+&lt;script src="bower_components/socket.io-client/dist/socket.io.min.js"&gt;&lt;/script&gt;
+&lt;script src="bower_components/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Socket.IO Client&lt;/h1&gt;
+&lt;div id="content"&gt;connecting....&lt;/div&gt;
+
+&lt;script&gt;
+    var socket = io.connect('http://localhost:3102',{ // 访问3102端口
+        'connect timeout': 500,
+        'reconnect': true,
+        'reconnection delay': 500,
+        'reopen delay': 500,
+        'max reconnection attempts': 10
+    });//设置连接超时
+
+    socket.on('server', function (data) {
+        console.log(data);
+        $('#content').html(JSON.stringify(data));
+    });
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">6). 
+启动Node的Websocket服务器</STRONG></P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+D:\workspace\javascript\nginx-websocket&gt;node app1.js
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">7). 
+浏览器访问测试</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">打开网页：</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="http://blog.fens.me/wp-content/uploads/2014/03/websocket2.png"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0pt" 
+class="alignnone size-full wp-image-5744" alt=websocket2 
+src="http://blog.fens.me/wp-content/uploads/2014/03/websocket2.png" width=790 
+height=798></A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">这样就打通了nginx反向代理Websocket。不过遇到一个问题，就是tcp建立连接时特别慢，目前还没有好的解决办法。</P>
+<H2 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 25px 0px 10px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: bold 20px/26px 'Helvetica Neue', Helvetica, Arial, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(67,67,67); WORD-SPACING: 0px; TEXT-DECORATION: none; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px; transition: color 0.2s linear; -webkit-transition: color 0.2s linear">5. 
+用Nginx实现多websocket服务器的负载均衡</H2>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">接下来，我们在Nginx配置负载均衡。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="http://blog.fens.me/wp-content/uploads/2014/03/ws3.png"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0pt" 
+class="alignnone size-full wp-image-5761" alt=ws3 
+src="http://blog.fens.me/wp-content/uploads/2014/03/ws3.png" width=688 
+height=284></A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">由于基于Socket.io实现的Websocket服务器是单线程的，而访问实例被保存在MemoryStore中。如果我们想实现多个Websocket服务器或多进程调用，那么我们需要把访问实例单独存储，Socket.io集成了通过Redis的NoSQL数据库存储。</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">socket.io配置说明，可以参考：<A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO" 
+target=_blank ref="nofollow">Configuring Socket.IO</A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">操作步骤：</P>
+<UL 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: none; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 0pt 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">1). 
+  下载安装Redis服务器并启动</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">2). 
+  修改app1.js，增加Redis配置</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">3). 
+  新建app2.js，增加Redis配置</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">4). 
+  修改Nginx配置文件，配置app1,app2的负载均衡</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">5). 
+  启动Nginx服务器，启动app1.js, app2.js</LI>
+  <LI 
+  style="LIST-STYLE: none none outside; PADDING-BOTTOM: 3px !important; MARGIN: 0pt 0pt 5px; PADDING-LEFT: 22px !important; PADDING-RIGHT: 0pt; BACKGROUND: url(http://blog.fens.me/wp-content/themes/silesia/images/bullets/5.gif) no-repeat 0px 5px; PADDING-TOP: 0pt">6). 
+  浏览器访问测试</LI></UL>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">1). 
+下载安装Redis服务器并启动</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">Redis的window版本的下载地址：<A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="https://github.com/rgl/redis/downloads" target=_blank 
+ref="nofollow">https://github.com/rgl/redis/downloads</A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">启动redis</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+D:\toolkit\Redis&gt;redis-server.exe
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">2). 
+修改app1.js，增加Redis配置</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">修改一个app1.js，绑定Redis存储实例</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+var port = 3100;
+var io = require('socket.io').listen(port);
+
+var RedisStore = require('socket.io/lib/stores/redis')
+    , redis  = require('socket.io/node_modules/redis')
+    , pub    = redis.createClient()
+    , sub    = redis.createClient()
+    , client = redis.createClient();
+
+io.set('store', new RedisStore({
+    redisPub : pub
+    , redisSub : sub
+    , redisClient : client
+}));
+
+io.enable('browser client minification');  // send minified client
+io.enable('browser client etag');          // apply etag caching logic based on version number
+io.enable('browser client gzip');          // gzip the file
+//io.set('log level', 1);                    // reduce logging
+
+io.set('transports', [ 'websocket','flashsocket','htmlfile','xhr-polling','jsonp-polling']);
+
+io.sockets.on('connection', function (socket) {
+
+    socket.emit('server', {
+        server: 'Server1',
+        port: port
+    });
+});
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">3). 
+新建app2.js，增加Redis配置</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">增加一个app2.js，做为第二个websocket服务器</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+var port = 3101;
+var io = require('socket.io').listen(port);
+
+var RedisStore = require('socket.io/lib/stores/redis')
+    , redis  = require('socket.io/node_modules/redis')
+    , pub    = redis.createClient()
+    , sub    = redis.createClient()
+    , client = redis.createClient();
+
+io.set('store', new RedisStore({
+    redisPub : pub
+    , redisSub : sub
+    , redisClient : client
+}));
+
+io.enable('browser client minification');  // send minified client
+io.enable('browser client etag');          // apply etag caching logic based on version number
+io.enable('browser client gzip');          // gzip the file
+//io.set('log level', 1);                    // reduce logging
+
+io.set('transports', [ 'websocket','flashsocket','htmlfile','xhr-polling','jsonp-polling']);
+
+io.sockets.on('connection', function (socket) {
+
+    socket.emit('server', {
+        server: 'Server2',
+        port: port
+    });
+});
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">4). 
+修改Nginx配置文件，配置3100,3101端口的负载均衡</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">修改Nginx配置文件：nginx.conf</P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+http{
+	map $http_upgrade $connection_upgrade {
+		default upgrade;
+		''      close;
+	}
+
+	upstream websocket {
+		#ip_hash;
+		server localhost:3100;  
+		server localhost:3101;
+	}
+
+	server {
+		listen       3102;
+		server_name localhost;
+
+		location / {
+			proxy_pass http://websocket;
+			
+			#proxy_pass http://localhost:3100/;  
+			
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection "upgrade";
+		}
+	}
+}
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">5). 
+启动Nginx服务器，启动app1.js, app2.js</STRONG></P><PRE style="TEXT-ALIGN: left; PADDING-BOTTOM: 10px; LINE-HEIGHT: 20px; TEXT-TRANSFORM: none; FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0pt 0pt 15px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(249,249,212); LETTER-SPACING: normal; COLOR: rgb(77,77,79); FONT-SIZE: 13px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px"><CODE style="PADDING-BOTTOM: 1px; MARGIN: 0pt; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FONT: 11px Monaco, monospace; BACKGROUND: rgb(255,255,225); PADDING-TOP: 1px; font-stretch: normal">
+D:\toolkit\nginx-1.5.11&gt;nginx.exe
+D:\workspace\javascript\nginx-websocket&gt;node app1.js
+D:\workspace\javascript\nginx-websocket&gt;node app2.js
+</CODE></PRE>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">6). 
+浏览器访问测试</STRONG></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">打开2个浏览器页面：</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+href="http://blog.fens.me/wp-content/uploads/2014/03/websocket3.png"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0pt" 
+class="alignnone size-full wp-image-5752" alt=websocket3 
+src="http://blog.fens.me/wp-content/uploads/2014/03/websocket3.png" width=916 
+height=612></A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px">这样就实现2个Websocket服务器轮训的负载均衡！！不过，建立连接非常慢的问题依然存在，我还没有什么好的办法。希望了解内情的同学，帮助解答！</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0pt; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px 0pt 15px; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; FONT: 13px/20px Arial, Helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(77,77,79); WORD-SPACING: 0px; PADDING-TOP: 0pt; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt">转载请注明出处：</STRONG><BR 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt"><A 
+style="PADDING-BOTTOM: 0pt; MARGIN: 0pt; OUTLINE-STYLE: none; PADDING-LEFT: 0pt; OUTLINE-WIDTH: medium; PADDING-RIGHT: 0pt; COLOR: rgb(14,115,184); TEXT-DECORATION: none; PADDING-TOP: 0pt" 
+title=Nginx反向代理Websocket href="http://blog.fens.me/nodejs-websocket-nginx/" 
+target=_blank>http://blog.fens.me/nodejs-websocket-nginx/</A></P></BODY></HTML>
