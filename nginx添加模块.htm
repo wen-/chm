@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>nginx添加模块</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
+<BODY>
+<P>nginx添加模块</P>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 11px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 12px/12px 宋体, Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; LETTER-SPACING: normal; COLOR: rgb(86,86,86); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class="Blog_tit4 Blog_tit5"><SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="FONT-FAMILY: 微软雅黑, 黑体, Verdana; WORD-WRAP: break-word; COLOR: rgb(25,89,155); FONT-SIZE: 20px; TEXT-DECORATION: none" 
+href="http://blog.chinaunix.net/uid-24625974-id-2894092.html">nginx添加模块(非覆盖安装)</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><EM 
+style="FONT-STYLE: normal; FONT-FAMILY: Arial; WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-LEFT: 22px">2011-09-23 
+14:09:22</EM></DIV>
+<DIV 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 12px/26px 宋体, Arial; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(102,102,102); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+class=Blog_con2>
+<DIV style="LINE-HEIGHT: 22px; MARGIN-TOP: 10px; WORD-WRAP: break-word" 
+class=Blog_con3>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-TOP: 0px">分类：<SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px"></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-TOP: 0px">原文地址：<SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px"><A 
+style="WORD-WRAP: break-word; COLOR: rgb(86,86,86); TEXT-DECORATION: none" 
+href="http://blog.chinaunix.net/uid-346158-id-2131187.html">nginx添加模块(非覆盖安装)</A></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>作者：<SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px"><A 
+style="WORD-WRAP: break-word; COLOR: rgb(86,86,86); TEXT-DECORATION: none" 
+href="http://blog.chinaunix.net/uid/346158.html">nianzong</A></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-TOP: 0px"></P></DIV>
+<DIV style="WORD-WRAP: break-word; FONT-SIZE: 16px" 
+class=Blog_wz1>原已经安装好的nginx，现在需要添加一个未被编译安装的模块:<BR 
+style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">nginx -V 
+可以查看原来编译时都带了哪些参数<BR style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">原来的参数：<BR 
+style="WORD-WRAP: break-word">--prefix=/app/nginx<BR 
+style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">添加的参数:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="WORD-WRAP: break-word">--with-http_stub_status_module 
+--with-http_ssl_module --with-http_realip_module<BR 
+style="WORD-WRAP: break-word"><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; PADDING-TOP: 0px">步骤如下：<BR style="WORD-WRAP: break-word">1. 使用参数重新配置:<BR style="WORD-WRAP: break-word">./configure --prefix=/app/nginx -user=nobody -group=nobody --with-http_stub_status_module \<BR style="WORD-WRAP: break-word">--with-http_ssl_module --with-http_realip_module \<BR style="WORD-WRAP: break-word">--add-module=../nginx_upstream_hash-0.3.1/ \<BR style="WORD-WRAP: break-word">--add-module=../gnosek-nginx-upstream-fair-2131c73/<BR style="WORD-WRAP: break-word">2. 编译:<BR style="WORD-WRAP: break-word">make<BR style="WORD-WRAP: break-word">#不要make install，否则就是覆盖安装<BR style="WORD-WRAP: break-word">3. 替换nginx二进制文件:<BR style="WORD-WRAP: break-word">cp /app/nginx/sbin/nginx /app/nginx/sbin/nginx.bak<BR style="WORD-WRAP: break-word">cp ./objs/nginx /app/nginx/sbin/</PRE></DIV></DIV></BODY></HTML>

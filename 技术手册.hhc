@@ -2962,10 +2962,15 @@
 <PARAM NAME="Local" VALUE="liunx系统限制socket.io连接数修改.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx添加模块">
+<PARAM NAME="Local" VALUE="nginx添加模块.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="thinkPHP">
 <PARAM NAME="Local" VALUE="thinkPHP.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
