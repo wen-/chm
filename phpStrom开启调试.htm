@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>phpStrom开启调试</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.17183"></HEAD>
+<BODY>
+<P>phpStrom开启调试</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">XDEBUG配置：</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">1.安装 
+xdebug 略了。网上有很多资料。<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">重点写php.ini的配置<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;[XDebug]<BR>&nbsp;&nbsp; 
+zend_extension="/usr/lib/php5/20090626+lfs/xdebug.so"<BR>&nbsp;&nbsp; 
+xdebug.default_enable = On<BR>&nbsp;&nbsp; xdebug.collect_params = On</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;xdebug.remote_connect_back 
+= On&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //如果开启此，将忽略下面的 
+xdebug.remote_host 的参数。 
+&lt;一台webserver有多个开发者的工作目录的时候使用，如：p1.xx.com,p2.xx.com,p3.xx.com 。。。等。 
+&gt;<BR>&nbsp;&nbsp; xdebug.remote_host = 192.168.59.104&nbsp;&nbsp;&nbsp; 
+//注意这里是，客户端的ip&lt;即IDE的机器的ip,不是你的web server&gt;<BR>&nbsp;&nbsp; 
+xdebug.remote_port = 9900&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // &nbsp;&nbsp;&nbsp;&nbsp; 
+注意这里是，客户端的端口&lt;即IDE的机器的ip,不是你的web server&gt;<BR>&nbsp;&nbsp; 
+xdebug.remote_enable = On<BR>&nbsp; xdebug.remote_handler = dbgp<BR>&nbsp; 
+xdebug.remote_log = "/var/www/xdebug/xdebug.log"<BR>&nbsp;xdebug.remote_req = 
+req<BR>&nbsp;xdebug.auto_trace = Off<BR>&nbsp;xdebug.remote_autostart = 
+On<BR>&nbsp;xdebug.show_exception_trace = 0<BR>&nbsp;xdebug.collect_vars = 
+On<BR>&nbsp;xdebug.collect_return = On<BR>&nbsp;xdebug.collect_params = 
+On<BR>&nbsp;xdebug.var_display_max_depth = 15<BR>&nbsp;xdebug.show_local_vars = 
+1<BR>&nbsp;xdebug.dump_undefined = 1<BR>&nbsp;xdebug.profiler_enable = 
+1<BR>&nbsp;xdebug.profiler_output_dir = /var/www/xdebug</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">PHPSTORM 
+配置：<BR>1.file-&gt;setings-&gt;php|Debug右侧。xdebug的那一块。 设置Debug port:9900（这里设置 
+的是，xdebug 吐出的debug信息，通过本机的什么端口传输。）</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">2.file-&gt;setings-&gt;php|Servers&nbsp; 
+右侧。&nbsp; host: 你的web服务器的域名或ip ,端口，&nbsp; 下面的 use path mapping&nbsp; 
+意的是，你的项目的目录，对应服务器上的，什么目录？&nbsp;&nbsp; 这里一定要设置哦！ 
+不然，会发生找不到文件而出错，导至调试终止。<BR><BR>3.Run-&gt;Edit Configurations-&gt; 增加一个 PHP WEB 
+APPlication 的调试点。&nbsp; 右侧： server 选择你上面建立的server.&nbsp; starturl 
+设置你的入口文件。<BR><BR>至此，配置完毕！</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这样的请求，可以注册一个调试客户端哦！<BR></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">http://www.aihuxi.com/****.php?XDEBUG_SESSION_START=19192<BR></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>点击，小虫子图标，即可，开始调试！<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space></SPAN>&nbsp;</P><SPAN class=Apple-converted-space>
+<DIV class=hgroup 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: medium 微软雅黑; PADDING-LEFT: 30px; LETTER-SPACING: normal; PADDING-RIGHT: 30px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H2 style="MARGIN: 0px 0px 4px">使用phpstorm和xdebug实现远程调试</H2><SPAN class=time 
+style="FONT-SIZE: 10px; COLOR: rgb(188,188,188); MARGIN: 0px 5px 10px 0px; DISPLAY: block">2012-05-23 
+10:06:35</SPAN></DIV>
+<DIV class=articleC 
+style="MARGIN-BOTTOM: 34px; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(34,34,34); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 15px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 30px; LETTER-SPACING: normal; PADDING-RIGHT: 30px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px">vs的断点调试功能很强大有木有，能查看所有变量有木有。php调试很麻烦有木有，echo，var_dump写得你想吐了有木有。想体验一下ide调试的快感吗？那就来使用xdebug吧。</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px"><STRONG>1.原理：</STRONG>xdebug是一款php调试插件，支持远程调试，就是在php文件运行的时候，能通过tcp协议，来发送调试信息到远程端口，ide在收到调试信息的时候，可以向xdebug发送单步运行，中止运行，运行等命令。这样就实现了vs那样强大的调试功能。</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px"><STRONG>2.需要的东东：</STRONG>一款支持xdebug远程调试的ide，这里使用phpstorm，是一个灰常强大的phpide。另外需要一款你的php对应版本的xdebug。</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px"><STRONG>3.步骤：</STRONG>先下载xdebug，请在官网下载你的php版本对应的xdebug<IMG 
+title=1.jpg 
+style="MAX-WIDTH: 1000px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; FLOAT: none; BORDER-LEFT: medium none" 
+border=0 hspace=0 
+src="http://qhcms.sinaapp.com/img.php?a=getfile&amp;path=13377374324431.jpg"></P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px">如果你不知道你的版本呢，请echo&nbsp;phpinfo();哈哈，然后把整个页面复制到<A 
+style="TEXT-DECORATION: underline" 
+href="http://xdebug.org/wizard.php">http://xdebug.org/wizard.php</A>&nbsp;这个页面的框里，然后他会自动分析你的php版本，然后告诉你放在哪个文件夹，我们放在php的拓展文件夹就好了，我是D:\xampp\php\ext</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">然后配置php.ini,在最后加上这个：</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">[xdebug]</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px">zend_extension&nbsp;=&nbsp;D:\xampp\php\ext\php_xdebug-2.2.0-5.3-vc9.dll</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">xdebug.remote_enable=1</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px">xdebug.remote_host=127.0.0.1</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">xdebug.remote_port=9000</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">xdebug.idekey=phpstorm4</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">xdebug.remote_autostart=1</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px">解释下，第一行是加载xdebug，romote_enable是开启远程调试，下面是远程调试的参数，ip，端口，识别字符串，自动远程调试。</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px">然后重启apache，xdebug就加载成功了，为神马网站会慢很多呢，因为你开启了自动远程调试，每一次访问都会连接一下定义的ip和端口。哈哈。这个看自己取舍吧。</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">然后就是配置ide了，<IMG title=2.jpg 
+style="MAX-WIDTH: 1000px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; FLOAT: none; BORDER-LEFT: medium none" 
+border=0 hspace=0 
+src="http://qhcms.sinaapp.com/img.php?a=getfile&amp;path=13377380681824.jpg">选择editconfig，然后按这样配置：<IMG 
+title=3.jpg 
+style="MAX-WIDTH: 1000px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; FLOAT: none; BORDER-LEFT: medium none" 
+border=0 hspace=0 
+src="http://qhcms.sinaapp.com/img.php?a=getfile&amp;path=13377381744388.jpg"></P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px">在php&nbsp;remote&nbsp;debug里面配置好服务器&nbsp;127.0.0.1&nbsp;80&nbsp;xdebug，然后设置好识别字符串。这里是我们已经定义了的phpstorm4，然后保存。这样就配置好了。</P>
+<P 
+style="WORD-WRAP: break-word; MARGIN: 1em 0px"><STRONG>4.使用：</STRONG>现在我们就可以开始调试了。<IMG 
+title=4.jpg 
+style="MAX-WIDTH: 1000px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; FLOAT: none; BORDER-LEFT: medium none" 
+border=0 hspace=0 
+src="http://qhcms.sinaapp.com/img.php?a=getfile&amp;path=13377383708589.jpg">，点击者按钮，开始监听远程调试，当变成绿色表示监听成功。下面我们设置一个断点。<IMG 
+title=5.jpg 
+style="MAX-WIDTH: 1000px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; FLOAT: none; BORDER-LEFT: medium none" 
+border=0 hspace=0 
+src="http://qhcms.sinaapp.com/img.php?a=getfile&amp;path=13377385309439.jpg">，看到木有，有木有有木有很强大，可以一步一步执行哦，F7单步进入函数，F8是单步跳过函数。有不明白的留言哦。</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">&nbsp;</P>
+<P style="WORD-WRAP: break-word; MARGIN: 1em 0px">&nbsp;</P>
+<H1 class=post-title 
+style="FONT-SIZE: 25px; FONT-FAMILY: 'Microsoft Yahei', Tahoma, Helvetica, Arial, SimSun, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FONT-WEIGHT: 400; COLOR: rgb(255,120,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: rgba(206, 97, 0, 0.458824) 1px 1px">XAMPP环境下用phpStorm+XDebug进行断点调试的配置</H1>
+<DIV class=meta 
+style="FONT-SIZE: 12px; FONT-FAMILY: 'Microsoft Yahei', Tahoma, Helvetica, Arial, SimSun, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FONT-WEIGHT: normal; COLOR: rgb(153,153,153); PADDING-BOTTOM: 20px; FONT-STYLE: normal; PADDING-TOP: 10px; CLEAR: both; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">发表于 
+2012-07-11 | 分类:<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+title=查看PHP中的全部文章 
+style="COLOR: rgb(153,153,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+href="http://www.chenxuanyi.cn/category/about-dev/php" 
+rel="category tag">PHP</A><SPAN class=Apple-converted-space>&nbsp;</SPAN>| 
+标签:<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(153,153,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+href="http://www.chenxuanyi.cn/tag/phpstorm" rel=tag>phpStorm</A>、<A 
+style="COLOR: rgb(153,153,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+href="http://www.chenxuanyi.cn/tag/xdebug" rel=tag>xdebug</A></DIV>
+<DIV id=post_content 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(99,106,115); FONT: 14px/21px 'Microsoft Yahei', Tahoma, Helvetica, Arial, SimSun, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 15px; PADDING-RIGHT: 0px">折腾了整整一个下午，总算完成了<STRONG><SPAN 
+class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+target=_blank>phpStorm</A></SPAN></STRONG>+<STRONG><SPAN 
+class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+target=_blank>XDebug</A></SPAN></STRONG>的断点调试设置。下面情况针对本机进行调试，远程调试差距不大。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 15px; PADDING-RIGHT: 0px">具体过程：</P>
+<OL 
+style="LIST-STYLE-TYPE: decimal; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 0px 0px 15px 20px; PADDING-RIGHT: 0px">
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">服务器端（本地调试的情况下就是在本机）安装好XAMPP，停止apache服务（注意，如果直接退出XAMPP，是不会停止apache的）</LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">在安装目录下找到php.ini，类似于D:\xampp\php\php.ini，并打开<SPAN 
+  id=more-156></SPAN></LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">找到被注释掉的项目并按如下设置：<PRE>zend_extension = "D:\xampp\php\ext\php_xdebug.dll"(根据实际情况确定)
+xdebug.remote_enable =1
+xdebug.remote_handler = "dbgp"
+xdebug.remote_host = "localhost"
+xdebug.remote_mode = "req"
+xdebug.remote_port = 9000
+</PRE>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 15px; PADDING-RIGHT: 0px">其中remote_host 
+  是指调试客户端的地址，即IDE所在的IP，同理remote_port 是客户端的端口，这两项在远程调试的情况下注意修改</P></LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">保存文件，打开apache，这时候在CMD里输入&nbsp;D:\xampp\php\php.exe 
+  -m 看到<SPAN class=wp_keywordlink_affiliate><A 
+  title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>XDebug</A></SPAN>，说明开启成功。至此，服务器端配置完毕</LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">下面是客户端调试，打开<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>phpStorm</A></SPAN>，进入File&gt;Settings&gt;PHP&gt;Servers，这里要填写服务器端的相关信息，name填localhost，host填localhost，port填80，debugger选<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>XDebug</A></SPAN></LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">进入File&gt;Settings&gt;PHP&gt;Debug，看到<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>XDebug</A></SPAN>选项卡，port填9000，其他默认</LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">进入File&gt;Settings&gt;PHP&gt;Debug&gt;DBGp 
+  Proxy，IDE key 填&nbsp;<SPAN class=wp_keywordlink_affiliate><A 
+  title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>phpStorm</A></SPAN>，host 填localhost，port 填80</LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">点OK退出设置。</LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">打开浏览器，如果是用chrome或者Firefox可以找到对应的<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>XDebug</A></SPAN>工具，工具的设置里的IDE KEY填上<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>phpStorm</A></SPAN>，把localhost加入到白名单，以后调试的时候把工具启用就好了。如果是用其他浏览器，可以访问<A 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.jetbrains.com/phpstorm/marklets/">http://www.jetbrains.com/phpstorm/marklets/</A>，在右边填上<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>phpStorm</A></SPAN>，点generate，把下面的链接添加到收藏夹，方便调用。</LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">在<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>phpStorm</A></SPAN>里打开监听，就是一个电话一样的按钮。</LI>
+  <LI 
+  style="BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 5px; PADDING-RIGHT: 0px">在浏览器里打开<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>XDebug</A></SPAN>工具，访问localhost，与<SPAN 
+  class=wp_keywordlink_affiliate><A title=XAMPP环境下用phpStorm+XDebug进行断点调试的配置 
+  style="COLOR: rgb(0,68,153); TEXT-DECORATION: none; text-shadow: rgba(0, 120, 170, 0.368627) 1px 1px" 
+  href="http://www.chenxuanyi.cn/xampp-phpstorm-xdebug.html" 
+  target=_blank>phpStorm</A></SPAN>连接成功！</LI></OL></DIV></DIV></SPAN>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space></SPAN>&nbsp;</P>
+<P 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/26px Arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space></SPAN>&nbsp;</P></BODY></HTML>
