@@ -2791,6 +2791,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2953,6 +2954,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="nginx负载均衡">
 <PARAM NAME="Local" VALUE="nginx负载均衡.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="liunx系统限制socket.io连接数修改">
+<PARAM NAME="Local" VALUE="liunx系统限制socket.io连接数修改.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
