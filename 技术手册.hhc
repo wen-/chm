@@ -2791,7 +2791,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2954,6 +2953,18 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="nginx负载均衡">
 <PARAM NAME="Local" VALUE="nginx负载均衡.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="thinkPHP">
+<PARAM NAME="Local" VALUE="thinkPHP.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="3.1-3.2session不过期修改">
+<PARAM NAME="Local" VALUE="3.1-3.2session不过期修改.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 </UL></body></html>
