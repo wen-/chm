@@ -2980,6 +2980,12 @@
 <PARAM NAME="Local" VALUE="nginx路由重写.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx下ThinkPHP无法写入SESSION">
+<PARAM NAME="Local" VALUE="nginx下ThinkPHP无法写入SESSION.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="thinkPHP">
 <PARAM NAME="Local" VALUE="thinkPHP.htm">
