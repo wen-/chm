@@ -1,0 +1,634 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>redis故障转移</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
+<BODY>
+<P>redis故障转移</P>
+<DIV 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 12px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+class=multicntwrap>
+<DIV class=multicnt>
+<DIV>
+<H3 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: normal; MARGIN: 34px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WORD-WRAP: break-word; WHITE-SPACE: normal; FONT-SIZE: 16px; OVERFLOW: hidden; WORD-BREAK: break-all; PADDING-TOP: 0px" 
+class="title pre fs1"><SPAN 
+style="LINE-HEIGHT: 38px; FONT-FAMILY: 'Hiragino Sans GB W3', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, Helvetica, simsun, 宋体; FONT-SIZE: 26px; FONT-WEIGHT: bold" 
+class=tcnt>Redis故障转移配置；Redis Sentinel配置；redis集群</SPAN>&nbsp;&nbsp;<SPAN 
+style="BACKGROUND-COLOR: rgb(255,255,255); COLOR: rgb(32,168,223); FONT-SIZE: 12px; FONT-WEIGHT: normal" 
+class="bgc0 fc07 fw0 fs0"></SPAN></H3>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; MARGIN: 0px 0px 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; COLOR: rgb(112,112,112); PADDING-TOP: 0px" 
+class="tdep clearfix nbw-act fc06"><SPAN style="FLOAT: left" class=pleft><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>2013-10-25 15:31:08</SPAN><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>|&nbsp;&nbsp;分类：</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="COLOR: rgb(27,140,186); CURSOR: pointer; TEXT-DECORATION: none" 
+class="fc03 m2a" title=数据库 
+href="http://zhangzongshuai1025.blog.163.com/blog/#m=0&t=1&c=fks_084068086085081065085084083095085085082074085085095071083">数据库</A></SPAN><SPAN 
+style="FLOAT: right; COLOR: rgb(32,168,223)" class="pright fc07 ztag"><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>|</SPAN><SPAN 
+style="COLOR: rgb(27,140,186); CURSOR: pointer; TEXT-DECORATION: none" 
+id=$_spanReport class="fc03 m2a">举报</SPAN></SPAN><SPAN 
+style="FLOAT: right; COLOR: rgb(32,168,223)" class="pright fc07 ztag"><SPAN 
+style="MARGIN: 0px 2px" class=blogsep>|</SPAN><SPAN 
+style="POSITION: relative; COLOR: rgb(27,140,186); CURSOR: default" 
+id=$_fontswitch class="zihao fc03">字号</SPAN></SPAN><SPAN 
+style="FLOAT: right; COLOR: rgb(27,140,186); CURSOR: pointer" 
+id=$_blog_subscribe class="pright pnt fc03"><SPAN 
+style="BACKGROUND-IMAGE: url(http://b2.bst.126.net/newpage/images/icon.png?v=20120531); LINE-HEIGHT: 20px; WIDTH: 20px; ZOOM: 1; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: -360px -380px; HEIGHT: 20px" 
+class="iblock icn0 icn0-919">&nbsp;</SPAN><A 
+style="COLOR: rgb(27,140,186); CURSOR: pointer; TEXT-DECORATION: none" 
+class=m2a>订阅</A></SPAN></P></DIV></DIV></DIV>
+<DIV 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 12px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"></DIV>
+<DIV 
+style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 12px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px" 
+class=nbw-blog-start></DIV>
+<DIV 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 15px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 16px/28px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); OVERFLOW: hidden; WORD-SPACING: 0px; PADDING-TOP: 5px; -webkit-text-stroke-width: 0px" 
+class="bct fc05 fc11 nbw-blog ztag">
+<DIV style="LINE-HEIGHT: 28px"></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 22px" 
+color=#3366ff><SPAN style="LINE-HEIGHT: 22px"><FONT style="LINE-HEIGHT: 28px" 
+color=#ff00ff><STRONG 
+style="LINE-HEIGHT: 28px"></STRONG></FONT></SPAN></FONT><FONT 
+style="LINE-HEIGHT: 22px" color=#3366ff><SPAN style="LINE-HEIGHT: 22px"># 
+Redis-</SPAN></FONT><SPAN 
+style="LINE-HEIGHT: 22px; COLOR: rgb(51,102,255)">Sentinel的官网地址：</SPAN><A 
+style="LINE-HEIGHT: 22px; COLOR: rgb(27,140,186); TEXT-DECORATION: none" 
+href="http://redis.io/topics/sentinel" rel=nofollow 
+target=_blank>http://redis.io/topics/sentinel</A></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" color=#3366ff># 
+注意：<FONT style="LINE-HEIGHT: 22px"><SPAN 
+style="LINE-HEIGHT: 22px">Redis-</SPAN></FONT><SPAN 
+style="LINE-HEIGHT: 22px">Sentinel官网提供不是稳定版！个人感觉这个比keepalived+redis来切换好非常多。</SPAN></FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px">配置环境：</DIV>
+<DIV style="LINE-HEIGHT: 28px">OS: CentOS6.1 x86 &nbsp;* &nbsp;4</DIV>
+<DIV style="LINE-HEIGHT: 28px">Software: redis-2.6.9</DIV>
+<DIV style="LINE-HEIGHT: 28px">内存: 16G</DIV>
+<DIV style="LINE-HEIGHT: 28px">CPU:&nbsp;E5606 &nbsp;@ 2.13GHz *2</DIV>
+<DIV style="LINE-HEIGHT: 28px">------------------</DIV>
+<DIV style="LINE-HEIGHT: 28px">IP分布情况：</DIV>
+<DIV style="LINE-HEIGHT: 28px">Redis Sentinel &nbsp; : 192.168.7.46</DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">Redis server主 
+&nbsp;:<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 22px">192.168.7.44</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">Redis 
+server从1:&nbsp;</SPAN><SPAN style="LINE-HEIGHT: 22px">192.168.7.40</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">Redis 
+server从2:&nbsp;</SPAN><SPAN style="LINE-HEIGHT: 22px">192.168.7.142</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px">下面均以尾部表示IP，如 44、46....</DIV>
+<DIV style="LINE-HEIGHT: 28px">结构如图：</DIV>
+<DIV style="LINE-HEIGHT: 28px">
+<DIV style="LINE-HEIGHT: 28px">
+<DIV style="LINE-HEIGHT: 28px"><IMG border=0 hspace=0 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis01.jpg"></DIV><SPAN 
+style="LINE-HEIGHT: 22px">------------------</SPAN></DIV>
+<DIV 
+style="LINE-HEIGHT: 28px">配置过程中，如果没有4台机器，那只要2台也可以，其中一台运行Sentinel，另一台运行3个不同端口的redis服务即可。</DIV><FONT 
+style="LINE-HEIGHT: 28px" color=#3366ff>集群最小单位为：1个<SPAN 
+style="LINE-HEIGHT: 22px">Sentinel、2个redis；</SPAN></FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN 
+style="LINE-HEIGHT: 22px">------------------</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px">开始：</DIV>
+<DIV style="LINE-HEIGHT: 28px">1.1 启动Redis-server服务</DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; 
+#redis的安装配置就不介绍了,不清楚的可以先google，redis的配置文件可以直接用。</DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; #启动&nbsp;<SPAN 
+style="LINE-HEIGHT: 22px">Redis server服务</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">（IP&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">44、40、142</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">）</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp;<FONT 
+style="LINE-HEIGHT: 28px" color=#3366ff><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>redis-server 
+/usr/local/redis-2.6.9/redis.conf &nbsp; &amp;</FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #配置40、142为从库，分别执行</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp;&nbsp;<FONT style="LINE-HEIGHT: 28px" color=#3366ff>redis-cli 
+slaveof&nbsp;</FONT></SPAN><SPAN style="LINE-HEIGHT: 22px"><FONT 
+style="LINE-HEIGHT: 28px" color=#3366ff>192.168.7.44 6379</FONT></SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; #查看主上的主从状态</DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp;&nbsp;<SPAN 
+style="LINE-HEIGHT: 22px; COLOR: rgb(51,102,255)">redis-cli -h 192.168.7.44 -p 
+6379 info&nbsp;</SPAN><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff>Replication</FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; #可以看到从状态</DIV>
+<DIV style="LINE-HEIGHT: 28px"><IMG border=0 hspace=0 alt=123 
+src="images/redis02.jpg"></DIV>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#随意查看一台从的主从状态 
+
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp;<FONT 
+style="LINE-HEIGHT: 28px" color=#3366ff><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>redis-cli -h 192.168.7.40 -p 6379 info 
+Replication</FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 10px 0px 0px; MAX-WIDTH: 100%; HEIGHT: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis03.jpg"></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN 
+style="LINE-HEIGHT: 22px">------------------</SPAN>&nbsp;<BR 
+style="LINE-HEIGHT: 28px">&nbsp;1.2启动Redis Sentinel&nbsp;<SPAN 
+style="LINE-HEIGHT: 22px">（ip：46）</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; #<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">Sentinel</SPAN>&nbsp;的配置文件为sentinel.conf 
+复制以下配置，修改IP地址即可。</DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp;<FONT 
+style="LINE-HEIGHT: 28px" color=#3366ff><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>cat &nbsp;&nbsp;<SPAN 
+style="LINE-HEIGHT: 22px">&nbsp;</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">/usr/local/redis-2.6.9/</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">sentinel.conf</SPAN></FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp;&nbsp;</SPAN></FONT><SPAN 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)">sentinel 
+monitor test1 192.168.7.40 6379 1 #修改IP地址，IP可以是集群中的任意一个IP地址。</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)">sentinel 
+down-after-milliseconds test1 5000 #默认1s检测一次，这里配置超时5000毫秒为宕机。</SPAN><BR 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)"><SPAN 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)">sentinel 
+failover-timeout test1 900000</SPAN><BR 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)"><SPAN 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)">sentinel 
+can-failover test1 yes</SPAN><BR 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)"><SPAN 
+style="LINE-HEIGHT: 22px; FONT-FAMILY: monospace; WHITE-SPACE: pre; COLOR: rgb(51,102,255)">sentinel 
+parallel-syncs test1 2</SPAN>&nbsp;&nbsp; &nbsp;&nbsp;</DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp;#启动<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN style="LINE-HEIGHT: 22px">Redis 
+Sentinel</SPAN>&nbsp;</DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff>&nbsp;redis-server /usr/local/<SPAN 
+style="LINE-HEIGHT: 22px">redis-2.6.9/</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">sentinel.conf</SPAN>&nbsp; --<SPAN 
+style="LINE-HEIGHT: 22px">sentinel</SPAN>&nbsp; &amp;</FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 10px 0px 0px; MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis04.jpg"></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; #&nbsp;<SPAN 
+style="LINE-HEIGHT: 22px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff>Sentinel默认端口为26379</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>,</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">Sentinel</SPAN><SPAN style="LINE-HEIGHT: 22px">终端打印 ： 
+&nbsp; &nbsp; * slave &nbsp;从库信息 @ master-name 主库信息&nbsp;</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px">
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; # 以上信息表明</SPAN><SPAN style="LINE-HEIGHT: 22px">Sentinel</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">&nbsp;已经启动成功，并且已经识别到当前的主从情况。</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; # 但是这个只会在终端上显示，如果你关闭当前终端，就无法显示。</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; # 用命令可以更直接显示当前状态。</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; # 查询master状态</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp;&nbsp;</SPAN><FONT style="LINE-HEIGHT: 28px" color=#3366ff>redis-cli -h 
+192.168.7.46 -p 26379 info Sentinel</FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 10px 0px 0px; MAX-WIDTH: 100%; HEIGHT: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis05.jpg"></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp;<SPAN 
+style="LINE-HEIGHT: 22px">&nbsp;#通过这里可以获取到主IP地址</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 22px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp;&nbsp;</SPAN><FONT style="LINE-HEIGHT: 22px" 
+color=#3366ff>redis-cli&nbsp;&nbsp;<SPAN style="LINE-HEIGHT: 22px">-h 
+192.168.7.46 -p 26379&nbsp;</SPAN>&nbsp;info sentinel| awk -F ',' '/status/ 
+{print $3}'| awk -F '=' '{print $2}'</FONT></DIV>&nbsp; &nbsp; &nbsp; # 
+查询slave状态</DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff>redis-cli&nbsp;<SPAN style="LINE-HEIGHT: 22px">-h 
+192.168.7.46&nbsp;</SPAN>-p 26379 sentinel slaves test1 &nbsp; &nbsp; 
+&nbsp;<SPAN class=Apple-converted-space>&nbsp;</SPAN></FONT>&nbsp;//test1是<SPAN 
+style="LINE-HEIGHT: 22px">sentinel.conf中配置的</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px"></SPAN><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 10px 0px 0px; MAX-WIDTH: 100%; HEIGHT: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis06.jpg"></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; 
+#图中显示了几个从库（name数量），从库的IP地址和状态，主库<SPAN 
+style="LINE-HEIGHT: 22px">的IP地址和状态。</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #还有‘runid’ 
+，redis的从接管主没有优先级的参数可以配置，默认使用runid的大小来竞争主库，所以这里也可以预测下一个主是哪台</SPAN></DIV><SPAN 
+style="LINE-HEIGHT: 22px">&nbsp; &nbsp; &nbsp; #这里看下一个主为142. 
+&nbsp;优先级这个以后作者应该会更新吧。</SPAN> 
+<DIV style="LINE-HEIGHT: 28px"><SPAN 
+style="LINE-HEIGHT: 22px">------------------</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN 
+style="LINE-HEIGHT: 22px">1.3演示故障</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #目前状态：</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #<SPAN style="LINE-HEIGHT: 28px; WHITE-SPACE: pre"> </SPAN></SPAN><SPAN 
+style="LINE-HEIGHT: 22px">Redis Sentinel &nbsp; : 192.168.7.46</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 22px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #<SPAN style="LINE-HEIGHT: 28px; WHITE-SPACE: pre"> </SPAN>Redis server主 
+&nbsp;:&nbsp;</SPAN><SPAN style="LINE-HEIGHT: 22px">192.168.7.44</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 22px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #<SPAN style="LINE-HEIGHT: 28px; WHITE-SPACE: pre"> </SPAN>Redis 
+server从1:&nbsp;</SPAN><SPAN style="LINE-HEIGHT: 22px">192.168.7.40</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #<SPAN style="LINE-HEIGHT: 28px; WHITE-SPACE: pre"> </SPAN>Redis 
+server从2:&nbsp;</SPAN><SPAN style="LINE-HEIGHT: 22px">192.168.7.142</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">&nbsp;</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px"><BR 
+style="LINE-HEIGHT: 28px"></SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #关闭</SPAN><SPAN style="LINE-HEIGHT: 22px">Redis server主 
+&nbsp;:&nbsp;</SPAN><SPAN style="LINE-HEIGHT: 22px">192.168.7.44</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp;<SPAN class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="LINE-HEIGHT: 28px" color=#3366ff>redis-cli -h 192.168.7.44 -p 6379 
+shutdown</FONT></SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px"></SPAN><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 10px 0px 0px; MAX-WIDTH: 100%; HEIGHT: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis07.jpg"></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; #查看<SPAN 
+style="LINE-HEIGHT: 22px">Sentinel状态</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp;&nbsp;<FONT 
+style="LINE-HEIGHT: 22px" color=#3366ff>redis-cli -h 192.168.7.46 -p 26379 info 
+Sentinel</FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 10px 0px 0px; MAX-WIDTH: 100%; HEIGHT: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis08.jpg"></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; #可以看到<SPAN 
+style="LINE-HEIGHT: 22px">Redis server主的IP地址已经变成192.168.7.142。</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; 
+&nbsp; #查看192.168.7.40的状态，如果配置正常，它的主为142</SPAN><SPAN 
+style="LINE-HEIGHT: 22px">&nbsp;</SPAN></DIV>
+<DIV style="LINE-HEIGHT: 28px"><SPAN style="LINE-HEIGHT: 22px"></SPAN><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px; MARGIN: 0px 10px 0px 0px; MAX-WIDTH: 100%; HEIGHT: auto; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="Redis Sentinel;Redis Sentinel配置;redis集群;redis故障转移 - 李坤山 - 李坤山VS断悬" 
+src="images/redis09.jpg"></DIV>
+<DIV style="LINE-HEIGHT: 28px">&nbsp; &nbsp; &nbsp; # OK 自动切换已经实现了。</DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff>&nbsp; &nbsp; &nbsp; # 
+如果不是主宕机，而是从宕机，那么不会发生切换行为，只会把宕机的那台从集群中剔除。</FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff>&nbsp; &nbsp; &nbsp; # 已宕机的机器，如果再次加入集群，只要它成为了当前主的从机，则<SPAN 
+style="LINE-HEIGHT: 22px">Sentinel会自动发现，并将其加入集群成员。</SPAN></FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff><SPAN style="LINE-HEIGHT: 22px">&nbsp; &nbsp; &nbsp; # 
+可以自己动手实验下。</SPAN></FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff><SPAN style="LINE-HEIGHT: 22px"></SPAN></FONT>&nbsp;</DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff><SPAN style="LINE-HEIGHT: 22px"></SPAN></FONT>&nbsp;</DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff><SPAN style="LINE-HEIGHT: 22px"></SPAN></FONT>&nbsp;</DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff><SPAN style="LINE-HEIGHT: 22px">
+<DIV 
+style="BORDER-BOTTOM: rgb(204,204,204) 1px dashed; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 5px 12px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 12px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; HEIGHT: 60px; COLOR: rgb(85,85,85); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=showHead>
+<DIV 
+style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 20px" 
+class=showTitleBOx>
+<DIV 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: bold 20px/20px 宋体; PADDING-TOP: 0px; font-stretch: normal" 
+class=showTitle><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+src="http://blog.51cto.com/image/skin/artType01.jpg"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>redis-sentinel搭建redis主从故障转移</DIV></DIV><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 25px; FLOAT: right; PADDING-TOP: 0px" 
+class=artTime>2014-09-24 10:53:55</SPAN></DIV>
+<DIV 
+style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 0px 12px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 12px/40px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(85,85,85); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=showTags>标签：<A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 10px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+class=operlink href="http://blog.51cto.com/tag-redis.html" 
+target=_blank>redis</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 10px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+class=operlink href="http://blog.51cto.com/tag-sentinel.html" 
+target=_blank>sentinel</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 10px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+class=operlink 
+href="http://blog.51cto.com/tag-%E8%87%AA%E5%8A%A8%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D.html" 
+target=_blank>自动故障恢复</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 10px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+class=operlink href="http://blog.51cto.com/tag-%E6%A3%80%E6%B5%8B.html" 
+target=_blank>检测</A></DIV>
+<DIV 
+style="BORDER-BOTTOM: rgb(213,213,213) 1px dashed; BORDER-LEFT: rgb(213,213,213) 1px dashed; PADDING-BOTTOM: 10px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 12px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT: 12px/22px 宋体, 'Arial Narrow', arial, serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(85,85,85); BORDER-TOP: rgb(213,213,213) 1px dashed; BORDER-RIGHT: rgb(213,213,213) 1px dashed; WORD-SPACING: 0px; PADDING-TOP: 10px; -webkit-text-stroke-width: 0px" 
+class="CopyrightStatement lh22">原创作品，允许转载，转载时请务必以超链接形式标明文章<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: underline; PADDING-TOP: 0px" 
+href="http://diannaowa.blog.51cto.com/3219919/1557617" 
+target=_blank>原始出处</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>、作者信息和本声明。否则将追究法律责任。<A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://diannaowa.blog.51cto.com/3219919/1557617">http://diannaowa.blog.51cto.com/3219919/1557617</A></DIV>
+<DIV 
+style="BORDER-BOTTOM: rgb(217,217,217) 1px dashed; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 20px 15px 8px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/2 宋体, 'Arial Narrow', arial, serif; WORD-WRAP: break-word; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(85,85,85); WORD-BREAK: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+class=showContent>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px"></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">Redis-sentinel是Redis实例的监控管理、通知和实例失效备援服务，是Redis集群的管理工具。在一般的分布式中心节点数据库&nbsp;中，Redis-sentinel的作用是中心节点的工作，监控各个其他节点的工作情况并且进行故障恢复，来提高集群的高可用性。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">Redis-sentinel是Redis的作者antirez在今年6月份完成的，因为Redis实例在各个大公司的应用，每个公司都需要一个&nbsp;Redis集群的管理工具，被迫都自己写管理工具来管理Redis集群，antirez考虑到社区的急迫需要，花了几个星期写出了Redis-&nbsp;sentinel。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">Redis-sentinel的三大功能：监测、通知、自动故障恢复。首先Redis-sentinel要建立一个监控的master列表，然后针对master列表的每个master获取监控其的sentinels和slaves供以后故障恢复使用。由于项目的需求，今天抽时间简单测试下。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">配置实例：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">192.168.1.122&nbsp;master</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">192.168.1.118&nbsp;slave</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">192.168.1.119&nbsp;slave</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">redis安装目录都在/usr/local/redis目录下</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">master&nbsp;/usr/local/redis/redis.conf&nbsp;配置</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">daemonize&nbsp;yes</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">两台slave&nbsp;/usr/local/redis/redis.conf&nbsp;配置</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">daemonize&nbsp;yes</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">slaveof&nbsp;192.168.1.122&nbsp;6379</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px"></SPAN>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 19px; PADDING-TOP: 0px">master&nbsp;/usr/local/redis/sentinel.conf和两台的slave&nbsp;/usr/local/redis/sentinel.conf配置：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">sentinel&nbsp;monitor&nbsp;mymaster&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">192.168.1.122</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">&nbsp;6379&nbsp;2</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">sentinel&nbsp;down-after-milliseconds&nbsp;mymaster&nbsp;60000</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">sentinel&nbsp;failover-timeout&nbsp;mymaster&nbsp;180000</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">sentinel&nbsp;parallel-syncs&nbsp;mymaster&nbsp;1</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px"></SPAN>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">master启动redis服务</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">redis-server&nbsp;/usr/local/redis/redis.conf</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">slave启动redis服务</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">redis-server&nbsp;/usr/local/redis/redis.conf</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">master和slave启动sentinel实例</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">redis-server&nbsp;/usr/local/redis/sentinel.conf&nbsp;--sentinel&nbsp;&amp;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px"></SPAN>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">关闭master的redis服务测试故障转移,若redis配置了分片功能，则该方式会出现一定的BUG。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px"><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px"></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">在默认情况下，&nbsp;Sentinel&nbsp;使用&nbsp;TCP&nbsp;端口&nbsp;26379&nbsp;（普通&nbsp;Redis&nbsp;服务器使用的是&nbsp;6379&nbsp;）。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">Sentinel&nbsp;接受&nbsp;Redis&nbsp;协议格式的命令请求，&nbsp;所以你可以使用&nbsp;redis-cli&nbsp;或者任何其他&nbsp;Redis&nbsp;客户端来与&nbsp;Sentinel&nbsp;进行通讯。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">有两种方式可以和&nbsp;Sentinel&nbsp;进行通讯：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">第一种方法是通过直接发送命令来查询被监视&nbsp;Redis&nbsp;服务器的当前状态，&nbsp;以及&nbsp;Sentinel&nbsp;所知道的关于其他&nbsp;Sentinel&nbsp;的信息，&nbsp;诸如此类。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">另一种方法是使用发布与订阅功能，&nbsp;通过接收&nbsp;Sentinel&nbsp;发送的通知：&nbsp;当执行故障转移操作，&nbsp;或者某个被监视的服务器被判断为主观下线或者客观下线时，&nbsp;Sentinel&nbsp;就会发送相应的信息。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 14px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; FONT-WEIGHT: bold; PADDING-TOP: 0px">Sentinel&nbsp;命令</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://www.redisdoc.com/en/latest/topic/sentinel.html#id8" 
+target=_blank></A></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">以下列出的是&nbsp;Sentinel&nbsp;接受的命令：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; COLOR: rgb(0,0,255); FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://www.redisdoc.com/en/latest/connection/ping.html#ping" 
+target=_blank><SPAN 
+style="PADDING-BOTTOM: 0px; FONT-STYLE: italic; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; COLOR: rgb(0,0,255); FONT-SIZE: 16px; PADDING-TOP: 0px">PING</SPAN></A><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">：返回&nbsp;PONG&nbsp;。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">SENTINEL&nbsp;masters：列出所有被监视的主服务器，以及这些主服务器的当前状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">SENTINEL&nbsp;slaves&nbsp;&lt;master&nbsp;name&gt;：列出给定主服务器的所有从服务器，以及这些从服务器的当前状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">SENTINEL&nbsp;get-master-addr-by-name&nbsp;&lt;master&nbsp;name&gt;：&nbsp;返回给定名字的主服务器的&nbsp;IP&nbsp;地址和端口号。&nbsp;如果这个主服务器正在执行故障转移操作，&nbsp;或者针对这个主服务器的故障转移操作已经完成，&nbsp;那么这个命令返回新的主服务器的&nbsp;IP&nbsp;地址和端口号。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">SENTINEL&nbsp;reset&nbsp;&lt;pattern&gt;：&nbsp;重置所有名字和给定模式&nbsp;pattern&nbsp;相匹配的主服务器。&nbsp;pattern&nbsp;参数是一个&nbsp;Glob&nbsp;风格的模式。&nbsp;重置操作清楚主服务器目前的所有状态，&nbsp;包括正在执行中的故障转移，&nbsp;并移除目前已经发现和关联的，&nbsp;主服务器的所有从服务器和&nbsp;Sentinel&nbsp;。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">SENTINEL&nbsp;failover&nbsp;&lt;master&nbsp;name&gt;：&nbsp;当主服务器失效时，&nbsp;在不询问其他&nbsp;Sentinel&nbsp;意见的情况下，&nbsp;强制开始一次自动故障迁移&nbsp;（不过发起故障转移的&nbsp;Sentinel&nbsp;会向其他&nbsp;Sentinel&nbsp;发送一个新的配置，其他&nbsp;Sentinel&nbsp;会根据这个配置进行相应的更新）。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 14px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; FONT-WEIGHT: bold; PADDING-TOP: 0px">发布与订阅信息</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://www.redisdoc.com/en/latest/topic/sentinel.html#id9" 
+target=_blank></A></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">客户端可以将&nbsp;Sentinel&nbsp;看作是一个只提供了订阅功能的&nbsp;Redis&nbsp;服务器：&nbsp;你不可以使用&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://www.redisdoc.com/en/latest/pub_sub/publish.html#publish" 
+target=_blank><SPAN 
+style="PADDING-BOTTOM: 0px; FONT-STYLE: italic; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; COLOR: rgb(0,0,255); FONT-SIZE: 16px; PADDING-TOP: 0px">PUBLISH</SPAN></A><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">&nbsp;命令向这个服务器发送信息，&nbsp;但你可以用&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://www.redisdoc.com/en/latest/pub_sub/subscribe.html#subscribe" 
+target=_blank><SPAN 
+style="PADDING-BOTTOM: 0px; FONT-STYLE: italic; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; COLOR: rgb(0,0,255); FONT-SIZE: 16px; PADDING-TOP: 0px">SUBSCRIBE</SPAN></A><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">&nbsp;命令或者&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://www.redisdoc.com/en/latest/pub_sub/psubscribe.html#psubscribe" 
+target=_blank><SPAN 
+style="PADDING-BOTTOM: 0px; FONT-STYLE: italic; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; COLOR: rgb(0,0,255); FONT-SIZE: 16px; PADDING-TOP: 0px">PSUBSCRIBE</SPAN></A><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">&nbsp;命令，&nbsp;通过订阅给定的频道来获取相应的事件提醒。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">一个频道能够接收和这个频道的名字相同的事件。&nbsp;比如说，&nbsp;名为&nbsp;+sdown&nbsp;的频道就可以接收所有实例进入主观下线（SDOWN）状态的事件。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">通过执行&nbsp;PSUBSCRIBE&nbsp;*&nbsp;命令可以接收所有事件信息。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">以下列出的是客户端可以通过订阅来获得的频道和信息的格式：&nbsp;第一个英文单词是频道/事件的名字，&nbsp;其余的是数据的格式。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">注意，&nbsp;当格式中包含&nbsp;instance&nbsp;details&nbsp;字样时，&nbsp;表示频道所返回的信息中包含了以下用于识别目标实例的内容：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">&lt;instance-type&gt;&nbsp;&lt;name&gt;&nbsp;&lt;ip&gt;&nbsp;&lt;port&gt;&nbsp;@&nbsp;&lt;master-name&gt;&nbsp;&lt;master-ip&gt;&nbsp;&lt;master-port&gt;</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px"></SPAN>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">@&nbsp;字符之后的内容用于指定主服务器，&nbsp;这些内容是可选的，&nbsp;它们仅在&nbsp;@&nbsp;字符之前的内容指定的实例不是主服务器时使用。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+reset-master&nbsp;&lt;instance&nbsp;details&gt;：主服务器已被重置。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+slave&nbsp;&lt;instance&nbsp;details&gt;：一个新的从服务器已经被&nbsp;Sentinel&nbsp;识别并关联。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+failover-state-reconf-slaves&nbsp;&lt;instance&nbsp;details&gt;：故障转移状态切换到了&nbsp;reconf-slaves&nbsp;状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+failover-detected&nbsp;&lt;instance&nbsp;details&gt;：另一个&nbsp;Sentinel&nbsp;开始了一次故障转移操作，或者一个从服务器转换成了主服务器。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+slave-reconf-sent&nbsp;&lt;instance&nbsp;details&gt;：领头（leader）的&nbsp;Sentinel&nbsp;向实例发送了&nbsp;</SPAN><A 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(1,95,145); TEXT-DECORATION: none; PADDING-TOP: 0px" 
+href="http://www.redisdoc.com/en/latest/server/slaveof.html#slaveof" 
+target=_blank><SPAN 
+style="PADDING-BOTTOM: 0px; FONT-STYLE: italic; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; COLOR: rgb(0,0,255); FONT-SIZE: 16px; PADDING-TOP: 0px">SLAVEOF</SPAN></A><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">&nbsp;命令，为实例设置新的主服务器。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+slave-reconf-inprog&nbsp;&lt;instance&nbsp;details&gt;：实例正在将自己设置为指定主服务器的从服务器，但相应的同步过程仍未完成。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+slave-reconf-done&nbsp;&lt;instance&nbsp;details&gt;：从服务器已经成功完成对新主服务器的同步。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">-dup-sentinel&nbsp;&lt;instance&nbsp;details&gt;：对给定主服务器进行监视的一个或多个&nbsp;Sentinel&nbsp;已经因为重复出现而被移除&nbsp;——&nbsp;当&nbsp;Sentinel&nbsp;实例重启的时候，就会出现这种情况。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+sentinel&nbsp;&lt;instance&nbsp;details&gt;：一个监视给定主服务器的新&nbsp;Sentinel&nbsp;已经被识别并添加。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+sdown&nbsp;&lt;instance&nbsp;details&gt;：给定的实例现在处于主观下线状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">-sdown&nbsp;&lt;instance&nbsp;details&gt;：给定的实例已经不再处于主观下线状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+odown&nbsp;&lt;instance&nbsp;details&gt;：给定的实例现在处于客观下线状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">-odown&nbsp;&lt;instance&nbsp;details&gt;：给定的实例已经不再处于客观下线状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+new-epoch&nbsp;&lt;instance&nbsp;details&gt;：当前的纪元（epoch）已经被更新。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+try-failover&nbsp;&lt;instance&nbsp;details&gt;：一个新的故障迁移操作正在执行中，等待被大多数&nbsp;Sentinel&nbsp;选中（waiting&nbsp;to&nbsp;be&nbsp;elected&nbsp;by&nbsp;the&nbsp;majority）。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+elected-leader&nbsp;&lt;instance&nbsp;details&gt;：赢得指定纪元的选举，可以进行故障迁移操作了。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+failover-state-select-slave&nbsp;&lt;instance&nbsp;details&gt;：故障转移操作现在处于&nbsp;select-slave&nbsp;状态&nbsp;——&nbsp;Sentinel&nbsp;正在寻找可以升级为主服务器的从服务器。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">no-good-slave&nbsp;&lt;instance&nbsp;details&gt;：Sentinel&nbsp;操作未能找到适合进行升级的从服务器。Sentinel&nbsp;会在一段时间之后再次尝试寻找合适的从服务器来进行升级，又或者直接放弃执行故障转移操作。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">selected-slave&nbsp;&lt;instance&nbsp;details&gt;：Sentinel&nbsp;顺利找到适合进行升级的从服务器。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">failover-state-send-slaveof-noone&nbsp;&lt;instance&nbsp;details&gt;：Sentinel&nbsp;正在将指定的从服务器升级为主服务器，等待升级功能完成。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">failover-end-for-timeout&nbsp;&lt;instance&nbsp;details&gt;：故障转移因为超时而中止，不过最终所有从服务器都会开始复制新的主服务器（slaves&nbsp;will&nbsp;eventually&nbsp;be&nbsp;configured&nbsp;to&nbsp;replicate&nbsp;with&nbsp;the&nbsp;new&nbsp;master&nbsp;anyway）。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">failover-end&nbsp;&lt;instance&nbsp;details&gt;：故障转移操作顺利完成。所有从服务器都开始复制新的主服务器了。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+switch-master&nbsp;&lt;master&nbsp;name&gt;&nbsp;&lt;oldip&gt;&nbsp;&lt;oldport&gt;&nbsp;&lt;newip&gt;&nbsp;&lt;newport&gt;：配置变更，主服务器的&nbsp;IP&nbsp;和地址已经改变。&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; FONT-WEIGHT: bold; PADDING-TOP: 0px">这是绝大多数外部用户都关心的信息。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 24px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Symbol; FONT-SIZE: 16px; PADDING-TOP: 0px">·&nbsp;</SPAN><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">+tilt：进入&nbsp;tilt&nbsp;模式。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: auto; CLEAR: both; OVERFLOW: hidden; PADDING-TOP: 0px"><SPAN 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 宋体; FONT-SIZE: 16px; PADDING-TOP: 0px">&nbsp;&nbsp;&nbsp;&nbsp;-tilt：退出&nbsp;tilt&nbsp;模式。</SPAN></P></DIV></SPAN></FONT></DIV>
+<DIV style="LINE-HEIGHT: 28px"><FONT style="LINE-HEIGHT: 28px" 
+color=#3366ff><SPAN 
+style="LINE-HEIGHT: 22px"></SPAN></FONT>&nbsp;</DIV></DIV></BODY></HTML>

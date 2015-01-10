@@ -82,6 +82,7 @@ centos开放某个端口.htm
 centos设置服务开机启动.htm
 centos系统php模块扩展.htm
 centos系统下php服务器安装部署.htm
+centos下nodejs安装pm2出错.htm
 centos下安装nginx.htm
 centos最小化安装配置.htm
 column-count.htm
@@ -1366,6 +1367,8 @@ NewTopic.htm
 NewTopic.htm
 NewTopic.htm
 NewTopic.htm
+nginx.htm
+nginx备机配置.htm
 nginx负载均衡.htm
 nginx路由重写.htm
 nginx添加模块.htm
@@ -1398,8 +1401,11 @@ post文件上传.htm
 post文件上传.htm
 post原理.htm
 QQ登录.htm
+redis.htm
 redis-of-liunx.htm
 redis-of-windows.htm
+redis服务器主从配置.htm
+redis故障转移.htm
 RegExp 对象.htm
 rpm包安装.htm
 screen对象.htm

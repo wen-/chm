@@ -2907,9 +2907,62 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="windows下nginx安装、配置与使用">
-<PARAM NAME="Local" VALUE="windows下nginx安装、配置与使用.htm">
+<PARAM NAME="Name" VALUE="centos安装nodejs">
+<PARAM NAME="Local" VALUE="centos安装nodejs.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="liunx系统限制socket.io连接数修改">
+<PARAM NAME="Local" VALUE="liunx系统限制socket.io连接数修改.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="centos设置服务开机启动">
+<PARAM NAME="Local" VALUE="centos设置服务开机启动.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="centos下nodejs安装pm2出错">
+<PARAM NAME="Local" VALUE="centos下nodejs安装pm2出错.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx">
+<PARAM NAME="Local" VALUE="nginx.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx路由重写">
+<PARAM NAME="Local" VALUE="nginx路由重写.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx添加模块">
+<PARAM NAME="Local" VALUE="nginx添加模块.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="centos下安装nginx">
+<PARAM NAME="Local" VALUE="centos下安装nginx.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="window下Nginx怎么安装启动">
+<PARAM NAME="Local" VALUE="window下Nginx怎么安装启动.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx下ThinkPHP无法写入SESSION">
+<PARAM NAME="Local" VALUE="nginx下ThinkPHP无法写入SESSION.htm">
 </OBJECT>
 </UL>
 <UL>
@@ -2919,6 +2972,31 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx备机配置">
+<PARAM NAME="Local" VALUE="nginx备机配置.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="windows下nginx安装、配置与使用">
+<PARAM NAME="Local" VALUE="windows下nginx安装、配置与使用.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nginx负载均衡">
+<PARAM NAME="Local" VALUE="nginx负载均衡.htm">
+</OBJECT>
+</UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="redis">
+<PARAM NAME="Local" VALUE="redis.htm">
+</OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="redis-of-windows">
@@ -2933,58 +3011,16 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="centos安装nodejs">
-<PARAM NAME="Local" VALUE="centos安装nodejs.htm">
-<PARAM NAME="ImageNumber" value="11">
+<PARAM NAME="Name" VALUE="redis服务器主从配置">
+<PARAM NAME="Local" VALUE="redis服务器主从配置.htm">
 </OBJECT>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="window下Nginx怎么安装启动">
-<PARAM NAME="Local" VALUE="window下Nginx怎么安装启动.htm">
+<PARAM NAME="Name" VALUE="redis故障转移">
+<PARAM NAME="Local" VALUE="redis故障转移.htm">
 </OBJECT>
 </UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="centos下安装nginx">
-<PARAM NAME="Local" VALUE="centos下安装nginx.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="nginx负载均衡">
-<PARAM NAME="Local" VALUE="nginx负载均衡.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="liunx系统限制socket.io连接数修改">
-<PARAM NAME="Local" VALUE="liunx系统限制socket.io连接数修改.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="nginx添加模块">
-<PARAM NAME="Local" VALUE="nginx添加模块.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="centos设置服务开机启动">
-<PARAM NAME="Local" VALUE="centos设置服务开机启动.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="nginx路由重写">
-<PARAM NAME="Local" VALUE="nginx路由重写.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="nginx下ThinkPHP无法写入SESSION">
-<PARAM NAME="Local" VALUE="nginx下ThinkPHP无法写入SESSION.htm">
-</OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="thinkPHP">
