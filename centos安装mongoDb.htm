@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>centos安装mongoDb</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<META name=GENERATOR content="MSHTML 8.00.6001.23588"></HEAD>
 <BODY>
 <P>centos安装mongoDb</P>
 <DIV 
@@ -284,7 +284,8 @@ class=dp-j>
   style="COLOR: black">nohttpinterface&nbsp;=&nbsp;<SPAN 
   style="COLOR: rgb(127,0,85); FONT-WEIGHT: bold" class=keyword>true</SPAN><SPAN 
   style="COLOR: black">&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR>重新绑定mongodb的配置文件地址和访问IP：<SPAN 
-class=Apple-converted-space>&nbsp;</SPAN><BR>
+class=Apple-converted-space>&nbsp;<STRONG><FONT 
+color=#ff0000>(这步很重要)</FONT></STRONG></SPAN><BR>
 <DIV 
 style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
 class=dp-highlighter>
@@ -310,7 +311,20 @@ class=dp-j>
   <LI 
   style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
   style="COLOR: black"><SPAN 
-  style="COLOR: black">/usr/local/mongodb/bin/mongod&nbsp;--bind_ip&nbsp;localhost&nbsp;-f&nbsp;/usr/local/mongodb/bin/mongodb.conf&nbsp;&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR><BR>8。启动Mongo程序，使用配置文件mongodb.conf定义的参数启动<SPAN 
+  style="COLOR: black">/usr/local/mongodb/bin/mongod&nbsp;--bind_ip&nbsp;0.0.0.0&nbsp;-f&nbsp;/usr/local/mongodb/bin/mongodb.conf&nbsp;&nbsp;&nbsp;</SPAN></SPAN> 
+
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN style="COLOR: black"><FONT 
+  style="BACKGROUND-COLOR: #ffffff" 
+  color=#2b91af>（IP如果为localhost,在外网是访问不了的。要改为0.0.0.0）</FONT></SPAN></SPAN>
+  <LI 
+  style="BORDER-LEFT: rgb(209,215,220) 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(250,250,250); MARGIN: 0px 0px 0px 38px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FONT-SIZE: 1em; PADDING-TOP: 0px"><SPAN 
+  style="COLOR: black"><SPAN style="COLOR: black"><SPAN 
+  style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; DISPLAY: inline !important; FONT: 12px/24px Tahoma, Verdana, Arial; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(56,56,56); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">vi 
+  /etc/sysconfig/iptables &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;// 
+  将27017端口加入防火墙<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN></SPAN></SPAN></LI></OL></DIV><BR><BR>8。启动Mongo程序，使用配置文件mongodb.conf定义的参数启动<SPAN 
 class=Apple-converted-space>&nbsp;</SPAN><BR>
 <DIV 
 style="PADDING-BOTTOM: 1px; BACKGROUND-COLOR: transparent; PADDING-LEFT: 1px; WIDTH: 679px; PADDING-RIGHT: 1px; FONT-FAMILY: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Consolas, 'Courier New', monospace; WORD-WRAP: break-word; MARGIN-LEFT: 9px; FONT-SIZE: 12px; OVERFLOW: auto; WORD-BREAK: break-all; PADDING-TOP: 1px" 
@@ -398,7 +412,54 @@ style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,
 <DIV 
 style="BORDER-BOTTOM: rgb(204,204,204) 1px solid; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(245,245,245); FONT-VARIANT: normal; FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: 'Courier New' !important; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: rgb(204,204,204) 1px solid; WORD-SPACING: 0px; PADDING-TOP: 5px; -webkit-text-stroke-width: 0px" 
 class=cnblogs_code><PRE style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; FONT-SIZE: 12px !important; PADDING-TOP: 0px"><SPAN style="PADDING-BOTTOM: 0px; LINE-HEIGHT: 1.5 !important; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: 'Courier New' !important; COLOR: rgb(0,0,0); FONT-SIZE: 12px !important; PADDING-TOP: 0px">#进入mongodb的shell模式 
-</SPAN>/usr/local/mongodb/bin/mongo<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#查看数据库列表 <BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">show dbs<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#当前db版本 <BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.version();</PRE></DIV>
+</SPAN>/usr/local/mongodb/bin/mongo<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#查看数据库列表 <BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">show dbs<BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#当前db版本 <BR style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.version();</PRE></DIV><FONT 
+face=Helvetica>
+<H2 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 12px 0px 6px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: bold 14px/24px Tahoma, Verdana, Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(17,17,17); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px" 
+align=left>测试</H2>
 <P 
-style="PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 14px/20px 微软雅黑; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px"><FONT 
-face=Helvetica></FONT>&nbsp;</P><BR><BR>注意：默认mongodb的数据目录对应的是/data/db下面。日志目录对于到/data/logs/mongodb.log，如果是目录结构有调整需要重新指定配置的路径</DIV></BODY></HTML>
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 10px auto; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT: 12px/24px Tahoma, Verdana, Arial; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(56,56,56); WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px">#终止服务器进程<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.user.shutdownServer()<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#进入mongodb的shell模式<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">/usr/local/mongodb/bin/mongo<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#查看数据库列表<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">show 
+dbs<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#切换/创建数据库(当创建一个集合(table)的时候会自动创建当前数据库)<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">use 
+admin;<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#增加用户<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.addUser("zhoulf 
+","123456",true)<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#更改密码（为已经存在的用户更改密码）<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.addUser("zhoulf 
+"," zhoulf ");<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#显示当前db状态<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.stats();<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#当前db版本<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.version();<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#删除当前使用数据库<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.dropDatabase();<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#查看当前db的链接机器地址<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.getMongo();<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#简单插入数据<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.user.insert({"fname":"zhoulf", 
+"company":"navinfo"})<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#循环插入数据<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">for 
+(var i = 1; i &lt;= 10; i++) db.user.save({ "fname" : "zhoulf"+i, "company" : 
+"navinfo"+i });<BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">#查询数据<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px">db.user.find()</P></FONT><BR><BR>注意：默认mongodb的数据目录对应的是/data/db下面。日志目录对于到/data/logs/mongodb.log，如果是目录结构有调整需要重新指定配置的路径</DIV></BODY></HTML>

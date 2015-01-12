@@ -2373,6 +2373,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="node.js">
 <PARAM NAME="Local" VALUE="nodejs.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2426,6 +2427,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mongodb">
 <PARAM NAME="Local" VALUE="mongodb.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2486,6 +2488,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mongoose">
 <PARAM NAME="Local" VALUE="mongoose.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3019,6 +3022,19 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="redis故障转移">
 <PARAM NAME="Local" VALUE="redis故障转移.htm">
+</OBJECT>
+</UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mongodb">
+<PARAM NAME="Local" VALUE="mongodb.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="centos安装mongodb">
+<PARAM NAME="Local" VALUE="centos安装mongodb.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 </UL>
