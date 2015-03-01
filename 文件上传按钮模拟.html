@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>文件上传按钮模拟</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17631"></HEAD>
+<BODY>
+<P>文件上传按钮模拟</P>
+<P>change事件触发不了是因为：</P>
+<P>function check_file(elem,extension) {<BR>&nbsp;&nbsp;&nbsp; if (!elem.value) 
+{ // file_obj.value 经过处理后的路径<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return false;<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; var allowSuffix = 
+extension;// 允许上传文件的后缀名<BR>&nbsp;&nbsp;&nbsp; var suffix = 
+elem.value.substring(elem.value.lastIndexOf(".") + 1).toLowerCase();// 
+截取文件后缀名<BR>&nbsp;&nbsp;&nbsp; var browserVersion = 
+window.navigator.userAgent.toUpperCase();// 浏览器版本信息</P>
+<P>&nbsp;&nbsp;&nbsp; // 判断是否选取了图片格式的文件<BR>&nbsp;&nbsp;&nbsp; if 
+(allowSuffix.indexOf(suffix) &gt; -1) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+true;<BR>&nbsp;&nbsp;&nbsp; } else {// 
+如果不是图片文件<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert("仅支持 " + 
+allowSuffix + " 为后缀名的文件!");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+清空选中文件<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elem.value = 
+"";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(browserVersion.indexOf("MSIE 7.0") &gt; 
+-1<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || 
+browserVersion.indexOf("MSIE 8.0") &gt; -1) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+elem.select();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+document.selection.clear();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT 
+style="BACKGROUND-COLOR: #ff0000">elem.outerHTML = 
+elem.outerHTML</FONT>;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+false;<BR>&nbsp;&nbsp;&nbsp; };<BR>}</P>
+<P>用document绑定就行了。</P></BODY></HTML>
