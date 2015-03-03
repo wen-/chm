@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>绑定自定义事件</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17631">
+</HEAD>
+<BODY>
+<P>绑定自定义事件</P>
+<P>function abc(){</P>
+<P>&nbsp;&nbsp;&nbsp; this.handlers = { };</P>
+<P>}</P>
+<P>abc.prototype = {</P>
+<P>&nbsp;&nbsp;&nbsp; on: function(type,handler){</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(typeof this.handlers[type] == 
+"undefined"){</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+this.handlers[type] = [];</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+this.handlers[type].push(handler);</P>
+<P>&nbsp;&nbsp;&nbsp; },</P>
+<P>&nbsp;&nbsp;&nbsp; fire: function(type,data){</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(this.handlers[type] instanceof 
+Array){</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var 
+handlers = this.handlers[type];</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(var 
+i=0;l=handlers.length;i&lt;l;i++){</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+handlers[i](data);</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; alert: function(){</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var _this = this;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $box.show();</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _this.fire("open");</P>
+<P>&nbsp;&nbsp;&nbsp; }</P>
+<P>}</P>
+<P>事件绑定：</P>
+<P>new objabc = new abc();</P>
+<P>objabc.on("open",function(){ alert("open"); });</P>
+<P>objabc.alert();</P></BODY></HTML>
