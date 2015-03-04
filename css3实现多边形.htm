@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>css3实现多边形</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17631">
+</HEAD>
+<BODY>
+<P>css3实现多边形</P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,34,34); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+title="-webkit-clip-path: polygon(50% 0%,25% 33%,25% 66%,50% 100%,75% 66%,75% 33%,50% 0%);" 
+class=webkit-css-property 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(200,0,0); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; MARGIN-LEFT: -38px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">-web-webkit-clip-path</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,34,34); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=expand-element 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN><SPAN 
+class=value 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">polygon(50% 
+0%,25% 33%,25% 66%,50% 100%,75% 66%,75% 33%,50% 0%)</SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,34,34); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">;(顺序：上、左、下、右、上)</SPAN></SPAN></P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,34,34); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,34,34); TEXT-ALIGN: left; FONT: 12px Consolas, 'Lucida Console', monospace; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><PRE style="WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,255); TEXT-ALIGN: justify; FONT: 13px/19px 'Lucida Console', Consolas, Monaco; MARGIN: 0px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">.clip-me { 
+  <SPAN style="COLOR: green">/* 剪裁路径来自内联SVG &lt;clipPath&gt;元素 */</SPAN>
+  clip-path: url(#c1); 
+
+  <SPAN style="COLOR: green">/* 路径来自外部SVG */</SPAN>
+  clip-path: url(path.svg#c1);
+
+  <SPAN style="COLOR: green">/* 多边形 */</SPAN>
+  clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+
+  <SPAN style="COLOR: green">/* 圆 */</SPAN>
+  clip-path: circle(30px at 35px 35px);
+
+  <SPAN style="COLOR: green">/* 椭圆 */</SPAN>
+  clip-path: ellipse(65px 30px at 125px 40px);
+}</PRE></SPAN></SPAN></BODY></HTML>
