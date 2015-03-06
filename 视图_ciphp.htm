@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>视图</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17631"></HEAD>
+<BODY>
+<P>视图</P>
+<P>$this-&gt;load-&gt;view('test/testpage');</P>
+<P>1、视图文件不用加后缀（.php）</P>
+<P>2、在视图中直接写PHP语法</P>
+<P>3、遍历数据：</P>
+<P>&nbsp;</P>
+<P>&lt;?php foreach($list as $item): ?&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;tr&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;?=$item["id"]?&gt;&lt;/td&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;?=$item["name"]?&gt;&lt;/td&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;?=$item["age"]?&gt;&lt;/td&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;/tr&gt;</P>
+<P>&lt;?php endforeach; ?&gt;</P></BODY></HTML>

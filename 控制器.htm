@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>控制器</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17631">
+</HEAD>
+<BODY>
+<P>控制器</P>
+<P>示例：</P>
+<P>class Testpage extends CI_Controller{<BR>&nbsp;&nbsp;&nbsp; public function 
+index(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo("this is test 
+pages.");<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; public function 
+abc(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo("this is _test_ 
+pages.");<BR>&nbsp;&nbsp;&nbsp; }<BR>}</P>
+<P>注意事项：</P>
+<P>1、不需要加后缀</P>
+<P>2、文件名小写（testpage.php），控制器名首字母大写（Testpage）</P>
+<P>3、所有控制器继承 CI_Controller 类</P>
+<P>4、控制器的方法名不要与控制器名称相同（如果相同，该方法就为构造函数<SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(167,0,0); FONT: bold 12px 'Lucida Grande', Verdana, Geneva, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">__construct（）</SPAN>）</P>
+<H2 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(153,153,153) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 6px; PADDING-TOP: 5px; FONT: bold 18px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; PADDING-LEFT: 0px; MARGIN: 28px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">构造函数</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; MARGIN: 12px 20px 12px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">如果要在你的任意控制器中使用构造函数的话，那么<STRONG>必须</STRONG>在里面加入下面这行代码：</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; MARGIN: 12px 20px 12px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE 
+style="FONT-SIZE: 12px; BORDER-TOP: rgb(208,208,208) 1px solid; FONT-FAMILY: Monaco, Verdana, sans-serif; BORDER-RIGHT: rgb(208,208,208) 1px solid; BORDER-BOTTOM: rgb(208,208,208) 1px solid; COLOR: rgb(0,33,102); PADDING-BOTTOM: 12px; PADDING-TOP: 12px; PADDING-LEFT: 10px; MARGIN: 14px 0px; BORDER-LEFT: rgb(208,208,208) 1px solid; DISPLAY: block; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(249,249,249)">parent::__construct();</CODE></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; MARGIN: 12px 20px 12px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这行代码的必要性在于，你此处的构造函数会覆盖掉这个父控制器类中的构造函数，所以我们要手动调用它。</P>
+<P><CODE 
+style="BORDER-TOP: rgb(208,208,208) 1px solid; BORDER-RIGHT: rgb(208,208,208) 1px solid; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(208,208,208) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,33,102); PADDING-BOTTOM: 12px; PADDING-TOP: 12px; FONT: 12px Monaco, Verdana, sans-serif; PADDING-LEFT: 10px; MARGIN: 14px 0px; BORDER-LEFT: rgb(208,208,208) 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt;?php<BR>class<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><KBD 
+style="FONT-FAMILY: 'Lucida Grande', Verdana, Geneva, sans-serif; FONT-WEIGHT: bold; COLOR: rgb(167,0,0); FONT-STYLE: normal">Blog</KBD><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>extends CI_Controller 
+{<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public function<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><KBD 
+style="FONT-FAMILY: 'Lucida Grande', Verdana, Geneva, sans-serif; FONT-WEIGHT: bold; COLOR: rgb(167,0,0); FONT-STYLE: normal">__construct()</KBD><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<VAR 
+style="FONT-FAMILY: 'Lucida Grande', Verdana, Geneva, sans-serif; FONT-WEIGHT: bold; COLOR: rgb(143,91,0); FONT-STYLE: normal">parent::__construct();</VAR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}<BR>?&gt;</CODE></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; MARGIN: 12px 20px 12px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">如果你需要设定某些默认的值或是在实例化类的时候运行一个默认的程序，那么构造函数在这方面就非常有用了。<BR>构造函数并不能返回值，但是可以用来设置一些默认的功能。</P><A 
+style="TEXT-DECORATION: none; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(1,52,197); FONT: 14px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; OUTLINE-STYLE: none; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+name=reserved></A><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 14px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN>
+<H2 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(153,153,153) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 6px; PADDING-TOP: 5px; FONT: bold 18px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; PADDING-LEFT: 0px; MARGIN: 28px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">已保留的方法名称</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px 'Lucida Grande', Verdana, Geneva, sans-serif, 宋体; MARGIN: 12px 20px 12px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">因为你添加的控制器类继承了主要的应用程序控制器，所以你要小心你的方法名不要和那个类中的方法名一样了，否则你的方法会覆盖原有的。详细信息请查看<A 
+style="TEXT-DECORATION: none; FONT-WEIGHT: normal; COLOR: rgb(1,52,197); OUTLINE-STYLE: none; BACKGROUND-COLOR: transparent" 
+href="http://codeigniter.org.cn/user_guide/general/reserved_names.html">保留字</A>部分。</P></BODY></HTML>
