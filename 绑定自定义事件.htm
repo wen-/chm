@@ -1,8 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>绑定自定义事件</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 11.00.9600.17631">
-</HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.17631"></HEAD>
 <BODY>
 <P>绑定自定义事件</P>
 <P>function abc(){</P>
@@ -39,4 +38,57 @@ handlers[i](data);</P>
 <P>事件绑定：</P>
 <P>new objabc = new abc();</P>
 <P>objabc.on("open",function(){ alert("open"); });</P>
-<P>objabc.alert();</P></BODY></HTML>
+<P>objabc.alert();</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>//自定义事件绑定<BR>&nbsp;&nbsp;&nbsp;$.extend(_this.loginbox, 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;handlers : {},<BR>&nbsp;&nbsp;&nbsp;&nbsp;// 
+非常经典的观察者模式实现<BR>&nbsp;&nbsp;&nbsp;&nbsp;_on: function(type, 
+handler){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(type.indexOf(".")&gt; 
+0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var namespaces = 
+type.split(".");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var type = 
+namespaces.shift();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var 
+i=0,l=namespaces.length;i&lt;l;i++){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(typeof 
+this.handlers[type] === 
+'undefined'){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.handlers[type] 
+= 
+[];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handler.namespace 
+= 
+namespaces[i];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.handlers[type].push(handler);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handler.namespace 
+= 
+namespaces.join(".");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.handlers[type].push(handler);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(typeof 
+this.handlers[type] === 
+'undefined'){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.handlers[type] = 
+[];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.handlers[type].push(handler);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+this;<BR>&nbsp;&nbsp;&nbsp;&nbsp;},<BR>&nbsp;&nbsp;&nbsp;&nbsp;_trigger: 
+function(type, data){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(this.handlers[type] 
+instanceof 
+Array){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(type.indexOf(".")&gt; 
+0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var namespaces = 
+type.split(".");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var type = 
+namespaces.shift();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var handlers = 
+this.handlers[type];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace = 
+namespaces.join(".");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var i = 
+0, l = handlers.length; i &lt; l; 
+i++){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(handlers[i].namespace 
+== 
+namespace){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handlers[i](data);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var 
+handlers = 
+this.handlers[type];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var i = 0, 
+l = handlers.length; i &lt; l; 
+i++){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handlers[i](data);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;},<BR>&nbsp;&nbsp;&nbsp;&nbsp;_off: 
+function(type){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(type){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(type.indexOf(".")&gt; 
+0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var namespaces = 
+type.split(".");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var type = 
+namespaces.shift();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var handlers = 
+this.handlers[type];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;namespace = 
+namespaces.join(".");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var i = 
+0, l = handlers.length; i &lt; l; 
+i++){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(handlers[i].namespace 
+== 
+namespace){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;handlers.splice(i,1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l 
+= 
+handlers.length;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete 
+this.handlers[type];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.handlers 
+= 
+{};<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;});</P></BODY></HTML>
