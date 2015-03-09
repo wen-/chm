@@ -1250,6 +1250,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery篇">
 <PARAM NAME="Local" VALUE="jQuery篇.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1630,6 +1631,13 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="窗口滚动条滚动效果">
 <PARAM NAME="Local" VALUE="窗口滚动条滚动效果.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="uploadify参数详解">
+<PARAM NAME="Local" VALUE="uploadify参数详解.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
@@ -3087,7 +3095,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ciPHP">
 <PARAM NAME="Local" VALUE="ciPHP.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
