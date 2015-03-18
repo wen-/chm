@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>uploadify参数详解</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 11.00.9600.17631"></HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.17690"></HEAD>
 <BODY>
 <P>uploadify参数详解</P>
 <DIV class=articalTitle 
@@ -627,4 +627,14 @@ cellSpacing=0 cellPadding=5 width="100%" border=1>
       href="javascript:$(‘#file_upload’).uploadify(‘upload’,'*’)"&gt;开始上传所有文</TD></TR></TBODY></TABLE></DIV>
 <DIV><BR></DIV>
 <DIV>关于无法在formData获取到值得解决办法：在动态设置setting里设置就可以了，还是不知道是什么原因在直接配置文件里获取不到值。 
-另外如果将上传文件信息保存在session里要注意遍历的时候会有一点BUG，直接循环写入数据库会多出一组，原因暂时不明。</DIV></DIV></BODY></HTML>
+另外如果将上传文件信息保存在session里要注意遍历的时候会有一点BUG，直接循环写入数据库会多出一组，原因暂时不明。</DIV></DIV>
+<P>在不设置buttonImage路径时，会多一次请求报404错误（请求图片地址），</P>
+<P>修改源码：找到</P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">this.settings.button_image_url=SWFUpload.completeURL(this.settings.button_image_url)}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">uploadify会自动设置一个button的背景图片，所以这里要判断一下，存在button_image就设置，不然就不设置，这样就不会有404的报错了<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">if(this.settings.button_image_url&nbsp;!=&nbsp;""){this.settings.button_image_url=SWFUpload.completeURL(this.settings.button_image_url)}}</SPAN></P></BODY></HTML>
