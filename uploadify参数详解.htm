@@ -637,4 +637,17 @@ style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(
 style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">uploadify会自动设置一个button的背景图片，所以这里要判断一下，存在button_image就设置，不然就不设置，这样就不会有404的报错了<SPAN 
 class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
 style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
-style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">if(this.settings.button_image_url&nbsp;!=&nbsp;""){this.settings.button_image_url=SWFUpload.completeURL(this.settings.button_image_url)}}</SPAN></P></BODY></HTML>
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">if(this.settings.button_image_url&nbsp;!=&nbsp;""){this.settings.button_image_url=SWFUpload.completeURL(this.settings.button_image_url)}}</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><STRONG><FONT 
+color=#ff0000>谷歌浏览器下会出现崩溃，解决方法：</FONT></STRONG></SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+color=#000000 size=3 face=Simsun>window.setTimeout(function(){</FONT></SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+color=#000000 size=3 face=Simsun>&nbsp;&nbsp;&nbsp; $(elem).uploadify({ //参数 
+})</FONT></SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/24px arial, 宋体, sans-serif, 'Microsoft YaHei', tahoma; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+color=#000000 size=3 face=宋体>},10);</FONT></SPAN></P></BODY></HTML>
