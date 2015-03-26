@@ -1,0 +1,1133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>css3矩阵</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17690"></HEAD>
+<BODY>
+<P>css3矩阵</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<H2 
+style="FONT-SIZE: 1.6em; FONT-FAMILY: 'Lucida Grande', Verdana, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: justify; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">理解CSS3 
+transform中的Matrix(矩阵)</H2>
+<DIV class=entry 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 8px; FONT: 1.06em/1.5 'Lucida Grande', Verdana, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">by<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/">zhangxinxu</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>from<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</A><BR>本文地址：<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/?p=2427">http://www.zhangxinxu.com/wordpress/?p=2427</A></P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">一、哥，我被你吓住了</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">打架的时候会被块头大的吓住，学习的时候会被奇怪名字吓住（如“拉普拉斯不等式”）。这与情感化设计本质一致：界面设计好会让人觉得这个软件好用！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">所以，当看到上面“Matrix(矩阵)”的时候，难免会心生畏惧（即使你已经学过），正常心理。实际上，这玩意确实有点复杂。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">然而，这却是屌丝逆袭的一个好机会。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>CSS同行间：</STRONG><BR>你是不是有这样的感觉：哎呀呀，每天就是对着设计图切页面，貌似技术没有得到实质性地提升啊，或者觉得日后高度有限！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">我们应该都知道<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/baike.baidu.com/view/119451.htm">二八法则(巴莱多定律)</A>，即任何一组东西中，最重要的只占其中一小部分，约20%，其余80%的尽管是多数，却是次要的。如果你有上述的感觉，那你就属于那80%, 
+一抓一大把，没有特色的页面仔。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS门槛低，无需程序基础或数学逻辑能力，也能做出点自我感觉不错的东西。然而，你自己也应该清楚的，一般你能轻松学到的东西，别人也可以。因此，如果你想挤进那20%的行列，就要学到一般人学不到的深度，学到一般人学不了的东西。自然，是需要更多额外的努力的。如果每次你都比别人努力一点点，何愁不比他人高出几等。人年轻的时候，贵在坚持！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">而这里的CSS矩阵就是展现你与其他芸芸同行差异的好契机。很多人看到名字就畏惧了，看到奇怪的数学书写就吓退了；而你没有，迎难而上，把摇手机的时间用在理解矩阵上。自然，你就冒尖了一点。类似的，很多其他CSS方面的东西，你也比别人多深入学习一点，怎么可能就是个普通的页面仔呢？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">因此，从这里开始，摆脱那80%的行列吧！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>伪同行间：</STRONG><BR>虽然都是从事计算机，虽然都是从事互联网，虽然都是写代码的，(据说)写JAVA的瞧不起写JavaScript的，写JavaScript的瞧不起写CSS的。这可以理解，虽然养鸡养鸭成为富翁的不在少数，但是，一说你是农村养鸡的，怎么样？上海专业的丈母娘们的视线立马下降60°——被BS了。倒不是因为你是干农业的，而是“鸡”的问题；如果说你是饲养斯里兰卡蓝孔雀的，得，挑剔的丈母娘们说不定就会正脸看看（唷，斯里兰卡，国外货；唷，孔雀，高档货）。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">同样的，如果你掌握的CSS都是些“砌砖头”的活（虽然砌砖头也是大学问），被无视也情理之中。但是，矩阵这个东西，就是扭转乾坤（网称“逆袭”）的好东西：CSS中也是有复杂的高档货的。再忽悠些“图形算法、位置计算”之类的词句，嘿嘿，立马看法从<IMG 
+class=vimg 
+style="MARGIN-BOTTOM: -3px; MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/a0/kbsa_thumb.gif">变成<IMG 
+class=vimg 
+style="MARGIN-BOTTOM: -3px; MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/8f/qq_thumb.gif">。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">二、何为矩阵？</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">矩阵可以理解为方阵，只不过，平时方阵里面站的是人，矩阵中是数值：<BR><IMG 
+title=方阵 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=方阵 src="http://image.zhangxinxu.com/image/blog/201206/fangzhen.jpg" 
+width=500 align=absMiddle height=120><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="FONT-SIZE: 40px; VERTICAL-ALIGN: middle">→</STRONG><IMG title=矩阵示意 
+class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="矩阵示意 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/css-transforms-matrix1.gif" 
+width=159 align=absMiddle height=99></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">而所谓矩阵的计算，就是两个方阵的人（可以想象成古代的方阵士兵）相互冲杀。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>CSS3中的矩阵</STRONG><BR>CSS3中的矩阵指的是一个方法，书写为<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix()</CODE>和<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix3d()</CODE>，前者是元素2D平面的移动变换(transform)，后者则是3D变换。2D变换矩阵为3*3, 
+如上面矩阵示意图；3D变换则是4*4的矩阵。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">有些迷糊？恩，我也觉得上面讲述有些不合时宜。那好，我们先看看其他东西，层层渐进——<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>属性。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">具体关于<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>属性具体内容可以<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/?p=1268">点击这里</A>补个课。稍微熟悉的人都知道，<STRONG>transform</STRONG>中有这么几个属性方法：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">.trans_skew { transform: skew(35deg); }
+.trans_scale { transform:scale(1, 0.5); }
+.trans_rotate { transform:rotate(45deg); }
+.trans_translate { transform:translate(10px, 20px); }
+</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">斜拉(skew)，缩放(scale)，旋转(rotate)以及位移(translate)。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">那你有没有想过，为什么<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform:rotate(45deg);</CODE>会让元素旋转45°, 
+其后面运作的机理是什么呢？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">下面这张图可以解释上面的疑问：<IMG 
+border=0 hspace=0 alt="transform属性方法本质实现 张鑫旭-鑫空间-鑫生活" 
+src="images/matrix-skew-scale-rotate-translate.gif"><BR></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">无论是旋转还是拉伸什么的，本质上都是应用的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix()</CODE>方法实现的（修改<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix()</CODE>方法固定几个值），只是类似于<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform:rotate</CODE>这种表现形式，我们更容易理解，记忆与上手。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">换句话说，理解<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>中<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix()</CODE>矩阵方法有利于透彻理解CSS3的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>属性，这就与那80%的也会应用但只知表象的人拉开了差距！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">OK，现在上面提到的CSS3矩阵解释应该说得通了。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">三、矩阵应用场景</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">虽然题目写的是“<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>中的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">Matrix</CODE>”，实际上，在CSS3以及HTML5的世界里，这玩意还是涉猎蛮广的，如<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">SVG</CODE>以及<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">canvas</CODE>.<BR>事实上，关于矩阵，我之前曾经介绍过，是在介绍IE浏览器下的<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/?p=1505">Matrix矩阵滤镜</A>的时候说过，IE的滤镜矩阵与CSS中的矩阵虽然写法上差异较大，但是，矩阵计算的原来是一致的。只是之前的介绍主要是IE下的旋转与缩放，同时也不是很深入，因此还有有些局限的。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">四、<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>与坐标系统</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">用过<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>旋转的人可以发现了，其默认是绕着中心点旋转的，而这个中心点就是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform-origin</CODE>属性对应的点，也是所有矩阵计算的一个重要依据点（下图参考自<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/dev.opera.com">dev.opera.com</A>）。<BR><IMG 
+title=transform坐标系统 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=transform坐标系统 
+src="http://image.zhangxinxu.com/image/blog/201206/css-transforms-matrix2.png" 
+width=411 height=386></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">当我们通过<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform-origin</CODE>属性进行设置的时候，矩阵相关计算也随之发生改变。反应到实际图形效果上就是，旋转拉伸的中心点变了！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">举例来说，如果偶们设置：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">-webkit-transform-origin: bottom left;</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">则，坐标中心点就是左下角位置。于是动画（例如图片收缩）就是基于图片的左下角这一点了：<BR><IMG 
+title="动画的起始点 " class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="动画的起始点 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_151408.png" 
+width=420 height=260></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">上图效果可以<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201011/css3-transition-animate-demo-11.html" 
+target=_blank>点击这里</A>查看（Chrome浏览器）。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">再举个稍微难理解的例子，我们如果这样设置：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform-origin: 50px 70px;</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">则，中心点位置有中间移到了距离左侧50像素，顶部70像素的地方（参见下图），而此时的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(30, 
+30)</CODE>的坐标为白点所示的位置（这个位置后面会用到）。<BR><IMG title=中心坐标数值偏移的理解 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="中心坐标数值偏移的理解 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/css-transforms-matrix4.png" 
+width=411 height=386></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">仔细看看，是不是很快就理解了哈~~</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">五、准备好了没？重头戏来了</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS3<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix()</CODE>方法写法如下：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform: matrix(a,b,c,d,e,f);</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">吓住了吧，这多参数，一个巴掌都数不过来。好吧，如果你把<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">a~f</CODE>这6个参数想象成女神的名词，你会觉得，世界不过如此嘛~~</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">实际上，这6参数，对应的矩阵就是：<BR><IMG 
+title=矩阵参数与矩阵对应关系 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="矩阵参数与矩阵对应关系 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/css-transforms-matrix3.gif" 
+width=147 height=92></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">注意书写方向是<STRONG>竖着的</STRONG>。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">上面提过，矩阵可以想象成古代的士兵方阵，要让其发生变化，只有与另外一个士兵阵火拼就可以了，即使这是个小阵。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">反应在这里就是如下转换公式：<BR><IMG 
+title=CSS3中矩阵位置计算公式 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; transform: translate(30px, 30px)" 
+alt="CSS3中矩阵位置计算公式 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/css-transforms-matrix5.gif" 
+width=454 height=105></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">其中，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y</CODE>表示转换元素的所有坐标（变量）了。那后面的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">ax+cy+e</CODE>怎么来的呢？<BR><SPAN 
+class=s 
+style="FONT-SIZE: 0.9em; COLOR: rgb(153,153,153)">//zxx:大学时候线性代数知识，懂的人这里可以直接跳过</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">很简单，3*3矩阵每一行的第1个值与后面1*3的第1个值相乘，第2个值与第2个相乘，第3个与第3个，然后相加，如下图同色标注：<BR><IMG 
+title=矩阵计算的同色标注 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=矩阵计算的同色标注 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_160412.png" 
+width=533 height=170></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">那<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">ax+cy+e</CODE>的意义是什么？<BR>记住了，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">ax+cy+e</CODE>为变换后的水平坐标，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">bx+dy+f</CODE>表示变换后的垂直位置。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">又迷糊了？不急，一个简单例子就明白了。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">假设矩阵参数如下：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform: matrix(1, 0, 0, 1, 30, 30); <SPAN style="COLOR: green">/* a=1, b=0, c=0, d=1, e=30, f=30 */</SPAN></PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">现在，我们根据这个矩阵偏移元素的中心点，假设是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(0, 
+0)</CODE>，即<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x=0</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y=0</CODE>。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">于是，变换后的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x</CODE>坐标就是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">ax+cy+e 
+= 1*0+0*0+30 =30</CODE>,<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y</CODE>坐标就是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">bx+dy+f 
+= 0*0+1*0+30 =30</CODE>.</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">于是，中心点坐标从<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(0, 
+0)</CODE>变成了→<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(30, 
+30)</CODE>。对照上面有个<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(30, 
+30)</CODE>的白点图，好好想象下，原来<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(0,0)</CODE>的位置，移到了白点的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(30, 
+30)</CODE>处，怎么样，是不是往右下方同时偏移了30像素哈！！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">实际上<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform: 
+matrix(1, 0, 0, 1, 30, 30);</CODE>就等同于<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform: 
+translate(30px, 30px);</CODE>. 注意：<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translate</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotate</CODE>等方法都是需要单位的，而<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix</CODE>方法<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">e, 
+f</CODE>参数的单位可以省略。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">一例胜万语，您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201206/css3-transform-matrix-translate-30-30.html" 
+target=_blank>matrix(1,0,0,1,30,30)实例demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在现代浏览器下，会有类似下面动图的效果：<BR><IMG 
+title=30*30像素偏移示意 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=30*30像素偏移示意 
+src="http://image.zhangxinxu.com/image/blog/201206/translate-30-30.gif" 
+width=250 height=270></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">效果只是表象的，我想到了一个更好的idea去表现矩阵到底是如何变换的，您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201206/css3-transform-matrix-30-30-step.html" 
+target=_blank>matrix分解变换演示</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">为了提高性能，demo中每个单元分解成了<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; COLOR: gray; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">5px 
+* 5px</CODE>的区域。演示分两步，先是演示每个单元的位置是如何计算的，接着动画表现其位置的偏移。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个demo所做的工作就是把浏览器瞬间完成的计算和渲染变成了可控的分步显示，这样，大家就可以很直观地看出，这个矩阵计算到底是如何起作用的。下图为正在演示过程中的截图：<BR><IMG 
+title=矩阵计算分解演示demo截图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="矩阵计算分解演示demo截图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_193735.png" 
+width=435 height=396></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+class=s 
+style="FONT-SIZE: 0.9em; COLOR: rgb(153,153,153)">//zxx:由于默认100毫秒间隔不断渲染，因此如果你电脑CPU或是浏览器hold不住，可以取消“自动演示”的勾选，然后，点击左边的按钮手动分步查看。</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>总结</STRONG><BR>聪明的你可能以及意识到了，尼玛matrix表现偏移就是：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform: matrix(<DEL style="COLOR: rgb(102,102,102)" dateTime=2012-06-07T01:20:26+00:00>与我无关, 哪位, 怎么不去高考, 打麻将去吧,</DEL> 水平偏移距离, 垂直偏移距离);</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">你只要关心后面两个参数就可以了，至于前面4个参数，是牛是马，是男是女都没有关系的。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">六、transform 
+matrix矩阵与缩放，旋转以及拉伸</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">偏移是matrix效果中最简单，最容易理解的，因此，上面很详尽地对此进行展开说明。下面，为了进一步加深对matrix的理解，会简单讲下matrix矩阵与缩放，旋转以及拉伸效果。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>缩放(scale)</STRONG><BR>上面的偏移只要关心最后两个参数，这个缩放也是只要关心两个参数。哪两个呢？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">如果你足够明察秋毫，应该已经知道了，因为上面多次出现的：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform: matrix(1, 0, 0, 1, 30, 30);</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">已经出卖了。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">发现没，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix(1, 
+0, 0, 1,<SPAN class=Apple-converted-space>&nbsp;</SPAN><DEL 
+dateTime=2012-06-07T01:20:26+00:00>30, 30</DEL>);</CODE>的元素比例与原来一样，1:1, 
+而这几个参数中，有两个<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">1</CODE>, 
+啊哈哈！没错，这两个<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">1</CODE>就是缩放相关的参数。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">其中，第一个缩放<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x</CODE>轴，第二个缩放<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y</CODE>轴。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">用公式就很明白了，假设比例是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">s</CODE>，则有<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix(s, 
+0, 0, s, 0, 0);</CODE>，于是，套用公式，就有：<BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x' 
+= ax+cy+e = s*x+0*y+0 = s*x;</CODE><BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y' 
+= bx+dy+f = 0*x+s*y+0 = s*y;</CODE></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">也就是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix(sx, 
+0, 0, sy, 0, 0);</CODE>，等同于<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">scale(sx, 
+sy)</CODE>;</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">好了，至此，无需多说了……</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">眼见为实，因此demo还是要滴，您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201206/css3-transform-matrix-scale.html" 
+target=_blank>matrix矩阵与缩放demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">为了避免元素比例放大时候遮盖上面的文本框以及描述位子，因此，将元素的坐标原点迁至了左上角。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+title=matrix矩阵缩放demo效果截图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=matrix矩阵缩放demo效果截图 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_215813.png" 
+width=513 height=317></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>旋转(rotate)</STRONG><BR>旋转相比前面两个要更高级些，要用到（可能勾起学生时代阴影的）三角函数。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">方法以及参数使用如下（假设角度为<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">θ</CODE>）：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">matrix(cosθ,sinθ,-sinθ,cosθ,0,0)</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">结合矩阵公式，就有：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">x' = x*cosθ-y*sinθ+0 = x*cosθ-y*sinθ
+y' = x*sinθ+y*cosθ+0 = x*sinθ+y*cosθ</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个与<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/?p=1505">IEMatrix滤镜中的旋转</A>是有些类似的(M11表示矩阵第1行第1个（参数a），M21表示矩阵第2行第一个（参数b）……)：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">filter:progid:DXImageTransform.Microsoft.Matrix(M11=cosθ,M21=sinθ,M12=-sinθ,M22=cosθ');</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">哎呀呀，四个参数，我记不住啊！莫慌，我们可以这样子记忆：<BR>CS-SC：初三-上床，对称结构，这下忘不了了吧~~</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201206/css3-transform-matrix-rotate.html" 
+target=_blank>transform matrix矩阵与旋转demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+title=matrix矩阵旋转效果demo页面截图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="matrix矩阵旋转效果demo页面截图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_220737.png" 
+width=514 height=291></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">不过，说句老实话，就旋转而言，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotate(θdeg)</CODE>这种书写形式要比<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix</CODE>简单多了，首先记忆简单，其次，无需计算。例如，旋转30°，前者直接：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform:rotate(30deg);</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">而使用<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix</CODE>表示则还要计算<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">cos</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">sin</CODE>值：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform: matrix(0.866025,0.500000,-0.500000,0.866025,0,0);</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>拉伸(skew)</STRONG><BR>拉伸也用到了三角函数，不过是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">tanθ</CODE>，而且，其至于<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">b, 
+c</CODE>两个参数相关，书写如下（注意<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y</CODE>轴倾斜角度在前）：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">matrix(1,tan(θy),tan(θx),1,0,0)</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">套用矩阵公式计算结果为：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">x' = x+y*tan(θx)+0 = x+y*tan(θx) 
+y' = x*tan(θy)+y+0 = x*tan(θy)+y</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">对应于<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">skew(θx 
++ "deg"，θy+ "deg")</CODE>这种写法。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">其中，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">θx</CODE>表示<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x</CODE>轴倾斜的角度，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">θy</CODE>表示<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y</CODE>轴，两者并无关联。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">还是靠实例说话吧，您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201206/css3-transform-matrix-skew.html" 
+target=_blank>matrix矩阵与拉伸demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在Chrome下可以很动态地查看不同倾斜角度对应的拉伸的效果：<BR><IMG 
+title=拉伸效果demo页面截图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=拉伸效果demo页面截图 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_221013.png" 
+width=432 height=372></P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">七、既然有简单的skew, 
+rotate..，那matrix有何用？</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">我想有人会奇怪，既然CSS3 
+transform中提供了像<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">skew</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotate</CODE>,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">…</CODE>效果，那还需要掌握和熟悉让人头大的矩阵方法干嘛呢？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">好问题，确实，对于一般地交互应用，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>属性默认提供的些方法是足够了，但是，一些其他的效果，如果<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>属性没有提供接口方法，那你又该怎么办呢？比方说，“<STRONG>镜像对称效果</STRONG>”！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">没辙了吧，这是，就只能靠<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix</CODE>矩阵了。要知道，matrix矩阵是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>变换的基础，可以应付很多高端的效果，算是一种高级应用技巧吧。掌握了基础，才能兵来将挡水来土掩啊。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">OK，这里就演示下，如何使用CSS3<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix</CODE>矩阵实现镜像效果。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个有点难度，因此，我们先看demo，您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201206/css3-transform-matrix-mirror.html" 
+target=_blank>matrix与镜像对称效果demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">框框中输入旋转的角度值（用来确定镜像的对称轴），然后失去焦点，就会呈现出对应的镜像对称效果了：<BR><IMG 
+title=镜像对称效果操作示意 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="镜像对称效果操作示意 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_233041.png" 
+width=489 height=283><BR><IMG title=镜像对称效果截图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=镜像对称效果截图 
+src="http://image.zhangxinxu.com/image/blog/201206/2012-06-07_233356.png" 
+width=468 height=321></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">您可以在FireFox或是Chrome等浏览器上体验下<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix</CODE>实现的镜像渐变效果。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">demo页面中的一个轴是为了便于理解我加上的效果，实际上，在镜像对称的时候轴是看不见的。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">轴围绕的那个点就是CSS3中<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform</CODE>变换的中心点，自然，镜像对称也不例外。因为该轴永远经过原点，因此，任意对称轴都可以用<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y 
+= k * x</CODE>表示。则<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">matrix</CODE>表示就是：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">matrix((1-k*k) / (1+k*k), 2k / (1 + k*k), 2k / (1 + k*k), (k*k - 1) / (1+k*k), 0, 0)</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个如何得到的呢？<BR>啊，高中数学来了，就当再高考一次吧，如下图，已经<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y=kx</CODE>，并且知道点(x, 
+y)坐标，求其对称点(x’, y’)的坐标？<BR><IMG title=镜像渐变题目 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="镜像渐变题目 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/css-transforms-matrix-mirror.png" 
+width=411 height=386></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">很简单，一是垂直，二是中心点在轴线上，因此有：</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(y-y') 
+/ (x - x') = -1/ k → ky-ky' = -x+x'</CODE><BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">(x 
++ x') / 2 * k = (y + y')/2 → kx+kx' = y+y'</CODE></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">很简单的，把<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x'</CODE>和<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y'</CODE>提出来，就有：</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x' 
+= (1-k*k)/(k*k+1) *x + 2k/(k*k+1) *y;</CODE><BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y' 
+= 2k/(k*k+1) *x + (k*k-1)/(k*k+1) *y;</CODE></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">再结合矩阵公式：<BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">x' 
+= ax+cy+e;</CODE><BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">y' 
+= bx+dy+f;</CODE></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">我们就可以得到：<BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">a 
+= (1-k*k)/(k*k+1);</CODE><BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">b 
+= 2k/(k*k+1);</CODE><BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">c 
+= 2k/(k*k+1);</CODE><BR><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">d 
+= (k*k-1)/(k*k+1);</CODE></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">也就是上面matrix方法中的参数值啦！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">下图为自己计算的草稿：<BR><IMG 
+title=镜像矩阵参数计算草稿 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=镜像矩阵参数计算草稿 src="http://ww3.sinaimg.cn/bmiddle/4b4d632fjw1dtq2jrsr1jj.jpg" 
+width=440 height=330></P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">八、3D变换中的矩阵</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">3D变换虽然只比2D多了一个D，但是复杂程度不只多了一个。从二维到三维，是从4到9；而在矩阵里头是从3*3变成4*4, 
+9到16了。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">其实，本质上很多东西都与2D一致的，只是复杂度不一样而已。这里就举一个简单的3D缩放变换的例子。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">对于3D缩放效果，其矩阵如下：<BR><IMG 
+title=3D比例变换矩阵图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="3D比例变换矩阵图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201206/css-transforms-matrix8.gif" 
+width=209 height=123></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">代码表示就是：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform: matrix3d(sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, 0, 0, 0, 1)</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201206/css3-transform-matrix-3d-scale.html" 
+target=_blank>matrix3d下的3D比例变换demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>补充于2013-04-24</STRONG><BR>关于3D变换，可以参见邪恶的这篇文章：“<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">CSS3 
+3D transform变换，不过如此！</A>”</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">九、结束语</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">想了想，没什么要唠叨的。文中观点若是存在疑问或不准确的，欢迎指正。感谢阅读！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>参考文章：</STRONG><BR><A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://dev.opera.com/articles/view/understanding-the-css-transforms-matrix/">Understanding 
+the CSS Transforms Matrix</A><BR><A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.phphubei.com/article-2645-1.html">CSS3前端开发中需要用到的变换矩阵</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">原创文章，转载请注明来自<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</A>[<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</A>]<BR>本文地址：<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/?p=2427">http://www.zhangxinxu.com/wordpress/?p=2427</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">（本篇完）</P>
+<H2 
+style="FONT-SIZE: 1.6em; FONT-FAMILY: 'Lucida Grande', Verdana, Arial, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: justify; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">好吧，CSS3 
+3D transform变换，不过如此！</H2>
+<DIV class=entry 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 8px; FONT: 1.06em/1.5 'Lucida Grande', Verdana, Arial, sans-serif; PADDING-LEFT: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">by<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/">zhangxinxu</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>from<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</A><BR>本文地址：<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/?p=2592">http://www.zhangxinxu.com/wordpress/?p=2592</A></P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">一、写在前面的秋裤</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">早在去年的去年，我就大肆介绍了<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/wordpress/?p=1268">2D 
+transform相关内容</A>。看过海贼王的都知道，带D的家伙都不是好惹的，2D我辈尚可以应付，3D的话，呵呵，估计我等早就在千里之外被其霸气震晕了~~</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">看看下图女帝的动作以及神情，就可以知道名字带D的家伙的厉害！<BR><IMG 
+title=路飞女帝D族的厉害 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="路飞女帝D族的厉害 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/nvdi-lufei-yamiedie.jpg" 
+width=500 height=229></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">最近折腾iPad的一些东西，有一些3D效果的交互。有些事情，总以为是遥远的未来，谁知真正发生的时候说来就来，比如说一颗想结婚的心，又比方说在实际项目中折腾3D 
+transform效果。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+title=哭泣鑫表情 class=alignleft 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; MARGIN: 0px 7px 2px 0px; BORDER-LEFT: 0px; DISPLAY: inline; PADDING-RIGHT: 4px" 
+alt="哭泣鑫表情 张鑫旭-鑫空间-鑫生活" src="http://image.zhangxinxu.com/image/emtion/cry.png" 
+width=150 height=150></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">然而，虽然以前折腾过<A 
+style="TEXT-DECORATION: none; COLOR: rgb(52,83,139)" 
+href="http://www.zhangxinxu.com/study/201001/css3-animate-3d-effect-demo.html">3D变换效果(webkit)</A>，但都是依葫芦画瓢，囫囵吞枣，真正要轻松实现想要的3D效果，是需要深入理解的，于是，此时的自己苦逼了，泪奔ing……</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">木有办法，找资料，自己思考学习呗，当我看到下面这张基本图的时候，我的右侧的浓眉毛不由自主抖动了两下，呵，呵呵~~<BR><IMG 
+title=3D变换坐标图解 class=imgpad 
+style="MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 3px; box-shadow: rgba(0, 0, 0, 0.498039) 1px 2px 3px" 
+alt="3D变换坐标图解 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/3d_axes.png" width=368 
+height=402></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个长得像原子核一样的是什么东东？那像章鱼哥一样四处横生的箭头好吓人哦！后面怎么还有一个苍蝇拍？？<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://mat1.gtimg.com/www/mb/images/face/26.gif"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>CSS好可怕，我要回去找妈妈……</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">想必大部分的同行应该跟我一样，没有爱因斯坦爷爷的智商，没有上镜需要把表摘掉的爸爸。因此，那些术语连篇的CSS3 
+3D transform介绍的资料过于耀眼，无法直视。怎么办？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">好吧，佛家有云，我不入地狱谁入地狱。这里，我就从凡人们的视角说说CSS3 
+3D transform的一些东西，希望说的东西比较亲民，不要吓着大家。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">二、首先，情感化认识</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">我觉得吧，要想理解一个东西，最好先有一些感性的认识。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CSS3中的3D变换效果，本质上就是我们OOXX时候各种姿势的变换，又称各种体位的变换。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">虽然都是成年人，但考虑到仍有不少窝中待守的雏鸟，如果上面的解释想不过来，就想想以下这些：<BR><STRONG>1.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></STRONG>下图的这些人在干嘛？<BR><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://image.zhangxinxu.com/image/blog/201209/tiaoshui.jpg" height=300></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">跳水？NO, 
+No, No!! 记住，他们不是在跳水，是在做3D变换！！！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>2.</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>下图可爱baby在干嘛<IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://mat1.gtimg.com/www/mb/images/face/101.gif">？<BR><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://image.zhangxinxu.com/image/blog/201209/baby-move.jpg" 
+height=300><BR>广播体操？NO, No, No!! 记住，他不是在做操，是在做3D变换！！！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>3.</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>来到2次元，下图这个妹子在这幅姿态称为：<BR><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://image.zhangxinxu.com/image/blog/201209/maimeng.jpg" height=300><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><IMG title="鑫表情 性感 色" 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM: 0px; MARGIN-LEFT: 100px; BORDER-LEFT: 0px" 
+alt="鑫表情 性感 色" src="http://image.zhangxinxu.com/image/emtion/sex.png" width=150 
+height=150><BR>卖萌？NO, No, No!! 记住，他不是在卖萌，是在做3D变换！！！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">哈哈哈哈，是否意识到：在显示世界中，一切的动作（包括上面巨乳萌妹所引发的精虫上脑），都是属于3D 
+transform变换。 因此，要学习与理解3D transform变换很简单，一句话，到现实世界找个东西映射一下即可。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">三、认识的突破口：rotateX, 
+rotateY, rotateZ</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">3D 
+transform中有下面这三个方法：</P>
+<UL id=ul 
+style="LIST-STYLE-TYPE: disc; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 35px; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <LI><CODE 
+  style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateX( 
+  angle )</CODE></LI>
+  <LI><CODE 
+  style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY( 
+  angle )</CODE></LI>
+  <LI><CODE 
+  style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateZ( 
+  angle )</CODE></LI></UL>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">理解了这三个方法，后面更难懂的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">perspective</CODE>就好下手了，可以说是突破口！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotate</CODE>旋转的意思，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateX</CODE>旋转X轴，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY</CODE>旋转Y轴，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateZ</CODE>旋转Z轴……<IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://mat1.gtimg.com/www/mb/images/face/34.gif"></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">什么X轴/Y轴/Z轴，这几个词从我嘴里一出来，别说你们，我自己都晕了~~</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">赶快，从现实世界找对应东西理解（参照下面人的旋转）：<BR>邹凯的体操单杠运动是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateX</CODE>；<BR><IMG 
+title=单杠 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=单杠 src="http://image.zhangxinxu.com/image/blog/201209/dangang.jpg" width=300 
+height=226></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">蔡依林姐姐的钢管舞是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY</CODE>；<BR><IMG 
+title=蔡依林-钢管舞 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="蔡依林-钢管舞 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/gangguan-jolin.jpg" width=237 
+height=300></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">旋转飞刀的特技表演是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateZ</CODE>。<BR><IMG 
+title=飞刀魔术 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=飞刀魔术 src="http://image.zhangxinxu.com/image/blog/201209/feidao.jpg" 
+width=330 height=227></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">还是理解不过来？好吧，假设你是男的，以你的女朋友举例，假如原本你和她面对面站着，然后你——<BR>从正面将其推到就是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateX</CODE>；<BR><IMG 
+title="妹子推到与transform rotateX" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="妹子推到与transform rotateX 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/tuidao-x.jpg" width=225 
+height=300></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">让其原地转个90度欣赏其侧面的丰满曲线就是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY</CODE>；<BR><IMG 
+title="妹子推到与transform rotateY" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="妹子推到与transform rotateY 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/tuidao-y.jpg" width=217 
+height=300></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">把妹子抱到床上侧面躺着就是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateZ</CODE>。<BR><IMG 
+title="妹子推到与transform rotateZ" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="妹子推到与transform rotateZ 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/tuidao-z.jpg" width=300 
+height=188></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">于是，下面CSS世界中的简单3D效果是不是更容易理解了呢？！<BR><IMG 
+title="transform rotateX(45deg)的效果图" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; MARGIN-LEFT: -20px; BORDER-LEFT: 0px" 
+alt="transform rotateX(45deg)的效果图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_175406.png" 
+width=318 height=230><SPAN class=Apple-converted-space>&nbsp;</SPAN><IMG 
+title="transform rotateY(45deg)的效果图" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="transform rotateY(45deg)的效果图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_175458.png" 
+width=276 height=252><SPAN class=Apple-converted-space>&nbsp;</SPAN><IMG 
+title="transform rotateZ(45deg)的效果图" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="transform rotateZ(45deg)的效果图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_175551.png" 
+width=311 height=298></P>
+<P 
+style="LIST-STYLE-TYPE: none; COLOR: rgb(136,136,136); PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">//zxx: 
+下面为广告~~注意不要勿点~~嘻嘻~~</P>
+<DIV 
+style="WIDTH: 468px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(202,213,235)"><INS 
+id=aswift_0_expand 
+style="BORDER-TOP: medium none; HEIGHT: 60px; BORDER-RIGHT: medium none; WIDTH: 468px; BORDER-BOTTOM: medium none; POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; DISPLAY: inline-table; PADDING-RIGHT: 0px; VISIBILITY: visible; BACKGROUND-COLOR: transparent"><INS 
+id=aswift_0_anchor 
+style="BORDER-TOP: medium none; HEIGHT: 60px; BORDER-RIGHT: medium none; WIDTH: 468px; BORDER-BOTTOM: medium none; POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; DISPLAY: block; PADDING-RIGHT: 0px; VISIBILITY: visible; BACKGROUND-COLOR: transparent"><IFRAME 
+id=aswift_0 
+onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" 
+style="POSITION: absolute; LEFT: 0px; TOP: 0px" height=60 marginHeight=0 
+frameBorder=0 width=468 allowTransparency name=aswift_0 marginWidth=0 
+scrolling=no allowfullscreen="true"></IFRAME></INS></INS></DIV>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">四、必不可少的perspective属性</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">perspective</CODE>的中文意思是：透视，视角！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">perspective</CODE>属性的存在与否决定了你所看到的是2次元的还是3次元的，也就是是2D 
+transform还是3D transform. 这不难理解，没有透视，不成3D.</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">我们初中学美术，或者学建筑的同学肯定接触过透视的一些东西：<BR><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="3D透视 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/toushi.png" height=183><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="3D透视 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/toushi2.png" height=183></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">不过，CSS3 
+3D transform中的透视的透视点与上面两张示例图是不同的：CSS3 3D 
+transform的<STRONG>透视点是在浏览器的前方</STRONG>！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">或者这么理解吧：显示器中3D效果元素的透视点在显示器的上方（不是后面），近似就是我们眼睛所在方位！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">比方说，一个1680像素宽的显示器中有张美女图片，应用了3D 
+transform，同时，该元素或该元素父辈元素设置的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">perspective</CODE>大小为2000像素。则这张美女多呈现的3D效果就跟你本人在1.2个显示器宽度的地方(1680*1.2≈2000)看到的真实效果一致！！<BR><IMG 
+title="1680宽度像素显示器与3D transform视角大小示意" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="1680宽度像素显示器与3D transform视角大小示意 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/3d-distance.jpg" width=434 
+height=291></P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">五、translateZ帮你寻找透视位置</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">如果说<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateX</CODE>/<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY</CODE>/<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateZ</CODE>可以帮助理解三维坐标，则<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>则可以帮你理解透视位置。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">我们都知道近大远小的道理，对于没有<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateX</CODE>以及<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY</CODE>的元素，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>的功能就是让元素在自己的眼前或近或远。比方说，我们设置元素<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">perspective</CODE>为201像素，如下：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">perspective: 201px;</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">则其子元素，设置的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>值越小，则子元素大小越小（因为元素远去，我们眼睛看到的就会变小）；<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>值越大，该元素也会越来越大，当<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>值非常接近201像素，但是不超过201像素的时候（如200像素），该元素的大小就会撑满整个屏幕（如果父辈元素没有类似overflow:hidden的限制的话）。因为这个时候，子元素正好移到了你的眼睛前面，所谓“一叶蔽目，不见泰山”，就是这么回事。当<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>值再变大，超过201像素的时候，该元素看不见了——这很好理解：我们是看不见眼睛后面的东西的！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">再生动的文字描述也不如一个实例来得直观，您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201209/transform-perspective-translateZ.html" 
+target=_blank>translateZ方法辅助理解perspective视角demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">建议Chrome浏览器下访问，可以使用<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">range</CODE>控件，演示效果更赞，如下截图：-100时候最小，200时候超级满屏（垂直方向因特殊布局限制没有显示），250的时候因为元素已经在视点之外，因此是一片空白（看不见）。<BR><IMG 
+title="-100像素最远距离最小显示 张鑫旭-鑫空间-鑫生活" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="translateZ -100像素最远距离最小显示 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_220540.png" 
+width=366 height=292><SPAN class=Apple-converted-space>&nbsp;</SPAN><IMG 
+title="translateZ 200像素时候超级大的显示" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="translateZ 200像素时候超级大的显示" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_220622.png" 
+width=378 height=328><SPAN class=Apple-converted-space>&nbsp;</SPAN><IMG 
+title=translateZ为250像素时候元素在视区之外，因此看不见是空白 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="translateZ为250像素时候元素在视区之外，因此看不见是空白 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_220711.png" 
+width=376 height=326></P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">六、perspective属性的两种书写</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">perspective</CODE>属性有两种书写形式，一种用在舞台元素上（动画元素们的共同父辈元素）；第二种就是用在当前动画元素上，与transform的其他属性写在一起。如下代码示例：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">.stage {
+    perspective: 600px;
+}</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">以及：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">#stage .box {
+    transform: perspective(600px) rotateY(45deg);
+}</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201209/transform-perspective-two-write-style.html" 
+target=_blank>perspective属性的两种书写demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">结果如下缩略图：<BR><IMG 
+title="CSS3 transform perspective两种书写形式demo效果截图" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="CSS3 transform perspective两种书写形式demo效果截图 " 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_222328.png" 
+width=264 height=267></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">从上图我们貌似可以看到，虽然书写的形式，属性名称不一致，但是，效果貌似是一样的~~果真是这样吗？？？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">实际上不然，上面的demo上下两个效果之所以会一样，是因为舞台上只有一个元素，因此，发生了巧合，其正好表现一样了。如果，如果舞台上有很多个元素，则两种书写形式的表现差异就会立马显示出来了！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201209/transform-perspective-same-rotate.html" 
+target=_blank>舞台多元素下的perspective两种书写对比demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">demo页面效果缩略图如下（因背景色随机，可能与下图有差异）：<BR><IMG 
+title="不同transform perspective书写下的表现差异" class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="不同transform perspective书写下的表现差异" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_222911.png" 
+width=414 height=332></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">好吧，图中的效果其实不难理解。上面舞台整个作为透视元素，因此，显然，我们看到的每个子元素的形体都是不一样的；而下面，每个元素都有一个自己的视点，因此，显然，因为rotateY的角度是一样的，因此，看上去的效果也就一模一样了！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>关于Chrome浏览器以及透视盲区</STRONG><BR>在Chrome浏览器下，要想看到完整的3D效果，还需要3D变换元素正好在窗体的垂直居中位置，因此，在Chrome浏览器下，生成了两个位置居中的按钮，帮助您看到想要的效果：<BR><IMG 
+title=Chrome浏览器下位置居中按钮 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="Chrome浏览器下位置居中按钮 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_224317.png" 
+width=277 height=146><BR><IMG title=Chrome浏览器下舞台垂直居中3D效果显示 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=Chrome浏览器下舞台垂直居中3D效果显示 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_224348.png" 
+width=365 height=253></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">当我们改变第一个<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">range</CODE>控件值为200的时候，您会发现右侧第三个元素看不见了：<BR><IMG 
+title=200值的时候有元素看不见 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=200值的时候有元素看不见 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-05_224822.png" 
+width=514 height=250></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这不难理解，前面一排门，每个门都是1米，你距离门2米，显示，当所有门都开了45°角的时候，此时，距离中间门右侧的第二个门正好与你的视线平行，这个门的门面显然就什么也看不到。这就是为什么上面右侧第三个门一片空白的元素——特定的视角以及距离形成的视觉盲区。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">七、理解perspective-origin</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">perspective-origin</CODE>这个属性超级好理解，表示你那双色迷迷的眼睛看的位置。默认就是所看舞台或元素的中心。有时候，我们对中心的位置是不感兴趣的，希望视线放在其他一些地方。比方说<IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://mat1.gtimg.com/www/mb/images/face/2.gif">：<BR><IMG 
+title=不同视线落地位置对应不同的perspective-origin值 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=不同视线落地位置对应不同的perspective-origin值 
+src="http://image.zhangxinxu.com/image/blog/201209/what-are-u-looking.png" 
+width=425 height=300></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">一图胜千言，屌丝男们这个应该都懂的。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">下面为立方体的实际应用透视效果图：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">perspective-origin: 25% 75%;</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+title=立方体不同透视角度的效果 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="立方体不同透视角度的效果 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/perspective02.png" width=258 
+height=255></P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">八、transform-style: 
+preserve-3d</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform-style</CODE>属性也是3D效果中经常使用的，其两个参数，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">flat|preserve-3d</CODE>. 
+前者<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">flat</CODE>为默认值，表示平面的；后者<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">preserve-3d</CODE>表示3D透视。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">preserve-3d</CODE>符合我们真实世界的思维认识。比方说，你让妹子右转了45度，此时妹子脑袋左转45度想你吐舌卖萌，妹子的脸蛋应该和你是面对面平行的。<BR><IMG 
+title=身体旋转脸也旋转 class=alignleft 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; MARGIN: 0px 7px 2px 0px; BORDER-LEFT: 0px; DISPLAY: inline; PADDING-RIGHT: 4px" 
+alt="妹子推到与transform rotateY 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/tuidao-y.jpg" width=108 
+height=150><BR>应用<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform-style: 
+preserve-3d</CODE>声明的元素确实是这样表现的，但是，如果使用默认的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">flat</CODE>值，其效果表现——恕我想象力有限——想不通：妹子的脸还是左转45度的，同时脑袋似乎移到了身体以外的地方<IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://mat1.gtimg.com/www/mb/images/face/26.gif">！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">因此，基本上，我们想要根据现实经验实现一些3D效果的时候，<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">transform-style: 
+preserve-3d</CODE>是少不了的。一般而言，该声明应用在3D变换的兄弟元素们的父元素上，也就是舞台元素。</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">九、backface-visibility</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在显示世界中，我们无法穿过软妹A看到其身后的软妹B或C或D；但是，在CSS3的3D世界中，默认情况下，我们是可以看到背后的元素（也不知可不可以透视妹子的衣服~<IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://mat1.gtimg.com/www/mb/images/face/2.gif">）！<BR><IMG 
+title=看不到后面的软妹，哦呵呵 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="看不到后面的软妹，哦呵呵,  backface-visibility, 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/ruanmei.png" width=300 
+height=182></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">因此，为了切合实际，我们常常会这样设置，使后面元素不可见：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">backface-visibility:hidden;</PRE></DIV>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">十、实际应用-图片的旋转木马效果</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">您可以狠狠地点击这里：<A 
+class=a_link style="TEXT-DECORATION: underline; COLOR: rgb(255,51,0)" 
+href="http://www.zhangxinxu.com/study/201209/pictures-3d-slide-view.html" 
+target=_blank>图片的旋转木马效果demo</A></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">建议在足够新版本的FireFox浏览器或Safari浏览器下观看，Chrome可能需要居中定位查看，下图为效果缩略图：<BR><IMG 
+title=图片3D旋转木马效果截图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="图片3D旋转木马效果截图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-06_235939.png" 
+width=314 height=195></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>原理：</STRONG><BR>那些看上去很酷酷的CSS3 
+3D效果其实就颠来倒去那几个属性（本文提到的这几个），折腾来折腾去，这里这个效果显然也是如此。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">首先HTML结构，如下：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">舞台
+    容器
+        图片
+        图片
+        图片
+        ...</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">对于舞台，很简单，加个视距，比方说800像素：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px"> perspective: 800px;</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">对于容器，很简单，加个3D视图声明，如下：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">transform-style: preserve-3d;</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">然后就是图片们了。为了不至于产生类似DNA的螺旋状效果，我们让所有图片<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">position:absolute</CODE>，公用同一个中心点。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">显然，图片旋转木马是类似钢管舞旋转的运动，因此，我们关心的是<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY</CODE>的大小。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">因为要正好绕成一个圈，因此，图片<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">rotateY</CODE>值正好0~360等分，于是，如果有9张图片，则每个图片的旋转角度累加40(360 
+/ 9 = 40)度即可。因此有：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">img:nth-child(1) { transform: rotateY(   0deg ); }
+img:nth-child(2) { transform: rotateY(  40deg ); }
+img:nth-child(3) { transform: rotateY(  80deg ); }
+img:nth-child(4) { transform: rotateY( 120deg ); }
+img:nth-child(5) { transform: rotateY( 160deg ); }
+img:nth-child(6) { transform: rotateY( 200deg ); }
+img:nth-child(7) { transform: rotateY( 240deg ); }
+img:nth-child(8) { transform: rotateY( 280deg ); }
+img:nth-child(9) { transform: rotateY( 320deg ); }</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这样就好了吗？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">No, 
+No, No!!!</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">想想看那，虽然9个绝色美女每个人的方位不一样，但都站在同一个点上，早就挤作一团，A罩都挤成C了，显然是不行的（见下图只设置rotateY）！我们需要拉开空间~~</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
+title=只设置rotateY时候，众多美女图片挤作一团 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=只设置rotateY时候，众多美女图片挤作一团 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-07_002527.png" 
+width=300 height=212></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">如何拉开空间，很简单。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">想想看那：9个美女，分别面朝东南西北共9个不同方位，她们只要每个人向前走个4~5步，美女们之间的空间不久拉开了，呈现圆形了！想象一下夜空中，礼花绽开的场景~~</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这里的向前走4~5步，聪明的人应该已经知道了，就是本文提到的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>, 
+当<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>为正值的时候，元素会向其面对的方向走去；如果元素无旋转，就会朝显示器走来！！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">现在只剩下一个问题了，美女们要向前走多远呢？？</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个距离是有计算公式滴！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">拿本demo距离，每张美女图片的宽度是128像素，因此，有如下理想方位效果图：<BR><IMG 
+title=旋转木马效果理想方位图 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt="旋转木马效果理想方位图 张鑫旭-鑫空间-鑫生活" 
+src="http://image.zhangxinxu.com/image/blog/201209/diagram.png" width=540 
+height=402></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">上图中红色标注的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">r</CODE>就是的demo页面中图片要<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>的理想值（该值可以让所有图片无缝围成一个圆）！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">r</CODE>的计算很简单，有初中数学水平的人应该都会：</P>
+<DIV class=zxx_code 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(204,204,204) 1px dashed; BORDER-RIGHT: rgb(204,204,204) 1px dashed; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(204,204,204) 1px dashed; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 5px 0px; BORDER-LEFT: rgb(204,204,204) 1px dashed; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-FAMILY: 'Lucida Console', Consolas, Monaco; WHITE-SPACE: pre-wrap; COLOR: rgb(0,0,255); MARGIN: 0px">r = 64 / Math.tan(20 / 180 * Math.PI) ≈ 175.8</PRE></DIV>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">demo页面为了好看，图片之间留了点间距，使用的<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">translateZ</CODE>的值为<CODE 
+style="BORDER-TOP: rgb(234,234,234) 1px solid; FONT-FAMILY: Consolas, monospace; BORDER-RIGHT: rgb(234,234,234) 1px solid; BORDER-BOTTOM: rgb(234,234,234) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 4px; MARGIN-LEFT: 2px; BORDER-LEFT: rgb(234,234,234) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(248,248,248); MARGIN-RIGHT: 2px; border-radius: 3px">175.8 
++ 20 = 195.8</CODE>.<BR><IMG title=旋转木马demo页面translateZ值大小 class=alignnone 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+alt=旋转木马demo页面translateZ值大小 
+src="http://image.zhangxinxu.com/image/blog/201209/2012-09-07_003832.png" 
+width=407 height=173></P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">最后的最后，要让木马旋转起来，只要让容器每次旋转40度就可以了。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">节省篇幅，具体的JavaScript操作代码就不展示了，您有兴趣可以查看demo页面源代码。</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">理解了旋转木马3D效果实现原理，基本上，其他些3D效果可以轻松驾驭了，因此，本效果还是值得你花功夫看看滴~~</P>
+<H3 
+style="FONT-SIZE: 1.3em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 18px 0px 0px; PADDING-RIGHT: 0px">十一、好吧，结语</H3>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">理论上，现实世界，及3次元世界中的各种有规律的运动效果都可以使用CSS3 
+transform 
+3D方法实现。文章最后的旋转木马效果可以说是各类千奇百怪效果中的沧海一粟~~其他各类有的没有的效果就靠你的大脑就构想了。至于实现嘛，理解了，也就都是小菜。但是，要是不理解，纯粹从网上copy些效果代码，那永远就是copy的命咯！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">文章篇幅已经很长了，我的指头也敲出老茧来了，就不再啰嗦什么了。希望本文的嗑叨、卖弄、折腾能够让您学习CSS3 
+3D transform变换的相关东西更加轻松点！</P>
+<P 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 8px; PADDING-TOP: 8px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">行文仓促，文中有错误在所难免，欢迎诸位指正。最后，感谢阅读，共同进步！</P></DIV></DIV></BODY></HTML>
