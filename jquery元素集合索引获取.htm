@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>jquery元素集合索引获取</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17690">
+</HEAD>
+<BODY>
+<P>jquery元素集合索引获取</P>
+<P>&nbsp;</P>
+<P>$(".abc").click(function(){</P>
+<P>var index = 
+$(this).index();//通常是这样获取索引，但当.abc分别在不同的DIV块时索引就错了，获取得是相对同级元素的索引值</P>
+<P><FONT style="BACKGROUND-COLOR: #00ffff" color=#ff0000><STRONG>var index = 
+$(".abc").index($(this));//这样就可以获取到$(this) 相对于 
+$(".abc")集合中的索引了。</STRONG></FONT></P>
+<P>});</P></BODY></HTML>
