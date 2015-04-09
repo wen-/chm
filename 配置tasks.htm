@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>配置tasks</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17690">
+</HEAD>
+<BODY>
+<P>配置tasks</P>
+<H1 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(69,48,21); FONT: bold 32px/1 Lato, sans-serif; MARGIN: 50px 0px 0.8em; LETTER-SPACING: -1px; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">配置任务</H1>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这个指南解释了如何使用<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Gruntfile</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>来为你的项目配置task。如果你还不知道<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Gruntfile</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>是什么，请先阅读<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="http://www.gruntjs.net/docs/getting-started/">快速入门</A>指南并看看这个<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="http://www.gruntjs.net/docs/sample-gruntfile/">Gruntfile案例</A>。</P>
+<H2 id=grunt- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 24px/40px Lato, sans-serif; MARGIN: 2em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">Grunt配置</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Grunt的task配置都是在<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Gruntfile</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>中的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt.initConfig</CODE>方法中指定的。此配置主要是以任务名称命名的属性，也可以包含其他任意数据。一旦这些代表任意数据的属性与任务所需要的属性相冲突，就将被忽略。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">此外，由于这本身就是JavaScript，因此你不仅限于使用JSON；你可以在这里使用任何有效的JavaScript。必要的情况下，你甚至可以以编程的方式生成配置。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  concat: {
+    <SPAN class=comment style="COLOR: rgb(126,118,128)">// 这里是concat任务的配置信息。</SPAN>
+  },
+  uglify: {
+    <SPAN class=comment style="COLOR: rgb(126,118,128)">// 这里是uglify任务的配置信息</SPAN>
+  },
+  <SPAN class=comment style="COLOR: rgb(126,118,128)">// 任意数据。</SPAN>
+  my_property: 'whatever',
+  my_src_files: ['foo<SPAN class=comment style="COLOR: rgb(126,118,128)">/*.js', 'bar/*.js'],
+});</SPAN></CODE></PRE>
+<H2 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 24px/40px Lato, sans-serif; MARGIN: 2em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">任务配置和目标</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">当运行一个任务时，Grunt会自动查找配置对象中的同名属性。多任务（multi-task）可以通过任意命名的“目标（target）”来定义多个配置。在下面的案例中，<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">concat</CODE>任务有名为<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">foo</CODE>和<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">bar</CODE>两个目标，而<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">uglify</CODE>任务仅仅只有一个名为<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">bar</CODE>目标。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  <SPAN class=symbol>concat:</SPAN> {
+    <SPAN class=symbol>foo:</SPAN> {
+      <SPAN class=regexp style="COLOR: rgb(233,192,98)">//</SPAN> concat task <SPAN class=string style="COLOR: rgb(143,157,106)">"foo"</SPAN> target options <SPAN class=keyword style="COLOR: rgb(233,223,143)">and</SPAN> files go here.
+    },
+    <SPAN class=symbol>bar:</SPAN> {
+      <SPAN class=regexp style="COLOR: rgb(233,192,98)">//</SPAN> concat task <SPAN class=string style="COLOR: rgb(143,157,106)">"bar"</SPAN> target options <SPAN class=keyword style="COLOR: rgb(233,223,143)">and</SPAN> files go here.
+    },
+  },
+  <SPAN class=symbol>uglify:</SPAN> {
+    <SPAN class=symbol>bar:</SPAN> {
+      <SPAN class=regexp style="COLOR: rgb(233,192,98)">//</SPAN> uglify task <SPAN class=string style="COLOR: rgb(143,157,106)">"bar"</SPAN> target options <SPAN class=keyword style="COLOR: rgb(233,223,143)">and</SPAN> files go here.
+    },
+  },
+});</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">同时指定任务（task）和目标（target），例如<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt 
+concat:foo</CODE>或者<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt 
+concat:bar</CODE>，将只会处理指定目标（target）的配置，而运行<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt 
+concat</CODE>将遍历<EM 
+style="FONT-STYLE: italic">所有</EM>目标（target）并依次处理。注意，如果一个任务使用<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="http://www.gruntjs.net/api/grunt.task#grunt.task.renameTask">grunt.task.renameTask</A>重命名过，Grunt将在配置对象中查找以<EM 
+style="FONT-STYLE: italic">新的</EM>任务名命名的属性。</P>
+<H2 id=options- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 24px/40px Lato, sans-serif; MARGIN: 2em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">options属性</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">在一个任务配置中，<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">options</CODE>属性可以用来指定覆盖内置属性的默认值。此外，每一个目标（target）中还可以拥有一个专门针对此目标（target）的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">options</CODE>属性。目标（target）级的平options将会覆盖任务级的options。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">options</CODE>对象是可选的，如果不需要，可以忽略。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  concat: {
+    <SPAN class=keyword style="COLOR: rgb(233,223,143)">options</SPAN>: {
+      // 这里是任务级的<SPAN class=keyword style="COLOR: rgb(233,223,143)">Options</SPAN>，覆盖默认值 
+    },
+    foo: {
+      <SPAN class=keyword style="COLOR: rgb(233,223,143)">options</SPAN>: {
+        // <SPAN class=string style="COLOR: rgb(143,157,106)">"foo"</SPAN> target <SPAN class=keyword style="COLOR: rgb(233,223,143)">options</SPAN> may go here, overriding task-level <SPAN class=keyword style="COLOR: rgb(233,223,143)">options</SPAN>.
+      },
+    },
+    bar: {
+      // No <SPAN class=keyword style="COLOR: rgb(233,223,143)">options</SPAN> specified; this target will use task-level <SPAN class=keyword style="COLOR: rgb(233,223,143)">options</SPAN>.
+    },
+  },
+});</CODE></PRE>
+<H2 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 24px/40px Lato, sans-serif; MARGIN: 2em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">文件</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">由于大多的任务都是执行文件操作，Grunt有一个强大的抽象层用于声明任务应该操作哪些文件。这里有好几种定义<STRONG 
+style="FONT-WEIGHT: bold">src-dest</STRONG>(源文件-目标文件)文件映射的方式，均提供了不同程度的描述和控制操作方式。任何一种多任务（multi-task）都能理解下面的格式，所以你只需要选择满足你需求的格式就行。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">所有的文件格式都支持<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE>和<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE>属性，此外"Compact"[简洁]和"Files 
+Array"[文件数组]格式还支持以下一些额外的属性：</P>
+<UL 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px 25px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">filter</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>它通过接受任意一个有效的<A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats">fs.Stats方法名</A>或者一个函数来匹配<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE>文件路径并根据匹配结果返回<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">true</CODE>或者<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">false</CODE>。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">nonull</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>如果被设置为<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">true</CODE>，未匹配的模式也将执行。结合Grunt的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">--verbore</CODE>标志, 
+  这个选项可以帮助用来调试文件路径的问题。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dot</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>它允许模式模式匹配句点开头的文件名，即使模式并不明确文件名开头部分是否有句点。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">matchBase</CODE>如果设置这个属性，缺少斜线的模式(意味着模式中不能使用斜线进行文件路径的匹配)将不会匹配包含在斜线中的文件名。 
+  例如，a?b将匹配<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">/xyz/123/acb</CODE>但不匹配<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">/xyz/acb/123</CODE>。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">expand</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>处理动态的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射，更多的信息请查看<A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="http://www.gruntjs.net/docs/configuring-tasks#building-the-files-object-dynamically">动态构建文件对象</A>。</LI>
+  <LI style="LINE-HEIGHT: 30px">其他的属性将作为匹配项传递给底层的库。 请查看<A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="https://github.com/isaacs/node-glob">node-glob</A><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>和<A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="https://github.com/isaacs/minimatch">minimatch</A><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>文档以获取更多信息。</LI></UL>
+<H3 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 1.2em/40px Lato, sans-serif; MARGIN: 1em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">简洁格式</H3>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这种形式允许每个目标对应一个<STRONG 
+style="FONT-WEIGHT: bold">src-dest</STRONG>文件映射。通常情况下它用于只读任务，比如<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="https://github.com/gruntjs/grunt-contrib-jshint">grunt-contrib-jshint</A>，它就只需要一个单一的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE>属性，而不需要关联的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE>选项. 
+这种格式还支给每个<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射指定额外的属性。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  <SPAN class=method>jshint:</SPAN> {
+    <SPAN class=method>foo:</SPAN> {
+      <SPAN class=method>src:</SPAN> [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/aa.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/aaa.js'</SPAN>]
+    },
+  },
+  <SPAN class=method>concat:</SPAN> {
+    <SPAN class=method>bar:</SPAN> {
+      <SPAN class=method>src:</SPAN> [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/bb.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/bbb.js'</SPAN>],
+      <SPAN class=method>dest:</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/b.js'</SPAN>,
+    },
+  },
+});</CODE></PRE>
+<H3 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 1.2em/40px Lato, sans-serif; MARGIN: 1em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">文件对象格式</H3>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这种形式支持每个目标对应多个<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>形式的文件映射，属性名就是目标文件，源文件就是它的值(源文件列表则使用数组格式声明)。可以使用这种方式指定数个<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射， 
+但是不能够给每个映射指定附加的属性。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px"><SPAN class=tag style="COLOR: rgb(227,206,171)">grunt</SPAN><SPAN class=class>.initConfig</SPAN>(<SPAN class=rules>{
+  <SPAN class=rule><SPAN class=attribute>concat</SPAN>:<SPAN class=value> {
+    foo: {
+      files: {
+        <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/a.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/aa.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/aaa.js'</SPAN>],
+        <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/a1.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/aa1.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/aaa1.js'</SPAN>],
+      }</SPAN></SPAN></SPAN>,
+    },
+    <SPAN class=tag style="COLOR: rgb(227,206,171)">bar</SPAN>: <SPAN class=rules>{
+      <SPAN class=rule><SPAN class=attribute>files</SPAN>:<SPAN class=value> {
+        <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/b.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/bb.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/bbb.js'</SPAN>],
+        <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/b1.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/bb1.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/bbb1.js'</SPAN>],
+      }</SPAN></SPAN></SPAN>,
+    },
+  },
+});</CODE></PRE>
+<H3 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 1.2em/40px Lato, sans-serif; MARGIN: 1em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">文件数组格式</H3>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这种形式支持每个目标对应多个<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射，同时也允许每个映射拥有额外属性：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  <SPAN class=method>concat:</SPAN> {
+    <SPAN class=method>foo:</SPAN> {
+      <SPAN class=method>files:</SPAN> [
+        {<SPAN class=method>src:</SPAN> [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/aa.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/aaa.js'</SPAN>], <SPAN class=method>dest:</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/a.js'</SPAN>},
+        {<SPAN class=method>src:</SPAN> [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/aa1.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/aaa1.js'</SPAN>], <SPAN class=method>dest:</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/a1.js'</SPAN>},
+      ],
+    },
+    <SPAN class=method>bar:</SPAN> {
+      <SPAN class=method>files:</SPAN> [
+        {<SPAN class=method>src:</SPAN> [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/bb.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/bbb.js'</SPAN>], <SPAN class=method>dest:</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/b/'</SPAN>, <SPAN class=method>nonull:</SPAN> <SPAN class=keyword style="COLOR: rgb(233,223,143)">true</SPAN>},
+        {<SPAN class=method>src:</SPAN> [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/bb1.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/bbb1.js'</SPAN>], <SPAN class=method>dest:</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/b1/'</SPAN>, <SPAN class=method>filter:</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">'isFile'</SPAN>},
+      ],
+    },
+  },
+});</CODE></PRE>
+<H3 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 1.2em/40px Lato, sans-serif; MARGIN: 1em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">较老的格式</H3>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="FONT-WEIGHT: bold">dest-as-target</STRONG>文件格式在多任务和目标出现之前是一个过渡形式，目标文件路径实际上就是目标名称。遗憾的是, 
+由于目标名称是文件路径，那么运行<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt 
+task:target</CODE>可能不合适。此外，你也不能指定一个目标级的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">options</CODE>或者给每个<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射指定额外属性。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">此种格式已经不赞成使用，请尽量不要使用。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px"><SPAN class=tag style="COLOR: rgb(227,206,171)">grunt</SPAN><SPAN class=class>.initConfig</SPAN>(<SPAN class=rules>{
+  <SPAN class=rule><SPAN class=attribute>concat</SPAN>:<SPAN class=value> {
+    <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/a.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/aa.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/aaa.js'</SPAN>],
+    <SPAN class=string style="COLOR: rgb(143,157,106)">'dest/b.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/bb.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/bbb.js'</SPAN>],
+  }</SPAN></SPAN></SPAN>,
+});</CODE></PRE>
+<H3 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 1.2em/40px Lato, sans-serif; MARGIN: 1em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">自定义过滤函数</H3>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">filter</CODE>属性可以给你的目标文件提供一个更高级的详细帮助信息。只需要使用一个有效的<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats">fs.Stats 
+方法名</A>。下面的配置仅仅清理一个与模式匹配的真实的文件：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  <SPAN class=method>clean:</SPAN> {
+    <SPAN class=method>foo:</SPAN> {
+      <SPAN class=method>src:</SPAN> [<SPAN class=string style="COLOR: rgb(143,157,106)">'tmp/**/*'</SPAN>],
+      <SPAN class=method>filter:</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">'isFile'</SPAN>,
+    },
+  },
+});</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">或者创建你自己的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">filter</CODE>函数，根据文件是否匹配来返回<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">true</CODE>或者<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">false</CODE>。下面的例子将仅仅清理一个空目录：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px"><SPAN class=tag style="COLOR: rgb(227,206,171)">grunt</SPAN><SPAN class=class>.initConfig</SPAN>(<SPAN class=rules>{
+  <SPAN class=rule><SPAN class=attribute>clean</SPAN>:<SPAN class=value> {
+    foo: {
+      src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'tmp/**/*'</SPAN>],
+      filter: <SPAN class=function>function(filepath)</SPAN> {
+        return (grunt.file.<SPAN class=function>isDir(filepath)</SPAN> &amp;&amp; <SPAN class=function>require(<SPAN class=string style="COLOR: rgb(143,157,106)">'fs'</SPAN>)</SPAN>.<SPAN class=function>readdirSync(filepath)</SPAN>.length === <SPAN class=number style="COLOR: rgb(207,106,76)">0</SPAN>);</SPAN></SPAN>
+      <SPAN class=rule>}</SPAN></SPAN>,
+    },
+  },
+});</CODE></PRE>
+<H3 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 1.2em/40px Lato, sans-serif; MARGIN: 1em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">通配符模式</H3>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">通常分别指定所有源文件路径是不切实际的，因此Grunt通过内置支持<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="https://github.com/isaacs/node-glob">node-glob</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>和<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="https://github.com/isaacs/minimatch">minimatch</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>库来匹配文件名(又叫作<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">globbing</CODE>)。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">然这并不是一个综合的匹配模式方面的教程，你只需要知道如何在文件路径匹配过程中使用它们即可：</P>
+<UL 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px 25px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">*</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>匹配任意数量的字符，但不匹配<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">/</CODE></LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">?</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>匹配单个字符，但不匹配<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">/</CODE></LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">**</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>匹配任意数量的字符，包括<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">/</CODE>，只要它是路径中唯一的一部分</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">{}</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>允许使用一个逗号分割的“或”表达式列表</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">!</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>在模式的开头用于排除一个匹配模式所匹配的任何文件</LI></UL>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">每个人都需要知道的是：<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">foo/*.js</CODE>将匹配位于<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">foo/</CODE>目录下的所有的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">.js</CODE>结尾的文件；而<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">foo/**/*js</CODE>将匹配<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">foo/</CODE>目录以<EM 
+style="FONT-STYLE: italic">及其子目录</EM>中所有以<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">.js</CODE>结尾的文件。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">此外, 
+为了简化原本复杂的通配符模式，Grunt允许指定一个数组形式的文件路径或者一个通配符模式。所有模式按顺序处理，模式处理的过程中，带有<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">!</CODE>前缀的模式所匹配的文件将不包含在结果集中。 
+而且其结果集中的每一项也是唯一的。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">例如：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">// 指定单个文件：
+{src: <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/this.js'</SPAN>, dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+// 指定一个文件数组：
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'foo/this.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/that.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/the-other.js'</SPAN>], dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+// 使用一个匹配模式：
+{src: <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/th*.js'</SPAN>, dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+
+// 一个独立的node-glob模式：
+{src: <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/{a,b}*.js'</SPAN>, dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+// 也可以这样编写：
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'foo/a*.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/b*.js'</SPAN>], dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+
+// foo目录中所有的.js文件，按字母顺序排序：
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'foo/*.js'</SPAN>], dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+// 首先是bar.js，接着是剩下的.js文件，并按字母顺序排序：
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'foo/bar.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/*.js'</SPAN>], dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+
+// 除bar.js之外的所有的.js文件，按字母顺序排序：
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'foo/*.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'!foo/bar.js'</SPAN>], dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+// 按字母顺序排序的所有.js文件，但是bar.js在最后。
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'foo/*.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'!foo/bar.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'foo/bar.js'</SPAN>], dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}
+
+// 模板也可以用于文件路径或者匹配模式中：
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/&lt;%= basename %&gt;.js'</SPAN>], dest: <SPAN class=string style="COLOR: rgb(143,157,106)">'build/&lt;%= basename %&gt;.min.js'</SPAN>}
+// 它们也可以引用在配置中定义的其他文件列表：
+{src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'foo/*.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'&lt;%= jshint.all.src %&gt;'</SPAN>], dest: <SPAN class=keyword style="COLOR: rgb(233,223,143)">...</SPAN>}</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">更多关于通配符模式的语法，请查看<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="https://github.com/isaacs/node-glob">node-glob</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>和<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="https://github.com/isaacs/minimatch">minimatch</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>的文档。</P>
+<H3 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 1.2em/40px Lato, sans-serif; MARGIN: 1em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">动态构建文件对象</H3>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">当你希望处理大量的单个文件时，这里有一些附加的属性可以用来动态的构建一个文件列表。这些属性都可以用于<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Compact</CODE>和<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Files 
+Array</CODE>文件映射格式。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">expand</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>设置为<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">true</CODE>用于启用下面的选项：</P>
+<UL 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px 25px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">cwd</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>所有<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE>指定的匹配都将相对于此处指定的路径（但不包括此路径） 
+  。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>相对于<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">cwd</CODE>路径的匹配模式。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>目标文件路径前缀。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">ext</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>对于生成的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE>路径中所有实际存在文件，均使用这个属性值替换扩展名。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">flatten</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>从生成的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE>路径中移除所有的路径部分。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">rename</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>对每个匹配的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE>文件调用这个函数(在重命名后缀和移除路径之后)。<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE>和匹配的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE>路径将被作为参数传入，此函数应该返回一个新的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE>值。 
+  如果相同的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dest</CODE>返回不止一次，那么，每个返回此值的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src</CODE>来源都将被添加到一个数组中作为源列表。</LI></UL>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">在下面的例子中，<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">uglify</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>任务中的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">static_mappings</CODE>和<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dynamic_mappings</CODE>两个目标具有相同的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射列表, 
+这是因为任务运行时Grunt会自动展开<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dynamic_mappings</CODE>文件对象为4个单独的静态<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射--假设这4个文件能够找到。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">可以指定任意静态<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>和动态的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src-dest</CODE>文件映射相互结合。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  uglify: {
+    static_mappings: {
+      // Because these src-dest <SPAN class=type>file</SPAN> mappings are manually specified, <SPAN class=keyword style="COLOR: rgb(233,223,143)">every</SPAN>
+      // <SPAN class=property>time</SPAN> a new <SPAN class=type>file</SPAN> <SPAN class=keyword style="COLOR: rgb(233,223,143)">is</SPAN> added <SPAN class=keyword style="COLOR: rgb(233,223,143)">or</SPAN> removed, <SPAN class=keyword style="COLOR: rgb(233,223,143)">the</SPAN> Gruntfile has <SPAN class=keyword style="COLOR: rgb(233,223,143)">to</SPAN> be updated.
+      files: [
+        {src: 'lib/a.js', dest: 'build/a.min.js'},
+        {src: 'lib/b.js', dest: 'build/b.min.js'},
+        {src: 'lib/subdir/c.js', dest: 'build/subdir/c.min.js'},
+        {src: 'lib/subdir/d.js', dest: 'build/subdir/d.min.js'},
+      ],
+    },
+    dynamic_mappings: {
+      // Grunt will search <SPAN class=keyword style="COLOR: rgb(233,223,143)">for</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">"**/*.js"</SPAN> under <SPAN class=string style="COLOR: rgb(143,157,106)">"lib/"</SPAN> when <SPAN class=keyword style="COLOR: rgb(233,223,143)">the</SPAN> <SPAN class=string style="COLOR: rgb(143,157,106)">"uglify"</SPAN> task
+      // runs <SPAN class=keyword style="COLOR: rgb(233,223,143)">and</SPAN> build <SPAN class=keyword style="COLOR: rgb(233,223,143)">the</SPAN> appropriate src-dest <SPAN class=type>file</SPAN> mappings <SPAN class=keyword style="COLOR: rgb(233,223,143)">then</SPAN>, so you
+      // don't need <SPAN class=keyword style="COLOR: rgb(233,223,143)">to</SPAN> update <SPAN class=keyword style="COLOR: rgb(233,223,143)">the</SPAN> Gruntfile when files are added <SPAN class=keyword style="COLOR: rgb(233,223,143)">or</SPAN> removed.
+      files: [
+        {
+          expand: <SPAN class=constant>true</SPAN>,     // Enable dynamic expansion.
+          cwd: 'lib/',      // Src matches are relative <SPAN class=keyword style="COLOR: rgb(233,223,143)">to</SPAN> this path.
+          src: ['**/*.js'], // Actual pattern(s) <SPAN class=keyword style="COLOR: rgb(233,223,143)">to</SPAN> match.
+          dest: 'build/',   // Destination path prefix.
+          ext: '.min.js',   // Dest filepaths will have this extension.
+        },
+      ],
+    },
+  },
+});</CODE></PRE>
+<H2 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 24px/40px Lato, sans-serif; MARGIN: 2em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">模板</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">使用<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">&lt;% 
+%&gt;</CODE>分隔符指定的模板会在任务从它们的配置中读取相应的数据时将自动扩展扫描。模板会被递归的展开，直到配置中不再存在遗留的模板相关的信息(与模板匹配的)。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">整个配置对象决定了属性上下文(模板中的属性)。此外，在模板中使用<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt</CODE>以及它的方法都是有效的，例如：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">&lt;%= 
+grunt.template.today('yyyy-mm-dd') %&gt;</CODE>。</P>
+<UL 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px 25px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">&lt;%= 
+  prop.subprop %&gt;</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>将会自动展开配置信息中的<CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">prop.subprop</CODE>的值，不管是什么类型。像这样的模板不仅可以用来引用字符串值，还可以引用数组或者其他对象类型的值。</LI>
+  <LI style="LINE-HEIGHT: 30px"><CODE 
+  style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">&lt;% 
+  %&gt;</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>执行任意内联的JavaScript代码。对于控制流或者循环来说是非常有用的。</LI></UL>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">下面以<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">concat</CODE>任务配置为例，运行<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt 
+concat:sample</CODE>时将通过banner中的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">/* 
+abcde */</CODE>连同<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">foo/*.js</CODE>+<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">bar/*.js</CODE>+<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">bar/*.js</CODE>匹配的所有文件来生成一个名为<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">build/abcde.js</CODE>的文件。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+  concat: {
+    sample: {
+      options: {
+        banner: <SPAN class=string style="COLOR: rgb(143,157,106)">'/* &lt;%= baz %&gt; */\n'</SPAN>,   // <SPAN class=string style="COLOR: rgb(143,157,106)">'/* abcde */\n'</SPAN>
+      },
+      src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'&lt;%= qux %&gt;'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'baz/*.js'</SPAN>],  // <SPAN class=string style="COLOR: rgb(143,157,106)">[['foo/*.js', 'bar/*.js'], 'baz/*.js']
+      dest: 'build/&lt;%= baz %&gt;.js',      // 'build/abcde.js'
+    },
+  },
+  //用于任务配置模板的任意属性
+  foo: 'c',
+  bar: 'b&lt;%= foo %&gt;d', // 'bcd'
+  baz: 'a&lt;%= bar %&gt;e', // 'abcde'
+  qux: ['foo/*.js', 'bar/*.js'],
+});</SPAN></CODE></PRE>
+<H2 id=- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: bold 24px/40px Lato, sans-serif; MARGIN: 2em 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">导入外部数据</H2>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">在下面的Gruntfile中，项目的元数据是从<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">package.json</CODE>文件中导入到Grunt配置中的，并且<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="http://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify 
+插件</A>中的<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">uglify</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>任务被配置用于压缩一个源文件以及使用该元数据动态的生成一个banner注释。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Grunt有<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt.file.readJSON</CODE>和<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt.file.readYAML</CODE>两个方法分别用于引入JSON和YAML数据。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-js style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px"><SPAN class=tag style="COLOR: rgb(227,206,171)">grunt</SPAN><SPAN class=class>.initConfig</SPAN>(<SPAN class=rules>{
+  <SPAN class=rule><SPAN class=attribute>pkg</SPAN>:<SPAN class=value> grunt.file.<SPAN class=function>readJSON(<SPAN class=string style="COLOR: rgb(143,157,106)">'package.json'</SPAN>)</SPAN>,
+  uglify: {
+    options: {
+      banner: <SPAN class=string style="COLOR: rgb(143,157,106)">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("yyyy-mm-dd") %&gt; */\n'</SPAN>
+    }</SPAN></SPAN></SPAN>,
+    <SPAN class=tag style="COLOR: rgb(227,206,171)">dist</SPAN>: <SPAN class=rules>{
+      <SPAN class=rule><SPAN class=attribute>src</SPAN>:<SPAN class=value> <SPAN class=string style="COLOR: rgb(143,157,106)">'src/&lt;%= pkg.name %&gt;.js'</SPAN>,
+      dest: <SPAN class=string style="COLOR: rgb(143,157,106)">'dist/&lt;%= pkg.name %&gt;.min.js'</SPAN>
+    }</SPAN></SPAN></SPAN>
+  }
+});</CODE></PRE>
+<DIV class=end-link 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 12px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Found 
+an error in the documentation?<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="https://github.com/gruntjs/grunt-docs/issues">File an 
+issue</A>.</DIV></BODY></HTML>

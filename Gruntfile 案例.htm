@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Gruntfile 案例</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17690">
+</HEAD>
+<BODY>
+<P>Gruntfile 案例</P>
+<H1 id=gruntfile- 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: none; COLOR: rgb(69,48,21); FONT: bold 32px/1 Lato, sans-serif; MARGIN: 50px 0px 0.8em; LETTER-SPACING: -1px; TEXT-INDENT: 0px; text-rendering: optimizelegibility; -webkit-text-stroke-width: 0px">Gruntfile 
+案例</H1>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">下面就针对一个<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Gruntfile</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>案例做简单分析，这个案例使用到了5个 Grunt 插件：</P>
+<UL 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px 25px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="LINE-HEIGHT: 30px"><A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</A></LI>
+  <LI style="LINE-HEIGHT: 30px"><A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="https://github.com/gruntjs/grunt-contrib-qunit">grunt-contrib-qunit</A></LI>
+  <LI style="LINE-HEIGHT: 30px"><A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="https://github.com/gruntjs/grunt-contrib-concat">grunt-contrib-concat</A></LI>
+  <LI style="LINE-HEIGHT: 30px"><A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="https://github.com/gruntjs/grunt-contrib-jshint">grunt-contrib-jshint</A></LI>
+  <LI style="LINE-HEIGHT: 30px"><A 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+  href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</A></LI></UL>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">在页面底部是这个<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Gruntfile</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>案例的完整内容，如果你按顺序阅读本文的话，可以跟随我们一步步分析这个文件中的每一部分。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">第一部分是"wrapper" 
+函数，它包含了整个Grunt配置信息。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">module.exports = <SPAN class=keyword style="COLOR: rgb(233,223,143)">function</SPAN>(grunt) {
+}</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">在这个函数中，我们可以初始化 
+configuration 对象：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.initConfig({
+});</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">接下来可以从<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">package.json</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>文件读入项目配置信息，并存入<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">pkg</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>属性内。这样就可以让我们访问到<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">package.json</CODE>文件中列出的属性了，如下：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">pkg: grunt.file.readJSON(<SPAN class=string style="COLOR: rgb(143,157,106)">'package.json'</SPAN>)</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">到目前为止我们就可以看到如下配置：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">module.exports = <SPAN class=keyword style="COLOR: rgb(233,223,143)">function</SPAN>(grunt) {
+  grunt.initConfig({
+    pkg: grunt.file.readJSON(<SPAN class=string style="COLOR: rgb(143,157,106)">'package.json'</SPAN>)
+  });
+};</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">现在我们就可以为我们的每个任务来定义相应的配置(逐个定义我们为项目定义的任务配置)，然后每个任务的配置对象作为Grunt配置对象(即grunt.initConfig({})所接受的配置对象)的属性，并且这个属性名称与任务名相同。因此"concat"任务就是我们的配置对象中的"concat"键(属性)。下面便是我的"concat"任务的配置对象。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">concat: {
+  options: {
+    <SPAN class=comment style="COLOR: rgb(126,118,128)">// 定义一个用于插入合并输出文件之间的字符</SPAN>
+    separator: <SPAN class=string style="COLOR: rgb(143,157,106)">';'</SPAN>
+  },
+  dist: {
+    <SPAN class=comment style="COLOR: rgb(126,118,128)">// 将要被合并的文件</SPAN>
+    src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/**/*.js'</SPAN>],
+    <SPAN class=comment style="COLOR: rgb(126,118,128)">// 合并后的JS文件的存放位置</SPAN>
+    dest: <SPAN class=string style="COLOR: rgb(143,157,106)">'dist/&lt;%= pkg.name %&gt;.js'</SPAN>
+  }
+}</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">注意我是如何引用JSON文件(也就是我们在配置对象顶部引入的配置文件)中的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">name</CODE>属性的。这里我使用<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">pkg.name</CODE>来访问我们刚才引入并存储在<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">pkg</CODE>属性中的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">package.json</CODE>文件信息，它会被解析为一个JavaScript对象。Grunt自带的有一个简单的模板引擎用于输出配置对象(这里是指<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">package.json</CODE>中的配置对象)属性值，这里我让<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">concat</CODE>任务将所有存在于<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">src/</CODE>目录下以<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">.js</CODE>结尾的文件合并起来，然后存储在<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dist</CODE>目录中，并以项目名来命名。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">现在我们来配置uglify插件，它的作用是压缩（minify）JavaScript文件：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">uglify: {
+  options: {
+    <SPAN class=comment style="COLOR: rgb(126,118,128)">// 此处定义的banner注释将插入到输出文件的顶部</SPAN>
+    banner: <SPAN class=string style="COLOR: rgb(143,157,106)">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("dd-mm-yyyy") %&gt; */\n'</SPAN>
+  },
+  dist: {
+    files: {
+      <SPAN class=string style="COLOR: rgb(143,157,106)">'dist/&lt;%= pkg.name %&gt;.min.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'&lt;%= concat.dist.dest %&gt;'</SPAN>]
+    }
+  }
+}</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这里我们让<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">uglify</CODE>在<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">dist/</CODE>目录中创建了一个包含压缩结果的JavaScript文件。注意这里我使用了<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">&lt;%= 
+concat.dist.dest&gt;</CODE>，因此uglify会自动压缩concat任务中生成的文件。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">QUnit插件的设置非常简单。 
+你只需要给它提供用于测试运行的文件的位置，注意这里的QUnit是运行在HTML文件上的。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">qunit: {
+  files: [<SPAN class=string style="COLOR: rgb(143,157,106)">'test/**/*.html'</SPAN>]
+},</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">JSHint插件的配置也很简单：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">jshint: {
+  <SPAN class=comment style="COLOR: rgb(126,118,128)">// define the files to lint</SPAN>
+  files: [<SPAN class=string style="COLOR: rgb(143,157,106)">'gruntfile.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/**/*.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'test/**/*.js'</SPAN>],
+  <SPAN class=comment style="COLOR: rgb(126,118,128)">// configure JSHint (documented at http://www.jshint.com/docs/)</SPAN>
+  options: {
+      <SPAN class=comment style="COLOR: rgb(126,118,128)">// more options here if you want to override JSHint defaults</SPAN>
+    globals: {
+      jQuery: <SPAN class=literal style="COLOR: rgb(205,168,105)">true</SPAN>,
+      console: <SPAN class=literal style="COLOR: rgb(205,168,105)">true</SPAN>,
+      module: <SPAN class=literal style="COLOR: rgb(205,168,105)">true</SPAN>
+    }
+  }
+}</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">JSHint只需要一个文件数组(也就是你需要检测的文件数组)， 
+然后是一个<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">options</CODE>对象(这个对象用于重写JSHint提供的默认检测规则)。你可以到<A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="http://www.jshint.com/docs/">JSHint官方文档</A>站点中查看完整的文档。如果你乐于使用JSHint提供的默认配置，那么在Gruntfile中就不需要重新定义它们了.</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">最后，我们来看看watch插件：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">watch: {
+  files: [<SPAN class=string style="COLOR: rgb(143,157,106)">'&lt;%= jshint.files %&gt;'</SPAN>],
+  tasks: [<SPAN class=string style="COLOR: rgb(143,157,106)">'jshint'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'qunit'</SPAN>]
+}</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">你可以在命令行使用<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">grunt 
+watch</CODE>来运行这个任务。当它检测到任何你所指定的文件(在这里我使用了JSHint任务中需要检测的相同的文件)发生变化时，它就会按照你所指定的顺序执行指定的任务(在这里我指定了jshint和qunit任务)。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">最后, 
+我们还要加载所需要的Grunt插件。 它们应该已经全部通过npm安装好了。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-uglify'</SPAN>);
+grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-jshint'</SPAN>);
+grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-qunit'</SPAN>);
+grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-watch'</SPAN>);
+grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-concat'</SPAN>);</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">最后设置了一些task。最重要的是default任务：</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px"><SPAN class=comment style="COLOR: rgb(126,118,128)">// 在命令行上输入"grunt test"，test task就会被执行。</SPAN>
+grunt.registerTask(<SPAN class=string style="COLOR: rgb(143,157,106)">'test'</SPAN>, [<SPAN class=string style="COLOR: rgb(143,157,106)">'jshint'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'qunit'</SPAN>]);
+
+<SPAN class=comment style="COLOR: rgb(126,118,128)">// 只需在命令行上输入"grunt"，就会执行default task</SPAN>
+grunt.registerTask(<SPAN class=string style="COLOR: rgb(143,157,106)">'default'</SPAN>, [<SPAN class=string style="COLOR: rgb(143,157,106)">'jshint'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'qunit'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'concat'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'uglify'</SPAN>]);</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 16px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">下面便是最终完成的<CODE 
+style="FONT-SIZE: 13px; BORDER-TOP: rgb(225,225,232) 1px solid; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: rgb(225,225,232) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(225,225,232) 1px solid; COLOR: rgb(221,17,68); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: rgb(225,225,232) 1px solid; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(247,247,249); border-radius: 3px">Gruntfile.js</CODE>。</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 200 13px/20px Monaco, Consolas, 'Lucida Console', monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; BORDER-LEFT: 1px solid; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px"><CODE class=lang-javascript style="FONT-SIZE: 14px; BORDER-TOP: 0px; FONT-FAMILY: Monaco, Consolas, 'Lucida Console', monospace; BORDER-RIGHT: 0px; BACKGROUND: rgb(24,24,24); WHITE-SPACE: pre-wrap; BORDER-BOTTOM: 0px; COLOR: rgb(248,248,248); PADDING-BOTTOM: 1em; PADDING-TOP: 1em; PADDING-LEFT: 1em; BORDER-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 1em; border-radius: 3px">module.exports = <SPAN class=keyword style="COLOR: rgb(233,223,143)">function</SPAN>(grunt) {
+
+  grunt.initConfig({
+    pkg: grunt.file.readJSON(<SPAN class=string style="COLOR: rgb(143,157,106)">'package.json'</SPAN>),
+    concat: {
+      options: {
+        separator: <SPAN class=string style="COLOR: rgb(143,157,106)">';'</SPAN>
+      },
+      dist: {
+        src: [<SPAN class=string style="COLOR: rgb(143,157,106)">'src/**/*.js'</SPAN>],
+        dest: <SPAN class=string style="COLOR: rgb(143,157,106)">'dist/&lt;%= pkg.name %&gt;.js'</SPAN>
+      }
+    },
+    uglify: {
+      options: {
+        banner: <SPAN class=string style="COLOR: rgb(143,157,106)">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("dd-mm-yyyy") %&gt; */\n'</SPAN>
+      },
+      dist: {
+        files: {
+          <SPAN class=string style="COLOR: rgb(143,157,106)">'dist/&lt;%= pkg.name %&gt;.min.js'</SPAN>: [<SPAN class=string style="COLOR: rgb(143,157,106)">'&lt;%= concat.dist.dest %&gt;'</SPAN>]
+        }
+      }
+    },
+    qunit: {
+      files: [<SPAN class=string style="COLOR: rgb(143,157,106)">'test/**/*.html'</SPAN>]
+    },
+    jshint: {
+      files: [<SPAN class=string style="COLOR: rgb(143,157,106)">'Gruntfile.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'src/**/*.js'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'test/**/*.js'</SPAN>],
+      options: {
+        <SPAN class=comment style="COLOR: rgb(126,118,128)">//这里是覆盖JSHint默认配置的选项</SPAN>
+        globals: {
+          jQuery: <SPAN class=literal style="COLOR: rgb(205,168,105)">true</SPAN>,
+          console: <SPAN class=literal style="COLOR: rgb(205,168,105)">true</SPAN>,
+          module: <SPAN class=literal style="COLOR: rgb(205,168,105)">true</SPAN>,
+          document: <SPAN class=literal style="COLOR: rgb(205,168,105)">true</SPAN>
+        }
+      }
+    },
+    watch: {
+      files: [<SPAN class=string style="COLOR: rgb(143,157,106)">'&lt;%= jshint.files %&gt;'</SPAN>],
+      tasks: [<SPAN class=string style="COLOR: rgb(143,157,106)">'jshint'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'qunit'</SPAN>]
+    }
+  });
+
+  grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-uglify'</SPAN>);
+  grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-jshint'</SPAN>);
+  grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-qunit'</SPAN>);
+  grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-watch'</SPAN>);
+  grunt.loadNpmTasks(<SPAN class=string style="COLOR: rgb(143,157,106)">'grunt-contrib-concat'</SPAN>);
+
+  grunt.registerTask(<SPAN class=string style="COLOR: rgb(143,157,106)">'test'</SPAN>, [<SPAN class=string style="COLOR: rgb(143,157,106)">'jshint'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'qunit'</SPAN>]);
+
+  grunt.registerTask(<SPAN class=string style="COLOR: rgb(143,157,106)">'default'</SPAN>, [<SPAN class=string style="COLOR: rgb(143,157,106)">'jshint'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'qunit'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'concat'</SPAN>, <SPAN class=string style="COLOR: rgb(143,157,106)">'uglify'</SPAN>]);
+
+};</CODE></PRE>
+<DIV class=end-link 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(111,90,64); FONT: 200 12px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Found 
+an error in the documentation?<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(0,136,204)" 
+href="https://github.com/gruntjs/grunt-docs/issues">File an 
+issue</A>.</DIV></BODY></HTML>
