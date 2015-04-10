@@ -1767,6 +1767,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1822,7 +1823,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="移动设备">
 <PARAM NAME="Local" VALUE="移动设备.htm">
-<PARAM NAME="ImageNumber" value="3">
+<PARAM NAME="ImageNumber" value="4">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1861,6 +1862,13 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="iphone元素大小">
 <PARAM NAME="Local" VALUE="iphone元素大小.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="输入框日期插件不弹出软件键盘">
+<PARAM NAME="Local" VALUE="输入框日期插件不弹出软件键盘.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
@@ -3167,7 +3175,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="grunt">
 <PARAM NAME="Local" VALUE="grunt.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
