@@ -1,11 +1,45 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>汉字Unicode转码</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 11.00.9600.16428"></HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.17690"></HEAD>
 <BODY>
 <P>汉字Unicode转码</P>
 <P>function unicode(str){<BR>&nbsp;&nbsp;&nbsp; return 
 str.replace(/[^\u0000-\u00FF]/g,function($0){return 
-escape($0).replace(/(%u)(\w{4})/gi,"<A 
-href="file://\\u$2">\\u$2</A>")});<BR>}<BR></P>
-<P>&nbsp;</P></BODY></HTML>
+escape($0).replace(/(%u)(\w{4})/gi,"<A href="file://\\u$2"><FONT 
+size=+0>\\u$2</FONT></A>")});<BR>}<BR></P>
+<P>&nbsp;</P><BR>
+<H1>汉字转码</H1><TEXTAREA id=oldtxt style="HEIGHT: 80px; WIDTH: 300px"></TEXTAREA><BR><BUTTON 
+id=unicodeBtn>转unicode码</BUTTON> <BUTTON 
+id=cnBtn>转汉字</BUTTON><BUTTON 
+id=clearBtn>清空</BUTTON><BR><TEXTAREA id=newtxt style="HEIGHT: 80px; WIDTH: 300px"></TEXTAREA>
+<SCRIPT>
+function unicode(str){
+    return str.replace(/[^\u0000-\u00FF]/g,function($0){return escape($0).replace(/(%u)(\w{4})/gi,"\\u$2")});
+}
+function cncode(str){
+    return unescape(str.replace(/\\u/g, "%u")); 
+}
+var b = document.getElementById("unicodeBtn");
+var cn = document.getElementById("cnBtn");
+var clear = document.getElementById("clearBtn");
+b.onclick = function(){
+   var oldElem = document.getElementById("oldtxt");
+   var newElem = document.getElementById("newtxt");
+   var newtxt = unicode(oldElem.value);
+   newElem.value = newtxt;
+}
+cn.onclick = function(){
+   var oldElem = document.getElementById("oldtxt");
+   var newElem = document.getElementById("newtxt");
+   var newtxt = cncode(oldElem.value);
+   newElem.value = newtxt;
+}
+clear.onclick = function(){
+   var oldElem = document.getElementById("oldtxt");
+   var newElem = document.getElementById("newtxt");
+   oldElem.value = '';
+   newElem.value = '';
+}
+</SCRIPT>
+ </BODY></HTML>
