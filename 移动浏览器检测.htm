@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>移动浏览器检测</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 10.00.9200.16521"></HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.17690"></HEAD>
 <BODY>
 <P>移动浏览器检测</P>
 <P><STRONG><FONT color=#ff0000>navigator</FONT>对象判断：</STRONG></P>
@@ -13,13 +13,35 @@
 <P>}</P>
 <P><STRONG><FONT 
 color=#ff0000>navigator</FONT>对象属性：appName(浏览器名称）、appVersion(浏览器版本)、mimeTypes（用数组表达支持的MIME类型）、plugin（用数组表达object标签支持插件）、platform(操作系统)以及userLanguage 
-</STRONG></P>
-<P><STRONG></STRONG>&nbsp;</P>
+</STRONG></P><PRE style="FONT-VARIANT: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; LETTER-SPACING: normal; LINE-HEIGHT: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt;script type="text/javascript"&gt;
+//手机端判断各个平台浏览器及操作系统平台
+function checkPlatform(){
+	if(/android/i.test(navigator.userAgent)){
+		document.write("This is Android'browser.");//这是Android平台下浏览器
+	}
+	if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+		document.write("This is iOS'browser.");//这是iOS平台下浏览器
+	}
+	if(/Linux/i.test(navigator.userAgent)){
+		document.write("This is Linux'browser.");//这是Linux平台下浏览器
+	}
+	if(/Linux/i.test(navigator.platform)){
+		document.write("This is Linux operating system.");//这是Linux操作系统平台
+	}
+	if(/MicroMessenger/i.test(navigator.userAgent)){
+		document.write("This is MicroMessenger'browser.");//这是微信平台下浏览器
+	}
+}
+  $(document).ready(function(){
+    alert(navigator.platform);
+    checkPlatform();
+  });
+&lt;/script&gt;</PRE>
 <DIV>
 <H2>Navigator 对象属性</H2>
 <TABLE class=dataintable>
   <TBODY>
-  <TR>
+  <TR height=19>
     <TH style="WIDTH: 21%">属性</TH>
     <TH style="WIDTH: 58%">描述</TH>
     <TH style="WIDTH: 7%">IE</TH>

@@ -9,9 +9,9 @@ str.replace(/[^\u0000-\u00FF]/g,function($0){return
 escape($0).replace(/(%u)(\w{4})/gi,"<A href="file://\\u$2"><FONT 
 size=+0>\\u$2</FONT></A>")});<BR>}<BR></P>
 <P>&nbsp;</P><BR>
-<H1>汉字转码</H1><TEXTAREA id=oldtxt style="HEIGHT: 80px; WIDTH: 300px"></TEXTAREA><BR><BUTTON 
-id=unicodeBtn>转unicode码</BUTTON> <BUTTON 
-id=cnBtn>转汉字</BUTTON><BUTTON 
+<H1>汉字转码</H1>
+<P><TEXTAREA id=oldtxt style="HEIGHT: 80px; WIDTH: 300px"></TEXTAREA><BR><BUTTON 
+id=unicodeBtn>转unicode码</BUTTON><BUTTON id=cnBtn>转汉字</BUTTON><BUTTON 
 id=clearBtn>清空</BUTTON><BR><TEXTAREA id=newtxt style="HEIGHT: 80px; WIDTH: 300px"></TEXTAREA>
 <SCRIPT>
 function unicode(str){
@@ -42,4 +42,29 @@ clear.onclick = function(){
    newElem.value = '';
 }
 </SCRIPT>
- </BODY></HTML>
+ </P>
+<P>&nbsp;</P>
+<P>//utf16 转 utf8 二维码中文转码用到（没测试过）</P>
+<P>function utf16to8(str) {&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; var 
+out, i, len, c;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; out = 
+"";&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; len = 
+str.length;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; for(i = 0; i &lt; 
+len; i++) {&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; c = 
+str.charCodeAt(i);&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; if ((c &gt;= 
+0x0001) &amp;&amp; (c &lt;= 0x007F)) {&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out += 
+str.charAt(i);&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; } else if (c &gt; 
+0x07FF) {&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+out += String.fromCharCode(0xE0 | ((c &gt;&gt; 12) &amp; 
+0x0F));&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+out += String.fromCharCode(0x80 | ((c &gt;&gt;&nbsp; 6) &amp; 
+0x3F));&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+out += String.fromCharCode(0x80 | ((c &gt;&gt;&nbsp; 0) &amp; 
+0x3F));&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; } else 
+{&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out += 
+String.fromCharCode(0xC0 | ((c &gt;&gt;&nbsp; 6) &amp; 
+0x1F));&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+out += String.fromCharCode(0x80 | ((c &gt;&gt;&nbsp; 0) &amp; 
+0x3F));&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; return 
+out;&nbsp;&nbsp;&nbsp;&nbsp; <BR>};</P></BODY></HTML>
