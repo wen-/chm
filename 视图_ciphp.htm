@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>视图</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 11.00.9600.17631"></HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.17728"></HEAD>
 <BODY>
 <P>视图</P>
 <P>$this-&gt;load-&gt;view('test/testpage');</P>
@@ -15,4 +15,29 @@
 <P>&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;?=$item["name"]?&gt;&lt;/td&gt;</P>
 <P>&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;?=$item["age"]?&gt;&lt;/td&gt;</P>
 <P>&nbsp;&nbsp;&nbsp; &lt;/tr&gt;</P>
-<P>&lt;?php endforeach; ?&gt;</P></BODY></HTML>
+<P>&lt;?php endforeach; ?&gt;</P>
+<P>&nbsp;</P>
+<P>循环数组 $page 输出到表格示例：</P>
+<P>&lt;?php $pageL=count($page);$pageN=0;$cell=2; foreach($page as 
+$k=&gt;$v){<BR>&nbsp;&nbsp;&nbsp; $pageN++;<BR>&nbsp;&nbsp;&nbsp; $txt = 
+($pageN%$cell == 1)?(($pageN != 
+$pageL)?('&lt;tr&gt;&lt;td&gt;&lt;b&gt;'.$v.'&lt;/b&gt;&lt;/td&gt;&lt;td 
+style="text-align:center;width:14%;"&gt;&lt;a href="javascript:;" class="btn 
+btn-xs blue clean_v6_btn" data-type="1" 
+data_key="'.$k.'"&gt;清除缓存&lt;/a&gt;&lt;/td&gt;'):('&lt;tr&gt;&lt;td 
+colspan="'.($cell*2-$pageN%$cell*2+1).'"&gt;&lt;b&gt;'.$v.'&lt;/b&gt;&lt;/td&gt;&lt;td 
+style="text-align:center;width:14%;"&gt;&lt;a href="javascript:;" class="btn 
+btn-xs blue clean_v6_btn" data-type="1" 
+data_key="'.$k.'"&gt;清除缓存&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;')):(($pageN%$cell != 
+0)?(($pageN != $pageL)?('&lt;td&gt;&lt;b&gt;'.$v.'&lt;/b&gt;&lt;/td&gt;&lt;td 
+style="text-align:center;width:14%;"&gt;&lt;a href="javascript:;" class="btn 
+btn-xs blue clean_v6_btn" data-type="1" 
+data_key="'.$k.'"&gt;清除缓存&lt;/a&gt;&lt;/td&gt;'):('&lt;td 
+colspan="'.($cell*2-$pageN%$cell*2+1).'"&gt;&lt;b&gt;'.$v.'&lt;/b&gt;&lt;/td&gt;&lt;td 
+style="text-align:center;width:14%;"&gt;&lt;a href="javascript:;" class="btn 
+btn-xs blue clean_v6_btn" data-type="1" 
+data_key="'.$k.'"&gt;清除缓存&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;')):('&lt;td&gt;&lt;b&gt;'.$v.'&lt;/b&gt;&lt;/td&gt;&lt;td 
+style="text-align:center;width:14%;"&gt;&lt;a href="javascript:;" class="btn 
+btn-xs blue clean_v6_btn" data-type="1" 
+data_key="'.$k.'"&gt;清除缓存&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;'));<BR>&nbsp;&nbsp;&nbsp; 
+echo $txt;<BR>}?&gt;</P></BODY></HTML>
