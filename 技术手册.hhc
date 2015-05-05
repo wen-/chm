@@ -4,7 +4,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSS篇">
 <PARAM NAME="Local" VALUE="CSS篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3169,6 +3168,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ciPHP">
 <PARAM NAME="Local" VALUE="ciPHP.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3182,6 +3182,12 @@
 <PARAM NAME="Name" VALUE="视图">
 <PARAM NAME="Local" VALUE="视图_ciphp.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ciPHP2.2.x升级到3.0">
+<PARAM NAME="Local" VALUE="ciPHP2.2.x升级到3.0.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
