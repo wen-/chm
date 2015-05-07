@@ -2322,8 +2322,14 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MySql">
 <PARAM NAME="Local" VALUE="MySql.htm">
-<PARAM NAME="ImageNumber" value="1">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="查询表大小与表记录数">
+<PARAM NAME="Local" VALUE="表记录与表大小.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JAVA">
 <PARAM NAME="Local" VALUE="java.htm">
@@ -3174,7 +3180,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ciPHP">
 <PARAM NAME="Local" VALUE="ciPHP.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

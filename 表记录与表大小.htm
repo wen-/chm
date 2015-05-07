@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>查询表大小与表记录数</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17728"></HEAD>
+<BODY>
+<P><A 
+style="WORD-WRAP: break-word; FONT-SIZE: 20px; TEXT-DECORATION: none; FONT-FAMILY: 微软雅黑, 黑体, Verdana; COLOR: rgb(25,89,155)" 
+href="http://blog.chinaunix.net/uid-261392-id-2138912.html">查看mysql表大小和记录数</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>分类：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px">Mysql/postgreSQL</SPAN></P>
+<DIV class=Blog_con2 
+style="WORD-WRAP: break-word; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(102,102,102); TEXT-ALIGN: left; FONT: 12px/26px 宋体, Arial; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P>
+<DIV class=Blog_wz1 style="WORD-WRAP: break-word; FONT-SIZE: 16px">
+<DIV 
+style="WORD-WRAP: break-word">(1)如果发现一个数据异常的大了，需要查看一下其中哪些表变大了，可以使用如下命令</DIV>
+<DIV style="WORD-WRAP: break-word">SQL&gt; SHOW TABLE STATUS FROM 数据库名 LIKE 
+数据表名;</DIV>
+<DIV style="WORD-WRAP: break-word">&nbsp;</DIV>
+<DIV style="WORD-WRAP: break-word">或者</DIV>
+<DIV style="WORD-WRAP: break-word">
+<DIV style="WORD-WRAP: break-word">SQL&gt;select table_name,data_length from 
+information_schema.tables;</DIV></DIV>
+<DIV style="WORD-WRAP: break-word">&nbsp;</DIV>
+<DIV style="WORD-WRAP: break-word">如果表太小，可使用ALTER TABLE调整：</DIV>
+<DIV style="WORD-WRAP: break-word">SQL&gt;ALTER TABLE tbl_name 
+MAX_ROWS=1000000000 AVG_ROW_LENGTH=nnn;</DIV>
+<DIV 
+style="WORD-WRAP: break-word">仅应为具有BLOB或TEXT列的表指定AVG_ROW_LENGTH。在该情况下，MySQL不能仅根据行数优化所需的空间</DIV>
+<DIV style="WORD-WRAP: break-word"></DIV>
+<DIV style="WORD-WRAP: break-word">&nbsp;</DIV>
+<DIV style="WORD-WRAP: break-word">&nbsp;</DIV>
+<DIV style="WORD-WRAP: break-word">(2)查看某个表里的记录数</DIV>
+<DIV style="WORD-WRAP: break-word">SQL&gt;select count(*) from 
+table;</DIV></DIV></DIV></BODY></HTML>
