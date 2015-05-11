@@ -2885,7 +2885,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="第三方登录">
 <PARAM NAME="Local" VALUE="第三方登录.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2897,7 +2896,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3109,7 +3107,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="redis">
 <PARAM NAME="Local" VALUE="redis.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3272,6 +3269,32 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="项目脚手架">
 <PARAM NAME="Local" VALUE="项目脚手架.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="sphinx全文索引引擎">
+<PARAM NAME="Local" VALUE="sphinx全文索引引擎.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="coreseek4.1安装测试">
+<PARAM NAME="Local" VALUE="coreseek4.1安装测试.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Coreseek 4.1 参考手册 Sphinx 2.0.1-beta">
+<PARAM NAME="Local" VALUE="Coreseek 4.1 参考手册Sphinx 2.0.1-beta.html">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="coreseek4.1配置详解">
+<PARAM NAME="Local" VALUE="coreseek4.1配置详解.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>

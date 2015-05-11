@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>coreseek4.1安装测试</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17728"></HEAD>
+<BODY>
+<P>coreseek4.1安装测试</P>
+<P><A 
+href="http://www.coreseek.cn/products-install/install_on_windows/">http://www.coreseek.cn/products-install/install_on_windows/</A></P>
+<P>&nbsp;</P>
+<H2 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(231,171,11) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(41,75,95); PADDING-BOTTOM: 1px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0.5em; MARGIN: 0px 0px 0.5em; BORDER-LEFT: rgb(231,171,11) 1.1em solid; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Windows下的安装测试</H2><PRE style="WORD-WRAP: break-word; BORDER-TOP: rgb(0,0,0) 1px solid; BORDER-RIGHT: rgb(0,0,0) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,0,0) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.5em; TEXT-ALIGN: left; PADDING-TOP: 0.5em; FONT: 12px/1.5em 'Courier New', Courier, monospace; PADDING-LEFT: 0.5em; MARGIN: 0px 1em 1em; BORDER-LEFT: rgb(0,0,0) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(221,221,221); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><B style="FONT-SIZE: 30px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CoreSeek快速安装：</B>
+
+安装前，建议查看：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/install_on_windows/#testpackdesc">Win版本README.txt</A>；4.0/4.1版可参考3.2版本安装，步骤相同；如遇到问题，请看详细安装。
+
+1. 下载coreseek win32版本：coreseek 3.2.14：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/news/7/52">点击下载</A>、coreseek 4.0.1：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/news/11/52">点击下载</A>、coreseek 4.1：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/news/14/52">点击下载</A>
+
+2. 建立c:\usr\local目录，点击压缩包，将其中的coreseek-3.2.14-win32选中拖拽到c:\usr\local目录中
+
+3. 进入c:\usr\local\coreseek-3.2.14-win32，点击其中test开头的文件，进行搜索测试
+　如不使用自带的test测试，必须从桌面-开始-运行-输入CMD，打开命令行窗口，然后执行：
+　CD c:\usr\local\coreseek-3.2.14-win32
+　SET PATH=%CD%\bin;%PATH%
+　再使用5中的常用指令测试
+
+4. 目录中的README.txt文件中，有所有配置和test测试文件的说明
+
+5. 常用指令：（提示：a. 进入bin目录再执行指令，是错误的做法; b. 中文搜索或出现乱码或者无结果，需查看后面<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/install_on_windows/#cnsearch">详细说明</A>）
+测试配置是否可用：bin\indexer -c etc\csft.conf
+测试索引全部数据：bin\indexer -c etc\csft.conf --all
+测试索引指定数据：bin\indexer -c etc\csft.conf 索引名称(如：xml、mysql)
+测试 命令行 搜索： bin\search -c etc\csft.conf
+测试　中文　搜索：bin\search -c etc\csft.conf -a 网络搜索
+测试 搜索服 务端： bin\searchd -c etc\csft.conf
+</PRE>
+<P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: rgb(0,0,0) 1px solid; BORDER-RIGHT: rgb(0,0,0) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,0,0) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.5em; TEXT-ALIGN: left; PADDING-TOP: 0.5em; FONT: 12px/1.5em 'Courier New', Courier, monospace; PADDING-LEFT: 0.5em; MARGIN: 0px 1em 1em; BORDER-LEFT: rgb(0,0,0) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(221,221,221); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A id=detailinstall style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" name=detailinstall></A>
+<B style="FONT-SIZE: 30px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">CoreSeek详细安装：</B>
+
+##coreseek-win32安装测试说明文档【2011年1月12日更新，支持命令行中文搜索测试】
+##
+##<B style="FONT-WEIGHT: bold; COLOR: green; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">##如果您觉得以下步骤太麻烦，请即刻进入火线技术支持：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/contact/">专业技术支持、商务合作联系方式</A></B>
+##
+##以下文档，对32位（x86）、64位（amd64、x64）均可适用
+##
+##一、安装：
+##　1. Microsoft Visual C++ 运行环境，一般系统自带；如果运行提示“应用程序错误”，则需要安装
+##<B style="FONT-WEIGHT: bold; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">coreseek-3.x版本， Microsoft Visual C++ 2005 运行环境 (x86)（32位系统和64位系统均安装该版本）：</B>
+##注意：是运行环境，不是开发环境，才2.6M大小
+##从微软官方网站下载<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=32bc1bee-a3f9-4c13-9c99-220b62a191ee&displaylang=zh-cn" target=_blank>Microsoft Visual C++ 2005 Redistributable Package (x86)</A>，然后安装；
+##
+##<B style="FONT-WEIGHT: bold; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">coreseek-4.x版本， Microsoft Visual C++ 2008 运行环境 (x86)（32位系统和64位系统均安装该版本）：</B>
+##注意：是运行环境，不是开发环境，才1.7M大小
+##从微软官方网站下载<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displayLang=zh-cn" target=_blank>Microsoft Visual C++ 2008 Redistributable Package (x86)</A>，然后安装；
+##
+##　2. <B style="FONT-WEIGHT: bold; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">安装 Coreseek-win32（必须）：【2011年1月12日更新，支持命令行中文搜索测试】</B>
+##从Coreseek官方网站下载 <A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/news/7/101/">http://www.coreseek.cn/uploads/csft/3.2/coreseek-3.2.14-win32.zip</A>
+##或者下载 <A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/news/11/101/">http://www.coreseek.cn/uploads/csft/4.0/coreseek-4.0.1-win32.zip</A>
+##或者下载 <A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/news/11/101/">http://www.coreseek.cn/uploads/csft/4.0/coreseek-4.1-win32.zip</A>
+#解压coreseek-3.2.14-win32.zip到coreseek-3.2.14-win32目录
+#或者解压coreseek-4.0.1-win32.zip到coreseek-4.0.1-win32目录
+#或者解压coreseek-4.1-win32.zip到coreseek-4.1-win32目录
+
+#<B style="FONT-SIZE: 28px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">请点击仔细查看<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/install_on_windows/#testpackdesc">README.txt</A></B>
+
+
+##二、数据源支持：
+##win32版本默认支持xml、mysql等数据源
+
+##三、coreseek中文全文检索测试
+
+##一般测试，可直接执行<B style="FONT-SIZE: 20px; FONT-WEIGHT: bold; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">test.cmd【<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/install_on_windows/#testpackdesc">测试平台说明</A>】</B>测试，或者：
+##打开win32命令行（快捷键：Win键＋R），参考test.cmd进行测试
+##进入coreseek-3.2.14-win32或者coreseek-4.0.1-win32/coreseek-4.1-win32所在的目录
+#cd coreseek-3.2.14-win32 或者 cd coreseek-4.0.1-win32 或者 cd coreseek-4.1-win32
+#set PATH=%CD%\bin;%PATH%
+##设置path，是的bin目录中的cat.exe、iconv.exe可以被调用
+##【测试配置文件是否可用】
+#bin\indexer -c etc\csft.conf
+##以下为正常情况下的提示信息：
+    Coreseek Fulltext 3.2 [ Sphinx 0.9.9-release (r2117)]
+    Copyright (c) 2007-2010,
+    Beijing Choice Software Technologies Inc (http://www.coreseek.com)
+
+     using config file 'etc\csft.conf'...
+    total 0 reads, 0.000 sec, 0.0 kb/call avg, 0.0 msec/call avg
+    total 0 writes, 0.000 sec, 0.0 kb/call avg, 0.0 msec/call avg
+##
+##csft-4.0/4.1版显示：ERROR: nothing to do.
+##
+##【测试索引全部数据】
+#bin\indexer -c etc\csft.conf --all
+##以下为正常索引全部数据时的提示信息：（csft-4.0/4.1版类似）
+    Coreseek Fulltext 3.2 [ Sphinx 0.9.9-release (r2117)]
+    Copyright (c) 2007-2010,
+    Beijing Choice Software Technologies Inc (http://www.coreseek.com)
+
+     using config file 'etc\csft.conf'...
+    indexing index 'xml'...
+    collected 3 docs, 0.0 MB
+    sorted 0.0 Mhits, 100.0% done
+    total 3 docs, 7585 bytes
+    total 0.075 sec, 101043 bytes/sec, 39.96 docs/sec
+    total 2 reads, 0.000 sec, 5.6 kb/call avg, 0.0 msec/call avg
+    total 7 writes, 0.000 sec, 3.9 kb/call avg, 0.0 msec/call avg
+
+##【测试索引指定索引数据】
+#bin\indexer -c etc\csft.conf xml
+##以下为正常索引指定数据时的提示信息：（csft-4.0/4.1版类似）
+    Coreseek Fulltext 3.2 [ Sphinx 0.9.9-release (r2117)]
+    Copyright (c) 2007-2010,
+    Beijing Choice Software Technologies Inc (http://www.coreseek.com)
+
+     using config file 'etc\csft.conf'...
+    indexing index 'xml'...
+    collected 3 docs, 0.0 MB
+    sorted 0.0 Mhits, 100.0% done
+    total 3 docs, 7585 bytes
+    total 0.069 sec, 109614 bytes/sec, 43.35 docs/sec
+    total 2 reads, 0.000 sec, 5.6 kb/call avg, 0.0 msec/call avg
+    total 7 writes, 0.000 sec, 3.9 kb/call avg, 0.0 msec/call avg
+
+##【测试命令行搜索】
+# bin\search -c etc\csft.conf
+##以下为正常测试搜索时的提示信息：（csft-4.0/4.1版类似）
+    Coreseek Fulltext 3.2 [ Sphinx 0.9.9-release (r2117)]
+    Copyright (c) 2007-2010,
+    Beijing Choice Software Technologies Inc (http://www.coreseek.com)
+
+     using config file 'etc\csft.conf'...
+    index 'xml': query '': returned 3 matches of 3 total in 0.093 sec
+
+    displaying matches:
+    1. document=1, weight=1, published=Thu Apr  1 22:20:07 2010, author_id=1
+    2. document=2, weight=1, published=Thu Apr  1 23:25:48 2010, author_id=1
+    3. document=3, weight=1, published=Thu Apr  1 12:01:00 2010, author_id=2
+
+    words:
+
+##【测试命令行中文搜索】<A id=cnsearch style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" name=cnsearch></A>
+##因为Win32命令行不支持UTF-8输入，故以下中文搜索指令无法直接测试：
+# bin\search -c etc\csft.conf -a 网络搜索
+#
+##coreseek-win32最新版本（2010年11月14日更新）内置了iconv命令，可以使用如下中文搜索指令进行测试：
+<B style="FONT-WEIGHT: bold; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">echo 网络搜索 | iconv -f gbk -t utf-8 | search -c etc\csft.conf --stdin | iconv -f utf-8 -t gbk</B>
+#
+## 如果是Cygwin环境，且设置了locale正确显示UTF-8，还可以使用如下方法：
+#./bin/search -c etc/csft.conf -a `echo 网络搜索 | iconv -f gbk -t utf-8`
+#
+##以下为正常测试搜索关键词时的提示信息：（csft-4.0/4.1版类似）
+    Coreseek Fulltext 3.2 [ Sphinx 0.9.9-release (r2117)]
+    Copyright (c) 2007-2010,
+    Beijing Choice Software Technologies Inc (http://www.coreseek.com)
+
+     using config file 'etc\csft.conf'...
+    index 'xml': query 'Twittter和Opera都提供了搜索服务 ': returned 3 matches of 3 total in 0.038 sec
+
+    displaying matches:
+    1. document=3, weight=24, published=Thu Apr  1 12:01:00 2010, author_id=2
+    2. document=1, weight=4, published=Thu Apr  1 22:20:07 2010, author_id=1
+    3. document=2, weight=3, published=Thu Apr  1 23:25:48 2010, author_id=1
+
+    words:
+    1. 'twittter': 1 documents, 3 hits
+    2. '和': 3 documents, 15 hits
+    3. 'opera': 1 documents, 25 hits
+    4. '都': 2 documents, 4 hits
+    5. '提供': 0 documents, 0 hits
+    6. '了': 3 documents, 18 hits
+    7. '搜索': 2 documents, 5 hits
+    8. '服务': 1 documents, 1 hits
+
+##【测试搜索服务端】
+#<FONT color=#ffffff><FONT style="BACKGROUND-COLOR: #0000ff" size=5> bin\searchd -c etc\csft.conf  启动搜索服务器，端口为9312，仔细查启动与搜索的区别 </FONT></FONT>
+##以下为正常开启搜索服务时的提示信息：（csft-4.0/4.1版类似）
+    Coreseek Fulltext 3.2 [ Sphinx 0.9.9-release (r2117)]
+    Copyright (c) 2007-2010,
+    Beijing Choice Software Technologies Inc (http://www.coreseek.com)
+
+    using config file 'etc\csft.conf'...
+    listening on all interfaces, port=9312
+##如要停止搜索服务，请使用ctrl+C停止
+<B style="FONT-WEIGHT: bold; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">##如要继续测试搜索功能，请不要停止，否则其他程序将无法连接到搜索服务端</B>
+如果要作为正式的搜索服务运行，请仔细查看<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/docs/coreseek_3.2-sphinx_0.9.9.html#ref-searchd" targe="_blank">searchd</A>详细说明的“安装成一个服务”。安装为服务后，可以在线更新索引，并对外提供搜索服务。但是不建议使用Windows作为正式的搜索服务器。
+
+##然后，请参考api目录中的相关文件，使用PHP、Python、Ruby、Java来测试搜索服务；也可以前往<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/step_by_step/">搜索服务建立三步曲</A>，查看第三步使用PHP测试。
+
+##四、继续
+##通过以上步骤，coreseek已经安装测试完成，可以提供正常的xml数据源索引以及提供对应的搜索服务了
+##下一步工作，请查看手册，准备好mysql数据信息，以及进行mysql数据源的测试，并在您的应用中调用搜索服务；mysql数据源的配置可参考etc/csft_mysql.conf文件
+</PRE><PRE style="WORD-WRAP: break-word; BORDER-TOP: rgb(0,0,0) 1px solid; BORDER-RIGHT: rgb(0,0,0) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,0,0) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.5em; TEXT-ALIGN: left; PADDING-TOP: 0.5em; FONT: 12px/1.5em 'Courier New', Courier, monospace; PADDING-LEFT: 0.5em; MARGIN: 0px 1em 1em; BORDER-LEFT: rgb(0,0,0) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(221,221,221); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><UL style="FONT-SIZE: 1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.5em; LINE-HEIGHT: 1.4em; PADDING-RIGHT: 0px">
+<LI style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0.25em 3em; PADDING-RIGHT: 0px"><A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/coreseek_mmseg/">中文分词核心配置</A>
+<LI style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0.25em 3em; PADDING-RIGHT: 0px"><A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/docs/coreseek_3.2-sphinx_0.9.9.html" target=_blank>Coreseek 3.2/Sphinx(0.9.9)中文手册</A>
+</LI></UL>
+
+##如有问题，请前往：http://www.coreseek.cn/forum/ 提问，我们将在第一时间解答
+##如果您需要获得专业的技术支持，请即刻前往：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/contact/">http://www.coreseek.cn/contact/</A> 与我们取得联系，洽谈支持与合作事宜
+##
+##祝您使用快乐！！！
+</PRE>
+<P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&nbsp;</P><PRE style="WORD-WRAP: break-word; BORDER-TOP: rgb(0,0,0) 1px solid; BORDER-RIGHT: rgb(0,0,0) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,0,0) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.5em; TEXT-ALIGN: left; PADDING-TOP: 0.5em; FONT: 12px/1.5em 'Courier New', Courier, monospace; PADDING-LEFT: 0.5em; MARGIN: 0px 1em 1em; BORDER-LEFT: rgb(0,0,0) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(221,221,221); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">附录：
+
+##五、python数据源支持：
+##　<B style="FONT-WEIGHT: bold; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"> 安装Python 2.6 Windows (x86)（必须，32位系统和64位系统均安装该版本）：</B>
+##从ActiveState官方网站下载<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.activestate.com/activepython/downloads" target=_blank>ActivePython 2.6 Windows (x86)</A>，然后安装；
+##您也可从华军软件园下载<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://search.newhua.com/search_list.php?searchname=Activepython+x86" target=_blank>ActivePython 2.6 Windows (x86)</A>，然后安装；
+##
+##python 数据源安装支持完成
+##如果您对python数据源有实际需求，请与我们取得联系<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/contact/">http://www.coreseek.cn/contact/</A>获取相关资料，也可以查看演示：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/python" target=_blank>Python万能数据源</A>与<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/docs/coreseek_3.2-sphinx_0.9.9.html#coreseek-confgroup-pysource" target=_blank>Python数据源手册</A>
+##python数据源演示（测试索引前，请先测试脚本自身是否可以正确操作读取数据）：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/uploads/csft/3.2/pysource/csft_demo_pysource-win32.tar.gz">演示1</A>、<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/uploads/csft/3.2/pysource/csft_demo_pysource_pymssql-win32.tar.gz">演示2（需预先安装配置好python2.6连接mssql的包pymssql）</A>
+</PRE><PRE style="WORD-WRAP: break-word; BORDER-TOP: rgb(0,0,0) 1px solid; BORDER-RIGHT: rgb(0,0,0) 1px solid; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,0,0) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.5em; TEXT-ALIGN: left; PADDING-TOP: 0.5em; FONT: 12px/1.5em 'Courier New', Courier, monospace; PADDING-LEFT: 0.5em; MARGIN: 0px 1em 1em; BORDER-LEFT: rgb(0,0,0) 1px solid; LETTER-SPACING: normal; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(221,221,221); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A id=testpackdesc style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" name=testpackdesc></A>
+测试说明：
+coreseek-3.x版本，需安装：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=32bc1bee-a3f9-4c13-9c99-220b62a191ee&displaylang=zh-cn" target=_blank>Microsoft Visual C++ 2005 运行环境 (x86，2.6M)</A>
+coreseek-4.x版本，需安装：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf&displayLang=zh-cn" target=_blank>Microsoft Visual C++ 2008 运行环境 (x86，1.7M)</A>
+
+
+测试包内容说明：
+csft 通用测试：（3.2.x与4.x均支持）
+test.cmd：
+	测试对象：xml数据源，中文分词与搜索
+    对应配置：etc/csft.conf
+	测试数据：var/test/test.xml
+	PHP程序：api/test_coreseek.php
+	在线说明：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/install_on_windows/">http://www.coreseek.cn/products-install/install_on_windows/</A>
+
+test_cjk.cmd：
+	测试对象：xml数据源，单字切分与搜索
+    对应配置：etc/csft_cjk.conf
+	测试数据：var/test/test.xml
+	PHP程序：api/test_coreseek.php
+	在线说明：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/ngram_len_cjk/">http://www.coreseek.cn/products-install/ngram_len_cjk/</A>
+
+test_mysql.cmd：
+	测试对象：mysql数据源，中文分词与搜索
+    对应配置：etc/csft_mysql.conf
+	测试数据：var/test/documents.sql
+	PHP程序：api/test_coreseek.php
+	测试说明：请先将测试数据导入数据库，并设置好配置文件中的MySQL用户密码数据库
+	在线说明：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/mysql/">http://www.coreseek.cn/products-install/mysql/</A>
+
+test_python.cmd：
+	测试对象：python数据源，中文分词与搜索
+    对应配置：etc/csft_demo_python.conf
+	数据脚本：etc/pysource/csft_demo/__init__.py
+	PHP程序：api/test_coreseek.php
+	测试说明：请先安装Python 2.6 Windows (x86)
+	在线说明：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/python/">http://www.coreseek.cn/products-install/python/</A>
+
+自行测试：
+	测试对象：python+mssql数据源，中文分词与搜索
+    对应配置：etc/csft_demo_python_pymssql.conf
+	数据脚本：etc/pysource/csft_demo_pymssql/__init__.py
+	PHP程序：api/test_coreseek.php
+	测试说明：请先安装Python 2.6 Windows (x86)、pymssql（py2.6）
+	在线说明：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/python/">http://www.coreseek.cn/products-install/python/</A>
+
+coreseek-4.0/4.1 新增测试：
+test_rtindex.cmd：
+	测试对象：RT实时索引，中文分词与搜索
+    对应配置：etc/csft_rtindex.conf
+    PHP程序：api/test_coreseek_rtindex.php
+	在线说明：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/rt-indexes/">http://www.coreseek.cn/products-install/rt-indexes/</A>
+	
+test_rtindex_cjk.cmd：
+	测试对象：RT实时索引，单字切分与搜索
+    对应配置：etc/csft_rtindex_cjk.conf
+    PHP程序：api/test_coreseek_rtindex.php
+	在线说明：<A style="TEXT-DECORATION: underline; COLOR: rgb(24,80,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" href="http://www.coreseek.cn/products-install/rt-indexes/">http://www.coreseek.cn/products-install/rt-indexes/</A>
+
+</PRE>
+<P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+class=Apple-interchange-newline>&nbsp;</P></BODY></HTML>
