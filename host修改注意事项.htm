@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>host修改注意事项</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17801"></HEAD>
+<BODY>
+<P>host修改注意事项</P>
+<P>多域名指向同一IP地址，最多支持9个域名指向同一IP.如：</P>
+<P>127.0.0.1 <FONT style="BACKGROUND-COLOR: #993300">a.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #333300" color=#ffffff>b.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #800000">c.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #ff0000">d.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #ff00ff">e.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #ff99cc">f.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #ff6600">g.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #ff9900">h.com</FONT> <FONT 
+style="BACKGROUND-COLOR: #ffcc00">i.com</FONT> <FONT 
+style="COLOR: #ff0000">j.com</FONT> </P>
+<P>最后一个j.com是无法访问的（win8）。可以另起一行</P>
+<P>127.0.0.1 <FONT style="BACKGROUND-COLOR: #ff0000">j.com</FONT></P>
+<P><FONT size=+0>所以保守方法就是<STRONG><FONT 
+color=#ff0000>一个IP对应一个域名</FONT></STRONG>。</FONT></P></BODY></HTML>
