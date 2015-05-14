@@ -2322,11 +2322,19 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MySql">
 <PARAM NAME="Local" VALUE="MySql.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="查询表大小与表记录数">
 <PARAM NAME="Local" VALUE="表记录与表大小.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="不要在循环中对数据库进行操作">
+<PARAM NAME="Local" VALUE="不要在循环中对数据库进行操作.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3275,7 +3283,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="sphinx全文索引引擎">
 <PARAM NAME="Local" VALUE="sphinx全文索引引擎.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
