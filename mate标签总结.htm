@@ -1,9 +1,552 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>mate标签总结</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 11.00.9600.17631">
-</HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.17801"></HEAD>
 <BODY>
+<DIV class=article-info 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); FONT: 14px/21px jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H1 class=title 
+style="FONT-SIZE: 26px; FONT-FAMILY: Palatino, 'Palatino Linotype', 'OFL Sorts Mill Goudy', 'OFL Sorts Mill Goudy TT', Georgia, serif; FONT-WEIGHT: 700; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 0px; LINE-HEIGHT: 40px; PADDING-RIGHT: 0px">HTML 
+head 头标签</H1>
+<DIV class=author 
+style="FONT-SIZE: 12px; COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px">paddingme 
+| 04 Oct 2014</DIV></DIV>
+<DIV class=content 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(34,34,34); PADDING-BOTTOM: 30px; PADDING-TOP: 10px; FONT: 14px/22px jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif; PADDING-LEFT: 6px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 6px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">HTML 
+head 头部分的标签、元素有很多，涉及到浏览器对网页的渲染，SEO 
+等等，而各个浏览器内核以及各个国内浏览器厂商都有些自己的标签元素,这就造成了很多差异性。移动互联网时代，head 头部结构，移动端的 meta 
+元素，显得更为重要。了解每个标签的意义，写出满足自己需求的 head 头标签，是本文的目的。本篇以<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="https://github.com/yisibl/blog/issues/1" 
+target=_blank>一丝的文章</A>为基础，进行扩展总结介绍常用的 head 中各个标签、元素的意义以及使用场景。</P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">DOCTYPE</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">DOCTYPE(Document 
+Type)，该声明位于文档中最前面的位置，处于<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">html</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>标签之前，此标签告知浏览器文档使用哪种 HTML 或者 XHTML 
+规范。</P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">DTD(Document 
+Type Definition) 声明以<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">&lt;!DOCTYPE&gt;</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>开始，不区分大小写，前面没有任何内容，如果有其他内容(空格除外)会使浏览器在 
+IE 下开启怪异模式(quirks mode)渲染网页。公共 DTD，名称格式为<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">注册//组织//类型 
+标签//语言</CODE>,<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">注册</CODE>指组织是否由国际标准化组织(ISO)注册，<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">+</CODE>表示是，<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">-</CODE>表示不是。<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">组织</CODE>即组织名称，如：W3C。<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">类型</CODE>一般是 DTD。<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">标签</CODE>是指定公开文本描述，即对所引用的公开文本的唯一描述性名称，后面可附带版本号。最后<CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">语言</CODE>是 DTD 语言的 ISO 639 
+语言标识符，如：EN 表示英文，ZH 表示中文。XHTML 1.0 可声明三种 DTD 类型。分别表示严格版本，过渡版本，以及基于框架的 HTML 
+文档。</P>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">HTML 
+  4.01 strict</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;
+</CODE></PRE></DIV></LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">HTML 
+  4.01 Transitional</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+</CODE></PRE></DIV></LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">HTML 
+  4.01 Frameset</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"&gt;
+</CODE></PRE></DIV></LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">最新 
+  HTML5 推出更加简洁的书写，它向前向后兼容，推荐使用。</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;!doctype html&gt;
+</CODE></PRE></DIV></LI></UL>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">在 
+HTML中<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">doctype</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>有两个主要目的。</P>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI>对文档进行有效性验证。</LI></UL>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">它告诉用户代理和校验器这个文档是按照什么 
+DTD 写的。这个动作是被动的，每次页面加载时，浏览器并不会下载 DTD 并检查合法性，只有当手动校验页面时才启用。</P>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">决定浏览器的呈现模式</P>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">对于实际操作，通知浏览器读取文档时用哪种解析算法。如果没有写，则浏览器则根据自身的规则对代码进行解析，可能会严重影响 
+  html 排版布局。浏览器有三种方式解析 HTML 文档。</P>
+  <UL 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+    <LI>非怪异（标准）模式</LI>
+    <LI>怪异模式</LI>
+    <LI>部分怪异（近乎标准）模式 关于IE浏览器的文档模式，浏览器模式，严格模式，怪异模式，DOCTYPE 标签，可详细阅读<A 
+    style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+    href="http://padding.me/blog/2014/07/04/mode-or-standard/" 
+    target=_blank>模式？标准！</A>的内容。</LI></UL></LI></UL>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">charset</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">声明文档使用的字符编码，</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">charset=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"utf-8"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">html5 
+之前网页中会这样写：</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">http-equiv=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"Content-Type"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"text/html; charset=utf-8"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">这两个是等效的，具体可移步阅读：<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://stackoverflow.com/questions/4696499/meta-charset-utf-8-vs-meta-http-equiv-content-type" 
+target=_blank><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">&lt;meta 
+charset='utf-8'&gt;</CODE><SPAN class=Apple-converted-space>&nbsp;</SPAN>vs<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">&lt;meta 
+http-equiv='Content-Type'&gt;</CODE></A>，所以建议使用较短的，易于记忆。</P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">lang属性</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">简体中文</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;html</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">lang=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"zh-cmn-Hans"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">繁体中文</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;html</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">lang=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"zh-cmn-Hant"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">为什么<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">lang="zh-cmn-Hans"</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>而不是我们通常写的<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">lang="zh-CN"</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>呢，请移步阅读:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://zhi.hu/XyIa" target=_blank>页头部的声明应该是用 lang="zh" 还是 
+lang="zh-cn"</A>。</P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">优先使用 
+IE 最新版本和 Chrome</H3>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">http-equiv=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"X-UA-Compatible"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"IE=edge,chrome=1"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN>
+</CODE></PRE></DIV>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">360 
+使用Google Chrome Frame</H3>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"renderer"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"webkit"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">360 
+浏览器就会在读取到这个标签后，立即切换对应的极速核。 另外为了保险起见再加入</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">http-equiv=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"X-UA-Compatible"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"IE=Edge,chrome=1"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">这样写可以达到的效果是如果安装了 
+Google Chrome Frame，则使用 GCF 来渲染页面，如果没有安装 GCF，则使用最高版本的 IE 内核进行渲染。</P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">相关链接：<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://se.360.cn/v6/help/meta.html" target=_blank>浏览器内核控制 Meta 
+标签说明文档</A></P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">百度禁止转码</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">通过百度手机打开网页时，百度可能会对你的网页进行转码，脱下你的衣服，往你的身上贴狗皮膏药的广告，为此可在 
+head 内添加</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">http-equiv=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"Cache-Control"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"no-siteapp"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">相关链接：<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://m.baidu.com/pub/help.php?pn=22&ssid=0&from=844b&bd_page_type=1" 
+target=_blank>SiteApp 转码声明</A></P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">SEO 
+优化部分</H3>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">页面标题<CODE 
+  style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">&lt;title&gt;</CODE>标签(head 
+  头部必须)</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;title&gt;your title&lt;/title&gt;
+</CODE></PRE></DIV></LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">页面关键词 
+  keywords</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;meta name="keywords" content="your keywords"&gt;
+</CODE></PRE></DIV></LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">页面描述内容 
+  description</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;meta name="description" content="your description"&gt;
+</CODE></PRE></DIV></LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">定义网页作者 
+  author</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;meta name="author" content="author,email address"&gt;
+</CODE></PRE></DIV></LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">定义网页搜索引擎索引方式，robotterms 
+  是一组使用英文逗号「,」分割的值，通常有如下几种取值：none，noindex，nofollow，all，index和follow。</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;meta name="robots" content="index,follow"&gt;
+</CODE></PRE></DIV></LI></UL>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">相关链接：<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://msdn.microsoft.com/zh-cn/library/ff724037(v=expression.40).aspx" 
+target=_blank>WEB1038 -<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>标记包含无效的值</A></P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">viewport</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px"><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">viewport</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>可以让布局在移动浏览器上显示的更好。 通常会写</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"viewport"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"width=device-width, initial-scale=1.0"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px"><CODE 
+style="FONT-SIZE: 1em; FONT-FAMILY: monospace, serif">width=device-width</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>会导致 iPhone 5 添加到主屏后以 WebApp 
+全屏模式打开页面时出现黑边(<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://bigc.at/ios-webapp-viewport-meta.orz" 
+target=_blank>http://bigc.at/ios-webapp-viewport-meta.orz</A>)</P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">content 
+参数：</P>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI>width viewport 宽度(数值/device-width)</LI>
+  <LI>height viewport 高度(数值/device-height)</LI>
+  <LI>initial-scale 初始缩放比例</LI>
+  <LI>maximum-scale 最大缩放比例</LI>
+  <LI>minimum-scale 最小缩放比例</LI>
+  <LI>user-scalable 是否允许用户缩放(yes/no)</LI>
+  <LI>
+  <P 
+  style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">minimal-ui 
+  iOS 7.1 beta 2 中新增属性，可以在页面加载时最小化上下状态栏。这是一个布尔值，可以直接这样写：</P>
+  <DIV class=highlight 
+  style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-text style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="text">&lt;meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"&gt;
+</CODE></PRE></DIV></LI></UL>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">而如果你的网站不是响应式的，请不要使用 
+initial-scale 或者禁用缩放。</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"viewport"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"width=device-width,user-scalable=yes"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">相关链接：<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://www.qianduan.net/non-responsive-design-viewport.html" 
+target=_blank>非响应式设计的viewport</A></P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">适配 
+iPhone 6 和 iPhone 6plus 则需要写：</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"viewport"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"width=375"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"viewport"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"width=414"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">大部分 
+4.7~5 寸的安卓设备的 viewport 宽设为 360px，iPhone 6 上却是 375px，大部分 5.5 寸安卓机器（比如说三星 Note）的 
+viewport 宽为 400，iPhone 6 plus 上是 414px。</P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">ios 
+设备</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">添加到主屏后的标题（iOS 
+6 新增）</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-mobile-web-app-title"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"标题"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 添加到主屏后的标题（iOS 6 新增） --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">是否启用 
+WebApp 全屏模式</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-mobile-web-app-capable"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"yes"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 是否启用 WebApp 全屏模式 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">设置状态栏的背景颜色</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-mobile-web-app-status-bar-style"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"black-translucent"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 设置状态栏的背景颜色，只有在 `"apple-mobile-web-app-capable" content="yes"` 时生效 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">只有在 
+"apple-mobile-web-app-capable" content="yes" 时生效</P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">content 
+参数：</P>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI>default 默认值。</LI>
+  <LI>black 状态栏背景是黑色。</LI>
+  <LI>black-translucent 状态栏背景是黑色半透明。 如果设置为 default 或 black ,网页内容从状态栏底部开始。 如果设置为 
+  black-translucent ,网页内容充满整个屏幕，顶部会被状态栏遮挡。</LI></UL>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">禁止数字识自动别为电话号码</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"format-detection"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"telephone=no"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 禁止数字识自动别为电话号码 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">iOS 
+图标</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">rel 
+参数： apple-touch-icon 图片自动处理成圆角和高光等效果。 apple-touch-icon-precomposed 
+禁止系统自动添加效果，直接显示设计原图。 iPhone 和 iTouch，默认 57x57 像素，必须有</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-icon-precomposed"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/apple-touch-icon-57x57-precomposed.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPhone 和 iTouch，默认 57x57 像素，必须有 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPad，72x72 
+像素，可以没有，但推荐有</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-icon-precomposed"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"72x72"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/apple-touch-icon-72x72-precomposed.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPad，72x72 像素，可以没有，但推荐有 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">Retina 
+iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-icon-precomposed"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"114x114"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/apple-touch-icon-114x114-precomposed.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">Retina 
+iPad，144x144 像素，可以没有，但推荐有</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-icon-precomposed"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"144x144"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/apple-touch-icon-144x144-precomposed.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- Retina iPad，144x144 像素，可以没有，但推荐有 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">IOS 
+图标大小在iPhone 6 plus上是180×180，iPhone 6 是120x120。 适配iPhone 6 plus，则需要在中加上这段</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-icon-precomposed"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"180x180"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"retinahd_icon.png"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">iOS 
+启动画面</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">官方文档：<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="https://developer.apple.com/library/ios/qa/qa1686/_index.html" 
+target=_blank>https://developer.apple.com/library/ios/qa/qa1686/_index.html</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>参考文章：<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://wxd.ctrip.com/blog/2013/09/ios7-hig-24/" 
+target=_blank>http://wxd.ctrip.com/blog/2013/09/ios7-hig-24/</A></P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPad 
+的启动画面是不包括状态栏区域的。</P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPad 
+竖屏 768 x 1004（标准分辨率）</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"768x1004"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/splash-screen-768x1004.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPad 竖屏 768 x 1004（标准分辨率） --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPad 
+竖屏 1536x2008（Retina）</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"1536x2008"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/splash-screen-1536x2008.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPad 竖屏 1536x2008（Retina） --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPad 
+横屏 1024x748（标准分辨率）</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"1024x748"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/Default-Portrait-1024x748.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPad 横屏 1024x748（标准分辨率） --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPad 
+横屏 2048x1496（Retina）</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"2048x1496"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/splash-screen-2048x1496.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPad 横屏 2048x1496（Retina） --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPhone 
+和 iPod touch 的启动画面是包含状态栏区域的。</P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPhone/iPod 
+Touch 竖屏 320x480 (标准分辨率)</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/splash-screen-320x480.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPhone/iPod Touch 竖屏 320x480 (标准分辨率) --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPhone/iPod 
+Touch 竖屏 640x960 (Retina)</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"640x960"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/splash-screen-640x960.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPhone/iPod Touch 竖屏 640x960 (Retina) --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPhone 
+5/iPod Touch 5 竖屏 640x1136 (Retina)</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">sizes=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"640x1136"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/splash-screen-640x1136.png"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- iPhone 5/iPod Touch 5 竖屏 640x1136 (Retina) --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">添加智能 
+App 广告条 Smart App Banner（iOS 6+ Safari）</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-itunes-app"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari） --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">iPhone 
+6对应的图片大小是750×1294，iPhone 6 Plus 对应的是1242×2148 。</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"launch6.png"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">media=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"(device-width: 375px)"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-touch-startup-image"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"launch6plus.png"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">media=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"(device-width: 414px)"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+</CODE></PRE></DIV>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">Windows 
+8</H3>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">Windows 
+8 磁贴颜色</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"msapplication-TileColor"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"#000"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- Windows 8 磁贴颜色 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">Windows 
+8 磁贴图标</P>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"msapplication-TileImage"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"icon.png"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- Windows 8 磁贴图标 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">rss订阅</H3>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"alternate"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">type=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"application/rss+xml"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">title=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"RSS"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/rss.xml"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 添加 RSS 订阅 --&gt;</SPAN>
+</CODE></PRE></DIV>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">favicon 
+icon</H3>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;link</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">rel=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"shortcut icon"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">type=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"image/ico"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">href=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"/favicon.ico"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN> <SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 添加 favicon icon --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">比较详细的 
+favicon 介绍可参考<A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="https://github.com/audreyr/favicon-cheat-sheet" 
+target=_blank>https://github.com/audreyr/favicon-cheat-sheet</A></P>
+<H3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; BORDER-BOTTOM: rgb(218,218,218) 2px solid; FONT-WEIGHT: 700; COLOR: rgb(17,17,17); MARGIN: 40px 0px 10px">移动端的meta</H3>
+<DIV class=highlight 
+style="BORDER-TOP: rgb(218,218,218) 1px solid; BORDER-RIGHT: rgb(218,218,218) 1px solid; BACKGROUND: rgb(254,254,254); BORDER-BOTTOM: rgb(218,218,218) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(218,218,218) 1px solid; PADDING-RIGHT: 10px"><PRE style="WORD-WRAP: break-word; FONT-SIZE: 1em; FONT-FAMILY: monospace, serif; WHITE-SPACE: pre-wrap; MARGIN: 1em 0px"><CODE class=language-html style="FONT-SIZE: 12px; FONT-FAMILY: Menlo, Consolas, 'Liberation Mono', Courier, monospace; LINE-HEIGHT: 14px" data-lang="html"><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"viewport"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"width=device-width, initial-scale=1, user-scalable=no"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-mobile-web-app-capable"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"yes"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-mobile-web-app-status-bar-style"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"black"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"format-detection"</SPAN><SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"telephone=no, email=no"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"viewport"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"width=device-width, initial-scale=1, user-scalable=no"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-mobile-web-app-capable"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"yes"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN><SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 删除苹果默认的工具栏和菜单栏 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"apple-mobile-web-app-status-bar-style"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"black"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN><SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 设置苹果工具栏颜色 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"format-detection"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"telphone=no, email=no"</SPAN> <SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">/&gt;</SPAN><SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 忽略页面中的数字识别为电话，忽略email识别 --&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 启用360浏览器的极速模式(webkit) --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"renderer"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"webkit"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 避免IE使用兼容模式 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">http-equiv=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"X-UA-Compatible"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"IE=edge"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"HandheldFriendly"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"true"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 微软的老式浏览器 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"MobileOptimized"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"320"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- uc强制竖屏 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"screen-orientation"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"portrait"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- QQ强制竖屏 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"x5-orientation"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"portrait"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- UC强制全屏 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"full-screen"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"yes"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- QQ强制全屏 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"x5-fullscreen"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"true"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- UC应用模式 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"browsermode"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"application"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- QQ应用模式 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"x5-page-mode"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"app"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- windows phone 点击无高光 --&gt;</SPAN>
+<SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&lt;meta</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">name=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"msapplication-tap-highlight"</SPAN> <SPAN class=na style="COLOR: rgb(38,139,210)">content=</SPAN><SPAN class=s style="COLOR: rgb(42,161,152)">"no"</SPAN><SPAN class=nt style="FONT-WEIGHT: bold; COLOR: rgb(38,139,210)">&gt;</SPAN>
+<SPAN class=c style="COLOR: rgb(147,161,161); FONT-STYLE: italic">&lt;!-- 适应移动端end --&gt;</SPAN>
+</CODE></PRE></DIV>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">这是来自<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+href="http://weibo.com/toooobug" target=_blank>toobug</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>的分享总结。</P>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">更多的 
+meta 标签参考</P>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI><A 
+  style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+  href="http://code.lancepollard.com/complete-list-of-html-meta-tags/" 
+  target=_blank>COMPLETE LIST OF HTML META TAGS</A></LI>
+  <LI><A 
+  style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+  href="http://www.iacquire.com/blog/18-meta-tags-every-webpage-should-have-in-2013" 
+  target=_blank>18 Meta Tags Every Webpage Should Have in 2013</A></LI></UL>
+<P 
+style="FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(51,51,51); MARGIN: 15px 0px; LINE-HEIGHT: 22px">参考文章：</P>
+<UL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 1em 0px; PADDING-RIGHT: 0px">
+  <LI><A 
+  style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+  href="https://github.com/yisibl/blog/issues/1" target=_blank>常用的 HTML 
+  头部标签</A></LI>
+  <LI><A 
+  style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+  href="https://gist.github.com/paddingme/6182708733917ae36331" 
+  target=_blank>html5_header</A></LI>
+  <LI><A 
+  style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+  href="http://amazeui.org/css/" target=_blank>amazeui css</A></LI>
+  <LI><A 
+  style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+  href="http://www.douban.com/note/170560091/" target=_blank>DOCTYPE</A></LI>
+  <LI><A 
+  style="TEXT-DECORATION: none; FONT-FAMILY: Museo, Segoe, 'Segoe UI', Helvetica, Arial, sans-serif; COLOR: rgb(234,62,10); MARGIN: 0px 2px" 
+  href="http://www.uisdc.com/ios8-ten-new-feature" target=_blank>WEB 工程师和设计师必学的 
+  10 个 IOS 8 新鲜改变</A></LI></UL></DIV>
+<P>&nbsp;</P>
 <P>mate标签总结</P>
 <H1 id=articleHeader0 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(221,221,221) 2px solid; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 8px; FONT: 700 1.71em/1.2 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 28px 0px 18px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt; 
@@ -220,7 +763,7 @@ style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRAN
   class=Apple-converted-space>&nbsp;</SPAN><A 
   style="BOX-SIZING: border-box; TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: rgb(0,142,89); OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
   href="http://fex.baidu.com/blog/2014/10/html-head-tags/?qq-pf-to=pcqq.c2c" 
-  rel=nofollow target=_blank>参考文档</A></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</SPAN>
+  rel=nofollow target=_blank>参考文档</A></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><FONT color=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</SPAN>
 <SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"HandheldFriendly"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"true"</SPAN>&gt;</SPAN>
 <SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 微软的老式浏览器 --&gt;</SPAN>
 <SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"MobileOptimized"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"320"</SPAN>&gt;</SPAN>
@@ -231,86 +774,154 @@ style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRAN
 <SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- UC强制全屏 --&gt;</SPAN>
 <SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"full-screen"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"yes"</SPAN>&gt;</SPAN>
 <SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- QQ强制全屏 --&gt;</SPAN>
-<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"x5-fullscreen"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"true"</SPAN>&gt;</SPAN>
-<SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- UC应用模式 --&gt;</SPAN>
-<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"browsermode"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"application"</SPAN>&gt;</SPAN>
-<SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- QQ应用模式 --&gt;</SPAN>
+<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"x5-fullscreen"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN><FONT style=>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"<FONT style=>true"</FONT></SPAN><FONT style=>&gt;</FONT></FONT></SPAN>
+</FONT></FONT><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- UC<FONT style= color=>应用模<FONT style= color=>式 <FONT style= color=>--&gt;</FONT></FONT></FONT></SPAN>
+<FONT style=><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"browsermode"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"application"</SPAN>&gt;</FONT></SPAN>
+</FONT><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- QQ应用模式 --&gt;</SPAN>
 <SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"x5-page-mode"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"app"</SPAN>&gt;</SPAN>
-<SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- windows phone 点击无高光 --&gt;</SPAN>
+<FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- windows phone 点击无高光 --&gt;</SPAN>
 <SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"msapplication-tap-highlight"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"no"</SPAN>&gt;</SPAN>
-</FONT></CODE></PRE>
+</FONT></FONT></FONT></FONT></FONT></FONT></CODE></PRE>
 <H3 id=articleHeader4 
-style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 700 1.14em/1.2 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 28px 0px 18px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">网页相关</H3>
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 700 1.14em/1.2 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 28px 0px 18px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+style= color=>网页相关</FONT></H3>
 <UL 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; PADDING-LEFT: 30px; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
   <LI style="BOX-SIZING: border-box"><STRONG 
-  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">申明编码</STRONG></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">charset</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">'utf-8'</SPAN> /&gt;</SPAN>
+  style="BOX-SIZING: border-box; FONT-WEIGHT: bold"><FONT style= 
+  color=>申明编码</FONT></STRONG></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style=><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">charset</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">'utf-8'</SPAN> /&gt;</FONT></SPAN>
 </FONT></CODE></PRE>
 <UL 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; PADDING-LEFT: 30px; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
   <LI style="BOX-SIZING: border-box"><STRONG 
-  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">优先使用 IE 最新版本和 
-  Chrome</STRONG></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-Compatible"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=edge,chrome=1"</SPAN> /&gt;</SPAN>
-<SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 关于X-UA-Compatible --&gt;</SPAN>
-<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-Compatible"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=6"</SPAN> &gt;</SPAN><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 使用IE6 --&gt;</SPAN>
-<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-Compatible"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=7"</SPAN> &gt;</SPAN><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 使用IE7 --&gt;</SPAN>
-<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-Compatible"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=8"</SPAN> &gt;</SPAN><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 使用IE8 --&gt;</SPAN>
-</FONT></CODE></PRE>
+  style="BOX-SIZING: border-box; FONT-WEIGHT: bold"><FONT style= color=>优先使用 IE 
+  最新版本和 Chrome</FONT></STRONG></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style=><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-Compatible"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=edge,chrome=1"</SPAN> /&gt;</FONT></SPAN>
+</FONT><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 关于X-UA-Compatible --&gt;</SPAN>
+<SPAN class=hljs-tag style="BOX-SIZING: border-box"><FONT style=>&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-<FONT style= color=>Compa<FONT style= color=>ti<FONT style= color=>ble"</FONT></FONT></FONT></SPAN><FONT style=> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=6"</SPAN> &gt;</FONT></FONT></FONT></FONT></SPAN></FONT></FONT><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 使用IE6 --&gt;</SPAN>
+<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http<FONT style=>-equiv</FONT></SPAN><FONT style=>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-Compatible"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=7"</SPAN> &gt;</FONT></FONT></SPAN><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 使用IE7 --&gt;</SPAN>
+<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-<FONT style=>equiv</FONT></SPAN><FONT style=>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"X-UA-Compatible"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"IE=8"</SPAN> &gt;</FONT></FONT></SPAN><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- 使用IE8 --&gt;</SPAN>
+</FONT></FONT></FONT></FONT></FONT></FONT></CODE></PRE>
 <UL 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; PADDING-LEFT: 30px; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
-  <LI style="BOX-SIZING: border-box"><STRONG 
-  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">浏览器内核控制</STRONG>：国内浏览器很多都是双内核（webkit和Trident），webkit内核高速浏览，IE内核兼容网页和旧版网站。而添加meta标签的网站可以控制浏览器选择何种内核渲染。<A 
+  <LI style="BOX-SIZING: border-box"><FONT color=><FONT style=><STRONG 
+  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">浏览器内核控制</STRONG>：国内浏览器很多都是双内核（webkit和Trident），webkit内核高速浏览，IE内核兼容网页和旧版网站。而添加meta标签的网站可以控制浏览器选择何种内核渲染。</FONT></FONT><A 
   style="BOX-SIZING: border-box; TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: rgb(0,142,89); OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
-  href="http://se.360.cn/v6/help/meta.html" rel=nofollow 
-  target=_blank>参考文档</A></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"> <SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"renderer"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"webkit|ie-comp|ie-stand"</SPAN>&gt;</SPAN>
+  href="http://se.360.cn/v6/help/meta.html" rel=nofollow target=_blank><FONT 
+  style= color=>参考文档</FONT></A></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style=> <SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"renderer"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"webkit|ie-comp|ie-stand"</SPAN>&gt;</FONT></SPAN>
 </FONT></CODE></PRE>
 <P 
-style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">国内双核浏览器默认内核模式如下：<BR 
-style="BOX-SIZING: border-box">1. 搜狗高速浏览器、QQ浏览器：IE内核（兼容模式）<BR 
-style="BOX-SIZING: border-box">2. 360极速浏览器、遨游浏览器：Webkit内核（极速模式）</P>
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+style= color=>国内双核浏览器默认内核模式如下：<BR style="BOX-SIZING: border-box">1. 
+搜狗高速</FONT><FONT style= color=>浏<FONT style= color=>览器、QQ浏览器：IE内核（兼容模式）<BR 
+style="BOX-SIZING: border-box">2. 
+360极速浏览器、遨游浏览器：Webkit内核（极速模式）</FONT></FONT></P>
 <UL 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; PADDING-LEFT: 30px; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
-  <LI style="BOX-SIZING: border-box"><STRONG 
-  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">禁止浏览器从本地计算机的缓存中访问页面内容</STRONG>：这样设定，访问者将无法脱机浏览。</LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"Pragma"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"no-cache"</SPAN>&gt;</SPAN>
+  <LI style="BOX-SIZING: border-box"><FONT color=><FONT style=><STRONG 
+  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">禁止浏览器从<FONT style= 
+  color=>本地计算机的缓存中访问页面内容</FONT></STRONG><FONT style= 
+  color=>：这样设定，访问者将无法脱机浏览。</FONT></FONT></FONT></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style=><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<FONT style=><SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"Pragma"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"no-cache"</SPAN>&gt;</FONT></FONT></SPAN>
 </FONT></CODE></PRE>
 <UL 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; PADDING-LEFT: 30px; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
   <LI style="BOX-SIZING: border-box"><STRONG 
-  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">Windows 8</STRONG></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"msapplication-TileColor"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"#000"</SPAN>/&gt;</SPAN> <SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- Windows 8 磁贴颜色 --&gt;</SPAN>
-<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"msapplication-TileImage"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"icon.png"</SPAN>/&gt;</SPAN> <SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- Windows 8 磁贴图标 --&gt;</SPAN>
-</FONT></CODE></PRE>
+  style="BOX-SIZING: border-box; FONT-WEIGHT: bold"><FONT style= color=>Windows 
+  8</FONT></STRONG></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style=><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"msapplication-TileColor"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"#000"</SPAN>/&gt;</FONT></SPAN> </FONT><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- Windows 8 磁贴颜色 --&gt;</SPAN>
+<SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"msapplication-TileImage"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"icon.png"</SPAN>/&gt;</SPAN> </FONT></FONT><FONT color=><FONT style=><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!-- Windows 8 磁贴图标 --&gt;</SPAN>
+</FONT></FONT></CODE></PRE>
 <UL 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; PADDING-LEFT: 30px; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
-  <LI style="BOX-SIZING: border-box"><STRONG 
-  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">站点适配</STRONG>：主要用于PC-手机页的对应关系。</LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"mobile-agent"</SPAN><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">content="format=[wml|xhtml|html5];</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">url</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">url"</SPAN>&gt;</SPAN>
-</FONT><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)">&lt;!--
-[wml|xhtml|html5]根据手机页的协议语言，选择其中一种；
-url="url" 后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系。
- --&gt;</SPAN>
-</FONT></CODE></PRE>
+  <LI style="BOX-SIZING: border-box"><FONT color=><FONT style=><STRONG 
+  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">站点适配</STRONG>：主要用于PC-手机页的对应关系。</FONT></FONT></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style=><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">name</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"mobile-agent"</SPAN><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">content="format=[wml|xhtml|html5];</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">url</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">url"</SPAN>&gt;</FONT></SPAN>
+</FONT><SPAN class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(136,136,136)"><FONT style= color=>&lt;!--
+</FONT><FONT style= color=>[wml|xhtml|html5]根据手机页的协议语言，选择其中一种；
+url="url</FONT><FONT style= color=>" 后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系。
+ --&gt;</FONT></SPAN>
+</CODE></PRE>
 <UL 
 style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; PADDING-LEFT: 30px; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
-  <LI style="BOX-SIZING: border-box"><STRONG 
-  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">转码申明</STRONG>：用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下meta</LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style="BACKGROUND-COLOR: #f6f6f6"><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"Cache-Control"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"no-siteapp"</SPAN> /&gt;</SPAN>
-</FONT></CODE></PRE><FONT style="BACKGROUND-COLOR: #f6f6f6">
-<HR 
-style="BORDER-LEFT-WIDTH: 0px; BOX-SIZING: content-box; BORDER-TOP: rgb(238,238,238) 2px dotted; HEIGHT: 0px; BORDER-RIGHT-WIDTH: 0px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 20px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
-</FONT>
-<H4 
-style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 700 14px/1.2 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">其他参考文档</H4>
+  <LI style="BOX-SIZING: border-box"><FONT color=><FONT style=><STRONG 
+  style="BOX-SIZING: border-box; FONT-WEIGHT: bold">转码申明</STRONG>：用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下meta</FONT></FONT></LI></UL><PRE class=" hljs xml" style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BACKGROUND: rgb(246,246,246); WORD-SPACING: 0px; BORDER-BOTTOM: medium none; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: black; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; FONT: 0.92em/1.3 Consolas, Menlo, Monaco, 'Courier New', monospace; PADDING-LEFT: 10px; MARGIN: 18px 0px; BORDER-LEFT: medium none; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px; MAX-HEIGHT: 500px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; FONT-FAMILY: Consolas, Menlo, Monaco, 'Courier New', monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px"><FONT style=><SPAN class=hljs-tag style="BOX-SIZING: border-box">&lt;<SPAN class=hljs-title style="BOX-SIZING: border-box; FONT-WEIGHT: bold; COLOR: black">meta</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">http-equiv</SPAN>=<FONT color=><SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"Cache-Control"</SPAN> <SPAN class=hljs-attribute style="BOX-SIZING: border-box">content</SPAN>=<SPAN class=hljs-value style="BOX-SIZING: border-box; COLOR: rgb(136,0,0)">"no-siteapp"</SPAN> /&gt;</FONT></SPAN>
+</FONT></CODE></PRE>
 <P 
-style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 14px/22px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, sans-serif; MARGIN: 18px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
-style="BOX-SIZING: border-box; TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: rgb(0,142,89); OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
-href="http://code.lancepollard.com/complete-list-of-html-meta-tags/" 
-rel=nofollow target=_blank>COMPLETE LIST OF HTML META TAGS</A><BR 
-style="BOX-SIZING: border-box"><A 
-style="BOX-SIZING: border-box; TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: rgb(0,142,89); OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
-href="http://www.w3.org/TR/html5/document-metadata.html#the-meta-element" 
-rel=nofollow target=_blank>W3C META TAGS</A><BR 
-style="BOX-SIZING: border-box"><A 
-style="BOX-SIZING: border-box; TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: rgb(0,142,89); OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
-href="http://www.html-5.com/metatags/" rel=nofollow target=_blank>METATAGES in 
-HTML5</A><BR style="BOX-SIZING: border-box"><A 
-style="BOX-SIZING: border-box; TEXT-DECORATION: none; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: rgb(0,142,89); OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
-href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" 
-rel=nofollow target=_blank>MDN META TAGS</A></P></BODY></HTML>
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">html页面中meta的作用</STRONG></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　meta是用来在HTML文档中模拟HTTP协议的响应头报文。meta 
+标签用于网页的&lt;head&gt;与&lt;/head&gt;中，meta 标签的用处很多。meta 
+的属性有两种：name和http-equiv。name属性主要用于描述网页，对应于content（网页内容），以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）。这其中最重要的是description（站点在搜索引擎上的描述）和keywords（分类关键词），所以应该给每页加一个meta值。比较常用的有以下几个：</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">name 
+属性</STRONG></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　1、&lt;meta 
+name="Generator" contect=""&gt;用以说明生成工具（如Microsoft FrontPage 4.0）等；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　2、&lt;meta 
+name="KEYWords" contect=""&gt;向搜索引擎说明你的网页的关键词；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　3、&lt;meta 
+name="DEscription" contect=""&gt;告诉搜索引擎你的站点的主要内容；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　4、&lt;meta 
+name="Author" contect="你的姓名"&gt;告诉搜索引擎你的站点的制作的作者；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　5、&lt;meta 
+name="Robots" contect= "all|none|index|noindex|follow|nofollow"&gt;</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　其中的属性说明如下：</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　设定为all：文件将被检索，且页面上的链接可以被查询；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　设定为none：文件将不被检索，且页面上的链接不可以被查询；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　设定为index：文件将被检索；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　设定为follow：页面上的链接可以被查询；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　设定为noindex：文件将不被检索，但页面上的链接可以被查询；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　设定为nofollow：文件将不被检索，页面上的链接可以被查询。</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">http-equiv属性</STRONG></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　1、&lt;meta 
+http-equiv="Content-Type" contect="text/html";charset=gb_2312-80"&gt;</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">和 
+&lt;meta http-equiv="Content-Language" 
+contect="zh-CN"&gt;用以说明主页制作所使用的文字以及语言；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　又如英文是ISO-8859-1字符集，还有BIG5、utf-8、shift-Jis、Euc、Koi8-2等字符集；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　2、&lt;meta 
+http-equiv="Refresh" 
+contect="n;url=http://yourlink"&gt;定时让网页在指定的时间n内，跳转到页面http://yourlink；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　3、&lt;meta 
+http-equiv="Expires" contect="Mon,12 May 2001 00:20:00 
+GMT"&gt;可以用于设定网页的到期时间，一旦过期则必须到服务器上重新调用。需要注意的是必须使用GMT时间格式；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　4、&lt;meta 
+http-equiv="Pragma" 
+contect="no-cache"&gt;是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　5、&lt;meta 
+http-equiv="set-cookie" contect="Mon,12 May 2001 00:20:00 
+GMT"&gt;cookie设定，如果网页过期，存盘的cookie将被删除。需要注意的也是必须使用GMT时间格式；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　6、&lt;meta 
+http-equiv="Pics-label" 
+contect=""&gt;网页等级评定，在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　7、&lt;meta 
+http-equiv="windows-Target" 
+contect="_top"&gt;强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用；</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, sans-serif; PADDING-LEFT: 0px; MARGIN: 10px auto; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">　　8、&lt;meta 
+http-equiv="Page-Enter" contect="revealTrans(duration=10,transtion= 
+50)"&gt;和&lt;meta http-equiv="Page-Exit" 
+contect="revealTrans(duration=20，transtion=6)"&gt;设定进入和离开页面时的特殊效果，这个功能即FrontPage中的“格式/网页过渡”，不过所加的页面不能够是一个frame页面。</P><BR 
+style="BOX-SIZING: border-box"></BODY></HTML>
