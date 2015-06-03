@@ -1253,6 +1253,12 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="字符串数组转换成数字数组">
+<PARAM NAME="Local" VALUE="字符串数组转换成数字数组.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery篇">
 <PARAM NAME="Local" VALUE="jQuery篇.html">
@@ -2043,6 +2049,12 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="html5桌面通知">
+<PARAM NAME="Local" VALUE="html5桌面通知.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="手机测试环境">
 <PARAM NAME="Local" VALUE="手机测试环境.htm">
@@ -2519,6 +2531,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mongodb">
 <PARAM NAME="Local" VALUE="mongodb.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2561,6 +2574,12 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mongodb数据类型转换">
+<PARAM NAME="Local" VALUE="mongodb数据类型转换.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2579,12 +2598,19 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mongoose">
 <PARAM NAME="Local" VALUE="mongoose.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mongoose连接数据库">
 <PARAM NAME="Local" VALUE="mongoose连接数据库.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mongoose对已入库的数据进行类型转换">
+<PARAM NAME="Local" VALUE="mongoose对已入库的数据进行类型转换.htm">
 </OBJECT>
 </UL>
 </UL>

@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>字符串数组转换成数字数组</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17801">
+</HEAD>
+<BODY>
+<P>字符串数组转换成数字数组</P>
+<P><FONT color=#222222 size=2 
+face=Consolas>["125","445","22","45","68","32","98"] 转换为 
+[125,445,22,45,68,32,98]</FONT></P>
+<P><SPAN 
+style="WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,34,34); FONT: 12px Consolas, 'Lucida Console', monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+color=#ff0000>方法一：JSON.parse('['+["125","445","22","45","68","32","98"].join()+']')</FONT></SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,34,34); FONT: 12px Consolas, 'Lucida Console', monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+color=#ff0000>方法二：["125", "445", "22", "45", "68", "32", 
+"98"].map(function(v){return parseInt(v)})</FONT></SPAN></P></BODY></HTML>

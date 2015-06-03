@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>mongodb数据类型转换</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17801"></HEAD>
+<BODY>
+<P>mongodb数据类型转换</P>
+<DIV class="Blog_tit4 Blog_tit5" 
+style="WORD-WRAP: break-word; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 0px; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(86,86,86); PADDING-BOTTOM: 11px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 12px/12px 宋体, Arial; PADDING-LEFT: 0px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="WORD-WRAP: break-word; FONT-SIZE: 20px; TEXT-DECORATION: none; FONT-FAMILY: 微软雅黑, 黑体, Verdana; COLOR: rgb(25,89,155)" 
+href="http://www.linxh.blog.chinaunix.net/uid-15795819-id-3873422.html">Mongodb 
+字段类型转换</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><EM 
+style="WORD-WRAP: break-word; FONT-FAMILY: Arial; COLOR: rgb(187,186,186); FONT-STYLE: normal; MARGIN-LEFT: 22px">2013-08-29 
+13:54:11</EM></DIV>
+<DIV class=Blog_con2 
+style="WORD-WRAP: break-word; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(102,102,102); TEXT-ALIGN: left; FONT: 12px/26px 宋体, Arial; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV class=Blog_con3 
+style="WORD-WRAP: break-word; MARGIN-TOP: 10px; LINE-HEIGHT: 22px">
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">分类：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px">NOSQL</SPAN></P>
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P></DIV>
+<DIV class=Blog_wz1 style="WORD-WRAP: break-word; FONT-SIZE: 16px"><SPAN 
+style="WORD-WRAP: break-word; LINE-HEIGHT: 1.5">&nbsp; &nbsp; 
+&nbsp;&nbsp;最近一些项目由于历史原因，字段类型存储混乱，比如一个collection里modifedDate列，有的存的是ISODate类型，有的是NumberLong时间戳，这在Mongodb中是严重不推荐的，需要转换成统一的。Mongodb并不提供Alter 
+table这样的语句或者工具，只能写程序转。</SPAN><BR style="WORD-WRAP: break-word">&nbsp; &nbsp; 
+&nbsp;&nbsp;Mongodb的客户端是js写的，其实用js写脚本就可以实现。<BR 
+style="WORD-WRAP: break-word">&nbsp; &nbsp; 
+&nbsp;&nbsp;以上面的例子来说，要将ISODate类型全都转换为NumberLong时间戳：<BR 
+style="WORD-WRAP: break-word">&nbsp; &nbsp; &nbsp;&nbsp;1、查询多少记录是ISODate类型<BR 
+style="WORD-WRAP: break-word">&nbsp; &nbsp; &nbsp; ①、$type<BR 
+style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">
+<DIV id=codeText class=codeText 
+style="OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(221,221,221) 1px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; WIDTH: 1562px; BACKGROUND: rgb(255,255,255); BORDER-BOTTOM: rgb(221,221,221) 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px Consolas, monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; BORDER-LEFT: rgb(221,221,221) 1px solid; LETTER-SPACING: 0px; PADDING-RIGHT: 0px; font-stretch: normal">
+<OL class=dp-css 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 0px 1px 0px 0px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px">
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,0)">db<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>table_name<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,255)">find</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">{</SPAN>modifedDate<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">:</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">{</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">$</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">type</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">:</SPAN>9<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">}</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">}</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">).count()</SPAN></SPAN></LI></OL></DIV>&nbsp; 
+&nbsp; &nbsp; 其中的9是Mongodb定义的BSON Date类型对应的数字。下面这张表是BSON TYPE及他们对应的数字。<BR 
+style="WORD-WRAP: break-word">
+<DIV style="WORD-WRAP: break-word; TEXT-ALIGN: left"><SPAN 
+style="WORD-WRAP: break-word; LINE-HEIGHT: 1.5">&nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: break-word; LINE-HEIGHT: 1.5"></SPAN><IMG 
+style="WORD-WRAP: break-word; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 1.5" 
+alt="" src="images/15795819_1377755529DlLA.jpg" width=254 
+height=401></DIV>&nbsp;②、forEach函数和instanceof<BR 
+style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">
+<DIV id=codeText class=codeText 
+style="OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(221,221,221) 1px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; WIDTH: 1562px; BACKGROUND: rgb(255,255,255); BORDER-BOTTOM: rgb(221,221,221) 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px Consolas, monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; BORDER-LEFT: rgb(221,221,221) 1px solid; LETTER-SPACING: 0px; PADDING-RIGHT: 0px; font-stretch: normal">
+<OL class=dp-css 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 0px 1px 0px 0px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px">
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,0)"><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">count</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">=</SPAN>0<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">;</SPAN><BR 
+  style="WORD-WRAP: break-word"></SPAN>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; PADDING-RIGHT: 0px">db<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>table_name<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,255)">find</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>forEach<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,255)">function</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">x</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">{</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,255)">if</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">x</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>modifedDate<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,255)">instanceof</SPAN><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">Date</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">{</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">count</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">+</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">+</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">}</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">}</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">;</SPAN><BR 
+  style="WORD-WRAP: break-word">
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">print</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">count</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">;</SPAN></LI></OL></DIV>&nbsp; 
+&nbsp; &nbsp;&nbsp;2、修改类型<BR style="WORD-WRAP: break-word">&nbsp; &nbsp; 
+&nbsp;&nbsp;使用forEach函数（<FONT color=#ff0000>在命令行下开mongodb客户端跑</FONT>）<BR 
+style="WORD-WRAP: break-word">&nbsp; &nbsp; &nbsp;&nbsp;<BR 
+style="WORD-WRAP: break-word">
+<DIV id=codeText class=codeText 
+style="OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(221,221,221) 1px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; WIDTH: 1562px; BACKGROUND: rgb(255,255,255); BORDER-BOTTOM: rgb(221,221,221) 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px Consolas, monospace; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; BORDER-LEFT: rgb(221,221,221) 1px solid; LETTER-SPACING: 0px; PADDING-RIGHT: 0px; font-stretch: normal">
+<OL class=dp-css 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 40px; MARGIN: 0px 1px 0px 0px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px">
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,0)">db<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>table_name<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,255)">find</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">{</SPAN>modifedDate<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">:</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">{</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">$</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">type</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">:</SPAN>9<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">}</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">}</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>forEach<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,255)">function</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">x</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">{</SPAN><FONT color=><FONT 
+  color=><SPAN style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">x</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>modifiedDate<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">=</SPAN>NumberLong<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">x</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>modifiedDate<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">getTime</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">/</SPAN>1000<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">;</SPAN>db<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN>table_name<SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">.</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">save</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">(</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(255,0,0)">x</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN></FONT><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">}</SPAN><SPAN 
+  style="WORD-WRAP: break-word; COLOR: rgb(0,0,204)">)</SPAN></FONT></SPAN></LI></OL></DIV></DIV></DIV>
+<P><BR class=Apple-interchange-newline>&nbsp;</P></BODY></HTML>

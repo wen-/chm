@@ -132,6 +132,7 @@ HTML5 JS文件读取和保存操作.htm
 HTML5&&CSS3.htm
 HTML5的File API应用.htm
 HTML5视频支持.htm
+html5桌面通知.htm
 HTML-DOM\index.html
 HTML-DOM\index.html
 HTML-DOM\xyz\coll_doc_all.asp.html
@@ -1373,7 +1374,10 @@ Modernizr Documentation.htm
 mongodb.htm
 mongodb.htm
 mongodb启动不了.htm
+mongodb数据类型修改.htm
+mongodb数据类型转换.htm
 mongoose.htm
+mongoose对已入库的数据进行类型转换.htm
 mongoose连接数据库.htm
 mySQL.htm
 MySql.htm
@@ -1689,5 +1693,6 @@ yum源配置.htm
 转义字符.htm
 状态栏.htm
 字符串操作.htm
+字符串数组转换成数字数组.htm
 字符的ASCII码值.htm
 字符类.htm
