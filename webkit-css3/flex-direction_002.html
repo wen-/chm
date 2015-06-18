@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+<title>-webkit-flex-direction demo</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="flex-direction_002.css" media="all">
+</head>
+<body>
+
+  <h1>-webkit-flex-direction</h1>
+  <dl id="control_panel" class="control_panel">
+    <label><input name="direction" value="row" type="radio">row</label>
+    <label><input name="direction" value="row-reverse" type="radio">row-reverse</label>
+    <label><input name="direction" value="column" type="radio">column</label>
+    <label><input name="direction" value="column-reverse" type="radio">column-reverse</label>
+  </dl>
+
+  <div class="demo">
+    <div class="flexbox test">
+      <div class="item1">DIV 1 <br>-webkit-flex:1;</div>
+      <div class="item2">DIV 2 <br><br>-webkit-flex:1;</div>
+      <div class="item3">DIV 3 <br>-webkit-flex:2;</div>
+    </div>
+  </div>
+      
+
+  <script type="text/javascript">
+    var radio = document.querySelectorAll(".control_panel label input");
+    var test = document.querySelector(".test");
+    for(var i=0;i<radio.length;i++) {
+      radio[i].onclick = (function(index) {
+        return function(){
+          if(radio[index].checked){
+            test.style.cssText = "-webkit-flex-direction:"+radio[index].value+";";
+          }
+        }
+      })(i);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+a { color: rgb(255, 255, 255); text-decoration: none; }
+#container { position: relative; width: 400px; height: 400px; margin: 100px auto; }
+#parent { margin: 10px; width: 380px; height: 380px; background: rgb(57, 131, 228) none repeat scroll 0% 0%; opacity: 0.8; transform-style: preserve-3d; animation: 5s linear 0s normal none infinite running spin; }
+#parent > div { position: absolute; top: 40px; left: 40px; padding: 50px; color: rgb(255, 255, 255); font-size: 20px; }
+#parent > :first-child { background-color: rgb(57, 131, 228); transform: translateZ(-200px) rotateY(45deg); }
+#parent > :last-child { background-color: rgb(57, 131, 228); transform: translateZ(100px) rotateX(20deg); }

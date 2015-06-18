@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+<title>-webkit-flex demo</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="flex_1.css" media="all">
+</head>
+<body>
+
+  <h1>-webkit-flex</h1>
+  <dl id="control_panel" class="control_panel">
+    
+  </dl>
+
+  <div class="wrapper">
+  	<header>
+      属性名称：-webkit-flex
+    </header>
+    <section>
+
+      <div class="flexbox">
+        <div class="item1">DIV 1 <br>-webkit-flex:1;</div>
+        <div class="item2">DIV 2 <br><br>-webkit-flex:2;</div>
+        <div class="item3">DIV 3 <br>-webkit-flex:3;</div>
+        <div class="item4">DIV 4 <br>-webkit-flex:4;</div>
+        <div class="item5">DIV 5 <br>-webkit-flex:5;</div>
+      </div>
+      <div class="intro">
+          <p>节点flexbox是属性display:-webkit-flex;即将此元素盒模型定义为可伸缩盒模型;</p>
+          <p>给子元素使用flex伸缩属性，并分别赋值1、2、3、4、5，那么空间就会按照1/15、2/15、3/15、4/15、5/15分割给这五个子元素</p>
+      </div>
+      <div class="flexbox">
+        <div class="item6">DIV 6 <br>-webkit-flex:1;</div>
+        <div class="item7">DIV 7 <br><br>width:50%;</div>
+        <div class="item8">DIV 8 <br>-webkit-flex:2;</div>
+      </div>
+      <div class="intro">
+          <p>给子元素7定义了width，子元素6和8定义了flex伸缩属性，那么留白空间就会按照1/3、2/3分割给6、8这两个子元素</p>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

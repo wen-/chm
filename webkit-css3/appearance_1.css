@@ -1,0 +1,8 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+table { margin: 0px auto; border-collapse: collapse; }
+th, td { border: 1px solid rgb(204, 204, 204); border-spacing: 0px; padding: 4px; }
+b { color: red; }
+.appearance { display: inline-block; width: 60px; height: 20px; }
+.yes, .no { color: rgb(255, 255, 255); text-align: center; }
+.yes { background-color: rgb(57, 131, 228); }
+.no { background-color: rgb(255, 153, 19); }

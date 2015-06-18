@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<title>-webkit-background-clip demo</title>
+		<link rel="alternate" href="http://ued.ctrip.com/blog/wp-content/webkitcss/css/demo.css">
+		
+	
+<link rel="stylesheet" type="text/css" href="background-clip_001_1.css" media="all">
+</head>
+<body>
+		<h1>-webkit-background-clip</h1>
+		<div id="control_panel">
+			<dt>
+			<input id="border-box" name="background-clip" value="border-box" checked="" onclick="demo.className='bb';text.innerHTML=this.value" type="button">（默认）
+			</dt>
+			<dt>
+			<input id="padding-box" name="background-clip" value="padding-box" onclick="demo.className='pb';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="content-box" name="background-clip" value="content-box" onclick="demo.className='cb';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="text" name="background-clip" value="text" onclick="demo.className='t';text.innerHTML=this.value" type="button">&nbsp;
+			文字的颜色是图片的背景色
+			</dt>
+			<dt>background-origin: <span>border-box</span></dt>
+			<dt>background-clip: <span>border-box</span></dt>
+		</div>
+		<div id="show_panel">
+			<div id="demo">
+				Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED
+			</div>
+		</div>
+		<script type="text/javascript">
+		var demo = document.getElementById('demo');
+		var text = document.getElementsByTagName('span')[1];
+		</script>
+	
+</body>
+</html>

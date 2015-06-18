@@ -1,0 +1,5 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+dl, dt, dd, p { margin: 0px; padding: 0px; }
+dt { font-size: 18px; }
+dd { margin: 0px 0px 10px 20px; font-size: 20px; }
+h1 { margin-bottom: 20px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }

@@ -1,0 +1,8 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+dl, dt, dd { margin: 0px; padding: 0px; }
+select, option, input { margin: 0px; padding: 0px; font: 14px/1 Tahoma,Arial,"Microsoft Yahei",serif; }
+dt { font-size: 16px; }
+dd { margin-bottom: 10px; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+.control_panel { float: left; }
+.show_panel { margin-left: 240px; margin-top: 200px; padding: 10px 20px; width: 160px; text-align: center; color: rgb(255, 255, 255); font-size: 20px; font-weight: bold; background-color: rgb(57, 131, 228); }

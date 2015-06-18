@@ -1,0 +1,35 @@
+/* ::::: http://ued.ctrip.com/blog/wp-content/webkitcss/css/base.css ::::: */
+
+body, p, dl, dd, form { margin: 0px; }
+body { color: rgb(51, 51, 51); font: 14px/1.5 Consolas,arial,"Microsoft Yahei","Simsun",sans-serif; }
+h1, h2, h3, h4, h5, h6 { margin: 0px; font-size: 18px; }
+ul, ol { margin: 0px; padding: 0px; list-style: outside none none; }
+fieldset, input { margin: 0px; padding: 0px; }
+select, textarea, input, button { color: inherit; font-size: inherit; font-family: inherit; }
+input { vertical-align: middle; }
+img { border: 0px none; vertical-align: middle; }
+.wrap::after { clear: both; visibility: hidden; height: 0px; content: " "; display: block; }
+.filter_box::before { content: " "; position: absolute; left: 0px; top: 55px; width: 100%; height: 5px; }
+.tree_folder::before, .tree_folder::after, .tree_file::before, .tree_file::after { position: absolute; content: ""; pointer-events: none; }
+.tree_folder::before { height: 3px; width: 6px; top: -5px; left: 0px; border-width: 2px 2px 0px; border-style: solid; border-color: rgb(255, 179, 9); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-radius: 4px 4px 0px 0px; }
+.tree_folder::after { width: 8px; height: 0px; right: 0px; top: -1px; border-top: 2px solid rgb(255, 179, 9); }
+.tree_file::before { width: 6.66667px; height: 2px; background-color: rgb(204, 204, 204); border-radius: 4px; position: absolute; top: 5.4px; left: 0.6px; box-shadow: 0px 7px 0px rgb(204, 204, 204); }
+.tree_file::after { width: 9px; height: 2px; background-color: rgb(204, 204, 204); border-radius: 4px; position: absolute; top: 2.28571px; left: 0.6px; box-shadow: 0px 7px 0px rgb(204, 204, 204); }
+body { font: 13px/1.5em "MicroSoft Yahei",Tahoma,simsun,Verdana,Lucida,Arial,Helvetica,sans-serif; }
+pre { position: relative; width: 290px; margin: 0px; padding: 6px 0px; font: 12px/1.2 Tahoma,Arial,sans-serif; overflow-x: auto; background-color: rgb(255, 255, 255); box-sizing: border-box; border: 1px solid rgb(204, 204, 204); }
+h1 { margin: 20px 0px 30px; padding-bottom: 10px; font-size: 28px; width: 320px; border-bottom: 1px solid rgb(204, 204, 204); }
+.togglebar { height: 44px; font-size: 16px; list-style: outside none none; }
+.togglebar li { float: left; width: 160px; border-bottom: 1px solid rgb(204, 204, 204); text-align: center; padding: 12px 0px; background-color: rgb(240, 240, 240); cursor: pointer; box-sizing: border-box; }
+.togglebar li + li { border-left: 1px solid rgb(204, 204, 204); }
+.togglebar li:hover { background-color: rgb(204, 204, 204); }
+.control, .svg_control { float: left; width: 270px; overflow: hidden; padding: 15px 25px; margin-right: 10px; background-color: rgb(240, 240, 240); }
+.svg_control { width: 290px; padding: 15px 20px 15px 10px; max-height: 700px; overflow-y: auto; }
+.control input, .shadow_ctrl input { vertical-align: middle; }
+.control span, .shadow_ctrl span { padding: 0px 5px; font-weight: bold; font-size: 22px; font-family: Georgia; color: rgb(255, 0, 0); }
+.svg_control dd { margin: 4px 0px 10px; }
+.svg_control input[type="number"], .svg_control input[type="text"] { width: 24px; padding: 2px 4px; text-align: center; }
+.svg_control input[type="text"] { width: 200px; }
+#show_pic { margin: 10px 0px 0px 20px; max-width: 534px; }
+#show_code { margin: 0px; }
+.show_code { overflow: hidden; padding: 10px; margin: 10px 0px 0px; font-family: Tahoma,Arial,sans-serif; background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); }
+.file_select { margin-left: 340px; margin-top: -42px; }

@@ -1,0 +1,16 @@
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, em, button { margin: 0px; padding: 0px; }
+body { font: 16px Calibri,Tahoma,"Microsoft Yahei",Simsun; }
+#adjust_box, #display_box { float: left; }
+#adjust_box { width: 380px; margin: 10px; background-color: rgb(254, 233, 204); }
+#display_box { position: relative; width: 600px; height: 600px; margin-top: 10px; border: 10px dashed rgb(204, 204, 204); }
+#display_box div { width: 200px; height: 200px; }
+dl { padding: 0px 10px; }
+dt { margin-bottom: 10px; padding: 5px 0px; font-size: 30px; text-align: center; border-bottom: 1px solid rgb(204, 204, 204); box-shadow: 0px 1px 1px rgb(239, 239, 239); }
+dd { margin-bottom: 20px; }
+dd label { margin-right: 10px; }
+dd span { display: block; font-size: 20px; font-weight: bold; }
+dd b { margin-left: 10px; vertical-align: middle; }
+dd i { font-size: 24px; font-style: normal; color: rgb(255, 0, 0); }
+input { margin-right: 3px; vertical-align: middle; }
+#display_box .pop { position: absolute; right: 50px; width: 180px; height: 80px; margin-top: 50px; padding: 10px; background-color: rgb(236, 251, 255); border: 5px solid rgb(215, 241, 255); border-radius: 20px; }
+#display_box b { position: absolute; top: 50%; left: -16px; width: 20px; height: 20px; margin-top: -16px; background-color: rgb(236, 251, 255); border-width: 0px 0px 5px 5px; border-style: none none solid solid; border-color: -moz-use-text-color -moz-use-text-color rgb(215, 241, 255) rgb(215, 241, 255); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }

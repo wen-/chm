@@ -1,0 +1,12 @@
+/* ::::: http://ued.ctrip.com/blog/wp-content/webkitcss/css/demo.css ::::: */
+
+html, body, p, dl, dd, form { margin: 0px; }
+body { color: rgb(51, 51, 51); font: 14px/1.42 "Microsoft Yahei","Simsun",arial,tahoma,sans-serif; }
+h1, h2, h3, h4, h5, h6 { margin: 0px; font-size: 14px; }
+dl, dt, dd { margin: 0px; padding: 0px; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+.control_panel { float: left; padding-left: 20px; }
+.flowbox { overflow: hidden; }
+.flowbox article { float: left; width: 800px; border: 1px solid rgb(255, 102, 0); background: rgb(243, 243, 243) none repeat scroll 0% 0%; padding: 50px; }
+.flowbox aside { float: left; width: 500px; border: 1px solid rgb(0, 153, 255); background: rgb(243, 243, 243) none repeat scroll 0% 0%; display: block; }
+.flowbox .element { height: 50px; color: rgb(51, 51, 51); border: 1px solid green; }

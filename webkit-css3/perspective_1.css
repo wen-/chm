@@ -1,0 +1,4 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+#div1 { height: 150px; width: 150px; margin: 50px auto; padding: 10px; border: 1px solid rgb(204, 204, 204); }
+#div2 { padding: 50px 20px; text-align: center; background-color: rgb(57, 131, 228); color: rgb(255, 255, 255); transform: rotateX(45deg); }

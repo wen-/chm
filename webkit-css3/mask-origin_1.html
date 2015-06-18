@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<title>-webkit-mask-origin demo</title>
+		
+	
+<link rel="stylesheet" type="text/css" href="mask-origin_1.css" media="all">
+</head>
+<body>
+		<h1>-webkit-mask-origin</h1>
+		<dl class="control_panel">
+			<dt>
+			<input id="padding" value="padding" onclick="demo.className='pb';text.innerHTML=this.value" type="button">&nbsp;（默认）
+			</dt>
+			<dt>			
+			</dt><dt>
+			<input id="border" value="border" onclick="demo.className='bb';text.innerHTML=this.value" type="button">
+			</dt>
+
+			<input id="content" value="content" onclick="demo.className='cb';text.innerHTML=this.value" type="button">
+			
+			<dt>background-origin: <span>padding</span></dt>
+		</dl>
+		<div id="show_wrap">
+			<div id="demo">
+				Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED Ctrip UED
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+			var demo = document.getElementById('demo');
+			var text = document.getElementsByTagName('span')[0];
+		</script>
+	
+</body>
+</html>

@@ -1,0 +1,8 @@
+body, h1, dl, dt, input { margin: 0px; padding: 0px; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+body { color: rgb(51, 51, 51); font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+input[type="number"] { width: 30px; margin: 0px 2px; padding: 0px; text-align: center; border-width: 0px 0px 1px; border-bottom: 1px solid rgb(57, 131, 228); outline: medium none; }
+.control { float: left; width: 460px; padding: 10px; }
+.trans_css_line, #trans_css { font-size: 16px; margin-bottom: 10px; }
+#trans_css { border-bottom: 1px solid rgb(57, 131, 228); }
+#show_area { float: left; margin-left: 20px; padding: 40px 10px; color: rgb(255, 255, 255); background: rgb(57, 131, 228) none repeat scroll 0% 0%; }

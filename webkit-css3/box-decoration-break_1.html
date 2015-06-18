@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="utf-8">
+	<title>-webkit-box-decoration-break demo</title>
+	
+
+<link rel="stylesheet" type="text/css" href="box-decoration-break_1.css" media="all">
+</head>
+<body>
+
+	<h1>-webkit-box-decoration-break:</h1>
+	<dl id="control_panel" class="control_panel">
+		<label>slice</label>
+		<label>clone</label>
+	</dl>
+
+	
+	<div class="demo">
+		<!-- demo start -->
+		<div class="clearfix">
+			<div class="container">
+				<h3>slice:</h3>
+				<span class="test" style="-webkit-box-decoration-break:slice;">padding: 0 20px;<br>padding: 0 20px;<br>padding: 0 20px;<br>padding: 0 20px;</span>
+				<h3>clone:</h3>
+				<span class="test" style="-webkit-box-decoration-break:clone;">padding: 0 20px;<br>padding: 0 20px;<br>padding: 0 20px;<br>padding: 0 20px;</span>
+			</div>
+		</div>
+		<!-- demo end -->
+	</div>
+	
+	<script type="text/javascript">
+		var radio = document.querySelectorAll(".control_panel label input");
+		var test = document.querySelector(".test");
+		for(var i=0;i<radio.length;i++) {
+			radio[i].onclick = (function(index) {
+				return function(){
+					if(radio[index].checked){
+						test.style.cssText = "-webkit-align-content:"+radio[index].value+";";
+					}
+				}
+			})(i);
+		}
+	</script>
+
+
+</body>
+</html>

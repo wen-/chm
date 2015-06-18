@@ -1,0 +1,18 @@
+/* ::::: http://ued.ctrip.com/blog/wp-content/webkitcss/css/demo.css ::::: */
+
+html, body, p, dl, dd, form { margin: 0px; }
+body { color: rgb(51, 51, 51); font: 14px/1.42 "Microsoft Yahei","Simsun",arial,tahoma,sans-serif; }
+h1, h2, h3, h4, h5, h6 { margin: 0px; font-size: 14px; }
+fieldset, input { margin: 0px; padding: 0px; }
+select, textarea, input, button { color: inherit; font-size: inherit; font-family: inherit; }
+input { vertical-align: middle; }
+dl, dt, dd { margin: 0px; padding: 0px; }
+select, option, input { margin: 0px; padding: 0px; font: 14px/1 Tahoma,Arial,"Microsoft Yahei",serif; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+.control_panel { float: left; padding-left: 20px; }
+.show_wrap, #show_wrap, .demo { margin-left: 210px; overflow: hidden; }
+.control_panel label { display: block; margin-bottom: 5px; }
+.test { width: 800px; margin: 20px auto 80px; padding: 10px; border: 1px solid rgb(153, 153, 153); background-color: rgb(204, 204, 204); }
+.flex_3 {  }
+.flex_2 {  }
+.flex_w200 { width: 200px; }

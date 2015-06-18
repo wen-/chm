@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<title>-webkit-mask-box-image demo</title>
+		
+	
+<link rel="stylesheet" type="text/css" href="mask-box-image_002.css" media="all">
+</head>
+<body>
+		<h1>-webkit-mask-box-image</h1>
+		<dl id="control_panel">
+			<dt>
+			<input value="url" onclick="demo.className='mask_img_1';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input value="-webkit-gradient" onclick="demo.className='mask_img_2';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input value="stretch" onclick="demo.className='mask_img_3';text.innerHTML=this.value" type="button">
+			</dt>
+		</dl>
+		<div id="show_panel">
+			<div id="demo" class="">
+			</div>
+		</div>
+		<script type="text/javascript">
+			var demo = document.getElementById('demo');
+			// var text = document.getElementsByTagName('span')[0];
+		</script>
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="utf-8">
+	<title>webkit-box-lines demo</title>
+	
+
+<link rel="stylesheet" type="text/css" href="box-lines_1.css" media="all">
+</head>
+<body>
+
+	<h1>-webkit-box-lines</h1>
+	<dl id="control_panel" class="control_panel">
+		<label><input name="align" value="single" checked="checked" type="radio">single</label>
+		<label><input name="align" value="multiple" type="radio">multiple</label>
+	</dl>
+
+	
+	
+	<div class="demo">
+		<!-- demo start -->
+		<div class="test">
+			<div class="flex_w300" style="background-color: rgb(161, 217, 66);">1</div>
+			<div class="flex_w300" style="background-color: rgb(216, 57, 12);">2</div>
+			<div class="flex_w300" style="background-color: rgb(0, 102, 204);">这个应该换行，但现行版本貌似不支持。。</div>
+		</div>
+		<!-- demo end -->
+	</div>
+	
+	<script type="text/javascript">
+		var radio = document.querySelectorAll(".control_panel label input");
+		var test = document.querySelector(".test");
+		for(var i=0;i<radio.length;i++) {
+			radio[i].onclick = (function(index) {
+				return function(){
+					if(radio[index].checked){
+						test.style.cssText = "-webkit-box-lines:"+radio[index].value+";";
+					}
+				}
+			})(i);
+		}
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="utf-8">
+	<title>-webkit-perspective demo</title>
+	  
+
+<link rel="stylesheet" type="text/css" href="perspective_002.css" media="all">
+</head>
+<body>
+<h1>-webkit-perspective</h1>
+<p>-webkit-perspective:<span id="pers_value">100</span><br><input min="0" max="2000" step="50" id="pers_length" value="100" type="range"></p>
+<div id="div1" style="-webkit-perspective:100;">
+  <div id="div2">Ctrip携程2014 - Ctrip UED</div>
+</div>
+<script type="text/javascript">
+	window.onload=function() {
+		var persLen=document.getElementById("pers_length"),
+			persVal=document.getElementById("pers_value"),
+			parentDiv=document.getElementById("div1");
+
+		persLen.onchange=function(){
+			var persNum=this.value?parseInt(this.value):0;
+
+			persVal.innerHTML=persNum;
+			parentDiv.style.webkitPerspective=persNum;
+		}
+	}
+</script>
+
+
+
+</body>
+</html>

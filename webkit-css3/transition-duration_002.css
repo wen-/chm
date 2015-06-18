@@ -1,0 +1,10 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+ul, li { margin: 5px 0px; padding: 0px; list-style: outside none none; font-size: 16px; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+.control_panel { float: left; }
+.runner_list { position: relative; margin-left: 200px; }
+.runner_list li { position: absolute; background-color: rgb(57, 131, 228); color: rgb(255, 255, 255); font-size: 12px; }
+.runner_list .runner { z-index: 2; padding: 4px 10px; }
+#runner1 { top: 0px; left: 0px; transition: transform 2s linear 0s; }
+#runner2 { top: 30px; left: 0px; transition: transform 1.5s linear 0s; }
+#runner3 { top: 60px; left: 0px; transition: transform 1s linear 0s; }

@@ -1,0 +1,7 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+.page .padding p { color: rgb(57, 131, 228); font-size: 16px; }
+.ltr, .rtl { border: 2px solid rgb(57, 131, 228); width: 300px; }
+.ltr { direction: ltr; margin-bottom: 50px; }
+.rtl { direction: rtl; }
+.padding h3 { margin: 0px; }

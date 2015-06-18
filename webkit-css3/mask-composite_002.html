@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<title>-webkit-mask-composite demo</title>
+		
+	
+<link rel="stylesheet" type="text/css" href="mask-composite_002.css" media="all">
+</head>
+<body>
+		<h1>-webkit-mask-composite</h1>
+		<dl id="control_panel">
+			<dt>
+			<input id="repeat" value="clear" onclick="demo.className='mask-composite1';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="repeat-x" value="source-over" onclick="demo.className='mask-composite2';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="repeat-y" value="source-in" onclick="demo.className='mask-composite3';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="no-repeat" value="source-atop" onclick="demo.className='mask-composite4';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="no-repeat" value="destination-over" onclick="demo.className='mask-composite5';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="repeat" value="destination-in" onclick="demo.className='mask-composite6';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="repeat-x" value="destination-out" onclick="demo.className='mask-composite7';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="repeat-y" value="destination-atop" onclick="demo.className='mask-composite8';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="no-repeat" value="xor" onclick="demo.className='mask-composite9';text.innerHTML=this.value" type="button">
+			</dt>
+			<dt>
+			<input id="no-repeat" value="copy" onclick="demo.className='mask-composite10';text.innerHTML=this.value" type="button">
+			</dt>			
+		</dl>
+		<div id="show_wrap">
+			<div id="demo">
+			</div>
+		</div>
+		<script type="text/javascript">
+			var demo = document.getElementById('demo');
+			// var text = document.getElementsByTagName('span')[0];
+		</script>
+	
+</body>
+</html>

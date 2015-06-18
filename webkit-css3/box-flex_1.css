@@ -1,0 +1,5 @@
+.test { width: 800px; height: 300px; margin: 20px auto 80px; padding: 10px; border: 1px solid rgb(153, 153, 153); background-color: rgb(204, 204, 204); }
+.test div { text-align: center; color: rgb(255, 255, 255); }
+.flex_3 { background-color: rgb(161, 217, 66); }
+.flex_2 { line-height: 150px; background-color: rgb(216, 57, 12); }
+.flex_w200 { width: 200px; background-color: rgb(32, 84, 157); }

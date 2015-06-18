@@ -1,0 +1,10 @@
+body { font: 14px/1.5 Tahoma,Arial,"Microsoft Yahei",serif; }
+dl, dt, dd { margin: 0px; padding: 0px; }
+select, option, input { margin: 0px; padding: 0px; font: 14px/1 Tahoma,Arial,"Microsoft Yahei",serif; }
+dt { font-size: 16px; }
+h1 { margin-bottom: 30px; font-size: 28px; width: 400px; border-bottom: 1px solid rgb(204, 204, 204); }
+#control_panel { float: left; width: 500px; }
+#demo { width: 509px; height: 300px; margin: 50px auto; font-size: 20px; font-weight: bold; color: red; background: transparent url('bg.jpg') no-repeat scroll 0% 0%; }
+input[type="button"] { display: inline-block; width: 150px; height: 36px; line-height: 30px; background-color: rgb(255, 187, 1); color: rgb(255, 255, 255); border-width: 1px 1px 5px; border-style: solid; border-color: rgb(255, 187, 1) rgb(255, 187, 1) rgb(255, 156, 1); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; text-align: center; font-size: 16px; font-family: "microsoft yahei","Times New Roman",Simsun; cursor: pointer; outline: 0px none; margin-bottom: 5px; }
+input[type="button"]:hover { border-width: 1px 1px 5px; border-style: solid; border-color: rgb(255, 156, 1) rgb(255, 156, 1) rgb(236, 130, 17); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background-color: rgb(255, 156, 1); }
+span { color: red; font-weight: bold; }

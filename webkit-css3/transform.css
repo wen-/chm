@@ -1,0 +1,63 @@
+/* ::::: http://ued.ctrip.com/blog/wp-content/webkitcss/css/base.css ::::: */
+
+body, p, dl, dd, form { margin: 0px; }
+body { color: rgb(51, 51, 51); font: 14px/1.5 Consolas,arial,"Microsoft Yahei","Simsun",sans-serif; }
+h1, h2, h3, h4, h5, h6 { margin: 0px; font-size: 18px; }
+ul, ol { margin: 0px; padding: 0px; list-style: outside none none; }
+fieldset, input { margin: 0px; padding: 0px; }
+select, textarea, input, button { color: inherit; font-size: inherit; font-family: inherit; }
+input { vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0px; }
+a { color: rgb(37, 115, 231); text-decoration: none; }
+a:hover { text-decoration: none; }
+.ex { color: red; }
+.wrap { position: relative; width: 100%; min-width: 940px; height: 80px; }
+.wrap::after { clear: both; visibility: hidden; height: 0px; content: " "; display: block; }
+.main { margin-left: 340px; margin-right: 40px; padding-bottom: 15px; padding-top: 15px; }
+.side { width: 300px; float: left; box-shadow: 1px 0px 8px 2px rgba(0, 0, 0, 0.15), -1px 0px 0px 0px rgb(255, 255, 255) inset; padding-top: 15px; position: relative; padding-bottom: 9999px; margin-bottom: -9999px; overflow: hidden; }
+.btn_primary { padding: 6px 40px; background: rgb(37, 115, 231) none repeat scroll 0% 0%; color: rgb(255, 255, 255); text-align: center; font-size: 18px; vertical-align: middle; }
+.filter_box { padding: 0px 10px 5px; }
+.ico_browser { display: inline-block; width: 40px; height: 40px; margin-right: 12px; background-image: url('browser-icon.png'); background-repeat: no-repeat; background-size: 40px 160px; position: relative; font-style: normal; vertical-align: middle; }
+.ico_browser small { position: absolute; top: -6px; left: 28px; display: block; min-width: 12px; height: 20px; padding: 0px 4px; border-radius: 20px; font-size: 14px; line-height: 20px; font-weight: bold; background-color: rgb(37, 115, 231); color: rgb(255, 255, 255); text-align: center; }
+.ico_browser_chr { background-position: 0px 0px; }
+.ico_browser_saf { background-position: 0px -40px; }
+.ico_browser_saf_no { background-position: 0px -40px; }
+.ico_browser_and { background-position: 0px -80px; }
+.ico_browser_and_no { background-position: 0px -80px; }
+.ico_browser_ios { background-position: 0px -120px; }
+.ico_browser_ios_no { background-position: 0px -120px; }
+.ico_browser_chr_no small, .ico_browser_saf_no small, .ico_browser_and_no small, .ico_browser_ios_no small { background-color: rgb(255, 153, 19); }
+.head { position: relative; height: 80px; min-width: 940px; background-color: rgb(37, 115, 231); }
+.head .logo { position: absolute; left: 26px; top: 26px; display: block; width: 160px; height: 35px; background: transparent url('log-2.png') no-repeat scroll 0% 0% / 160px 35px; text-indent: -999px; }
+.nav { float: right; position: absolute; left: 260px; top: 37px; }
+.nav ul { overflow: hidden; }
+.nav li { margin-right: 58px; margin-bottom: 15px; float: left; }
+.nav li a { color: rgb(255, 255, 255); font-size: 18px; }
+.filter_box::before { content: " "; position: absolute; left: 0px; top: 55px; width: 100%; height: 5px; }
+.field, .need { position: relative; }
+.field input { height: 30px; width: 255px; padding: 6px 10px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(204, 204, 204); outline: medium none; }
+.field input:hover { border: 1px solid rgb(37, 115, 231); }
+.categorys { overflow-y: auto; }
+.mod .mod_tit { padding-bottom: 10px; border-bottom: 1px solid rgb(37, 115, 231); margin-bottom: 15px; padding-left: 0px; }
+.position { margin-bottom: -5px; font-size: 14px; }
+.prop_intro { position: relative; margin-bottom: 20px; padding-top: 20px; }
+.prop_intro .tit { font-size: 20px; margin-bottom: 10px; padding: 20px 20px 10px 0px; border-style: solid; border-color: rgb(37, 115, 231); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 1px 0px; }
+.prop_intro h1 { display: inline-block; vertical-align: middle; }
+.prop_comp {  }
+.prop_comp p { margin: 10px 0px 10px 20px; }
+.prop_comp .ico_browser + .ico_browser { margin-left: 10px; }
+.prop_detail { font-size: 16px; margin-top: 20px; margin-left: 20px; line-height: 30px; }
+.prop_gramm .mod_con { margin-top: 10px; margin-left: 20px; margin-bottom: 40px; }
+.prop_value .mod_con { padding-top: 20px; padding-left: 20px; margin-bottom: 20px; padding-right: 20px; }
+.prop_value table { border-spacing: 0px; border-collapse: collapse; width: 100%; }
+.prop_value table td { border-style: solid; border-color: rgb(255, 255, 255); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 0px 0px 1px; padding: 4px 10px; background-color: rgb(240, 240, 240); }
+.prop_value table th { background-color: rgb(37, 115, 231); color: rgb(255, 255, 255); padding: 4px; font-weight: normal; text-align: right; width: 120px; border-style: solid; border-color: rgb(255, 255, 255); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 0px 0px 1px; }
+.prop_demo .mod_con { padding: 10px 0px 0px 20px; }
+.prop_demo .mod_con .btns { margin-top: 20px; }
+.prop_demo .mod_con .btns a { margin-right: 30px; }
+.categorys { margin: 20px 0px 0px 20px; }
+.tree_folder::before, .tree_folder::after, .tree_file::before, .tree_file::after { position: absolute; content: ""; pointer-events: none; }
+.tree_folder::before { height: 3px; width: 6px; top: -5px; left: 0px; border-width: 2px 2px 0px; border-style: solid; border-color: rgb(255, 179, 9); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-radius: 4px 4px 0px 0px; }
+.tree_folder::after { width: 8px; height: 0px; right: 0px; top: -1px; border-top: 2px solid rgb(255, 179, 9); }
+.tree_file::before { width: 6.66667px; height: 2px; background-color: rgb(204, 204, 204); border-radius: 4px; position: absolute; top: 5.4px; left: 0.6px; box-shadow: 0px 7px 0px rgb(204, 204, 204); }
+.tree_file::after { width: 9px; height: 2px; background-color: rgb(204, 204, 204); border-radius: 4px; position: absolute; top: 2.28571px; left: 0.6px; box-shadow: 0px 7px 0px rgb(204, 204, 204); }

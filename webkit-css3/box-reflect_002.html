@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="utf-8">
+	<title>webkit-box-reflect demo</title>
+	
+
+<link rel="stylesheet" type="text/css" href="box-reflect_002.css" media="all">
+</head>
+<body>
+
+	<h1>-webkit-box-reflect</h1>
+	<dl id="control_panel" class="control_panel">
+		<h2>倒影方向</h2>
+		<p class="dir">
+			<label><input name="dir" value="above" type="radio">above</label>
+			<label><input name="dir" value="below" type="radio">below</label>
+			<label><input name="dir" value="left" type="radio">left</label>
+			<label><input name="dir" value="right" type="radio">right</label>
+		</p>
+		<h2>遮罩 apple.png</h2>
+		<p class="mask">
+			<label><input name="mask" value="yes" type="radio">yes</label>
+			<label><input name="mask" value="no" checked="checked" type="radio">no</label>
+		</p>
+		<h2>渐变遮罩</h2>
+		<p class="gradient">
+			<label><input name="gradient" value="yes" type="radio">yes</label>
+			<label><input name="gradient" value="no" checked="checked" type="radio">no</label>
+		</p>
+	</dl>
+
+	
+	<div class="demo">
+		<!-- demo start -->
+		<div class="test">
+			<img src="apple.jpg" alt="">
+		</div>
+		<!-- demo end -->
+	</div>
+	
+	<script type="text/javascript">
+			var test = document.querySelector(".test");
+			var dir = document.getElementsByName("dir");
+			var mask = document.getElementsByName("mask");
+			var gradient = document.getElementsByName("gradient");
+
+			var comm = {
+				dir:"",
+				mask:""
+			}
+
+			for(var i=0;i<dir.length;i++) {
+				dir[i].onclick = (function(index) {
+					return function(){
+						if(dir[index].checked){
+							comm.dir = dir[index].value;
+						}
+						changeStyle();
+					}
+				})(i);
+			}
+
+			for(var j=0;j<mask.length;j++) {
+				mask[j].onclick = (function(index) {
+					return function(){
+						if(mask[index].checked){
+							comm.mask = (mask[index].value == "yes") ? " url(../img/apple.png)" : "";
+						}
+						changeStyle();
+					}
+				})(j);
+			}
+
+			for(var n=0;n<gradient.length;n++) {
+				gradient[n].onclick = (function(index) {
+					return function(){
+						if(gradient[index].checked){
+							comm.mask = (gradient[index].value == "yes") ? " -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(.5, transparent), to(white))" : "";
+						}
+						changeStyle();
+					}
+				})(n);
+			}
+
+			function changeStyle() {
+				test.style.cssText = "-webkit-box-reflect:"+comm.dir+" 0px"+comm.mask+";";
+				str = "-webkit-box-reflect:"+comm.dir+" 0px"+comm.mask+";";
+				console.log(str);
+			}
+
+		
+	</script>
+
+
+</body>
+</html>
