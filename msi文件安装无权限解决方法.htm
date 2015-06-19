@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>msi文件安装无权限解决方法</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 10.00.9200.17377"></HEAD>
+<BODY>
+<P>msi文件安装无权限解决方法</P>
+<DIV class=multicntwrap 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(138,134,121); TEXT-ALIGN: left; FONT: 12px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(204,206,208); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV class=multicnt>
+<DIV>
+<H3 class="title pre fs1" 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; FONT-SIZE: 16px; WHITE-SPACE: normal; WORD-BREAK: break-all; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 34px 0px 10px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><SPAN 
+class=tcnt 
+style="FONT-SIZE: 26px; FONT-FAMILY: 'Hiragino Sans GB W3', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, Helvetica, simsun, 宋体; FONT-WEIGHT: bold; LINE-HEIGHT: 38px">解决Win7下安装msi提示无管理员权限的问题</SPAN>&nbsp;&nbsp;<SPAN 
+class="bgc0 fc07 fw0 fs0" 
+style="FONT-SIZE: 12px; FONT-WEIGHT: normal; COLOR: rgb(91,152,53); BACKGROUND-COLOR: rgb(219,238,213)"></SPAN></H3>
+<P class="tdep clearfix nbw-act fc06" 
+style="ZOOM: 1; COLOR: rgb(91,152,53); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 25px; LINE-HEIGHT: 20px; PADDING-RIGHT: 0px"><SPAN 
+class=pleft style="FLOAT: left"><SPAN class=blogsep 
+style="MARGIN: 0px 2px">2011-06-03 13:06:00</SPAN><SPAN class=blogsep 
+style="MARGIN: 0px 2px">|&nbsp;&nbsp;分类：</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A title=计算机技术 class="fc03 m2a" 
+style="CURSOR: pointer; COLOR: rgb(114,143,111); TEXT-DECORATION: none" 
+href="http://wealluck.blog.163.com/blog/#m=0&t=1&c=fks_084065085085083068084084081095082087080068087085094064">计算机技术</A></SPAN><SPAN 
+class="pright fc07 ztag" style="FLOAT: right; COLOR: rgb(91,152,53)"><SPAN 
+class=blogsep style="MARGIN: 0px 2px">|</SPAN><SPAN id=$_spanReport 
+class="fc03 m2a" 
+style="CURSOR: pointer; COLOR: rgb(114,143,111); TEXT-DECORATION: none">举报</SPAN></SPAN><SPAN 
+class="pright fc07 ztag" style="FLOAT: right; COLOR: rgb(91,152,53)"><SPAN 
+class=blogsep style="MARGIN: 0px 2px">|</SPAN><SPAN id=$_fontswitch 
+class="zihao fc03" 
+style="CURSOR: default; POSITION: relative; COLOR: rgb(114,143,111)">字号</SPAN></SPAN><SPAN 
+id=$_blog_subscribe class="pright pnt fc03" 
+style="CURSOR: pointer; FLOAT: right; COLOR: rgb(114,143,111)"><SPAN 
+class="iblock icn0 icn0-919" 
+style="HEIGHT: 20px; BACKGROUND-IMAGE: url(http://172.16.28.1/root/3c2d1ded-9630-4948-a3e7-e3144728edeb/USER_CACHE/E5/images/icon.png?v=20120531); BACKGROUND-POSITION: -360px -380px; ZOOM: 1; DISPLAY: inline-block; LINE-HEIGHT: 20px; WIDTH: 20px">&nbsp;</SPAN><A 
+class=m2a 
+style="CURSOR: pointer; COLOR: rgb(114,143,111); TEXT-DECORATION: none">订阅</A></SPAN></P></DIV></DIV>
+<DIV class=m-shareAndDownLoad 
+style="HEIGHT: 24px; MARGIN-TOP: -8px; LINE-HEIGHT: 24px">
+<DIV class="share-wrap pleft" style="FLOAT: left"><SPAN id=$_shareBtn_lofter2 
+title=分享到LOFTER class="shareitm lofter f-bkicons" 
+style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/bkicons24.png); BACKGROUND-POSITION: 0px -144px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; WIDTH: 24px">&nbsp;</SPAN><SPAN 
+id=$_shareBtn_sinaweibo2 title=分享到新浪微博 class="shareitm sinawb f-bkicons" 
+style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/bkicons24.png); BACKGROUND-POSITION: 0px -192px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; WIDTH: 24px">&nbsp;</SPAN><SPAN 
+id=$_shareBtn_qq2 title=分享到QQ空间 class="shareitm qqzone f-bkicons" 
+style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/bkicons24.png); BACKGROUND-POSITION: 0px -240px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; WIDTH: 24px">&nbsp;</SPAN><SPAN 
+id=$_shareBtn_qqweibo2 title=分享到腾讯微博 class="shareitm qqweibo f-bkicons" 
+style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/bkicons24.png); BACKGROUND-POSITION: 0px -288px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; WIDTH: 24px">&nbsp;</SPAN>
+<DIV id=$_shareBtn_weixin2 title=分享到微信 class="shareitm weixin f-bkicons" 
+style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/bkicons24.png); POSITION: relative; BACKGROUND-POSITION: 0px -336px; ZOOM: 1; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; WIDTH: 24px">
+<DIV class="code2dimlayer fc06" 
+style="CURSOR: default; HEIGHT: 113px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/code2dbg24.png); POSITION: absolute; BACKGROUND-POSITION: 0px 0px; COLOR: rgb(91,152,53); TEXT-ALIGN: left; LEFT: -22px; VISIBILITY: hidden; WIDTH: 242px; BOTTOM: 28px"><IMG 
+style="HEIGHT: 84px; FLOAT: left; MARGIN: 11px -108px 0px 11px; WIDTH: 84px" 
+src="http://blog.163.com/bitMaxImageGen.do?url=http://wealluck.blog.163.com/blog/static/61173383201153160231&amp;w=100&amp;h=100&amp;act=qbbkfxtj_20150420_05">
+<DIV class=tips 
+style="FONT-SIZE: 12px; COLOR: rgb(119,119,119); MARGIN: 30px 0px 0px 108px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px"></P></DIV><A 
+class=close style="COLOR: rgb(138,134,121)"></A></DIV></DIV>
+<DIV id=$_shareBtn_yixin2 title=分享到易信 class="shareitm yixin f-bkicons" 
+style="CURSOR: pointer; HEIGHT: 24px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/bkicons24.png); POSITION: relative; BACKGROUND-POSITION: 0px -384px; ZOOM: 1; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; WIDTH: 24px">
+<DIV class="code2dimlayer fc06" 
+style="CURSOR: default; HEIGHT: 113px; BACKGROUND-IMAGE: url(http://wealluck.blog.163.com/newpage/images/redesign2014/code2dbg24.png); POSITION: absolute; BACKGROUND-POSITION: 0px 0px; COLOR: rgb(91,152,53); TEXT-ALIGN: left; LEFT: -22px; VISIBILITY: hidden; WIDTH: 242px; BOTTOM: 28px"><IMG 
+style="HEIGHT: 84px; FLOAT: left; MARGIN: 11px -108px 0px 11px; WIDTH: 84px" 
+src="http://blog.163.com/bitMaxImageGen.do?url=http://wealluck.blog.163.com/blog/static/61173383201153160231&amp;w=100&amp;h=100&amp;act=qbbkfxtj_20150420_06">
+<DIV class=tips 
+style="FONT-SIZE: 12px; COLOR: rgb(119,119,119); MARGIN: 30px 0px 0px 108px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px"></P></DIV><A 
+class=close style="COLOR: rgb(138,134,121)"></A></DIV></DIV></DIV><A 
+class="pright fc03 noul" 
+style="FLOAT: right; COLOR: rgb(114,143,111); TEXT-DECORATION: none" 
+href="http://www.lofter.com/app?act=qbbkrzydb_20150408_01" 
+target=_blank>下载LOFTER客户端</A></DIV></DIV>
+<DIV 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(138,134,121); TEXT-ALIGN: left; FONT: 12px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(204,206,208); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></DIV>
+<DIV class=nbw-blog-start 
+style="WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(138,134,121); TEXT-ALIGN: left; FONT: 12px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(204,206,208); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></DIV>
+<DIV class="bct fc05 fc11 nbw-blog ztag" 
+style="OVERFLOW: hidden; WORD-WRAP: break-word; WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; COLOR: rgb(138,134,121); PADDING-BOTTOM: 5px; TEXT-ALIGN: left; PADDING-TOP: 5px; FONT: 16px/28px 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53; PADDING-LEFT: 0px; MARGIN: 15px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(204,206,208); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<DIV style="LINE-HEIGHT: 28px">
+<DIV id=sina_keyword_ad_area2 class="articalContent  " 
+style="LINE-HEIGHT: 28px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; LINE-HEIGHT: 28px; PADDING-RIGHT: 0px"><SPAN 
+style="FONT-SIZE: 12px; FONT-FAMILY: 微软雅黑, Verdana; LINE-HEIGHT: normal">Win7下，如果开启了 
+UAC 的话，程序运行时，如果用到 Administrator 管理员权限，通常会自动弹出提示框，或者 在程序的右键菜单中，会有一项 
+“以管理员身份运行”。&nbsp;<BR style="LINE-HEIGHT: 21px"><BR style="LINE-HEIGHT: 21px">而 
+msi 文件，却没有 “以管理员身份运行”这个选项，这就造成，如果msi需要管理员权限，就会报 2869 错误。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; LINE-HEIGHT: 28px; PADDING-RIGHT: 0px">怎么办？<BR 
+style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">要解决这个问题，可以采用 ”曲线救国“ 
+的策略，利用一个 bat 文件包装一下 msi 来执行。咋样，这个方法比较巧妙吧？&nbsp;<BR style="LINE-HEIGHT: 28px"><BR 
+style="LINE-HEIGHT: 28px">新建一个bat文件， 例如: install.bat， 在 bat文件内写入 msiexec /i 
+msi文件的路径&nbsp;<BR style="LINE-HEIGHT: 28px"><BR style="LINE-HEIGHT: 28px">保存后， 在 
+install.bat 文件的右键菜单选择 ”以管理员身份运行“， 就OK了。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; LINE-HEIGHT: 28px; PADDING-RIGHT: 0px">不仅仅是MSI，碰到其他的非可执行文件需要管理员权限的时候，这种方法依然可行的&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; LINE-HEIGHT: 28px; PADDING-RIGHT: 0px"><IMG 
+style="MAX-WIDTH: 100%; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 28px" 
+alt="解决Win7下安装msi提示无管理员权限的问题 - wealluck - 网络营销 SEO优化" 
+src="http://img.vista123.com/NewsUploadFiles/20081201_090329_625_u.gif"></P>
+<H1 
+style="FONT-SIZE: 24px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: rgb(0,0,0); PADDING-BOTTOM: 15px; TEXT-ALIGN: center; PADDING-TOP: 15px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px auto; LINE-HEIGHT: 42px; PADDING-RIGHT: 0px; WIDTH: 560px"><SPAN 
+style="FONT-FAMILY: Arial, Helvetica, sans-serif; LINE-HEIGHT: 42px">msiexec.exe的用法及常用参数</SPAN></H1>
+<DIV style="LINE-HEIGHT: 28px">
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em"><SPAN 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, Helvetica, sans-serif; LINE-HEIGHT: 25px">msiexec.exe用于安装Windows 
+Installer安装包（MSI）这个程序对你系统的正常运行是非常重要的。出现msiexec.exe进程原因：此进程一般在运行Microsoft 
+Update安装更新或安装部分软件的时候出现，占用内存比较大！</SPAN></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">安装选项<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">&lt;/package 
+| /i&gt; &lt;Product.msi&gt;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">安装或配置产品<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/a 
+&lt;Product.msi&gt;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">管理安装 
+- 在网络上安装产品<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/j&lt;u|m&gt; 
+&lt;Product.msi&gt; [/t &lt;Transform List&gt;] [/g &lt;Language ID&gt;]</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">播发产品 
+- m 播发到所有用户，u 播发到当前用户<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">&lt;/uninstall 
+| /x&gt; &lt;Product.msi | ProductCode&gt;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">卸载产品<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/quiet</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">安静模式，无用户交互<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/passive</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">无从参与模式 
+- 只显示进程栏<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/q[n|b|r|f]</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">设置用户界面级别<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">n 
+- 无用户界面<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">b 
+- 基本界面<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">r 
+- 精简界面<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">f 
+- 完整界面（默认值）<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/help<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">帮助信息<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/norestart<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">安装完成后不重新启动<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/promptrestart<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">提示用户重新启动（如果必要）<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/forcerestart<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">安装后总是重新启动计算机</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">日志选项<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/l[i|w|e|a|r|u|c|m|o|p|v|x|+|!|*] 
+&lt;LogFile&gt;<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">i 
+- 状态消息<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">w 
+- 非致命警告<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">e 
+- 全部错误消息<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">a 
+- 操作的启动<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">r 
+- 操作特定记录<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">u 
+- 用户请求<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">c 
+- 初始界面参数<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">m 
+- 内存不足或致命退出信息<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">o 
+- 磁盘空间不足消息<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">p 
+- 终端属性<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">v 
+- 详细输出<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">x 
+- 额外调试信息<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">+ 
+- 扩展到现有日志文件<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">! 
+- 每一行刷新到日志<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">* 
+- 记录所有信息，除了 v 和 x 选项<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/log 
+&lt;LogFile&gt;<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">与 
+/l* &lt;LogFile&gt; 相同</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">更新选项<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/update 
+&lt;Update1.msp&gt;[;Update2.msp]<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">删除产品的更新<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/uninstall 
+&lt;PatchCodeGuid&gt;[;Update2.msp] /package &lt;Product.msi | 
+ProductCode&gt;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em"><BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">修复选项<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">/f[p|e|c|m|s|o|d|a|u|v] 
+&lt;Product.msi | ProductCode&gt;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">修复产品<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">p 
+- 仅当文件丢失时<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">o 
+- 如果文件丢失或安装了更旧的版本（默认值）<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">e 
+- 如果文件丢失或安装了相同或更旧的版本<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">d 
+- 如果文件丢失或安装了不同版本<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">c 
+- 如果文件丢失或较验和与计算的值不匹配<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">a 
+- 强制重新安装所有文件<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">u 
+- 所有必要的用户特定注册表项（默认值）<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">m 
+- 所有必要的计算机特定注册表项（默认值）<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">s 
+- 所有现有的快键方式（默认值）<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">v 
+- 从源运行并缓存本地数据包</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: inherit; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 16px 0px; LINE-HEIGHT: 1.8; PADDING-RIGHT: 0px; TEXT-INDENT: 2em">设置公共属性<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px">[PROPERTY=PropertyValue]</P></DIV></DIV></DIV></DIV></BODY></HTML>
