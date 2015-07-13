@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>css文字图标</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17041">
+</HEAD>
+<BODY>
+<P>css文字图标</P>
+<P><HEADER class=entry_header 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px tahoma, arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; WIDOWS: 1; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></P>
+<H2 class="entry_title MSYH" 
+style="OVERFLOW: hidden; FONT-SIZE: 12px; FONT-FAMILY: 微软雅黑; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+style="FONT-SIZE: 22px; TEXT-DECORATION: none; COLOR: rgb(51,51,51)" 
+href="http://ued.shikee.com/index.php/archives/189">CSS3 @font-face 
+兼容IE/FF/Chrome</A></H2>
+<P class=entry_meta 
+style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+class=postAuthor>liunwcj</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>-<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=postCats><A 
+title="查看 前端开发 中的全部文章" style="TEXT-DECORATION: none; COLOR: rgb(237,64,35)" 
+href="http://ued.shikee.com/index.php/archives/category/developer" 
+rel="category tag">前端开发</A></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>|<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+class=postTime>2013-02-01</SPAN></P></HEADER>
+<DIV class=entry_content 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); FONT: 12px/18px tahoma, arial, 宋体, sans-serif; WIDOWS: 1; MARGIN-TOP: 15px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">&nbsp;</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px"><STRONG>&nbsp;@font-face 
+能够加载服务器端的字体文件，让客户端显示客户端所没有安装的字体。</STRONG></P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px"><STRONG>@font-face的语法规则：</STRONG></P>
+<DIV>
+<DIV style="PADDING-LEFT: 30px"><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">@font-face 
+{</CODE></DIV>
+<DIV style="PADDING-LEFT: 30px"><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">&nbsp;&nbsp;&nbsp;</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">font-family</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">: 
+&lt;YourWebFontName&gt;;</CODE></DIV>
+<DIV style="PADDING-LEFT: 30px"><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">&nbsp;&nbsp;&nbsp;</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">src</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">: 
+&lt;source&gt; [&lt;</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">format</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">&gt;][,&lt;source&gt; 
+[&lt;</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">format</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">&gt;]]*;</CODE></DIV>
+<DIV style="PADDING-LEFT: 30px"><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">&nbsp;&nbsp;&nbsp;</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">[</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">font-weight</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">: 
+&lt;weight&gt;];</CODE></DIV>
+<DIV style="PADDING-LEFT: 30px"><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">&nbsp;&nbsp;&nbsp;</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">[</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">font-style</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">: 
+&lt;style&gt;];</CODE></DIV>
+<DIV style="PADDING-LEFT: 30px"><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">&nbsp;</CODE><CODE 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); FONT: 13px Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace; BORDER-LEFT: rgb(204,204,204) 1px solid; BACKGROUND-COLOR: rgb(244,244,244); border-radius: 3px; font-stretch: normal">}</CODE></DIV>
+<DIV>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px"><STRONG>取值说明:</STRONG></P>
+<UL 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">YourWebFontName:此值指的就是你自定义的字体名称，最好是使用你下载的默认字体，他将被引用到你的Web元素中的font-family。如“font-family:”YourWebFontName”;”</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">source:此值指的是你自定义的字体的存放路径，可以是相对路径也可以是绝路径；</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">format：此值指的是你自定义的字体的格式，主要用来帮助浏览器识别，其值主要有以下几种类型：truetype,opentype,truetype-aat,embedded-opentype,avg等；</LI>
+  <LI 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">weight和style:这两个值大家一定很熟悉，weight定义字体是否为粗体，style主要定义字体样式，如斜体。</LI></UL></DIV></DIV>
+<DIV>
+<DIV>
+<DL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <DT 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></DT></DL>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px"><STRONG>历史说明：</STRONG></P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">【微软的IE 
+5已经是开始支持这个属性，但是只支持微软自有的.eot (Embedded Open Type) 
+格式，而其他浏览器直到现在都没有支持这一字体格式。然而，从Safari 
+3.1开始，网页重构工程师已经可以设置.ttf(TrueType)和.otf(OpenType)两种字体做为自定义字体了。】</P>
+<DL 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <DT 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></DT>
+  <DT 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></DT>
+  <DT 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>浏览器兼容情况：</STRONG></DT></DL></DIV></DIV>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">一、TureTpe(.ttf)格式：</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">.ttf字体是Windows和Mac的最常见的字体，是一种RAW格式，因此他不为网站优化,支持这种字体的浏览器有【IE9+,Firefox3.5+,Chrome4+,Safari3+,Opera10+,iOS 
+Mobile Safari4.2+】；</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">二、OpenType(.otf)格式：</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">.otf字体被认为是一种原始的字体格式，其内置在TureType的基础上，所以也提供了更多的功能,支持这种字体的浏览器有 
+【Firefox3.5+,Chrome4.0+,Safari3.1+,Opera10.0+,iOS Mobile Safari4.2+】；</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">三、Web 
+Open Font Format(.woff)格式：</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">.woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离,支持这种字体的浏览器有【IE9+,Firefox3.5+,Chrome6+,Safari3.6+,Opera11.1+】；</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">四、Embedded 
+Open Type(.eot)格式：</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">.eot字体是IE专用字体，可以从TrueType创建此格式字体,支持这种字体的浏览器有【IE4+】；</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">五、SVG(.svg)格式：</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">.svg字体是基于SVG字体渲染的一种格式,支持这种字体的浏览器有【Chrome4+,Safari3.1+,Opera10.0+,iOS 
+Mobile Safari3.2+】。</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 30px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">这就意味着在@font-face中我们至少需要.woff,.eot两种格式字体，甚至还需要.svg等字体达到更多种浏览版本的支持。</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px"><STRONG>最终写法：</STRONG></P><PRE class="wp-code-highlight prettyprint" style="OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; WIDTH: 705px; BACKGROUND: rgb(244,244,244); BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 12px/16px 'Courier 10 Pitch', Courier, monospace; PADDING-LEFT: 7px; MARGIN: 6px 0px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 7px; border-radius: 3px; font-stretch: normal"><SPAN class=pln style="COLOR: rgb(0,0,0)">   </SPAN><SPAN class=lit style="COLOR: rgb(0,102,102)">@font</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">face </SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">{</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+	font</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">family</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'YourWebFontName'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">;</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+	src</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'YourWebFontName.eot'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">);</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=com style="COLOR: rgb(136,0,0)">/* IE9 Compat Modes */</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+	src</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'YourWebFontName.eot?#iefix'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'embedded-opentype'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">),</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=com style="COLOR: rgb(136,0,0)">/* IE6-IE8 */</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+             url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'YourWebFontName.woff'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'woff'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">),</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=com style="COLOR: rgb(136,0,0)">/* Modern Browsers */</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+             url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'YourWebFontName.ttf'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">  format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'truetype'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">),</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=com style="COLOR: rgb(136,0,0)">/* Safari, Android, iOS */</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+             url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'YourWebFontName.svg#YourWebFontName'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'svg'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">);</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=com style="COLOR: rgb(136,0,0)">/* Legacy iOS */</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+   </SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">}</SPAN></PRE>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px"><STRONG>Demo:</STRONG></P><PRE class="wp-code-highlight prettyprint" style="OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; WIDTH: 705px; BACKGROUND: rgb(244,244,244); BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT: 12px/16px 'Courier 10 Pitch', Courier, monospace; PADDING-LEFT: 7px; MARGIN: 6px 0px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 7px; border-radius: 3px; font-stretch: normal"><SPAN class=lit style="COLOR: rgb(0,102,102)">@font</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">face </SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">{</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+font</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">family</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'abandon-webfont'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">;</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+src</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'fonts/abandon-webfont.eot'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">);</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+src</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'fonts/abandon-webfont.eot?#iefix'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'embedded-opentype'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">),</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'fonts/abandon-webfont.woff'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'woff'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">),</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'fonts/abandon-webfont.ttf'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'truetype'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">),</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+url</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'fonts/abandon-webfont.svg#NeuesBauenDemo'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">)</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> format</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">(</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'svg'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">);</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">}</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">.</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">test</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">,.</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">test2</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">{</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">font</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">size</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=lit style="COLOR: rgb(0,102,102)">5em</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">;</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> color</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=com style="COLOR: rgb(136,0,0)">#C00;}</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">.</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">test</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">,.</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">test2</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">{</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">font</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">family</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">:</SPAN><SPAN class=str style="COLOR: rgb(0,136,0)">'abandon-webfont'</SPAN><SPAN class=pun style="COLOR: rgb(102,102,0)">;}</SPAN></PRE>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">附件：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(102,102,102)" 
+href="http://ued.shikee.com/wp-content/uploads/2013/02/Demo-fonts.rar">Demo-fonts</A></P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">结合一淘：<A 
+title=图形设计生成总结 style="TEXT-DECORATION: none; COLOR: rgb(102,102,102)" 
+href="http://ux.etao.com/posts/572" target=_blank>《图形设计生成总结》</A></P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">视觉、前端都可以大大提高工作效率。</P>
+<P 
+style="FONT-SIZE: 14px; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 6px 0px 0px; LINE-HEIGHT: 2em; PADDING-RIGHT: 0px">工具：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(102,102,102)" 
+href="http://www.52z.com/soft/17857.html" target=_blank>font 
+creator</A>&nbsp;<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(102,102,102)" 
+href="http://www.fontsquirrel.com/fontface/generator" 
+target=_blank>http://www.fontsquirrel.com/fontface/generator</A></P></DIV></BODY></HTML>
