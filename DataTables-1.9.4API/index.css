@@ -1,0 +1,68 @@
+/* ::::: http://legacy.datatables.net/media/css/site.ccss ::::: */
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0px; padding: 0px; }
+table { border-collapse: collapse; border-spacing: 0px; }
+fieldset, img { border: 0px none; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal; }
+ol, ul { list-style: outside none none; }
+caption, th { text-align: left; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+q::before, q::after { content: ""; }
+html, body { margin: 0px; padding: 0px; width: 100%; font: 100%/1.45em "Lucida Grande",Verdana,Arial,Helvetica,sans-serif; color: rgb(17, 17, 17); }
+body.grid_2_3 {  }
+#fw_container { width: 980px; padding-top: 2em; margin: 0px auto; }
+#fw_content {  }
+#fw_footer { padding-top: 4em; font-size: 75%; }
+#fw_header { margin-bottom: 3em; position: relative; }
+#fw_header ul { padding-top: 25px; padding-left: 0px; }
+#fw_header li { float: left; padding: 0px 2px; }
+#fw_header li a { padding: 0px 7px; }
+#fw_header li a:hover { text-decoration: none; border-bottom: 5px solid rgb(130, 154, 198); }
+#fw_header h1 a { color: black; }
+#fw_header h1 a:hover { text-decoration: none; }
+#header_options { position: absolute; top: -32px; right: 160px; width: 495px; }
+#header_options .option { width: 165px; float: left; padding: 12px 0px; text-align: center; }
+#header_options a:hover { text-decoration: none; }
+#header_options .option:hover { background-color: rgb(245, 247, 250); }
+#header_options div.option img { vertical-align: middle; margin-right: 7px; }
+#header_options .option table { margin: 0px auto; }
+#header_options .option table td {  }
+#header_options #options_search { width: 495px; padding: 7px 0px; }
+#header_options #options_download {  }
+#options_search input[type="text"] { height: 20px; width: 350px; }
+#header_advert { position: absolute; top: -32px; right: 0px; width: 160px; height: 198px; overflow: visible; background-color: white; }
+a.adpacks-poweredby { display: none; }
+#adpacks { font-size: 12px; line-height: 1.2em; }
+.css_clear { clear: both; height: 0px; line-height: 0; visibility: hidden; }
+.css_center { text-align: center; }
+.css_small { font-size: 75%; line-height: 1.45em; }
+a { text-decoration: none; color: rgb(78, 108, 163); }
+a:hover { text-decoration: underline; }
+h1 { font-size: 2em; line-height: 1.45em; vertical-align: middle; color: black; }
+h1 img { margin-top: -5px; vertical-align: middle; }
+h2 { font-size: 1.3em; line-height: 1.45em; color: black; }
+p { margin: 1em 0px; }
+#fw_content img { margin: 0px auto; }
+code { font-family: Menlo,Monaco,Consolas,"Courier New",monospace; padding: 2px 4px ! important; white-space: nowrap; font-size: 0.9em; color: rgb(221, 17, 68); background-color: rgb(247, 247, 249); border: 1px solid rgb(225, 225, 232); border-radius: 3px; }
+div.box { border: 1px solid rgb(164, 164, 164); background-color: rgb(248, 248, 248); padding: 1em; margin: 0.5em 0px; }
+.dataTables_wrapper { position: relative; min-height: 302px; clear: both; }
+.dataTables_filter { width: 50%; float: right; text-align: right; }
+.dataTables_info { width: 60%; float: left; padding-top: 10px; }
+table.display { margin: 0px auto; width: 100%; clear: both; }
+table.display thead th { padding: 3px 10px; border-bottom: 1px solid black; font-weight: bold; cursor: pointer; font-size: 0.8em; }
+table.display td { padding: 3px 10px; font-size: 0.8em; }
+table.display td.center { text-align: center; }
+.sorting_asc { background: transparent url('sort_asc.jpg') no-repeat scroll right center; }
+.sorting { background: transparent url('sort_both.jpg') no-repeat scroll right center; }
+tr.odd { background-color: rgb(226, 228, 255); }
+tr.even { background-color: white; }
+.clear { clear: both; }
+th { white-space: nowrap; }
+div.dataTables_filter input { padding: 5px; width: 250px; }
+div.purpose { height: 46px; overflow: hidden; }
+div.purpose p:first-child { margin-top: 0px; }
+div.purpose p:last-child { margin-bottom: 0px; }
+tr.odd { background-color: rgb(246, 246, 255); cursor: pointer; }
+tr.even { background-color: white; cursor: pointer; }
+table.display > tbody > tr { border-left: 1px solid rgb(204, 204, 204); border-right: 1px solid rgb(204, 204, 204); }
+table.display { border-bottom: 1px solid rgb(204, 204, 204); }

@@ -4,7 +4,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSS篇">
 <PARAM NAME="Local" VALUE="CSS篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1277,6 +1276,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery篇">
 <PARAM NAME="Local" VALUE="jQuery篇.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1686,6 +1686,12 @@
 <PARAM NAME="Name" VALUE="jquery元素集合索引获取">
 <PARAM NAME="Local" VALUE="jquery元素集合索引获取.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="DataTables1.9.4API">
+<PARAM NAME="Local" VALUE="DataTables-1.9.4API\index.html">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
