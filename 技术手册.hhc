@@ -1276,7 +1276,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery篇">
 <PARAM NAME="Local" VALUE="jQuery篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2449,6 +2448,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="工具类">
 <PARAM NAME="Local" VALUE="工具类.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2460,6 +2460,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="css代码格式化">
 <PARAM NAME="Local" VALUE="CSS代码格式化-压缩\index.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="安信百度地图">
+<PARAM NAME="Local" VALUE="安信百度地图.html">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
