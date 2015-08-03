@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>js跨域</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.17915"></HEAD>
+<BODY>
+<P>js跨域</P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这里分两类情况：</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">一、基于同一父域的子域之间页面的访问；参见如下3个domain域：taobao.com、jipiao.taobao.com、promotion.taobao.com；它们有相同的父域taobao.com。</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">二、基于不同父域页面之间的访问；参见如下3个domain域：taobao.com、baidu.com、sina.com.cn；它们具有不同的父域。</SPAN></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; TEXT-ALIGN: left; PADDING-TOP: 5px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">解决它们之间跨域的方案有：<BR>方案1：<STRONG><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(255,0,0); LINE-HEIGHT: 25px">服务器Proxy</SPAN></STRONG><BR>域A的页面JS需要访问域B下的链接获取数据，该方案在域A的服务器端建立一个Proxy程序(可能是ASP、servlet等任何服务端程序)，域A的页面JS直接调用本域下的Proxy程序，proxy程序负责将请求发送给域B下的链接并获取到数据，最后再通过Proxy将数据返回给页面JS使用。<BR>经过的访问流程就是： 
+域A下JS --&gt; 域A 下Proxy -- &gt; 域B下的链接<BR>例子：<BR>第一步：<BR>域A:&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="FONT-SIZE: 14px; TEXT-DECORATION: none; COLOR: rgb(0,102,153)" 
+href="http://jipiao.taobao.com/test.htm"><FONT 
+style="FONT-SIZE: 14px; LINE-HEIGHT: 25px" 
+color=#336699>http://Jipiao.taobao.com/test.htm</FONT></A><BR>页面上javascript脚本：<BR></P>
+<DIV class=codetitle 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 640px; BACKGROUND: rgb(242,246,251); WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 14px; FLOAT: right; LINE-HEIGHT: 25px"><A 
+onclick="doCopy('code16750')" id=copybut16750 class=copybut 
+style="CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(51,51,51)" 
+data="16750"><U>复制代码</U></A></SPAN>代码如下:</DIV>
+<DIV id=code16750 class=codebody 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 638px; BACKGROUND: rgb(221,237,251); WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,153,204) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 5px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>&lt;script 
+type="text/javascript"&gt;&lt;!--<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>Var 
+sUrl="http://Jipiao.taobao.com/proxy.do"; //本域下代理地址<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>var callback =<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>{<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>success: function(res) { 
+alert(res.responseText); },<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>failure: function(res) { 
+alert('failure');},<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>argument:{}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>YAHOO.util.Connect.asyncRequest('GET', 
+sUrl, callback, null);<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>// 
+--&gt;&lt;/script&gt;<BR></DIV>
+<P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">第二步：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">完成域A服务端的Proxy程序(这里假定是一个servlet)，伪码如下：</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></P>
+<DIV class=codetitle 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 640px; BACKGROUND: rgb(242,246,251); WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 14px; FLOAT: right; LINE-HEIGHT: 25px"><A 
+onclick="doCopy('code8464')" id=copybut8464 class=copybut 
+style="CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(51,51,51)" 
+data="8464"><U>复制代码</U></A></SPAN>代码如下:</DIV>
+<DIV id=code8464 class=codebody 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 638px; BACKGROUND: rgb(221,237,251); WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,153,204) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 5px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>Public 
+class Proxy extends …….{<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>..doGet(……..){<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>HttpClient client=……;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>GetMethod get=new 
+GetMethod("www.baidu.com/xxxxx.do");//访问域B的链接<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>int statusCode = 
+client.executeMethod(get);<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>if 
+(statusCode != HttpStatus.SC_OK) {<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>byte[] responseBody = 
+get.getResponseBody();<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>String 
+res=new String(responseBody);<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>Httpresponse.getWriter().write(res);//将数据返回给域A<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>}<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV>
+<P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">方案2：通过Script标签:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">在域A页面http://Jipiao.taobao.com/test.htm 
+的head中写一个空的Script标签：<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></P>
+<DIV class=codetitle 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 640px; BACKGROUND: rgb(242,246,251); WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 14px; FLOAT: right; LINE-HEIGHT: 25px"><A 
+onclick="doCopy('code86438')" id=copybut86438 class=copybut 
+style="CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(51,51,51)" 
+data="86438"><U>复制代码</U></A></SPAN>代码如下:</DIV>
+<DIV id=code86438 class=codebody 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 638px; BACKGROUND: rgb(221,237,251); WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,153,204) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 5px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>&lt;html&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;head&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;script id="remoteScript" 
+type="text/javascript" src=""/&gt;&lt;!--<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;head&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;body&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;script type="text/javascript" 
+&gt;<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR>Var 
+remoteScript=document.getElementById("remoteScript");<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>remoteScript.src="www.baidu.com/xxxxx.do";//域B的链接<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>alert(remote.test);//使用域B返回的JSON数据<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>alert(f[0]);<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>// --&gt;&lt;/script&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;/body&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;/html&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV>
+<P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">注意：这种方案要求域B返回的数据必须是合法的JSON格式或者如JS文件的格式；比如域B返回的数据格式如下：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Var 
+remote={test:'hello'};<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Var 
+f=[2,1];<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">方案3：隐藏iframe、共享domain:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">即域A页面http://jipiao.taobao.com/yyyy.htm 
+的页面上写一个隐藏的iframe：<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></P>
+<DIV class=codetitle 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 640px; BACKGROUND: rgb(242,246,251); WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 3px; CLEAR: both; MARGIN: 3px auto 0px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="FONT-SIZE: 14px; FLOAT: right; LINE-HEIGHT: 25px"><A 
+onclick="doCopy('code25959')" id=copybut25959 class=copybut 
+style="CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(51,51,51)" 
+data="25959"><U>复制代码</U></A></SPAN>代码如下:</DIV>
+<DIV id=code25959 class=codebody 
+style="BORDER-TOP: rgb(0,153,204) 1px solid; BORDER-RIGHT: rgb(0,153,204) 1px solid; WIDTH: 638px; BACKGROUND: rgb(221,237,251); WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(0,153,204) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; PADDING-LEFT: 5px; CLEAR: both; MARGIN: 0px auto 3px; BORDER-LEFT: rgb(0,153,204) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 3px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><BR>&lt;html&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;head&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;head&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;body&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;script type="text/javascript" 
+&gt;&lt;!--<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>Document.domain="taobao.com";<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>Var 
+remoteHtml=document.getElementById("remoteHtml");<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>remoteHtml.src="promotion.taobao.com/xxxx.htm";//这里访问域B的链接<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>var 
+document=remoteHtml.ContentDocument; //这里就可以使用document来操作域B中页面xxx.htm的数据了<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>// --&gt;&lt;/script&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;iframe id="remoteHtml" src="" 
+style="diapay:none" style="diapay:none"/&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;/body&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR>&lt;/html&gt;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></DIV>
+<P><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">注意：这里http://promotion.taobao.com/xxxx.htm 
+页面也需要设置document.domain="taobao.com"， 这种方法才能奏效。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">之所以这种iframe的方法不适合不同父域之间的跨域，是因为设置document.domain只能设置为自己的父域，而不是能设置为其他域，例如:jiapiao.taobao.com只能设置document.domain="taobao.com"，而不能是document.domain="baidu.com"；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">这里列举的三种方案各有优缺点：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Proxy方案优点是可以适用用于几乎所有的跨域访问，而且只需要要一个域中进行开发，另一个域可以提供任何类型格式的数据。缺点是这种方案经过了中间Proxy，所以延迟可能稍微大一点，并且会加重本域服务器的负荷，开发工作量也稍微大一点。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Script标签的方案可以说是非常简单的，不用几行代码就搞定了事，不过它对返回的数据格式要求有点严格，只能是Json格式数据,如果是其他格式的数据，那么这种方法就无能为力了。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">隐藏iframe方式也很简单，它可以处理任何返回的数据格式，但它只适用在具有同一个父域下的跨域请求上，并且要求其他域得配合开发，即需要设置document.domain。<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">原帖详见：http://blog.csdn.net/lovingprince/archive/2008/09/20/2954675.aspx<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">--------------------------------------------------------------------------------<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">--------------------------------------------------------------------------------<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">对于JS跨域访问的意思，我想再补充几点：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">跨域访问，简单来说就是 
+A 网站的 javascript 代码试图访问 B 
+网站，包括提交内容和获取内容；比如想从A网站的页面中执行另外一个B网站内某页面中的JS对象、或者想在A网站的页面中用JS去解析B网站内某页面的dom元素等；出现这种跨域访问问题的应用场景一般是iframe中嵌入不同域的页面、或者向不同域发送Ajax请求等；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">由于安全原因，跨域访问是被各大浏览器所默认禁止的；但是浏览器并不禁止在页面中引用其他域的JS文件，并可以自由执行引入的JS文件中的function；这点个人觉得至关重要！<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">是否跨域的判断规则为对三者进行比较：域名、协议、端口；三者中若有一个不相同，则会出现跨域问题；我们经常说的跨域问题一般指域名不同，因为这种场景出现的几率最高而且有一些办法可以解决；比如前面提到的taobao.com域下的二级域名跨域问题；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">对于主域都不一样、或者协议不同（比如https与http）的跨域问题（比如*.taobao.com域想访问*.baidu.com域内的内容），想从Web端来解决是完全不可能的，只能通过服务端Proxy的方案来解决；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">常见的不同域间的页面制约dom元素包括：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">window.location 
+可以设置，但不能读取。其它的 location 属性和方法被禁止访问；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">document.href 
+可以设置，但不能读取。其它的 document 属性和方法被禁止访问；<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 14px/25px Tahoma, Helvetica, Arial, 宋体, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt;iframe&gt; 
+的 src 可以设置，但不能读取；</SPAN></P></BODY></HTML>
