@@ -216,6 +216,12 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="字体英文代码">
+<PARAM NAME="Local" VALUE="字体英文代码.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="BOM基础">
 <PARAM NAME="Local" VALUE="BOM基础.htm">
@@ -1279,6 +1285,12 @@
 <PARAM NAME="Local" VALUE="js跨域.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="select标签值">
+<PARAM NAME="Local" VALUE="select标签值.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery篇">
 <PARAM NAME="Local" VALUE="jQuery篇.html">
@@ -2051,6 +2063,12 @@
 </OBJECT>
 </UL>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="css3圆角导致overflow失效">
+<PARAM NAME="Local" VALUE="css3圆角导致overflow失效.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2696,6 +2714,19 @@
 <PARAM NAME="Name" VALUE="html转jade">
 <PARAM NAME="Local" VALUE="html转jade.htm">
 </OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="grunt">
+<PARAM NAME="Local" VALUE="grunt.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="安装">
+<PARAM NAME="Local" VALUE="安装.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
