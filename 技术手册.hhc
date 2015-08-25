@@ -1294,6 +1294,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQueryÆª">
 <PARAM NAME="Local" VALUE="jQueryÆª.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1711,6 +1712,12 @@
 <PARAM NAME="Local" VALUE="DataTables-1.9.4API\index.html">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="jsÄ£°æÊ¹ÓÃ">
+<PARAM NAME="Local" VALUE="jsÄ£°æÊ¹ÓÃ.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ä¯ÀÀÆ÷²âÊÔ">
 <PARAM NAME="Local" VALUE="ä¯ÀÀÆ÷²âÊÔ.htm">
@@ -1816,7 +1823,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1926,7 +1932,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSS3">
 <PARAM NAME="Local" VALUE="CSS3.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
