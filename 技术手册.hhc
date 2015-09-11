@@ -1300,6 +1300,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery基础">
 <PARAM NAME="Local" VALUE="jQuery基础.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1366,6 +1367,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery控制页面">
 <PARAM NAME="Local" VALUE="jQuery控制页面.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1492,6 +1494,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery制作动画与特效">
 <PARAM NAME="Local" VALUE="jQuery制作动画与特效.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1528,6 +1531,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery的功能函数">
 <PARAM NAME="Local" VALUE="jQuery的功能函数.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1564,6 +1568,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery插件">
 <PARAM NAME="Local" VALUE="jQuery插件.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3446,6 +3451,18 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="coreseek4.1配置详解">
 <PARAM NAME="Local" VALUE="coreseek4.1配置详解.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="SEO">
+<PARAM NAME="Local" VALUE="seo.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="sitemap文件">
+<PARAM NAME="Local" VALUE="sitemap详解.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
