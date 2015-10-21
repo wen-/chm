@@ -1,8 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>nginx配置文件支持中文路径</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 11.00.9600.17690">
-</HEAD>
+<META name=GENERATOR content="MSHTML 10.00.9200.17479"></HEAD>
 <BODY>
 <P>nginx配置文件支持中文路径</P>
 <P>例子：</P>
@@ -12,7 +11,8 @@ utf-8;<BR></STRONG></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 listen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 8088;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server_name&nbsp; 
 localhost;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root&nbsp;&nbsp; 
-"E:\wen\项目常用\JS插件\jQuery-File-Upload-9.9.3";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"E:\wen\项目常用\JS插件\jQuery-File-Upload-9.9.3";<FONT color=#ff0000>//最后的这个<FONT 
+color=#0000ff>“；”</FONT>不能少，否则nginx启动失败<BR></FONT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 location / 
 {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 index&nbsp; index.html index.htm 
