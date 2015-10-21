@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>html5视频全屏</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18057">
+</HEAD>
+<BODY>
+<P>html5视频全屏</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 15px/25px 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 16px; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">今天做一个app时发现一个问题，应用html5中的video标签加载视频，在Android手机上默认播放大小，但是换成iPhone手机上出问题了，默认弹出全屏播放，查找了好多论坛，都没有谈论这个的。然后几经波折终于找到其解决的方法了，在video标签下的source中加入这个-webkit-playsinline=true完美解决全屏问题。&nbsp;</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 15px/25px 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 16px; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">例如：</P>
+<P 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 15px/25px 'Microsoft Yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif; MARGIN: 0px 0px 16px; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt;video 
+width="100%" loop="loop" autoplay&gt;<BR 
+style="BOX-SIZING: border-box">　　&lt;source type="video/mp4" 
+src="http://www.cnblogs.com/feixuelianyi/p/images/xnps.mp4" 
+-webkit-playsinline=true&gt;<BR 
+style="BOX-SIZING: border-box">&lt;/video&gt;</P></BODY></HTML>

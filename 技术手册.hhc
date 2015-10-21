@@ -326,6 +326,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JavaScript基础">
 <PARAM NAME="Local" VALUE="JavaScript基础.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -469,6 +470,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="event对象">
 <PARAM NAME="Local" VALUE="event对象.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="纯js ajax">
+<PARAM NAME="Local" VALUE="js_ajax.htm">
 </OBJECT>
 </UL>
 </UL>
@@ -1830,6 +1837,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1932,6 +1940,12 @@
 <PARAM NAME="Name" VALUE="输入框日期插件不弹出软件键盘">
 <PARAM NAME="Local" VALUE="输入框日期插件不弹出软件键盘.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="html5视频全屏">
+<PARAM NAME="Local" VALUE="html5视频全屏.htm">
 </OBJECT>
 </UL>
 </UL>
