@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>cordova-apk-签名</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18057"></HEAD>
+<BODY>
+<DIV class=article_b>
+<H2>Cordova 3.5 为 Android APK 签名，生成可发布的 APK 程序文件</H2>
+<DIV class=info><SPAN><IMG title=作者 alt=作者 
+src="file:///D:/ff/data/20151104180204/meta_author.png"> 任侠</SPAN> <SPAN><IMG 
+title=发布时间 alt=发布时间 src="file:///D:/ff/data/20151104180204/meta_date.png"> 
+2014-06-07 00:04</SPAN> <SPAN><IMG title=文章分类 alt=文章分类 
+src="file:///D:/ff/data/20151104180204/meta_categories.png"> <A 
+href="http://lzw.me/cate/art/coding/%e7%a7%bb%e5%8a%a8%e5%bc%80%e5%8f%91" 
+rel="category tag">移动开发</A></SPAN> <SPAN><IMG title=文章评论 alt=文章评论 
+src="file:///D:/ff/data/20151104180204/meta_comments.png"> <A 
+href="http://lzw.me/a/cordova-3-5-android-apk-signed.html#respond">抢沙发</A></SPAN> 
+<SPAN><IMG title=阅读次数 alt=阅读次数 
+src="file:///D:/ff/data/20151104180204/meta_views.png"> 19,324 views</SPAN> 
+<SPAN></SPAN></DIV>
+<DIV class=context>
+<DIV id=cad 
+style="OVERFLOW: hidden; FLOAT: right; MARGIN: 10px 0px 2px 4px; DISPLAY: inline">
+<DIV class=cad02>
+<DIV id=BAIDU_DUP_wrapper_u192342_0></DIV></DIV></DIV>
+<DIV id=content-index class=content-index style="FLOAT: left">
+<DIV class=content-index-title>目录</DIV><SPAN class=content-index-toctoggle>[<A 
+id=content-index-togglelink 
+href="javascript:content_index_toggleToc()">隐藏</A>]</SPAN> 
+<UL id=content-index-contents>
+  <LI class=content-index-level-1><A title=（1）调试用APK 
+  href="http://lzw.me/a/cordova-3-5-android-apk-signed.html#%EF%BC%881%EF%BC%89%E8%B0%83%E8%AF%95%E7%94%A8APK"><SPAN>（1）调试用APK</SPAN></A> 
+
+  <LI class=content-index-level-1><A title=（2）发布用APK 
+  href="http://lzw.me/a/cordova-3-5-android-apk-signed.html#%EF%BC%882%EF%BC%89%E5%8F%91%E5%B8%83%E7%94%A8APK"><SPAN>（2）发布用APK</SPAN></A></LI></UL></DIV>
+<DIV style="OVERFLOW: hidden; HEIGHT: 2em; CLEAR: both"></DIV>
+<P>Cordova 编译 Android工程时，调用 Android SDK 的默认 build 过程，是基于Ant的。</P>
+<H2 id=（1）调试用APK>（1）调试用APK</H2>
+<BLOCKQUOTE>
+  <P>cordova build android</P></BLOCKQUOTE>
+<P>默认是debug模式，会使用 debug.keystore 来生成以下两个文件：</P>
+<BLOCKQUOTE>
+  <P>XXXX-debug.apk(signed, unaligned)<BR>XXXX-debug-unaligned.apk(signed, 
+  aligned)</P></BLOCKQUOTE>
+<P>debug.keystore的位置：</P>
+<BLOCKQUOTE>
+  <P>winxp： C:\Documents and Settings\Administrator\.android\debug.keystore</P>
+  <P>win7 &nbsp;： C:\Users\Administrator\.android\</P></BLOCKQUOTE>
+<H2 id=（2）发布用APK>（2）发布用APK</H2>
+<BLOCKQUOTE>
+  <P>cordova build android –release</P></BLOCKQUOTE>
+<P>生成以下三个文件：</P>
+<BLOCKQUOTE>
+  <P>XXXX-release.apk (signed, aligned)<BR>XXXX-release-unaligned.apk (signed, 
+  unaligned)<BR>XXXX-release-unsigned.apk (unsigned, unaligned)</P></BLOCKQUOTE>
+<P>获得第一个（<STRONG>XXXX-release.apk</STRONG>） APK文件需要进行签名。签名方法参考如下：</P>
+<P>1. 使用JDK的keytool工具生成keystore文件</P>
+<BLOCKQUOTE>
+  <P>keytool -genkey -v -keystore lzwme-release-key.keystore -alias lzwme 
+  -keyalg RSA -validity 365</P></BLOCKQUOTE>
+<P>按照提示输入操作。输入参考：</P>
+<P style="PADDING-LEFT: 30px">密码：123456<BR>组织：lzw.me<BR>城市：beijing<BR>姓名：lzw</P>
+<P style="TEXT-ALIGN: center"><A class=lightbox 
+href="http://lzw.me/wp-content/uploads/2014/06/keytool_genkey.jpg"><IMG 
+class="aligncenter size-thumbnail wp-image-1978" alt=keytool_genkey 
+src="file:///D:/ff/data/20151104180204/fill.gif" 
+original="http://lzw.me/wp-content/uploads/2014/06/keytool_genkey.jpg"></A></P>
+<P>2. 复制生成的 keystore 文件到目录 platforms/android/</P>
+<P>3. 新建 platforms/android/ant.properties 文件，内容参考如下：</P>
+<BLOCKQUOTE>
+  <P>key.store=lzwme-release-key.keystore<BR>key.alias=lzwme<BR>key.store.password=123456<BR>key.alias.password=123456</P></BLOCKQUOTE>
+<P>查看platforms/android/build.xml文件可知，Cordova为 build 过程提供了 ant.properties 
+的接口来变更设置，所以新建 platforms/android/ant.properties 文件后重新 build 即可。</P>
+<P>4. 重新 build</P>
+<BLOCKQUOTE>
+  <P>cordova build android –release</P></BLOCKQUOTE>
+<P><STRONG>提示：</STRONG></P>
+<P>platforms 下的代码会被生成工程的时候全部删掉，所以要注意保存ant.properties文件！</P>
+<P>参考：</P>
+<P><A 
+href="http://rensanning.iteye.com/blog/2030516">http://rensanning.iteye.com/blog/2030516</A></P>
+<P>&nbsp;</P>
+<DIV class=article_b>
+<H2><IMG border=0 hspace=0 alt="" src="images/cordova-apk.png" 
+align=baseline></H2></DIV></DIV></DIV></BODY></HTML>

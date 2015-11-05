@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Weinre手机页面调试</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18057"></HEAD>
+<BODY>
+<P>Weinre手机页面调试</P>
+<P><A 
+href="http://people.apache.org/~pmuellr/weinre/docs/latest/Running.html">http://people.apache.org/~pmuellr/weinre/docs/latest/Running.html</A></P>
+<P>node.js安装weinre</P>
+<P>npm install weinre -g</P>
+<P>启动：</P>
+<P>weinre --boundHost 192.168.20.198 --httpPort 8081 --reuseAddr true 
+--readTimeout 1 --deathTimeout 5</P><PRE style="BORDER-TOP-STYLE: solid; OVERFLOW: auto; FONT-VARIANT: normal; BACKGROUND: rgb(255,255,223); WORD-SPACING: 0px; BORDER-BOTTOM-STYLE: solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.4em; FONT-STYLE: normal; PADDING-TOP: 0.4em; BORDER-RIGHT-STYLE: solid; PADDING-LEFT: 1.4em; MARGIN-LEFT: 1.4em; WIDOWS: 1; BORDER-LEFT-STYLE: solid; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 1.4em; MARGIN-RIGHT: 1.4em; TEXT-INDENT: 0px; border-radius: 0.5em; box-shadow: rgb(221, 221, 221) 0.3em 0.3em 0.3em 0em; -webkit-text-stroke-width: 0px">boundHost:    -all-
+httpPort:     8081
+reuseAddr:    true
+readTimeout:  1
+deathTimeout: 5</PRE>
+<P>&nbsp;</P>
+<P><BR>使用：</P>
+<P>在要调试的页面加入：</P>
+<P>&lt;script src="<A 
+href='http://192.168.20.198:8081/target/target-script-min.js"></script'>http://192.168.20.198:8081/target/target-script-min.js"&gt;&lt;/script</A>&gt;</P>
+<P>访问：192.168.20.198:8081&nbsp; 在此界面上进行调试</P></BODY></HTML>
