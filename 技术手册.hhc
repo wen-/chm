@@ -320,6 +320,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JavaScriptÆª">
 <PARAM NAME="Local" VALUE="JavaScriptÆª.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1302,6 +1303,12 @@
 <PARAM NAME="Name" VALUE="js½ûÖ¹ÓÒ¼ü">
 <PARAM NAME="Local" VALUE="js½ûÖ¹ÓÒ¼ü.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="js¸ÅÂÊËã·¨">
+<PARAM NAME="Local" VALUE="js¸ÅÂÊËã·¨.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2767,7 +2774,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="webÓ¦ÓÃ">
 <PARAM NAME="Local" VALUE="webÓ¦ÓÃ.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2997,7 +3003,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="TexturePackerGUI">
 <PARAM NAME="Local" VALUE="TexturePackerGUI.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
