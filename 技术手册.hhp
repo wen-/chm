@@ -94,6 +94,8 @@ config应用配置.htm
 consloe样式化.htm
 cordova.htm
 cordova-apk-签名.htm
+cordova-icon插件使用.htm
+cordova-splash插件使用.htm
 Coreseek 4.1 参考手册Sphinx 2.0.1-beta.html
 coreseek4.1安装测试.htm
 coreseek4.1配置详解.htm
@@ -1689,6 +1691,7 @@ yum源配置.htm
 同一IP多站点配置.html
 同源策略.htm
 图片垂直居中.htm
+退出应用.htm
 网站抢购原理.htm
 文本框.htm
 文档关系链接.htm
