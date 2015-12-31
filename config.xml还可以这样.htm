@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>config.xml还可以这样</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18125"></HEAD>
+<BODY>
+<P><STRONG><FONT color=#ff0000>config.xml</FONT> 还可以这样配置 <FONT 
+color=#ff0000>AndroidManifest.xml</FONT></STRONG></P>
+<P>&nbsp;</P>
+<P><STRONG><FONT color=#0000ff>config.xml</FONT>示例</STRONG>：</P>
+<P>&lt;?xml version='1.0' encoding='utf-8'?&gt;<BR>&lt;widget 
+id="io.cordova.splash" version="0.0.1" xmlns="<A 
+href="http://www.w3.org/ns/widgets">http://www.w3.org/ns/widgets</A>" 
+xmlns:cdv="<A 
+href="http://cordova.apache.org/ns/1.0">http://cordova.apache.org/ns/1.0</A>"&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;name&gt;testSplash&lt;/name&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;description&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A sample 
+Apache Cordova application that responds to the deviceready 
+event.<BR>&nbsp;&nbsp;&nbsp; &lt;/description&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;author email="<A 
+href="mailto:dev@cordova.apache.org">dev@cordova.apache.org</A>" href="<A 
+href="http://cordova.io">http://cordova.io</A>"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Apache Cordova Team<BR>&nbsp;&nbsp;&nbsp; &lt;/author&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;content src="index.html" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;plugin 
+name="cordova-plugin-whitelist" spec="1" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;plugin 
+name="cordova-plugin-splashscreen" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;plugin 
+name="cordova-plugin-dialogs" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;access origin="*" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;allow-intent href="<A 
+href="http://*/">http://*/</A>*" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;allow-intent 
+href="<A href="https://*/">https://*/</A>*" /&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;allow-intent href="tel:*" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;allow-intent 
+href="sms:*" /&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;allow-intent href="mailto:*" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;allow-intent href="geo:*" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;platform 
+name="android"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;allow-intent href="market:*" /&gt;<BR>&nbsp;&nbsp;&lt;preference 
+name="SplashScreen" value="screen"/&gt;<BR>&nbsp;&nbsp;&lt;preference 
+name="SplashScreenDelay" value="5000"/&gt;<BR>&nbsp;&nbsp;&lt;preference 
+name="AndroidLaunchMode" value="standard"/&gt;<FONT 
+color=#ff0000>------------//注意这里，理论上讲<STRONG><FONT 
+color=#0000ff>AndroidManifest.xml</FONT><FONT 
+color=#ff0000>里所有的属性都可以在这里配置</FONT></STRONG></FONT><BR>&nbsp;&nbsp;&nbsp; 
+&lt;/platform&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;platform 
+name="ios"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;allow-intent 
+href="itms:*" /&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;allow-intent href="itms-apps:*" /&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;/platform&gt;<BR>&lt;/widget&gt;</P>
+<P>&nbsp;</P>
+<P><STRONG><FONT color=#0000ff>AndroidManifest.xml</FONT>示例</STRONG></P>
+<P>&lt;?xml version="1.0" encoding="utf-8"?&gt;<BR>&lt;manifest 
+xmlns:android="<A 
+href="http://schemas.android.com/apk/res/android">http://schemas.android.com/apk/res/android</A>"<BR>&nbsp;&nbsp;&nbsp; 
+package="io.cordova.splash"<BR>&nbsp;&nbsp;&nbsp; 
+android:hardwareAccelerated="true"<BR>&nbsp;&nbsp;&nbsp; 
+android:versionCode="18"<BR>&nbsp;&nbsp;&nbsp; android:versionName="0.0.1" 
+&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;uses-sdk<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:minSdkVersion="14"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:targetSdkVersion="22" /&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; 
+&lt;supports-screens<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:anyDensity="true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:largeScreens="true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:normalScreens="true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:resizeable="true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:smallScreens="true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:xlargeScreens="true" /&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; &lt;uses-permission 
+android:name="android.permission.INTERNET" /&gt;<BR>&nbsp;&nbsp;&nbsp; 
+&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;uses-permission 
+android:name="android.permission.ACCESS_WIFI_STATE" /&gt;</P>
+<P>&nbsp;&nbsp;&nbsp; 
+&lt;application<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:hardwareAccelerated="true"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:icon="@drawable/icon"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:label="@string/app_name"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:supportsRtl="true" &gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;activity<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:name="io.cordova.splash.MainActivity"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:label="@string/activity_name"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:launchMode="standard"<FONT 
+color=#ff0000>----------注意这里，上面config.xml文件配置对应这里</FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:theme="@android:style/Theme.Black.NoTitleBar"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+android:windowSoftInputMode="adjustResize" 
+&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;intent-filter android:label="@string/launcher_name" 
+&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;action android:name="android.intent.action.MAIN" /&gt;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;category android:name="android.intent.category.LAUNCHER" 
+/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/intent-filter&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/activity&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;/application&gt;</P>
+<P>&lt;/manifest&gt;</P></BODY></HTML>

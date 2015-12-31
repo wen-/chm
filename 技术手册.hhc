@@ -3046,6 +3046,12 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="config.xml还可以这样">
+<PARAM NAME="Local" VALUE="config.xml还可以这样.htm">
+</OBJECT>
+</UL>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="网站抢购原理">
