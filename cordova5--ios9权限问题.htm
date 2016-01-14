@@ -1,0 +1,659 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>cordova5--ios9权限问题</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18163">
+</HEAD>
+<BODY>
+<P>cordova5--ios9权限问题</P>
+<P>安装针对此问题的插件</P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/21px Consolas, 'Liberation Mono', Menlo, Courier, monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">cordova 
+plugin add cordova-plugin-disable-nsapptransportsecurity</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/21px Consolas, 'Liberation Mono', Menlo, Courier, monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+href="https://github.com/bisrael/cordova-plugin-disable-nsapptransportsecurity">https://github.com/bisrael/cordova-plugin-disable-nsapptransportsecurity</A></SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/21px Consolas, 'Liberation Mono', Menlo, Courier, monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN>&nbsp;</P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/21px Consolas, 'Liberation Mono', Menlo, Courier, monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">或查看下文（翻墙）</SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 13px/21px Consolas, 'Liberation Mono', Menlo, Courier, monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+href="http://moduscreate.com/cordova-5-ios-9-security-policy-changes/">http://moduscreate.com/cordova-5-ios-9-security-policy-changes/</A></SPAN></P>
+<DIV class=centering 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(100,100,100); PADDING-BOTTOM: 0px; DIRECTION: ltr; TEXT-ALIGN: center; PADDING-TOP: 0px; FONT: 500 16px/16px 'Source Sans Pro', Helvetica, sans-serif; PADDING-LEFT: 0px; MARGIN: 0px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<H1 class=blog-title 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Cordova 
+5 &amp; iOS 9 Security Policy Changes</H1>
+<DIV class=author 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+title="Posts by Simon Prickett" class="url fn" 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(78,174,206); transition: all 0.15s ease-in" 
+href="http://moduscreate.com/author/simon-prickett/" rel=author>Simon 
+Prickett</A></DIV><BR style="BOX-SIZING: border-box">
+<DIV class=author-desc 
+style="BOX-SIZING: border-box; FONT-SIZE: 1em; COLOR: rgb(136,136,136); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 0px">October 
+27, 2015</DIV>
+<DIV class=image 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 20px 0px 40px; PADDING-RIGHT: 0px"></DIV></DIV><ARTICLE 
+class=article-single 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(100,100,100); FONT: 500 16px/16px 'Source Sans Pro', Helvetica, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Cordova 
+5 was introduced earlier this year, and we’d recommend using it for any new 
+Cordova app development as it contains improvements to developer workflow, bug 
+fixes, performance enhancements and new functionality.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">However, 
+we notice many developers building new Cordova 5 projects, or upgrading older 
+ones, encounter problems with loading remote content into their apps. These 
+issues manifest in different ways. For example:</P>
+<UL 
+style="LIST-STYLE-TYPE: circle; BOX-SIZING: border-box; FONT-FAMILY: inherit; LIST-STYLE-POSITION: inside; PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.6; PADDING-RIGHT: 0px">
+  <LI 
+  style="BOX-SIZING: border-box; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; PADDING-RIGHT: 0px">Ajax 
+  requests to backend servers for data or images stop working; the server never 
+  receives them. 
+  <LI 
+  style="BOX-SIZING: border-box; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; PADDING-RIGHT: 0px">JavaScript 
+  frameworks such as JQuery may display random failures. 
+  <LI 
+  style="BOX-SIZING: border-box; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; PADDING-RIGHT: 0px">Apps 
+  may be able to load data on Android devices, but not on some iOS devices. 
+  <LI 
+  style="BOX-SIZING: border-box; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; PADDING-RIGHT: 0px">There 
+  may be no errors in your logs that could help you determine the cause of the 
+  issues.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">There 
+are a couple of root causes for these issues:</P>
+<UL 
+style="LIST-STYLE-TYPE: circle; BOX-SIZING: border-box; FONT-FAMILY: inherit; LIST-STYLE-POSITION: inside; PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.6; PADDING-RIGHT: 0px">
+  <LI 
+  style="BOX-SIZING: border-box; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; PADDING-RIGHT: 0px">Cordova 
+  5 adds a new security mechanism, the<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><A 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+  href="http://content-security-policy.com/" target=_blank>Content Security 
+  Policy</A>. This is configured by means of a meta tag in the head section of 
+  your app’s index.html, and is a W3C recommendation that some web browsers also 
+  implement. By default, Cordova generates a Content Security Policy that does 
+  not allow access to external resources, and to disallow some JavaScript 
+  features that could be considered dangerous (but which are needed for some 
+  frameworks to function). When upgrading an older app code base, it’s likely 
+  that the Content Security Policy will not be defined in the older project, 
+  which causes the same issues you would find in a newly created Cordova 5 app. 
+  <LI 
+  style="BOX-SIZING: border-box; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; PADDING-RIGHT: 0px">Apps 
+  built using Xcode 7 will use the iOS 9 SDK. iOS 9 implements a new feature 
+  called<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+  href="https://developer.apple.com/library/ios/technotes/App-Transport-Security-Technote/" 
+  target=_blank>App Transport Security</A><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>(ATS). By default, ATS does not allow 
+  apps built with Xcode 7 to make Ajax connections to servers that are not 
+  secured by SSL. Many developers are coming across this for the first time at 
+  the same time as they upgrade their stack to use Cordova 5, meaning it is 
+  common to incorrectly assume that this is a Cordova version issue.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">The 
+Content Security Policy is a browser policy designed to help prevent Cross Site 
+Scripting attacks on the web. It works by restricting dynamic content to known 
+safe sources. App Transport Security is an iOS 9 feature that aims to ensure 
+network connections meet specified security criteria. Whilst we are going to 
+have to do some work to accommodate both of these, they represent steps in the 
+right direction towards better data security both on the web and in our 
+apps.</P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Reproducing 
+the Issues: Create a Test App</H2>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Let’s 
+look at what happens when we create a new app using Cordova 5, and how we can 
+configure that app to allow us to make the requests we need to make, whilst 
+still blocking those we might consider rogue.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">First, 
+we’ll build a test application using the Cordova 5 boilerplate for iOS and 
+Android.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700; COLOR: rgb(34,34,34)">Note:</STRONG></P>
+<UL 
+style="LIST-STYLE-TYPE: circle; BOX-SIZING: border-box; FONT-FAMILY: inherit; LIST-STYLE-POSITION: inside; PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.6; PADDING-RIGHT: 0px">
+  <LI 
+  style="BOX-SIZING: border-box; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; PADDING-RIGHT: 0px">Plugin<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><A 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+  href="https://github.com/apache/cordova-plugin-whitelist" 
+  target=_blank>cordova-plugin-whitelist</A><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>was automatically added because it is 
+  referenced in the boilerplate<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style="BOX-SIZING: border-box; FONT-FAMILY: Consolas, 'Liberation Mono', Courier, monospace; FONT-WEIGHT: 700; COLOR: rgb(127,10,14)">config.xml</CODE>. 
+  This is a change from older versions of Cordova – the whitelist plugin is now 
+  included by default in all new projects.</LI></UL>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">This 
+gets us a generic Cordova boilerplate application that simply responds to the 
+“deviceReady” event and updates a status message. When run on a device or in an 
+emulator, we expect the output to look like this:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<CENTER style="BOX-SIZING: border-box"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="http://moduscreate.com/wp-content/uploads/2015/10/1_device_ready_ios.png"><IMG 
+class="alignnone size-full wp-image-9148" 
+style="BOX-SIZING: border-box; MAX-WIDTH: 100%; BORDER-TOP: medium none; HEIGHT: auto; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-LEFT: medium none; DISPLAY: inline-block; OUTLINE-COLOR: invert" 
+alt=1_device_ready_ios 
+src="http://moduscreate.com/wp-content/uploads/2015/10/1_device_ready_ios.png" 
+width=640 height=1136></A></CENTER>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Step 
+1: Setting up our App to Make an Ajax Call</H2>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Let’s 
+update the boilerplate app that the Cordova CLI created for us, and change that 
+“Device is Ready” message to something more interesting. Suppose we want to 
+display the current value of the Euro in US Dollars.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Fixer.io 
+provides a really simple JSON API for this, that can be called with a 
+straightforward GET request to:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">http://api.fixer.io/latest?base=USD&amp;symbols=EUR</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">The 
+response from this API looks like:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">To 
+make our app get and display the exchange rate value, we’ll need to modify 
+its<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">index.html</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and<CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">js/index.js</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>files.</P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Modifying<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-FAMILY: Consolas, 'Liberation Mono', Courier, monospace; FONT-WEIGHT: 700; COLOR: rgb(127,10,14)">index.html</CODE></H2>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">As 
+this is a simple demo, we’ll keep the HTML almost the same as Cordova’s 
+boilerplate, but make one small change, swapping</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">for</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">This 
+simply changes the app’s startup message to “Initializing…”, removes the 
+blinking, and allows us to retrieve the DOM elements for each paragraph using 
+their id rather than by class.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">As 
+this HTML document was created by Cordova 5’s CLI, note that it now contains a 
+new meta tag “Content-Security-Policy” that previous versions of Cordova did not 
+include.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Modifying<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-FAMILY: Consolas, 'Liberation Mono', Courier, monospace; FONT-WEIGHT: 700; COLOR: rgb(127,10,14)">js/index.js</CODE></H2>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">To 
+get the Euro value from Fixer.io’s API, let’s add a new function in<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">js/index.js</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and call it<CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">updateEuroValue</CODE>. 
+This replaces the Cordova boilerplate’s<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">onDeviceReady</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>function that we can now remove 
+entirely.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">So 
+our<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">js/index.js</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>file will now look like this:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">We’ve 
+set<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">updateEuroValue</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>to be called as soon as Cordova 
+finishes initializing and raises the “deviceready” event.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">updateEuroValue</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>simply makes an Ajax request to the 
+Fixer.io API, and on receiving a 200 (OK) response it displays the exchange rate 
+in the “results” paragraph and hides the “initializing” paragraph. If our 
+network call results in an error, we’ll display “Error Connecting to API.”</P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Testing 
+the App</H2>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">In 
+the Terminal, we can build and test our app:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">cordova 
+build ios</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Open 
+up the iOS project with Xcode and hit play. In previous versions of Cordova, we 
+would have expected this to work and we’d be looking at the current Dollar value 
+of the Euro.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">However, 
+in Cordova 5 we never see the app get out of the “Initializing…” state; it gets 
+stuck here:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<CENTER style="BOX-SIZING: border-box"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="http://moduscreate.com/wp-content/uploads/2015/10/2_initializing_ios.png"><IMG 
+class="alignnone size-full wp-image-9147" 
+style="BOX-SIZING: border-box; MAX-WIDTH: 100%; BORDER-TOP: medium none; HEIGHT: auto; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-LEFT: medium none; DISPLAY: inline-block; OUTLINE-COLOR: invert" 
+alt=2_initializing_ios 
+src="http://moduscreate.com/wp-content/uploads/2015/10/2_initializing_ios.png" 
+width=640 height=1136></A></CENTER>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Additionally, 
+we don’t see anything useful in the console output in Xcode. Android devices 
+will show similar results.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">What’s 
+happened here is that the default Content Security Policy that the Cordova 
+boilerplate app comes with has blocked our request to Fixer.io. We can’t see 
+this in Xcode because by default the Cordova boilerplate app doesn’t install the 
+console logging plugin.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">However, 
+when we open up Safari’s (or Chrome’s for Android devices) remote debugger , 
+select the iOS Simulator, and hit Cmd-R to reload the page in Cordova’s webview, 
+then we see where our problem is. Safari’s JavaScript console tells us:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">Refused 
+to connect to 'http://api.fixer.io/latest' because it violates the following 
+Content Security Policy directive: "default-src 'self' data: gap: 
+https://ssl.gstatic.com 'unsafe-eval'". Note that 'connect-src' was not 
+explicitly set, so 'default-src' is used as a fallback.</CODE></P><CODE 
+style="BOX-SIZING: border-box; FONT-FAMILY: Consolas, 'Liberation Mono', Courier, monospace; FONT-WEIGHT: 700; COLOR: rgb(127,10,14)"></CODE>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">SecurityError: 
+DOM Exception 18: An attempt was made to break through the security policy of 
+the user agent.</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">The 
+default Content Security Policy that the Cordova boilerplate app generated 
+(in<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">index.html</CODE>) 
+is:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">There 
+are a few things going on here, so let’s break it down into its constituent 
+directives.</P>
+<H3 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">default-src 
+Directive</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">default-src 
+'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Unless 
+specified otherwise by other directives, only allow local (bundled with the 
+application) CSS, JavaScript, images, fonts, etc. Allow data scheme resources to 
+be loaded (e.g. base64 encoded images).</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">'unsafe-eval'</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>Allows JavaScript from any of the above 
+sources to use dynamic JavaScript evaluation: for example using<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">eval()</CODE>.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">gap</CODE>: 
+Cordova specific, the gap scheme enables JS &lt;-&gt; native communications for 
+iOS.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">https://ssl.gstatic.com</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>Cordova specific, required for Android 
+so that TalkBack (accessibility) works properly.</P>
+<H3 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">style-src 
+Directive</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">style-src 
+'self' 'unsafe-inline';</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Only 
+allow stylesheets to be loaded from within the application, allow inline 
+styles.</P>
+<H3 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">media-src 
+Directive</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">media-src 
+*</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Allows 
+audio and video elements to load content from any location.</P>
+<H3 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">connect-src 
+Directive</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">This 
+is not present, and is needed to configure allowable XMLHttpRequest or WebSocket 
+connection destinations. We will need to modify the default Content Security 
+Policy and add this additional directive in order to allow our app to make 
+requests to the Fixer.io API using the HTTP protocol.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">A 
+complete guide to configuring Content Security Policy can be found<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="http://content-security-policy.com/" target=_blank>here</A>.</P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Step 
+2: Modifying the Content Security Policy</H2>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">To 
+allow content loads from<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">http://api.fixer.io</CODE>, 
+we adjust the Content Security Policy meta tag in our app’s index.html to look 
+like this:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">What 
+we’ve done here is added a<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">connect-src 
+directive</CODE>, which specifies which URL’s XMLHttpRequests can access, and 
+we’ve added the URL of our API in there.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">The 
+default Cordova Content Security Policy had nothing specified for this 
+directive, which made Cordova’s webview block our requests. This may seem to be 
+a very restrictive default, but it does make us think about which resources we 
+really want our app to be able to access.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Having 
+rebuilt the app (<CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">cordova 
+build ios</CODE>), we can run it again… this now works for Android devices (and 
+iOS 8 / Xcode 6 users). On iOS 9 / Xcode 7 we now have a different problem.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<CENTER style="BOX-SIZING: border-box"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="http://moduscreate.com/wp-content/uploads/2015/10/3_android_working.png"><IMG 
+class="alignnone size-large wp-image-9145" 
+style="BOX-SIZING: border-box; MAX-WIDTH: 100%; BORDER-TOP: medium none; HEIGHT: auto; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-LEFT: medium none; DISPLAY: inline-block; OUTLINE-COLOR: invert" 
+alt=3_android_working 
+src="http://moduscreate.com/wp-content/uploads/2015/10/3_android_working-197x350.png" 
+width=197 height=350></A><SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="http://moduscreate.com/wp-content/uploads/2015/10/4_ios_error_api.png"><IMG 
+class="alignnone size-large wp-image-9146" 
+style="BOX-SIZING: border-box; MAX-WIDTH: 100%; BORDER-TOP: medium none; HEIGHT: auto; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-LEFT: medium none; DISPLAY: inline-block; OUTLINE-COLOR: invert" 
+alt=4_ios_error_api 
+src="http://moduscreate.com/wp-content/uploads/2015/10/4_ios_error_api-197x350.png" 
+width=197 height=350></A></CENTER>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Android 
+on the left is working fine now, iOS 9 on the right is behaving differently… our 
+Ajax request seems to have been executed, but returned with a non 200 (OK) 
+status message, so our error message has been displayed.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">This 
+time around, the Xcode console shows the following error:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">2015-10-02 
+18:11:27.673 HelloCordova[8575:2086476] App Transport Security has blocked a 
+cleartext HTTP (http://) resource load since it is insecure. Temporary 
+exceptions can be configured via your app's Info.plist file.</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Additionally, 
+Safari’s Remote Debugger also reports:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Failed 
+to load resource: The resource could not be loaded because the Application 
+Transport Security policy requires the use of a secure connection.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">At 
+this point on iOS 9, we have the webview thinking it made an Ajax request that 
+failed, and the operating system stopping that request so that no traffic ever 
+goes over the network.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">This 
+is because by default apps compiled with Xcode 7 for iOS 9 do not allow network 
+resources to be accessed without SSL. Existing apps already in the App Store, or 
+those compiled with Xcode 6 for iOS 8, will not exhibit this behavior.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">In 
+an ideal world where we have control over all of our API dependencies, we would 
+update the API to use SSL and increase the overall security of our application. 
+When this isn’t possible (for example: because we don’t control the API), we can 
+configure an exception to this and partially disable ATS to get our app 
+working.</P>
+<H2 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Step 
+3: Configuring an ATS Exception</H2>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">To 
+disable iOS 9’s Application Transport Security (ATS) , we need to add values to 
+the application’s Info plist. This is found in:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">platforms/ios/&lt;ProjectName&gt;/&lt;ProjectName&gt;-Info.plist</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="https://developer.apple.com/library/ios/technotes/App-Transport-Security-Technote/" 
+target=_blank>Apple’s documentation</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>says we can either completely disable 
+ATS, or specify exception domains.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">To 
+completely disable it, we’d add this to the plist file:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Given 
+we want to be security minded, let’s use the alternative and specify an 
+exception domain that we will have the app trust without using SSL:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">There 
+are other configuration options available here that give us a fine grain of 
+control when specifying the app’s SSL expectations: consult the<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="https://developer.apple.com/library/ios/technotes/App-Transport-Security-Technote/" 
+target=_blank>Apple documentation</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>for a full list.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700; COLOR: rgb(34,34,34)">Note</STRONG>: 
+ATS and the Cordova web view’s Content Security Policy are configured<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700; COLOR: rgb(34,34,34)">independently 
+of each other</STRONG>, and you should make sure that you keep the two 
+configurations consistent with each other to avoid situations where one layer is 
+allowing a connection only to have the other block it.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">We 
+could implement these changes by editing the plist file directly with a text 
+editor, or Xcode. However we generally don’t want to keep the<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">platforms</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>folder under source control in a 
+Cordova project as it is all auto generated code. So, rather than editing the 
+file directly we should look at other options for doing this automatically.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">We 
+can use a<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="https://cordova.apache.org/docs/en/edge/guide_appdev_hooks_index.md.html" 
+target=_blank>Cordova build hook</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>for this, and configure it so that it 
+only runs before Cordova does a build for iOS (as this doesn’t apply to other 
+platforms we might be building our project on).</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Historically, 
+hooks were defined as scripts having set names that lived in the<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">hooks</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>folder of a Cordova project and were 
+run by the Cordova CLI as part of executing the CLI command that the scripts 
+were named for. In more recent Cordova releases, this approach has been 
+deprecated in favor of configuring the associations between the hook and 
+implementing script filename and folder in the project’s<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">config.xml</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>file — we’ll use this approach.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Apple 
+provides the<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man8/PlistBuddy.8.html" 
+target=_blank>PlistBuddy</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>utility (<CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">/usr/libexec/plistbuddy</CODE>) 
+to programatically update plist files. We can use this in a Cordova hook script 
+to adjust the plist file for us prior to each build of the iOS project.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">We’ll 
+then also need to modify the Cordova project’s<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">config.xml</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>to call the hook script before each iOS 
+build:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Then 
+add a suitable script<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">hooks/ios_ats.sh</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>to our project (remembering to set it 
+to have execute permissions too). Create a file containing:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700; COLOR: rgb(34,34,34)">Note</STRONG>: 
+I’m capturing and suppressing the return code of PlistBuddy here because it 
+returns an error code if the key already exists, and we don’t want it to do that 
+and stop the Cordova build process with a false positive type error.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Save 
+this in the Cordova project’s hooks folder and name it<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">ios_ats.sh</CODE>. 
+Remember to make it executable:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">chmod 
+755 hooks/ios_ats.sh</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Now, 
+whenever we run:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">cordova 
+build ios</CODE></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">The<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: 'Source Code Pro', 'Liberation Mono', Courier, monospace; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: 700; COLOR: rgb(85,85,85); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">ios_ats.sh 
+script</CODE><SPAN class=Apple-converted-space>&nbsp;</SPAN>will run prior to 
+the build step, and the plist file will get modified with our custom ATS 
+settings.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Once 
+we have done that, we can run the application in the iOS 9 simulator and… 
+Success!</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<CENTER style="BOX-SIZING: border-box"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="http://moduscreate.com/wp-content/uploads/2015/10/5_ios_working.png"><IMG 
+class="alignnone size-full wp-image-9144" 
+style="BOX-SIZING: border-box; MAX-WIDTH: 100%; BORDER-TOP: medium none; HEIGHT: auto; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; OUTLINE-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-LEFT: medium none; DISPLAY: inline-block; OUTLINE-COLOR: invert" 
+alt=5_ios_working 
+src="http://moduscreate.com/wp-content/uploads/2015/10/5_ios_working.png" 
+width=640 height=1136></A></CENTER>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility"></P>
+<H1 
+style="BOX-SIZING: border-box; FONT-FAMILY: Avenir, Helvetica, sans-serif; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 0px; MARGIN-TOP: 0px; LINE-HEIGHT: 1.4; PADDING-RIGHT: 0px; MARGIN-RIGHT: 0px; text-rendering: optimizeLegibility">Try 
+it Yourself</H1>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">If 
+you want to experiment with these concepts yourself, I’ve made a GitHub repo 
+with all the source code for the working application<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="https://github.com/ModusCreateOrg/CordovaCSPBlogApp" 
+target=_blank>available here</A>.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">After 
+cloning the repo, the app will be in its initial (broken) state. To see it in 
+different states, use the scripts provided to transition the source code to 
+match each step of the tutorial:</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">To 
+transition it to step 2 (fixed Content Security Policy meta tag, works on iOS 
+&lt;9 and Android):<SPAN class=Apple-converted-space>&nbsp;</SPAN><BR 
+style="BOX-SIZING: border-box">To then transition to step 3 (fixed Content 
+Security Policy and patches iOS 9 ATS in the project’s .plist file – works on 
+all devices):<BR style="BOX-SIZING: border-box"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">To 
+go back to step 1 (not working on iOS &lt;9, 9 or Android):<BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Conclusion</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Hopefully 
+this has helped you get a better understanding of both the web view’s Content 
+Security Policy and Apple’s App Transport Security for iOS 9. If you want to get 
+some help with configuring your own Content Security Policy strings, there’s an 
+excellent online tool at<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; BORDER-BOTTOM: rgb(0,0,0) 1px dotted; COLOR: rgb(0,0,0); transition: all 0.15s ease-in" 
+href="http://cspisawesome.com/" target=_blank>cspisawesome.com</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>that will help you get it right.</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: inherit; FONT-WEIGHT: 400; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; DIRECTION: ltr; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1px; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 0px; text-rendering: optimizeLegibility">Here 
+at Modus Create, we’re big fans of the Cordova project and have used it on many 
+customer projects. I am working on other Cordova related blog posts, so please 
+check back periodically for further updates.</P></ARTICLE></BODY></HTML>

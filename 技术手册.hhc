@@ -93,7 +93,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ie滤镜编">
 <PARAM NAME="Local" VALUE="ie滤镜编.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2774,6 +2773,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
 <PARAM NAME="Local" VALUE="web应用.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3016,6 +3016,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="cordova">
 <PARAM NAME="Local" VALUE="cordova.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3049,6 +3050,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="config.xml还可以这样">
 <PARAM NAME="Local" VALUE="config.xml还可以这样.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="cordova5--ios9权限问题">
+<PARAM NAME="Local" VALUE="cordova5--ios9权限问题.htm">
 </OBJECT>
 </UL>
 </UL>
@@ -3151,7 +3158,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3282,12 +3288,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="centos设置服务开机启动">
 <PARAM NAME="Local" VALUE="centos设置服务开机启动.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="Mac OS X中MacPorts安装和使用">
-<PARAM NAME="Local" VALUE="Mac OS X中MacPorts安装和使用.htm">
 </OBJECT>
 </UL>
 <UL>
@@ -3423,6 +3423,25 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="navicat for mysql表结构复制">
 <PARAM NAME="Local" VALUE="navicat for mysql表结构复制.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="MAC系统">
+<PARAM NAME="Local" VALUE="MAC系统.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Mac OS X中MacPorts安装和使用">
+<PARAM NAME="Local" VALUE="Mac OS X中MacPorts安装和使用.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mac安装imagemagick">
+<PARAM NAME="Local" VALUE="mac安装imagemagick.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>

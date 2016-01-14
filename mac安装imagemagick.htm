@@ -1,0 +1,10 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>mac安装imagemagick</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18125"></HEAD>
+<BODY>
+<P>mac安装imagemagick</P>
+<P>在MAC系统中安装了MacPorts后就可以像其它liunx系统的yum一样自动安装软件了。</P>
+<P>先要安装JDK、及执行xcode-select --install</P>
+<P>再执行：</P><PRE style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(204,204,204) 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; FONT: 13px/1.4285 Menlo, Monaco, Consolas, 'Courier New', monospace; PADDING-LEFT: 9px; MARGIN: 0px 0px 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; WIDOWS: 1; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 4px">sudo port install ImageMagick</PRE>
+<P>sudo超级管理员安装需要输入密码</P><PRE id=best-content-2011076561 class="best-text mb-10" style="WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/24px arial, 'courier new', courier, 宋体, monospace, 'Microsoft YaHei'; PADDING-LEFT: 0px; MARGIN: 0px 0px 10px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(243,255,236); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" accuse="aContent">安装好了以后，查看安装配置使用：<BR>$magick&gt; identify -list configure<BR>查看安装时支持的图片文件格式：<BR>$magick&gt; identify -list format</PRE></BODY></HTML>
