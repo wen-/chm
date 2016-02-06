@@ -103,7 +103,11 @@ coreseek4.1安装测试.htm
 coreseek4.1配置详解.htm
 CSP介绍.htm
 CSS3.htm
+css3背景渐变.htm
+css3背景渐变.htm
+css3背景线性渐变.htm
 css3倒影.htm
+css3动画事件.htm
 css3矩阵.htm
 CSS3跑马灯效果.htm
 css3实现多边形.htm
@@ -1658,6 +1662,7 @@ yum源配置.htm
 流程控制语句.htm
 逻辑判断.htm
 判断动画是否进行中.htm
+判断浏览器是否支持某个事件.htm
 判断是不是数组.htm
 配置tacke.htm
 破解使用.htm
@@ -1717,6 +1722,7 @@ yum源配置.htm
 样式编程.htm
 样式编程.htm
 页面可见区域javascript元素详解.html
+移动端事件.htm
 移动浏览器检测.htm
 移动设备.htm
 移动设备窗口大小.htm

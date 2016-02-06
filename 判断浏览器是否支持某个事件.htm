@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>判断浏览器是否支持某个事件</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18163">
+</HEAD>
+<BODY>
+<P>判断浏览器是否支持某个事件</P>
+<P>function is( obj, type ) {<BR>&nbsp;&nbsp;&nbsp; return typeof obj === 
+type;<BR>}</P>
+<P>var isEventSupported = (function() {</P>
+<P>&nbsp; var TAGNAMES = {<BR>&nbsp;&nbsp;&nbsp; 'select': 'input', 'change': 
+'input',<BR>&nbsp;&nbsp;&nbsp; 'submit': 'form', 'reset': 
+'form',<BR>&nbsp;&nbsp;&nbsp; 'error': 'img', 'load': 'img', 'abort': 
+'img'<BR>&nbsp; };</P>
+<P>&nbsp; function isEventSupported( eventName, element ) {</P>
+<P>&nbsp;&nbsp;&nbsp; element = element || 
+document.createElement(TAGNAMES[eventName] || 'div');<BR>&nbsp;&nbsp;&nbsp; 
+eventName = 'on' + eventName;</P>
+<P>&nbsp;&nbsp;&nbsp; var isSupported = eventName in element;</P>
+<P>&nbsp;&nbsp;&nbsp; if ( !isSupported ) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+( !element.setAttribute ) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+element = document.createElement('div');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( element.setAttribute &amp;&amp; 
+element.removeAttribute ) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+element.setAttribute(eventName, 
+'');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isSupported = 
+is(element[eventName], 'function');</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( !is(element[eventName], 
+'undefined') ) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+element[eventName] = undefined;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+element.removeAttribute(eventName);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; element = null;<BR>&nbsp;&nbsp;&nbsp; return 
+isSupported;<BR>&nbsp; }<BR>&nbsp; return isEventSupported;<BR>})();</P>
+<P>&nbsp;</P>
+<P><SPAN 
+style="WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(101,123,131); FONT: 13px/16px 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(246,246,246); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">isEventSupported(</SPAN><SPAN 
+class=hljs-string 
+style="BOX-SIZING: border-box; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(42,161,152); FONT: 13px/16px 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(246,246,246); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">"mousewheel"</SPAN><SPAN 
+style="WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(101,123,131); FONT: 13px/16px 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(246,246,246); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">)</SPAN><SPAN 
+class=hljs-comment 
+style="BOX-SIZING: border-box; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(147,161,161); FONT: 13px/16px 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(246,246,246); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">// 
+Chrome</SPAN><SPAN 
+style="WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(101,123,131); FONT: 13px/16px 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(246,246,246); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"> 
+-&gt; </SPAN><SPAN class=hljs-function 
+style="BOX-SIZING: border-box; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(101,123,131); FONT: 13px/16px 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(246,246,246); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=hljs-keyword 
+style="BOX-SIZING: border-box; COLOR: rgb(133,153,0)">true</SPAN> </SPAN></P>
+<P><SPAN class=hljs-function 
+style="BOX-SIZING: border-box; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(101,123,131); FONT: 13px/16px 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(246,246,246); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=hljs-title 
+style="BOX-SIZING: border-box; COLOR: rgb(38,139,210)">isEventSupported</SPAN><SPAN 
+class=hljs-params style="BOX-SIZING: border-box">(<SPAN class=hljs-string 
+style="BOX-SIZING: border-box; COLOR: rgb(42,161,152)">"mousewheel"</SPAN>)</SPAN><SPAN 
+class=hljs-comment style="BOX-SIZING: border-box; COLOR: rgb(147,161,161)">// 
+Firefox</SPAN> -&gt; <SPAN class=hljs-keyword 
+style="BOX-SIZING: border-box; COLOR: rgb(133,153,0)">false</SPAN> 
+</SPAN></P></BODY></HTML>

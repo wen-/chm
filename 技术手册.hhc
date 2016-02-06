@@ -128,6 +128,18 @@
 <PARAM NAME="Local" VALUE="整站变灰.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="css3背景径向渐变">
+<PARAM NAME="Local" VALUE="css3背景渐变.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="css3背景线性渐变">
+<PARAM NAME="Local" VALUE="css3背景线性渐变.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -320,6 +332,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JavaScript篇">
 <PARAM NAME="Local" VALUE="JavaScript篇.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -672,6 +685,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="事件">
 <PARAM NAME="Local" VALUE="事件.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -709,6 +723,12 @@
 <PARAM NAME="Name" VALUE="绑定自定义事件">
 <PARAM NAME="Local" VALUE="绑定自定义事件.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="判断浏览器是否支持某个事件">
+<PARAM NAME="Local" VALUE="判断浏览器是否支持某个事件.htm">
 </OBJECT>
 </UL>
 </UL>
@@ -1951,6 +1971,12 @@
 <PARAM NAME="Local" VALUE="html5视频全屏.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="移动端事件">
+<PARAM NAME="Local" VALUE="移动端事件.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2096,6 +2122,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="css3圆角导致overflow失效">
 <PARAM NAME="Local" VALUE="css3圆角导致overflow失效.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="css3动画事件">
+<PARAM NAME="Local" VALUE="css3动画事件.htm">
 </OBJECT>
 </UL>
 </UL>
@@ -2773,7 +2805,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
 <PARAM NAME="Local" VALUE="web应用.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3016,7 +3047,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="cordova">
 <PARAM NAME="Local" VALUE="cordova.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
