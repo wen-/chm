@@ -55,7 +55,8 @@ Transitional//EN"　"http://www.w3.org/TR/html4/loose.dtd"&gt;</P>
 <P>三、使用IE专用的条件注释</P>
 <P>&lt;!--其他浏览器 --&gt;</P>
 <P>&lt;link rel="stylesheet" type="text/css" href="css.css" /&gt;</P>
-<P>&lt;!--[if IE 7]&gt;</P>
+<P>&lt;!--[if IE 7]&gt;&nbsp;&nbsp; <FONT 
+color=#ff0000>（巨坑：在IE和7之间必需要有个空格）</FONT>  </P>
 <P>&lt;!-- 适合于IE7 --&gt;</P>
 <P>&lt;link rel="stylesheet" type="text/css" href="ie7.css" /&gt;</P>
 <P>&lt;![endif]--&gt;</P>
@@ -65,7 +66,7 @@ Transitional//EN"　"http://www.w3.org/TR/html4/loose.dtd"&gt;</P>
 <P>&lt;![endif]--&gt;</P>
 <P>貌似要编三套css，我还没用过，先粘过来再说</P>
 <P>IE的if条件Hack</P>
-<P>1. &lt;!--[if !IE]&gt;&lt;!--&gt; 除IE外都可识别 &lt;!--&lt;![endif]--&gt; <BR />&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt;大于IE9或不是IE&lt;!--&lt;![endif]--&gt;<BR>2. &lt;!--[if 
+<P>1. &lt;!--[if !IE]&gt;&lt;!--&gt; 除IE外都可识别 &lt;!--&lt;![endif]--&gt; <BR >&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt;大于IE9或不是IE&lt;!--&lt;![endif]--&gt;<BR>2. &lt;!--[if 
 IE]&gt; 所有的IE可识别 &lt;![endif]--&gt; <BR>3. &lt;!--[if IE 5.0]&gt; 只有IE5.0可以识别 
 &lt;![endif]--&gt; <BR>4. &lt;!--[if IE 5]&gt; 仅IE5.0与IE5.5可以识别 
 &lt;![endif]--&gt; <BR>5. &lt;!--[if gt IE 5.0]&gt; IE5.0以及IE5.0以上版本都可以识别 
@@ -75,7 +76,7 @@ IE 6]&gt; IE6以及IE6以上版本可识别 &lt;![endif]--&gt; <BR>9. &lt;!--[if IE 7]&gt
 &lt;![endif]--&gt; <BR>10. &lt;!--[if lt IE 7]&gt; IE7以及IE7以下版本可识别 
 &lt;![endif]--&gt; <BR>11. &lt;!--[if gte IE 7]&gt; IE7以及IE7以上版本可识别 
 &lt;![endif]--&gt;注:gt = Great Then 大于 <BR>&amp;gt; = &gt; 大于号 <BR>lt = Less 
-Then 小于 <BR>&amp;lt; = &lt; 小于号 <BR>gte = Great Then or Equal 大于或等于 <BR>lte = 
+Then 小于 <BR>&amp;lt; = &lt; 小于号 <BR>gte =  Great Then or Equal 大于或等于 <BR>lte = 
 Less Then or Equal 小于或等于</P>
 <P>四、css filter的办法(据作者称是从国外某经典网站翻译过来的说)</P>
 <P>新建一个css样式如下：</P>
