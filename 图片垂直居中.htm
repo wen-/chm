@@ -4,6 +4,7 @@
 <META name=GENERATOR content="MSHTML 11.00.9600.18015"></HEAD>
 <BODY>
 <P>图片垂直居中</P>
+<P><FONT color=#ff0000>新发现&lt;img&gt;标签后面加个空格就可以了</FONT></P>
 <P 
 style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">/*自动缩放后垂直左右都居中*/<BR>.box_pic{<BR>width:155px;<SPAN 
 class=Apple-converted-space>&nbsp;</SPAN><BR>height:117px;<BR>/*非IE的主流浏览器识别的垂直居中的方法*/<BR>display: 
@@ -13,9 +14,9 @@ table-cell;<BR>vertical-align:middle;<BR>/*设置水平居中*/<BR>text-align:center;<
 img{<BR>/**//*设置图片垂直居中*/<BR>vertical-align:middle;<BR>display:block;<BR>margin:0 
 auto;<BR>}</P>
 <P 
-style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">&lt;div 
-class="box_pic"&gt;&lt;a href="info.asp?id=&lt;%=rs("id")%&gt;"&gt;&lt;img 
-src="&lt;%=sysrootdir&amp;rs("qianbopic")%&gt;" width="155" height="155" 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 
+0px">&lt;div class="box_pic"&gt;&lt;ahref="info.asp?id=&lt;%= 
+rs("id")%&gt;"&gt;&lt;imgsrc="&lt;%=sysrootdir&amp;rs("qianbopic")%&gt;" width="155" height="155" 
 onload="autoimg(this,155,117)"&gt;&lt;/a&gt;&lt;/div&gt;</P>
 <P 
 style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 14px/21px tahoma, helvetica, arial; PADDING-LEFT: 0px; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
