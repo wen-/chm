@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>phpStudy中mySQL允许远程连接</TITLE>
+</HEAD>
+<BODY>
+<P>phpStudy中mySQL允许远程连接</P>
+<P><SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 14px/21px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px">开启远程连接</SPAN>&nbsp;<SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px">：</SPAN></SPAN></P>
+<P><SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 14px/21px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px"></SPAN></SPAN><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">1、先在服务器中通过命令行方式登录<FONT 
+color=#ff0000>mysql： mysql -uroot -p密码</FONT> </SPAN></P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">2、执行<FONT 
+color=#ff0000>use mysql;</FONT> </SPAN></P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">3、执行<FONT 
+color=#ff0000>grant all privileges on *.* to root@'%' identified by '密码'; 
+</FONT></SPAN></P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">4、执行<FONT 
+color=#ff0000>flush privileges;</FONT> </SPAN></P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">注：以上步骤2、3、4中命令后么的分号也是命令的一部分，执行的时候不要漏掉。密码处请设置mysql的密码。</SPAN></P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><FONT 
+color=#ff0000>其实就是在mysql库下的user表新增了一条记录，Host项为%,其余值都是Y,Grant_priv项值为N（这项似乎无所谓）.</FONT></SPAN></P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN>&nbsp;</P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN>&nbsp;</P>
+<P><SPAN 
+style="WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 12px/17px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(70,70,70); TEXT-ALIGN: left; FONT: 14px/21px 'Microsoft YaHei', 'Helvetica Neue', SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(188,211,229); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: bold 14px/21px 'Helvetica neue', 'Luxi sans', 'DejaVu sans', Tahoma, 'Hiragino sans GB', sTHeiti, 'Microsoft YaHei'; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px">关闭远程连接</SPAN>&nbsp;<SPAN 
+style="BOX-SIZING: border-box; WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px">：</SPAN></SPAN></SPAN></P>
+<P>把user表新增的记录%删掉就可以了。<BR class=Apple-interchange-newline></P>
+<P>&nbsp;</P>
+<P><STRONG><FONT color=#ff0000 
+size=5>有的需要把防火墙关掉</FONT></STRONG></P>
+</BODY>
+</HTML>

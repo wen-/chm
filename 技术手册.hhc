@@ -2491,6 +2491,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MySql">
 <PARAM NAME="Local" VALUE="MySql.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2503,6 +2504,12 @@
 <PARAM NAME="Name" VALUE="不要在循环中对数据库进行操作">
 <PARAM NAME="Local" VALUE="不要在循环中对数据库进行操作.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="phpStudy中mySQL允许远程连接">
+<PARAM NAME="Local" VALUE="phpStudy中mySQL允许远程连接.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3137,7 +3144,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="其它">
 <PARAM NAME="Local" VALUE="其它.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
