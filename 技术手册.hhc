@@ -500,6 +500,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="DOM基础">
 <PARAM NAME="Local" VALUE="DOM基础.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -691,6 +692,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="事件">
 <PARAM NAME="Local" VALUE="事件.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1866,6 +1868,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2193,6 +2196,12 @@
 <PARAM NAME="Local" VALUE="html5桌面通知.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="图片隐写术">
+<PARAM NAME="Local" VALUE="图片隐写术.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="手机测试环境">
 <PARAM NAME="Local" VALUE="手机测试环境.htm">
@@ -2491,7 +2500,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MySql">
 <PARAM NAME="Local" VALUE="MySql.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.10240.16724"></HEAD>
+<BODY>
+<P>&lt;!doctype html&gt;<BR>&lt;html&gt;<BR>&lt;head&gt;<BR>&lt;meta 
+charset="utf-8"&gt;<BR>&lt;title&gt;无标题文档&lt;/title&gt;<BR>&lt;/head&gt;<BR>&lt;body&gt;<BR>&lt;h1&gt;选择加密图片&lt;/h1&gt;<BR>&lt;input 
+type="file" id="selectPic" /&gt;<BR>&lt;h1&gt;输入加密信息&lt;/h1&gt;<BR>&lt;textarea 
+id="copyrightTxt" 
+style="height:50px;"&gt;&lt;/textarea&gt;<BR>&lt;br/&gt;&lt;br/&gt;<BR>&lt;button 
+id="encrypt" type="button"&gt;加密&lt;/button&gt;<BR>&lt;button id="encrypt1" 
+type="button"&gt;解密当前加密的图片&lt;/button&gt;<BR>&lt;br/&gt;&lt;br/&gt;<BR>&lt;h1&gt;选择解密图片&lt;/h1&gt;<BR>&lt;input 
+type="file" id="selectPic1" /&gt;<BR>&lt;br/&gt;&lt;br/&gt;<BR>&lt;button 
+id="decode" type="button"&gt;解密&lt;/button&gt;</P>
+<P>&lt;script&gt;<BR>var selectPic = 
+document.getElementById("selectPic");<BR>var copyrightTxt = 
+document.getElementById("copyrightTxt");<BR>var encryptBtn = 
+document.getElementById("encrypt");<BR>var encryptBtn1 = 
+document.getElementById("encrypt1");<BR>var selectPic1 = 
+document.getElementById("selectPic1");<BR>var decode = 
+document.getElementById("decode");<BR>var h,w,oldData,oldData1,newData;</P>
+<P>selectPic.addEventListener("change",function(){<BR>&nbsp;if(selectPic.files.length){<BR>&nbsp;&nbsp;var 
+file = selectPic.files[0];<BR>&nbsp;&nbsp;var reader = new 
+FileReader();<BR>&nbsp;&nbsp;if(/image\/\w+/.test(file.type)) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+reader.onload = function() {<BR>&nbsp;&nbsp;&nbsp;&nbsp;var img = new 
+Image();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+img.onload = function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h = 
+img.height;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = 
+img.width;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var canv = 
+document.createElement("canvas");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canv.id = 
+"oldPic";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canv.setAttribute("height",h);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canv.setAttribute("width",w);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.insertBefore(canv,selectPic.nextSibling);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var 
+ctx = 
+document.getElementById('oldPic').getContext('2d');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx.drawImage(img, 
+0, 0);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+获取指定区域的canvas像素信息<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oldData = ctx.getImageData(0, 
+0, ctx.canvas.width, 
+ctx.canvas.height);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(oldData.data);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;img.src 
+= 
+this.result;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+reader.readAsDataURL(file);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;alert("选择的不是图片文件");<BR>&nbsp;&nbsp;&nbsp;selectPic.value="";<BR>&nbsp;&nbsp;}<BR>&nbsp;}<BR>},false);</P>
+<P>encryptBtn.addEventListener("click",function(){<BR>&nbsp;var pic = 
+selectPic.value;<BR>&nbsp;var txt = 
+copyrightTxt.value;<BR>&nbsp;if((!pic)||(!txt)){<BR>&nbsp;&nbsp;alert("请选择要加密的图片并输入加密信息！");<BR>&nbsp;&nbsp;return 
+false;<BR>&nbsp;}<BR>&nbsp;console.log("aaa");<BR>&nbsp;<BR>&nbsp;var canvTxt = 
+document.createElement("canvas");<BR>&nbsp;canvTxt.id = 
+"canvTxt";<BR>&nbsp;canvTxt.setAttribute("height",h);<BR>&nbsp;canvTxt.setAttribute("width",w);<BR>&nbsp;canvTxt.style.display 
+= 
+"none";<BR>&nbsp;//document.body.appendChild(canvTxt);<BR>&nbsp;document.body.insertBefore(canvTxt,this.nextSibling);<BR>&nbsp;<BR>&nbsp;var 
+ctx1 = 
+document.getElementById('canvTxt').getContext('2d');&nbsp;<BR>&nbsp;ctx1.font = 
+'20px bold';<BR>&nbsp;ctx1.fillStyle = 'red';<BR>&nbsp;ctx1.fillText(txt, 0, 
+20);<BR>&nbsp;newData = ctx1.getImageData(0, 0, ctx1.canvas.width, 
+ctx1.canvas.height).data;<BR>&nbsp;console.log(newData);<BR>&nbsp;<BR>&nbsp;var 
+encrypt_1 = new copyrightPic();<BR>&nbsp;var newPic = 
+encrypt_1.mergeData(oldData,newData);<BR>&nbsp;ctx1.putImageData(newPic, 0, 
+0);<BR>&nbsp;canvTxt.style.display = 
+"block";<BR>&nbsp;alert("加密完成！");<BR>},false);</P>
+<P>encryptBtn1.addEventListener("click",function(){<BR>&nbsp;var ctx = 
+document.getElementById('canvTxt');<BR>&nbsp;if (!ctx){ alert("暂无加密图片！");return 
+false;}<BR>&nbsp;var ctx1 = 
+ctx.getContext('2d');&nbsp;<BR>&nbsp;<BR>&nbsp;if(ctx.style.display == 
+"none"){<BR>&nbsp;&nbsp;alert("暂无加密图片！");<BR>&nbsp;&nbsp;return 
+false;<BR>&nbsp;}<BR>&nbsp;var orginalData = ctx1.getImageData(0, 0, 
+ctx1.canvas.width, ctx1.canvas.height);<BR>&nbsp;var encrypt_1 = new 
+copyrightPic();<BR>&nbsp;var newPic = 
+encrypt_1.processData(orginalData);<BR>&nbsp;ctx1.putImageData(newPic, 0, 
+0);<BR>&nbsp;alert("解密完成！");<BR>},false);</P>
+<P>selectPic1.addEventListener("change",function(){<BR>&nbsp;if(selectPic1.files.length){<BR>&nbsp;&nbsp;var 
+file = selectPic1.files[0];<BR>&nbsp;&nbsp;var reader = new 
+FileReader();<BR>&nbsp;&nbsp;if(/image\/\w+/.test(file.type)) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+reader.onload = function() {<BR>&nbsp;&nbsp;&nbsp;&nbsp;var img = new 
+Image();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+img.onload = function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h = 
+img.height;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w = 
+img.width;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var canv = 
+document.createElement("canvas");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canv.id = 
+"oldPic1";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canv.setAttribute("height",h);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;canv.setAttribute("width",w);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.insertBefore(canv,selectPic1.nextSibling);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var 
+ctx = 
+document.getElementById('oldPic1').getContext('2d');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx.drawImage(img, 
+0, 0);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+获取指定区域的canvas像素信息<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oldData1 = 
+ctx.getImageData(0, 0, ctx.canvas.width, 
+ctx.canvas.height);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(oldData1.data);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;img.src 
+= 
+this.result;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+reader.readAsDataURL(file);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;alert("选择的不是图片文件");<BR>&nbsp;&nbsp;&nbsp;selectPic.value="";<BR>&nbsp;&nbsp;}<BR>&nbsp;}<BR>},false);</P>
+<P>decode.addEventListener("click",function(){<BR>&nbsp;var pic = 
+selectPic1.value;<BR>&nbsp;if((!pic)){<BR>&nbsp;&nbsp;alert("请选择要解密的图片！");<BR>&nbsp;&nbsp;return 
+false;<BR>&nbsp;}<BR>&nbsp;var ctx2 = 
+document.getElementById('oldPic1').getContext('2d');&nbsp;<BR>&nbsp;var 
+encrypt_2 = new copyrightPic();<BR>&nbsp;var newPic = 
+encrypt_2.processData(oldData1);<BR>&nbsp;ctx2.putImageData(newPic, 0, 
+0);<BR>&nbsp;alert("解密完成！");<BR>},false);</P>
+<P><BR>function copyrightPic(obj){<BR>&nbsp;//this.picSrc = 
+obj.pic;<BR>&nbsp;//this.txt = obj.txt;<BR>&nbsp;//this.logoSrc = 
+obj.logo;<BR>&nbsp;<BR>}</P>
+<P>copyrightPic.prototype = {<BR>&nbsp;//加密<BR>&nbsp;mergeData : 
+function(oldData, newData, color){<BR>&nbsp;&nbsp;var color = 
+color||"R";<BR>&nbsp;&nbsp;var oData = oldData.data;<BR>&nbsp;&nbsp;var bit, 
+offset;&nbsp; // offset的作用是找到alpha通道值，这里需要大家自己动动脑筋<BR>&nbsp; 
+<BR>&nbsp;&nbsp;switch(color){<BR>&nbsp;&nbsp;&nbsp;case 
+'R':<BR>&nbsp;&nbsp;&nbsp;&nbsp;bit = 0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;offset = 
+3;<BR>&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;case 
+'G':<BR>&nbsp;&nbsp;&nbsp;&nbsp;bit = 1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;offset = 
+2;<BR>&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;case 
+'B':<BR>&nbsp;&nbsp;&nbsp;&nbsp;bit = 2;<BR>&nbsp;&nbsp;&nbsp;&nbsp;offset = 
+1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;}<BR>&nbsp; 
+<BR>&nbsp;&nbsp;for(var i = 0; i &lt; oData.length; 
+i++){<BR>&nbsp;&nbsp;&nbsp;if(i % 4 == bit){<BR>&nbsp;&nbsp;&nbsp;&nbsp;// 
+只处理目标通道<BR>&nbsp;&nbsp;&nbsp;&nbsp;if(newData[i + offset] === 0 &amp;&amp; 
+(oData[i] % 2 === 1)){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+没有信息的像素，该通道最低位置0，但不要越界<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(oData[i] === 
+255){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oData[i]--;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} 
+else 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oData[i]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;} 
+else if (newData[i + offset] !== 0 &amp;&amp; (oData[i] % 2 === 
+0)){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+有信息的像素，该通道最低位置1，可以想想上面的斑点效果是怎么实现的<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oData[i]++;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//处理透明通道<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(oData[i+offset] 
+=== 0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oData[i + offset] = 
+1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oData[i] = 
+newData[i];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;//ctx.putImageData(orginalData, 
+0, 0);<BR>&nbsp;&nbsp;return 
+oldData;<BR>&nbsp;},<BR>&nbsp;//解密<BR>&nbsp;processData : 
+function(originalData,color){<BR>&nbsp;&nbsp;var color = 
+color||"R";<BR>&nbsp;&nbsp;var data = originalData.data;<BR>&nbsp;&nbsp;var bit, 
+offset;&nbsp; 
+<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;switch(color){<BR>&nbsp;&nbsp;&nbsp;case 
+'R':<BR>&nbsp;&nbsp;&nbsp;&nbsp;bit = 0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;offset = 
+3;<BR>&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;case 
+'G':<BR>&nbsp;&nbsp;&nbsp;&nbsp;bit = 1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;offset = 
+2;<BR>&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;&nbsp;case 
+'B':<BR>&nbsp;&nbsp;&nbsp;&nbsp;bit = 2;<BR>&nbsp;&nbsp;&nbsp;&nbsp;offset = 
+1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;<BR>&nbsp;&nbsp;for(var 
+i = 0; i &lt; data.length; i++){<BR>&nbsp;&nbsp;&nbsp;if(i % 4 == 
+bit){<BR>&nbsp;&nbsp;&nbsp;&nbsp;// 红色分量<BR>&nbsp;&nbsp;&nbsp;&nbsp;if(data[i] % 
+2 == 0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data[i] = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;} else {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data[i] 
+= 255;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data[i+offset] = 
+255;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;} else if(i % 4 == 
+offset){<BR>&nbsp;&nbsp;&nbsp;&nbsp;// 
+alpha通道不做处理<BR>&nbsp;&nbsp;&nbsp;&nbsp;continue;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;// 关闭其他分量，不关闭也不影响答案，甚至更美观 
+o(^▽^)o<BR>&nbsp;&nbsp;&nbsp;&nbsp;//data[i] = 
+0;<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;// 
+将结果绘制到画布<BR>&nbsp;&nbsp;//ctx.putImageData(originalData, 0, 
+0);<BR>&nbsp;&nbsp;return originalData;<BR>&nbsp;}</P>
+<P>}</P>
+<P>&lt;/script&gt;<BR>&lt;/body&gt;<BR>&lt;/html&gt;<BR></P></BODY></HTML>
