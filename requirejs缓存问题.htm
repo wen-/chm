@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>requirejs缓存问题</TITLE>
+</HEAD>
+<BODY>
+<P>requirejs缓存问题</P>
+<P>requireJS加载的脚本在浏览器中存在严重的缓存问题，</P>
+<P>可通过参数urlArgs来解决缓存问题，如：</P>
+<P>require.config({<BR>&nbsp;&nbsp;&nbsp; baseUrl: 
+"/assets/js",<BR>&nbsp;&nbsp;&nbsp; paths: 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+'jquery':'jquery-1.11.3.min',<BR>&nbsp;&nbsp;'layer':'layer_pc/layer',<BR>&nbsp;&nbsp;'jquery_cityLinkage':"jquery_cityLinkage"<BR>&nbsp;&nbsp;&nbsp; 
+},<BR>&nbsp;&nbsp;&nbsp; <FONT color=#ff0000>urlArgs: "bust=" + 
+20160409</FONT></P>
+<P>})</P>
+<P>但存在问题是所有脚本都会更新，不理想。</P>
+<P>可修改源码：</P>
+<P>if("string"===typeof a.urlArgs){var 
+b=a.urlArgs;a.urlArgs=function(a,c){return(-1===c.indexOf("?")?"?":"&amp;")+b}};</P>
+<P>找到以上代码，插入以下代码</P>
+<P><FONT color=#ff0000>if("object"===typeof a.urlArgs){var n = a.urlArgs;var b = 
+n.bust;a.urlArgs = function(a, c) {return !!n[a]?((-1 === c.indexOf("?") ? "?" : 
+"&amp;") + b):"";}};</FONT></P>
+<P>后自定义更新则配置如下（字符串改成了对象）：</P>
+<P>urlArgs: {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"main":true,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"ztx_public":true,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"layer":true,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"jquery_cityLinkage":true,</P>
+<P><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "bust":"bust=" + 
+20160408<BR>},</P>
+</BODY>
+</HTML>
