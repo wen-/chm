@@ -4,6 +4,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSS篇">
 <PARAM NAME="Local" VALUE="CSS篇.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -241,6 +242,12 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="禁止选中文字">
+<PARAM NAME="Local" VALUE="禁止选中文字.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="BOM基础">
 <PARAM NAME="Local" VALUE="BOM基础.htm">
@@ -339,7 +346,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JavaScript篇">
 <PARAM NAME="Local" VALUE="JavaScript篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1345,7 +1351,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery篇">
 <PARAM NAME="Local" VALUE="jQuery篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2330,6 +2335,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="给后台开发人员解决问题积累">
 <PARAM NAME="Local" VALUE="给后台开发人员解决问题积累.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
