@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>浏览器是否支持某个css属性</TITLE>
+</HEAD>
+<BODY>
+<P>浏览器是否支持某个css属性</P>
+<P>CSS.supports 原生API，暂时用途不大，只有少部分现代浏览器支持，如不支持可引入库<A 
+href="https://github.com/termi/CSS.supports">https://github.com/termi/CSS.supports</A></P>
+<P>&nbsp;</P>
+<P>/* CSS.supports polyfill | @version 0.4 | MIT License | 
+github.com/termi/CSS.supports */<BR>;(function(){"use strict";function 
+s(l){function e(){var b=d.length-1;0&gt;b&amp;&amp;(t=!1);return d[b]}function 
+a(c){var l=d.length-1;0&gt;l&amp;&amp;(t=!1);b=d[l]=c}function 
+m(b,c,a,d){r=a||h;var e,f,g;d&amp;&amp;r--;do 
+if(a=l.charAt(++r),d)(g=a&amp;&amp;(e||f),"'"==a||'"'==a)?g=e=!e:e||(f||"("!=a?f&amp;&amp;")"==a&amp;&amp;(f=!1,g=!0):g=f=!0);while(g||a&amp;&amp;!(b&amp;&amp;a==b||c&amp;&amp;a!=c));if(null==b||a==b)return 
+r}l||s.a();var d=[],f,b,t=!0,k,n,q,w,u,g=41,c,h=-1,r,v=l.length;for(d.push(void 
+0);++h&lt;v;){1==c?g=40:2==c||4==c||32==c?g=41:64==c?g=39:16==c?g=103:8==c&amp;&amp;(g=16);f=l.charAt(h);<BR>if(g&amp;1&amp;&amp;"n"==f&amp;&amp;"not"==l.substr(h,3))c=1,h+=2;else 
+if(g&amp;2&amp;&amp;"a"==f&amp;&amp;"and"==l.substr(h,3))c=2,h+=2;else 
+if(g&amp;4&amp;&amp;"o"==f&amp;&amp;"or"==l.substr(h,2))c=4,h++;else 
+if(g&amp;32&amp;&amp;"("==f&amp;&amp;m("("," "))c=32,h=r-1;else 
+if(g&amp;64&amp;&amp;")"==f&amp;&amp;1&lt;d.length)c=64;else 
+if(g&amp;8&amp;&amp;"("==f&amp;&amp;(n=m(null," 
+"))&amp;&amp;m(":",null,n)){c=8;h=r-1;q=l.substr(n,h-n+1).trim();n=0;w=null;continue}else 
+if(g&amp;16&amp;&amp;(n=m(null," 
+"))&amp;&amp;m(")",null,n,!0))c=16,h=r,w=l.substr(n,h-n).trim(),n=0,f=" ";else 
+if(" "==f)continue;else 
+c=0;t&amp;&amp;f&amp;&amp;c&amp;g||s.a();t=!0;if(4==c)!1===b?(a(),<BR>u=!1):!0===b&amp;&amp;(u=!0);else 
+if(!u)if(b=e(),1==c)k=!0;else 
+if(2==c)!1===b?u=!0:a();else{if(!1!==b||c&amp;96)32==c?d.push(void 
+0):64==c?(u=!1,d.pop(),void 
+0!==e()&amp;&amp;(b=!!(b&amp;e())),k=!1):16==c&amp;&amp;(a(p(q,w)),k&amp;&amp;(b=!b),k=!1,w=q=null);a(b)}}(!t||void 
+0===b||1&lt;d.length)&amp;&amp;s.a();return b}var 
+a=window,p,v,q,k=a.CSS;k||(k=a.CSS={});p=k.supports;!p&amp;&amp;a.supportsCSS&amp;&amp;(p=k.supports=a.supportsCSS.bind(a),a.__proto__&amp;&amp;delete 
+a.__proto__.supportsCSS);if("function"===typeof p){var 
+x;a:{try{p.call(k,"(a:a)");x=!(a=p=null);break a}catch(y){}x=<BR>void 
+0}if(x)return}else v="runtimeStyle"in 
+document.documentElement,a=a.document.createElement("_"),q={},p=function(a,e,k,m,d){var 
+f=m+"<A>\\/"+d;if(f</A> in q)return q[f];a=(m+"").replace(this,a);var 
+b=m&amp;&amp;d&amp;&amp;a in 
+e;if(b)if(v)if(/\(|\s/.test(d))try{e[a]=d,b=!!e[a]}catch(p){b=!1}else 
+e.cssText="display:none;height:0;width:0;visibility:hidden;position:absolute;position:fixed;"+m+":"+d,document.documentElement.appendChild(k),b=k.currentStyle[a]==d,document.documentElement.removeChild(k);else 
+e.cssText=m+":"+<BR>d,b=e[a],b=b==d||b&amp;&amp;0&lt;e.length;e.cssText="";return 
+q[f]=b}.bind(/(-)([a-z])/g,function(a,e,k){return 
+k.toUpperCase()},a.style,v?a:null);s.a=function(){throw 
+Error("SYNTAX_ERR");};k.supports=function(a,e){if(!arguments.length)throw 
+Error("WRONG_ARGUMENTS_ERR");return 
+1==arguments.length?s(a):p(a,e)};a=a=null})();</P>
+</BODY>
+</HTML>

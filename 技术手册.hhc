@@ -4,7 +4,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSS篇">
 <PARAM NAME="Local" VALUE="CSS篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1699,7 +1698,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ajax">
 <PARAM NAME="Local" VALUE="ajax.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2162,6 +2160,12 @@
 <PARAM NAME="Local" VALUE="css3动画事件.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="浏览器是否支持某个css属性">
+<PARAM NAME="Local" VALUE="浏览器是否支持某个css属性.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2335,7 +2339,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="给后台开发人员解决问题积累">
 <PARAM NAME="Local" VALUE="给后台开发人员解决问题积累.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2853,6 +2856,12 @@
 </OBJECT>
 </UL>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="NPM自身升级">
+<PARAM NAME="Local" VALUE="NPM自身升级.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
 <PARAM NAME="Local" VALUE="web应用.htm">
@@ -3177,6 +3186,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="其它">
 <PARAM NAME="Local" VALUE="其它.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3236,6 +3246,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="firebug转到iframe调试">
 <PARAM NAME="Local" VALUE="firebug转到iframe调试.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="content-type对照表">
+<PARAM NAME="Local" VALUE="content-type对照表.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
