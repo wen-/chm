@@ -7,7 +7,9 @@
 </HEAD>
 <BODY>
 <P>nodejs</P>
-<P>window下安装nodejs是需要python2.7支持的，所以要另外安装python2.7</P>
+<P>window下安装nodejs是需要python2.7支持的，所以要另外安装python2.7,并将路径加入环境变量中c:\python2.7</P>
+<P><A 
+href="https://www.python.org/downloads/release/python-2711/">https://www.python.org/downloads/release/python-2711/</A></P>
 <P>nodejs版本在0.10及以下可以使用，以上版本则要安装VC++运行库及<SPAN 
 style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">Visual 
 Studio 2013/2015</SPAN></P>
@@ -18,5 +20,181 @@ style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none
 <P><SPAN 
 style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
 href="https://github.com/nodejs/node-gyp#installation">https://github.com/nodejs/node-gyp#installation</A></SPAN></P>
+<P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></SPAN>&nbsp;</P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">You 
+can install with<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">npm</CODE>:</P>
+<DIV class="highlight highlight-source-shell" 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><PRE style="BOX-SIZING: border-box; OVERFLOW: auto; WORD-WRAP: normal; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 16px; PADDING-TOP: 16px; FONT: 13px/1.45 Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-LEFT: 16px; PADDING-RIGHT: 16px; BACKGROUND-COLOR: rgb(247,247,247); border-radius: 3px; font-stretch: normal">$ npm install -g node-gyp</PRE></DIV>
+<P 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">You 
+will also need to install:</P>
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 2em; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <LI style="BOX-SIZING: border-box">On Unix:
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+    <LI style="BOX-SIZING: border-box"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">python</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>(<CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">v2.7</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>recommended,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">v3.x.x</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>is<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+    style="BOX-SIZING: border-box; FONT-WEIGHT: bold"><EM 
+    style="BOX-SIZING: border-box">not</EM></STRONG><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>supported)</LI>
+    <LI style="BOX-SIZING: border-box"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">make</CODE></LI>
+    <LI style="BOX-SIZING: border-box">A proper C/C++ compiler toolchain, 
+    like<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+    style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+    href="https://gcc.gnu.org/">GCC</A></LI></UL></LI>
+  <LI style="BOX-SIZING: border-box">On Mac OS X:
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+    <LI style="BOX-SIZING: border-box"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">python</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>(<CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">v2.7</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>recommended,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">v3.x.x</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>is<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+    style="BOX-SIZING: border-box; FONT-WEIGHT: bold"><EM 
+    style="BOX-SIZING: border-box">not</EM></STRONG><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>supported) (already installed on 
+    Mac OS X)</LI>
+    <LI style="BOX-SIZING: border-box"><A 
+    style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+    href="https://developer.apple.com/xcode/download/">Xcode</A>
+    <UL 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+      <LI style="BOX-SIZING: border-box">You also need to install the<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">Command 
+      Line Tools</CODE><SPAN class=Apple-converted-space>&nbsp;</SPAN>via Xcode. 
+      You can find this under the menu<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">Xcode 
+      -&gt; Preferences -&gt; Downloads</CODE></LI>
+      <LI style="BOX-SIZING: border-box">This step will install<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">gcc</CODE><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>and the related toolchain 
+      containing<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+      style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">make</CODE></LI></UL></LI></UL></LI>
+  <LI style="BOX-SIZING: border-box">On Windows:
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+    <LI style="BOX-SIZING: border-box">Python (<A 
+    style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+    href="https://www.python.org/downloads/release/python-2710/"><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">v2.7.10</CODE></A><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>recommended,<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Consolas, 'Liberation Mono', Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px">v3.x.x</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>is<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+    style="BOX-SIZING: border-box; FONT-WEIGHT: bold"><EM 
+    style="BOX-SIZING: border-box">not</EM></STRONG><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>supported)
+    <UL 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+      <LI style="BOX-SIZING: border-box">Make sure that you have a PYTHON 
+      environment variable, and it is set to drive:\path\to\python.exe not to a 
+      folder</LI></UL></LI>
+    <LI style="BOX-SIZING: border-box">Windows XP/Vista/7:
+    <UL 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+      <LI style="BOX-SIZING: border-box">Microsoft Visual Studio C++ 2013 (<A 
+      style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+      href="https://www.microsoft.com/en-gb/download/details.aspx?id=44914">Express</A><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>version works well)
+      <UL 
+      style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+        <LI style="BOX-SIZING: border-box">If the install fails, try 
+        uninstalling any C++ 2010 x64&amp;x86 Redistributable that you have 
+        installed first</LI>
+        <LI style="BOX-SIZING: border-box">If you get errors that the 64-bit 
+        compilers are not installed you may also need the<SPAN 
+        class=Apple-converted-space>&nbsp;</SPAN><A 
+        style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+        href="https://www.microsoft.com/en-us/download/details.aspx?id=4422">compiler 
+        update for the Windows SDK 7.1</A></LI></UL></LI></UL></LI>
+    <LI style="BOX-SIZING: border-box">Windows 7/8:
+    <UL 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+      <LI style="BOX-SIZING: border-box">Microsoft Visual Studio C++ 2013 for 
+      Windows Desktop (<A 
+      style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+      href="https://www.microsoft.com/en-gb/download/details.aspx?id=44914">Express</A><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>version works well)</LI></UL></LI>
+    <LI style="BOX-SIZING: border-box">Windows 10:
+    <UL 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+      <LI style="BOX-SIZING: border-box">Install the latest version of npm 
+      (3.3.6 at the time of writing)</LI>
+      <LI style="BOX-SIZING: border-box">Install Python 2.7 from<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><A 
+      style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+      href="https://www.python.org/download/releases/2.7/">https://www.python.org/download/releases/2.7/</A><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>and make sure its on the System 
+      Path</LI>
+      <LI style="BOX-SIZING: border-box">Install Visual Studio Community 2015 
+      Edition. (Custom Install, Select Visual C++ during the installation)</LI>
+      <LI style="BOX-SIZING: border-box">Set the environment variable 
+      GYP_MSVS_VERSION=2015</LI>
+      <LI style="BOX-SIZING: border-box">Run the command prompt as 
+      Administrator</LI>
+      <LI style="BOX-SIZING: border-box">$ npm install (--msvs_version=2015) 
+      &lt;-- Shouldn't be needed if you have set GYP_MSVS_VERSION env</LI>
+      <LI style="BOX-SIZING: border-box">If the above steps have not worked or 
+      you are unsure please visit<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><A 
+      style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+      href="http://www.serverpals.com/blog/building-using-node-gyp-with-visual-studio-express-2015-on-windows-10-pro-x64">http://www.serverpals.com/blog/building-using-node-gyp-with-visual-studio-express-2015-on-windows-10-pro-x64</A><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>for a full 
+    walkthrough</LI></UL></LI>
+    <LI style="BOX-SIZING: border-box">All Windows Versions
+    <UL 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+      <LI style="BOX-SIZING: border-box">For 64-bit builds of node and native 
+      modules you will<SPAN class=Apple-converted-space>&nbsp;</SPAN><EM 
+      style="BOX-SIZING: border-box"><STRONG 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: bold">also</STRONG></EM><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>need the<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><A 
+      style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); BACKGROUND-COLOR: transparent" 
+      href="https://www.microsoft.com/en-us/download/details.aspx?id=8279">Windows 
+      7 64-bit SDK</A></LI>
+      <LI style="BOX-SIZING: border-box">You may need to run one of the 
+      following commands if your build complains about WindowsSDKDir not being 
+      set, and you are sure you have already installed the 
+  SDK:</LI></UL></LI></UL></LI></UL>
+<P style="BOX-SIZING: border-box">&nbsp;</P>
+<P style="BOX-SIZING: border-box">windows 10总结</P>
+<P style="BOX-SIZING: border-box">1、npm不必最新版，随nodejs版本即可</P>
+<P style="BOX-SIZING: border-box">2、安装python2.7</P>
+<P style="BOX-SIZING: border-box">3、安装Visual Studio Community 2015 <A 
+href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx</A>&nbsp; 
+点击<SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>"Download Community Free"</SPAN></P>
+<P style="BOX-SIZING: border-box"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">4、新增环境变量 
+<SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(199,37,78); TEXT-ALIGN: left; FONT: 13px/21px Consolas, 'Liberation Mono', Menlo, Courier, monospace; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">GYP_MSVS_VERSION&nbsp; 
+值为 2015</SPAN></SPAN></P>
+<P style="BOX-SIZING: border-box">理论上经过 上面的步骤就可以了。</P>
+<P style="BOX-SIZING: border-box">&nbsp;</P>
+<P 
+style="BOX-SIZING: border-box">另外webstrom版本要高，配合nodejs版本，不然可能会报错，如：console.log()方法找不到等</P></SPAN>
 </BODY>
 </HTML>
