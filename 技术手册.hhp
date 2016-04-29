@@ -137,6 +137,7 @@ embed标签详解.htm
 Emmet API(原zen coding)\index.html
 event.htm
 event对象.htm
+express读写cookie.htm
 firebug表达式报错.htm
 firebug转到iframe调试.htm
 flash层级问题.htm
@@ -1434,6 +1435,8 @@ nginx配置文件支持中文路径.htm
 nginx添加模块.htm
 nginx下ThinkPHP无法写入SESSION.htm
 nodejs.htm
+nodejs5在webstrom中断点失败解决.htm
+nodejs桌面应用.htm
 node安装phonegap.htm
 node多域名.htm
 node命令行操作.htm
@@ -1743,6 +1746,7 @@ yum源配置.htm
 移动页面总结.htm
 异步上传文件.htm
 引入JS乱码.htm
+应用打包asar.htm
 用arguments对象访问函数的参数.htm
 运算符.htm
 运算符及优先级.htm

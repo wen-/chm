@@ -2683,6 +2683,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="node.js">
 <PARAM NAME="Local" VALUE="nodejs.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2860,6 +2861,32 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="NPM自身升级">
 <PARAM NAME="Local" VALUE="NPM自身升级.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nodejs桌面应用（electron）">
+<PARAM NAME="Local" VALUE="nodejs桌面应用.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="应用打包asar">
+<PARAM NAME="Local" VALUE="应用打包asar.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nodejs5在webstrom中断点失败解决">
+<PARAM NAME="Local" VALUE="nodejs5在webstrom中断点失败解决.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="express读写cookie">
+<PARAM NAME="Local" VALUE="express读写cookie.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3186,7 +3213,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="其它">
 <PARAM NAME="Local" VALUE="其它.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

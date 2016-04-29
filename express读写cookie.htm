@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>express读写cookie</TITLE>
+</HEAD>
+<BODY>
+<P>express读写cookie</P>
+<P>req.cookies.xxx&nbsp;&nbsp;&nbsp; 读；cookies 是一个对象</P>
+<P>res.cookie(name,val,opt)&nbsp;&nbsp;&nbsp; 写；opt为可选项（：</P>
+<H3 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">path</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 16px/28px 宋体; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 28px; -webkit-text-stroke-width: 0px">一个路径，在这个路径下面的页面才可以访问该Cookie，一般设为“/”，以表示同一个站点的所有页面都可以访问这个Cookie。</SPAN></P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(119,119,119); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 15px; BORDER-LEFT: rgb(221,221,221) 4px solid; WIDOWS: 1; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">cookie 
+  path</P></BLOCKQUOTE>
+<H3 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+aria-hidden=true id=user-content-expires class=anchor 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); MARGIN-LEFT: -18px; DISPLAY: inline-block; LINE-HEIGHT: 1.2; PADDING-RIGHT: 2px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/jshttp/cookie#expires"><SVG aria-hidden=true 
+class="octicon octicon-link" width="16" viewBox="0 0 16 16" version="1.1" 
+height="16"><PATH 
+d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></PATH></SVG></A>expires</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 16px/28px 宋体; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 28px; -webkit-text-stroke-width: 0px">过期日期，一个GMT格式的时间，当过了这个日期之后，浏览器就会将这个Cookie删除掉，当不设置这个的时候，Cookie在浏览器关闭后消失。</SPAN></P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(119,119,119); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 15px; BORDER-LEFT: rgb(221,221,221) 4px solid; WIDOWS: 1; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">absolute 
+  expiration date for the cookie (Date object)</P></BLOCKQUOTE>
+<H3 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+aria-hidden=true id=user-content-maxage class=anchor 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); MARGIN-LEFT: -18px; DISPLAY: inline-block; LINE-HEIGHT: 1.2; PADDING-RIGHT: 2px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/jshttp/cookie#maxage"><SVG aria-hidden=true 
+class="octicon octicon-link" width="16" viewBox="0 0 16 16" version="1.1" 
+height="16"><PATH 
+d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></PATH></SVG></A>maxAge</H3>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(119,119,119); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 15px; BORDER-LEFT: rgb(221,221,221) 4px solid; WIDOWS: 1; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">relative 
+  max age of the cookie from when the client receives it 
+(seconds)</P></BLOCKQUOTE>
+<H3 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+aria-hidden=true id=user-content-domain class=anchor 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); MARGIN-LEFT: -18px; DISPLAY: inline-block; LINE-HEIGHT: 1.2; PADDING-RIGHT: 2px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/jshttp/cookie#domain"><SVG aria-hidden=true 
+class="octicon octicon-link" width="16" viewBox="0 0 16 16" version="1.1" 
+height="16"><PATH 
+d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></PATH></SVG></A>domain</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 16px/28px 宋体; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 28px; -webkit-text-stroke-width: 0px">子域，指定在该子域下才可以访问Cookie，例如要让Cookie在a.test.com下可以访问，但在b.test.com下不能访问，则可将domain设置成a.test.com。</SPAN></P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(119,119,119); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 15px; BORDER-LEFT: rgb(221,221,221) 4px solid; WIDOWS: 1; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">domain 
+  for the cookie</P></BLOCKQUOTE>
+<H3 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+aria-hidden=true id=user-content-secure class=anchor 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); MARGIN-LEFT: -18px; DISPLAY: inline-block; LINE-HEIGHT: 1.2; PADDING-RIGHT: 2px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/jshttp/cookie#secure"><SVG aria-hidden=true 
+class="octicon octicon-link" width="16" viewBox="0 0 16 16" version="1.1" 
+height="16"><PATH 
+d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></PATH></SVG></A>secure</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 16px/28px 宋体; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 28px; -webkit-text-stroke-width: 0px">安全性，指定Cookie是否只能通过https协议访问，一般的Cookie使用HTTP协议既可访问，如果设置了Secure（没有值），则只有当使用https协议连接时cookie才可以被页面访问。</SPAN></P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(119,119,119); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 15px; BORDER-LEFT: rgb(221,221,221) 4px solid; WIDOWS: 1; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">true or 
+  false</P></BLOCKQUOTE>
+<H3 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+aria-hidden=true id=user-content-httponly class=anchor 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); MARGIN-LEFT: -18px; DISPLAY: inline-block; LINE-HEIGHT: 1.2; PADDING-RIGHT: 2px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/jshttp/cookie#httponly"><SVG aria-hidden=true 
+class="octicon octicon-link" width="16" viewBox="0 0 16 16" version="1.1" 
+height="16"><PATH 
+d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></PATH></SVG></A>httpOnly</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(51,51,51); FONT: 16px/28px 宋体; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 28px; -webkit-text-stroke-width: 0px">如果在Cookie中设置了"HttpOnly"属性，那么通过程序(JS脚本、Applet等)将无法读取到Cookie信息。</SPAN></P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(119,119,119); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 15px; BORDER-LEFT: rgb(221,221,221) 4px solid; WIDOWS: 1; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">true or 
+  false</P></BLOCKQUOTE>
+<H3 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 1em; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); FONT: bold 1.5em/1.43 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+aria-hidden=true id=user-content-firstpartyonly class=anchor 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(64,120,192); MARGIN-LEFT: -18px; DISPLAY: inline-block; LINE-HEIGHT: 1.2; PADDING-RIGHT: 2px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/jshttp/cookie#firstpartyonly"><SVG aria-hidden=true 
+class="octicon octicon-link" width="16" viewBox="0 0 16 16" version="1.1" 
+height="16"><PATH 
+d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></PATH></SVG></A>firstPartyOnly</H3>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(119,119,119); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 16px/25px 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; PADDING-LEFT: 15px; BORDER-LEFT: rgb(221,221,221) 4px solid; WIDOWS: 1; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">true or 
+  false</P></BLOCKQUOTE>
+<P>）</P><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; COLOR: #ffffff; BACKGROUND-COLOR: #282525"><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">cookieParser </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'cookie-parser'</SPAN>);</PRE><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; COLOR: #ffffff; BACKGROUND-COLOR: #282525"><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">use</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">cookieParser</SPAN>());</PRE><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; COLOR: #ffffff; BACKGROUND-COLOR: #282525">&nbsp;</PRE>
+</BODY>
+</HTML>

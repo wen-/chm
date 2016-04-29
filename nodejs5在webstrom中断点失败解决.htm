@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>nodejs5在webstrom中断点失败解决</TITLE>
+</HEAD>
+<BODY>
+<P>nodejs5在webstrom中断点失败解决</P>
+<P>1、升级最新版webstrom</P>
+<P>2、找到安装目录C:\Program Files (x86)\JetBrains\WebStorm 10.0.3\bin，</P>
+<P>修改WebStorm.exe.vmoptions和WebStorm64.exe.vmoptions两个文件（在最后加入：<SPAN 
+style="WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(34,36,38); TEXT-ALIGN: left; FONT: 13px/16px Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(238,238,238); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">-Dnodejs.debugger.use.jb.support=false</SPAN>）</P>
+</BODY>
+</HTML>
