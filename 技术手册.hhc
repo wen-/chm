@@ -2683,7 +2683,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="node.js">
 <PARAM NAME="Local" VALUE="nodejs.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3722,6 +3721,18 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="sitemap文件">
 <PARAM NAME="Local" VALUE="sitemap详解.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="less">
+<PARAM NAME="Local" VALUE="less.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="less编译缩进问题">
+<PARAM NAME="Local" VALUE="less编译缩进问题.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
