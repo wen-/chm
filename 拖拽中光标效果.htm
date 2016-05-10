@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>拖拽中光标效果</TITLE>
+</HEAD>
+<BODY>
+<P>拖拽中光标效果</P><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; COLOR: #ffffff; BACKGROUND-COLOR: #282525"><SPAN style="FONT-WEIGHT: bold">document</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">addEventListener</SPAN>( <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'dragover'</SPAN>, <SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">function</SPAN>( <SPAN style="COLOR: #99ff99">e </SPAN>){<BR>    <SPAN style="COLOR: #808080; FONT-STYLE: italic">// 阻止默认事件的触发<BR></SPAN><SPAN style="COLOR: #808080; FONT-STYLE: italic">    </SPAN><SPAN style="COLOR: #99ff99">e</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">preventDefault</SPAN>();<BR>    <FONT color=#ff0000><FONT><SPAN style="COLOR: #99ff99">e</SPAN>.dataTransfer.<SPAN style="FONT-WEIGHT: bold">dropEffect </SPAN>= <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'none'</SPAN>; //可选值：none\copy\link\move<BR></FONT></FONT>    <SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">return false</SPAN>;<BR>}, <SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">false </SPAN>);</PRE>
+</BODY>
+</HTML>
