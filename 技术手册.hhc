@@ -1891,13 +1891,11 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5 JS文件读取和保存操作">
 <PARAM NAME="Local" VALUE="HTML5 JS文件读取和保存操作.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2014,7 +2012,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSS3">
 <PARAM NAME="Local" VALUE="CSS3.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2895,7 +2892,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="nodejs应用">
 <PARAM NAME="Local" VALUE="nodejs应用.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3744,12 +3740,19 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="less">
 <PARAM NAME="Local" VALUE="less.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="less编译缩进问题">
 <PARAM NAME="Local" VALUE="less编译缩进问题.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="less在DW中高亮显示">
+<PARAM NAME="Local" VALUE="less在DW中高亮显示.htm">
 </OBJECT>
 </UL>
 </UL></body></html>
