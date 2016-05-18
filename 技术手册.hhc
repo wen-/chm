@@ -2683,6 +2683,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="node.js">
 <PARAM NAME="Local" VALUE="nodejs.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2787,7 +2788,7 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="packate.json">
+<PARAM NAME="Name" VALUE="package.json">
 <PARAM NAME="Local" VALUE="packate_json.htm">
 </OBJECT>
 </UL>
@@ -2845,19 +2846,6 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="grunt">
-<PARAM NAME="Local" VALUE="grunt.htm">
-</OBJECT>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="安装">
-<PARAM NAME="Local" VALUE="安装.htm">
-<PARAM NAME="ImageNumber" value="11">
-</OBJECT>
-</UL>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="NPM自身升级">
 <PARAM NAME="Local" VALUE="NPM自身升级.htm">
 </OBJECT>
@@ -2866,6 +2854,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="nodejs桌面应用（electron）">
 <PARAM NAME="Local" VALUE="nodejs桌面应用.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2900,6 +2889,33 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="grunt">
+<PARAM NAME="Local" VALUE="grunt.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="安装">
+<PARAM NAME="Local" VALUE="安装.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="webstorm集成grunt">
+<PARAM NAME="Local" VALUE="webstorm集成grunt.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="gulp">
+<PARAM NAME="Local" VALUE="gulp.htm">
+<PARAM NAME="ImageNumber" value="1">
+</OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
@@ -3225,6 +3241,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="其它">
 <PARAM NAME="Local" VALUE="其它.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3243,7 +3260,7 @@
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="git 不用每次输入密码">
-<PARAM NAME="Local" VALUE="D:\新建文件夹\技术手册\git不用每次输入密码.htm">
+<PARAM NAME="Local" VALUE="git不用每次输入密码.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
