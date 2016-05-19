@@ -10,15 +10,17 @@
 <P>var _config = {};</P>
 <P>_config._pic = 
 ['images/guide.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide_1.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide1_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide1_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide2_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide2_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide3_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide3_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide4_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide4_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide5_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide5_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide6_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide6_pic.png'];//图片地址</P>
-<P><BR>&nbsp;&nbsp;var guidePic_n = _config._pic.length;<BR>&nbsp;&nbsp;var n = 
+<P><BR>&nbsp;&nbsp;var guidePic_n =   _config._pic.length;<BR>&nbsp;&nbsp;var n = 
 0;</P>
 <P><BR>&nbsp;&nbsp;$.each(_config._pic,function(i,e){</P>
 <P>&nbsp;&nbsp; var img = 'img'+i;<BR>&nbsp;&nbsp;&nbsp;img = new 
 Image();<BR>&nbsp;&nbsp;&nbsp;img.id = 'img'+i;<BR>&nbsp;&nbsp;&nbsp;img.src = 
-e;<BR>&nbsp;&nbsp;&nbsp;img.onload = 
-function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init();<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;img.onerror 
+e;<BR>&nbsp;&nbsp;<FONT color=#0000ff>&nbsp;img.onload</FONT> = 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init();<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;<FONT color=#0000ff>&nbsp;img.onerror</FONT> 
 = 
-function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init();<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;});<BR>&nbsp;&nbsp;function 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init();<BR>&nbsp;&nbsp;&nbsp;};<BR><STRONG><FONT 
+color=#0000ff>&nbsp;&nbsp;img.src = e;&nbsp;</FONT><FONT color=#ff0000> 
+//路径赋值放最后，事件监听放前面，不然IE7,8不执行<BR></FONT></STRONG>&nbsp;&nbsp;});<BR>&nbsp;&nbsp;function 
 init(){<BR>&nbsp;&nbsp;&nbsp;if(n == guidePic_n){</P>
 <P>&nbsp;&nbsp;&nbsp; //这里就是要执行的代码&nbsp; </P>
 <P>&nbsp; }</P>
