@@ -2687,6 +2687,12 @@
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="路径太深文件删除">
+<PARAM NAME="Local" VALUE="路径太深文件删除.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="NPM代理服务器设置">
 <PARAM NAME="Local" VALUE="NPM代理服务器设置.htm">
 <PARAM NAME="ImageNumber" value="11">
@@ -2854,7 +2860,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="nodejs桌面应用（electron）">
 <PARAM NAME="Local" VALUE="nodejs桌面应用.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3241,7 +3246,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="其它">
 <PARAM NAME="Local" VALUE="其它.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3323,6 +3327,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3596,6 +3601,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MAC系统">
 <PARAM NAME="Local" VALUE="MAC系统.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3608,6 +3614,12 @@
 <PARAM NAME="Name" VALUE="mac安装imagemagick">
 <PARAM NAME="Local" VALUE="mac安装imagemagick.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="vm安装MAC">
+<PARAM NAME="Local" VALUE="vm安装MAC.htm">
 </OBJECT>
 </UL>
 </UL>
@@ -3757,7 +3769,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="less">
 <PARAM NAME="Local" VALUE="less.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
