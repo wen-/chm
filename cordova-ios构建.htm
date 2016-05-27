@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>cordova-ios构建</TITLE>
+</HEAD>
+<BODY>
+<P>cordova-ios构建</P>
+<P>1、cordova create test io.cordova.test 应用名称；</P>
+<P>2、cd test;</P>
+<P>3、编辑好config.xml&nbsp;&nbsp; 及开发好相应的页面；</P>
+<P>4、cordova platform add ios;</P>
+<P>5、cordova install -g cordova-icon;</P>
+<P>6、cordova install -g cordova-splash;</P>
+<P>7、需要安装ImageMagick</P>
+<P>8、<A 
+href="http://brew.sh/index_zh-cn.html">http://brew.sh/index_zh-cn.html</A>&nbsp;&nbsp;&nbsp; 
+安装brew包管理软件 </P>
+<P><CODE id=selectable 
+style="FONT-SIZE: 1.3em; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.6; PADDING-RIGHT: 0px"><FONT 
+color=#ff6600>/usr/bin/ruby -e "$(curl -fsSL 
+https://raw.githubusercontent.com/Homebrew/install/master/install)"</FONT></CODE></P>
+<P><CODE 
+style="FONT-SIZE: 1.3em; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; OUTLINE-COLOR: invert; LINE-HEIGHT: 1.6; PADDING-RIGHT: 0px">9、<FONT 
+size=5 face="Courier New">brew install ImageMagick</FONT></P>
+<P>10、在项目根目录设计两个图png图片：icon.png\splash.png&nbsp; 大小约150*150、1280*1280</P>
+<P>11、项目根目录执行：sudo cordova-icon</P>
+<P>12、项目根目录执行：sudo cordova-splash</P>
+<P>13、打开xcode,open项目：项目根目录\platforms\ios\应用名.xcodeproj</P>
+<P>14、点击xcode菜单,添加开发者账户</P>
+<P>15、选择打开的项目，右侧设置团队（添加的开发者账户）</P>
+<P>16、连接IPHONE手机，在菜单window-device会看到对应的手机信息</P>
+<P>17、菜单product项run</P>
+<P>18、手机设置-通用-设备管理&nbsp; 允许开发者应用&nbsp;</CODE></P>
+</BODY>
+</HTML>
