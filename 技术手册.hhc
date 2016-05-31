@@ -1891,6 +1891,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2683,7 +2684,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="node.js">
 <PARAM NAME="Local" VALUE="nodejs.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3168,7 +3168,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="cordova">
 <PARAM NAME="Local" VALUE="cordova.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3216,6 +3215,20 @@
 <PARAM NAME="Local" VALUE="cordova-ios构建.htm">
 </OBJECT>
 </UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="web_SQL">
+<PARAM NAME="Local" VALUE="web_SQL.htm">
+<PARAM NAME="ImageNumber" value="1">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="indexedDB">
+<PARAM NAME="Local" VALUE="indexedDB.htm">
+<PARAM NAME="ImageNumber" value="1">
+</OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="网站抢购原理">
@@ -3335,7 +3348,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3609,7 +3621,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MAC系统">
 <PARAM NAME="Local" VALUE="MAC系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
