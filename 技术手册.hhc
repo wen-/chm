@@ -4,7 +4,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSSÆª">
 <PARAM NAME="Local" VALUE="CSSÆª.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -352,6 +351,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JavaScriptÆª">
 <PARAM NAME="Local" VALUE="JavaScriptÆª.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1354,6 +1354,19 @@
 <PARAM NAME="Local" VALUE="requirejs»º´æÎÊÌâ.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="jsÈý½Çº¯Êý">
+<PARAM NAME="Local" VALUE="jsÈý½Çº¯Êý.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="jsÈ«½Ç×ª°ë½Ç">
+<PARAM NAME="Local" VALUE="jsÈ«½Ç×ª°ë½Ç.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQueryÆª">
 <PARAM NAME="Local" VALUE="jQueryÆª.html">
@@ -2341,6 +2354,20 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="iframeÔÚiphoneä¯ÀÀÆ÷ÖÐ¹ö¶¯">
 <PARAM NAME="Local" VALUE="iframeÔÚiphoneä¯ÀÀÆ÷ÖÐ¹ö¶¯.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ÒÆ¶¯¶ËÈ¥³ýµã»÷ÒõÓ°">
+<PARAM NAME="Local" VALUE="ÒÆ¶¯¶ËÈ¥³ýµã»÷ÒõÓ°.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ÅÐ¶Ïä¯ÀÀÆ÷ÊÇ·ñÖ§³Ötouch">
+<PARAM NAME="Local" VALUE="ÅÐ¶Ïä¯ÀÀÆ÷ÊÇ·ñÖ§³Ötouch.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
