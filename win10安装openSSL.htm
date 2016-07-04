@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>win10安装openSSL</TITLE>
+</HEAD>
+<BODY>
+<P>win10安装openSSL</P>
+<P>1、依懒perl，先安装：<A 
+href="http://www.activestate.com/ActivePerl">http://www.activestate.com/ActivePerl</A>&nbsp;下载安装文件</P>
+<P>2、编译环境Microsoft Visual Studio 14.0（本机已安装）<A 
+href="https://www.visualstudio.com/zh-cn/dn469161">https://www.visualstudio.com/zh-cn/dn469161</A>   </P>
+<P>3、设置环境变量：C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\amd64</P>
+<P>4、下载openssl源码包：<A 
+href="https://www.openssl.org/">https://www.openssl.org/</A></P>
+<P>5、查看安装文档INSTALL.W64&nbsp; 中的步骤：To build for Win64/x64:</P>
+<P>6、命令行执行：</P>
+<P>&nbsp;&gt; perl Configure VC-WIN64A<BR>&nbsp;&gt; ms\do_win64a<BR>&nbsp;&gt; 
+nmake -f ms\ntdll.mak<BR>&nbsp;&gt; cd out32dll<BR>&nbsp;&gt; ..\ms\test</P>
+<P>7、查看输出目录：源代码\out32dll&nbsp; openssl.exe也在其中</P>
+<P>8、openssl 通过环境变量设置默认的配置文件路径</P>
+<P>OPENSSL_CONF：c:\openssl\openssl.cnf</P>
+<P>&nbsp;</P>
+<P>常见问题：</P>
+<P>1、ml164.exe找不到（解决方法：执行步骤3设置环境变量）</P>
+<P>2、nmake.exe找不到（解决方法：同上）</P>
+<P>3、执行nmake -f ms\ntdll.mak 
+时遇到<BR>“ms\uplink.c(11)&nbsp;:&nbsp;fatal&nbsp;error&nbsp;C1083:&nbsp;Cannot&nbsp;open&nbsp;include&nbsp;file:&nbsp;'windows.h':&nbsp;No&nbsp;such&nbsp;file&nbsp;or&nbsp;directory&nbsp;NMAKE&nbsp;:&nbsp;fatal&nbsp;error&nbsp;U1077:&nbsp;'cl'&nbsp;:&nbsp;return&nbsp;code&nbsp;'0x2'&nbsp;Stop.（解决方法：命令行执行 
+vcvars64 配置环境变量，再执行nmake -f ms\ntdll.mak<BR>）</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><FONT color=#3366ff 
+size=5><STRONG>生成自助证书：</STRONG></FONT></P>
+<P><STRONG>1、生成1024或2048的密钥（会在当前目录生成<FONT 
+color=#ff0000>privatekey.pem</FONT><FONT color=#000000>文件）：</FONT></STRONG></P>
+<P>openssl genrsa -out <FONT 
+color=#ff0000>privatekey.pem</FONT> 1024</P>
+<P><STRONG>2、创建证书请求（会在当前目录生成<FONT 
+color=#ff0000>certrequest.csr</FONT><FONT color=#000000>文件）</FONT>：</STRONG></P>
+<P>openssl req -new -key privatekey.pem -out <FONT 
+color=#ff0000>certrequest.csr </FONT></P>
+<P>提示输入</P>
+<P><BR>Country Name (2 letter code) 
+[AU]:CN&nbsp;&nbsp;&nbsp; //国家代码</P>
+<P>State or Province Name (full name) 
+[Some-State]:china&nbsp;&nbsp;&nbsp; //国家名称</P>
+<P>Locality Name (eg, city) []:wuhan&nbsp;&nbsp;&nbsp; 
+//省份</P>
+<P>Organization Name (eg, company) [Internet Widgits Pty 
+Ltd]:test&nbsp;&nbsp;&nbsp; //组织名称</P>
+<P>Organizational Unit Name (eg, section) 
+[]:test&nbsp;&nbsp;&nbsp; //组织单元名称</P>
+<P>Common Name (eg, YOUR name) []:test&nbsp;&nbsp;&nbsp; 
+//通用名</P>
+<P>Email Address []:yellowwen@126.com&nbsp;&nbsp;&nbsp; 
+//邮箱</P>
+<P>&nbsp;</P>
+<P>Please enter the following 'extra' attributes</P>
+<P>to be sent with your certificate request</P>
+<P>A challenge password []:123456&nbsp;&nbsp;&nbsp; //密码</P>
+<P>An optional company name []:test&nbsp;&nbsp;&nbsp; 
+//公司名</P>
+<P><STRONG>3、生成证书（会在当前目录生成<FONT 
+color=#ff0000>certificate.pem</FONT><FONT color=#000000>文件）</FONT>：</STRONG></P>
+<P>openssl x509 -req -in certrequest.csr -signkey 
+privatekey.pem -out certificate.pem <SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(75,75,75); FONT: 13px/20px Verdana, Arial, Helvetica, sans-serif; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">-days 
+365&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //days 证书时效</SPAN></P>
+<P>&nbsp;</P>
+<P>使用证书</P>
+<P>网站根目录新建ssl文件夹拷入文件（certificate.pem、certrequest.csr、privatekey.pem）</P>
+<P>1、网站根目录创建sslLicense.js</P><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; COLOR: #ffffff; BACKGROUND-COLOR: #282525"><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">fs </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'fs'</SPAN>);<BR><BR><SPAN style="COLOR: #808080; FONT-STYLE: italic">//ssl license<BR></SPAN><SPAN style="COLOR: #808080; FONT-STYLE: italic"><BR></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">keyPath </SPAN>= <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'ssl/privatekey.pem'</SPAN>;<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">certPath </SPAN>= <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'ssl/certificate.pem'</SPAN>;<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">hskey </SPAN>= <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">fs</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">readFileSync</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">keyPath</SPAN>);<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">hscert </SPAN>= <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">fs</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">readFileSync</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">certPath</SPAN>);<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">options </SPAN>= {<BR>   <SPAN style="FONT-WEIGHT: bold">key</SPAN>: <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">hskey</SPAN>,<BR>   <SPAN style="FONT-WEIGHT: bold">cert</SPAN>: <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">hscert<BR></SPAN>};<BR><BR><SPAN style="COLOR: #808080; FONT-STYLE: italic">//ssl object<BR></SPAN><SPAN style="COLOR: #808080; FONT-STYLE: italic"><BR></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">ssl </SPAN>= {};<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">ssl</SPAN>.<SPAN style="FONT-WEIGHT: bold">options </SPAN>= <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">options</SPAN>;<BR><BR><SPAN style="FONT-WEIGHT: bold">module</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">exports </SPAN>= <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">ssl</SPAN>;</PRE>
+<P>2、修改bin\www</P><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: '宋体'; COLOR: #ffffff; BACKGROUND-COLOR: #282525"><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">debug </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'debug'</SPAN>)(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'myblog'</SPAN>);<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'../app'</SPAN>);<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">socketIo </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'../models/socketIo'</SPAN>);<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">ssl </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'../sslLicense'</SPAN>);<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">http </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'http'</SPAN>),<BR>   <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">https </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'https'</SPAN>);<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">set</SPAN>(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'port'</SPAN>, <SPAN style="FONT-WEIGHT: bold">process</SPAN>.<SPAN style="FONT-WEIGHT: bold">env</SPAN>.PORT || <SPAN style="COLOR: #6666d9">3000</SPAN>);<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">set</SPAN>(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'httpsport'</SPAN>, <SPAN style="COLOR: #6666d9">3003</SPAN>);<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">httpServer </SPAN>= <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">http</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">createServer</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app</SPAN>).<SPAN style="COLOR: #95c995; FONT-STYLE: italic">listen</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">get</SPAN>(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'port'</SPAN>));<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">httpsServer </SPAN>= <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">https</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">createServer</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">ssl</SPAN>.<SPAN style="FONT-WEIGHT: bold">options</SPAN>, <SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app</SPAN>).<SPAN style="COLOR: #95c995; FONT-STYLE: italic">listen</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">app</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">get</SPAN>(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'httpsport'</SPAN>));<BR><SPAN style="COLOR: #808080; FONT-STYLE: italic">/*<BR></SPAN><SPAN style="COLOR: #808080; FONT-STYLE: italic">var server = app.listen(app.get('port'), function() {<BR></SPAN><SPAN style="COLOR: #808080; FONT-STYLE: italic">   debug('Express服务器监听端口: ' + server.address().port);<BR></SPAN><SPAN style="COLOR: #808080; FONT-STYLE: italic">});*/<BR></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">io </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'socket.io'</SPAN>).<SPAN style="FONT-WEIGHT: bold">listen</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">httpServer</SPAN>);<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">var </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">redis </SPAN>= require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'socket.io-redis'</SPAN>);<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">io</SPAN>.<SPAN style="COLOR: #95c995; FONT-STYLE: italic">adapter</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">redis</SPAN>({ <SPAN style="FONT-WEIGHT: bold">host</SPAN>: <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'127.0.0.1'</SPAN>, <SPAN style="FONT-WEIGHT: bold">port</SPAN>: <SPAN style="COLOR: #6666d9">6379 </SPAN>}));<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">socketIo</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ccff; FONT-STYLE: italic">io</SPAN>);</PRE>
+<P>&nbsp;</P>
+<P>测试：</P>
+<P><A 
+href="http://localhost:3000">http://localhost:3000</A></P>
+<P><A 
+href="https://localhost:3003">https://localhost:3003</A></P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>
