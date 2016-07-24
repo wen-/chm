@@ -1,8 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>HTML音频视频播放</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 8.00.6001.23580"></HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.18377"></HEAD>
 <BODY>
+<P>//页面加载百分比</P>
+<P>var urls = 
+[<BR>&nbsp;&nbsp;'mp3/hf_music.mp3',<BR>&nbsp;&nbsp;'mp3/i_believe.mp3',<BR>&nbsp;&nbsp;'images/bg.jpg',<BR>&nbsp;&nbsp;'images/ball.png',<BR>&nbsp;&nbsp;'images/triangle1.png',<BR>&nbsp;&nbsp;'images/triangle2.png',<BR>&nbsp;&nbsp;'images/pc.png',<BR>&nbsp;&nbsp;'images/logo.png',<BR>&nbsp;&nbsp;'images/show0.png',<BR>&nbsp;&nbsp;'images/show1.png',<BR>&nbsp;&nbsp;'images/show2.jpg',<BR>&nbsp;&nbsp;'images/pane1.png',<BR>&nbsp;&nbsp;'images/pane2.png',<BR>&nbsp;&nbsp;'images/pane3.png',<BR>&nbsp;&nbsp;'images/slide1.jpg',<BR>&nbsp;&nbsp;'images/slide2.jpg',<BR>&nbsp;&nbsp;'images/slide3.jpg',<BR>&nbsp;&nbsp;'images/slide4.jpg',<BR>&nbsp;&nbsp;//'images/slide5.jpg',<BR>&nbsp;&nbsp;'images/1.jpg',<BR>&nbsp;&nbsp;'images/2.jpg',<BR>&nbsp;&nbsp;'images/3.jpg',<BR>&nbsp;&nbsp;'images/4.jpg',<BR>&nbsp;&nbsp;'images/5.jpg',<BR>&nbsp;&nbsp;'images/6.jpg',<BR>&nbsp;&nbsp;'images/7.jpg',<BR>&nbsp;&nbsp;'images/8.jpg'<BR>&nbsp;];<BR>&nbsp;var 
+urls_l = urls.length;<BR>&nbsp;var n = 
+0;<BR>&nbsp;$.each(urls,function(i,url){<BR>&nbsp;&nbsp;var imgReg = 
+/(\.jpg)|(\.png)|(\.gif)$/i;<BR>&nbsp;&nbsp;var audioReg = 
+/(\.mp3)|(\.wav)|(\.ogg)$/i;<BR>&nbsp;&nbsp;var videoReg = 
+/(\.mp4)|(\.ogv)|(\.webm)$/i;<BR>&nbsp;&nbsp;if(imgReg.test(url)){<BR>&nbsp;&nbsp;&nbsp;var 
+img = new Image();<BR>&nbsp;&nbsp;&nbsp;img.onload = 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;img.onerror 
+= 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;img.src 
+= url;<BR>&nbsp;&nbsp;}else 
+if(audioReg.test(url)||videoReg.test(url)){<BR>&nbsp;&nbsp;&nbsp;var audio = new 
+Audio();<BR>&nbsp;&nbsp;&nbsp;audio.oncanplaythrough = 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;audio.onerror 
+= 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;console.log("onerror")<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;audio.src 
+= url;<BR>&nbsp;&nbsp;}<BR>&nbsp;});<BR>&nbsp;function 
+init(num){<BR>&nbsp;&nbsp;if(num &lt; urls_l){<BR>&nbsp;&nbsp;&nbsp;var percent 
+= 
+parseInt(num/urls_l*100);<BR>&nbsp;&nbsp;&nbsp;$(".loading_txt").text(percent+"%");<BR>&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;$(".loading_txt").remove();<BR>&nbsp;&nbsp;&nbsp;$("body").addClass("loaded");<BR>&nbsp;&nbsp;&nbsp;initPage();<BR>&nbsp;&nbsp;}<BR>&nbsp;}<BR>&nbsp;</P>
+<P>&nbsp;</P>
 <P>HTML音频视频播放</P>
 <P>&lt;audio controls="controls" height="100" width="100"&gt;<BR>&nbsp; 
 &nbsp;&lt;source src="times.mp3" type="audio/mp3" /&gt;<BR>&nbsp; 
