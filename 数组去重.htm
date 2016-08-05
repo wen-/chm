@@ -7,5 +7,93 @@
 </HEAD>
 <BODY>
 <P>数组去重</P>
+<P>&nbsp;&nbsp;&nbsp; //这里定义<BR>&nbsp;&nbsp;&nbsp; function 
+re(elem){<BR>&nbsp;&nbsp;&nbsp;&nbsp; var inputs = 
+[];<BR>&nbsp;&nbsp;&nbsp;&nbsp; if(elem.length &gt; 
+1){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+elem.each(function(i,n){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var v = 
+$(this).val();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(!!v) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+inputs.push(v);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; });<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if(inputs.length){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<STRONG><FONT 
+color=#ff00ff> inputs.sort();</FONT></STRONG><FONT 
+color=#ff0000>//先排序，再判断是否有重复</FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for(var 
+i=0;i&lt;inputs.length;i++){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(inputs[i]==inputs[i+1]){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return false;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+true;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+true;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+true;<BR>&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;//这里调用，只要定义了其它地方也可以调用<BR>&nbsp;&nbsp;&nbsp; 
+re($('input[name="networkaddress"]'))</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<H1 class=postTitle 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 10px; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(75,75,75); FONT-STYLE: normal; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+id=cb_post_title_url class=postTitle2 
+style="TEXT-DECORATION: none; COLOR: rgb(26,139,200)" 
+href="http://www.cnblogs.com/jameshappy/p/3207404.html">JS判断一个数组中是否有重复值的三种方法</A></H1>
+<DIV id=cnblogs_post_body 
+style="MARGIN-BOTTOM: 20px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(75,75,75); FONT: 13px/19px Verdana, Geneva, Arial, Helvetica, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px"><SPAN 
+style="LINE-HEIGHT: 1.5">方法一:&nbsp;</SPAN></P>
+<DIV class=dp-highlighter 
+style='FONT-SIZE: 12px; OVERFLOW: auto; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; MARGIN: 18px 0px'>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">var s = 
+ary.join(",")+",";</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">for(var 
+i=0;i&lt;ary.length;i++) {</P>
+<P 
+style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">if(s.replace(ary[i]+",","").indexOf(ary[i]+",")&gt;-1) 
+{</P>
+<P 
+style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">alert("数组中有重复元素：" 
++ ary[i]);</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">break;</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">}</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">}</P></DIV>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px"><BR><SPAN 
+style="LINE-HEIGHT: 1.5">方法二:&nbsp;</SPAN></P>
+<DIV class=dp-highlighter 
+style='FONT-SIZE: 12px; OVERFLOW: auto; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; MARGIN: 18px 0px'>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">var ary = new 
+Array("111","22","33","111");</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">var 
+nary=ary.sort();</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">for(var 
+i=0;i&lt;ary.length;i++){</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">if 
+(nary[i]==nary[i+1]){</P>
+<P 
+style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">alert("数组重复内容："+nary[i]);</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">}</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">}</P></DIV>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px"><BR><SPAN 
+style="LINE-HEIGHT: 1.5">方法三:&nbsp;</SPAN></P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">function 
+isRepeat(arr){</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">var hash = 
+{};</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">for(var i in 
+arr) {</P>
+<P 
+style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">if(hash[arr[i]])</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">return 
+true;</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">hash[arr[i]] = 
+true;</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">}</P>
+<P style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">return 
+false;</P>
+<P 
+style="MARGIN: 10px auto; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px">}</P></DIV>
 </BODY>
 </HTML>
