@@ -357,7 +357,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JavaScript篇">
 <PARAM NAME="Local" VALUE="JavaScript篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1162,7 +1161,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="第七章 数组">
 <PARAM NAME="Local" VALUE="第七章 数组.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1383,7 +1381,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="jQuery篇">
 <PARAM NAME="Local" VALUE="jQuery篇.html">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2991,7 +2988,14 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
 <PARAM NAME="Local" VALUE="web应用.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="js判断是否安装了APP">
+<PARAM NAME="Local" VALUE="js判断是否安装了APP.htm">
+</OBJECT>
+</UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="CSP介绍">
@@ -3142,6 +3146,12 @@
 <PARAM NAME="Local" VALUE="androidManifest详解.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="js判断是否安装了APP">
+<PARAM NAME="Local" VALUE="js判断是否安装了APP.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

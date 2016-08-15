@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>js判断是否安装了APP</TITLE>
+</HEAD>
+<BODY>
+<P>js判断是否安装了APP</P>
+<P>if (<FONT color=#3366ff>browser.versions.ios || browser.versions.iPhone || 
+browser.versions.iPad</FONT>) {<BR>&nbsp;&nbsp;&nbsp;var ifr = 
+document.createElement("iframe");<BR>&nbsp;&nbsp;&nbsp;ifr.setAttribute('src', 
+"<FONT 
+color=#ff0000>Saugage.healthHouse://"+decodeURIComponent(document.location.search.substr(0))</FONT>);//如安装了该应用就会直接打开<BR>&nbsp;&nbsp;&nbsp;ifr.setAttribute('style', 
+'display:none');<BR>&nbsp;&nbsp;&nbsp;document.body.appendChild(ifr);<BR>&nbsp;&nbsp;&nbsp;setTimeout(function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;$("#popBg").show();<BR>&nbsp;&nbsp;&nbsp;&nbsp;$("#msg_content").html("&lt;p&gt;检测到系统未安装健康小屋，请先安装。如果不能直接跳转，请：&lt;/p&gt;&lt;p&gt;&lt;strong&gt;【点击右上角】&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;“在浏览器(safari)中打开”&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;即可进入下载页面噢&lt;/p&gt;");<BR>&nbsp;&nbsp;&nbsp;&nbsp;$("#prompt").show().addClass("runing");<BR>&nbsp;&nbsp;&nbsp;&nbsp;window.location.href 
+= "<A 
+href="https://appsto.re/cn/yv-Scb.i">https://appsto.re/cn/yv-Scb.i</A>";<BR>&nbsp;&nbsp;&nbsp;},1000);<BR>&nbsp;&nbsp;}else 
+if (<FONT color=#0000ff>browser.versions.android</FONT>) 
+{<BR>&nbsp;&nbsp;&nbsp;var ifr1 = 
+document.createElement("iframe");<BR>&nbsp;&nbsp;&nbsp;ifr1.setAttribute('src', 
+"<FONT 
+color=#ff0000>zoteri.bighealth://zoteri"+decodeURIComponent(document.location.search.substr(0))</FONT>);//如安装了该应用就会直接打开<BR>&nbsp;&nbsp;&nbsp;ifr1.setAttribute('style', 
+'display:none');<BR>&nbsp;&nbsp;&nbsp;document.body.appendChild(ifr1);<BR>&nbsp;&nbsp;&nbsp;setTimeout(function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;window.location.href 
+= "<A 
+href="http://app.qq.com/#id=detail&amp;appid=1105477010">http://app.qq.com/#id=detail&amp;appid=1105477010</A>";<BR>&nbsp;&nbsp;&nbsp;&nbsp;//window.location.href 
+= "<A 
+href="http://app.qq.com/#id=detail&amp;appid=1105308125">http://app.qq.com/#id=detail&amp;appid=1105308125</A>";<BR>&nbsp;&nbsp;&nbsp;&nbsp;//手机：<A 
+href="http://app.qq.com/#id=detail&amp;appid=1105308125">http://app.qq.com/#id=detail&amp;appid=1105308125</A><BR>&nbsp;&nbsp;&nbsp;&nbsp;//PC&nbsp; 
+: <A 
+href="http://android.myapp.com/myapp/detail.htm?apkName=com.zoteri.bighealth">http://android.myapp.com/myapp/detail.htm?apkName=com.zoteri.bighealth</A><BR>&nbsp;&nbsp;&nbsp;},1000);<BR>&nbsp;&nbsp;}</P>
+</BODY>
+</HTML>
