@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>vmware安装openwrt</TITLE>
+</HEAD>
+<BODY>
+<P>vmware安装openwrt</P>
+<P>1、下载openwrt镜像：<A 
+href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/">http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/</A><A 
+style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz">openwrt-15.05-x86-generic-combined-ext4.img.gz</A></P>
+<P>解包得到里面的<A 
+style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz">openwrt-15.05-x86-generic-combined-ext4.img</A></P>
+<P>（冒似ext的包才可以成功启动）</P>
+<P>&nbsp;</P>
+<P>2、将openwrt镜像转换为虚拟机磁盘文件格式vmdk</P>
+<P>centos系统下使用qemu-utils命令转换</P>
+<P>yum -y install qemu-utils&nbsp;&nbsp; 安装</P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>qemu-img 
+convert -f raw <A 
+style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
+href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz">openwrt-15.05-x86-generic-combined-ext4.img</A> 
+-O vmdk openwrt-15.05-x86-generic-combined-ext4.vmdk&nbsp;&nbsp;&nbsp; 
+转换</SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>将转换后的.vmdk文件复制到window磁盘上</SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'></SPAN>&nbsp;</P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>3、新建虚拟机</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 
+size=3>选--自定义--硬件兼容9.0--稍后安装操作系统--操作系统luinx(其它luinx3.x内核)--命名保存--处理器1--内存256M--网络连接NAT--SSIC控制器（LSI 
+Logic）--磁盘类型(IDE)--使用现有虚拟磁盘（选择之前复制过来的.vmdk）--自定义硬件（删除usb、光驱、声卡、打印机）--完成</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3></FONT></SPAN>&nbsp;</P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>4、启动虚拟机</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>会停留在：br-lan: port 1(eth0) entered forwarding 
+state&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 按下回车就可以了</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3></FONT></SPAN>&nbsp;</P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>5、配置网络</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>执行：vi /etc/config/network&nbsp;&nbsp;&nbsp; 
+编辑网络配置</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 
+size=3>修改'lan'配置（查看虚拟机--编辑--虚拟网络编辑器--看vmnet8的ip（192.168.27.0）段(查看DHCP设置128-254)）</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 
+size=3>将　ipaddr　的值修改为：vmnet8中的DHCP段中的一个如：192.168.27.128</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>esc :wq 保存退出，重启</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 
+size=3>在客户机浏览器中输入192.168.27.128就能看到路由本地界面了，但此时上不了外网。</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3></FONT></SPAN>&nbsp;</P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>6、配置上外网</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>网上说的修改wan口什么之类都是狗屁，wan口只要保留默认proto 
+'dhcp'，不用修改。</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>右键虚拟机--设置--添加网络适配器--桥接模式--完成</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 
+size=3>重启虚拟机，就可以上外网了，接着安装luci的中文包（命令行操作或进路由管理界面操作均可）</FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>① <SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>opkg 
+update&nbsp; 更新库</SPAN></FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>② <SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>opkg 
+install luci-i18n-base-zh-cn&nbsp; 安装&nbsp;&nbsp; 有的包可能是<SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>luci-i18n-chinese，可能是版本不一样吧。</SPAN></SPAN></SPAN></FONT></SPAN></SPAN></FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>路由管理界面操作为--system--software--先点update 
+lists更新（也可不更新）--download and install package: 在这里输入包名（<FONT 
+style="BACKGROUND-COLOR: #e2e2e2" color=#494949 
+face=微软雅黑>luci-i18n-base-zh-cn&nbsp;</FONT>） 
+点OK安装</SPAN></SPAN></SPAN></FONT></SPAN></SPAN></FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'></SPAN></SPAN></SPAN></FONT></SPAN></SPAN></FONT></SPAN>&nbsp;</P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3>7、进入路由管理界面（默认无密码）--system--system--language and 
+style--language(普通话)</FONT></SPAN></SPAN></SPAN></SPAN></FONT></SPAN></SPAN></FONT></SPAN></P>
+<P><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=#000000 size=3><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>至此大功告成！</SPAN></SPAN></SPAN></SPAN></FONT></SPAN></SPAN></SPAN></P>
+</BODY>
+</HTML>
