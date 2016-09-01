@@ -3428,7 +3428,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunxÏµÍ³">
 <PARAM NAME="Local" VALUE="liunxÏµÍ³.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3727,7 +3726,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="openwrt">
 <PARAM NAME="Local" VALUE="openwrt.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3901,6 +3899,18 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="webstromÅäÖÃless¼àÌýÊä³ö">
 <PARAM NAME="Local" VALUE="webstromÅäÖÃless¼àÌýÊä³ö.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="lua">
+<PARAM NAME="Local" VALUE="lua.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="luci">
+<PARAM NAME="Local" VALUE="luci.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 </UL></body></html>

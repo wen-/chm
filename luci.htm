@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>luci</TITLE>
+</HEAD>
+<BODY>
+<P><STRONG><FONT size=5>luci调试</FONT></STRONG></P>
+<P>没有很好的调试工具，只有写个log.lua以打印日志的方式来进行调试</P>
+<P><STRONG>log.lua代码如下：</STRONG></P>
+<P><FONT color=#0000ff>local M = {}</FONT></P>
+<P><FONT color=#0000ff>local tconcat = table.concat&nbsp; <BR>local tinsert = 
+table.insert&nbsp; <BR>local srep = string.rep</FONT></P>
+<P><FONT color=#0000ff>local function local_print(str)&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; local dbg = io.open("/tmp/luci.output", 
+"a+")<BR>&nbsp;&nbsp;&nbsp; local str = str or ""<BR>&nbsp;&nbsp;&nbsp; if dbg 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dbg:write(str..'\n')<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dbg:close()<BR>&nbsp;&nbsp;&nbsp; end<BR>end</FONT></P>
+<P><FONT color=#0000ff>function M.print(...)&nbsp; <BR>&nbsp;&nbsp;&nbsp; local 
+dbg = io.open("/tmp/luci.output", "a+")<BR>&nbsp;&nbsp;&nbsp; if dbg 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dbg:write(os.date("[%H:%M:%S]: "))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+for _, o in ipairs({...}) 
+do<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dbg:write(tostring(o)..'&nbsp; ')<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dbg:write("\n")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+dbg:close()<BR>&nbsp;&nbsp;&nbsp; end<BR>end</FONT></P>
+<P><FONT color=#0000ff>function M.print_r(data, depth)&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; local depth = depth or 3<BR>&nbsp;&nbsp;&nbsp; local 
+cstring = ""; <BR>&nbsp;&nbsp;&nbsp; local top_flag = true</FONT></P>
+<P><FONT color=#0000ff>&nbsp;&nbsp;&nbsp; local function 
+table_len(t)<BR>&nbsp;&nbsp;&nbsp; local i = 0<BR>&nbsp;&nbsp;&nbsp; for k, v in 
+pairs(t) do<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i = i + 
+1<BR>&nbsp;&nbsp;&nbsp; end<BR>&nbsp;&nbsp;&nbsp; return i<BR>&nbsp;&nbsp;&nbsp; 
+end</FONT></P>
+<P><FONT color=#0000ff>&nbsp;&nbsp;&nbsp; local function 
+tableprint(data,cstring, 
+local_depth)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if data == nil then 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print("core.print data is 
+nil");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end </FONT></P>
+<P><FONT color=#0000ff>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local cs = 
+cstring .. "&nbsp;&nbsp;&nbsp; ";<BR>&nbsp;&nbsp;&nbsp; if top_flag 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print(cstring .."{");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+top_flag = false<BR>&nbsp;&nbsp;&nbsp; 
+end<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(type(data)=="table") 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for 
+k, v in pairs(data) do<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if type(v) 
+~= "table" 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+type(v) == "string" 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print(cs..tostring(k).." = 
+".."'"..tostring(v).."'");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print(cs..tostring(k).." = 
+"..tostring(v));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elseif table_len(v) == 0 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print(cs..tostring(k).." = 
+".."{}")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elseif local_depth &lt; 
+depth 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print(cs..tostring(k).." = 
+{");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+tableprint(v,cs,local_depth+1);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print(cs..tostring(k).." = 
+".."{*}")<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+local_print(cs..tostring(data));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+end <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local_print(cstring 
+.."}");<BR>&nbsp;&nbsp;&nbsp; end </FONT></P>
+<P><FONT color=#0000ff>&nbsp;&nbsp;&nbsp; 
+tableprint(data,cstring,0);<BR>end</FONT></P>
+<P><FONT color=#0000ff>return M</FONT></P>
+<P><FONT color=#0000ff></FONT>&nbsp;</P>
+<P><STRONG>使用方法：</STRONG></P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">你可以在luci目录下任何一个地方调用</P><PRE style="FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; WIDOWS: 1; LETTER-SPACING: normal; LINE-HEIGHT: 26px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE>local log = require "luci.log"  
+log.print("Hello World")  
+log.print_r({"Hello", "World"})  
+</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">另外, 
+log模块将输出信息到/tmp/luci.ouput下面, 我们可以用tail命令跟踪.</P><PRE style="FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-VARIANT: normal; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; WIDOWS: 1; LETTER-SPACING: normal; LINE-HEIGHT: 26px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><CODE># tail -f /tmp/luci.output
+</CODE></PRE>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">于是通过这个小小的模块, 
+得以一窥这个openwrt上著名的程序. 确实很有趣, 有时间我会详细的把luci框架分析写下来.</P>
+<P 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; WIDOWS: 1; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">另外luci程序自带了一个debug模块, 
+这是一个用来分析内存占用情况的模块, 你也可以在dispatcher.lua模块中开启.它的信息记录在/tmp/memtrace中.</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>
