@@ -1,16 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
-<HTML>
-<HEAD>
-<META http-equiv="Content-Type" content="text/html; charset=gb2312">
-<META name="GENERATOR" content="QuickCHM">
-<TITLE>vmware安装openwrt</TITLE>
-</HEAD>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>vmware安装openwrt</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18377"></HEAD>
 <BODY>
 <P>vmware安装openwrt</P>
 <P>1、下载openwrt镜像：<A 
-href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/">http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/</A><A 
+href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/"><FONT 
+color=>http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/</FONT></A><A 
 style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
-href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz">openwrt-15.05-x86-generic-combined-ext4.img.gz</A></P>
+href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz"><FONT 
+color=>openwrt-15.05-x86-generic-combined-ext4.img.gz</FONT></A></P>
 <P>解包得到里面的<A 
 style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
 href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz">openwrt-15.05-x86-generic-combined-ext4.img</A></P>
@@ -20,14 +19,17 @@ href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-
 <P>centos系统下使用qemu-utils命令转换</P>
 <P>yum -y install qemu-utils&nbsp;&nbsp; 安装</P>
 <P><SPAN 
-style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>qemu-img 
-convert -f raw <A 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=>qemu-img convert -f raw </FONT><A 
 style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
-href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz">openwrt-15.05-x86-generic-combined-ext4.img</A> 
--O vmdk openwrt-15.05-x86-generic-combined-ext4.vmdk&nbsp;&nbsp;&nbsp; 
-转换</SPAN></P>
+href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz"><FONT 
+color=>openwrt-15.05-x86-generic-combined-ext4.img</FONT></A><FONT color=><FONT 
+color=> -O vmdk 
+openwrt-15.05-x86-generic-combined-ext4.vmdk</FONT>&nbsp;&nbsp;&nbsp; 
+转换</FONT></SPAN></P>
 <P><SPAN 
-style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>将转换后的.vmdk文件复制到window磁盘上</SPAN></P>
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
+color=>将转换后的.vmdk文件复制到window磁盘上</FONT></SPAN></P>
 <P><SPAN 
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'></SPAN>&nbsp;</P>
 <P><SPAN 
@@ -147,6 +149,4 @@ color=#000000 size=3><SPAN
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(73,73,73); TEXT-ALIGN: left; FONT: 14px/21px "Microsoft YaHei", "Helvetica Neue", SimSun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(226,226,226); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><SPAN 
-style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>至此大功告成！</SPAN></SPAN></SPAN></SPAN></FONT></SPAN></SPAN></SPAN></P>
-</BODY>
-</HTML>
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'>至此大功告成！</SPAN></SPAN></SPAN></SPAN></FONT></SPAN></SPAN></SPAN></P></BODY></HTML>
