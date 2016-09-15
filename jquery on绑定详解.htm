@@ -1,8 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>jquery on绑定详解</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 11.00.9600.16428">
-</HEAD>
+<META name=GENERATOR content="MSHTML 11.00.9600.18426"></HEAD>
 <BODY>
 <P>jquery on绑定详解</P>
 <H1 
@@ -10,33 +9,39 @@ style="MARGIN-BOTTOM: 10px; FONT-SIZE: 22px; FONT-FAMILY: Simsun; FONT-VARIANT: 
 on()方法绑定多个选择器,多个事件</H1>
 <DIV class=bodyContent 
 style="OVERFLOW: hidden; HEIGHT: 1746px; WIDTH: 650px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-TOP: 10px; FONT: 14px/30px Simsun; MARGIN: 0px auto; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
-<DIV class=keywords>本文章来给各位同学介绍关于jquery on()方法绑定多个选择器,多个事件，希望些方法对各位会有所帮助。</DIV>
+<DIV class=keywords><FONT color=>本文章来给各位同学介绍关于jquery 
+on()方法绑定多个选择器,多个事件，希望些方法对各位会有所帮助。</FONT></DIV>
 <DIV id=c_ads5 class=floatAd 
-style="OVERFLOW: hidden; HEIGHT: 0px; WIDTH: 300px; FLOAT: left; PADDING-LEFT: 0px"></DIV>
+style="OVERFLOW: hidden; HEIGHT: 0px; WIDTH: 300px; FLOAT: left; PADDING-LEFT: 0px"><FONT 
+color=></FONT></DIV>
 <DIV id=c_ads6 class=rightAd 
-style="OVERFLOW: hidden; HEIGHT: 0px; WIDTH: 350px; FLOAT: right; TEXT-ALIGN: center"></DIV>
+style="OVERFLOW: hidden; HEIGHT: 0px; WIDTH: 350px; FLOAT: right; TEXT-ALIGN: center"><FONT 
+color=></FONT></DIV>
 <P 
-style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><STRONG>on(events,[<A 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=>on(events,[</FONT><A 
 style="FONT-SIZE: 14px; TEXT-DECORATION: underline; COLOR: rgb(0,102,0)" 
-href="http://www.111cn.net/tags.php/select/" 
-target=_blank>select</A>or],[data],fn)</STRONG></P>
+href="http://www.111cn.net/tags.php/select/" target=_blank><FONT 
+color=>select</FONT></A><FONT color=>or],[data],fn)</FONT></STRONG></P>
 <P 
-style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px">&#8226;events:一个或多个用空格分隔的事件类型和可选的命名空间，如"click"或"keydown.myPlugin" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><FONT 
+color=>&#8226;events:一个或多个用空格分隔的事件类型和可选的命名空间，如"click"或"keydown.myPlugin" 
 。<BR>&#8226;selector:一个选择器字符串用于过滤器的触发事件的选择器元素的后代。如果选择器为null或省略，当它到达选定的元素，事件总是触发。<BR>&#8226;data:当一个事件被触发时要传递event.data给事件处理函数。<SPAN 
 class=Apple-converted-space>&nbsp;</SPAN><BR>&#8226;fn:该事件被触发时执行的函数。 false 
-值也可以做一个函数的简写，返回false。</P>
+值也可以做一个函数的简写，返回false。</FONT></P>
 <P 
-style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><BR>这样一个需求，如果用live()方法实现的话 
-非常简单，容易理解。</P>
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><BR><FONT 
+color=>这样一个需求，如果用live()方法实现的话 非常简单，容易理解。</FONT></P>
 <TABLE style="MARGIN: 20px 0px; BACKGROUND-COLOR: rgb(255,187,119)" 
 cellSpacing=1 cellPadding=1 width=620 align=center border=0>
   <TBODY>
   <TR>
     <TD style="FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce height=27 
-    width=464>&nbsp;代码如下</TD>
+    width=464><FONT style="BACKGROUND-COLOR: #ffffff">&nbsp;代码如下</FONT></TD>
     <TD onclick="doCopy('copy8895')" 
     style="CURSOR: pointer; FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce 
-    width=109 align=center>复制代码</TD></TR>
+    width=109 align=center><FONT 
+    style="BACKGROUND-COLOR: #ffffff">复制代码</FONT></TD></TR>
   <TR>
     <TD id=copy8895 class=copyclass 
     style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; LINE-HEIGHT: 26px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,244,232)" 
@@ -50,21 +55,25 @@ cellSpacing=1 cellPadding=1 width=620 align=center border=0>
 <P 
 style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><A 
 style="FONT-SIZE: 14px; TEXT-DECORATION: underline; COLOR: rgb(0,102,0)" 
-href="http://www.111cn.net/list-139/" 
-target=_blank>jquery</A>在1.7版本后，建议大家用on方法代替之前的bind、live、delegate方法。<BR>那上面一句如果用on的话，怎么写呢？</P>
+href="http://www.111cn.net/list-139/" target=_blank><FONT 
+color=>jquery</FONT></A><FONT 
+color=>在1.7版本后，建议大家用on方法代替之前的bind、live、delegate方法。<BR>那上面一句如果用on的话，怎么写呢？</FONT></P>
 <P 
-style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px">其实查看live源码就知道，live实际是委托doucment进行事件委派的。</P>
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><FONT 
+color=>其实查看live源码就知道，live实际是委托doucment进行事件委派的。</FONT></P>
 <P 
-style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px">按照这个思路，可以将on方法绑定到document即可。</P>
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><FONT 
+color=>按照这个思路，可以将on方法绑定到document即可。</FONT></P>
 <TABLE style="MARGIN: 20px 0px; BACKGROUND-COLOR: rgb(255,187,119)" 
 cellSpacing=1 cellPadding=1 width=620 align=center border=0>
   <TBODY>
   <TR>
     <TD style="FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce height=27 
-    width=464>&nbsp;代码如下</TD>
+    width=464><FONT style="BACKGROUND-COLOR: #ffffff">&nbsp;代码如下</FONT></TD>
     <TD onclick="doCopy('copy5545')" 
     style="CURSOR: pointer; FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce 
-    width=109 align=center>复制代码</TD></TR>
+    width=109 align=center><FONT 
+    style="BACKGROUND-COLOR: #ffffff">复制代码</FONT></TD></TR>
   <TR>
     <TD id=copy5545 class=copyclass 
     style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; LINE-HEIGHT: 26px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,244,232)" 
@@ -76,16 +85,18 @@ cellSpacing=1 cellPadding=1 width=620 align=center border=0>
       code...<SPAN 
   class=Apple-converted-space>&nbsp;</SPAN><BR>&nbsp;});</P></TD></TR></TBODY></TABLE>
 <P 
-style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px">还有一种情况，on()方法绑定多个事件，可以这样写：</P>
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><FONT 
+color=>还有一种情况，on()方法绑定多个事件，可以这样写：</FONT></P>
 <TABLE style="MARGIN: 20px 0px; BACKGROUND-COLOR: rgb(255,187,119)" 
 cellSpacing=1 cellPadding=1 width=620 align=center border=0>
   <TBODY>
   <TR>
     <TD style="FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce height=27 
-    width=464>&nbsp;代码如下</TD>
+    width=464><FONT style="BACKGROUND-COLOR: #ffffff">&nbsp;代码如下</FONT></TD>
     <TD onclick="doCopy('copy9790')" 
     style="CURSOR: pointer; FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce 
-    width=109 align=center>复制代码</TD></TR>
+    width=109 align=center><FONT 
+    style="BACKGROUND-COLOR: #ffffff">复制代码</FONT></TD></TR>
   <TR>
     <TD id=copy9790 class=copyclass 
     style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; LINE-HEIGHT: 26px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,244,232)" 
@@ -110,20 +121,23 @@ cellSpacing=1 cellPadding=1 width=620 align=center border=0>
       class=Apple-converted-space>&nbsp;</SPAN><BR>}, 
 "td");</P></TD></TR></TBODY></TABLE>
 <P 
-style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><BR>最后，用on()方法绑定多个选择器，多个事件则可以这样写：</P>
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 30px; PADDING-RIGHT: 0px"><BR><FONT 
+color=>最后，用on()方法绑定多个选择器，多个事件则可以这样写：</FONT></P>
 <TABLE style="MARGIN: 20px 0px; BACKGROUND-COLOR: rgb(255,187,119)" 
 cellSpacing=1 cellPadding=1 width=620 align=center border=0>
   <TBODY>
   <TR>
     <TD style="FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce height=27 
-    width=464>&nbsp;代码如下</TD>
+    width=464><FONT style="BACKGROUND-COLOR: #ffffff">&nbsp;代码如下</FONT></TD>
     <TD onclick="doCopy('copy9762')" 
     style="CURSOR: pointer; FONT-SIZE: 12px; COLOR: rgb(0,0,0)" bgColor=#ffe7ce 
-    width=109 align=center>复制代码</TD></TR>
+    width=109 align=center><FONT 
+    style="BACKGROUND-COLOR: #ffffff">复制代码</FONT></TD></TR>
   <TR>
     <TD id=copy9762 class=copyclass 
     style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; LINE-HEIGHT: 26px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,244,232)" 
-    bgColor=#ffffff vAlign=top colSpan=2>$(document).on({<SPAN 
+    bgColor=#ffffff vAlign=top colSpan=2><FONT 
+      style="BACKGROUND-COLOR: #ffffff">$(document).on({<SPAN 
       class=Apple-converted-space>&nbsp;</SPAN><BR>&nbsp;&nbsp;&nbsp; 
       mouseenter: function() {<SPAN 
       class=Apple-converted-space>&nbsp;</SPAN><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -140,5 +154,12 @@ cellSpacing=1 cellPadding=1 width=620 align=center border=0>
       // Handle click...<SPAN 
       class=Apple-converted-space>&nbsp;</SPAN><BR>&nbsp;&nbsp;&nbsp; }<SPAN 
       class=Apple-converted-space>&nbsp;</SPAN><BR>}, '#header 
-      .fixed-feedback-bn, #sb-sec .feedback-bn');<BR></TD></TR></TBODY></TABLE></DIV>
-<P><BR class=Apple-interchange-newline>&nbsp;</P></BODY></HTML>
+      .fixed-feedback-bn, #sb-sec 
+.feedback-bn');<BR></FONT></TD></TR></TBODY></TABLE></DIV>
+<P><STRONG><FONT color=#008000>小提示：</FONT></STRONG></P>
+<P><FONT color=#008000>IOS浏览器对于<STRONG><FONT 
+color=#ff0000>$(document).on("click","#xxx",function(){&nbsp; 
+});</FONT></STRONG>这种写法可能不起作用，改为：</FONT></P>
+<P><FONT color=#008000><STRONG><FONT color=#ff6600>$(document).on("touchend 
+click","#xxx",function(){&nbsp; });</FONT></STRONG>加上touch就可以了。</FONT><BR 
+class=Apple-interchange-newline>&nbsp;</P></BODY></HTML>
