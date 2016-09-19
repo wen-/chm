@@ -3910,11 +3910,19 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="lua">
 <PARAM NAME="Local" VALUE="lua.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="luci">
 <PARAM NAME="Local" VALUE="luci.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="表（对象）">
+<PARAM NAME="Local" VALUE="表（对象）.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
