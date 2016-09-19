@@ -10,7 +10,7 @@
 <P>var _config = {};</P>
 <P>_config._pic = 
 ['images/guide.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide_1.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide1_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide1_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide2_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide2_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide3_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide3_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide4_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide4_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide5_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide5_pic.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide6_txt.png',<BR>&nbsp;&nbsp;&nbsp;&nbsp;'images/guide6_pic.png'];//图片地址</P>
-<P><BR>&nbsp;&nbsp;var guidePic_n =   _config._pic.length;<BR>&nbsp;&nbsp;var n = 
+<P><BR>&nbsp;&nbsp;var guidePic_n =     _config._pic.length;<BR>&nbsp;&nbsp;var n = 
 0;</P>
 <P><BR>&nbsp;&nbsp;$.each(_config._pic,function(i,e){</P>
 <P>&nbsp;&nbsp; var img = 'img'+i;<BR>&nbsp;&nbsp;&nbsp;img = new 
@@ -25,5 +25,29 @@ init(){<BR>&nbsp;&nbsp;&nbsp;if(n == guidePic_n){</P>
 <P>&nbsp;&nbsp;&nbsp; //这里就是要执行的代码&nbsp; </P>
 <P>&nbsp; }</P>
 <P>&nbsp;}</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>多图加载进度条</P>
+<P>var urls = 
+[<BR>&nbsp;&nbsp;'mp3/hf_music.mp3',<BR>&nbsp;&nbsp;'mp3/i_believe.mp3',<BR>&nbsp;&nbsp;'images/bg.jpg',<BR>&nbsp;&nbsp;'images/ball.png',<BR>&nbsp;&nbsp;'images/triangle1.png',<BR>&nbsp;&nbsp;'images/triangle2.png',<BR>&nbsp;&nbsp;'images/pc.png',<BR>&nbsp;&nbsp;'images/logo.png',<BR>&nbsp;&nbsp;'images/show0.png',<BR>&nbsp;&nbsp;'images/show1.png',<BR>&nbsp;&nbsp;'images/show2.jpg',<BR>&nbsp;&nbsp;'images/pane1.png',<BR>&nbsp;&nbsp;'images/pane2.png',<BR>&nbsp;&nbsp;'images/pane3.png',<BR>&nbsp;&nbsp;'images/slide1.jpg',<BR>&nbsp;&nbsp;'images/slide2.jpg',<BR>&nbsp;&nbsp;'images/slide3.jpg',<BR>&nbsp;&nbsp;'images/slide4.jpg',<BR>&nbsp;&nbsp;//'images/slide5.jpg',<BR>&nbsp;&nbsp;'images/1.jpg',<BR>&nbsp;&nbsp;'images/2.jpg',<BR>&nbsp;&nbsp;'images/3.jpg',<BR>&nbsp;&nbsp;'images/4.jpg',<BR>&nbsp;&nbsp;'images/5.jpg',<BR>&nbsp;&nbsp;'images/6.jpg',<BR>&nbsp;&nbsp;'images/7.jpg',<BR>&nbsp;&nbsp;'images/8.jpg'<BR>&nbsp;];<BR>&nbsp;var 
+urls_l = urls.length;<BR>&nbsp;var n = 
+0;<BR>&nbsp;$.each(urls,function(i,url){<BR>&nbsp;&nbsp;var imgReg = 
+/(\.jpg)|(\.png)|(\.gif)$/i;<BR>&nbsp;&nbsp;var audioReg = 
+/(\.mp3)|(\.wav)|(\.ogg)$/i;<BR>&nbsp;&nbsp;var videoReg = 
+/(\.mp4)|(\.ogv)|(\.webm)$/i;<BR>&nbsp;&nbsp;if(imgReg.test(url)){<BR>&nbsp;&nbsp;&nbsp;var 
+img = new Image();<BR>&nbsp;&nbsp;&nbsp;img.onload = 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;img.onerror 
+= 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;img.src 
+= url;<BR>&nbsp;&nbsp;}else 
+if(audioReg.test(url)||videoReg.test(url)){<BR>&nbsp;&nbsp;&nbsp;var audio = new 
+Audio();<BR>&nbsp;&nbsp;&nbsp;audio.oncanplaythrough = 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;&nbsp;audio.onerror 
+= 
+function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;console.log("onerror")<BR>&nbsp;&nbsp;&nbsp;&nbsp;n+=1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;init(n);<BR>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;audio.src 
+= url;<BR>&nbsp;&nbsp;}<BR>&nbsp;});<BR>&nbsp;function 
+init(num){<BR>&nbsp;&nbsp;if(num &lt; urls_l){<BR>&nbsp;&nbsp;&nbsp;var percent 
+= 
+parseInt(num/urls_l*100);<BR>&nbsp;&nbsp;&nbsp;$(".loading_txt").text(percent+"%");<BR>&nbsp;&nbsp;}else{<BR>&nbsp;&nbsp;&nbsp;$(".loading_txt").remove();<BR>&nbsp;&nbsp;&nbsp;$("body").addClass("loaded");<BR>&nbsp;&nbsp;&nbsp;initPage();<BR>&nbsp;&nbsp;}<BR>&nbsp;}</P>
 </BODY>
 </HTML>
