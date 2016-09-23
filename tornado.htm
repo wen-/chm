@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>tornado</TITLE>
+</HEAD>
+<BODY>
+<P>tornado</P>
+<P>echo -e "[linux9981]\nname=Linux 9981 Repo for 
+CentOS\nbaseurl=http://rpm.microsoftnetinfo.com/centos/7/x86_64/\ngpgcheck=0\n\n\n\n[linux9981-source]\nname=Linux 
+9981 Source Repo for 
+CentOS\nbaseurl=http://rpm.linux9981.com/centos/7/src/\ngpgcheck=0\nenabled=0\n\n\n[linux9981-debuginfo]\nname=Linux 
+9981 Debuginfo Repo for 
+CentOS\nbaseurl=http://rpm.linux9981.com/centos/7/debuginfo/\ngpgcheck=0\nenabled=0" 
+&gt;/etc/yum.repos.d/linux9981.repo</P>
+<P>vi /etc/hosts</P>
+<P>106.185.41.164 rpm.microsoftnetinfo.com<BR></P>
+<P>yum install python3</P>
+<P>yum install python3-tornado</P>
+<P>pip3 install tornado-mysql <BR></P>
+<P>yum install lrzsz -y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>cd 
+/root/&nbsp;&nbsp; </P>
+<P>把 花香.py 复制进来</P>
+<P>chmod +x 花香.py</P>
+<P>mv 花香.py 花香 </P>
+<P>mv 花香 /usr/bin/</P>
+<P>vi 
+/usr/lib/systemd/system/huaxiang.service<BR>[Unit]<BR>Description=花香服务端<BR>After=network.target</P>
+<P>[Service]<BR>LimitNOFILE=655350<BR>LimitNPROC=65535<BR>ExecStart=/usr/bin/花香.py</P>
+<P>[Install]<BR>WantedBy=multi-user.target<BR></P>
+<P>cd /usr/bin/</P>
+<P>&nbsp;</P>
+<P>git clone <A 
+href="http://sstx100.f3322.net:10080/hx99/huaxiang-server.git">http://sstx100.f3322.net:10080/hx99/huaxiang-server.git</A></P>
+<P>&nbsp;cd huaxiang-server/</P>
+<P>mv * ../bin/<BR></P>
+<P>&nbsp;mv .git ../bin/</P>
+<P>cd ../bin/ </P>
+<P>chmod +x 花香.py</P>
+<P>rm 花香 </P>
+<P>systemctl start huaxiang</P>
+<P>&nbsp;tail /var/log/messages </P>
+<P>vi /usr/bin/花香.py </P>
+<P>修改数据库地址</P>
+<P>mkdir /etc/nginx/ssl&nbsp;&nbsp;&nbsp; 存放证书</P>
+<P>&nbsp;</P>
+<P>systemctl restart huaxiang</P>
+<P>systemctl status huaxiang&nbsp; <BR></P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>
