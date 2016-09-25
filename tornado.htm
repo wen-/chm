@@ -1,10 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
-<HTML>
-<HEAD>
-<META http-equiv="Content-Type" content="text/html; charset=gb2312">
-<META name="GENERATOR" content="QuickCHM">
-<TITLE>tornado</TITLE>
-</HEAD>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>tornado</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.9600.18426"></HEAD>
 <BODY>
 <P>tornado</P>
 <P>echo -e "[linux9981]\nname=Linux 9981 Repo for 
@@ -21,10 +18,6 @@ CentOS\nbaseurl=http://rpm.linux9981.com/centos/7/debuginfo/\ngpgcheck=0\nenable
 <P>pip3 install tornado-mysql <BR></P>
 <P>yum install lrzsz -y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>cd 
 /root/&nbsp;&nbsp; </P>
-<P>把 花香.py 复制进来</P>
-<P>chmod +x 花香.py</P>
-<P>mv 花香.py 花香 </P>
-<P>mv 花香 /usr/bin/</P>
 <P>vi 
 /usr/lib/systemd/system/huaxiang.service<BR>[Unit]<BR>Description=花香服务端<BR>After=network.target</P>
 <P>[Service]<BR>LimitNOFILE=655350<BR>LimitNPROC=65535<BR>ExecStart=/usr/bin/花香.py</P>
@@ -32,13 +25,13 @@ CentOS\nbaseurl=http://rpm.linux9981.com/centos/7/debuginfo/\ngpgcheck=0\nenable
 <P>cd /usr/bin/</P>
 <P>&nbsp;</P>
 <P>git clone <A 
-href="http://sstx100.f3322.net:10080/hx99/huaxiang-server.git">http://sstx100.f3322.net:10080/hx99/huaxiang-server.git</A></P>
+href="http://sstx100.f3322.net:10080/hx99/huaxiang-server.git"><FONT 
+color=>http://sstx100.f3322.net:10080/hx99/huaxiang-server.git</FONT></A></P>
 <P>&nbsp;cd huaxiang-server/</P>
 <P>mv * ../bin/<BR></P>
 <P>&nbsp;mv .git ../bin/</P>
 <P>cd ../bin/ </P>
 <P>chmod +x 花香.py</P>
-<P>rm 花香 </P>
 <P>systemctl start huaxiang</P>
 <P>&nbsp;tail /var/log/messages </P>
 <P>vi /usr/bin/花香.py </P>
@@ -56,6 +49,4 @@ href="http://sstx100.f3322.net:10080/hx99/huaxiang-server.git">http://sstx100.f3
 <P>&nbsp;</P>
 <P>&nbsp;</P>
 <P>&nbsp;</P>
-<P>&nbsp;</P>
-</BODY>
-</HTML>
+<P>&nbsp;</P></BODY></HTML>
