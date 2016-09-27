@@ -3689,11 +3689,19 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mySQL">
 <PARAM NAME="Local" VALUE="mySQL管理工具.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="navicat for mysql表结构复制">
 <PARAM NAME="Local" VALUE="navicat for mysql表结构复制.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mysqldump">
+<PARAM NAME="Local" VALUE="mysqldump.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
@@ -3919,7 +3927,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="openwrt系统">
 <PARAM NAME="Local" VALUE="openwrt系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

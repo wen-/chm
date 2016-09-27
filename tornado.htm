@@ -4,19 +4,19 @@
 <META name=GENERATOR content="MSHTML 11.00.9600.18426"></HEAD>
 <BODY>
 <P>tornado</P>
-<P>echo -e "[linux9981]\nname=Linux 9981 Repo for 
-CentOS\nbaseurl=http://rpm.microsoftnetinfo.com/centos/7/x86_64/\ngpgcheck=0\n\n\n\n[linux9981-source]\nname=Linux 
-9981 Source Repo for 
-CentOS\nbaseurl=http://rpm.linux9981.com/centos/7/src/\ngpgcheck=0\nenabled=0\n\n\n[linux9981-debuginfo]\nname=Linux 
-9981 Debuginfo Repo for 
-CentOS\nbaseurl=http://rpm.linux9981.com/centos/7/debuginfo/\ngpgcheck=0\nenabled=0" 
+<P>echo -e "[linux9981]\nname=  Linux 9981 
+RepoforCentOS\nbaseurl=http://rpm.microsoftnetinfo.com/centos/7/x86_64/\ngpgcheck=0\n\n\n\n[linux9981-source]\nname= 
+  Linux 9981 
+SourceRepoforCentOS\nbaseurl=http://rpm.linux9981.com/centos/7/src/\ngpgcheck=0\nenabled=0\n\n\n[linux9981-debuginfo]\nname= 
+ Linux 9981 Debuginfo 
+RepoforCentOS\nbaseurl=http://rpm.linux9981.com/centos/7/debuginfo/\ngpgcheck=0\nenabled=0" 
 &gt;/etc/yum.repos.d/linux9981.repo</P>
 <P>vi /etc/hosts</P>
 <P>106.185.41.164 rpm.microsoftnetinfo.com<BR></P>
-<P>yum install python3</P>
-<P>yum install python3-tornado</P>
+<P>yum -y&nbsp;install python3</P>
+<P>yum -y&nbsp;install python3-tornado</P>
 <P>pip3 install tornado-mysql <BR></P>
-<P>yum install lrzsz -y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>cd 
+<P>yum install lrzsz -y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //文件可拖拽到secureCRT上传的东东，可不装 <BR>cd 
 /root/&nbsp;&nbsp; </P>
 <P>vi 
 /usr/lib/systemd/system/huaxiang.service<BR>[Unit]<BR>Description=花香服务端<BR>After=network.target</P>
@@ -26,7 +26,7 @@ CentOS\nbaseurl=http://rpm.linux9981.com/centos/7/debuginfo/\ngpgcheck=0\nenable
 <P>&nbsp;</P>
 <P>git clone <A 
 href="http://sstx100.f3322.net:10080/hx99/huaxiang-server.git"><FONT 
-color=>http://sstx100.f3322.net:10080/hx99/huaxiang-server.git</FONT></A></P>
+color=#de0001>http://sstx100.f3322.net:10080/hx99/huaxiang-server.git</FONT></A></P>
 <P>&nbsp;cd huaxiang-server/</P>
 <P>mv * ../bin/<BR></P>
 <P>&nbsp;mv .git ../bin/</P>
