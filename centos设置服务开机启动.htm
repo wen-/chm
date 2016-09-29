@@ -4,6 +4,331 @@
 <META name=GENERATOR content="MSHTML 11.00.9600.17801"></HEAD>
 <BODY>
 <P>centos设置服务开机启动</P>
+<P><FONT color=#ff0000>centos7 新设置服务与开机启动</FONT></P>
+<P><STRONG><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; LINE-HEIGHT: 35px'>Centos 
+系统服务脚本目录：</SPAN></STRONG></P>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 14px; OVERFLOW: hidden; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 938px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(204,204,204); FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; BORDER-BOTTOM-COLOR: rgb(204,204,204); PADDING-TOP: 1px; ORPHANS: 2; WIDOWS: 2; MARGIN: 18px 0px; BORDER-RIGHT-COLOR: rgb(204,204,204); LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(231,229,220); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>/usr/lib/systemd/&nbsp;&nbsp;</SPAN></SPAN></DIV>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>有系统（system）和用户（user）之分，</SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN></P>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>如需要开机没有登陆情况下就能运行的程序，存在系统服务（system）里，即：</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 14px; OVERFLOW: hidden; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 938px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(204,204,204); FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; BORDER-BOTTOM-COLOR: rgb(204,204,204); PADDING-TOP: 1px; ORPHANS: 2; WIDOWS: 2; MARGIN: 18px 0px; BORDER-RIGHT-COLOR: rgb(204,204,204); LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(231,229,220); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>/lib/systemd/system/&nbsp;&nbsp;</SPAN></SPAN></DIV>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>反之，用户登录后才能运行的程序，存在用户（user）里</SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>服务以.<A 
+style="TEXT-DECORATION: underline; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); transition: color 0.3s linear, background-color 0.3s linear, border-color 0.25s linear" 
+href="http://bg.artuion.com/tag/service">service</A>结尾。</SPAN></P>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>查看服务列表</SPAN></P>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>systemctl 
+list-unit-files </SPAN></P>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>&nbsp;</P>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>这边以 <A 
+style="TEXT-DECORATION: underline; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); transition: color 0.3s linear, background-color 0.3s linear, border-color 0.25s linear" 
+href="http://bg.artuion.com/tag/nginx">蓝莓</A>&nbsp;开机运行为例</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<H1 
+style='FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>1.建立服务文件</SPAN></H1><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 14px; OVERFLOW: hidden; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 938px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(204,204,204); FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; BORDER-BOTTOM-COLOR: rgb(204,204,204); PADDING-TOP: 1px; ORPHANS: 2; WIDOWS: 2; MARGIN: 18px 0px; BORDER-RIGHT-COLOR: rgb(204,204,204); LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(231,229,220); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>vim&nbsp;/lib/systemd/system/lanmei.service 
+&nbsp;</SPAN></SPAN></DIV><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<DIV class="dp-highlighter bg_plain" 
+style='FONT-SIZE: 14px; OVERFLOW: hidden; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 938px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(204,204,204); FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; BORDER-BOTTOM-COLOR: rgb(204,204,204); PADDING-TOP: 1px; ORPHANS: 2; WIDOWS: 2; MARGIN: 18px 0px; BORDER-RIGHT-COLOR: rgb(204,204,204); LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(231,229,220); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>
+<P><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>[Unit]&nbsp;&nbsp;</SPAN></SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>Description=蓝莓服务端&nbsp;&nbsp;</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>After=network.target&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN></P><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN 
+class=Apple-converted-space></SPAN></SPAN><FONT color=#009900 size=3 
+face=微软雅黑></FONT>
+<P><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>[Service]&nbsp;&nbsp;</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>#Type=forking&nbsp;</SPAN></P>
+<P><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>LimitNOFILE=655350<BR>LimitNPROC=65535&nbsp;</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>ExecStart=/home/lanmei/lanmei.py</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>#ExecReload=</SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>/etc</SPAN>/init.d/nginx&nbsp;restart&nbsp;&nbsp;</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>#ExecStop=</SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>/etc/</SPAN>init.d/nginx&nbsp;&nbsp;stop&nbsp;&nbsp;</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>#PrivateTmp=true&nbsp;&nbsp;</SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>[Install]&nbsp;&nbsp;</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(0,153,0)'></SPAN><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>WantedBy=multi-user.target</SPAN></P>
+<OL 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 1px 45px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)"><SPAN 
+  style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN></OL><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN></DIV>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>&nbsp;</SPAN><STRONG><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>[Unit]:服务的说明</SPAN></STRONG></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>Description:描述服务</SPAN></P>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>After:描述服务类别</SPAN></P>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><STRONG><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>[Service]服务运行参数的设置</SPAN></STRONG></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>Type=forking是后台运行的形式</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>ExecStart为服务的具体运行命令</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>ExecReload为重启命令</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>ExecStop为停止命令</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>PrivateTmp=True表示给服务分配独立的临时空间</SPAN><BR><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; COLOR: rgb(255,0,0)'>注意：[Service]的启动、重启、停止命令全部要求使用绝对路径</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><STRONG><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>[Install]服务安装的相关设置，可设置为多用户</SPAN></STRONG></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<H1 
+style='FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>2.保存目录</SPAN></H1><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>以754的权限保存在目录：</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 14px; OVERFLOW: hidden; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 938px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(204,204,204); FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; BORDER-BOTTOM-COLOR: rgb(204,204,204); PADDING-TOP: 1px; ORPHANS: 2; WIDOWS: 2; MARGIN: 18px 0px; BORDER-RIGHT-COLOR: rgb(204,204,204); LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(231,229,220); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'>/lib/systemd/system&nbsp;&nbsp;</SPAN></SPAN></DIV><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<H1 
+style='FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>3.设置开机自启动</SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>&nbsp;<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><BR></SPAN></H1>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 14px; OVERFLOW: hidden; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 938px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: rgb(204,204,204); FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; BORDER-BOTTOM-COLOR: rgb(204,204,204); PADDING-TOP: 1px; ORPHANS: 2; WIDOWS: 2; MARGIN: 18px 0px; BORDER-RIGHT-COLOR: rgb(204,204,204); LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(231,229,220); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style='FONT-SIZE: 16px; BORDER-TOP: medium none; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,153,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px'><A 
+style="TEXT-DECORATION: underline; FONT-WEIGHT: 700; COLOR: rgb(0,0,0); transition: color 0.3s linear, background-color 0.3s linear, border-color 0.25s linear" 
+href="http://bg.artuion.com/tag/systemctl">systemctl</A>&nbsp;enable&nbsp;lanmei.service&nbsp;&nbsp;</SPAN></SPAN></DIV><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<H1 
+style='FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>4.其他命令</SPAN></H1><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN></P>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<TABLE class=ke-zeroborder 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 35px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+cellSpacing=2 cellPadding=2>
+  
+  <TR>
+    <TD><SPAN 
+    style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>任务</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>旧指令</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><STRONG><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>新指令</SPAN></STRONG></TD></TR>
+  <TR>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>使某服务自动启动</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>chkconfig --level 
+      3 httpd &nbsp;on &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl enable 
+      httpd.service</SPAN></TD></TR>
+  <TR>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>使某服务不自动启动</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>chkconfig --level 
+      3 httpd off</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl disable 
+      httpd.service</SPAN></TD></TR>
+  <TR>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>检查服务状态</SPAN></TD>
+    <TD><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>service 
+      httpd status</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl 
+      status&nbsp;httpd.service （服务详细信息）&nbsp;</SPAN><BR><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl 
+      is-active httpd.service （仅显示是否 Active)</SPAN></TD></TR>
+  <TR>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>显示所有已启动的服务</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>chkconfig 
+      --list</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl 
+      list-units --type=service</SPAN></TD></TR>
+  <TR>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>启动某服务</SPAN></TD>
+    <TD><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>service 
+      httpd start</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl start 
+      httpd.service</SPAN></TD></TR>
+  <TR>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>停止某服务</SPAN></TD>
+    <TD><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>service 
+      httpd stop</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl stop 
+      httpd.service</SPAN></TD></TR>
+  <TR>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>重启某服务</SPAN></TD>
+    <TD><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>service 
+      httpd restart</SPAN></TD>
+    <TD><SPAN 
+      style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl restart 
+      httpd.service</SPAN></TD></TR></TABLE><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN></P>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN>&nbsp;</P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>启动nginx服务</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><PRE style="FONT-SIZE: 14px; BACKGROUND: rgb(238,238,238); WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 5px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl&nbsp;start&nbsp;lanmei.service</SPAN></PRE><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>设置开机自启动</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><PRE style="FONT-SIZE: 14px; BACKGROUND: rgb(238,238,238); WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 5px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl&nbsp;enable&nbsp;lanmei.service</SPAN></PRE><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>停止开机自启动</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><PRE style="FONT-SIZE: 14px; BACKGROUND: rgb(238,238,238); WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 5px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl&nbsp;disable&nbsp;lanmei.service</SPAN></PRE><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>查看服务当前状态</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><PRE style="FONT-SIZE: 14px; BACKGROUND: rgb(238,238,238); WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 5px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl&nbsp;status&nbsp;lanmei.service</SPAN></PRE><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>重新启动服务</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><PRE style="FONT-SIZE: 14px; BACKGROUND: rgb(238,238,238); WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 5px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl&nbsp;restart&nbsp;lanmei.service</SPAN></PRE><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 2em; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'></SPAN><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>查看所有已启动的服务</SPAN></P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'></SPAN><PRE style="FONT-SIZE: 14px; BACKGROUND: rgb(238,238,238); WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 5px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei"'>systemctl&nbsp;list-units&nbsp;--type=service</SPAN></PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><FONT color=#ff0000>旧方法</FONT></P>
 <P 
 style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); FONT: 14px/30px 'Microsoft Yahei', Arial, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">CentOS设置服务开机启动的两种方法</P>
 <P 
@@ -18,28 +343,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c451144022939-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c451144022939-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-e 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,78,208) !important">chkconfig 
       </SPAN><SPAN class=crayon-e 
@@ -54,28 +379,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c45f455870676-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c45f455870676-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-e 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,78,208) !important">chkconfig 
       </SPAN><SPAN class=crayon-e 
@@ -90,28 +415,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c465381827427-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c465381827427-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">chkconfig</SPAN><SPAN 
       class=crayon-h 
@@ -129,28 +454,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c46b804702153-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c46b804702153-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">chkconfig</SPAN><SPAN 
       class=crayon-h 
@@ -167,28 +492,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c471470072918-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c471470072918-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">chkconfig</SPAN><SPAN 
       class=crayon-h 
@@ -208,28 +533,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c476499662629-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c476499662629-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">httpd</SPAN><SPAN 
       class=crayon-h 
@@ -295,28 +620,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c47c652162421-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c47c652162421-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-e 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,78,208) !important">chkconfig 
       </SPAN><SPAN class=crayon-e 
@@ -330,28 +655,28 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c481717219779-1">1</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c481717219779-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">httpd</SPAN><SPAN 
       class=crayon-h 
@@ -420,46 +745,46 @@ class="crayon-syntax crayon-theme-familiar crayon-font-courier-new crayon-os-pc 
 style="BORDER-LEFT-WIDTH: 1px !important; BOX-SIZING: border-box; OVERFLOW: hidden !important; MAX-WIDTH: 620px; HEIGHT: auto; BORDER-RIGHT-WIDTH: 1px !important; WIDTH: 620px; WHITE-SPACE: normal; BORDER-BOTTOM-WIDTH: 1px !important; WORD-SPACING: 0px; POSITION: relative !important; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; DIRECTION: ltr !important; TEXT-ALIGN: left; PADDING-TOP: 0px; FONT: 500 12px/20px Monaco, MonacoRegular, 'Courier New', monospace; PADDING-LEFT: 0px; MARGIN: 12px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 1px !important; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-shadow: none" 
 data-settings=" minimize scroll-mouseover">
 <DIV class=crayon-plain-wrap 
-style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important"></DIV>
+style="BORDER-TOP: 0px; HEIGHT: auto !important; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: left; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important"></DIV>
 <DIV class=crayon-main 
-style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
+style="OVERFLOW: hidden; MAX-WIDTH: 620px; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 620px; BORDER-BOTTOM: 0px; POSITION: relative; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; Z-INDEX: 1; PADDING-RIGHT: 0px">
 <TABLE class=crayon-table 
-style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; WIDTH: auto !important; BACKGROUND-IMAGE: none; BORDER-COLLAPSE: collapse !important; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-SPACING: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
   <TBODY style="FONT-FAMILY: 'Courier New', monospace !important">
   <TR class=crayon-row 
-  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px !important">
+  style="BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px !important">
     <TD class="crayon-nums " 
     style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0.93em; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: rgb(108,226,108) 3px solid; VERTICAL-ALIGN: top !important; BORDER-BOTTOM-WIDTH: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; PADDING-RIGHT: 5px !important; BORDER-TOP-WIDTH: 0px" 
     data-settings="show">
       <DIV class=crayon-nums-content 
-      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
+      style="FONT-SIZE: 12px !important; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px">
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c487988758631-1">1</DIV>
       <DIV class="crayon-num crayon-striped-num" 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c487988758631-2">2</DIV>
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c487988758631-3">3</DIV>
       <DIV class="crayon-num crayon-striped-num" 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c487988758631-4">4</DIV>
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c487988758631-5">5</DIV>
       <DIV class="crayon-num crayon-striped-num" 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; COLOR: rgb(175,175,175) !important; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c487988758631-6">6</DIV>
       <DIV class=crayon-num 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px" 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px" 
       data-line="crayon-549a5c0f6c487988758631-7">7</DIV></DIV></TD>
     <TD class=crayon-code 
-    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px !important">
+    style="FONT-SIZE: 0.93em; BORDER-TOP: 0px; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: 0px; WIDTH: 595px; VERTICAL-ALIGN: top !important; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px !important">
       <DIV class=crayon-pre 
-      style="OVERFLOW: visible; FONT-SIZE: 12px !important; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: medium none; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
+      style="FONT-SIZE: 12px !important; OVERFLOW: visible; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', monospace !important; BORDER-RIGHT: medium none; BACKGROUND-IMAGE: none; WHITE-SPACE: pre; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; LINE-HEIGHT: 20px !important; PADDING-RIGHT: 0px; tab-size: 4">
       <DIV id=crayon-549a5c0f6c487988758631-1 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-sy 
       style="FONT-FAMILY: inherit; COLOR: rgb(51,51,51) !important">[</SPAN>天涯<SPAN 
       class=crayon-cn 
@@ -478,7 +803,7 @@ style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', mon
       style="FONT-FAMILY: inherit; COLOR: rgb(255,128,0) !important">//blog.phpha.com]</SPAN></DIV>
       <DIV id=crayon-549a5c0f6c487988758631-2 
       class="crayon-line crayon-striped-line" 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(249,249,249)"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(249,249,249)"><SPAN 
       class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">vi</SPAN><SPAN 
       class=crayon-h 
@@ -504,12 +829,12 @@ style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', mon
       class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">local</SPAN></DIV>
       <DIV id=crayon-549a5c0f6c487988758631-3 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-c 
       style="FONT-FAMILY: inherit; COLOR: rgb(255,128,0) !important">#添加以下命令</SPAN></DIV>
       <DIV id=crayon-549a5c0f6c487988758631-4 
       class="crayon-line crayon-striped-line" 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(249,249,249)"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(249,249,249)"><SPAN 
       class=crayon-o 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,111,224) !important">/</SPAN><SPAN 
       class=crayon-i 
@@ -525,7 +850,7 @@ style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', mon
       </SPAN><SPAN class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">start</SPAN></DIV>
       <DIV id=crayon-549a5c0f6c487988758631-5 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-o 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,111,224) !important">/</SPAN><SPAN 
       class=crayon-i 
@@ -554,7 +879,7 @@ style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', mon
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">start</SPAN></DIV>
       <DIV id=crayon-549a5c0f6c487988758631-6 
       class="crayon-line crayon-striped-line" 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(249,249,249)"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(249,249,249)"><SPAN 
       class=crayon-o 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,111,224) !important">/</SPAN><SPAN 
       class=crayon-i 
@@ -582,7 +907,7 @@ style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', mon
       </SPAN><SPAN class=crayon-i 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">start</SPAN></DIV>
       <DIV id=crayon-549a5c0f6c487988758631-7 class=crayon-line 
-      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 5px"><SPAN 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px 50%; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px"><SPAN 
       class=crayon-o 
       style="FONT-FAMILY: inherit; COLOR: rgb(0,111,224) !important">/</SPAN><SPAN 
       class=crayon-i 
@@ -611,14 +936,14 @@ style="FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: 'Courier New', mon
       style="FONT-FAMILY: inherit; COLOR: rgb(0,0,0) !important">d</SPAN></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV>
 <P>&nbsp;</P>
 <H1 class=postTitle 
-style="BACKGROUND-IMAGE: url(http://www.cnblogs.com/skins/iMetro_HD/images/logo.png); WHITE-SPACE: normal; WORD-SPACING: 0px; BACKGROUND-REPEAT: repeat-y; TEXT-TRANSFORM: none; BACKGROUND-POSITION: -10px 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px Verdana, Arial, Helvetica, sans-serif; PADDING-LEFT: 15px; MARGIN: 0px 0px 10px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 15px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
+style="BACKGROUND-IMAGE: url(http://www.cnblogs.com/skins/iMetro_HD/images/logo.png); WHITE-SPACE: normal; WORD-SPACING: 0px; BACKGROUND-REPEAT: repeat-y; TEXT-TRANSFORM: none; BACKGROUND-POSITION: -10px 0px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px Verdana, Arial, Helvetica, sans-serif; PADDING-LEFT: 15px; WIDOWS: 1; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><A 
 id=cb_post_title_url class=postTitle2 
 style="FONT-SIZE: 24px; TEXT-DECORATION: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
 href="http://www.cnblogs.com/Anker/p/3551508.html">Centos设置开机启动Apache和Mysql[总结]</A></H1>
 <DIV class=clear 
-style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px Verdana, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></DIV>
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/18px Verdana, Arial, Helvetica, sans-serif; PADDING-LEFT: 0px; CLEAR: both; WIDOWS: 1; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"></DIV>
 <DIV class=postBody 
-style="FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 15px; MARGIN: 0px 0px 5px; WIDOWS: 1; LETTER-SPACING: normal; PADDING-RIGHT: 15px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
+style="FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-VARIANT: normal; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 15px; WIDOWS: 1; MARGIN: 0px 0px 5px; LETTER-SPACING: normal; PADDING-RIGHT: 15px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px">
 <DIV id=cnblogs_post_body 
 style="OVERFLOW: auto; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 30px; PADDING-RIGHT: 0px">
 <P 
@@ -706,7 +1031,7 @@ style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PA
 --level 2345 mysqld on</STRONG></SPAN></DIV>
 <DIV 
 style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><IMG 
-style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px" 
+style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
 alt="" 
 src="http://images.cnitblog.com/blog/305504/201402/161621249228176.png"></DIV>
 <P 

@@ -3563,6 +3563,20 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="centos安装samba共享">
+<PARAM NAME="Local" VALUE="centos安装samba共享.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="centos时间同步">
+<PARAM NAME="Local" VALUE="centos时间同步.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="centos下nodejs安装pm2出错">
 <PARAM NAME="Local" VALUE="centos下nodejs安装pm2出错.htm">
 </OBJECT>
@@ -3689,7 +3703,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mySQL">
 <PARAM NAME="Local" VALUE="mySQL管理工具.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3735,6 +3748,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="openwrt">
 <PARAM NAME="Local" VALUE="openwrt.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3743,12 +3757,18 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt安装samba共享">
+<PARAM NAME="Local" VALUE="openwrt安装samba共享.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="python">
 <PARAM NAME="Local" VALUE="python.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3927,6 +3947,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="openwrt系统">
 <PARAM NAME="Local" VALUE="openwrt系统.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

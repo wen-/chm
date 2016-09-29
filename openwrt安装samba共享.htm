@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>openwrt安装samba共享</TITLE>
+</HEAD>
+<BODY>
+<P>openwrt安装samba共享</P>
+<DIV class=article_title 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 20px/30px "Microsoft YaHei"; ORPHANS: 2; WIDOWS: 2; MARGIN: 5px 0px; DISPLAY: block; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal'><SPAN 
+class="ico ico_type_Original" 
+style="HEIGHT: 19px; WIDTH: 19px; VERTICAL-ALIGN: middle; BACKGROUND: url(../../../images/ico_Original.gif) no-repeat 0px 0px; MARGIN: 0px 2px 0px 0px; DISPLAY: inline-block"></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>
+<H1 
+style='VERTICAL-ALIGN: middle; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 20px/30px "Microsoft YaHei"; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px; font-stretch: normal'><SPAN 
+class=link_title><A style="TEXT-DECORATION: none; COLOR: rgb(0,0,0)" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855">openwrt设置samba共享</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix" 
+style="OVERFLOW: hidden; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(237,237,237) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(153,153,153); PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 0px; FONT: 12px/22px Arial; PADDING-LEFT: 20px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -20px; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 20px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal">
+<DIV class=article_r><SPAN class=link_postdate 
+style="MARGIN: 0px 5px 0px 0px">2014-10-11 14:36</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=阅读次数 class=link_view 
+style="BACKGROUND: url(../../../images/ico_view.png) no-repeat left center; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px">15155人阅读</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=评论次数 class=link_comments 
+style="BACKGROUND: url(../../../images/ico_comm.png) no-repeat left center; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px"><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#comments">评论</A>(0)</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class="link_collect tracking-ad" 
+style="MARGIN: 0px 5px" data-mod="popu_171"><A 
+onclick="javascript:collectArticle('openwrt设置samba共享','39993855');return false;" 
+title=收藏 style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="javascript:void(0);" target=_blank>收藏</A></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=link_report 
+style="MARGIN: 0px 5px"><A onclick="javascript:report(39993855,2);return false;" 
+title=举报 style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#report">举报</A></SPAN></DIV></DIV>
+<DIV class=bog_copyright 
+style='FONT-SIZE: 12px; FONT-FAMILY: Arial, Console, Verdana, "Courier New"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 20px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 20px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>
+<P class=copyright_p 
+style="FONT-SIZE: 14px; HEIGHT: 14px; COLOR: rgb(102,102,102); PADDING-LEFT: 10px; BORDER-LEFT: rgb(228,28,30) 3px solid; LINE-HEIGHT: 14px">版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id=article_content class=article_content 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; ORPHANS: 2; WIDOWS: 2; MARGIN: 20px 0px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal">
+<H3 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Samba共享</H3>
+<P>安装samba36-server和luci-app-samba</P>
+<P></P>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; WIDTH: 700px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 18px 0px; BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="PADDING-LEFT: 45px">
+<DIV class=tools 
+style="COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B>[html]</B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">view 
+plain</A><SPAN data-mod="popu_168"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">copy</A>
+<DIV 
+style="HEIGHT: 18px; WIDTH: 18px; POSITION: absolute; LEFT: 842px; Z-INDEX: 99; TOP: 637px"><EMBED 
+id=ZeroClipboardMovie_1 name=ZeroClipboardMovie_1 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=18 width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+wmode="transparent" flashvars="id=1&amp;width=18&amp;height=18" 
+allowfullscreen="false" allowscriptaccess="always" bgcolor="#ffffff" 
+quality="best" menu="false" loop="false"></DIV></SPAN><SPAN 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL class=dp-xml 
+style="LIST-STYLE-TYPE: decimal; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 1px 45px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">opkg&nbsp;install&nbsp;samba36-server&nbsp;luci-app-samba&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR>
+<P></P>
+<P>简单介绍</P>
+<P>Openwrt的samba配置是先读取/etc/config/samba，结合/etc/samba/smb.conf.template文件，生成配置文件/etc/samba/smb.conf，用户只需修改/etc/config/samba和/etc/samba/smb.conf.template文件,然后设置samba用户与密码。<SPAN 
+style="COLOR: rgb(70,70,70)"><BR><BR></SPAN></P>
+<P>编辑/etc/config/samba如下，其中config sambashare配置在luci页面编辑更方便。</P>
+<P></P>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; WIDTH: 700px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 18px 0px; BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="PADDING-LEFT: 45px">
+<DIV class=tools 
+style="COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B>[html]</B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">view 
+plain</A><SPAN data-mod="popu_168"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">copy</A>
+<DIV 
+style="HEIGHT: 18px; WIDTH: 18px; POSITION: absolute; LEFT: 842px; Z-INDEX: 99; TOP: 965px"><EMBED 
+id=ZeroClipboardMovie_2 name=ZeroClipboardMovie_2 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=18 width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+wmode="transparent" flashvars="id=2&amp;width=18&amp;height=18" 
+allowfullscreen="false" allowscriptaccess="always" bgcolor="#ffffff" 
+quality="best" menu="false" loop="false"></DIV></SPAN><SPAN 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL class=dp-xml 
+style="LIST-STYLE-TYPE: decimal; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 1px 45px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">config&nbsp;samba&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  workgroup&nbsp;'WORKGROUP'&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  homes&nbsp;'1'&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  name&nbsp;'snapgate-imx6'&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  description&nbsp;'imx6-openwrt'&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">config&nbsp;sambashare&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  name&nbsp;'root'&nbsp;#网络显示的共享目录名字&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  path&nbsp;'/'&nbsp;#共享目录&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  users&nbsp;'root'&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  read_only&nbsp;'no'&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  guest_ok&nbsp;'no'&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  create_mask&nbsp;'0700'&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;option 
+  dir_mask&nbsp;'0700'&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;</SPAN></LI></OL></DIV><BR><BR>
+<P></P>
+<P>设置共享用户密码,刚开始口令文件是不存在的，先touch，再增加一个用户</P>
+<P></P>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; WIDTH: 700px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 18px 0px; BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="PADDING-LEFT: 45px">
+<DIV class=tools 
+style="COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B>[html]</B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">view 
+plain</A><SPAN data-mod="popu_168"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">copy</A>
+<DIV 
+style="HEIGHT: 18px; WIDTH: 18px; POSITION: absolute; LEFT: 842px; Z-INDEX: 99; TOP: 1413px"><EMBED 
+id=ZeroClipboardMovie_3 name=ZeroClipboardMovie_3 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=18 width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+wmode="transparent" flashvars="id=3&amp;width=18&amp;height=18" 
+allowfullscreen="false" allowscriptaccess="always" bgcolor="#ffffff" 
+quality="best" menu="false" loop="false"></DIV></SPAN><SPAN 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL class=dp-xml 
+style="LIST-STYLE-TYPE: decimal; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 1px 45px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">touch&nbsp;/etc/samba/smbpasswd&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">smbpasswd&nbsp;&nbsp;-a&nbsp;root&nbsp;&nbsp;</SPAN></LI></OL></DIV><BR><BR>
+<P></P>
+<P>修改samba模板,把字符集设置一下，启用root用户访问。</P>
+<P></P>
+<DIV class="dp-highlighter bg_html" 
+style='FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; WIDTH: 700px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 18px 0px; BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="PADDING-LEFT: 45px">
+<DIV class=tools 
+style="COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B>[html]</B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">view 
+plain</A><SPAN data-mod="popu_168"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(160,160,160); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://blog.csdn.net/crazyleen/article/details/39993855#">copy</A>
+<DIV 
+style="HEIGHT: 18px; WIDTH: 18px; POSITION: absolute; LEFT: 842px; Z-INDEX: 99; TOP: 1627px"><EMBED 
+id=ZeroClipboardMovie_4 name=ZeroClipboardMovie_4 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=18 width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+wmode="transparent" flashvars="id=4&amp;width=18&amp;height=18" 
+allowfullscreen="false" allowscriptaccess="always" bgcolor="#ffffff" 
+quality="best" menu="false" loop="false"></DIV></SPAN><SPAN 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL class=dp-xml 
+style="LIST-STYLE-TYPE: decimal; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 1px 45px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  class=attribute 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">unixcharset</SPAN><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;=&nbsp;</SPAN><SPAN 
+  class=attribute-value 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: blue; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">utf</SPAN><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">-8&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal-leading-zero; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 0px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">#<SPAN 
+  class=attribute 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: red; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">invalidusers</SPAN><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;=&nbsp;</SPAN><SPAN 
+  class=attribute-value 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: blue; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">root</SPAN><SPAN 
+  style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV></DIV>
+</BODY>
+</HTML>

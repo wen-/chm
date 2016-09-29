@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>centos安装samba共享</TITLE>
+</HEAD>
+<BODY>
+<P>centos安装samba共享</P>
+<H2 class=exp-content-head 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(214,214,216) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 7px; PADDING-TOP: 0px; FONT: 400 22px/24px 微软雅黑; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 40px 0px 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal">方法/步骤
+<DIV class="audio-wp audio-wp-2" 
+style="FONT-SIZE: 14px; CURSOR: pointer; VERTICAL-ALIGN: middle; FONT-WEIGHT: 400; COLOR: rgb(81,154,242); MARGIN-LEFT: 4px; DISPLAY: inline-block; LINE-HEIGHT: 1; TEXT-INDENT: 0px" 
+data-index="2" data-for="" data-text=""><SPAN class=audio-inner 
+style="HEIGHT: 20px; DISPLAY: inline-block"><SPAN class=audio-icon 
+style="HEIGHT: 20px; WIDTH: 15px; BACKGROUND: url(http://exp.bdstatic.com/static/article/widget/audio/img/audio_5b24a3c.png?__sprite); DISPLAY: inline-block"></SPAN><SPAN 
+class=audio-icon-2 
+style="HEIGHT: 20px; WIDTH: 6px; BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/article/widget/audio/img/a1_c12da1b.png?__sprite); POSITION: relative; MARGIN-LEFT: 3px; DISPLAY: inline-block"></SPAN><SPAN 
+class=audio-icon-3 
+style="HEIGHT: 20px; WIDTH: 6px; BACKGROUND-IMAGE: url(http://exp.bdstatic.com/static/article/widget/audio/img/a2_0c36615.png?__sprite); POSITION: relative; MARGIN-LEFT: -2px; DISPLAY: inline-block"></SPAN></SPAN><SPAN 
+class=desc 
+style="POSITION: relative; MARGIN-LEFT: 2px; TOP: -5px"></SPAN></DIV></H2>
+<DIV class=exp-content-body 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft Yahei", 微软雅黑, arial, 宋体, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 5px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: justify; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>
+<OL class=exp-conent-orderlist 
+style="LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">
+  <LI class="exp-content-list list-item-1" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 20px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 0px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">最小化安装，很简单，下一步就可以</P></DIV></LI>
+  <LI class="exp-content-list list-item-2" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">通过编辑文件修改网络配置</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">cd 
+  /etc/sysconfig/network-scripts，</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">运行ls命令会看到 
+  ifcfg-enp4s0(每台电脑都不一样，我安装的另一台就是ifcfg-eno1,前半部分ifcfg-en是不变的)</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">然后运行</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">vi&nbsp;&nbsp; 
+  ifcfg-enp4s0</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=1" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://f.hiphotos.baidu.com/exp/w=500/sign=f029cdc19758d109c4e3a9b2e159ccd0/c2cec3fdfc039245fbf54fb08294a4c27c1e25c8.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-3" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">需要修改的配置见下图</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=2" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://c.hiphotos.baidu.com/exp/w=500/sign=b29dcdb2239759ee4a5060cb82fa434e/14ce36d3d539b6008094a608ec50352ac65cb733.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-4" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">查看DNS地址</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=3" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://c.hiphotos.baidu.com/exp/w=500/sign=fe47f10e850a19d8cb03840503fb82c9/a5c27d1ed21b0ef4292d30e1d8c451da80cb3e43.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-5" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">重启网络</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">systemctl&nbsp; 
+  restart network</P></DIV></LI>
+  <LI class="exp-content-list list-item-6" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Centos7系统默认最小化安装的并没有nano、vim、wget、curl、ifconfig、lsof命令，这里首先安装一下：</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">yum 
+  -y install nano vim wget curl net-tools lsof</P></DIV></LI>
+  <LI class="exp-content-list list-item-7" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: visible">7</DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">安装Samba</P>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"># 
+  yum -y install samba samba-client samba-common</P></DIV></LI>
+  <LI class="exp-content-list list-item-8" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: visible">8</DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">关闭SELINUX，之后重启下</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=4" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://g.hiphotos.baidu.com/exp/w=500/sign=05421d04a31ea8d38a227404a70b30cf/dcc451da81cb39db8045cde9d5160924aa183083.jpg"></A></DIV></DIV></LI></OL></DIV>
+<OL class=exp-conent-orderlist 
+style='LIST-STYLE-TYPE: none; FONT-SIZE: 16px; FONT-FAMILY: "Microsoft Yahei", 微软雅黑, arial, 宋体, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>
+  <LI class="exp-content-list list-item-9" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">创建共享目录，人事和财务</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=5" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://g.hiphotos.baidu.com/exp/w=500/sign=b6b985a2d12a283443a6360b6bb4c92e/a2cc7cd98d1001e9efe181b0bd0e7bec55e797b4.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-10" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">配置内核参数</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=6" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://d.hiphotos.baidu.com/exp/w=500/sign=02f92e9c662762d0803ea4bf90ed0849/242dd42a2834349ba82eff3accea15ce36d3be61.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-11" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">进入samba目录下，备份它的配置文件，并修改配置文件</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=7" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://c.hiphotos.baidu.com/exp/w=500/sign=c77cf8c19758d109c4e3a9b2e159ccd0/c2cec3fdfc039245cca07ab08294a4c27d1e2573.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-12" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">创建用户并分配权限</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=8" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://h.hiphotos.baidu.com/exp/w=500/sign=06c326443cdbb6fd255be5263925aba6/cefc1e178a82b9011d89518c768da9773912ef6d.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-13" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">查看设置的权限是否生效</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=9" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://c.hiphotos.baidu.com/exp/w=500/sign=d1faf23accea15ce41eee00986013a25/203fb80e7bec54e7e41086a1bc389b504ec26a95.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-14" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">重启samba服务并添加到开机启动</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=10" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://b.hiphotos.baidu.com/exp/w=500/sign=2d7ff75088b1cb133e693c13ed5556da/bba1cd11728b4710a0c56173c6cec3fdfd0323a2.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-15" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">查看samba服务状态</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=11" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://e.hiphotos.baidu.com/exp/w=500/sign=fd3e6273c6cec3fd8b3ea775e689d4b6/5bafa40f4bfbfbedef48a9c07df0f736afc31f7f.jpg"><SPAN 
+  class=exp-album-enter-mask 
+  style="CURSOR: pointer; BACKGROUND: rgb(51,51,51); RIGHT: 0px; POSITION: absolute; LEFT: 0px; TOP: 0px; BOTTOM: 0px; opacity: 0"></SPAN></A></DIV></DIV></LI>
+  <LI class="exp-content-list list-item-16" 
+  style="POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 45px; PADDING-LEFT: 35px; MIN-HEIGHT: 31px; BORDER-LEFT: rgb(228,228,228) 2px dotted; MARGIN: 1px 0px 0px 17px; DISPLAY: block; PADDING-RIGHT: 0px">
+  <DIV class=list-icon 
+  style="FONT-SIZE: 16px; HEIGHT: 32px; WIDTH: 32px; BACKGROUND: url(http://img.baidu.com/img/iknow/exp/global/step_ol_bg.png) no-repeat; POSITION: absolute; COLOR: rgb(238,255,238); TEXT-ALIGN: center; LEFT: -18px; LINE-HEIGHT: 32px; TOP: 43px; VISIBILITY: hidden"></DIV>
+  <DIV class=content-list-text>
+  <P 
+  style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">将samba服务添加防火墙规则内，否则其他电脑无法访问，并重启防火墙</P></DIV>
+  <DIV class=content-list-media>
+  <DIV class="content-list-image clearfix" 
+  style="POSITION: relative; ZOOM: 1; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><A 
+  class=exp-image-wraper 
+  style="TEXT-DECORATION: none; POSITION: relative; FLOAT: left; COLOR: rgb(45,100,179); DISPLAY: block" 
+  href="http://jingyan.baidu.com/album/3aed632e061de77010809127.html?picindex=12" 
+  target=_self log="type:20150831,pos:enter_step,expGroup:G0"><IMG 
+  class=exp-image-default 
+  style="BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; DISPLAY: block" 
+  alt="CentOS 7 Samba服务器安装配置过程笔记" 
+  src="http://a.hiphotos.baidu.com/exp/w=500/sign=73341bf1cf8065387beaa413a7dca115/cf1b9d16fdfaaf5113f91f00895494eef01f7a73.jpg"></A></DIV></DIV></LI></OL>
+<P><BR class=Apple-interchange-newline><BR 
+class=Apple-interchange-newline>&nbsp;</P>
+</BODY>
+</HTML>
