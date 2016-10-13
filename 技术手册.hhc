@@ -3748,7 +3748,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="openwrt">
 <PARAM NAME="Local" VALUE="openwrt.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3973,6 +3972,13 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="vmware安装openwrt">
 <PARAM NAME="Local" VALUE="vmware安装openwrt.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="k2开启SSH">
+<PARAM NAME="Local" VALUE="k2开启SSH.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
