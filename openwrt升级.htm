@@ -1,0 +1,742 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>openwrt升级</TITLE>
+</HEAD>
+<BODY>
+<P>openwrt升级</P>
+<H1 id=openwrt_buildroot_使用说明 class=sectionedit1 
+style="FONT-SIZE: 2em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.44em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">OpenWrt 
+Buildroot – 使用说明</H1>
+<P class=sectionedit1 
+style="FONT-SIZE: 2em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.44em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><A 
+href="https://wiki.openwrt.org/zh-cn/doc/howto/build">https://wiki.openwrt.org/zh-cn/doc/howto/build</A></P>
+<DIV class=level1 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<DIV class="table sectionedit2" 
+style="OVERFLOW-X: auto; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+<TABLE class=inline 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-COLLAPSE: collapse; MIN-WIDTH: 50%; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; EMPTY-CELLS: show; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0px">
+  
+  <TR class=row0>
+    <TD class=col0 
+    style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0.3em; PADDING-TOP: 0.3em; PADDING-LEFT: 0.5em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0.5em">→ 
+      返回<A title=zh-cn:doc:howto:obtain.firmware class=wikilink1 
+      style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+      href="https://wiki.openwrt.org/zh-cn/doc/howto/obtain.firmware">获取固件</A>或者阅读→<A 
+      title=about:toolchain class=wikilink1 
+      style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+      href="https://wiki.openwrt.org/about/toolchain">OpenWrt Buildroot – 
+    关于</A></TD></TR></TABLE></DIV></DIV>
+<H2 id=先决条件 class=sectionedit3 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">先决条件</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<OL 
+style="LIST-STYLE-TYPE: decimal; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在你的电脑上安装<STRONG><A 
+  title=zh-cn:doc:howto:buildroot.exigence class=wikilink1 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+  href="https://wiki.openwrt.org/zh-cn/doc/howto/buildroot.exigence">OpenWrt 
+  Buildroot和它的先决条件</A></STRONG>。</DIV></LI></OL></DIV>
+<H2 id=步骤 class=sectionedit4 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">步骤</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<DIV class="table sectionedit5" 
+style="OVERFLOW-X: auto; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+<TABLE class=inline 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-COLLAPSE: collapse; MIN-WIDTH: 50%; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; EMPTY-CELLS: show; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0px">
+  
+  <TR class=row0>
+    <TD class=col0 
+    style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0.3em; PADDING-TOP: 0.3em; PADDING-LEFT: 0.5em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0.5em"><IMG 
+      class=media 
+      style="BORDER-LEFT-WIDTH: 0px; MAX-WIDTH: 100%; HEIGHT: auto; BORDER-RIGHT-WIDTH: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM-WIDTH: 0px; COLOR: rgb(102,102,102); FONT-STYLE: italic; MARGIN: 0.2em 0px; BORDER-TOP-WIDTH: 0px; BACKGROUND-COLOR: transparent" 
+      alt="" 
+      src="https://wiki.openwrt.org/_media/meta/icons/tango/48px-emblem-important.svg.png"></TD>
+    <TD class=col1 
+    style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0.3em; PADDING-TOP: 0.3em; PADDING-LEFT: 0.5em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0.5em">1. 
+      以<STRONG>非</STRONG>root用户来进行工作<BR>2. 在<CODE 
+      style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>&lt;buildsystem 
+      root&gt;</CODE>目录中完成所有命令，例如<CODE 
+      style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>~/openwrt/trunk/</CODE></TD></TR></TABLE></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">更新OpenWrt源。</DIV></LI>
+  <LI class=level2 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">更新feeds的package 
+  包.</DIV></LI>
+  <LI class=level2 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">配置编译。</DIV></LI>
+  <LI class=level2 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">开始编译。这会自动编译工具链，交叉编译源代码，打包包文件，最后生成可以可以刷写的镜像文件。</DIV></LI>
+  <LI class=level2 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">进入<A 
+  title=zh-cn:doc:howto:generic.flashing class=wikilink1 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+  href="https://wiki.openwrt.org/zh-cn/doc/howto/generic.flashing">安装OpenWrt</A>环节</DIV></LI></OL></DIV>
+<H3 id=更新源码_source class=sectionedit6 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">更新源码(source)</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">更新源码：</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>svn update</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">OpenWrt源码更新很频繁。建议你使用最新的源来完成工作。</DIV></LI></UL></DIV>
+<H3 id=更新源_feeds class=sectionedit7 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">更新源(Feeds)</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">更新源:</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>./scripts/feeds update -a</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">安装下载好的包: 
+(可选)</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>./scripts/feeds install -a   (或者 'install &lt;PACKAGENAME&gt;' )</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P></DIV>
+<H2 id=镜像配置 class=sectionedit8 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">镜像配置</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">开始OpenWrt 
+Buildroot基于<A title=https://en.wikipedia.org/wiki/ncurses 
+class="interwiki iw_wp" 
+style="TEXT-DECORATION: none; BACKGROUND: url(https://wiki.openwrt.org/lib/images/interwiki/wp.gif) no-repeat 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="https://en.wikipedia.org/wiki/ncurses">ncurses</A>的<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+title="https://en.wikipedia.org/wiki/Text-based user interface" 
+class="interwiki iw_wp" 
+style="TEXT-DECORATION: none; BACKGROUND: url(https://wiki.openwrt.org/lib/images/interwiki/wp.gif) no-repeat 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="https://en.wikipedia.org/wiki/Text-based%20user%20interface">文本</A>配置界面:<BR></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make menuconfig</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<DIV class="table sectionedit9" 
+style="OVERFLOW-X: auto; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+<TABLE class=inline 
+style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-COLLAPSE: collapse; MIN-WIDTH: 50%; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; EMPTY-CELLS: show; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0px">
+  
+  <TR class=row0>
+    <TD class="col0 leftalign" 
+    style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0.3em; TEXT-ALIGN: left; PADDING-TOP: 0.3em; PADDING-LEFT: 0.5em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0.5em">同配置Linux内核类似，几乎每一个设置都有三个选项:<STRONG>y</STRONG><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>/<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><STRONG>m</STRONG><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>/<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><STRONG>n</STRONG>，分别代表如下含义：<BR>* 
+      `` (按下`y`)这个包会被包含进固件镜像<BR>* `` (按下`m`)这个包会在生成<A 
+      title=doc:howto:generic.flashing class=wikilink1 
+      style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+      href="https://wiki.openwrt.org/doc/howto/generic.flashing">刷新OpenWrt</A>的镜像文件以后被编译，但是<STRONG>不会</STRONG>被包含进镜像文件<SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><BR>* `` 
+      (按下`n`)这个包不会被编译<BR><BR>当你保存你的配置后，<CODE 
+      style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>~/openwrt/trunk/.config</CODE>这个文件会按照你的配置被生成。<BR>\\编译环境会提供一个这样的配置文件给OpenWrt 
+      'Backfire' 10.03.1-RC5。 例如，<A 
+      title=http://downloads.openwrt.org/backfire/10.03.1-rc5/ar71xx/config 
+      class=urlextern 
+      style="TEXT-DECORATION: none; BACKGROUND-IMAGE: url(https://wiki.openwrt.org/lib/tpl/openwrt/../../images/external-link.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+      href="http://downloads.openwrt.org/backfire/10.03.1-rc5/ar71xx/config" 
+      rel=nofollow>for ar71xx</A>.</TD>
+    <TD class="col1 leftalign" 
+    style="BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 0.3em; TEXT-ALIGN: left; PADDING-TOP: 0.3em; PADDING-LEFT: 0.5em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px; PADDING-RIGHT: 0.5em"></TD></TR></TABLE></DIV>
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">这个菜单允许你选择目标平台，也就是你想要用来编译你要包含进固件镜像的软件包的工具链(toolchain)的版本。</DIV></LI></UL>
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在更新源码和源以后运行这个配置界面，确保你的配置中包含的软件包是最新的。</DIV></LI></UL></DIV>
+<H3 id=默认配置_defconfig class=sectionedit10 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">默认配置(Defconfig)</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"><A 
+title=https://forum.openwrt.org/viewtopic.php?pid=140470#p140470 class=urlextern 
+style="TEXT-DECORATION: none; BACKGROUND-IMAGE: url(https://wiki.openwrt.org/lib/tpl/openwrt/../../images/external-link.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="https://forum.openwrt.org/viewtopic.php?pid=140470#p140470" 
+rel=nofollow>在启用默认配置以前先选择的你的目标平台</A></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make defconfig</PRE>将会生成一个通用的编译系统配置，这个配置包含了一个对于编译环境的先决条件和依赖的检查，同时会安装缺失的组件并再次运行。
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P></DIV>
+<H3 id=总体配置 class=sectionedit11 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">总体配置</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>Menuconfig</CODE>拥有一个文本界面，它包括选择要处理的目标平台，要编译的软件包，要被包含进固件文件的软件包和一些内核设置等。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make menuconfig</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">这会自动更新你现在存在的配置的依赖，方便你你准备编译你更新过的镜像。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">It 
+has from the beginning on been the intention, with the development of 
+'menuconfig', to create a simple yet powerful environment for the configuration 
+of individual OpenWrt images. Menuconfig is more or less self-explanatory, and 
+even the most specialized configuration needs can be solved with its help. 
+Depending on the the particular target platform, package requirements and kernel 
+module needs, the standard process of configuration will include modifying:</P>
+<OL 
+style="LIST-STYLE-TYPE: decimal; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">目标系统</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">软件包设定</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">系统构建设定</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">内核模块</DIV></LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">Target 
+system is selected from the extensive list of supported platforms, with the 
+numerous target profiles – ranging from specific devices to generic profiles, 
+all depending on the particular device at hand. Package selection has the option 
+of either 'selecting all package', which might be un-practical in certain 
+situation, or relying on the default set of packages will be adequate or make an 
+individual selection. It is here needed to mention that some package 
+combinations might break the build process, so it can take some experimentation 
+before the expected result is reached. Added to this, the OpenWrt developers are 
+themselves only maintaining a smaller set of packages – which includes all 
+default packages – but, the feeds-script makes it very simple to handle a 
+locally maintained set of packages and integrate them in the build-process.</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">这儿有三种选项可选：</P>
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&lt; 
+  &gt; 该代码将<STRONG>不会</STRONG>被编译</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;M&gt; 
+  该代码将被交叉编译，生成的ipk软件包将被放在<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/buildsystem/bla/bla/bla</CODE>, 
+  但该软件包不会放入固件中</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;*&gt; 
+  该代码将被放入固件中 (on the SqashFS partition)</DIV></LI></UL>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">The 
+final step before the process of compiling the intended image(s) is to exit 
+'menuconfig' – this also includes the option to save a specific configuration or 
+load an already existing, and pre-configured, version.</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">Exit 
+the TUI, and choose to<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>save</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>your settings.</P></DIV>
+<H4 id=内核配置 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">内核配置</H4>
+<DIV class=level4 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">While 
+you won't typically need to do this, you can do it:</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make kernel_menuconfig</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">See:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A title=doc:techref:buildroot 
+class=wikilink1 
+style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+href="https://wiki.openwrt.org/doc/techref/buildroot#customizing_the_kernel_options">Customizing 
+the kernel options</A></P></DIV>
+<H4 id=source_mirrors 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">Source 
+Mirrors</H4>
+<DIV class=level4 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">The 
+'Build system settings' include some efficient options for changing package 
+locations which makes it easy to handle a local package set:</P>
+<OL 
+style="LIST-STYLE-TYPE: decimal; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Local 
+  mirror for source packages</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Download 
+  folder</DIV></LI></OL>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">In 
+the case of the first option, you simply enter a full<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><ABBR title="Uniform Resource Locator" 
+style="CURSOR: help; BORDER-BOTTOM: 1px dotted; FONT-STYLE: normal">URL</ABBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>to the web or ftp server on which the 
+package sources are hosted. Download folder would in the same way be the path to 
+a local folder on the build system (or network). If you have a web/ftp-server 
+hosting the tarballs, the OpenWrt build system will try this one before trying 
+to download from the location(s) mentioned in the Makefiles . Similar if a local 
+'download folder', residing on the build system, has been specified.</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">The 
+'Kernel modules' option is required if you need specific (non-standard) drivers 
+and so forth – this would typically be things like modules for USB or particular 
+network interface drivers etc.</P></DIV>
+<H3 id=定制文件 class=sectionedit12 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">定制文件</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">在很多情况下，您可能需要使用自己准备好的配置去创建一个自己定制的固件，如果是这样，请把您的配置文件放在下面的路径：</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>&lt;buildroot dir&gt;/files/</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">举例：假如说您需要一个使用预配置文件<CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/etc/config/firewall</CODE>来构建固件，那么把您的firewall配置文件文件放到下面的路径：</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>&lt;buildroot dir&gt;/files/etc/config</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P></DIV>
+<H2 id=构建镜像 class=sectionedit13 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">构建镜像</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">为构建镜像，一切已就绪。现只需一条命令:</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">或者：</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make world</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">该命令会触发一连串的活动。之前也说过，它将会：</P>
+<OL 
+style="LIST-STYLE-TYPE: decimal; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">编译工具链</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">然后用这个工具链交叉编译源文件</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">创建opkg软件包</DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">创建可随时<A 
+  title=zh-cn:doc:howto:generic.flashing class=wikilink1 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+  href="https://wiki.openwrt.org/zh-cn/doc/howto/generic.flashing">刷机</A>的镜像。</DIV></LI></OL></DIV>
+<H3 id=构建选项 class=sectionedit14 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">构建选项</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></DIV>
+<H4 id=在多核cpu上构建 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">在多核CPU上构建</H4>
+<DIV class=level4 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">可通过<CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>-j</CODE>选项启用多个进程以加速构建过程：</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make -j 3</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">使用标准公式<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>&lt;你的CPU个数 
+  + 1&gt;</CODE></DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">构建过程中若产生随机错误，尝试去掉<CODE 
+  style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>-j</CODE>选项重新构建</DIV></LI></UL></DIV>
+<H4 id=在后台构建 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">在后台构建</H4>
+<DIV class=level4 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">如果你想在构建时干别的，你可以让构建进程只使用闲置的CPU和I/O资源（双核CPU）：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>ionice -c 3 nice -n 20 make -j 2</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P></DIV>
+<H4 id=构建单个包 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">构建单个包</H4>
+<DIV class=level4 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">为OpenWrt开发或打包软件时，可以方便地只构建关心的包（以<CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>cups</CODE>包为例）：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make package/cups/compile V=99</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">For 
+the package<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>mc 
+(midnight commander)</CODE>, which is contained the feed<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><EM>packages</EM><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>it looks like this:</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make package/feeds/packages/mc/compile v=99</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P></DIV>
+<H4 id=高亮构建错误 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">高亮构建错误</H4>
+<DIV class=level4 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">如果构建不知怎么搞的出错了，亮出错误的最简单方式是：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make V=99 2&gt;&amp;1 | tee build.log | grep -i error</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">以上命令会保存一份详尽的编译输出（同时把stdout泵至stderr）到<CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/openwrt/trunk/build.log</CODE>，并只在屏幕上输出错误。</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">另一个例子：</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>ionice -c 3 nice -n 20 make -j 2 V=99 CONFIG_DEBUG_SECTION_MISMATCH=y 2&gt;&amp;1 | tee build.log | egrep -i '(warn|error)'</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">再来一个例子：</P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>somthing something screen</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">以上命令会保存一份详尽的编译输出（同时把stdout泵至stderr）到<CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>build.log</CODE>，并只在屏幕上输出警告和错误，且在双核CPU上只使用后台资源。</P></DIV>
+<H4 id=收到哔的一声提示 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">收到哔的一声提示</H4>
+<DIV class=level4 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">取决于你的CPU，构建过程可能要花上很久、或更久的时间。如果你想要提示音，可使用<CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>echo 
+-e '\a</CODE>':</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make V=99 ; echo -e '\a'</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P></DIV>
+<H2 id=本地固件 class=sectionedit15 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">本地固件</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">编译成功后的固件bin文件在<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/openwrt/trunk/bin</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>目录下.</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>cd ~/openwrt/trunk/bin
+ls */</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P></DIV>
+<H2 id=cleaning_up class=sectionedit16 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">Cleaning 
+Up</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">You 
+might need to clean your<SPAN class=Apple-converted-space>&nbsp;</SPAN><EM>build 
+environment</EM><SPAN class=Apple-converted-space>&nbsp;</SPAN>every now and 
+then. The following<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>make</CODE>-targets 
+are useful for that job:</P></DIV>
+<H3 id=clean class=sectionedit17 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">Clean</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make clean</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">deletes 
+contents of<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>bin</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>build_dir</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>directories.</P></DIV>
+<H3 id=dirclean class=sectionedit18 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">Dirclean</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make dirclean</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">deletes 
+contents of<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/bin</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/build_dir</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>directories and additionally<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/staging_dir</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>and<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='FONT-SIZE: 1em; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; WHITE-SPACE: pre; COLOR: rgb(51,51,51); DIRECTION: ltr; TEXT-ALIGN: left; border-radius: 2px'>/toolchain</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>(=the cross-compile tools). 'Dirclean' 
+is your basic "Full clean" operation.</P></DIV>
+<H3 id=distclean class=sectionedit19 
+style="FONT-SIZE: 1.12em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.88em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">Distclean</H3>
+<DIV class=level3 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P><PRE class=code style='FONT-SIZE: 1em; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 1em; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'>make distclean</PRE>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">nukes 
+everything you have compiled or configured and also deletes all downloaded feeds 
+contents and package sources.</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px"><STRONG>CAUTION</STRONG>: 
+In addition to all else, this will<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG>erase your build configuration 
+(.config)</STRONG>, your toolchain and all other sources. Use with care!</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">There 
+are numerous other functionalities in the OpenWrt build system, but the above 
+should have covered some of the fundamentals.</P></DIV>
+<H2 id=例子 class=sectionedit20 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">例子</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+  title=https://forum.openwrt.org/viewtopic.php?pid=129319#p129319 
+  class=urlextern 
+  style="TEXT-DECORATION: none; BACKGROUND-IMAGE: url(https://wiki.openwrt.org/lib/tpl/openwrt/../../images/external-link.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+  href="https://forum.openwrt.org/viewtopic.php?pid=129319#p129319" 
+  rel=nofollow>https://forum.openwrt.org/viewtopic.php?pid=129319#p129319</A></DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+  title=https://forum.openwrt.org/viewtopic.php?id=28267 class=urlextern 
+  style="TEXT-DECORATION: none; BACKGROUND-IMAGE: url(https://wiki.openwrt.org/lib/tpl/openwrt/../../images/external-link.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+  href="https://forum.openwrt.org/viewtopic.php?id=28267" 
+  rel=nofollow>https://forum.openwrt.org/viewtopic.php?id=28267</A></DIV></LI></UL></DIV>
+<H2 id=troubleshooting class=sectionedit21 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">Troubleshooting</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">First 
+get more information on the problem using the make option "make V=99".</P>
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>Missing 
+  source code file, due to download problems</STRONG>.</DIV></LI></UL>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">First 
+check if the<SPAN class=Apple-converted-space>&nbsp;</SPAN><ABBR 
+title="Uniform Resource Locator" 
+style="CURSOR: help; BORDER-BOTTOM: 1px dotted; FONT-STYLE: normal">URL</ABBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>path in the make file contains a 
+trailing slash, then try with it removed (helped several times). Otherwise try 
+to download the source code manually and put it into "dl" directory</P>
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG>Compilation 
+  errors</STRONG>.</DIV></LI></UL>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">Try 
+to update the main source and all the feeds (Warning! May result in other 
+problems). Check for a related bug in (<A title=https://dev.openwrt.org/query 
+class=urlextern 
+style="TEXT-DECORATION: none; BACKGROUND-IMAGE: url(https://wiki.openwrt.org/lib/tpl/openwrt/../../images/external-link.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="https://dev.openwrt.org/query" rel=nofollow>TRAC</A>), use the filters to 
+find it. Otherwise report the problem there, by mentioning the package, the 
+target data (CPU, image, etc.) and the code revisions (main &amp; package). 
+Compiling with make -j … sometimes gives random errors. Try compiling without -j 
+first before reporting the problem.</P></DIV>
+<H2 id=注意 class=sectionedit22 
+style="FONT-SIZE: 1.5em; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: left; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 0.66em; LETTER-SPACING: normal; LINE-HEIGHT: 1.2; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">注意</H2>
+<DIV class=level2 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<UL 
+style="LIST-STYLE-TYPE: square; LIST-STYLE-POSITION: outside; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1.5em; MARGIN: 0px 0px 1.4em; PADDING-RIGHT: 0px">
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+  title=doc:techref:buildroot class=wikilink1 
+  style="TEXT-DECORATION: none; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; OUTLINE-STYLE: none; OUTLINE-COLOR: invert" 
+  href="https://wiki.openwrt.org/doc/techref/buildroot">OpenWrt Buildroot – 
+  Technical Reference</A></DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+  title=http://downloads.openwrt.org/docs/buildroot-documentation.html 
+  class=urlextern 
+  style="TEXT-DECORATION: none; BACKGROUND-IMAGE: url(https://wiki.openwrt.org/lib/tpl/openwrt/../../images/external-link.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+  href="http://downloads.openwrt.org/docs/buildroot-documentation.html" 
+  rel=nofollow>http://downloads.openwrt.org/docs/buildroot-documentation.html</A></DIV></LI>
+  <LI class=level1 
+  style="COLOR: rgb(153,153,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 1.5em; PADDING-RIGHT: 0px">
+  <DIV class=li 
+  style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+  title=https://dev.openwrt.org/browser/trunk/docs/working.tex class=urlextern 
+  style="TEXT-DECORATION: none; BACKGROUND-IMAGE: url(https://wiki.openwrt.org/lib/tpl/openwrt/../../images/external-link.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px center; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 18px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+  href="https://dev.openwrt.org/browser/trunk/docs/working.tex" 
+  rel=nofollow>https://dev.openwrt.org/browser/trunk/docs/working.tex</A></DIV></LI></UL></DIV>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+face=Arial></FONT>&nbsp;</P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+face=Arial></FONT>&nbsp;</P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 size=7 face=Arial><STRONG>关于升级</STRONG></FONT></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>1、把固件放到/tmp/***.bin</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>2、cd /tmp</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG>3、sysupgrade -v ***.bin</STRONG></FONT></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG>4、参数说明：</STRONG></FONT></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial></FONT></STRONG>&nbsp;</P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG>升级参数：</STRONG></FONT></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG>-d&nbsp;&nbsp;&nbsp; //重启前添加一个延迟：-d 
+2000</STRONG></FONT></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-f&nbsp;&nbsp;&nbsp; //恢复配置：-f 
+xxx.tar.gz&nbsp;&nbsp;&nbsp; 文件或url</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-i&nbsp;&nbsp;&nbsp; //交互模式</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-c&nbsp;&nbsp;&nbsp; 
+//保留所有更改的文件（配置）</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-n&nbsp;&nbsp;&nbsp; //不保存配置</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-T | -test&nbsp;&nbsp;&nbsp; //</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-F | -force&nbsp;&nbsp;&nbsp; //</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-q&nbsp;&nbsp;&nbsp; //省略详情</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-v&nbsp;&nbsp;&nbsp; //显示详情</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-h&nbsp;&nbsp;&nbsp; //显示帮助</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial></FONT></STRONG>&nbsp;</P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG>备份参数：</STRONG></FONT></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG>-b&nbsp;&nbsp;&nbsp; //备份：-b 
+abc.tar.gz&nbsp;&nbsp;&nbsp; 文件名</STRONG></FONT></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-r&nbsp;&nbsp;&nbsp; //恢复备份：-r 
+abc.tar.gz&nbsp;&nbsp;&nbsp; 文件名</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG><FONT 
+color=#ff0000 face=Arial>-l&nbsp;&nbsp;&nbsp; //备份列表</FONT></STRONG></P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG></STRONG></FONT>&nbsp;</P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG></STRONG></FONT>&nbsp;</P>
+<P class=li 
+style="COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><FONT 
+color=#ff0000 face=Arial><STRONG></STRONG>&nbsp;</P><PRE style="FONT-SIZE: 14px; WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(57,57,57); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,247,239); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><CODE style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">sysupgrade -v openwrt-ar71xx-generic-tl-wr2543-v1-squashfs-sysupgrade.bin</CODE></PRE></FONT>
+</BODY>
+</HTML>
