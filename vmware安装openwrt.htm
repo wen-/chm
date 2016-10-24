@@ -6,30 +6,29 @@
 <P>vmware安装openwrt</P>
 <P>1、下载openwrt镜像：<A 
 href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/"><FONT 
-color=>http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/</FONT></A><A 
+color=#de0002>http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/</FONT></A><A 
 style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
 href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz"><FONT 
-color=>openwrt-15.05-x86-generic-combined-ext4.img.gz</FONT></A></P>
+color=#de0002>openwrt-15.05-x86-generic-combined-ext4.img.gz</FONT></A></P>
 <P>解包得到里面的<A 
 style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
 href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz">openwrt-15.05-x86-generic-combined-ext4.img</A></P>
 <P>（冒似ext的包才可以成功启动）</P>
 <P>&nbsp;</P>
 <P>2、将openwrt镜像转换为虚拟机磁盘文件格式vmdk</P>
-<P>centos系统下使用qemu-utils命令转换</P>
-<P>yum -y install qemu-utils&nbsp;&nbsp; 安装</P>
+<P>centos系统下使用qemu-utils命令转换(centos7为：qemu-img)</P>
+<P>yum -y install qemu-utils&nbsp;&nbsp; 安装(centos7为：qemu-img)</P>
 <P><SPAN 
-style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
-color=>qemu-img convert -f raw </FONT><A 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT color=#de0002>qemu-img convert -f raw </FONT><A 
 style="TEXT-DECORATION: none; WHITE-SPACE: nowrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(23,100,154); FONT: 14px Helvetica, Arial, sans-serif; WIDOWS: 1; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px" 
 href="http://downloads.openwrt.org/chaos_calmer/15.05/x86/generic/openwrt-15.05-x86-generic-combined-ext4.img.gz"><FONT 
-color=>openwrt-15.05-x86-generic-combined-ext4.img</FONT></A><FONT color=><FONT 
-color=> -O vmdk 
+color=#de0002>openwrt-15.05-x86-generic-combined-ext4.img</FONT></A><FONT 
+color=#de0002><FONT color=#de0002> -O vmdk 
 openwrt-15.05-x86-generic-combined-ext4.vmdk</FONT>&nbsp;&nbsp;&nbsp; 
 转换</FONT></SPAN></P>
 <P><SPAN 
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
-color=>将转换后的.vmdk文件复制到window磁盘上</FONT></SPAN></P>
+color=#de0002>将转换后的.vmdk文件复制到window磁盘上</FONT></SPAN></P>
 <P><SPAN 
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'></SPAN>&nbsp;</P>
 <P><SPAN 
@@ -42,7 +41,7 @@ size=3>选--自定义--硬件兼容9.0--稍后安装操作系统--操作系统luinx(其它luinx3.x内核
 Logic）--磁盘类型(IDE)--使用现有虚拟磁盘（选择之前复制过来的.vmdk）--自定义硬件（删除usb、光驱、声卡、打印机）--完成</FONT></SPAN></P>
 <P><SPAN 
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
-color=#000000 size=3></FONT></SPAN>&nbsp;</P>
+color=#000000 size=3>（修改虚拟机中配置文件指向openwrt.vmx）</FONT></SPAN></P>
 <P><SPAN 
 style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); FONT: 14px/21px Tahoma, "Microsoft Yahei", Simsun; WIDOWS: 1; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px'><FONT 
 color=#000000 size=3>4、启动虚拟机</FONT></SPAN></P>
