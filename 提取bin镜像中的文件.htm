@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>提取bin镜像中的文件</TITLE>
+</HEAD>
+<BODY>
+<P>提取bin镜像中的文件</P><BR class=Apple-interchange-newline>
+<TABLE 
+style='FONT-SIZE: 12px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WIDTH: 1661px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; EMPTY-CELLS: show; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+cellSpacing=0 cellPadding=0>
+  <TBODY style="WORD-WRAP: break-word">
+  <TR style="WORD-WRAP: break-word">
+    <TD id=postmessage_659331 class=t_f 
+    style="FONT-SIZE: 14px; WORD-WRAP: break-word"><FONT 
+      style="WORD-WRAP: break-word" color=#ff0000>&nbsp; &nbsp;&nbsp; 
+      &nbsp;&nbsp; 
+      &nbsp;有同学可能会有这样的经历，论坛有同学发布了某机型OpenWrt固件，自己又很喜欢固件里的某项功能，可是自己的机型是其他的，同时发布固件的人又不提供源码！这怎么办呢？即使想自己动手编译加入也没有源码啊？这可怎么办呢？源码人家不提供啊，可是功能却又很想要！更悲剧的是机型不符刷不了。</FONT><BR 
+      style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">&nbsp; 
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<FONT 
+      style="WORD-WRAP: break-word" 
+      color=#000000>如果以上的抱怨说出了你的心声，那就往下看吧。</FONT><BR 
+      style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">&nbsp; 
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; 
+      虽然没有提供源码，但是手上有固件啊，如果路由刷上固件，就可以看到源码，scp下来就可以见到大部分源码了。问题是没有相应的机型，总不能随便找一台就刷吧。<BR 
+      style="WORD-WRAP: break-word">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;猛然想起Ubuntu的LiveCD是squashfs压缩的，OpenWrt的也是。于是想到把固件给解包，网上也有不少解包固件的工具，一个一个试吧，试了这个<A 
+      style="WORD-WRAP: break-word; TEXT-DECORATION: underline; COLOR: rgb(51,102,153)" 
+      href="https://code.google.com/p/firmware-mod-kit/" 
+      target=_blank>https://code.google.com/p/firmware-mod-kit/</A>，论坛已经有同学试过了，说是不行。我也试了一下，果然不能解出来。解压DD的方法也试了，就是不行。难道就这样放弃了！<BR 
+      style="WORD-WRAP: break-word">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+      &nbsp;抱着最后一丝侥幸心理，用英文关键词“modify&nbsp;&nbsp;OpenWrt&nbsp;&nbsp;bin”&nbsp;&nbsp;Google了一下<BR 
+      style="WORD-WRAP: break-word">得到这一帖：<BR style="WORD-WRAP: break-word"><A 
+      style="WORD-WRAP: break-word; TEXT-DECORATION: underline; COLOR: rgb(51,102,153)" 
+      href="http://www.minipwner.com/index.php/forum/4-community-edition-installation/898-how-to-modify-the-openwrt-squashfs-bin-file" 
+      target=_blank>http://www.minipwner.com/index.p ... 
+      t-squashfs-bin-file</A><BR style="WORD-WRAP: break-word">&nbsp; 
+      &nbsp;&nbsp; &nbsp;照着做，终于成功解压出了固件里的文件。<BR 
+      style="WORD-WRAP: break-word"><IGNORE_JS_OP 
+      style="WORD-WRAP: break-word"><IMG title=epl.jpg 
+      style="WORD-WRAP: break-word" alt=epl.jpg 
+      src="http://www.right.com.cn/forum/forum.php?mod=attachment&amp;aid=NjY0NDR8MzU4YzJkYzV8MTQ3OTc5ODg4OHwwfDExMjk4Nw%3D%3D&amp;noupdate=yes"><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN></IGNORE_JS_OP><BR 
+      style="WORD-WRAP: break-word">有兴趣的同学接着往下看吧。<BR 
+      style="WORD-WRAP: break-word">举个例子（当然每个固件的偏移位置是不同的）：<BR 
+      style="WORD-WRAP: break-word"><FONT style="WORD-WRAP: break-word" 
+      color=#ff0000>1.</FONT>有一个十六进制编辑器（以下用WinHex），当然在Linux下用dd命令；<BR 
+      style="WORD-WRAP: break-word"><FONT style="WORD-WRAP: break-word" 
+      color=#ff0000>2.</FONT>WinHex打开bin文件，搜索“<FONT 
+      style="WORD-WRAP: break-word" color=#555555><FONT 
+      style="WORD-WRAP: break-word" face="Arial, Helvetica, sans-serif"><FONT 
+      style="FONT-SIZE: 13px; WORD-WRAP: break-word">hsqs</FONT></FONT></FONT>”，找到偏移地址。对这个文件<A 
+      style="WORD-WRAP: break-word; TEXT-DECORATION: underline; COLOR: rgb(51,102,153)" 
+      href="http://www.baidupcs.com/file/3f1c2f729738c6a3bc081a00ba8374b7?fid=3959943043-250528-3917554452&amp;time=1355550488&amp;sign=FDTA-DCb740ccc5511e5e8fedcff06b081203-daIOgmyIjGzeNLfDNX8cxlT6QqI%3D&amp;expires=8h&amp;sh=1" 
+      target=_blank>http://www.baidupcs.com/file/3f1 ... 
+      expires=8h&amp;sh=1</A><BR style="WORD-WRAP: break-word"><FONT 
+      style="WORD-WRAP: break-word" color=#555555><FONT 
+      style="WORD-WRAP: break-word" face="Arial, Helvetica, sans-serif"><FONT 
+      style="FONT-SIZE: 13px; WORD-WRAP: break-word">“hsqs” 
+      开始地址(即squashfs文件系统)为0xDFE00</FONT></FONT></FONT><BR 
+      style="WORD-WRAP: break-word"><IGNORE_JS_OP 
+      style="WORD-WRAP: break-word"><IMG title=1.png 
+      style="WORD-WRAP: break-word" alt=1.png 
+      src="http://www.right.com.cn/forum/forum.php?mod=attachment&amp;aid=NjY0NTV8YzNjYTJjMGR8MTQ3OTc5ODg4OHwwfDExMjk4Nw%3D%3D&amp;noupdate=yes"><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN></IGNORE_JS_OP><BR 
+      style="WORD-WRAP: break-word"><FONT style="WORD-WRAP: break-word" 
+      color=#ff0000>3.</FONT>定义选块从<FONT style="WORD-WRAP: break-word" 
+      color=#555555><FONT style="WORD-WRAP: break-word" 
+      face="Arial, Helvetica, sans-serif"><FONT 
+      style="FONT-SIZE: 13px; WORD-WRAP: break-word">0xDFE00到</FONT></FONT></FONT><FONT 
+      style="WORD-WRAP: break-word" face="Arial, Helvetica, sans-serif"><FONT 
+      style="WORD-WRAP: break-word" size=2><FONT style="WORD-WRAP: break-word" 
+      color=#555555>内容为FF的地址比如0x7115AE(如果只是要解压查看的话，后面的FF全部复制也没问题的，解压照样正常)，</FONT></FONT></FONT><FONT 
+      style="WORD-WRAP: break-word" color=#555555><FONT 
+      style="WORD-WRAP: break-word" face="Arial, Helvetica, sans-serif"><FONT 
+      style="FONT-SIZE: 13px; WORD-WRAP: break-word">复制选定的块，然后WinHex新建一个空文件（我的叫做new.squashfs），把复制下来的内容粘贴进去，保存。然后用7-zip解压即可得到完整的固件文件系统的内容。</FONT></FONT></FONT><BR 
+      style="WORD-WRAP: break-word"><IGNORE_JS_OP 
+      style="WORD-WRAP: break-word"><IMG title=2.png 
+      style="WORD-WRAP: break-word" alt=2.png 
+      src="http://www.right.com.cn/forum/forum.php?mod=attachment&amp;aid=NjY0NTZ8OGM3MmU5ZWN8MTQ3OTc5ODg4OHwwfDExMjk4Nw%3D%3D&amp;noupdate=yes"><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN></IGNORE_JS_OP><BR 
+      style="WORD-WRAP: break-word"><IGNORE_JS_OP 
+      style="WORD-WRAP: break-word"><IMG title=3.png 
+      style="WORD-WRAP: break-word" alt=3.png 
+      src="http://www.right.com.cn/forum/forum.php?mod=attachment&amp;aid=NjY0NTd8MTViYjhmNTh8MTQ3OTc5ODg4OHwwfDExMjk4Nw%3D%3D&amp;noupdate=yes"><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN></IGNORE_JS_OP><BR 
+      style="WORD-WRAP: break-word">最终得到固件中的所有文件：<BR 
+      style="WORD-WRAP: break-word"><IGNORE_JS_OP 
+      style="WORD-WRAP: break-word"><IMG title=Final.png 
+      style="WORD-WRAP: break-word" alt=Final.png 
+      src="http://www.right.com.cn/forum/forum.php?mod=attachment&amp;aid=NjY0NTh8OWMxNTEwZDJ8MTQ3OTc5ODg4OHwwfDExMjk4Nw%3D%3D&amp;noupdate=yes"><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN></IGNORE_JS_OP><BR 
+      style="WORD-WRAP: break-word"><BR 
+      style="WORD-WRAP: break-word">这个方法对factory和sysupgrade都有效。而且只要是从出现“<FONT 
+      style="WORD-WRAP: break-word" color=#555555><FONT 
+      style="WORD-WRAP: break-word" face="Arial, Helvetica, sans-serif"><FONT 
+      style="FONT-SIZE: 13px; WORD-WRAP: break-word">hsqs</FONT></FONT></FONT>”的偏移地址处复制的，直接复制到结尾也可以正确解压。</TD></TR></TBODY></TABLE>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

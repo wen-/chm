@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>模拟PPPOE拨号测试环境</TITLE>
+</HEAD>
+<BODY>
+<P>模拟PPPOE拨号测试环境</P>
+<DIV class=content-header 
+style="FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+data-reactid=".0.2.0.0.0">
+<DIV title="（网上转载）xp pppoe服务搭建" class="file-name-container note-name-container" 
+style="FONT-SIZE: 24px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WIDTH: 600px; BORDER-BOTTOM: 0px; POSITION: relative; WORD-BREAK: break-all; FONT-WEIGHT: 100; COLOR: rgb(34,34,34); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 30px; PADDING-RIGHT: 0px" 
+data-reactid=".0.2.0.0.0.0">（网上转载）xp pppoe服务搭建</DIV></DIV>
+<DIV class="content-container note" 
+style="FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; POSITION: relative; TEXT-TRANSFORM: none; WORD-BREAK: break-all; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; Z-INDEX: 100; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+data-reactid=".0.2.0.0.1">
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">原文地址：</SPAN><A 
+style="CURSOR: pointer; TEXT-DECORATION: underline; COLOR: rgb(0,0,255)" 
+href="http://dalie.blog.51cto.com/430122/187195/"><SPAN 
+style="TEXT-DECORATION: underline; COLOR: rgb(0,0,255)">http://dalie.blog.51cto.com/430122/187195/</SPAN></A></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><BR></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">为了测试路由器中的pppoe客户端（linux环境），特意在XP下建立一个pppoe服务器。现将详细步骤写出来：</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">一、获取软件和参考文档</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">1、软件获取地址</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN><A 
+style="CURSOR: pointer; TEXT-DECORATION: underline; COLOR: rgb(0,0,255)" 
+href="http://www.raspppoe.com/"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(1,95,145); BACKGROUND-COLOR: rgb(255,255,255)">http://www.raspppoe.com/</SPAN></A></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">选择左边的：</SPAN><SPAN 
+style="TEXT-DECORATION: underline; FONT-FAMILY: 宋体; COLOR: rgb(128,0,128); BACKGROUND-COLOR: rgb(255,255,255)">Download 
+&amp; Install </SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(128,0,128); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; BACKGROUND-COLOR: rgb(255,255,255)">点击：</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(128,0,128); BACKGROUND-COLOR: rgb(255,255,255)"> 
+Accept ，</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; BACKGROUND-COLOR: rgb(255,255,255)">弹出如下页面：</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(128,0,128); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242715795703.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242715795703.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(128,0,128); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; BACKGROUND-COLOR: rgb(255,255,255)">如上图所示，点击 “32-bit 
+release for x86 machines”环境下的download，下载所需的软件驱动文件。同时上方的Readme WIN 
+XP是安装参考文档。</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(128,0,128); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN><SPAN 
+style="FONT-FAMILY: 宋体; BACKGROUND-COLOR: rgb(255,255,255)">2、解压下载的压缩包。（本文附件中同时也附带上了）</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">3、点击打开Readme作参考</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">二、安装pppoe驱动协议</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">1、右击 
+“网上邻居” -----&gt; 选择“属性”，右击 “本地连接”（本地待用的以太网卡连接）</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242716406500.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242716406500.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">2、点击 
+“安装”，选择 “协议”，再点击 “添加”，在弹出的窗口中点击“从磁盘安装”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242716948921.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242716948921.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">3、在弹出的窗口中点击“浏览”，找到解压的驱动包，选择其中的“WINPPPOE.INF”(有说选择RASPPPOE.INF的，可以试试)</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242717334312.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242717334312.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">4、点击 
+两次 “确定”后就完成了安装。</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">5、重新启动XP系统。</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">三、建立拨入连接</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">1、右击 
+“网上邻居”，选择“属性”，在左边的网络任务中选择“创建一个新的连接”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242717760593.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242717760593.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">2、点击“下一步”，选择 
+“设置高级连接”，继续“下一步”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242717900296.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242717900296.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">3、点击“接受传入的连接”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242717981703.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242717981703.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">4、点击 
+“下一步”，选择本地所用的以太网设备</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242718085265.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242718085265.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">5、点击“下一步”，选择“允许虚拟专用连接”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242718189093.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242718189093.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">6、点击“下一步”，选择及添加pppoe用户</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">建议，重新添加一到多个pppoe用户，并在前面的复选框中选中它</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242718336000.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242718336000.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">7、点击“下一步”，选中 
+“Internet协议”后，点击“属性”。在弹出的窗口中</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">输入TCP/IP的指定状况，可以选择是通过其它dhcp分配IP地址还是通过pppoe分配IP地址。如果有必要可以选上“允许呼叫的计算机指定其IP”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242718634296.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242718634296.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">8、点击 
+“确定”，“下一步”之后可以“完成”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">9、建立后的状态如下图，如果有必要可以再重启一下系统。</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242718851281.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242718851281.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">10、从客户端进行拨号（本实例是从linux客户端拨号的，根据上面的readme介绍，还有windows的客户端），接入成功后会有一个以用户名为标志的设备。其状态图如下：</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242719113375.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242719113375.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="image"><IMG 
+style="CURSOR: pointer; MAX-WIDTH: 600px; BORDER-TOP: 0px; HEIGHT: auto; BORDER-RIGHT: 0px; WIDTH: 650px; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+src="http://img1.51cto.com/attachment/200905/200905191242719189453.gif" 
+data-media-type="image" 
+data-original="http://img1.51cto.com/attachment/200905/200905191242719189453.gif"></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">四、删除PPPOE</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">1、右击“网上邻居”----&gt; 
+“属性”，右击“本地连接” -----&gt;“属性”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">2、去掉PPPOE协议前面打的勾，表示取消PPPOE协议，然后点击“确定”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">3、重新，右击“本地连接” 
+-----&gt;“属性”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">4、点击 
+“PPPOE协议”，表示选中该协议，注意，左击一下，不要在前面打钩</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">5、点击 
+“卸载”</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">6、进入系统的WINDOWS目录，进入inf目录，找到安装pppoe驱动时生成的两个*.inf和*.pnf文件，删除掉</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">7、重启系统</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><BR></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; FONT-WEIGHT: bold; COLOR: rgb(85,85,85); BACKGROUND-COLOR: rgb(255,255,255)">注意事项：</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(255,0,0); BACKGROUND-COLOR: rgb(255,255,255)">1、以上教程只实现了ip分发测试，无法上外网；</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><BR></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(255,0,0); BACKGROUND-COLOR: rgb(255,255,255)">2、若要模拟实现真实上网环境，需要双网卡，一个用于外网，一个用于内网。</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(255,0,0); BACKGROUND-COLOR: rgb(255,255,255)">外网网卡设置共享给内网网卡上网，内网网卡连接路由WAN口，客户机网线连接路由LAN口</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><BR></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(255,0,0); BACKGROUND-COLOR: rgb(255,255,255)">pc(PPPOE服务)----（WAN）路由（LAN）----pc客户机</SPAN></DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(255,0,0); BACKGROUND-COLOR: rgb(255,255,255)"></SPAN>&nbsp;</DIV>
+<DIV 
+style='FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: "Microsoft YaHei", 微软雅黑; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+yne-bulb-block="paragraph"><SPAN 
+style="FONT-FAMILY: 宋体; COLOR: rgb(255,0,0); BACKGROUND-COLOR: rgb(255,255,255)">虚拟机网络为桥接，选本地网卡，不接外网的情况下需要自定IP，如果不拨号也能上网，可能是局域网内有DHCP服务器</SPAN></DIV></DIV>
+</BODY>
+</HTML>
