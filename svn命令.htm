@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>svn命令</TITLE>
+</HEAD>
+<BODY>
+<DIV class=articalTitle 
+style="FONT-SIZE: 12px; FONT-FAMILY: Verdana, 宋体, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(73,73,73); PADDING-BOTTOM: 10px; FONT-STYLE: normal; TEXT-ALIGN: left; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(251,237,198); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<H2 id=t_963453200101eiuq class="titName SG_txta" 
+style="LIST-STYLE-TYPE: none; FONT-SIZE: 18px; BORDER-TOP: 0px; FONT-FAMILY: 微软雅黑, 黑体; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: 300; COLOR: rgb(144,94,64); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px">SVN命令使用详解</H2><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class="time SG_txtc" 
+style="FONT-SIZE: 10px; FONT-FAMILY: Arial; WHITE-SPACE: nowrap; COLOR: rgb(135,135,134); MARGIN-LEFT: 5px; MARGIN-RIGHT: 13px">(2013-04-16 
+20:39:18)</SPAN>
+<DIV class=turnBoxzz style="FLOAT: right"><A class="SG_aBtn SG_aBtn_ico SG_turn" 
+style="FONT-SIZE: 12px !important; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; FONT-FAMILY: Verdana, 宋体, sans-serif; WIDTH: 86px; BACKGROUND-IMAGE: url(../../../image/33/33_1/images/sg_newsp.png); WHITE-SPACE: nowrap; BACKGROUND-REPEAT: no-repeat; POSITION: relative; BACKGROUND-POSITION: 0px 0px; ZOOM: 1; COLOR: rgb(73,73,73); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; DISPLAY: inline-block; LETTER-SPACING: 5px; PADDING-RIGHT: 0px; MARGIN-RIGHT: 6px" 
+href="javascript:;" action-data="{srcBlog:1, blogId:'963453200101eiuq'}" 
+action-type="reblog"><CITE 
+style="FONT-SIZE: 12px !important; HEIGHT: 23px; WIDTH: 34px; BACKGROUND-IMAGE: url(../../../image/33/33_1/images/sg_newsp.png); WHITE-SPACE: nowrap; BACKGROUND-REPEAT: no-repeat; MIN-WIDTH: 1px; OVERFLOW-X: visible; BACKGROUND-POSITION: right -28px; PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 32px; DISPLAY: inline-block !important; LINE-HEIGHT: 23px; PADDING-RIGHT: 20px"><IMG 
+class="SG_icon SG_icon111" 
+style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BACKGROUND-IMAGE: url(../../../images/common/sg_icon.png?20131218); BORDER-BOTTOM: 0px; POSITION: absolute; BACKGROUND-POSITION: 495px -60px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; LEFT: 11px; BORDER-LEFT: 0px; MARGIN: 0px; TOP: 4px; PADDING-RIGHT: 0px" 
+src="http://simg.sinajs.cn/blog7style/images/common/sg_trans.gif" width=15 
+align=absMiddle height=15>转载<EM class=arrow 
+style="FONT-SIZE: 7px; RIGHT: 5px; POSITION: absolute; FONT-STYLE: normal; TOP: 2px; text-size-adjust: none">▼</EM></CITE></A></DIV></DIV>
+<DIV id=sina_keyword_ad_area class=articalTag 
+style="FONT-SIZE: 12px; FONT-FAMILY: Verdana, 宋体, sans-serif; WIDTH: 690px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: break-all; FONT-WEIGHT: normal; COLOR: rgb(73,73,73); FONT-STYLE: normal; TEXT-ALIGN: left; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(251,237,198); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<TABLE 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+  
+  <TR>
+    <TD class=blog_tag 
+    style="FONT-SIZE: 12px; FONT-FAMILY: 宋体; VERTICAL-ALIGN: top; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 10px"><SPAN 
+      class=SG_txtb 
+      style="FONT-FAMILY: 宋体; COLOR: rgb(135,135,134)">标签：</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 5px 0px 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(144,94,64)" 
+      href="http://search.sina.com.cn/?c=blog&amp;q=it&amp;by=tag" 
+      target=_blank>it</A></H3></TD>
+    <TD class=blog_class 
+    style="FONT-SIZE: 12px; FONT-FAMILY: 宋体; WIDTH: 220px; VERTICAL-ALIGN: top; WHITE-SPACE: nowrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+      class=SG_txtb 
+      style="FONT-FAMILY: 宋体; COLOR: rgb(135,135,134)">分类：</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; COLOR: rgb(144,94,64)" 
+      href="http://blog.sina.com.cn/s/articlelist_2520011552_13_1.html" 
+      target=_blank>服务器运维</A></TD></TR></TABLE></DIV>
+<DIV id=sina_keyword_ad_area2 class="articalContent   " 
+style="FONT-SIZE: 14px; OVERFLOW: hidden; WORD-WRAP: normal; FONT-FAMILY: simsun; WIDTH: 690px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(73,73,73); PADDING-BOTTOM: 30px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 18px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(251,237,198); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">1、检出<BR>svn&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>co&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>http://路径(目录或文件的全路径)　[本地目录全路径]&nbsp;<WBR>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>--username 用户名 --password 
+密码svn&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>co&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>svn://路径(目录或文件的全路径)　[本地目录全路径]&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>--username 用户名 --password 
+密码<BR>svn&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>checkout&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>http://路径(目录或文件的全路径)　[本地目录全路径] 
+--username　用户名<BR>svn&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>checkout&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>svn://路径(目录或文件的全路径)　[本地目录全路径]&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>--username　用户名<BR>注：如果不带--password 
+参数传输密码的话，会提示输入密码，建议不要用明文的--password 选项。<BR>　　其中 username 与 
+password前是两个短线，不是一个。<BR>　　不指定本地目录全路径，则检出到当前目录下。<BR>例子：<STRONG 
+style="FONT-WEIGHT: bold"><BR></STRONG><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn co svn://</FONT>localhost/测试工具<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>/home/testtools</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>--username</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>wzhnsc<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn co http://</FONT>localhost/test/testapp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>--username</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>wzhnsc<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn checkout svn://</FONT>localhost/测试工具<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>/home/testtools</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>--username</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>wzhnsc<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>checkout</FONT><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>http://</FONT>localhost/test/testapp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>--username</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>wzhnsc<STRONG 
+style="FONT-WEIGHT: bold"><STRONG style="FONT-WEIGHT: bold"><BR><BR 
+style="FONT-WEIGHT: normal"></STRONG></STRONG>2<STRONG 
+style="FONT-WEIGHT: bold"><STRONG 
+style="FONT-WEIGHT: bold">、</STRONG></STRONG>导出(导出一个干净的不带.svn文件夹的目录树<STRONG 
+style="FONT-WEIGHT: bold"><STRONG style="FONT-WEIGHT: bold"><B><STRONG 
+style="FONT-WEIGHT: normal">)</STRONG><BR><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">svn&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>export&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>[-r 版本号]&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>http://路径(目录或文件的全路径) 
+[本地目录全路径]　--username　用户名</SPAN><BR style="FONT-WEIGHT: normal"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">svn&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>export&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>[-r 版本号]&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>svn://路径(目录或文件的全路径) 
+[本地目录全路径]　--username　用户名</SPAN><BR style="FONT-WEIGHT: normal"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">svn&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>export&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>本地检出的(即带有.svn文件夹的)目录全路径&nbsp;<WBR><WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>要导出的本地目录全路径</SPAN><BR 
+style="FONT-WEIGHT: normal"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">注：第一种从版本库导出干净工作目录树的形式是指定URL，</SPAN><BR 
+style="FONT-WEIGHT: normal"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">　　　如果指定了修订版本号，会导出相应的版本，<BR>　　　如果没有指定修订版本，则会导出最新的，导出到指定位置。</SPAN><BR 
+style="FONT-WEIGHT: normal"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">　　　如果省略</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">本地目录全路径</SPAN><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">，URL的最后一部分会作为本地目录的名字。</SPAN><BR 
+style="FONT-WEIGHT: normal"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">　　第二种形式是指定 
+本地检出的目录全路径 到 要导出的本地目录全路径，所有的本地修改将会保留，</SPAN><BR 
+style="FONT-WEIGHT: normal"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">　　　但是不在版本控制下(即没提交的新文件，因为.svn文件夹里没有与之相关的信息记录)的文件不会拷贝。</SPAN><BR>例子：<BR></B><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="FONT-WEIGHT: bold; COLOR: rgb(237,28,36)"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">export</SPAN></STRONG></STRONG></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn://</FONT>localhost/测试工具<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>/home/testtools</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>--username</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; COLOR: rgb(0,0,0); LINE-HEIGHT: 21px">wzhnsc</SPAN><STRONG 
+style="FONT-WEIGHT: bold"><STRONG style="FONT-WEIGHT: bold"><BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="FONT-WEIGHT: bold; COLOR: rgb(237,28,36)"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">export</SPAN></STRONG></STRONG></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn://</FONT>localhost/test/testapp<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>--username</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; COLOR: rgb(0,0,0); LINE-HEIGHT: 21px">wzhnsc</SPAN><STRONG 
+style="FONT-WEIGHT: bold"><STRONG style="FONT-WEIGHT: bold"><BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="FONT-WEIGHT: bold; COLOR: rgb(237,28,36)"><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; FONT-WEIGHT: normal; LINE-HEIGHT: 21px">export</SPAN></STRONG></STRONG></STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>/home/</FONT><SPAN 
+style="WORD-WRAP: normal; WORD-BREAK: normal; COLOR: rgb(0,0,0); LINE-HEIGHT: 21px">testapp</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>/home/testtools</FONT><STRONG style="FONT-WEIGHT: bold"><STRONG 
+style="FONT-WEIGHT: bold"><BR 
+style="FONT-WEIGHT: normal"></STRONG><BR></STRONG>3、添加新文件&nbsp;<WBR><WBR><BR>svn　add　文件名<BR>注：告诉SVN服务器要添加文件了，还要用svn 
+commint -m真实的上传上去！<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn add</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>添加test.php&nbsp;<WBR><WBR><BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn commit -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“添加我的测试用test.php“ test.php<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn add</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>*.php<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>添加当前目录下所有的php文件<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn commit -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“添加我的测试用全部php文件“ 
+*.php<BR><BR>4、提交<BR>svn　commit　-m　“提交备注信息文本“　[-N]　[--no-unlock]　文件名<BR>svn　ci　-m　“提交备注信息文本“　[-N]　[--no-unlock]　文件名<BR>必须带上-m参数，参数可以为空，但是必须写上-m<STRONG 
+style="FONT-WEIGHT: bold"><BR></STRONG>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn commit -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“提交当前目录下的全部在版本控制下的文件“ *<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>注意这个*表示全部文件<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn commit -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“提交我的测试用test.php“ test.php<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn commit -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“提交我的测试用test.php“<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>-N --no-unlock</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>保持锁就用–no-unlock开关<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn ci -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“提交当前目录下的全部在版本控制下的文件“ *<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>注意这个*表示全部文件<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn ci -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“提交我的测试用test.php“ test.php<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn ci -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“提交我的测试用test.php“<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>-N --no-unlock</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>保持锁就用–no-unlock开关<BR><BR>5、更新文件<BR>svn　update<BR>svn　update　-r　修正版本　文件名<BR>svn　update　文件名<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn update</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－ 后面没有目录，默认将当前目录以及子目录下的所有文件都更新到最新版本<BR></FONT><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn update -r</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>200 test.cpp</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>将版本库中的文件 test.cpp 还原到修正版本（revision）200<BR></FONT><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn update</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>test.php</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>更新与版本库同步。<BR>　　　　　　　　　　　 提交的时候提示过期冲突，需要先 update 
+修改文件，<BR>　　　　　　　　　　　 然后清除svn 
+resolved，最后再提交commit。</FONT><BR><BR>6、删除文件<BR>svn　delete　svn://路径(目录或文件的全路径) -m 
+“删除备注信息文本”<BR>推荐如下操作：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>svn　delete　</FONT>文件名&nbsp;<WBR><WBR><BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>svn　ci　-m　</FONT>“删除备注信息文本”<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn delete svn://</FONT>localhost/testapp/test.php<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>-m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“删除测试文件test.php”<BR>推荐如下操作：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn delete</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php&nbsp;<WBR><WBR><BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn ci -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“删除测试文件test.php”<BR><BR>７、加锁/解锁&nbsp;<WBR><WBR><BR>svn　lock　-m　“加锁备注信息文本“　[--force]　文件名&nbsp;<WBR><WBR><BR>svn　unlock　文件名<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn lock -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>“锁信测试用test.php文件“ 
+test.php&nbsp;<WBR><WBR><BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn unlock</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php<BR><BR>8、比较差异&nbsp;<WBR><WBR><BR>svn　diff　文件名&nbsp;<WBR><WBR><BR>svn　diff　-r　修正版本号m:修正版本号n　文件名<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn diff</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>将修改的文件与基础版本比较<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn diff -r</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>200<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>:</FONT>201 test.php<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN>对 修正版本号200 
+和 修正版本号201 比较差异<BR><BR>9、查看文件或者目录状态<BR>svn st&nbsp;<WBR><WBR>目录路径/名<BR>svn 
+status 目录路径/名<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>目录下的文件和子目录的状态，正常状态不显示&nbsp;<WBR><WBR><BR>　　　　　　　　　　　　　【?：不在svn的控制中； 
+&nbsp;<WBR><WBR>M：内容被修改；C：发生冲突；<BR>　　　　　　　　　　　　　　A：预定加入到版本库；K：被锁定】&nbsp;<WBR><WBR><BR>svn 
+&nbsp;<WBR><WBR>-v 目录路径/名<BR>svn status -v 目录路径/名<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>显示文件和子目录状态<BR>　　　　　　　　　　　　　　【第一列保持相同，第二列显示工作版本号，<BR>　　　　　　　　　　　　　　　第三和第四列显示最后一次修改的版本号和修改人】&nbsp;<WBR><WBR><BR>注：svn 
+status、svn diff和 svn 
+revert这三条命令在没有网络的情况下也可以执行的，<BR>　　原因是svn在本地的.svn中保留了本地版本的原始拷贝。&nbsp;<WBR><WBR><BR><BR>10、查看日志<BR>svn　log　文件名<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn log</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>显示这个文件的所有修改记录，及其版本号的变化&nbsp;<WBR><WBR><BR><BR>11、查看文件详细信息<BR>svn　info　文件名<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn info</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>test.php<BR><BR>12、SVN 
+帮助<BR>svn　help<SPAN class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>全部功能选项<BR>svn　help　ci<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－ 
+具体功能的说明</FONT><BR><BR>13、查看版本库下的文件和目录列表&nbsp;<WBR><WBR><BR>svn　list　svn://路径(目录或文件的全路径)<BR>svn　ls　svn://路径(目录或文件的全路径)<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn list svn://</FONT>localhost/test<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn ls svn://</FONT>localhost/test<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN>显示<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn://</FONT>localhost/test目录下的所有属于版本库的文件和目录&nbsp;<WBR><WBR><BR><BR>14、创建纳入版本控制下的新目录<BR>svn　mkdir　目录名<BR>svn　mkdir　-m　"新增目录备注文本"　http://目录全路径<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn mkdir</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>newdir<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn mkdir -m</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>"Making a new dir."<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn://</FONT>localhost/test/newdir&nbsp;<WBR><WBR><BR>注：添加完子目录后，一定要回到根目录更新一下，不然在该目录下提交文件会提示“提交失败”<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn 
+update</FONT><BR>注：如果手工在checkout出来的目录里创建了一个新文件夹newsubdir，<BR>　　再用<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn mkdir</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>newsubdir命令后，SVN会提示：<BR>　　svn: 尝试用 “svn 
+add”或 “svn add --non-recursive”代替？<BR>　　svn: 无法创建目录“hello”: 
+文件已经存在<BR>　　此时，用如下命令解决：<BR>　　<FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn add --non-recursive</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>newsubdir<BR>　　在进入这个newsubdir文件夹，用ls 
+-a查看它下面的全部目录与文件，会发现多了：.svn目录<BR>　　再用 svn mkdir -m "添hello功能模块文件" 
+svn://localhost/test/newdir/newsubdir 命令，<BR>　　SVN提示：<BR>　　svn: File already 
+exists: filesystem '/data/svnroot/test/db', transaction '4541-1',<BR>　　path 
+'/newdir/newsubdir 
+'<BR><BR>15、恢复本地修改&nbsp;<WBR><WBR><BR>svn　revert　[--recursive]　文件名<BR>注意: 
+本子命令不会存取网络，并且会解除冲突的状况。但是它不会恢复被删除的目录。<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn revert</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>foo.c<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>丢弃对一个文件的修改<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn revert --recursive</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>.<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－恢复一整个目录的文件，. 
+为当前目录&nbsp;<WBR><WBR></FONT><BR><BR>16、把工作拷贝更新到别的URL&nbsp;<WBR><WBR><BR>svn　switch　http://目录全路径　本地目录全路径<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn switch http://</FONT>localhost/test/456 .<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#000000>＜－ 
+(原为123的分支)当前所在目录分支到</FONT>localhost/test/456<BR><BR>17、解决冲突&nbsp;<WBR><WBR><BR>svn　resolved　[本地目录全路径]<BR>例子：<BR>$ 
+svn update<BR>C foo.c<BR>Updated to revision 
+31.<BR>如果你在更新时得到冲突，你的工作拷贝会产生三个新的文件：<BR>$ 
+ls<BR>foo.c<BR>foo.c.mine<BR>foo.c.r30<BR>foo.c.r31<BR>当你解决了foo.c的冲突，并且准备提交，运行svn 
+resolved让你的工作拷贝知道你已经完成了所有事情。<BR>你可以仅仅删除冲突的文件并且提交，但是svn 
+resolved除了删除冲突文件，还修正了一些记录在工作拷贝管理区域的记录数据，所以我们推荐你使用这个命令。<BR><BR>18、不checkout而查看输出特定文件或URL的内容&nbsp;<WBR><WBR><BR>svn　cat　http://文件全路径<BR>例子：<BR><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ff0000>svn cat http://</FONT>localhost/test/readme.txt</P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px">19、新建一个分支copy</P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ed1c24>svn copy</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>branchA branchB&nbsp;<WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>-m "make B branch" // 
+从branchA拷贝出一个新分支branchB<BR></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px">20、合并内容到分支merge</P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><FONT 
+style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+color=#ed1c24>svn merge</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>branchA branchB&nbsp;<WBR><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>// 
+把对branchA的修改合并到分支branchB</P></DIV>
+</BODY>
+</HTML>
