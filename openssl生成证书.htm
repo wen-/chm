@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>openssl生成证书</TITLE>
+</HEAD>
+<BODY>
+<P>openssl生成证书</P>
+<DIV class=articalTitle 
+style="FONT-SIZE: 12px; FONT-FAMILY: Verdana, 宋体, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(70,70,70); PADDING-BOTTOM: 10px; FONT-STYLE: normal; TEXT-ALIGN: left; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(188,211,229); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<H2 id=t_4fd50c390101891c class="titName SG_txta" 
+style="LIST-STYLE-TYPE: none; FONT-SIZE: 18px; BORDER-TOP: 0px; FONT-FAMILY: 微软雅黑, 黑体; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: 300; COLOR: rgb(62,115,160); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px">openssl生成ssl证书</H2><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class="time SG_txtc" 
+style="FONT-SIZE: 10px; FONT-FAMILY: Arial; WHITE-SPACE: nowrap; COLOR: rgb(116,116,116); MARGIN-LEFT: 5px; MARGIN-RIGHT: 13px">(2013-01-30 
+13:04:14)</SPAN>
+<DIV class=turnBoxzz style="FLOAT: right"><A class="SG_aBtn SG_aBtn_ico SG_turn" 
+style="FONT-SIZE: 12px !important; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; FONT-FAMILY: Verdana, 宋体, sans-serif; WIDTH: 86px; BACKGROUND-IMAGE: url(../../../image/30/30_1/images/sg_newsp.png); WHITE-SPACE: nowrap; BACKGROUND-REPEAT: no-repeat; POSITION: relative; BACKGROUND-POSITION: 0px 0px; ZOOM: 1; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 3px; DISPLAY: inline-block; LETTER-SPACING: 5px; PADDING-RIGHT: 0px; MARGIN-RIGHT: 6px" 
+href="javascript:;" action-data="{srcBlog:1, blogId:'4fd50c390101891c'}" 
+action-type="reblog"><CITE 
+style="FONT-SIZE: 12px !important; HEIGHT: 23px; WIDTH: 34px; BACKGROUND-IMAGE: url(../../../image/30/30_1/images/sg_newsp.png); WHITE-SPACE: nowrap; BACKGROUND-REPEAT: no-repeat; MIN-WIDTH: 1px; OVERFLOW-X: visible; BACKGROUND-POSITION: right -28px; PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 32px; DISPLAY: inline-block !important; LINE-HEIGHT: 23px; PADDING-RIGHT: 20px"><IMG 
+class="SG_icon SG_icon111" 
+style="LIST-STYLE-TYPE: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BACKGROUND-IMAGE: url(../../../images/common/sg_icon.png?20131218); BORDER-BOTTOM: 0px; POSITION: absolute; BACKGROUND-POSITION: 495px -60px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; LEFT: 11px; BORDER-LEFT: 0px; MARGIN: 0px; TOP: 4px; PADDING-RIGHT: 0px" 
+src="http://simg.sinajs.cn/blog7style/images/common/sg_trans.gif" width=15 
+align=absMiddle height=15>转载<EM class=arrow 
+style="FONT-SIZE: 7px; RIGHT: 5px; POSITION: absolute; FONT-STYLE: normal; TOP: 2px; text-size-adjust: none">▼</EM></CITE></A></DIV></DIV>
+<DIV id=sina_keyword_ad_area class=articalTag 
+style="FONT-SIZE: 12px; FONT-FAMILY: Verdana, 宋体, sans-serif; WIDTH: 690px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: break-all; FONT-WEIGHT: normal; COLOR: rgb(70,70,70); FONT-STYLE: normal; TEXT-ALIGN: left; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 20px; BACKGROUND-COLOR: rgb(188,211,229); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<TABLE 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">
+  
+  <TR>
+    <TD class=blog_tag 
+    style="FONT-SIZE: 12px; FONT-FAMILY: 宋体; VERTICAL-ALIGN: top; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 10px"><SPAN 
+      class=SG_txtb 
+      style="FONT-FAMILY: 宋体; COLOR: rgb(70,70,70)">标签：</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN>
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 5px 0px 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(62,115,160)" 
+      href="http://search.sina.com.cn/?c=blog&amp;q=linux&amp;by=tag" 
+      target=_blank>linux</A></H3><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 5px 0px 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(62,115,160)" 
+      href="http://search.sina.com.cn/?c=blog&amp;q=ssl&amp;by=tag" 
+      target=_blank>ssl</A></H3><SPAN class=Apple-converted-space>&nbsp;</SPAN>
+      <H3 
+      style="LIST-STYLE-TYPE: none; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 5px 0px 0px; DISPLAY: inline; PADDING-RIGHT: 0px"><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; WHITE-SPACE: nowrap; COLOR: rgb(62,115,160)" 
+      href="http://search.sina.com.cn/?c=blog&amp;q=it&amp;by=tag" 
+      target=_blank>it</A></H3></TD>
+    <TD class=blog_class 
+    style="FONT-SIZE: 12px; FONT-FAMILY: 宋体; WIDTH: 220px; VERTICAL-ALIGN: top; WHITE-SPACE: nowrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+      class=SG_txtb 
+      style="FONT-FAMILY: 宋体; COLOR: rgb(70,70,70)">分类：</SPAN><SPAN 
+      class=Apple-converted-space>&nbsp;</SPAN><A 
+      style="TEXT-DECORATION: none; FONT-FAMILY: 宋体; COLOR: rgb(62,115,160)" 
+      href="http://blog.sina.com.cn/s/articlelist_1339362361_1_1.html" 
+      target=_blank>linux</A></TD></TR></TABLE></DIV>
+<DIV id=sina_keyword_ad_area2 class="articalContent   " 
+style="FONT-SIZE: 14px; OVERFLOW: hidden; WORD-WRAP: normal; FONT-FAMILY: simsun; WIDTH: 690px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: normal; COLOR: rgb(70,70,70); PADDING-BOTTOM: 30px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 18px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; TEXT-INDENT: 21pt">&nbsp;<WBR></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; TEXT-INDENT: 21pt">&nbsp;<WBR></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">x509</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">证书一般会用到三类文，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">key</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">csr</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">crt</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">。</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">Key</SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">是私用密钥</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">openssl</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">格，通常是</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">rsa</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">算法。</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">Csr</SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">是证书请求文件，用于申请证书。在制作</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">csr</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">文件的时，必须使用自己的私钥来签署申，还可以设定一个密钥。</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">crt</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">是</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">CA</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">认证后的证书文，（</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">windows</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">下面的，其实是</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">crt</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">），签署人用自己的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">key</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">给你签署的凭证。</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">1.key</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">的生成</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">openssl genrsa -des3 -out server.key 2048&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">这样是生成</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">rsa</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">私钥，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">des3</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">算法，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">openssl</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">格式，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">2048</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">位强度。</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">server.key</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">是密钥文件名。为了生成这样的密钥，需要一个至少四位的密码。可以通过以下方法生成没有密码的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">key:</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">openssl rsa -in server.key -out 
+server.key&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">server.key</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">就是没有密码的版本了。</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">2.</SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">生成</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">CA</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">crt</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">openssl req -new -x509 -key server.key -out ca.crt -days 
+3650&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">生成的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">ca.crt</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">文件是用来签署下面的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">server.csr</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">文件。</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">3. csr</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">的生成方法</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">openssl req -new -key server.key -out 
+server.csr&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">需要依次输入国家，地区，组织，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">email</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">。最重要的是有一个</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">common name</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">，可以写你的名字或者域名。如果为了</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">https</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">申请，这个必须和域名吻合，否则会引发浏览器警报。生成的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">csr</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">文件交给</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">CA</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">签名后形成服务端自己的证书。</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">&nbsp;<WBR></SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">4. crt</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">生成方法</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">CSR</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">文件必须有</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">CA</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">的签名才可形成证书，可将此文件发送到</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">verisign</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">等地方由它验证，要交一大笔钱，何不自己做</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">CA</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">呢。</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">openssl x509 -req -days 3650 -in server.csr -CA ca.crt -CAkey 
+server.key -CAcreateserial -out server.crt</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">输入</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">key</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">的密钥后，完成证书生成。</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">-CA</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">选项指明用于被签名的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">csr</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">证书，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">-CAkey</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">选项指明用于签名的密钥，</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">-CAserial</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">指明序列号文件，而</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">-CAcreateserial</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">指明文件不存在时自动生成。</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">最后生成了私用密钥：</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">server.key</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">和自己认证的</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">SSL</SPAN><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">证书：</SPAN><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">server.crt</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+style="WORD-WRAP: normal; FONT-FAMILY: 宋体; WORD-BREAK: normal; LINE-HEIGHT: 21px">证书合并：</SPAN></P>
+<P 
+style="LIST-STYLE-TYPE: none; WORD-WRAP: normal; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px"><SPAN 
+lang=EN-US style="WORD-WRAP: normal; WORD-BREAK: normal; LINE-HEIGHT: 21px" 
+xml:lang="EN-US">cat server.key server.crt &gt; 
+server.pem</SPAN></P></DIV>
+</BODY>
+</HTML>
