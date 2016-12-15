@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>openwrt常用命令</TITLE>
+</HEAD>
+<BODY>
+<P>openwrt常用命令</P>
+<P>1、拷贝文件到远程主机：</P>
+<P>scp -P22222 openwrt-x86-64-combined-ext4.img <A 
+href="mailto:root@192.168.19.19:/root">root@192.168.19.19:/root</A></P>
+<P>2、ssh连接到远程主机</P>
+<P>ssh <A href="mailto:root@192.168.19.19">root@192.168.19.19</A> -p22222</P>
+<P>3、查找内容</P>
+<P>grep -rn "192.168.6.6" ./</P>
+<P>4、部署固件</P>
+<P>sudo fdisk -lu&nbsp;&nbsp; -----查看磁盘情况</P>
+<P>sudo fdisk /dev/sda (sda为磁盘)&nbsp;&nbsp;&nbsp; ----磁盘分区</P>
+<P>sudo mkfs -t ext4 /dev/sda&nbsp;(sda为磁盘)&nbsp;&nbsp;&nbsp;&nbsp; 
+----格式化分区</P>
+<P><SPAN class=kw 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 18px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>gunzip</SPAN><SPAN 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'> 
+bin/x86/openwrt-x86-generic-combined-ext4.img.gz </SPAN><SPAN class=kw 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 18px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>dd</SPAN><SPAN 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'> 
+</SPAN><SPAN class=hljs-keyword 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,255); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 18px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>if</SPAN><SPAN 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>=bin/x86/openwrt-x86-generic-combined-ext4.img 
+of=/dev/sdb </SPAN><SPAN class=co 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 18px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
+class=hljs-comment 
+style="COLOR: green; LINE-HEIGHT: 18px">#根据自己情况选择磁盘</SPAN></SPAN></P>
+<P>5、压缩文件</P>
+<P><FONT size=2>tar -cvf /usr/local/auto_bak/test.tar 
+/usr/local/test</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">仅打包，不压缩<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="FONT-SIZE: 16px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><FONT 
+style="WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+color=#000000 size=2>tar -zcvf /usr/local/auto_bak/test.tar.gz 
+/usr/local/test<SPAN class=Apple-converted-space>&nbsp;</SPAN></FONT><SPAN 
+style="FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">打包后，以gzip压缩 
+在参数f后面的压缩文件名是自己取的，习惯上用tar来做，如果加z参数，则以tar.gz 或tgz来代表gzip压缩过的tar file文件</SPAN></P>
+<P><SPAN 
+style="FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN><BR 
+style="FONT-SIZE: 16px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">zip 
+-q -r xxx.zip /home/xxx</P>
+<P>6、解压文件</P>
+<P><SPAN 
+style="FONT-SIZE: small; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">tar 
+-zxvf /usr/local/test.tar.gz</SPAN></P>
+<P>unzip xxx.zip /home/xxx</P>
+<P>ubuntu 进入命令行：</P>
+<P><STRONG><FONT size=7>ctrl + alt + f2~f6</FONT></STRONG></P>
+<P>返回主界面：</P>
+<P><FONT size=7>ctrl + alt + f7</FONT></P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>dos跟踪访问连接ip</P>
+<P>tracert -d <A href="http://www.jd.com">www.jd.com</A></P>
+</BODY>
+</HTML>
