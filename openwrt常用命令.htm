@@ -4,14 +4,17 @@
 <META name=GENERATOR content="MSHTML 11.00.9600.18500"></HEAD>
 <BODY>
 <P>openwrt常用命令</P>
-<P>1、拷贝文件到远程主机：</P>
+<P><STRONG><FONT style="BACKGROUND-COLOR: #003300" 
+color=#ff0000>1、拷贝文件到远程主机：</FONT></STRONG></P>
 <P>scp -P22222 openwrt-x86-64-combined-ext4.img <A 
 href="mailto:root@192.168.19.19:/root">root@192.168.19.19:/root</A></P>
 <P>2、ssh连接到远程主机</P>
 <P>ssh <A href="mailto:root@192.168.19.19">root@192.168.19.19</A> -p22222</P>
-<P>3、查找内容</P>
+<P><STRONG><FONT style="BACKGROUND-COLOR: #000000" 
+color=#ff0000>3、查找内容</FONT></STRONG></P>
 <P>grep -rn "192.168.6.6" ./</P>
-<P>4、部署固件</P>
+<P><STRONG><FONT style="BACKGROUND-COLOR: #003300" 
+color=#ff0000>4、部署固件</FONT></STRONG></P>
 <P>sudo fdisk -lu&nbsp;&nbsp; -----查看磁盘情况</P>
 <P>sudo fdisk /dev/sda (sda为磁盘)&nbsp;&nbsp;&nbsp; ----磁盘分区</P>
 <P>sudo mkfs -t ext4 /dev/sda&nbsp;(sda为磁盘)&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -29,12 +32,13 @@ of=/dev/sdb </SPAN><SPAN class=co
 style='FONT-SIZE: 12px; FONT-FAMILY: "Courier New", sans-serif; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 18px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'><SPAN 
 class=hljs-comment 
 style="COLOR: green; LINE-HEIGHT: 18px">#根据自己情况选择磁盘</SPAN></SPAN></P>
-<P>5、压缩文件</P>
+<P><STRONG><FONT style="BACKGROUND-COLOR: #003300" 
+color=#ff0000>5、压缩文件</FONT></STRONG></P>
 <P><FONT size=2>tar -cvf /usr/local/auto_bak/test.tar 
 /usr/local/test</FONT><SPAN class=Apple-converted-space>&nbsp;</SPAN><SPAN 
 style="FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">仅打包，不压缩<SPAN 
 class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
-style="WORD-WRAP: break-word; FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><FONT 
+style="FONT-SIZE: 16px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><FONT 
 style="WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
 color=#000000 size=2>tar -zcvf /usr/local/auto_bak/test.tar.gz 
 /usr/local/test<SPAN class=Apple-converted-space>&nbsp;</SPAN></FONT><SPAN 
@@ -42,39 +46,25 @@ style="FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPAC
 在参数f后面的压缩文件名是自己取的，习惯上用tar来做，如果加z参数，则以tar.gz 或tgz来代表gzip压缩过的tar file文件</SPAN></P>
 <P><SPAN 
 style="FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN><BR 
-style="WORD-WRAP: break-word; FONT-SIZE: 16px; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">zip 
+style="FONT-SIZE: 16px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">zip 
 -q -r xxx.zip /home/xxx</P>
-<P>6、解压文件</P>
+<P><STRONG><FONT style="BACKGROUND-COLOR: #000000" 
+color=#ff0000>6、解压文件</FONT></STRONG></P>
 <P><SPAN 
 style="FONT-SIZE: small; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">tar 
 -zxvf /usr/local/test.tar.gz</SPAN></P>
 <P>unzip xxx.zip /home/xxx</P>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
+<P><STRONG><FONT style="BACKGROUND-COLOR: #000000" 
+color=#ff0000>7、输出启动日志</FONT></STRONG></P>
+<P>dmesg &gt; a.txt</P>
+<P><STRONG><FONT style="BACKGROUND-COLOR: #003300" 
+color=#ff0000>8、查看日志</FONT></STRONG></P>
+<P>logread</P>
 <P>&nbsp;</P>
 <P>&nbsp;</P>
 <P>&nbsp;</P>
 <P>编译：</P>
-<P>make V=s -j6 6为进程数，如果报错改为1就可以跟踪到最先报错的位置，方便排查<FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"><FONT color=#000000><FONT 
-style="BACKGROUND-COLOR: #ffffff"></P></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><PRE class=wiki style="OVERFLOW: auto; FONT-SIZE: 13px; BORDER-TOP: rgb(215,215,215) 1px solid; BORDER-RIGHT: rgb(215,215,215) 1px solid; FONT-VARIANT: normal; BACKGROUND: rgb(247,247,247); WORD-SPACING: 0px; BORDER-BOTTOM: rgb(215,215,215) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.25em; FONT-STYLE: normal; PADDING-TOP: 0.25em; PADDING-LEFT: 0.25em; MARGIN: 1em 1.75em; BORDER-LEFT: rgb(215,215,215) 1px solid; WIDOWS: 1; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0.25em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; box-shadow: rgb(238, 238, 238) 0px 0px 1em; border-radius: 0.3em">make tools/{clean,compile,install}&nbsp; 清空、编译、安装tools下的工具包（编译失败且提示tools下包报错时，可执行此操作）</PRE>
+<P>make V=s -j6 6为进程数，如果报错改为1就可以跟踪到最先报错的位置，方便排查<FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000><FONT color=#000000></P></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT></FONT><PRE class=wiki style="FONT-SIZE: 13px; OVERFLOW: auto; BORDER-TOP: rgb(215,215,215) 1px solid; BORDER-RIGHT: rgb(215,215,215) 1px solid; FONT-VARIANT: normal; BACKGROUND: rgb(247,247,247); WORD-SPACING: 0px; BORDER-BOTTOM: rgb(215,215,215) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.25em; FONT-STYLE: normal; PADDING-TOP: 0.25em; PADDING-LEFT: 0.25em; BORDER-LEFT: rgb(215,215,215) 1px solid; WIDOWS: 1; MARGIN: 1em 1.75em; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0.25em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; box-shadow: rgb(238, 238, 238) 0px 0px 1em; border-radius: 0.3em">make tools/{clean,compile,install}&nbsp; 清空、编译、安装tools下的工具包（编译失败且提示tools下包报错时，可执行此操作）</PRE>
 <P>升级固件：</P>
 <P>sysupgrade -n xxx.bin/.img&nbsp;&nbsp;&nbsp; ----n是不保留配置，-c是保留配置</P>
 <P>&nbsp;</P>
