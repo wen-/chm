@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>引导方式切换</TITLE>
+</HEAD>
+<BODY>
+<P>引导方式切换</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">Bootmgr/Grub4DOS/EasyBoot这三种菜单的相互切换，以实现更好的兼容性。</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px"><STRONG>1.Bootmgr调用Grub4DOS、EasyBoot</STRONG></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">bootmgr是通过BCD文件显示菜单，因此修改BCD文件即可，本文借助Bootice工具，首先打开BCD文件，可以删除已存在的菜单，然后添加新的菜单。下图添加“调用Grub4DOS、EasyBoot”的菜单。</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px" 
+align=center><IMG src="images/2013122415041582_jb51.jpg" align=baseline></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px" 
+align=center><IMG src="images/2013122415041583_jb51.jpg" align=baseline></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px" 
+align=center><IMG src="images/2013122415041584_jb51.jpg" align=baseline></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px" 
+align=center><IMG src="images/2013122415041585_jb51.jpg" align=baseline></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px"><STRONG>2.Grub4DOS调用Bootmgr、EasyBoot</STRONG></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">由前面介绍，Grub4DOS是通过grldr调用menu.lst显示菜单。下面仅写两个菜单用来调用Bootmgr和EasyBoot。</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">--------------------------------------</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">title 
+切换到Bootmgr&nbsp;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">chainloader&nbsp;/BOOTMGR</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">title 
+切换到EasyBoot</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">chainloader 
+--force --raw /EZBOOT/EZLDR</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px"><STRONG>3.EasyBoot调用Bootmgr、Grub4DOS</STRONG></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: tahoma, arial, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px">可以直接使用命令run 
+bootmgr和run 
+grldr调用二者。注意事先将bootmgr和grldr复制到EZBOOT目录下，将menu.lst复制到disk1目录下。毕竟不知还有那些启动方式，且听下回会分解。</P>
+</BODY>
+</HTML>
