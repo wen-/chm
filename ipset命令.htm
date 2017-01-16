@@ -1,0 +1,590 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>ipset命令</TITLE>
+</HEAD>
+<BODY>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><STRONG>名称<SPAN lang=EN-US><?xml:namespace prefix = "o" ns = 
+"urn:schemas-microsoft-com:office:office" 
+/><o:p></o:p></SPAN></STRONG></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>ipset –</SPAN>设置<SPAN lang=EN-US>ip</SPAN>的管理工具<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>摘要<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>ipset -N&nbsp;</SPAN>集合<SPAN 
+lang=EN-US>&nbsp;</SPAN>类型描述<SPAN lang=EN-US>&nbsp;[</SPAN>选项</FONT><FONT 
+face=等线><SPAN lang=EN-US>]<BR>ipset -[XFLSHh]&nbsp;[</SPAN>集合<SPAN lang=EN-US>] 
+[</SPAN>选项</FONT><FONT face=等线><SPAN lang=EN-US>]<BR>ipset 
+-[EW]&nbsp;</SPAN>进设置<SPAN lang=EN-US>&nbsp;</SPAN>出设置</FONT><FONT face=等线><SPAN 
+lang=EN-US>&nbsp;<BR>ipset -[ADU]&nbsp;</SPAN>集合元素</FONT><SPAN 
+lang=EN-US><BR><FONT face=等线>ipset -B</FONT></SPAN><FONT 
+face=等线>集合元素</FONT><FONT face=等线><SPAN lang=EN-US>-b binding<BR>ipset 
+-T</SPAN>集合元素</FONT><SPAN lang=EN-US><FONT face=等线>&nbsp;[-b binding]<BR>ipset 
+-R&nbsp;</FONT><A name=lbAD><FONT 
+face=等线>&nbsp;</FONT></A><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><STRONG>描述<SPAN lang=EN-US><o:p></o:p></SPAN></STRONG></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>Ipset&nbsp;</SPAN>用于设置、维护和检测，所以在内核中称之为<SPAN 
+lang=EN-US>IPsets .</SPAN>依赖于类型，存储的<SPAN lang=EN-US>ip</SPAN>地址的设置，端口号和其他基于<SPAN 
+lang=EN-US>ip</SPAN>地址的添加信息。<SPAN lang=EN-US>IP</SPAN>在这里是一个通用的术语，请参阅类型定义。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>集合中的任意一个元素都可以关联到其他结构类似的集合<SPAN 
+lang=EN-US>.&nbsp;</SPAN>为了定义一个约束并不需要规则已经添加到集合中。每个集合都有一个默认的约束。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建<SPAN lang=EN-US>IP set</SPAN>集合的绑定点绑定集合的时候可以参照<SPAN 
+lang=EN-US>iptables</SPAN>规则和目标管理规则。这可以在内核中保护集合<SPAN 
+lang=EN-US>.&nbsp;</SPAN>当集合只有一个访问点时是不可以被删除的<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><STRONG>选项<SPAN lang=EN-US><o:p></o:p></SPAN></STRONG></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>这些选择在<SPAN lang=EN-US>ipset</SPAN>的使用中可以在不同的组中自由组合。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><STRONG>命令<SPAN lang=EN-US><o:p></o:p></SPAN></STRONG></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>这些选项明确地指定了执行的活动。只有一个命令可以在命令行中规定除非其他的命令在下面。对于所有的长版本命令和选项名称，必须使用足够大的空间以确保<SPAN 
+lang=EN-US>ipset</SPAN>可以把他们和其他的选项区分开。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-N</STRONG>, --</SPAN>创建<SPAN 
+lang=EN-US>&nbsp;</SPAN>集合名称<SPAN lang=EN-US>&nbsp;</SPAN>类型<SPAN 
+lang=EN-US>&nbsp;</SPAN>类型具体选项<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建一个用集合名称命名并且指定类型的集合。类型具体选项必须是系统规定的。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-X</STRONG>, --</SPAN>删除<SPAN 
+lang=EN-US>&nbsp;[</SPAN>集合名称<SPAN lang=EN-US>]<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>删除指定的集合，如果没有指定或者指定<SPAN 
+lang=EN-US>all</SPAN>就删除全部集合。在删除集合之前，所有基于集合的绑定和默认绑定都会被移除。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>如果集合已经被使用，则什么都不做。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-F</STRONG>, --</SPAN>清空<SPAN 
+lang=EN-US>&nbsp;[</SPAN>集合名称<SPAN lang=EN-US>]<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>删除指定集合中的所有规则<SPAN lang=EN-US>,&nbsp;</SPAN>如果没有指定或者指定了<SPAN 
+lang=EN-US>all</SPAN>就清空所有的集合。绑定不会受到清空操作的影响。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-E</STRONG>, --</SPAN>重命名<SPAN 
+lang=EN-US>&nbsp;</SPAN>旧集合名<SPAN lang=EN-US>&nbsp;&nbsp;</SPAN>新集合名<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>重命名集合，新集合名的标识必须是目前不存在。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-W</STRONG>, --</SPAN>交换<SPAN 
+lang=EN-US>&nbsp;</SPAN>源集合名<SPAN lang=EN-US>&nbsp;</SPAN>目的集合名<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>交换两个集合的内容，或者说交换两个集合的名称。这两个集合必须是存在的而且是具有相同的类型才能交换。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-L,</STRONG> --</SPAN>列出<SPAN 
+lang=EN-US>&nbsp;[</SPAN>集合名名称<SPAN lang=EN-US>]<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>列出指定集合的规则和绑定，如果没有指定或者指定为<SPAN lang=EN-US>all</SPAN>就列出所有的集合。<SPAN 
+lang=EN-US>-n</SPAN>选项，数字选项可以用来限定名称查找和生产数字输出，当<SPAN 
+lang=EN-US>-s&nbsp;</SPAN>，分类选项已经使用，规则将分类排列（如果给出的集合类型支持这个选项）。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-S</STRONG>, --</SPAN>保存<SPAN 
+lang=EN-US>&nbsp;&nbsp;[</SPAN>集合名称<SPAN 
+lang=EN-US>]<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>保存指定名称的集合，如果没有指定或者指定为<SPAN lang=EN-US>all,</SPAN>则保持所有集合<SPAN 
+lang=EN-US>:</SPAN>指定恢复可以读取的标准输出格式。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-R</STRONG>, --</SPAN>复原<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>复原已保存的会话<SPAN lang=EN-US>.</SPAN>已被保存的会话可以是标准输入提供的。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>当产生一个会话文件的时候请注意支持的命令（创建集合，添加元素，绑定）必须遵循严格的规范：首先创建集合添加所有属于它的集合等等，最后你可以列出所有的绑定命令<SPAN 
+lang=EN-US>.</SPAN>此外，这是一个复原选项，所以复原的集合必须是不存在的。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-A</STRONG>, --</SPAN>添加<SPAN 
+lang=EN-US>&nbsp;</SPAN>集合名称<SPAN 
+lang=EN-US>&nbsp;IP<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>往集合中添加一个<SPAN lang=EN-US>ip</SPAN>。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-D</STRONG>, --</SPAN>删除<SPAN 
+lang=EN-US>&nbsp;</SPAN>集合名称<SPAN lang=EN-US>IP<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>从集合中删除一个<SPAN lang=EN-US>ip<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-T</STRONG>, --</SPAN>测试<SPAN 
+lang=EN-US>&nbsp;</SPAN>集合名称<SPAN 
+lang=EN-US>&nbsp;IP<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>测试一个<SPAN lang=EN-US>ip</SPAN>是不是在集合中，要是<SPAN 
+lang=EN-US>ip</SPAN>在集合中返回<SPAN lang=EN-US>0</SPAN>，如果<SPAN 
+lang=EN-US>ip</SPAN>不在集合中则返回非<SPAN lang=EN-US>0.<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-T</STRONG>, --</SPAN>测试<SPAN 
+lang=EN-US>&nbsp;</SPAN>集合名称<SPAN 
+lang=EN-US>&nbsp;&nbsp;IP&nbsp;</SPAN>绑定的目的集合<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>测试<SPAN lang=EN-US>ip</SPAN>是否附属指定集合的绑定点。如果成功返回<SPAN 
+lang=EN-US>0</SPAN>，否则返回非<SPAN lang=EN-US>0.</SPAN>关键字<SPAN 
+lang=EN-US>default</SPAN>可以用来测试集合的默认绑定。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-B</STRONG>, --</SPAN>绑定<SPAN 
+lang=EN-US>&nbsp;</SPAN>集合名称<SPAN lang=EN-US>&nbsp;IP&nbsp;</SPAN>绑定的目的集合<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>绑定集合里的<SPAN lang=EN-US>ip</SPAN>和目的集合<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-U</STRONG>, --</SPAN>解除绑定<SPAN 
+lang=EN-US>&nbsp;</SPAN>集合名称<SPAN 
+lang=EN-US>&nbsp;IP<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>删除集合中指定<SPAN lang=EN-US>ip</SPAN>的绑定。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-H</STRONG>, --</SPAN>帮助<SPAN 
+lang=EN-US>&nbsp;[</SPAN>设置类型<SPAN lang=EN-US>]<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>找出指定设置类型的帮助信息。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>在<SPAN lang=EN-US>-B –U</SPAN>和<SPAN 
+lang=EN-US>-T</SPAN>命令，你可以使用默认的：<SPAN 
+lang=EN-US>default</SPAN>，去绑定，解除绑定或者测试默认绑定去代替<SPAN lang=EN-US>ip.</SPAN>在<SPAN 
+lang=EN-US>-U</SPAN>命令中你可以使用默认的：<SPAN lang=EN-US>all</SPAN>去删除绑定集合的所有元素。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>其他选项<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>接下来的选项可以被指定<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线><STRONG>-b</STRONG>, --binding 
+setname<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>这个选择为<SPAN lang=EN-US>-B</SPAN>绑定选项指定值。这是一个强制性的命令<SPAN 
+lang=EN-US>.&nbsp;</SPAN>你在<SPAN lang=EN-US>-T</SPAN>中可以用来测试绑定。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-s</STRONG>, --</SPAN>分类<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>分类标准输出<SPAN lang=EN-US>.</SPAN>当监听集合，规则列表分类的时候。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-n</STRONG>, --</SPAN>数字<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>数字输出。当监听集合，绑定，<SPAN lang=EN-US>ip</SPAN>地址和端口好需要输出的时候使用数字格式<SPAN 
+lang=EN-US>.&nbsp;</SPAN>默认的系统试着去显示这些信息用主机名，网络名和服务，这会引起<SPAN 
+lang=EN-US>dns</SPAN>查找。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US><STRONG>-q</STRONG>, --</SPAN>安静<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>禁止在标准输出和标准错误上有认可输出但是<SPAN lang=EN-US>ipset</SPAN>还是会返回可能的错误。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>集合类型<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>ipset&nbsp;</SPAN>支持接下来的集合类型。<SPAN lang=EN-US>&nbsp;<A 
+name=lbAI>&nbsp;</A><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线><STRONG>ipmap<o:p></o:p></STRONG></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>ipmap&nbsp;</SPAN>集合类型使用内存范围，每一比特代表一个<SPAN 
+lang=EN-US>ip</SPAN>地址，一个<SPAN lang=EN-US>ipmap</SPAN>集合可以存放<SPAN 
+lang=EN-US>65535</SPAN>个<SPAN lang=EN-US>ip</SPAN>地址。当在匹配固定范围的<SPAN 
+lang=EN-US>ip</SPAN>时，<SPAN lang=EN-US>&nbsp;Ipmap</SPAN>集合非常快速而且内存开销小。如果<SPAN 
+lang=EN-US>-netmask</SPAN>选项指定了无路由选择子网值在<SPAN 
+lang=EN-US>1-31</SPAN>，网络地址会存放在给出的集合。例如当一个<SPAN 
+lang=EN-US>ip</SPAN>与上掩码的结果在集合中，那么这个<SPAN lang=EN-US>ip</SPAN>地址就是这个网络地址。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建<SPAN lang=EN-US>ipmap</SPAN>的选项：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--from&nbsp;</SPAN>源<SPAN 
+lang=EN-US>ip<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--to&nbsp;</SPAN>目的<SPAN 
+lang=EN-US>ip<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建一个指定范围的<SPAN lang=EN-US>ipmap</SPAN>集合。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--network&nbsp;ip/</SPAN>掩码<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><A 
+name=OLE_LINK1></A><A name=OLE_LINK2></A><FONT face=等线><SPAN 
+style="mso-bookmark: OLE_LINK1">创建指定网络的<SPAN 
+lang=EN-US>ipmap</SPAN></SPAN>集合。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--netmask&nbsp;</SPAN>路由选择<SPAN 
+lang=EN-US>-</SPAN>网络<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>当选项<SPAN lang=EN-US>-network</SPAN>参数指定，网络地址将会保存下来以代替网络地址，路由选择<SPAN 
+lang=EN-US>-</SPAN>网络的值必须是在<SPAN lang=EN-US>1-31</SPAN>之间。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线><STRONG>macipmap<o:p></o:p></STRONG></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>macipmap</SPAN>集合类型使用内存范围，用每<SPAN 
+lang=EN-US>8</SPAN>比特代表一个<SPAN lang=EN-US>ip</SPAN>和一个<SPAN 
+lang=EN-US>Mac</SPAN>地址。一个<SPAN lang=EN-US>macipmap</SPAN>集合类型可以存储<SPAN 
+lang=EN-US>65523</SPAN>个带<SPAN lang=EN-US>mac</SPAN>的<SPAN 
+lang=EN-US>ip</SPAN>地址。当向<SPAN lang=EN-US>macipmap</SPAN>集合中添加规则的时候，你必须使用<SPAN 
+lang=EN-US>IP</SPAN>，<SPAN lang=EN-US>MAC</SPAN>类型，但是在删除的时候<SPAN 
+lang=EN-US>MAC</SPAN>部分并不是强制的。<SPAN lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>&nbsp;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建<SPAN lang=EN-US>macipmap</SPAN>的选项：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--from&nbsp;</SPAN>源<SPAN 
+lang=EN-US>ip<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--to&nbsp;t</SPAN>目的<SPAN 
+lang=EN-US>ip<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建一个指定范围的<SPAN lang=EN-US>macipmap</SPAN>集合。<SPAN 
+lang=EN-US>.<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--network&nbsp;IP/mask<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建指定网络的<SPAN lang=EN-US>macipmap</SPAN>集合。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--matchunset<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>当选项<SPAN lang=EN-US>&nbsp;–matchunset&nbsp;</SPAN>参数指定，<SPAN 
+lang=EN-US>i</SPAN>地址可以保存在没有设置好的集合中，并且会被匹配。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>请注意，这个集合和设置<SPAN lang=EN-US>netfilter</SPAN>内核模块通常使用进包源<SPAN 
+lang=EN-US>MAC</SPAN>地址来匹配，添加或者删除<SPAN lang=EN-US>macipmap</SPAN>类型集合规则<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线><STRONG>portmap<o:p></o:p></STRONG></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>portmap</SPAN>集合类型使用一个内存范围，每个比特关联一个端口，一个<SPAN 
+lang=EN-US>portmap</SPAN>集合类型可以存储<SPAN lang=EN-US>65536</SPAN>个端口。<SPAN 
+lang=EN-US>Portmap</SPAN>集合类型非常快而且内存开销很小。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建<SPAN lang=EN-US>portmap</SPAN>集合要用的选项：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--from&nbsp;</SPAN>源端口<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--to&nbsp;</SPAN>目的端口<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建指定范围的<SPAN lang=EN-US>portmap</SPAN>集合。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><A 
+name=lbAL><SPAN lang=EN-US><FONT face=等线>&nbsp;</FONT></SPAN></A><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线><STRONG>iphash<o:p></o:p></STRONG></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><A 
+name=OLE_LINK3></A><A name=OLE_LINK12></A><A name=OLE_LINK11></A><FONT 
+face=等线><SPAN style="mso-bookmark: OLE_LINK3"><SPAN 
+lang=EN-US>iphash</SPAN></SPAN>集合类型使用哈希来存储<SPAN lang=EN-US>ip</SPAN>地址。</FONT><A 
+name=OLE_LINK4></A><A name=OLE_LINK5></A><FONT face=等线><SPAN 
+style="mso-bookmark: OLE_LINK4">为了避免两个哈希冲撞，作为最后的手段，动态地增长已完成的哈希。</SPAN><SPAN 
+lang=EN-US>iphash</SPAN>集合类型很好地存储随机地址。如果选项<SPAN 
+lang=EN-US>—network&nbsp;</SPAN>参数指定了在<SPAN lang=EN-US>1-31</SPAN>之间的<SPAN 
+lang=EN-US>CIDR</SPAN>网络，则网络地址会存储到指定的集合中。例如：一个<SPAN 
+lang=EN-US>ip</SPAN>地址与掩码后在集合中，这个<SPAN lang=EN-US>ip</SPAN>地址将会在集合中。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>用来创建<SPAN lang=EN-US>iphash</SPAN>的选项：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--hashsize&nbsp;</SPAN>哈希大小<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>初始化哈希大小，默认<SPAN lang=EN-US>1024<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--probes&nbsp;</SPAN>探针<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>定义重试次数当添加<SPAN lang=EN-US>ip</SPAN>冲突时，默认为<SPAN 
+lang=EN-US>8<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--resize&nbsp;</SPAN>百分比<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><A 
+name=OLE_LINK6></A><A name=OLE_LINK7></A><FONT face=等线><SPAN 
+style="mso-bookmark: OLE_LINK6">当添加<SPAN 
+lang=EN-US>ip</SPAN></SPAN>冲突时，增长哈希大小的百分比，默认为<SPAN 
+lang=EN-US>50<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT 
+face=等线>--netmask&nbsp;CIDR-netmask<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>当<SPAN lang=EN-US>&nbsp;--netmask&nbsp;</SPAN>选项参数指定时，网络地址将替代<SPAN 
+lang=EN-US>ip</SPAN>地址存储在集合中。<SPAN 
+lang=EN-US>CIDR-netmask&nbsp;</SPAN>的值必须在<SPAN lang=EN-US>1-31</SPAN>中。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><A 
+name=OLE_LINK8><FONT face=等线>一个<SPAN lang=EN-US>iphash</SPAN>类型的集合可以存储<SPAN 
+lang=EN-US>65535</SPAN>条规则。如果一个集合已经满了，那么新的规则就不能添加进去了。</FONT></A><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>集合创建时都被赋值为<SPAN lang=EN-US>0</SPAN>，在<SPAN 
+lang=EN-US>iphash</SPAN>集合中的查询时间随着探索参数的变化接近于线性增长。普遍来说使用大一些的探索值的搜索结果会比小的更好一些，因为小的探索值会参数更大、更分散的哈希。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线><STRONG>nethash<o:p></o:p></STRONG></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>nethash</SPAN>集合类型使用哈希来存储不同长度的网络地址。在集合命令中使用<SPAN 
+lang=EN-US>Ip</SPAN>地址必须为<SPAN lang=EN-US>IP-address/cidr-size</SPAN>格式，<SPAN 
+lang=EN-US>cidr-size</SPAN>的值必须在<SPAN 
+lang=EN-US>1-31</SPAN>之间。为了避免两个哈希冲撞，作为最后的手段，动态地增长已完成的哈希。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建<SPAN lang=EN-US>nethash</SPAN>集合使用的选项：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--hashsize&nbsp;</SPAN>哈希长度<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>初始化哈希长度（默认<SPAN lang=EN-US>1024</SPAN>）<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>--probes&nbsp;</SPAN>探针<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><A 
+name=OLE_LINK13><FONT face=等线>定义重试次数当添加<SPAN 
+lang=EN-US>ip</SPAN></FONT></A><FONT face=等线>冲突时，默认为<SPAN 
+lang=EN-US>4<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--resize&nbsp;percent<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>当添加<SPAN lang=EN-US>ip</SPAN>冲突时，增长哈希大小的百分比，默认为<SPAN 
+lang=EN-US>50<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>一个<SPAN lang=EN-US>nethash</SPAN>类型的集合可以存储<SPAN 
+lang=EN-US>65535</SPAN>条规则。如果一个集合已经满了，那么新的规则就不能添加进去了。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>当一个<SPAN lang=EN-US>ip</SPAN>地址属于添加在<SPAN 
+lang=EN-US>nethash</SPAN>集合中的网络块，这个<SPAN 
+lang=EN-US>ip</SPAN>地址将会添加到集合中。从最小的网络块到最大的网络块之间往往相似<SPAN 
+lang=EN-US>.</SPAN>当以<SPAN lang=EN-US>SET netfiter</SPAN>内核模块的形式添加或者删除<SPAN 
+lang=EN-US>nethash</SPAN>集合中的<SPAN lang=EN-US>ip</SPAN>地址，会添加或者删除集合中最小的网络模块 
+。</FONT><A name=OLE_LINK10></A><A name=OLE_LINK9></A><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>在<SPAN lang=EN-US>iphash</SPAN>集合中的查询时间随着探索参数和网络哈希数的变化接近于线性增长，不然它和<SPAN 
+lang=EN-US>iphash</SPAN>具有相同的速度和内存消耗。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT 
+face=等线><STRONG>ipporthash<o:p></o:p></STRONG></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>iphash</FONT></SPAN><A name=OLE_LINK14></A><A 
+name=OLE_LINK15></A><FONT face=等线><SPAN 
+style="mso-bookmark: OLE_LINK14">集合类型使用哈希来存储</SPAN><SPAN 
+lang=EN-US>ip</SPAN>地址、端口对。为了避免两个哈希冲撞，作为最后的手段，动态地增长已完成的哈希。一个<SPAN 
+lang=EN-US>ipporthash</SPAN>可以存储<SPAN lang=EN-US>65536</SPAN>个<SPAN 
+lang=EN-US>ip</SPAN>地址和带有的端口值。<SPAN 
+lang=EN-US>.&nbsp;</SPAN>当添加、删除和测试集合中的值是，规则必须指定为“<SPAN 
+lang=EN-US>ip</SPAN>：<SPAN lang=EN-US>port</SPAN>”格式。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线><SPAN lang=EN-US>Ipporthash&nbsp;</SPAN>类型集合使用使用两个参数源<SPAN 
+lang=EN-US>/</SPAN>目的参数来匹配集合和<SPAN lang=EN-US>SET</SPAN>目标。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建<SPAN lang=EN-US>&nbsp;ipporthash&nbsp;</SPAN>集合所用选项：<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><A 
+name=OLE_LINK16></A><A name=OLE_LINK17></A><FONT face=等线><SPAN 
+style="mso-bookmark: OLE_LINK16"><SPAN lang=EN-US>--from</SPAN></SPAN><SPAN 
+lang=EN-US>&nbsp;</SPAN>源<SPAN lang=EN-US>ip<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--to&nbsp;to-IP<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建指定范围的<SPAN lang=EN-US>&nbsp;ipporthash</SPAN>集合。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--network&nbsp;IP/mask<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>创建指定网络的<SPAN lang=EN-US>ipporthash</SPAN>集合。<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--hashsize&nbsp;hashsize<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>初始化哈希长度（默认<SPAN lang=EN-US>1024</SPAN>）<SPAN 
+lang=EN-US><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--probes&nbsp;probes<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>定义重试次数当添加<SPAN lang=EN-US>ip</SPAN>冲突时，默认为<SPAN 
+lang=EN-US>8<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>--resize&nbsp;percent<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>当添加<SPAN lang=EN-US>ip</SPAN>冲突时，增长哈希大小的百分比，默认为<SPAN 
+lang=EN-US>50<o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><FONT face=等线>&nbsp;<o:p></o:p></FONT></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><FONT 
+face=等线>与<SPAN lang=EN-US>iphash</SPAN>类型具有相同的调整大小，速度和内存消耗。<SPAN 
+lang=EN-US>&nbsp;<A name=lbAO>&nbsp;</A><o:p></o:p></SPAN></FONT></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 7.8pt; LINE-HEIGHT: 150%; mso-para-margin-bottom: .5gd"><SPAN 
+lang=EN-US><o:p><FONT face=等线>&nbsp;</FONT></o:p></SPAN></P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>jquery-ui自动完成</TITLE>
+</HEAD>
+<BODY>
+<P>jquery-ui自动完成</P>
+<P>一、自定义方法</P>
+<P>//搜索（自定义方法）<BR>&nbsp;if($(".autocomplete_search").length){<BR>&nbsp;&nbsp;//自定义方法catcomplete<BR>&nbsp;&nbsp;$.widget( 
+"custom.catcomplete", $.ui.autocomplete, {<BR>&nbsp;&nbsp;&nbsp;_create: 
+function() 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;this._super();<BR>&nbsp;&nbsp;&nbsp;&nbsp;this.widget().menu( 
+"option", "items", "&gt; :not(.ui-autocomplete-category)" 
+);<BR>&nbsp;&nbsp;&nbsp;},<BR>&nbsp;&nbsp;&nbsp;_renderMenu: function( ul, items 
+) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;var that = this,currentCategory = 
+"";<BR>&nbsp;&nbsp;&nbsp;&nbsp;$.each( items, function( index, item ) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var li;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( 
+item.category != currentCategory ) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ul.append( "&lt;li 
+class='ui-autocomplete-category'&gt;" + item.category + "&lt;/li&gt;" 
+);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentCategory = 
+item.category;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;li 
+= that._renderItemData( ul, item );<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*if ( 
+item.category ) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;li.attr( "aria-label", 
+item.category + " : " + item.label 
+);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;});<BR>&nbsp;&nbsp;&nbsp;},<BR>&nbsp;&nbsp;&nbsp;_renderItem 
+: function( ul, item ) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;var t = 
+"";<BR>&nbsp;&nbsp;&nbsp;&nbsp;t = item.phone?t+'&lt;span class="auto_phone 
+rfloat"&gt;'+item.phone+'&lt;/span&gt;':t;<BR>&nbsp;&nbsp;&nbsp;&nbsp;return $( 
+"&lt;li&gt;" )<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.append('&lt;a 
+href="'+item.url+'" class="clearfix"&gt;&lt;span class="auto_name 
+lfloat"&gt;'+item.label+'&lt;/span&gt;'+t+'&lt;/a&gt;')<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.appendTo( 
+ul 
+);<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;});<BR>&nbsp;&nbsp;$(".autocomplete_search").each(function(i,n){<BR>&nbsp;&nbsp;&nbsp;var 
+$this = $(this);<BR>&nbsp;&nbsp;&nbsp;var cache = {};<BR>&nbsp;&nbsp;&nbsp;var 
+url = 
+$this.data("url");<BR>&nbsp;&nbsp;&nbsp;$this.catcomplete({<BR>&nbsp;&nbsp;&nbsp;&nbsp;//source: 
+["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL"]<BR>&nbsp;&nbsp;&nbsp;&nbsp;//minLength:2,<BR>&nbsp;&nbsp;&nbsp;&nbsp;delay:500,<BR>&nbsp;&nbsp;&nbsp;&nbsp;source:function(request, 
+response){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var term = 
+request.term;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( term in cache ) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response( cache[ term ] 
+);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$.getJSON( url, request, function( data, 
+status, xhr ) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cache[ term ] = 
+data;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response( data 
+);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<BR>&nbsp;&nbsp;&nbsp;&nbsp;},<BR>&nbsp;&nbsp;&nbsp;&nbsp;select:function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//code<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;});<BR>&nbsp;&nbsp;});<BR>&nbsp;&nbsp;$(".autocomplete_btn").click(function(){<BR>&nbsp;&nbsp;&nbsp;//code<BR>&nbsp;&nbsp;});<BR>&nbsp;&nbsp;$(".autocomplete_search").keydown(function(e) 
+{<BR>&nbsp;&nbsp;&nbsp;var $this = $(this);<BR>&nbsp;&nbsp;&nbsp;if (e.which == 
+13) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;$this.parents(".autocomplete_form").submit();<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;});<BR>&nbsp;}</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>二、常规用法</P>
+<P>//搜索<BR>&nbsp;if($(".houseVal").length){<BR>&nbsp;&nbsp;$(".houseVal").each(function(i,n){<BR>&nbsp;&nbsp;&nbsp;var 
+$this = $(this);<BR>&nbsp;&nbsp;&nbsp;var cache = {};<BR>&nbsp;&nbsp;&nbsp;var 
+url = $this.data("url");<BR>&nbsp;&nbsp;&nbsp;var w = 
+$this.outerWidth();<BR>&nbsp;&nbsp;&nbsp;$this.autocomplete({<BR>&nbsp;&nbsp;&nbsp;&nbsp;//source: 
+["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL"]<BR>&nbsp;&nbsp;&nbsp;&nbsp;//minLength:2,<BR>&nbsp;&nbsp;&nbsp;&nbsp;delay:500,<BR>&nbsp;&nbsp;&nbsp;&nbsp;source:function(request, 
+response){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var term = 
+request.term;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( term in cache ) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response( cache[ term ] 
+);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$.getJSON( 
+url, request, function( data, status, xhr ) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cache[ term ] = 
+data;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response( data 
+);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<BR>&nbsp;&nbsp;&nbsp;&nbsp;},<BR>&nbsp;&nbsp;&nbsp;&nbsp;select:function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*window.setTimeout(function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#searchHs").submit();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},500)*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;}).autocomplete( 
+"instance" )._renderItem = function( ul, item ) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;//console.log(item);<BR>&nbsp;&nbsp;&nbsp;&nbsp;var 
+t = "";<BR>&nbsp;&nbsp;&nbsp;&nbsp;t = item.parentAreaName?t+'&lt;span 
+class="hs-district 
+lfloat"&gt;'+item.parentAreaName+'&lt;/span&gt;':t;<BR>&nbsp;&nbsp;&nbsp;&nbsp;t 
+= item.childAreaName?t+'&lt;span class="hs-area 
+lfloat"&gt;'+item.childAreaName+'&lt;/span&gt;':t;<BR>&nbsp;&nbsp;&nbsp;&nbsp;t 
+= item.roomTotal?t+'&lt;span class="hs-count 
+rfloat"&gt;约'+item.roomTotal+'套房源&lt;/span&gt;':t;<BR>&nbsp;&nbsp;&nbsp;&nbsp;return 
+$( "&lt;li&gt;" )<BR>&nbsp;&nbsp;&nbsp;&nbsp;.append('&lt;a href="'+item.url+'" 
+class="clearfix"&gt;&lt;span class="hs_name 
+lfloat"&gt;'+item.label+'&lt;/span&gt;'+t+'&lt;/a&gt;')<BR>&nbsp;&nbsp;&nbsp;&nbsp;.appendTo( 
+ul 
+);<BR>&nbsp;&nbsp;&nbsp;};<BR>&nbsp;&nbsp;});<BR>&nbsp;&nbsp;$("#searchHsBtn").click(function(){<BR>&nbsp;&nbsp;&nbsp;var 
+type = 
+$("#searchHs").find("span.current").data("type");<BR>&nbsp;&nbsp;&nbsp;var 
+keyword = $(".houseVal").val();<BR>&nbsp;&nbsp;&nbsp;var url = 
+$("#searchHs").data("url");<BR>&nbsp;&nbsp;&nbsp;type = 
+type?"/"+type:"";<BR>&nbsp;&nbsp;&nbsp;keyword = 
+keyword?"/"+keyword:"";<BR>&nbsp;&nbsp;&nbsp;window.location.href = 
+url+type+keyword;<BR>&nbsp;&nbsp;&nbsp;return 
+false;<BR>&nbsp;&nbsp;});<BR>&nbsp;&nbsp;$(".houseVal").keydown(function(e) 
+{<BR>&nbsp;&nbsp;&nbsp;if (e.which == 13) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;var type 
+= 
+$("#searchHs").find("span.current").data("type");<BR>&nbsp;&nbsp;&nbsp;&nbsp;var 
+keyword = $(this).val();<BR>&nbsp;&nbsp;&nbsp;&nbsp;var url = 
+$("#searchHs").data("url");<BR>&nbsp;&nbsp;&nbsp;&nbsp;type = 
+type?"/"+type:"";<BR>&nbsp;&nbsp;&nbsp;&nbsp;keyword = 
+keyword?"/"+keyword:"";<BR>&nbsp;&nbsp;&nbsp;&nbsp;window.location.href = 
+url+type+keyword;<BR>&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;});<BR>&nbsp;}</P>
+</BODY>
+</HTML>
