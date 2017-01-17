@@ -11,7 +11,26 @@
 <P>进入TTL控制台刷固件：</P>
 <P>1、接通电源按回车键（有3秒倒计时）进入uboot；</P>
 <P>2、输入help查看帮助命令信息；</P>
-<P>3、</P>
+<P>3、执行printenv 查看serverip 和ipaddr 地址及相关信息</P>
+<P>lu：uboot位</P>
+<P>lf：全固件位（uboot、art、内核）</P>
+<P>lk：内核位</P>
+<P>bt：未知</P>
+<P>la：art无线功率</P>
+<P><STRONG><FONT color=#ff0000>只刷内核</FONT></STRONG>（相关内存地址以实际为准）：</P>
+<P>方法一：</P>
+<P>① 修改本机IP为serverip地址：setenv serverip 10.10.10.3; (IP以实际为准)</P>
+<P>② 开启本地TFTP服务（将固件放到根目录命名为：vmlinux.lzma.uImage）</P>
+<P>③ tftp 0x80060000 ${dir}vmlinux.lzma.uImage&amp;&amp;erase 0x9f050000 
++$filesize&amp;&amp;protect off all&amp;&amp;cp.b $fileaddr 0x9f050000 
+$filesize</P>
+<P>方法二：</P>
+<P>① ② 同上</P>
+<P>③ 接通电源长按reset键（会自动访问TFTP服务下载固件并安装）</P>
+<P><STRONG><FONT color=#ff0000>刷u-boot：</FONT></STRONG></P>
+<P>①<STRONG><FONT color=#ff0000>方法与刷内核一样</FONT></STRONG></P>
+<P>②将uboot.bin 拷贝到/tmp，执行：mtd write uboot.bin u-boot</P>
+<P>&nbsp;</P>
 <P>&nbsp;</P>
 <P><STRONG><FONT style="BACKGROUND-COLOR: #000000" 
 color=#ff0000>一、不重新编译的方法</FONT></STRONG></P>
@@ -32,6 +51,7 @@ style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WOR
 style="FONT-SIZE: 14px; TEXT-DECORATION: underline; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,136); OUTLINE-WIDTH: medium; FONT-STYLE: normal; OUTLINE-STYLE: none; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; OUTLINE-COLOR: invert; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
 href="https://dev.openwrt.org/changeset/36992">r36992</A>版本</P><PRE class=code style='FONT-SIZE: 14px; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(204,204,204) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1.4em; LETTER-SPACING: normal; PADDING-RIGHT: 1em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'><B><FONT size=4>#</FONT></B>::askconsole:/bin/ash --login</PRE>
 <P><FONT style="BACKGROUND-COLOR: #333300" color=#ff0000><STRONG>二、重新编译的方法 
+(这个方法好像不管用) 
 </STRONG></FONT></P>
 <P><FONT style="BACKGROUND-COLOR: #ffffff" color=#000000>找到：<SPAN 
 style="FONT-SIZE: 14px; FONT-FAMILY: Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">target/linux/ar71xx/config-X.XX 
