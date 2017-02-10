@@ -3631,6 +3631,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="c">
 <PARAM NAME="Local" VALUE="c.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3965,6 +3966,27 @@
 <PARAM NAME="Local" VALUE="openwrt查看及备份分区.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="MQTT">
+<PARAM NAME="Local" VALUE="mqtt.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mosquitto_sub订阅">
+<PARAM NAME="Local" VALUE="mosquitto_sub订阅.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mosquitto_pub发布">
+<PARAM NAME="Local" VALUE="mosquitto_pub发布.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
 </UL>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">

@@ -76,10 +76,37 @@ color=#ff0000></FONT></STRONG></P></FONT></FONT><PRE class=code style='FONT-SIZE
 <P><STRONG><FONT style="BACKGROUND-COLOR: #003300" 
 color=#ff0000>10、端口查看</FONT></STRONG></P>
 <P>netstat -antp</P>
+<P><FONT color=#ff0000><FONT 
+style="BACKGROUND-COLOR: #003300"><STRONG>11、变量清空</STRONG> 
+</FONT></FONT> </P>
+<P>char haproxy_page[32768];</P>
+<P>//读文件拼接到haproxy_page，之后haproxy_page就会很大了</P>
+<P><STRONG><FONT 
+color=#ff0000>memset(haproxy_page,'\0',sizeof(haproxy_page)); 
+//逐位释放</FONT></STRONG></P>
+<P><FONT color=#ff0000><FONT 
+style="BACKGROUND-COLOR: #003300"><STRONG>12、变量赋值</STRONG> </FONT></FONT></P>
+<P>整数可以用=，字符串变量要用strcpy</P>
+<P><FONT color=#ff0000><FONT 
+style="BACKGROUND-COLOR: #003300"><STRONG>13、输出到日志</STRONG> </FONT></FONT></P>
+<P>覆盖：ls &gt; err.log</P>
+<P>追加：ls &gt;&gt; err.log</P>
+<P>出错也追加(<FONT color=#ff0000>2&gt;&amp;1</FONT>)：ls /abc &gt;&gt; err.log <FONT 
+color=#ff0000>2&gt;&amp;1</FONT></P>
+<P><STRONG>不输出日志</STRONG>：<FONT 
+color=#ff0000>&amp;&gt;</FONT> <FONT color=#0000ff>/dev/null</FONT></P>
 <P>&nbsp;</P>
-<P>编译：</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><STRONG><FONT size=4>编译：</FONT></STRONG></P>
 <P>make V=s -j6 6为进程数，如果报错改为1就可以跟踪到最先报错的位置，方便排查</P><PRE class=wiki style="FONT-SIZE: 13px; OVERFLOW: auto; BORDER-TOP: rgb(215,215,215) 1px solid; BORDER-RIGHT: rgb(215,215,215) 1px solid; FONT-VARIANT: normal; BACKGROUND: rgb(247,247,247); WORD-SPACING: 0px; BORDER-BOTTOM: rgb(215,215,215) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.25em; FONT-STYLE: normal; PADDING-TOP: 0.25em; PADDING-LEFT: 0.25em; BORDER-LEFT: rgb(215,215,215) 1px solid; WIDOWS: 1; MARGIN: 1em 1.75em; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0.25em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; box-shadow: rgb(238, 238, 238) 0px 0px 1em; border-radius: 0.3em">make tools/{clean,compile,install}&nbsp; 清空、编译、安装tools下的工具包（编译失败且提示tools下包报错时，可执行此操作）</PRE>
-<P>升级固件：</P>
+<P>只编译指定包：</P>
+<P>如fqrouterd.c</P>
+<P>make package/fqrouterd/compile V=s</P>
+<P>编译完成在openwrt/staging_dir/target-mips_34kc_uClibc-0.9.33.2/root-ar71xx/usr/bin 
+目录下可找到编译好的 fqrouterd 文件，替换固件中的同名文件即可</P>
+<P><STRONG><FONT size=4></FONT></STRONG>&nbsp;</P>
+<P><STRONG><FONT size=4>升级固件：</FONT></STRONG></P>
 <P>sysupgrade -n xxx.bin/.img&nbsp;&nbsp;&nbsp; ----n是不保留配置，-c是保留配置</P>
 <P>&nbsp;</P>
 <P>&nbsp;</P>

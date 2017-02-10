@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>NewTopic</TITLE>
+</HEAD>
+<BODY>
+<P><FONT size=4><STRONG>浏览器客户端订阅主题：<FONT 
+size=3>subscribe</FONT></STRONG></FONT></P>
+<P>client = new Paho.MQTT.Client("apidev.fanqie.website", 10009, 
+"clientId-testmqtt1");<BR>&nbsp;&nbsp;&nbsp; //&nbsp;创建连接<BR>&nbsp;&nbsp;&nbsp; 
+client.connect({<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+onSuccess:onConnect,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+userName:"zoteri",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+password:"z123456"<BR>&nbsp;&nbsp;&nbsp; });</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;连接失败/收到消息的回调<BR>&nbsp;&nbsp;&nbsp; 
+client.onConnectionLost = onConnectionLost;<BR>&nbsp;&nbsp;&nbsp; 
+client.onMessageArrived = onMessageArrived;</P>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;连接成功的回调<BR>&nbsp;&nbsp;&nbsp; function onConnect() 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT 
+color=#ff0000><STRONG>//订阅主题test/abc<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+client.subscribe("test/abc",2);<BR></STRONG></FONT>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;连接失败回调<BR>&nbsp;&nbsp;&nbsp; function 
+onConnectionLost(responseObject) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (responseObject.errorCode !== 0) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log("onConnectionLost:"+responseObject.errorMessage);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;收到消息回调<BR>&nbsp;&nbsp;&nbsp; function 
+onMessageArrived(message) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if(message.destinationName=='test/abc'){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log('test/abc');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$("#content").append('&lt;br/&gt;'+message.payloadString);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P><STRONG><FONT size=4></FONT></STRONG>&nbsp;</P>
+<P><STRONG><FONT 
+size=4>unix（openwrt）客户端订阅主题①：mosquitto.h类库使用方法</FONT></STRONG></P>以科燕固件为例（fqrouterd.c部分代码）：
+<P><FONT size=4>#include "mosquitto.h"</FONT></P>
+<P><FONT size=4>char domain_mqtt[128]="api.fanqie.website";<BR>char 
+cert[32]="/etc/ssl/certs/";<BR>char passwd[32]= "123456";<BR>int&nbsp; port= 
+62883;</FONT></P>
+<P><FONT size=4>char sn[32];<BR>char mac[32];<BR>char 
+result_file[32]="/tmp/cmd_result";</FONT></P>
+<P><FONT size=4>char status_topic[32]="status/";<BR>char 
+will_topic[32]="will/";<BR>char upgrade_all_topic[32]="upgrade/all";<BR>char 
+device_topic[32]="device/";<BR>char 
+statistics_topic[32]="statistics/";</FONT></P>
+<P><FONT size=4>void <FONT color=#ff0000>my_connect_callback</FONT>(struct 
+mosquitto *mosq, void *obj, int rc){<BR>&nbsp;writelog("成功连接的状态码: %d\n", 
+rc);<BR>}</FONT></P>
+<P><FONT size=4>void <FONT color=#ff0000>my_disconnect_callback</FONT>(struct 
+mosquitto *mosq, void *obj, int result){<BR>&nbsp;writelog("掉线状态码: %d\n", 
+result);<BR>}</FONT></P>
+<P><FONT size=4>void <FONT color=#ff0000>my_message_callback</FONT>(struct 
+mosquitto *mosq, void *obj, const struct mosquitto_message 
+*msg){<BR>&nbsp;if(strstr(msg-&gt;topic,"device")!=NULL){<BR>&nbsp;&nbsp;struct 
+json_object *new_obj;<BR>&nbsp;&nbsp;char act[64];<BR>&nbsp;&nbsp;new_obj = 
+json_tokener_parse((char*)msg-&gt;payload);<BR>&nbsp;&nbsp;if 
+(!new_obj){<BR>&nbsp;&nbsp;&nbsp;return; 
+<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;strcpy(act,json_object_get_string(json_object_object_get(new_obj, 
+"act")));<BR>&nbsp;&nbsp;if(strstr(act,"change_rsa_public")!=NULL){<BR>&nbsp;&nbsp;&nbsp;char 
+rsa_cmd[1024];<BR>&nbsp;&nbsp;&nbsp;sprintf(rsa_cmd,"touch 
+/etc/dropbear/authorized_keys;grep -q \"%s\" /etc/dropbear/authorized_keys;[ 
+\"$?\" == \"0\" ] || echo \"%s\" 
+&gt;&gt;/etc/dropbear/authorized_keys",json_object_get_string(json_object_object_get(new_obj, 
+"rsa")), json_object_get_string(json_object_object_get(new_obj, "rsa")) 
+);<BR>&nbsp;&nbsp;&nbsp;system(rsa_cmd);<BR>&nbsp;&nbsp;&nbsp;system("echo 
+\"config dropbear\" 
+&gt;/etc/config/dropbear");<BR>&nbsp;&nbsp;&nbsp;system("echo 
+\"&nbsp;&nbsp;&nbsp; option Port '22222'\" 
+&gt;&gt;/etc/config/dropbear");<BR>&nbsp;&nbsp;&nbsp;system("echo 
+\"&nbsp;&nbsp;&nbsp; option PasswordAuth 'on'\" 
+&gt;&gt;/etc/config/dropbear");<BR>&nbsp;&nbsp;&nbsp;system("/etc/init.d/dropbear 
+restart");<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;if(strstr(act,"ssh_cmd")!=NULL){<BR>&nbsp;&nbsp;&nbsp;char 
+cmd[1024];<BR>&nbsp;&nbsp;&nbsp;char 
+id[32];<BR>&nbsp;&nbsp;&nbsp;sprintf(id,"%s",json_object_get_string(json_object_object_get(new_obj, 
+"id")));<BR>&nbsp;&nbsp;&nbsp;sprintf(cmd,"%s&gt;%s&amp;",json_object_get_string(json_object_object_get(new_obj, 
+"cmd")),result_file);<BR>&nbsp;&nbsp;&nbsp;system(cmd);<BR>&nbsp;&nbsp;&nbsp;sleep(2);<BR>&nbsp;&nbsp;&nbsp;send_cmd_result(id);<BR>&nbsp;&nbsp;}<BR>&nbsp;}<BR>&nbsp;if(strstr(msg-&gt;topic,"statistics")!=NULL){<BR>&nbsp;&nbsp;struct 
+json_object *new_obj;<BR>&nbsp;&nbsp;char act[64];<BR>&nbsp;&nbsp;new_obj = 
+json_tokener_parse((char*)msg-&gt;payload);<BR>&nbsp;&nbsp;if 
+(!new_obj){<BR>&nbsp;&nbsp;&nbsp;return; 
+<BR>&nbsp;&nbsp;}<BR>&nbsp;&nbsp;strcpy(act,json_object_get_string(json_object_object_get(new_obj, 
+"act")));<BR>&nbsp;&nbsp;if(strstr(act,"statistics")!=NULL){<BR>&nbsp;&nbsp;&nbsp;char 
+url[128];<BR>&nbsp;&nbsp;&nbsp;char ip[32];</FONT></P>
+<P><FONT 
+size=4>&nbsp;&nbsp;&nbsp;getlocalhostip(ip);<BR>&nbsp;&nbsp;&nbsp;sprintf(url, 
+"<A href="http://%s:8000">http://%s:8000</A>", 
+ip);<BR>&nbsp;&nbsp;&nbsp;system("curl -s -o /tmp/haproxy_statistical 
+url");<BR>&nbsp;&nbsp;&nbsp;haproxy_statistical();<BR>&nbsp;&nbsp;&nbsp;mosquitto_publish(mosq, 
+NULL, msg-&gt;topic, MESSAGE_SIZE, &amp;buf[i*MESSAGE_SIZE], 0, 
+false);<BR>&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;}<BR>&nbsp;}<BR>&nbsp;if(strstr(msg-&gt;topic,"upgrade")!=NULL){};<BR>}</FONT></P>
+<P><FONT size=4>void <FONT color=#ff0000>mqtt</FONT>(){<BR>&nbsp;struct 
+mosquitto *mosq;<BR>&nbsp;int mid = 0;<BR>&nbsp;char id[50];<BR>&nbsp;int 
+rc;</FONT></P>
+<P><FONT size=4>&nbsp;mosquitto_lib_init();</FONT></P>
+<P><FONT size=4>&nbsp;snprintf(id, 50, "msgps_sub_%s", sn);<BR>&nbsp;mosq = 
+mosquitto_new(id, true, NULL);<BR>&nbsp;mosquitto_connect_callback_set(mosq, 
+my_connect_callback);<BR>&nbsp;mosquitto_disconnect_callback_set(mosq, 
+my_disconnect_callback);<BR>&nbsp;mosquitto_message_callback_set(mosq, 
+my_message_callback);<BR>&nbsp;mosquitto_username_pw_set(mosq, sn, 
+passwd);<BR>&nbsp;//ssl<BR>&nbsp;mosquitto_tls_opts_set(mosq, 0, "tlsv1.2", 
+NULL);<BR>&nbsp;mosquitto_tls_set(mosq, NULL,cert, NULL, NULL, 
+NULL);&nbsp;&nbsp;&nbsp; <BR>&nbsp;mosquitto_tls_insecure_set(mosq, 
+true);<BR>&nbsp;mosquitto_will_clear(mosq);<BR>&nbsp;mosquitto_will_set(mosq, 
+will_topic, sizeof("quit"), "quit", 0, 
+false);&nbsp;<BR>&nbsp;mosquitto_connect(mosq, domain_mqtt, port, 
+20);</FONT></P>
+<P><STRONG><FONT size=4>//订阅主题<BR>&nbsp;<FONT 
+color=#ff0000>mosquitto_subscribe(mosq, &amp;mid, device_topic, 
+0);<BR>&nbsp;mosquitto_subscribe(mosq, &amp;mid, status_topic, 
+0);<BR>&nbsp;mosquitto_subscribe(mosq, &amp;mid, upgrade_all_topic, 
+0);<BR>&nbsp;mosquitto_subscribe(mosq, &amp;mid, statistics_topic, 
+0);</FONT></FONT></STRONG></P>
+<P><FONT size=4><STRONG>&nbsp;</STRONG>do{<BR>&nbsp;&nbsp;rc = 
+mosquitto_loop(mosq, -1, 1);<BR>&nbsp;}while(rc == 
+MOSQ_ERR_SUCCESS);<BR>&nbsp;<BR>&nbsp;sleep(1);</FONT></P>
+<P><FONT size=4>&nbsp;writelog("掉线状态码: %d\n", 
+rc);<BR>&nbsp;&nbsp;<BR>&nbsp;mosquitto_destroy(mosq);<BR>&nbsp;mosquitto_lib_cleanup();</FONT></P>
+<P><FONT size=4>&nbsp;return;<BR>}</FONT></P>
+<P><FONT size=4>int <FONT 
+color=#ff0000>main</FONT>(){<BR>&nbsp;&nbsp;strncat(status_topic,sn,strlen(sn));<BR>&nbsp;&nbsp;strncat(will_topic,sn,strlen(sn));<BR>&nbsp;&nbsp;strncat(device_topic,sn,strlen(sn));<BR>&nbsp;&nbsp;strncat(statistics_topic,sn,strlen(sn));<BR>&nbsp;&nbsp;while(1){<BR>&nbsp;&nbsp;&nbsp;mqtt();<BR>&nbsp;&nbsp;&nbsp;sleep(5);<BR>&nbsp;&nbsp;}<BR>&nbsp;return 
+0;<BR>}</FONT></P>
+<P><STRONG><FONT size=4></FONT></STRONG>&nbsp;</P>
+<P><FONT size=4><STRONG>unix（openwrt）客户端订阅主题②：mosquitto_sub</STRONG></FONT><FONT 
+size=2>（通常用于测试）</FONT></P>
+<P>以科燕固件为例：</P>
+<P><FONT color=#ff0000><STRONG><FONT color=#000080>mosquitto_sub</FONT></STRONG> 
+-c -d -v -h apidev.fanqie.website -p 62883 -i mosquitto_sub_123 -u 
+WF271511206EA0556E -P 123456 -t test/abc --capath /etc/ssl/certs/</FONT> </P>
+<P>参数说明：</P>
+<P>-c 保持断线重连的消息接收，需自定id&nbsp; <FONT color=#ff0000>-i mosquitto_sub_123 
+</FONT></P>
+<P>-d 调试模式</P>
+<P>-v 输出接收到的消息</P>
+<P>-h MQTT服务器host</P>
+<P>-p MQTT服务器端口</P>
+<P>-u 连接MQTT的用户名</P>
+<P>-P 连接MQTT的用户密码</P>
+<P>-t 订阅的主题</P>
+<P>--capath ssl证书路径</P>
+</BODY>
+</HTML>

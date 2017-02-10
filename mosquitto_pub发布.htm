@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>mosquitto_pub发布</TITLE>
+</HEAD>
+<BODY>
+<P><FONT size=4><STRONG>浏览器客户端发布主题：<FONT size=4>send</FONT></STRONG></FONT></P>
+<P>client = new Paho.MQTT.Client("apidev.fanqie.website", 10009, 
+"clientId-testmqtt1");<BR>&nbsp;&nbsp;&nbsp; //&nbsp;创建连接<BR>&nbsp;&nbsp;&nbsp; 
+client.connect({<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+onSuccess:onConnect,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+userName:"zoteri",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+password:"z123456"<BR>&nbsp;&nbsp;&nbsp; });</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;连接失败/收到消息的回调<BR>&nbsp;&nbsp;&nbsp; client.onConnectionLost = 
+  onConnectionLost;<BR>&nbsp;&nbsp;&nbsp; 
+client.onMessageArrived = onMessageArrived;</P>
+<P>&nbsp;</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;连接成功的回调<BR>&nbsp;&nbsp;&nbsp; function onConnect() 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT 
+color=#ff0000><STRONG>//订阅主题test/abc<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+client.subscribe("test/abc",2);<BR></STRONG></FONT>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;连接失败回调<BR>&nbsp;&nbsp;&nbsp; function 
+onConnectionLost(responseObject) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (responseObject.errorCode !== 0) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log("onConnectionLost:"+responseObject.errorMessage);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P>&nbsp;&nbsp;&nbsp; //&nbsp;收到消息回调<BR>&nbsp;&nbsp;&nbsp; function 
+onMessageArrived(message) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if(message.destinationName=='test/abc'){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+console.log('test/abc');<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+$("#content").append('&lt;br/&gt;'+message.payloadString);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; }</P>
+<P><FONT 
+size=4>$("#sendbtn").click(function(){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var txt = 
+   $("#sendtxt").val();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if(!txt){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+alert("发送内容不能为空");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return false;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!client.isConnected()) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+alert("连接失败");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return false;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</FONT></P>
+<P><FONT size=4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //发布主题</FONT></P>
+<P><FONT size=4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT 
+color=#ff0000>var message = new 
+Paho.MQTT.Message(txt);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+message.destinationName = 
+"test/abc";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; message.qos = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; message.retained = 
+false;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+client.send(message);<BR></FONT>&nbsp;&nbsp;&nbsp; })</FONT></P>
+<P>&nbsp;</P>
+<P><FONT size=4><STRONG>unix（openwrt）客户端发布主题②：mosquitto_pub</STRONG></FONT><FONT 
+size=2>（通常用于测试）</FONT></P>
+<P>以科燕固件为例：</P>
+<P><FONT color=#ff0000><STRONG><FONT color=#000080>mosquitto_pub</FONT></STRONG> 
+-d -h apidev.fanqie.website -p 62883 -i mosquitto_sub_123 -u WF271511206EA0556E 
+-P 123456 -t test/abc --capath /etc/ssl<BR>/certs/ -m ttttttttttttt</FONT> </P>
+<P>参数说明：</P>
+<P>-m 需要发送的消息</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>
