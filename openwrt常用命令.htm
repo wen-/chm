@@ -71,7 +71,7 @@ color=#ff0000>8、查看日志</FONT></STRONG></P>
 <P>logread</P>
 <P><STRONG><FONT style="BACKGROUND-COLOR: #003300" 
 color=#ff0000>9、重新生成wifi配置<FONT style="BACKGROUND-COLOR: #003300"><FONT 
-color=#ff0000></FONT></STRONG></P></FONT></FONT><PRE class=code style='FONT-SIZE: 14px; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(204,204,204) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1.4em; LETTER-SPACING: normal; PADDING-RIGHT: 1em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset; border-radius: 2px'># rm /etc/config/wireless
+color=#ff0000></FONT></STRONG></P></FONT></FONT><PRE class=code style='FONT-SIZE: 14px; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Consolas, "Andale Mono WT", "Andale Mono", "Bitstream Vera Sans Mono", "Nimbus Mono L", Monaco, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(204,204,204) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0.7em; DIRECTION: ltr; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0.7em; PADDING-LEFT: 1em; BORDER-LEFT: rgb(204,204,204) 1px solid; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1.4em; LETTER-SPACING: normal; PADDING-RIGHT: 1em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; border-radius: 2px; box-shadow: rgb(204, 204, 204) 0px 0px 0.5em inset'># rm /etc/config/wireless
 # wifi detect &gt; /etc/config/wireless</PRE>
 <P><STRONG><FONT style="BACKGROUND-COLOR: #003300" 
 color=#ff0000>10、端口查看</FONT></STRONG></P>
@@ -88,18 +88,53 @@ color=#ff0000>memset(haproxy_page,'\0',sizeof(haproxy_page));
 style="BACKGROUND-COLOR: #003300"><STRONG>12、变量赋值</STRONG> </FONT></FONT></P>
 <P>整数可以用=，字符串变量要用strcpy</P>
 <P><FONT color=#ff0000><FONT 
-style="BACKGROUND-COLOR: #003300"><STRONG>13、输出到日志</STRONG> </FONT></FONT></P>
+style="BACKGROUND-COLOR: #003300"><STRONG>13、输出到日志</STRONG> <FONT 
+style="BACKGROUND-COLOR: #003300"><FONT 
+color=#ff0000></FONT></FONT></P></FONT></FONT>
 <P>覆盖：ls &gt; err.log</P>
 <P>追加：ls &gt;&gt; err.log</P>
 <P>出错也追加(<FONT color=#ff0000>2&gt;&amp;1</FONT>)：ls /abc &gt;&gt; err.log <FONT 
 color=#ff0000>2&gt;&amp;1</FONT></P>
 <P><STRONG>不输出日志</STRONG>：<FONT 
 color=#ff0000>&amp;&gt;</FONT> <FONT color=#0000ff>/dev/null</FONT></P>
-<P>&nbsp;</P>
+<P><FONT color=#ff0000><FONT 
+style="BACKGROUND-COLOR: #003300"><STRONG>14、修改openwrt 
+root密码</STRONG>&nbsp;<FONT 
+style="BACKGROUND-COLOR: #003300"><FONT color=#ff0000></FONT></FONT><FONT style="BACKGROUND-COLOR: #003300"><FONT 
+color=#ff0000></FONT></FONT></P></FONT></FONT>
+<P>openwrt/package/base-files/files/etc/shadow</P>
+<P>密码为1：root:<FONT 
+color=#ff0000>$1$j.WGb7j1$NFLl8KStQXvx44VwkJzYh0</FONT>:17119:0:99999:7:::</P>
+<P><FONT style="BACKGROUND-COLOR: #003300"><FONT 
+color=#ff0000><STRONG>15、shellinabox登录</STRONG>&nbsp;</FONT><FONT color=#ff0000></FONT></FONT></P>
+<P>make menuconfig 开启：CONFIG_BUSYBOX_DEFAULT_LOGIN=y</P>
+<P>shellinaboxd&nbsp; -t -s /:LOGIN -u root <FONT 
+color=#ff0000>--css /etc/shellinabox/white-on-black.css</FONT></P>
+<P><FONT color=#ff0000><FONT 
+style="BACKGROUND-COLOR: #003300"><STRONG>16、ssh代理内网地址到外网</STRONG>&nbsp;<FONT 
+style="BACKGROUND-COLOR: #003300"><FONT color=#ff0000></FONT></FONT><FONT 
+color=#ff0000></FONT></P></FONT></FONT>
+<P>ssh -nNT -R <FONT color=#ff0000>10000</FONT>:<FONT 
+color=#008000>127.0.0.1:4200</FONT> <A 
+href="mailto:fanqie@120.27.146.5">fanqie@120.27.146.5</A> -p<FONT 
+color=#3366ff>50022</FONT></P>
+<P>将内网127.0.0.1:4200映射到120.27.146.5:10000，外网的50022端口接收ssh命令</P>
+<P><FONT color=#ff0000><FONT 
+style="BACKGROUND-COLOR: #003300"><STRONG>17、查找进程pid</STRONG>&nbsp;<FONT 
+style="BACKGROUND-COLOR: #003300"><FONT color=#ff0000></FONT></FONT><FONT 
+style="BACKGROUND-COLOR: #003300"><FONT color=#ff0000></FONT></FONT></P></FONT></FONT>
+<P>[ $(ps | grep -c "ssh -nNT -R 10000:127.0.0.1:22222 <A 
+href="mailto:fanqie@120.27.146.5">fanqie@120.27.146.5</A> -p50022") -gt 1 ] 
+&amp;&amp; kill -9 `ps | grep "ssh -nNT -R 10000:127.0.0.1:22222 <A 
+href="mailto:fanqie@120.27.146.5">fanqie@120.27.146.5</A> -p50022" | grep -v 
+grep | awk '{print $1}' | sed -n \"1p\"`</P>
+<P><FONT style="BACKGROUND-COLOR: #003300"><FONT 
+color=#ff0000><STRONG>18、抓数据包 </STRONG></FONT></FONT></P>
+<P>tcpdump -i eth1 -w /tmp/ssl4.cap&nbsp; //抓eth1数据写入ssl4.cap</P>
 <P>&nbsp;</P>
 <P>&nbsp;</P>
 <P><STRONG><FONT size=4>编译：</FONT></STRONG></P>
-<P>make V=s -j6 6为进程数，如果报错改为1就可以跟踪到最先报错的位置，方便排查</P><PRE class=wiki style="FONT-SIZE: 13px; OVERFLOW: auto; BORDER-TOP: rgb(215,215,215) 1px solid; BORDER-RIGHT: rgb(215,215,215) 1px solid; FONT-VARIANT: normal; BACKGROUND: rgb(247,247,247); WORD-SPACING: 0px; BORDER-BOTTOM: rgb(215,215,215) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.25em; FONT-STYLE: normal; PADDING-TOP: 0.25em; PADDING-LEFT: 0.25em; BORDER-LEFT: rgb(215,215,215) 1px solid; WIDOWS: 1; MARGIN: 1em 1.75em; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0.25em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; box-shadow: rgb(238, 238, 238) 0px 0px 1em; border-radius: 0.3em">make tools/{clean,compile,install}&nbsp; 清空、编译、安装tools下的工具包（编译失败且提示tools下包报错时，可执行此操作）</PRE>
+<P>make V=s -j6 6为进程数，如果报错改为1就可以跟踪到最先报错的位置，方便排查</P><PRE class=wiki style="FONT-SIZE: 13px; OVERFLOW: auto; BORDER-TOP: rgb(215,215,215) 1px solid; BORDER-RIGHT: rgb(215,215,215) 1px solid; FONT-VARIANT: normal; BACKGROUND: rgb(247,247,247); WORD-SPACING: 0px; BORDER-BOTTOM: rgb(215,215,215) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.25em; FONT-STYLE: normal; PADDING-TOP: 0.25em; PADDING-LEFT: 0.25em; BORDER-LEFT: rgb(215,215,215) 1px solid; WIDOWS: 1; MARGIN: 1em 1.75em; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0.25em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 0.3em; box-shadow: rgb(238, 238, 238) 0px 0px 1em">make tools/{clean,compile,install}&nbsp; 清空、编译、安装tools下的工具包（编译失败且提示tools下包报错时，可执行此操作）</PRE>
 <P>只编译指定包：</P>
 <P>如fqrouterd.c</P>
 <P>make package/fqrouterd/compile V=s</P>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>openwrt多账号登录</TITLE>
+</HEAD>
+<BODY>
+<P>openwrt多账号登录</P>
+<P><SPAN 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Microsoft Yahei", 微软雅黑, arial, 宋体, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: justify; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>&nbsp;<FONT 
+color=#ff0000>/etc/passwd中的密码位置的密码是写入/etc/shadow中的，可以使用pwunconv命令将密码写回/etc/passwd中（ 
+pwconv 
+将/etc/passwd密码转换到/etc/shadow中，给用户设置密码时系统自动转换，即启动或停用shadow功能）</FONT></SPAN></P>
+<P>&nbsp;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">Linux系统中，所有用户（包括系统管理员）的账号和密码都可以在/etc/passwd和/etc/shadow这两个文件中找到，作为一名合格的Linux系统管理员，一定要对这两个文件非常的熟悉！（天哪，竟然把用户和密码就放在文件中，不怕被其他人看的或者修改吗？不用紧张啦，/etc/passwd只有系统管理员才可以修改的，其他用户可以查看，/etc/shadow其他用户还是别想了，看都不让看，这个时候就体现出超级管理员那至高无上的权力了，呵呵~）</P>
+<DIV class=blockcode 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<OL>
+  <LI>letuknowit@ubuntu:~$ ls -al /etc/passwd /etc/shadow</LI>
+  <LI>-rw-r–r– 1 root root 1611 2011-12-16 05:30 /etc/passwd</LI>
+  <LI>-rw-r—– 1 root shadow 947 2011-12-16 05:30 /etc/shadow</LI></OL></DIV>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">　　上面分别列出了passwd和shadow文件的访问权限信息，其中passwd保存的是账号，shadow保存的是账号的密码等信息，下面就具体看看这两个文件的内容：</P>
+<H2 
+style="FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><A 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+name=t0></A>/etc/passwd</H2>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">通过指令 
+vi /etc/passwd&nbsp; 打开passwd文件来看看，下面列举部分内容如下：</P>
+<DIV class=blockcode 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<OL>
+  <LI>root:x:0:0:root:/root:/bin/bash</LI>
+  <LI>daemon:x:1:1:daemon:/usr/sbin:/bin/sh</LI>
+  <LI>bin:x:2:2:bin:/bin:/bin/sh</LI>
+  <LI>sys:x:3:3:sys:/dev:/bin/sh</LI></OL></DIV>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">上面每一行都代表一个用户，每一行又通过[:]分为七个部分，下面就说说这七项都代表什么。<BR>　　1、账号名称<BR>　　2、原先用来保存密码的，现在密码都放在/etc/shadow中，所以这里显示x<BR>　　3、UID，也就是使用者ID。默认的系统管理员的UID为0，我们添加用户的时候最好使用1000以上的UID，1-1000范围的UID最好保留给系统用。<BR>　　4、GID，也就是群组ID<BR>　　5、关于账号的一些说明信息（暂时可以忽略）<BR>　　6、账号的家目录，家目录就是你登陆系统后默认的那个目录<BR>　　7、账号使用的shell</P>
+<H2 
+style="FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><A 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+name=t1></A>/etc/shadow</H2>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">　　看完/etc/passwd，再来看看/etc/shadow里都有啥？于是在ubuntu的终端中输入 
+vi /etc/shadow 会出现了下面的错误信息：</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: center; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">“/etc/shadow” 
+[Permission Denied]</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">　　忘了ubuntu中默认登陆的不开启root账户，而/etc/shadow文件只有root账户才能够访问，那怎么办呢，只好<A 
+title=ubuntu中如何激活root账户？ style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://www.letuknowit.com/topics/20120304/how-to-activate-the-root-account-in-ubuntu.html" 
+target=_blank>开启ubunt的root账户</A>了，或者 sudo vi 
+/etc/shadow即可，搞定之后shadow的内容如下面样式：</P>
+<DIV class=blockcode 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<OL>
+  <LI>root:!:15324:0:99999:7:::</LI>
+  <LI>daemon:*:15259:0:99999:7:::</LI>
+  <LI>bin:*:15259:0:99999:7:::</LI>
+  <LI>letuknowit:$1$cPf/cIvr$sCws95uSip2ljTK052DDB.:15400:5:60:7:2:15490:</LI></OL></DIV>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">这里也是由[:]来进行分割，但是这里一共分出来九个栏目，每个栏目的解释如下：<BR>　　1、账户名称（密码需要与账户对应的嘛）<BR>　　2、加密后的密码（总不能学CSDN放明文密码，是吧），如果这一栏的第一个字符为!或者*的话，说明这是一个不能登录的账户，从上面可以看出，ubuntu默认的就不启用root账户。<BR>　　3、最近改动密码的日期（不是日期吗，咋是一堆数字，别急，这个是从1970年1月1日算起的总的天数）。那怎么才能知道今天距1970年1月1日有多少天呢？很简单，你改下密码，然后看下这个栏目中的数字是多少就可以了！<BR>　　4、密码不可被变更的天数：设置了这个值，则表示从变更密码的日期算起，多少天内无法再次修改密码，如果是0的话，则没有限制<BR>　　5、密码需要重新变更的天数：密码经常更换才能保证安全，为了提醒某些经常不更换密码的用户，可以设置一个天数，强制让用户更换密码，也就是说该用户的密码会在多少天后过期，如果为99999则没有限制<BR>　　6、密码过期预警天数：如果在5中设置了密码需要重新变更的天数，则会在密码过期的前多少天进行提醒，提示用户其密码将在多少天后过期<BR>　　7、密码过期的宽恕时间：如果在5中设置的日期过后，用户仍然没有修改密码，则该用户还可以继续使用的天数<BR>　　8、账号失效日期，过了这个日期账号就不能用了<BR>　　9、保留的</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">以上面最后用户letuknowit为例（15400对应的日期为2012年3月1日），其保护如下信息：<BR>　　3、用户letuknowit最近一次修改密码的日期是2012年3月1日，<BR>　　4、在2012年3月6日之前不能再改动密码了，<BR>　　5、在2012-3-1到2012-4-29期间letuknowit需要更改密码，<BR>　　6、在2012-4-29之前的7天，letuknowit登陆系统的时候，系统会提示letuknowit其密码即将过期，<BR>　　7、如果letuknowit一直到2012-4-29都没有修改密码，则其仍然可以继续使用该账户2天，2天后该账户将不可用<BR>　　8、无论如何，到了2012年5月29日，该账号都将失效</P>
+<P><STRONG><FONT size=5>/etc/group</FONT></STRONG></P>
+<P><STRONG>增加相关账号信息</STRONG></P>
+</BODY>
+</HTML>
