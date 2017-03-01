@@ -3854,6 +3854,12 @@
 <PARAM NAME="Local" VALUE="获取访问路由的客户端IP.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="获取文件修改时间戳">
+<PARAM NAME="Local" VALUE="获取文件修改时间戳.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3975,9 +3981,14 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt编译失败的可能性">
+<PARAM NAME="Local" VALUE="openwrt编译失败的可能性.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MQTT">
 <PARAM NAME="Local" VALUE="mqtt.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
