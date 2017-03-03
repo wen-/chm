@@ -3993,6 +3993,12 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="中文域名转punycode码">
+<PARAM NAME="Local" VALUE="中文域名转punycode码.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MQTT">
 <PARAM NAME="Local" VALUE="mqtt.htm">
 </OBJECT>
