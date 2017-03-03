@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>git命令</TITLE>
+</HEAD>
+<BODY>
+<P>git命令</P>
+<H1 class=postTitle 
+style="FONT-SIZE: 15px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WIDTH: 1519px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT: bold; COLOR: rgb(70,70,70); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,247,239); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><A 
+id=cb_post_title_url class=postTitle2 
+style="TEXT-DECORATION: none; COLOR: rgb(100,102,179); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
+href="http://www.cnblogs.com/vman/articles/Git_cmds.html">Git常用命令</A></H1>
+<DIV class=clear 
+style="FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(70,70,70); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(250,247,239); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></DIV>
+<DIV class=postBody 
+style="FONT-SIZE: 14px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: black 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(57,57,57); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; PADDING-RIGHT: 2px; BACKGROUND-COLOR: rgb(250,247,239); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<DIV id=cnblogs_post_body 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 20px; PADDING-RIGHT: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">查看、添加、提交、删除、找回，重置修改文件</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+help &lt;command&gt; # 显示command的help</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+show # 显示某次提交的内容 git show $id</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co -- &lt;file&gt; # 抛弃工作区修改</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co . # 抛弃工作区修改</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+add &lt;file&gt; # 将工作文件修改提交到本地暂存区</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+add . # 将所有修改过的工作文件提交暂存区</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+rm &lt;file&gt; # 从版本库中删除文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+rm &lt;file&gt; --cached # 从版本库中删除文件，但不删除文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+reset &lt;file&gt; # 从暂存区恢复到工作文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+reset -- . # 从暂存区恢复到工作文件</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+reset --hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+ci &lt;file&gt; git ci . git ci -a # 将git add, git rm和git 
+ci等操作都合并在一起做　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　git ci -am "some comments"</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+ci --amend # 修改最后一次提交记录</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+revert HEAD # 恢复最后一次提交的状态</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">查看文件diff</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+diff &lt;file&gt; # 比较当前文件和暂存区文件差异 git diff</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+diff &lt;<SPAN class=MathJax_Preview 
+style="COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></SPAN><SPAN 
+role=presentation tabIndex=0 id=MathJax-Element-1-Frame class=MathJax 
+style="FONT-SIZE: 14px; WORD-WRAP: normal; MAX-WIDTH: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; WORD-SPACING: normal; MIN-WIDTH: 0px; BORDER-BOTTOM: 0px; POSITION: relative; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; DIRECTION: ltr; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; MAX-HEIGHT: none; TEXT-INDENT: 0px" 
+data-mathml='<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi><mi>d</mi><mn>1</mn><mo>&amp;gt;&amp;lt;</mo></math>'><NOBR 
+aria-hidden=true 
+style="TEXT-DECORATION: none; MAX-WIDTH: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; WHITE-SPACE: nowrap !important; MIN-WIDTH: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; MAX-HEIGHT: none; transition: none"><SPAN 
+role=math id=MathJax-Span-1 class=math 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WIDTH: 4.08em; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none"><SPAN 
+style="FONT-SIZE: 17px; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 0px; BORDER-RIGHT: 0px; WIDTH: 3.23em; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: relative; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none"><SPAN 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; CLIP: rect(1.47em 1003.18em 2.55em -999.99em); BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: absolute; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; LEFT: 0em; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; TOP: -2.32em; PADDING-RIGHT: 0px; transition: none"><SPAN 
+id=MathJax-Span-2 class=mrow 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none"><SPAN 
+id=MathJax-Span-3 class=mi 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: MathJax_Math-italic; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none">i</SPAN><SPAN 
+id=MathJax-Span-4 class=mi 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: MathJax_Math-italic; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none">d<SPAN 
+style="OVERFLOW: hidden; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 1px; BORDER-RIGHT: 0px; WIDTH: 0em; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none"></SPAN></SPAN><SPAN 
+id=MathJax-Span-5 class=mn 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: MathJax_Main; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none">1</SPAN><SPAN 
+id=MathJax-Span-6 class=mo 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: MathJax_Main; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0.28em; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none">&gt;<SPAN 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: MathJax_Main; BORDER-RIGHT: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none">&lt;</SPAN></SPAN></SPAN><SPAN 
+style="TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 2.32em; BORDER-RIGHT: 0px; WIDTH: 0px; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; transition: none"></SPAN></SPAN></SPAN><SPAN 
+style="OVERFLOW: hidden; TEXT-DECORATION: none; HEIGHT: 1.07em; BORDER-RIGHT-WIDTH: 0px; WIDTH: 0px; VERTICAL-ALIGN: -0.13em; BORDER-BOTTOM-WIDTH: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px solid; MARGIN: 0px; DISPLAY: inline-block; LINE-HEIGHT: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; transition: none; border-image: initial"></SPAN></SPAN></NOBR><SPAN 
+role=presentation class=MJX_Assistive_MathML 
+style="OVERFLOW: hidden !important; TEXT-DECORATION: none; BORDER-TOP: 0px; CLIP: rect(1px 1px 1px 1px); HEIGHT: 1px !important; BORDER-RIGHT: 0px; WIDTH: 1px !important; VERTICAL-ALIGN: 0px; BORDER-BOTTOM: 0px; POSITION: static; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; LINE-HEIGHT: normal; TOP: 0px; PADDING-RIGHT: 0px; transition: none; user-select: none"><?XML:NAMESPACE 
+PREFIX = "[default] http://www.w3.org/1998/Math/MathML" NS = 
+"http://www.w3.org/1998/Math/MathML" /><math 
+xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi><mi>d</mi><mn>1</mn><mo>&gt;&lt;</mo></math></SPAN></SPAN>id2&gt; 
+# 比较两次提交之间的差异</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+diff &lt;branch1&gt;..&lt;branch2&gt; # 在两个分支之间比较</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+diff --staged # 比较暂存区和版本库差异</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+diff --cached # 比较暂存区和版本库差异</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+diff --stat # 仅仅比较统计信息</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">查看提交记录</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+log git log &lt;file&gt; # 查看该文件每次提交记录</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+log -p &lt;file&gt; # 查看每次详细修改内容的diff</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+log -p -2 # 查看最近两次详细修改内容的diff</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+log --stat #查看提交统计信息</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">tig</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">Mac上可以使用tig代替diff和log，<CODE 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">brew 
+install tig</CODE></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Git 
+本地分支管理</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">查看、切换、创建和删除分支</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+br -r # 查看远程分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+br &lt;new_branch&gt; # 创建新的分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+br -v # 查看各个分支最后提交信息</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+br --merged # 查看已经被合并到当前分支的分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+br --no-merged # 查看尚未被合并到当前分支的分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co &lt;branch&gt; # 切换到某个分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co -b &lt;new_branch&gt; # 创建新的分支，并且切换过去</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co -b &lt;new_branch&gt; &lt;branch&gt; # 基于branch创建新的new_branch</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+br -d &lt;branch&gt; # 删除某个分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+br -D &lt;branch&gt; # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;分支合并和rebase</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+merge &lt;branch&gt; # 将branch分支合并到当前分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+merge origin/master --no-ff # 不要Fast-Foward合并，这样可以生成merge提交</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+rebase master &lt;branch&gt; # 将master rebase到branch，相当于： git co &lt;branch&gt; 
+&amp;&amp; git rebase master &amp;&amp; git co master &amp;&amp; git merge 
+&lt;branch&gt;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;Git补丁管理(方便在多台机器上开发同步时用)</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+diff &gt; ../sync.patch # 生成补丁</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+apply ../sync.patch # 打补丁</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+apply --check ../sync.patch #测试补丁能否成功</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;Git暂存管理</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+stash # 暂存</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+stash list # 列所有stash</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+stash apply # 恢复暂存的内容</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+stash drop # 删除暂存区</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Git远程分支管理</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+pull # 抓取远程仓库所有分支更新并合并到本地</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+fetch origin # 抓取远程仓库更新</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+merge origin/master # 将远程主分支合并到本地当前分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co --track origin/branch # 跟踪某个远程分支创建相应的本地分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+co -b &lt;local_branch&gt; origin/&lt;remote_branch&gt; # 基于远程分支创建本地分支，功能同上</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push # push所有分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push origin master # 将本地主分支推到远程主分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d 
+&lt;branch&gt;)，然后再push删除远程分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Git远程仓库管理</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="COLOR: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><EM 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+class=wp_keywordlink 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><A 
+title=GitHub如何运作：时间并不决定一切 
+style="TEXT-DECORATION: underline; COLOR: rgb(100,102,179); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
+href="http://blog.jobbole.com/6492/" 
+target=_blank>GitHub</A></SPAN></EM></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+remote -v # 查看远程服务器地址和仓库名称</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+remote show origin # 查看远程服务器仓库状态</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+remote set-url origin git@ github.com:robbin/robbin_site.git # 
+设置远程仓库地址(用于修改远程仓库地址) git remote rm &lt;repository&gt; # 删除远程仓库</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">创建远程仓库</STRONG></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+clone --bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">scp 
+-r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">mkdir 
+robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git --bare init # 
+在服务器创建纯仓库</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+remote add origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push -u origin master # 客户端首次提交</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+push -u origin develop # 首次将本地develop分支提交到远程develop分支，并且track</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+remote set-head origin master # 设置远程仓库的HEAD指向master分支</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">也可以命令设置跟踪远程库和本地库</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+branch --set-upstream master origin/master</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px">git 
+branch --set-upstream develop origin/develop</P></DIV></DIV>
+</BODY>
+</HTML>

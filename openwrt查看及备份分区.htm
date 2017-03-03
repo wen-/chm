@@ -16,6 +16,161 @@ name<BR>mtd0: 00040000 00010000 "u-boot"<BR>mtd1: 00010000 00010000
 "rootfs"<BR>mtd4: 009c0000 00010000 "rootfs_data"<BR>mtd5: 00fa0000 00010000 
 "firmware"</P>
 <P>备份分区：cat /dev/mtd0 &gt; /tmp/u-boot.bin</P>
-<P>&nbsp;</P>
+<DIV class="Blog_tit4 Blog_tit5" 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(86,86,86); PADDING-BOTTOM: 11px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="FONT-SIZE: 20px; WORD-WRAP: break-word; TEXT-DECORATION: none; FONT-FAMILY: 微软雅黑, 黑体, Verdana; COLOR: rgb(25,89,155)" 
+href="http://blog.chinaunix.net/uid-28790518-id-5082378.html">用mtd 
+查看系统分区、备份恢复固件和刷新固件</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><EM 
+style="WORD-WRAP: break-word; FONT-FAMILY: Arial; COLOR: rgb(187,186,186); FONT-STYLE: normal; MARGIN-LEFT: 22px">2015-06-14 
+20:19:50</EM></DIV>
+<DIV class=Blog_con2 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 26px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<DIV class=Blog_con3 
+style="WORD-WRAP: break-word; MARGIN-TOP: 10px; LINE-HEIGHT: 22px">
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">分类：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px">LINUX</SPAN></P>
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P></DIV>
+<DIV class=Blog_wz1 style="FONT-SIZE: 16px; WORD-WRAP: break-word">
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>查看当前系统分区信息】</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>cat /proc/mtd</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>显示：</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>dev:&nbsp; &nbsp; size&nbsp; &nbsp;erasesize&nbsp;&nbsp;name</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd0: 00050000 00010000 "u-boot"</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd1: 00020000 00010000 "u-boot-env"</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd2: 00f80000 00010000 "firmware"</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd3: 00107440 00010000 "kernel"</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd4: 00e78bc0 00010000 "rootfs"</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd5: 00810000 00010000 "rootfs_data"</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd6: 00010000 00010000 "art"</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>其中，mtd2就是固件分区（firmware）</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>【备份固件firmware】</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>dd if=/dev/mtd2 of=/tmp/firmware_backup.bin</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>然后用winscp登陆路由器tmp目录，将固件文件firmware_backup.bin保存到电脑中。</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>【恢复固件firmware】</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>先用winscp将固件文件firmware_backup.bin传至路由器tmp目录,然后：</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd -r write /tmp/firmware_backup.bin firmware</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>即可恢复，恢复完成路由器会自行重启</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>【备份恢复Openwrt路由器配置】</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#备份自定义路由器信息，包括新安装软件:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>dd if=/dev/mtd5 of=/tmp/overlay.bin</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#恢复备份设置并重启:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>先用winscp将备份文件overlay.bin传至路由器tmp目录,然后：</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd -r write /tmp/overlay.bin rootfs_data</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#仅备份路由器配置:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>sysupgrade -b /tmp/back.tar.gz</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#恢复路由器配置:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>sysupgrade -f /tmp/back.tar.gz</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>【恢复Openwrt路由器默认设置】</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#删除/overlay分区所有文件，重启即恢复默认设置:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>rm -rvf /overlay/* &amp;&amp; reboot</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#使用mtd清除/overlay分区信息后重启即恢复默认设置:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd -r erase rootfs_data</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>【刷新路由器固件】</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#使用mtd刷新:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>先用winscp将固件文件xxx.bin传至路由器tmp目录,然后：</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>mtd -r write /tmp/xxx.bin firmware</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>刷新完成后路由器会自动重启。</DIV><BR 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)'>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>#使用sysupgrade更新，推荐:</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>先用winscp将固件文件xxx.bin传至tmp目录，然后：</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>sysupgrade /tmp/xxx.bin</DIV></DIV></DIV>
 </BODY>
 </HTML>
