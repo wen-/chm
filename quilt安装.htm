@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>quilt安装</TITLE>
+</HEAD>
+<BODY>
+<DIV class="Blog_tit4 Blog_tit5" 
+style="WORD-WRAP: break-word; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 11px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><B 
+class=Blog_b1 
+style="WORD-WRAP: break-word; HEIGHT: 18px; WIDTH: 38px; VERTICAL-ALIGN: -2px; BACKGROUND-IMAGE: url(/image/default/bg.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: -150px -73px; DISPLAY: inline-block; MARGIN-RIGHT: 9px"></B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="FONT-SIZE: 20px; WORD-WRAP: break-word; TEXT-DECORATION: none; FONT-FAMILY: 微软雅黑, 黑体, Verdana; COLOR: rgb(25,89,155)" 
+href="http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=27057175&amp;id=4530449">openwrt 
+kernel patch修改添加（quilt工具）</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></DIV>
+<DIV class="Blog_tit4 Blog_tit5" 
+style="WORD-WRAP: break-word; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 11px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px"><SPAN 
+class=Apple-converted-space></SPAN>分类：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px">LINUX</SPAN></DIV>
+<DIV class=Blog_con2 
+style="WORD-WRAP: break-word; COLOR: rgb(102,102,102); LINE-HEIGHT: 26px">
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P>
+<DIV class=Blog_wz1 style="FONT-SIZE: 16px; WORD-WRAP: break-word">接上<A 
+style="WORD-WRAP: break-word; TEXT-DECORATION: none; COLOR: rgb(86,86,86)" 
+href="http://blog.chinaunix.net/uid-27057175-id-4479852.html"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(0,51,153)">openWRT手札之二：kernel arch 
+machine新增路由器</SPAN></A>：<BR style="WORD-WRAP: break-word">openwrt 
+kernel源码修改，一旦make clean之后，kernel源码就会删掉了，下次又得重新修改了。<BR 
+style="WORD-WRAP: break-word">搞懂quilt使用，借助它可以自动修改和添加kernel patch。<BR 
+style="WORD-WRAP: break-word">====================================================<BR 
+style="WORD-WRAP: break-word"><STRONG style="WORD-WRAP: break-word">1. 
+安装quilt</STRONG><BR style="WORD-WRAP: break-word">openwrt编译过程中会从网络上下载 
+quilt.tar.gz。为了以后的使用方便，把它安装到主机上好了。<BR style="WORD-WRAP: break-word">&nbsp;解压缩 
+quilt.tar.gz<BR style="WORD-WRAP: break-word">&nbsp;cd quilt<BR 
+style="WORD-WRAP: break-word">&nbsp;./configure<BR 
+style="WORD-WRAP: break-word">&nbsp;make install<BR 
+style="WORD-WRAP: break-word">修改quilt配置文件，<SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">vi ~/.quiltrc</SPAN><BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;QUILT_DIFF_ARGS="--no-timestamps 
+--no-index -pab --color=auto"</SPAN><BR style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;QUILT_REFRESH_ARGS="--no-timestamps 
+--no-index -pab"</SPAN><BR style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;QUILT_PATCH_OPTS="--unified"</SPAN><BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;QUILT_DIFF_OPTS="-p"</SPAN><BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;EDITOR="vim 
+"</SPAN><BR style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word"><STRONG style="WORD-WRAP: break-word">2. 
+解压缩kernel</STRONG><BR style="WORD-WRAP: break-word">在openwrt工程下，make 
+dirclean，清除掉kernel源码；<BR style="WORD-WRAP: break-word">然后make 
+kernel_menuconfig重新解压缩出一个原始openwrt kernel；<BR 
+style="WORD-WRAP: break-word">进入kernel源码目录，对于attitude adjustment，&nbsp;cd 
+build_dir/linux-ar71xx_generic/linux-3.3.8/；<BR 
+style="WORD-WRAP: break-word">此时的kernel已经被openwrt打上了kernel根目录下patches/的一堆patch，列表在cat 
+series；<BR style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">输入<SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">quilt push</SPAN>或者quilt 
+top<BR style="WORD-WRAP: break-word">就能得到当前最后一条patch文件。<BR 
+style="WORD-WRAP: break-word">对于ar71xx平台，返回<BR 
+style="WORD-WRAP: break-word">File series fully applied, ends at patch 
+platform/902-unaligned_access_hacks.patch<BR style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word"><STRONG style="WORD-WRAP: break-word">3. 修改kernel 
+patch</STRONG><BR style="WORD-WRAP: break-word">按照<A 
+style="WORD-WRAP: break-word; TEXT-DECORATION: none; COLOR: rgb(86,86,86)" 
+href="http://blog.chinaunix.net/uid-27057175-id-4479852.html">openWRT手札之二：kernel 
+arch machine新增路由器</A>，新增路由器修改的都是arch目录<BR 
+style="WORD-WRAP: break-word">故新增patch文件<BR style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;quilt new 
+platform/920-tplink-wvr300-archmachine.patch</SPAN><BR 
+style="WORD-WRAP: break-word">此时920-tplink-wvr300-archmachine.patch就会被quilt认为是顶部patch，并且针对kernel的一切修改都会被自动diif到这个patch文件中。<BR 
+style="WORD-WRAP: break-word">依次<BR style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;quilt edit 
+arch/mips/ath79/Kconfig<SPAN class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;quilt edit 
+arch/mips/ath79/Makefile<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;quilt edit 
+arch/mips/ath79/machtypes.h</SPAN><BR style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">&nbsp;quilt edit 
+arch/mips/ath79/mach-tl-wvr300.c</SPAN><BR style="WORD-WRAP: break-word">把<A 
+style="WORD-WRAP: break-word; TEXT-DECORATION: none; COLOR: rgb(86,86,86)" 
+href="http://blog.chinaunix.net/uid-27057175-id-4479852.html"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(0,51,153)">openWRT手札之二：kernel arch 
+machine新增路由器</SPAN></A>针对arch目录的修改全部同步过来。<BR 
+style="WORD-WRAP: break-word">&nbsp;<SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">quilt refresh</SPAN><BR 
+style="WORD-WRAP: break-word">保存，quilt把刚才所有的修改全部生成到patches/platform/920-tplink-wvr300-archmachine.patch中了。<BR 
+style="WORD-WRAP: break-word">cat 
+patches/platform/920-tplink-wvr300-archmachine.patch，查看修改的内容是否ok？<BR 
+style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word"><STRONG 
+style="WORD-WRAP: break-word">4. 同步openwrt</STRONG><BR 
+style="WORD-WRAP: break-word">把kernel/patches/platform/920-tplink-wvr300-archmachine.patch拷贝到openwrt<BR 
+style="WORD-WRAP: break-word">根目录的target/linux/ar71xx/patches-3.3/下，针对kernel的修改即使在make 
+dirclean之后也不会丢失了，<BR 
+style="WORD-WRAP: break-word">920-tplink-wvr300-archmachine.patch会在下次解压缩kernel源码是自动打上。<BR 
+style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">================================================================<BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="FONT-SIZE: 16px; WORD-WRAP: break-word; WHITE-SPACE: normal; LINE-HEIGHT: 21px">quilt这个工具真的超赞，</SPAN>不只是OpenWRT，完全可以用它来管理你的开发修改，再也不用担心找不到上一次的正确代码了。<BR 
+style="WORD-WRAP: break-word"></DIV>
+<DIV class="Blog_con2_1 Blog_con3_2" 
+style="WORD-WRAP: break-word; MARGIN-TOP: 50px; POSITION: relative; LINE-HEIGHT: 22px">
+<DIV style="WORD-WRAP: break-word; HEIGHT: 30px">
+<DIV class="bdsharebuttonbox bdshare-button-style0-16" 
+style="WORD-WRAP: break-word; HEIGHT: 30px; ZOOM: 1" 
+data-bd-bind="1488769737294"><A class=bds_more 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; FONT-FAMILY: 宋体, Arial; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); WHITE-SPACE: normal; WORD-SPACING: 0px; BACKGROUND-REPEAT: no-repeat; TEXT-TRANSFORM: none; BACKGROUND-POSITION: 0px 0px; FLOAT: left; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-LEFT: 17px; ORPHANS: 2; WIDOWS: 2; MARGIN: 6px 6px 6px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 16px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+href="http://blog.chinaunix.net/xmlrpc.php?id=4530449&amp;r=blog/article&amp;uid=27057175#" 
+data-cmd="more"></A><A title=分享到QQ空间 class=bds_qzone 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; FONT-FAMILY: 宋体, Arial; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); WHITE-SPACE: normal; WORD-SPACING: 0px; BACKGROUND-REPEAT: no-repeat; TEXT-TRANSFORM: none; BACKGROUND-POSITION: 0px -52px; FLOAT: left; FONT-WEIGHT: normal; COLOR: rgb(25,89,155); FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-LEFT: 17px; ORPHANS: 2; WIDOWS: 2; MARGIN: 6px 6px 6px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 16px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+href="http://blog.chinaunix.net/xmlrpc.php?id=4530449&amp;r=blog/article&amp;uid=27057175#" 
+data-cmd="qzone"></A><A title=分享到新浪微博 class=bds_tsina 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; FONT-FAMILY: 宋体, Arial; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); WHITE-SPACE: normal; WORD-SPACING: 0px; BACKGROUND-REPEAT: no-repeat; TEXT-TRANSFORM: none; BACKGROUND-POSITION: 0px -104px; FLOAT: left; FONT-WEIGHT: normal; COLOR: rgb(25,89,155); FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-LEFT: 17px; ORPHANS: 2; WIDOWS: 2; MARGIN: 6px 6px 6px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 16px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+href="http://blog.chinaunix.net/xmlrpc.php?id=4530449&amp;r=blog/article&amp;uid=27057175#" 
+data-cmd="tsina"></A><A title=分享到腾讯微博 class=bds_tqq 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; FONT-FAMILY: 宋体, Arial; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); WHITE-SPACE: normal; WORD-SPACING: 0px; BACKGROUND-REPEAT: no-repeat; TEXT-TRANSFORM: none; BACKGROUND-POSITION: 0px -260px; FLOAT: left; FONT-WEIGHT: normal; COLOR: rgb(25,89,155); FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-LEFT: 17px; ORPHANS: 2; WIDOWS: 2; MARGIN: 6px 6px 6px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 16px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+href="http://blog.chinaunix.net/xmlrpc.php?id=4530449&amp;r=blog/article&amp;uid=27057175#" 
+data-cmd="tqq"></A><A title=分享到人人网 class=bds_renren 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; FONT-FAMILY: 宋体, Arial; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); WHITE-SPACE: normal; WORD-SPACING: 0px; BACKGROUND-REPEAT: no-repeat; TEXT-TRANSFORM: none; BACKGROUND-POSITION: 0px -208px; FLOAT: left; FONT-WEIGHT: normal; COLOR: rgb(25,89,155); FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-LEFT: 17px; ORPHANS: 2; WIDOWS: 2; MARGIN: 6px 6px 6px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 16px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+href="http://blog.chinaunix.net/xmlrpc.php?id=4530449&amp;r=blog/article&amp;uid=27057175#" 
+data-cmd="renren"></A><BR 
+class=Apple-interchange-newline></DIV></DIV></DIV></DIV>
+</BODY>
+</HTML>

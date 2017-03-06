@@ -4017,6 +4017,20 @@
 </OBJECT>
 </UL>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="quilt补丁">
+<PARAM NAME="Local" VALUE="quilt补丁.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="quilt安装">
+<PARAM NAME="Local" VALUE="quilt安装.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+</UL>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="thinkPHP">
