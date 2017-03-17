@@ -176,7 +176,9 @@ style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0
 style="FONT-SIZE: 13px; FONT-FAMILY: 微软雅黑, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN></SPAN>&nbsp;</P>
 <P><SPAN 
 style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
-style="FONT-SIZE: 13px; FONT-FAMILY: 微软雅黑, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN></SPAN>&nbsp;</P>
+style="FONT-SIZE: 13px; FONT-FAMILY: 微软雅黑, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">cat /tmp/abc.txt&nbsp;| grep&nbsp;"abc"&nbsp;| <FONT 
+color=#ff0000>sed s/[[:space:]]//g&nbsp;&nbsp; </FONT><FONT 
+color=#000000><STRONG>//去掉字符中的空格 </STRONG></FONT></SPAN></SPAN></P>
 <P><SPAN 
 style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
 style="FONT-SIZE: 13px; FONT-FAMILY: 微软雅黑, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">shell变量字符串替换</SPAN></SPAN></P><SPAN 
@@ -451,9 +453,79 @@ style="FONT-SIZE: 14px; WORD-WRAP: break-word; LINE-HEIGHT: 2">　&nbsp;&nbsp;&nb
 <P><SPAN 
 style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
 style="FONT-SIZE: 13px; FONT-FAMILY: 微软雅黑, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><FONT 
-color=#000000 size=3 face="Times New Roman"></FONT></SPAN></SPAN>&nbsp;</P>
-<P><SPAN 
+color=#000000 size=3 face="Times New Roman"></FONT></SPAN></SPAN>&nbsp;</P><SPAN 
 style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
-style="FONT-SIZE: 13px; FONT-FAMILY: 微软雅黑, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN></SPAN>&nbsp;</P>
+style="FONT-SIZE: 13px; FONT-FAMILY: 微软雅黑, 宋体; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">
+<DIV class=article_title 
+style='WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); TEXT-ALIGN: left; FONT: 20px/30px "Microsoft YaHei"; ORPHANS: 2; WIDOWS: 2; MARGIN: 5px 0px; DISPLAY: block; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal'>
+<H1 
+style='VERTICAL-ALIGN: middle; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 20px/30px "Microsoft YaHei"; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px; font-stretch: normal'><SPAN 
+class=link_title><A style="TEXT-DECORATION: none; COLOR: rgb(0,0,0)" 
+href="http://blog.csdn.net/sun_1sun/article/details/50773209">Linux 
+shell中的竖线（|）——管道符号</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix" 
+style="OVERFLOW: hidden; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(237,237,237) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(153,153,153); PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 0px; FONT: 12px/22px Arial; PADDING-LEFT: 20px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -20px; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 20px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal">
+<DIV class=article_r><SPAN class=link_postdate 
+style="MARGIN: 0px 5px 0px 0px">2016-03-01 15:53</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=阅读次数 class=link_view 
+style="BACKGROUND: url(../../../images/ico_view.png) no-repeat left center; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px">497人阅读</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=评论次数 class=link_comments 
+style="BACKGROUND: url(../../../images/ico_comm.png) no-repeat left center; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; MARGIN: 0px 5px; PADDING-RIGHT: 0px"><A 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://blog.csdn.net/sun_1sun/article/details/50773209#comments">评论</A>(0)</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class="link_collect tracking-ad" 
+style="MARGIN: 0px 5px" data-mod="popu_171"><A title=收藏 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" href="javascript:void(0);" 
+target=_blank>收藏</A></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+class=link_report style="MARGIN: 0px 5px"><A title=举报 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://blog.csdn.net/sun_1sun/article/details/50773209#report">举报</A></SPAN></DIV></DIV>
+<DIV class="category clearfix" 
+style='FONT-SIZE: 12px; FONT-FAMILY: Arial, Console, Verdana, "Courier New"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(237,237,237) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 20px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -20px; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 20px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>
+<DIV class=category_l 
+style="FONT-SIZE: 14px; WIDTH: 70px; FLOAT: left; COLOR: rgb(51,51,51); DISPLAY: inline-block; LINE-HEIGHT: 28px"><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+src="http://static.blog.csdn.net/images/category_icon.jpg"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="VERTICAL-ALIGN: middle; DISPLAY: inline-block">分类：</SPAN></DIV>
+<DIV class=category_r 
+style="FONT-SIZE: 14px; WIDTH: 637px; FLOAT: left; COLOR: rgb(223,52,52); DISPLAY: inline-block"><LABEL 
+style="CURSOR: pointer; POSITION: relative; MARGIN-LEFT: 15px; DISPLAY: inline-block; LINE-HEIGHT: 28px"><SPAN>linux<EM 
+style="FONT-STYLE: normal">（13）</EM></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><IMG class=arrow-down 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; DISPLAY: inline" 
+src="http://static.blog.csdn.net/images/arrow_triangle%20_down.jpg"></LABEL></DIV></DIV>
+<DIV id=article_content class=article_content 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; ORPHANS: 2; WIDOWS: 2; MARGIN: 20px 0px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal">
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: simsun; COLOR: rgb(70,70,70); LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229)">管道符号，是unix一个很强大的功能,符号为一条竖线:"|"。<BR>用法: 
+command 1 | command 2 他的功能是把第一个命令command 1执行的结果作为command 2的输入传给command 
+2，例如:</DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: simsun; COLOR: rgb(70,70,70); LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229)"><BR></DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: simsun; COLOR: rgb(70,70,70); LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229)">$ls 
+-s|sort -nr (请注意不要复制$符号进去哦)<BR><BR></DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: simsun; COLOR: rgb(70,70,70); LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229)">-s 
+是file size，-n是numeric-sort，-r是reverse，反转</DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: simsun; COLOR: rgb(70,70,70); LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229)">该命令列出当前目录中的文档(含size)，并把输出送给sort命令作为输入，sort命令按数字递减的顺序把ls的输出排序。<BR><BR></DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: simsun; COLOR: rgb(70,70,70); LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229)">$ls 
+-s|sort -n<BR><BR></DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: simsun; COLOR: rgb(70,70,70); LINE-HEIGHT: 21px; BACKGROUND-COLOR: rgb(188,211,229)">按从小到大的顺序输出。<BR>当然还可进行多次操作，如下面的功能为先去除纯数字，再由<A 
+style="TEXT-DECORATION: none; COLOR: rgb(62,115,160)" 
+href="http://blog.sina.com.cn/s/blog_6d09b5750100vx24.html" 
+target=_blank>sed</A>将竖线(这里不是管道符号)替换为空格，再将结果取出来排序，再进行结果的选择显示，不明白可查看&nbsp;<A 
+style="TEXT-DECORATION: none; COLOR: rgb(62,115,160)" 
+href="http://blog.sina.com.cn/s/blog_6d09b5750100x6zg.html" 
+target=_blank>排序和分页</A>。<BR><BR>cat filename |grep -v '^[0-9]*$' | sed 's/|/ /g' 
+|sort -nrk 8 -nrk 9 |tail -n +1 |head -n 10</DIV></DIV>
+<DIV class="bdsharebuttonbox tracking-ad bdshare-button-style0-16" 
+style='FONT-SIZE: 12px; FONT-FAMILY: Arial, Console, Verdana, "Courier New"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; ZOOM: 1; FLOAT: right; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+data-bd-bind="1488798688400" data-mod="popu_172"><BR 
+class=Apple-interchange-newline></DIV></SPAN></SPAN>
 </BODY>
 </HTML>

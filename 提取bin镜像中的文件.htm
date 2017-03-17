@@ -13,7 +13,8 @@ cellSpacing=0 cellPadding=0>
   <TBODY style="WORD-WRAP: break-word">
   <TR style="WORD-WRAP: break-word">
     <TD id=postmessage_659331 class=t_f 
-    style="FONT-SIZE: 14px; WORD-WRAP: break-word"><FONT 
+    style="FONT-SIZE: 14px; WORD-WRAP: break-word">
+      <P><FONT 
       style="WORD-WRAP: break-word" color=#ff0000>&nbsp; &nbsp;&nbsp; 
       &nbsp;&nbsp; 
       &nbsp;有同学可能会有这样的经历，论坛有同学发布了某机型OpenWrt固件，自己又很喜欢固件里的某项功能，可是自己的机型是其他的，同时发布固件的人又不提供源码！这怎么办呢？即使想自己动手编译加入也没有源码啊？这可怎么办呢？源码人家不提供啊，可是功能却又很想要！更悲剧的是机型不符刷不了。</FONT><BR 
@@ -53,8 +54,8 @@ cellSpacing=0 cellPadding=0>
       style="FONT-SIZE: 13px; WORD-WRAP: break-word">hsqs</FONT></FONT></FONT>”，找到偏移地址。对这个文件<A 
       style="WORD-WRAP: break-word; TEXT-DECORATION: underline; COLOR: rgb(51,102,153)" 
       href="http://www.baidupcs.com/file/3f1c2f729738c6a3bc081a00ba8374b7?fid=3959943043-250528-3917554452&amp;time=1355550488&amp;sign=FDTA-DCb740ccc5511e5e8fedcff06b081203-daIOgmyIjGzeNLfDNX8cxlT6QqI%3D&amp;expires=8h&amp;sh=1" 
-      target=_blank>http://www.baidupcs.com/file/3f1 ... 
-      expires=8h&amp;sh=1</A><BR style="WORD-WRAP: break-word"><FONT 
+      target=_blank>  
+      http://www.baidupcs.com/file/3f1...expires=8h&amp;sh=1</A><BR style="WORD-WRAP: break-word"><FONT 
       style="WORD-WRAP: break-word" color=#555555><FONT 
       style="WORD-WRAP: break-word" face="Arial, Helvetica, sans-serif"><FONT 
       style="FONT-SIZE: 13px; WORD-WRAP: break-word">“hsqs” 
@@ -95,7 +96,55 @@ cellSpacing=0 cellPadding=0>
       style="WORD-WRAP: break-word">这个方法对factory和sysupgrade都有效。而且只要是从出现“<FONT 
       style="WORD-WRAP: break-word" color=#555555><FONT 
       style="WORD-WRAP: break-word" face="Arial, Helvetica, sans-serif"><FONT 
-      style="FONT-SIZE: 13px; WORD-WRAP: break-word">hsqs</FONT></FONT></FONT>”的偏移地址处复制的，直接复制到结尾也可以正确解压。</TD></TR></TBODY></TABLE>
+      style="FONT-SIZE: 13px; WORD-WRAP: break-word">hsqs</FONT></FONT></FONT>”的偏移地址处复制的，直接复制到结尾也可以正确解压。</P>
+      <P>&nbsp;</P>
+      <P>&nbsp;</P></TD></TR></TBODY></TABLE>
+<P><FONT size=5><STRONG>关于提取BIN镜像中的文件</STRONG></FONT></P>
+<P>其实只要用7-zip打开就可以提取了</P>
+<P>&nbsp;</P>
+<P><FONT size=5><STRONG>关于提取BIN镜像中的文件修改后再封装回去</STRONG></FONT></P>
+<P>在openwrt编译环境下，操作方法（/test/170315.bin）：</P>
+<P>1、用16进制查看器(winhex.exe)打开170315.bin，查找文本“hsqs”，选择ASCLL/Code page--》确定</P>
+<P>2、记录h的偏移地址，通常如“<FONT 
+color=#ff0000>1060272</FONT>”，点击左侧地址0-F会变为0-15，<FONT 
+color=#ff0000>得出第一块的大小1060272</FONT></P>
+<P>3、往下拖动，直到一片FF，记录第一个F的偏移地址，通常如“<FONT 
+color=#ff0000>7057342</FONT>”，<FONT 
+color=#ff0000>得出第二块的大小7057342-1060272=5997070</FONT></P>
+<P>4、往下搬运，直到最后，记录总偏移量，通常如“<FONT color=#ff0000>7077891</FONT> 
+”，<FONT color=#ff0000>得出第三块的大小7077891-7057342=20549</FONT> </P>&lt; 
+P&gt;5、拆出第一块：dd if=170315.bin of=firstchunk.bin bs=1 count=1060272
+<P></P>&lt; P&gt;6、拆出第二块：dd if=170315.bin of=secondchunk.bin bs=1 count=5997070 
+skip=1060272
+<P></P>&lt; P&gt;7、拆出第三块：dd if=170315.bin of=thirdchunk.bin bs=1 
+count=20549&nbsp; skip=7057342
+<P></P>
+<P>8、修改的内容在第二块中，将第二块解压=》/root/keyan/develop/openwrt/staging_dir/host/bin/unsquashfs4 
+secondchunk.bin&nbsp;</P>
+<P>9、解压后在当前目录会生成 squashfs-root 文件夹，这就是要修改的文件</P>
+<P>10、修改完成后，将squashfs-root 
+文件夹压缩回bin，执行：/root/keyan/develop/openwrt/staging_dir/host/bin/mksquashfs4 
+squashfs-root newsecondchunk.bin -nopad -noappend -root-owned -comp xz -Xpreset 
+9 -Xe -Xlc 0 -Xlp 2 -Xpb 2 -b 256k -processors 1，会生成newsecondchunk.bin 
+，用16进制查看器(winhex.exe)打开，记录newsecondchunk.bin 的长度</P>
+<P>11、合并第一块：dd if=170315.bin of=new_170315.bin bs=1 count=1060272</P>
+<P>12、合并第二块：dd if=newsecondchunk.bin of=new_170315.bin bs=1 
+count=5997070(原第二块的长度，新的大就用新的长度) seek=1060272</P>
+<P>13、合并第三块：dd if=170315.bin of=new_170315.bin bs=1 count=20549(总长-【第一+新第二块】) 
+seek=7057342(第一块+新第二块的大小)</P>
+<P>14、最后生成的new_170315.bin 就是修改后的固件</P>
+<P><STRONG><FONT color=#000080>参数说明：</FONT></STRONG></P>
+<P>dd参数&nbsp;&nbsp;&nbsp;</P>
+<P>bs块大小&nbsp; count多少块&nbsp; 总大小=count * bs</P>
+<P>skip和seek用法一样，skip用于拆（切割的起点），seek用于合（合并的起点）</P>
+<P>mksquashfs4参数</P>
+<P>查看openwrt编译日志可以看到mksquashfs4使用的参数-nopad -noappend 
+-root-owned -comp xz -Xpreset 9 -Xe -Xlc 0 -Xlp 2 -Xpb 2 -b 256k -processors 
+1。</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
 <P>&nbsp;</P>
 </BODY>
 </HTML>
