@@ -11,6 +11,16 @@ style="LIST-STYLE-TYPE: none; FONT-SIZE: 28px; CURSOR: text; FONT-FAMILY: Helvet
 style="FONT-SIZE: 18pt">Git常用命令总结</SPAN></H1>
 <DIV 
 style="FONT-SIZE: 14px; FONT-FAMILY: Helvetica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><STRONG><SPAN 
+style="FONT-SIZE: 15px">放弃本地修改，获取远程新版本</SPAN></STRONG></DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: Helvetica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="FONT-SIZE: 15px"><PRE style="FONT-SIZE: 14px; WORD-WRAP: break-word; MARGIN-BOTTOM: 10px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">git fetch --all
+git reset --hard origin/master</PRE></SPAN></DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: Helvetica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><STRONG><SPAN 
+style="FONT-SIZE: 15px"></SPAN></STRONG>&nbsp;</DIV>
+<DIV 
+style="FONT-SIZE: 14px; FONT-FAMILY: Helvetica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><STRONG><SPAN 
 style="FONT-SIZE: 15px">git init</SPAN></STRONG></DIV>
 <DIV 
 style="FONT-SIZE: 14px; FONT-FAMILY: Helvetica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
@@ -660,7 +670,7 @@ merge into the current branch.</SPAN></DIV>
 <DIV 
 style="FONT-SIZE: 14px; FONT-FAMILY: Helvetica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
 style="FONT-SIZE: 15px">&nbsp; &nbsp; &nbsp;<SPAN 
-style="COLOR: rgb(255,0,0)">pull == fetch + merge FETCH_HEAD</SPAN></SPAN></DIV>
+style="COLOR: rgb(255,0,0)">pull ==  fetch + merge FETCH_HEAD</SPAN></SPAN></DIV>
 <DIV 
 style="FONT-SIZE: 14px; FONT-FAMILY: Helvetica, arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(68,68,68); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
 style="FONT-SIZE: 15px">&nbsp; &nbsp; &nbsp;git pull会首先执行git fetch,然后执行git 

@@ -3859,6 +3859,12 @@
 <PARAM NAME="Local" VALUE="获取文件修改时间戳.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="luci更改登录账号">
+<PARAM NAME="Local" VALUE="luci更改登录账号.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3869,15 +3875,62 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="k2开启SSH">
-<PARAM NAME="Local" VALUE="k2开启SSH.htm">
+<PARAM NAME="Name" VALUE="openwrt升级">
+<PARAM NAME="Local" VALUE="openwrt升级.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt--dl下载地址">
+<PARAM NAME="Local" VALUE="openwrt--dl下载地址.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="openwrt升级">
-<PARAM NAME="Local" VALUE="openwrt升级.htm">
+<PARAM NAME="Name" VALUE="openwrt安装samba共享">
+<PARAM NAME="Local" VALUE="openwrt安装samba共享.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt x64固件编译">
+<PARAM NAME="Local" VALUE="openwrt x64固件编译.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt查看及备份分区">
+<PARAM NAME="Local" VALUE="openwrt查看及备份分区.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt编译失败的可能性">
+<PARAM NAME="Local" VALUE="openwrt编译失败的可能性.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt多账号登录">
+<PARAM NAME="Local" VALUE="openwrt多账号登录.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="openwrt的包依赖">
+<PARAM NAME="Local" VALUE="openwrt的包依赖.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="k2开启SSH">
+<PARAM NAME="Local" VALUE="k2开启SSH.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 <UL>
@@ -3896,13 +3949,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="安装openwrt">
 <PARAM NAME="Local" VALUE="安装openwrt.htm">
-<PARAM NAME="ImageNumber" value="11">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="openwrt安装samba共享">
-<PARAM NAME="Local" VALUE="openwrt安装samba共享.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
@@ -3942,13 +3988,6 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="openwrt x64固件编译">
-<PARAM NAME="Local" VALUE="openwrt x64固件编译.htm">
-<PARAM NAME="ImageNumber" value="11">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ssh远程登录">
 <PARAM NAME="Local" VALUE="ssh远程登录.htm">
 </OBJECT>
@@ -3969,26 +4008,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="禁用TTL控制台">
 <PARAM NAME="Local" VALUE="禁用TTL控制台.htm">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="openwrt--dl下载地址">
-<PARAM NAME="Local" VALUE="openwrt--dl下载地址.htm">
-<PARAM NAME="ImageNumber" value="11">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="openwrt查看及备份分区">
-<PARAM NAME="Local" VALUE="openwrt查看及备份分区.htm">
-<PARAM NAME="ImageNumber" value="11">
-</OBJECT>
-</UL>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="openwrt编译失败的可能性">
-<PARAM NAME="Local" VALUE="openwrt编译失败的可能性.htm">
 </OBJECT>
 </UL>
 <UL>
@@ -4021,7 +4040,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="quilt补丁">
 <PARAM NAME="Local" VALUE="quilt补丁.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

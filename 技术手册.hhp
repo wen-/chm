@@ -1425,6 +1425,7 @@ location对象.htm
 location对象的集合属性和方法.htm
 lua.htm
 luci.htm
+luci更改登录账号.htm
 Mac OS X中MacPorts安装和使用.htm
 mac安装imagemagick.htm
 MAC系统.htm
@@ -1486,6 +1487,8 @@ openwrt安装samba共享.htm
 openwrt编译失败的可能性.htm
 openwrt查看及备份分区.htm
 openwrt常用命令.htm
+openwrt的包依赖.htm
+openwrt多账号登录.htm
 openwrt升级.htm
 openwrt系统.htm
 packate_json.htm

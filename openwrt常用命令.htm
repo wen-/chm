@@ -98,11 +98,12 @@ color=#ff0000></FONT></FONT></P></FONT></FONT>
 color=#ff0000>2&gt;&amp;1</FONT></P>
 <P><STRONG>不输出日志</STRONG>：<FONT 
 color=#ff0000>&amp;&gt;</FONT> <FONT color=#0000ff>/dev/null</FONT></P>
+<P>控制台显示且输出到文件：</P>
+<P><FONT color=#0000ff>echo "abc" | tee -a test.log&nbsp; 
+</FONT><FONT color=#003366>//参数-a为追加</FONT></P>
 <P><FONT color=#ff0000><FONT 
 style="BACKGROUND-COLOR: #003300"><STRONG>14、修改openwrt 
-root密码</STRONG>&nbsp;<FONT 
-style="BACKGROUND-COLOR: #003300"><FONT color=#ff0000></FONT></FONT><FONT style="BACKGROUND-COLOR: #003300"><FONT 
-color=#ff0000></FONT></FONT></P></FONT></FONT>
+root密码</STRONG>&nbsp;</P></FONT></FONT>
 <P>openwrt/package/base-files/files/etc/shadow</P>
 <P>密码为1：root:<FONT 
 color=#ff0000>$1$j.WGb7j1$NFLl8KStQXvx44VwkJzYh0</FONT>:17119:0:99999:7:::</P>
@@ -143,6 +144,21 @@ href="https://admin.fanqie.net/xx.bin">https://admin.fanqie.net/xx.bin</A></P>
 color=#ff0000>20、去除重复行 </FONT></STRONG></P>
 <P>cat /proc/net/arp | grep "br-lan" | grep -v "0x0" | awk '{print $4}' | sort | 
 awk '!a[$0]++'</P>
+<P><FONT color=#ff0000><FONT 
+style="BACKGROUND-COLOR: #003300"><STRONG>21、检查程序</STRONG><SPAN 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; LINE-HEIGHT: 26px"><STRONG>所需要得动态链接库（so）</STRONG></SPAN><STRONG> 
+</STRONG></FONT></FONT></P>
+<P>ldd curl</P>
+<P>libcurl.so.4 =&gt; /usr/lib/libcurl.so.4 (0x775c6000)<BR>libssl.so.1.0.0 
+=&gt; /usr/lib/libssl.so.1.0.0 (0x77568000)<BR>libcrypto.so.1.0.0 =&gt; 
+/usr/lib/libcrypto.so.1.0.0 (0x77401000)<BR>libgcc_s.so.1 =&gt; 
+/lib/libgcc_s.so.1 (0x773dd000)<BR>libc.so.0 =&gt; /lib/libc.so.0 
+(0x77370000)<BR>libdl.so.0 =&gt; /lib/libdl.so.0 (0x7735c000)<BR>ld-uClibc.so.0 
+=&gt; /lib/ld-uClibc.so.0 (0x775f8000)</P>
+<P>摘自openwrt升级脚本common.sh</P>
+<P>[ -x /usr/bin/ldd ] || ldd() { LD_TRACE_LOADED_OBJECTS=1 $*; }<BR>libs() { 
+ldd $* 2&gt;/dev/null | sed -r 's/(.* =&gt; )?(.*) .*/\2/'; }</P>
+<P>files="$src $(libs $src)"</P>
 <P>&nbsp;</P>
 <P><STRONG><FONT size=4>编译：</FONT></STRONG></P>
 <P>make V=s -j6 6为进程数，如果报错改为1就可以跟踪到最先报错的位置，方便排查</P><PRE class=wiki style="FONT-SIZE: 13px; OVERFLOW: auto; BORDER-TOP: rgb(215,215,215) 1px solid; BORDER-RIGHT: rgb(215,215,215) 1px solid; FONT-VARIANT: normal; BACKGROUND: rgb(247,247,247); WORD-SPACING: 0px; BORDER-BOTTOM: rgb(215,215,215) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.25em; FONT-STYLE: normal; PADDING-TOP: 0.25em; PADDING-LEFT: 0.25em; BORDER-LEFT: rgb(215,215,215) 1px solid; WIDOWS: 1; MARGIN: 1em 1.75em; LETTER-SPACING: normal; LINE-HEIGHT: normal; PADDING-RIGHT: 0.25em; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; border-radius: 0.3em; box-shadow: rgb(238, 238, 238) 0px 0px 1em">make tools/{clean,compile,install}&nbsp; 清空、编译、安装tools下的工具包（编译失败且提示tools下包报错时，可执行此操作）</PRE>

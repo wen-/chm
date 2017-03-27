@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>openwrt的包依赖</TITLE>
+</HEAD>
+<BODY>
+<P>openwrt的包依赖</P>
+<DIV class="Blog_tit4 Blog_tit5" 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(86,86,86); PADDING-BOTTOM: 11px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial"><A 
+style="FONT-SIZE: 20px; WORD-WRAP: break-word; TEXT-DECORATION: none; FONT-FAMILY: 微软雅黑, 黑体, Verdana; COLOR: rgb(25,89,155)" 
+href="http://blog.chinaunix.net/uid-27057175-id-5011775.html">OpenWRT的包依赖 
+package DEPEND</A><SPAN class=Apple-converted-space>&nbsp;</SPAN></DIV>
+<DIV class=Blog_con2 
+style="FONT-SIZE: 12px; WORD-WRAP: break-word; FONT-FAMILY: 宋体, Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(102,102,102); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 26px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">
+<DIV class=Blog_con3 
+style="WORD-WRAP: break-word; MARGIN-TOP: 10px; LINE-HEIGHT: 22px">
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">分类：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(187,186,186); MARGIN-RIGHT: 25px">LINUX</SPAN></P>
+<P 
+style="WORD-WRAP: break-word; COLOR: rgb(25,89,155); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></P></DIV>
+<DIV class=Blog_wz1 
+style="FONT-SIZE: 16px; WORD-WRAP: break-word">OpenWRT平台的package管理有自己的Makefile，不同于gcc的Makefile，<BR 
+style="WORD-WRAP: break-word">这个Makefile是作为OpenWRT强大的package管理的关键组件。<BR 
+style="WORD-WRAP: break-word">要想往OpenWRT添加自己的package，就得按照它的方式去写个pack依赖。<BR 
+style="WORD-WRAP: break-word">有了这个，target的pack运行时依赖的所有标准、第三方、自己的组件都可以在编译时一并解决依赖问题了，<BR 
+style="WORD-WRAP: break-word">而不是等到下载到板子上才发现缺少库。<BR 
+style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">举个栗子，一个常见的openwrt package Makefile如下：<BR 
+style="WORD-WRAP: break-word"><BR style="WORD-WRAP: break-word">
+<DIV id=codeText class=codeText 
+style="OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(221,221,221) 1px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; WIDTH: 1562px; BACKGROUND: rgb(255,255,255); BORDER-BOTTOM: rgb(221,221,221) 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px Consolas, monospace; PADDING-LEFT: 0px; BORDER-LEFT: rgb(221,221,221) 1px solid; MARGIN: 0px 0px 1.1em; LETTER-SPACING: 0px; PADDING-RIGHT: 0px; font-stretch: normal">
+<OL class="dp-css none_number" 
+style="WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); COLOR: rgb(92,92,92); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 0pt; MARGIN: 0px 1px 0px 0px; LIST-STYLE: none none outside; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0pt">
+  <LI 
+  style="WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; LIST-STYLE: none none outside; PADDING-RIGHT: 0px">define 
+  Package/mypack/default</LI>
+  <LI 
+  style="WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; LIST-STYLE: none none outside; PADDING-RIGHT: 0px">SECTION:=net</LI>
+  <LI 
+  style="WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; LIST-STYLE: none none outside; PADDING-RIGHT: 0px">CATEGORY:=Network</LI>
+  <LI 
+  style="WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; LIST-STYLE: none none outside; PADDING-RIGHT: 0px"><STRONG 
+  style="WORD-WRAP: break-word"><EM 
+  style="WORD-WRAP: break-word; FONT-STYLE: normal">DEPENDS:=+libpthread</EM></STRONG></LI>
+  <LI 
+  style="WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; LIST-STYLE: none none outside; PADDING-RIGHT: 0px">TITLE:= 
+  my own package for network utility</LI>
+  <LI 
+  style="WORD-WRAP: break-word; BACKGROUND: rgb(255,255,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN: 0px; LIST-STYLE: none none outside; PADDING-RIGHT: 0px">endef</LI></OL></DIV>最常见的形式就是&nbsp;<BR 
+style="WORD-WRAP: break-word">DEPENDS:=+libpread<BR 
+style="WORD-WRAP: break-word">表示一旦你选中mypack，那么libpthread也就会同时被后台默认选中，推荐。<BR 
+style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">DEPENDS:=libpread<BR 
+style="WORD-WRAP: break-word">意味着因为依赖关系，只有在先选中libpthread后，才可以选择mypack。<BR 
+style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">DEPENDS:=+arpd:libpthread<BR 
+style="WORD-WRAP: break-word">这是一个双重依赖，只有arpd选中后，才可以选择libpthread，这样看有些拗口。<BR 
+style="WORD-WRAP: break-word">但是在前面取个反就很实用了，比如这个定义<BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">DEPENDS:=+!BUSYBOX_CONFIG_arp:net-tools-arp</SPAN><BR 
+style="WORD-WRAP: break-word"><SPAN 
+style="WORD-WRAP: break-word; COLOR: rgb(229,51,51)">表示若busybox的arp没有包含（busybox的工具都是阉割版），那么就选中arp（标准版）。</SPAN><BR 
+style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">DEPENDS:=@libpread<BR 
+style="WORD-WRAP: break-word">表示除非你先选中libpread，否则休想在menuconfig看到mypack。不推荐<BR 
+style="WORD-WRAP: break-word"><BR 
+style="WORD-WRAP: break-word">DEPENDS:=+@libpthread<BR 
+style="WORD-WRAP: break-word">多个+呢，和+libpthread类似，会自动选择libpthread。<BR 
+style="WORD-WRAP: break-word">但是，有一点这种方式在安装mypack到target文件系统时，不会去检查依赖性的，若libpthread没有被安装它是检测不出来的，<BR 
+style="WORD-WRAP: break-word">只能在target上运行时才能发现 undefined symbol<BR 
+style="WORD-WRAP: break-word"></DIV></DIV>
+</BODY>
+</HTML>
