@@ -171,6 +171,49 @@ style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Y
 align=left>先用winscp将固件文件xxx.bin传至tmp目录，然后：</DIV>
 <DIV 
 style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
-align=left>sysupgrade /tmp/xxx.bin</DIV></DIV></DIV>
+align=left>sysupgrade /tmp/xxx.bin</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>&nbsp;</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left><FONT color=#666666 size=3 face=宋体></FONT>&nbsp;</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left><FONT color=#666666 size=3 face=宋体></FONT>&nbsp;</DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left><FONT face=宋体><FONT color=#666666 
+size=3>科燕固件uboot</FONT></FONT></DIV>
+<DIV 
+style='FONT-SIZE: 14px; WORD-WRAP: break-word; FONT-FAMILY: Tahoma, "Microsoft Yahei", Simsun; WHITE-SPACE: normal; COLOR: rgb(68,68,68); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 21px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255)' 
+align=left>In:&nbsp;&nbsp;&nbsp; serial<BR>Out:&nbsp;&nbsp; 
+serial<BR>Err:&nbsp;&nbsp; serial<BR>Net:&nbsp;&nbsp; 
+ag934x_enet_initialize...<BR>No valid address in Flash. Using fixed 
+address<BR>No valid address in Flash. Using fixed address<BR>&nbsp;wasp&nbsp; 
+reset mask:c02200 <BR>WASP ----&gt; S27 PHY <BR>s27 reg init <BR>: cfg1 
+0x80000000 cfg2 0x7114<BR>eth0: 00:03:7f:09:0b:ad<BR>athrs27_phy_setup 
+ATHR_PHY_CONTROL 4 :1000<BR>athrs27_phy_setup ATHR_PHY_SPEC_STAUS 4 :10<BR>eth0 
+up<BR>WASP ----&gt; S27 PHY <BR>s27 reg init lan <BR>ATHRS27: resetting 
+s27<BR>ATHRS27: s27 reset done<BR>: cfg1 0x800c0000 cfg2 0x7214<BR>eth1: 
+00:03:7f:09:0b:ad<BR>athrs27_phy_setup ATHR_PHY_CONTROL 0 
+:1000<BR>athrs27_phy_setup ATHR_PHY_SPEC_STAUS 0 :10<BR>athrs27_phy_setup 
+ATHR_PHY_CONTROL 1 :1000<BR>athrs27_phy_setup ATHR_PHY_SPEC_STAUS 1 
+:10<BR>athrs27_phy_setup ATHR_PHY_CONTROL 2 :1000<BR>athrs27_phy_setup 
+ATHR_PHY_SPEC_STAUS 2 :10<BR>athrs27_phy_setup ATHR_PHY_CONTROL 3 
+:1000<BR>athrs27_phy_setup ATHR_PHY_SPEC_STAUS 3 :10<BR>eth1 up<BR>eth0, 
+eth1<BR>Setting 0xb8116290 to 0x20402d0f<BR>Hit any key to stop autoboot:&nbsp; 
+0 <BR>ar7240&gt; printenv<BR>bootargs=<BR>bootcmd=bootm 
+0x9f050000<BR>bootdelay=4<BR>baudrate=115200<BR>ethaddr=0x00:0xaa:0xbb:0xcc:0xdd:0xee<BR>ipaddr=10.10.10.123<BR>serverip=10.10.10.3<BR>dir=<BR>lu=tftp 
+0x80060000 ${dir}uboot.bin&amp;&amp;erase 0x9f000000 +$filesize&amp;&amp;protect 
+off all&amp;&amp;cp.b $fileaddr 0x9f000000 $filesize<BR>lf=tftp 0x80060000 
+${dir}db12x${bc}-squashfs&amp;&amp;erase 0x9f840000 +$filesize&amp;&amp;protect 
+off all&amp;&amp;cp.b $fileaddr 0x9f840000 $filesize<BR>lk=tftp 0x80060000 
+${dir}vmlinux.lzma.uImage&amp;&amp;erase 0x9f050000 +$filesize&amp;&amp;protect 
+off all&amp;&amp;cp.b $fileaddr 0x9f050000 $filesize<BR>bt=tftp 0x81000000 
+vmlinux.lzma.uImage&amp;&amp;bootm 0x81000000<BR>la=tftp 0x80060000 
+${dir}art.bin&amp;&amp;erase 0x9f040000 +$filesize&amp;&amp;protect off 
+all&amp;&amp;cp.b $fileaddr 0x9f040000 
+$filesize<BR>stdin=serial<BR>stdout=serial<BR>stderr=serial<BR>ethact=eth0<BR></DIV></DIV></DIV>
 </BODY>
 </HTML>
