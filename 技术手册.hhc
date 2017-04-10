@@ -3832,14 +3832,8 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="lua">
 <PARAM NAME="Local" VALUE="lua.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="luci">
-<PARAM NAME="Local" VALUE="luci.htm">
-<PARAM NAME="ImageNumber" value="11">
-</OBJECT>
-</UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="表（对象）">
@@ -3861,9 +3855,29 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="luci相关">
+<PARAM NAME="Local" VALUE="luci相关.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="luci调试">
+<PARAM NAME="Local" VALUE="luci.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="luci更改登录账号">
 <PARAM NAME="Local" VALUE="luci更改登录账号.htm">
 </OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="luci登录流程">
+<PARAM NAME="Local" VALUE="luci登录流程.htm">
+</OBJECT>
+</UL>
 </UL>
 </UL>
 <UL>

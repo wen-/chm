@@ -1,0 +1,1395 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>luci登录流程</TITLE>
+</HEAD>
+<BODY>
+<P>luci登录流程</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>根据近几天对代码的深入了解，知道了</SPAN><SPAN 
+lang=EN-US>openwrt</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>是通过</SPAN><SPAN 
+lang=EN-US>LuCI</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>进行系统配置的，现在可以进行简单的修改及测试。我们所了解</SPAN><SPAN 
+lang=EN-US>LuCI</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>信息如下：</SPAN><SPAN 
+lang=EN-US><?xml:namespace prefix = "o" ns = 
+"urn:schemas-microsoft-com:office:office" /><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>一．</SPAN><SPAN 
+lang=EN-US>LuCI</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>基础知识如下</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>LuCI</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>是</SPAN><SPAN 
+lang=EN-US>Lua</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>脚本语言和</SPAN><SPAN 
+lang=EN-US>UCI</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>接口命令的结合体。两个同时用到</SPAN><SPAN 
+lang=EN-US>openwrt</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>上，为的是可以实现路由的网页配置页面。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US>Lua</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>属于脚本语言，用于</SPAN><SPAN 
+lang=EN-US>openwrt</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>中的原因在于他的小巧。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US>UCI</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>英文名</SPAN><SPAN 
+lang=EN-US>Unified Configuration Interface</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>，即统一配置接口。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt; mso-list: l1 level1 lfo1"><SPAN 
+lang=EN-US style='mso-fareast-font-family: "Times New Roman"'><SPAN 
+style="mso-list: Ignore">1.</SPAN></SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>网页的挂载方式</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>openwrt</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>挂载网页启动的是</SPAN><SPAN 
+lang=EN-US>uhttpd</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>，</SPAN><SPAN 
+lang=EN-US>uhttp</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>是</SPAN><SPAN 
+lang=EN-US>LuCI</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>所在的</SPAN><SPAN 
+lang=EN-US>Web Server</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>。用户登录所用网页放置在</SPAN><SPAN 
+lang=EN-US>/www</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>下边，</SPAN><SPAN 
+lang=EN-US>index-htm</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>指向了</SPAN><SPAN 
+lang=EN-US>/www/cgi-bin/luci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>。</SPAN><SPAN 
+lang=EN-US>openwrt</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>中利用它作为</SPAN><SPAN 
+lang=EN-US>web</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>服务器，实现客户端</SPAN><SPAN 
+lang=EN-US>web</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>页面配置功能。对于</SPAN><SPAN 
+lang=EN-US>request</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>处理方式，采用的是</SPAN><SPAN 
+lang=EN-US>cgi</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>脚本，而所用的</SPAN><SPAN 
+lang=EN-US>cgi</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>程序就是</SPAN><SPAN 
+lang=EN-US>luci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 0cm; mso-list: l0 level1 lfo2"><SPAN 
+lang=EN-US style='mso-fareast-font-family: "Times New Roman"'><SPAN 
+style="mso-list: Ignore">2.</SPAN></SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>工作框架如下：</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-FAMILY: 宋体; mso-bidi-font-family: 宋体"><?xml:namespace prefix = "v" 
+ns = "urn:schemas-microsoft-com:vml" /><v:shapetype id=_x0000_t75 stroked="f" 
+filled="f" path="m@4@5l@4@11@9@11@9@5xe" o:preferrelative="t" o:spt="75" 
+coordsize="21600,21600"><v:stroke joinstyle="miter"></v:stroke><v:formulas><v:f 
+eqn="if lineDrawn pixelLineWidth 0"></v:f><v:f eqn="sum @0 1 0"></v:f><v:f 
+eqn="sum 0 0 @1"></v:f><v:f eqn="prod @2 1 2"></v:f><v:f 
+eqn="prod @3 21600 pixelWidth"></v:f><v:f 
+eqn="prod @3 21600 pixelHeight"></v:f><v:f eqn="sum @0 0 1"></v:f><v:f 
+eqn="prod @6 1 2"></v:f><v:f eqn="prod @7 21600 pixelWidth"></v:f><v:f 
+eqn="sum @8 21600 0"></v:f><v:f eqn="prod @7 21600 pixelHeight"></v:f><v:f 
+eqn="sum @10 21600 0"></v:f></v:formulas><v:path o:connecttype="rect" 
+gradientshapeok="t" o:extrusionok="f"></v:path><o:lock aspectratio="t" 
+v:ext="edit"></o:lock></v:shapetype></SPAN><SPAN lang=EN-US><o:p><IMG 
+src="images/luci_login1.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>Client</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>端和</SPAN><SPAN 
+lang=EN-US>serv</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>端采用</SPAN><SPAN 
+lang=EN-US>cgi</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>方式交互，</SPAN><SPAN 
+lang=EN-US>uhttpd</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>服务器的</SPAN><SPAN 
+lang=EN-US>cgi</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>方式中，</SPAN><SPAN 
+lang=EN-US>fork</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>出一个子进程，子进程利用</SPAN><SPAN 
+lang=EN-US>execl</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>替换为</SPAN><SPAN 
+lang=EN-US>luci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>进程空间，并通过</SPAN><SPAN 
+lang=EN-US>setenv</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>环境变量的方式，传递一些固定格式的数据（如</SPAN><SPAN 
+lang=EN-US>PATH_INFO</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>）给</SPAN><SPAN 
+lang=EN-US>luci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>。另外一些非固定格式的数据（</SPAN><SPAN 
+lang=EN-US>post-data</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>）则由父进程通过一个</SPAN><SPAN 
+lang=EN-US>w_pipe</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>写给</SPAN><SPAN 
+lang=EN-US>luci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>的</SPAN><SPAN 
+lang=EN-US>stdin</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>，而</SPAN><SPAN 
+lang=EN-US>luci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>的返回数据则写在</SPAN><SPAN 
+lang=EN-US>stdout</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>上，由父进程通过一个</SPAN><SPAN 
+lang=EN-US>r_pipe</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>读取。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 0cm; mso-list: l0 level1 lfo2"><SPAN 
+lang=EN-US style='mso-fareast-font-family: "Times New Roman"'><SPAN 
+style="mso-list: Ignore">3.</SPAN></SPAN><SPAN lang=EN-US>luci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>的代码如下：</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>#!/usr/bin/lua -- </SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>执行命令的路径</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>require"luci.cacheloader" -- </SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>导入</SPAN><SPAN 
+lang=EN-US>cacheloader </SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>包</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>require"luci.sgi.cgi" -- </SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>导入</SPAN><SPAN 
+lang=EN-US> sgi.cgi </SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>包</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>luci.dispatcher.indexcache = "/tmp/luci-indexcache" --cache 
+</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>缓存路径地址</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>luci.sgi.cgi.run() -- </SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>执行</SPAN><SPAN 
+lang=EN-US>run</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>方法，此方法位于</SPAN><SPAN 
+lang=EN-US>/usr/lib/lua/luci/sgi/cgi.lua</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>中</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 0cm; mso-list: l0 level1 lfo2"><SPAN 
+lang=EN-US style='mso-fareast-font-family: "Times New Roman"'><SPAN 
+style="mso-list: Ignore">4.</SPAN></SPAN><SPAN lang=EN-US>web</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>配置时的数据交互：</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-FAMILY: 宋体; mso-bidi-font-family: 宋体"><SPAN 
+style="mso-tab-count: 1"></SPAN><IMG src="images/luci_login2.jpg" 
+align=baseline>1</SPAN><SPAN 
+style="FONT-FAMILY: 宋体; mso-bidi-font-family: 宋体">）</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">首次运行时，是以普通的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>file</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">方式获得</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/www/index.html</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，该文件中以</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>meta</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的方式自动跳转到</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cgi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>url</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，这是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>web</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">服务器的一般做法。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>2</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）然后第一次执行</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>path_info='/'</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，会</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>alise</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">到</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>'/admin'</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">（</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>'/'</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">会索引到</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'> 
+tree.rootnode</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，并执行其</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">方法，即</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>alise('/admin')</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，即重新去索引</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>adminnode</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，这在后面会详细描述），该节点需要认证，所以返回一个登录界面。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>3</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）第</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>3</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">次交互，过程同上一次的，只是这时已</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>post</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">来了登录信息，所以</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>serv</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">端会生成一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>session</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值，然后执行</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>'/admin'</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">（它的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">为</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>firstchild</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，即索引第一个子节点），最终返回</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/admin/status.html</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，同时会把</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>session</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值以</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cookie</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的形式发给</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>client</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。这就是从原始状态到得到显示页面的过程，之后主要就是点击页面上的连接，产生新的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>request</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>4</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）每个链接的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>url</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中都会带有一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>stok</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值（它是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>serv</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">生成的，并放在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>html</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>url</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">里），并且每个新</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>request</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">都要带有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>session</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值，它和</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>stok</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值一起供</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>serv</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">端联合认证。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">初始阶段</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>http</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">报文，可以看到从第</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>2</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">次交互开始，所有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>request</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">都是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cgi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">方式（除一些</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>css</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>js</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">等</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>resource</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件外），且执行的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cgi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">程序都是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，只是带的参数不同，且即使所带参数相同（如都是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>'/'</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">），由于需要认证，执行的过程也是不同的。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">正是由于多种情况的存在，使得</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中需要多个判断分支，代码多少看起来有点乱，但</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>openwrt</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">还是把这些分支都糅合在了一个流程线中。下面首先给出整体流程，首先介绍一下</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">语言中一个执行方式</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>coroutine</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，它可以创造出另一个执行体，但却没有并行性，如下图所示，每一时刻只有一个执行体在执行，通过</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>resume</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>yield</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">来传递数据，且数据可以是任意类型，任意多个的。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><o:p><IMG 
+src="images/luci_login3.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">正是利用了这种方式，它首先执行的是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>running()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数，其中</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>create</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">出另一个执行体</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>httpdispatch</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，每次</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>httpdispatch</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">执行</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>yield</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">返回一些数据时，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>running()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数就读取这些数据，做相应处理，然后再次执行</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>resume(httpdispath)</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>……</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">如此直到</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>httpdispatch</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">执行完毕，如下图所示：</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US><o:p><IMG 
+src="images/luci_login4.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">其实</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">真正的主体部分正是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>dispatch</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，该函数中有多个判断分支，全部糅合在一起。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 0cm; mso-list: l0 level1 lfo2"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-fareast-font-family: Verdana; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-list: Ignore">5.</SPAN></SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>节点树</SPAN><SPAN 
+lang=EN-US>node-tree</SPAN><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>controller</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">目录下，每个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>.lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件中，都有一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>index()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数，其中主要调用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>entry()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数，形如</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>entry(path,target,title,order)</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>path</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">形如</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>{admin,network,wireless}</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>entry()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数根据这些创建一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，并把它放在全局</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node-tree</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的相应位置，后面的参数都是该</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的属性，还可以有其他的参数。其中最重要的就是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P 
+style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Createtree()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数就是要找到</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>controller</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">目录下所有的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>.lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件，并找到其中的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>index()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数执行，从而生成一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node-tree</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。这样做的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>io</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">操作太多，为了效率，第一次执行后，把生成的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node-tree</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">放在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/tmp/treecache</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件中，以后只要没有更新（一般情况下，服务器里的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>.lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件是不会变的），直接读该文件即可。生成的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node-tree</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">如下：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-FAMILY: 宋体; mso-bidi-font-family: 宋体"></SPAN><SPAN 
+lang=EN-US><o:p><IMG src="images/luci_login5.jpg" 
+align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">这里要注意的是，每次</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>dispatch()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">会根据</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>path_info</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">逐层索引，且每一层都把找到的节点信息放在一个变量</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>track</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中，这样做使得上层</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的信息会影响下层</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，而下层</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的信息又会覆盖上层</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。比如</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>{/admin/system}</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，最后的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>auto=false</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target=aa</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，而由于</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>admin</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>sysauth</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值，它会遗传给它的子节点，也即所有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>admin</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">下的节点都需要认证。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 0cm; mso-list: l0 level1 lfo2"><STRONG><FONT 
+color=#ff0000><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-fareast-font-family: Verdana; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-list: Ignore">6.</SPAN></SPAN><SPAN lang=EN-US>target</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>简介</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></FONT></STRONG></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><FONT 
+color=#ff0000><STRONG><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">对每个节点，最重要的属性当然是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，这也是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>dispatch()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">流程最后要执行的方法。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">主要有：</SPAN><FONT 
+color=#0000ff><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>alise</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>firstchild</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>call</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cbi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>form</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>template</SPAN></FONT><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。这几个总体上可以分成两类，前两种主要用于链接其它</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，后一个则是主要的操作、以及页面生成。下面分别描述。</SPAN></STRONG></FONT></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><FONT 
+color=#ff0000><STRONG><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana"></SPAN></STRONG><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></FONT>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><STRONG><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">链接方法：</SPAN></STRONG><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">在介绍初始登录流程时，已经讲到了这种方法。比如初始登录时，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>url</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>path_info</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">仅为</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>'/'</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，这应该会索引到</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>rootnode</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">节点。而该节点本身是没有内容显示的，所以它用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>alias('admin')</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">方法，自动链接到</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>admin</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">节点。再比如，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>admin</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">节点本身也没有内容显示，它用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>firstchild()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">方法，自动链接到它的第一个子节点</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/admin/status</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><STRONG><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">操作方法：</SPAN></STRONG><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">这种方法一般用于一个路径的叶节点</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>leaf</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，它们会去执行相应的操作，如修改</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>interface</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">参数等，并且动态生成页面</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>html</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件，传递给</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>client</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。这里实际上是利用了所谓的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>MVC</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">架构，这在后面再描述，这里主要描述</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">怎么把生成的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>html</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">发送给</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>client</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">端。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Call</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cbi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>form</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>template</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">这几种方法，执行的原理各不相同，但最终都会生成完整的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>http-response</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">报文（包括</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>html</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件），并调用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci.template.render()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci.http.redirect()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">等函数，它们会调用几个特殊的函数，把报文内容返回给</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci.running()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">流程。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-FAMILY: 宋体; mso-bidi-font-family: 宋体"></SPAN><SPAN 
+lang=EN-US><o:p><IMG src="images/luci_login6.jpg" 
+align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">如上图所示，再联系</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci.running()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">流程，就很容易看出，生成的完整的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>http-response</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">报文会通过</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>io.write()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">写在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>stdout</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">上，而</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>uhttpd</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">架构已决定了，这些数据将传递给父进程，并通过</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>tcp</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">连接返回给</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>client</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">端。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 0cm; mso-list: l0 level1 lfo2"><SPAN 
+lang=EN-US style='mso-fareast-font-family: "Times New Roman"'><SPAN 
+style="mso-list: Ignore">7.</SPAN></SPAN><SPAN lang=EN-US>sysauth</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>用户认证</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">由于节点是由上而下逐层索引的，所以只要一个节点有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>sysauth</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值，那么它所有的子节点都需要认证。不难想象，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/admin</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">节点有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>sysauth</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值，它以下的所有子节点都是需要认证才能查看、操作的；</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/mini</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">节点没有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>sysauth</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值，那么它以下的所有子节点都不需要认证。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中关于登陆密码，用到的几个函数为：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'></SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p><IMG 
+src="images/luci_login7.jpg" align=baseline></o:p></SPAN></P>
+<P style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">可以看出它的密码是用的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>linux</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的密码，而</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>openwrt</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的精简内核没有实现多用户机制，只有一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>root</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">用户，且开机时自动以</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>root</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">用户登录。要实现多用户，必须在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>web</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">层面上，实现另外一套（</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>user</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">、</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>passwd</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）系统。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">另外，认证后，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>serv</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">端会发给</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>client</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>session</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">值，且它要一直以</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cookie</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的形式存在于</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>request</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">报文中，供</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>serv</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">端来识别用户。这是</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>web</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">服务器的一般做法，这里就不多讲了。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 0cm; mso-list: l0 level1 lfo2"><SPAN 
+lang=EN-US style='mso-fareast-font-family: "Times New Roman"'><SPAN 
+style="mso-list: Ignore">8.</SPAN></SPAN><SPAN lang=EN-US>MVC</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>界面生成</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US>/usr/lib/lua/luci/</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>下有三个目录</SPAN><SPAN 
+lang=EN-US>model</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>、</SPAN><SPAN 
+lang=EN-US>view</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>、</SPAN><SPAN 
+lang=EN-US>controller</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>，它们对应</SPAN><SPAN 
+lang=EN-US>M</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>、</SPAN><SPAN 
+lang=EN-US>V</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>、</SPAN><SPAN 
+lang=EN-US>C</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN 
+lang=EN-US>Call()</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>方法会调用</SPAN><SPAN 
+lang=EN-US>controller</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>里的函数，主要通过</SPAN><SPAN 
+lang=EN-US>openwrt</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>系统的</SPAN><SPAN 
+lang=EN-US>uci</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>、</SPAN><SPAN 
+lang=EN-US>network</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>、</SPAN><SPAN 
+lang=EN-US>inconfig</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>等工具对系统进行设置，如果需要还会生成新界面。动态生成界面的方法有两种，一是通过</SPAN><SPAN 
+lang=EN-US>cbi()/form()</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>方法，它们利用</SPAN><SPAN 
+lang=EN-US>model</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>中定义的模板</SPAN><SPAN 
+lang=EN-US>map</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>，生成</SPAN><SPAN 
+lang=EN-US>html</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>文件；另一种是通过</SPAN><SPAN 
+lang=EN-US>template()</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>方法，利用</SPAN><SPAN 
+lang=EN-US>view</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>中定义的</SPAN><SPAN 
+lang=EN-US>htm</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>（一种类似</SPAN><SPAN 
+lang=EN-US>html</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>的文件），直接生成界面。</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style="FONT-FAMILY: 宋体; mso-bidi-font-family: 宋体"></SPAN><SPAN 
+lang=EN-US><o:p><IMG src="images/luci_login8.jpg" 
+align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">上面的标题是由</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node-tree</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">生成的，下面的内容由每个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>node</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">通过上面的方法来动态生成。这套系统是很复杂的，但只要定义好了，使用起来就非常方便，增加页面，修改页面某个内容等操作都非常简单。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-fareast-font-family: 宋体; mso-bidi-font-family: Verdana; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA'><BR 
+style="PAGE-BREAK-BEFORE: always" clear=all></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>二</SPAN><SPAN 
+lang=EN-US>.</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>实现通过</SPAN><SPAN 
+lang=EN-US>web</SPAN><SPAN 
+style='FONT-FAMILY: 宋体; mso-ascii-font-family: "Times New Roman"; mso-hansi-font-family: "Times New Roman"'>执行配置操作</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">首先在第一次登录的时候，登陆默认</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>root 
+</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">密码是空，默认的几个一级菜单都是在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>:/usr/lib/lua/luci/controller/admin</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">这个目录下。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/etc/config/</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">这个目录下面的文件，是通过</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>web</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">配置生成的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>config</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">配置信息。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>OpenWRT</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中采用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>LuCI</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">作为它的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Web 
+interface</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">界面框架，采用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">语言。下面创建自定义开发一个界面，并对一个配置文件进行操作。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>1.Model</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">与</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Controler<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>MVC</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的设计理念是进行</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>LuCI</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">开发的一个关键（最后将对</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>MVC</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">进行简单描述）。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>LuCI</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Controller</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">的文件定义在固件中的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/usr/lib/lua/luci/controller</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">目录中，模版目录在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/usr/lib/lua/luci/view</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">目录下，而</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>model</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">则是在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>/usr/lib/lua/luci/model</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中。而</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>model</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中有一个特殊的模块叫做</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>CBI</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，该模块的功能是方便的对一个配置文件进行修改。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>2.</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">示例</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">页面建立在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>LuCI</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">界面的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>network</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">下，不单独创建页面，因此无需写</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>view</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，只用些</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>controller</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">和</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>model</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">就可以了。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>1</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）首先创建一个</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>controller<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>ccontroller/mycbi.lua<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>module("LUCI.controller.mycbi", 
+package.seeall)<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>function 
+index()<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>entry({"admin", 
+"network", "mycbi_change"}, <o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt 42pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cbi("mycbi-model/mycbimodule"),<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-spacerun: yes">&nbsp;</SPAN><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp; </SPAN>"Change My Conf", 
+30).dependent=false<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>end<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt 21pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">解释一下关键代码：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><A 
+href="http://images.cnitblog.com/blog/126711/201308/31162112-95394b1c82344e2c91a64f43ea7eaa63.png"><SPAN 
+style="TEXT-DECORATION: none; COLOR: black; text-underline: none"></SPAN></A><o:p><IMG 
+src="images/luci_login9.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>index()</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数中，使用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>entry</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">函数来完成每个模块函数的注册，官方说明文档如下：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P style="BACKGROUND: white; MARGIN: 7.5pt 0cm; LINE-HEIGHT: 15.65pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>entry(path, 
+target, title=nil, order=nil)</SPAN><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 15.65pt; TEXT-INDENT: -18pt; mso-list: l2 level1 lfo3; tab-stops: 36.0pt"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 10pt; FONT-FAMILY: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-size: 12.0pt; mso-bidi-font-family: Symbol"><SPAN 
+style="mso-list: Ignore">·<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN><STRONG><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>path</SPAN></STRONG><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>&nbsp;is 
+a table that describes the position in the dispatching tree: For example a path 
+of {"foo", "bar", "baz"} would insert your node in foo.bar.baz.</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 15.65pt; TEXT-INDENT: -18pt; mso-list: l2 level1 lfo3; tab-stops: 36.0pt"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 10pt; FONT-FAMILY: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-size: 12.0pt; mso-bidi-font-family: Symbol"><SPAN 
+style="mso-list: Ignore">·<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN><STRONG><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN></STRONG><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>&nbsp;describes 
+the action that will be taken when a user requests the node. There are several 
+predefined ones of which the 3 most important (call, template, cbi) are 
+described later on on this page</SPAN><SPAN lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 15.65pt; TEXT-INDENT: -18pt; mso-list: l2 level1 lfo3; tab-stops: 36.0pt"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 10pt; FONT-FAMILY: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-size: 12.0pt; mso-bidi-font-family: Symbol"><SPAN 
+style="mso-list: Ignore">·<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN><STRONG><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>title</SPAN></STRONG><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>&nbsp;defines 
+the title that will be visible to the user in the menu (optional)</SPAN><SPAN 
+lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal 
+style="MARGIN: 0cm 0cm 0pt; LINE-HEIGHT: 15.65pt; TEXT-INDENT: -18pt; mso-list: l2 level1 lfo3; tab-stops: 36.0pt"><SPAN 
+lang=EN-US 
+style="FONT-SIZE: 10pt; FONT-FAMILY: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-size: 12.0pt; mso-bidi-font-family: Symbol"><SPAN 
+style="mso-list: Ignore">·<SPAN 
+style='FONT: 7pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN></SPAN><STRONG><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>order</SPAN></STRONG><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>&nbsp;is 
+a number with which nodes on the same level will be sorted in the menu 
+(optional)</SPAN><SPAN lang=EN-US><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">其中</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>target</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">主要分为三类：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>call</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>template</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">和</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cbi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>call</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">用来调用函数，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>template</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">用来调用已有的</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>htm</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">模版，而</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>CBI</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">模块则是使用非常频繁也非常方便的模块，包含的一系列</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件构成界面元素的组合，所有</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cbi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">模块中的控件都需要写在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>luci.cbi.Map</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">中，在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cbi</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">模块中定义各种控件，</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>Luci</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">系统会自动执行大部分处理工作。在</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>cbi.lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件中封装了所有的控件元素，例如复选框，下拉列表等。</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p><IMG 
+src="images/luci_login10.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>&nbsp;<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>2</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）创建</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>model<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>#mkdir 
+/usr/lib/lua/luci/model/cbi/mycbi-model<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>#vim 
+/usr/lib/lua/luci/model/cbi/mycbi-model/mycbimodule.lua<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">其中</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">脚本中内容如下</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>m 
+= Map("mycbi", "mycbi conf change interface")<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>s = 
+m:section(TypedSection, "MySection")<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>s.addremove = 
+true<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>s:option(Value, 
+"username", "Name:")<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>key=s:option(Value, "password", "Password")<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN>key.password=true;<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>return 
+m<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">解释一下关键代码：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><A 
+href="http://images.cnitblog.com/blog/126711/201308/31155657-a1efd02e5f694e5ba2e0d3c00eb887ab.png"><SPAN 
+style="TEXT-DECORATION: none; COLOR: black; text-underline: none"></SPAN></A><o:p><IMG 
+src="images/luci_login11.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>3)</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">创建配置文件</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>#vim 
+/etc/config/mycbi<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件内容如下：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>config<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>'MySection'<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>'mycbi'<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>option 'username' 
+'youruser'<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN>option 'password' 
+'yourpass'<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>4. 
+</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">测试</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">进入</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>OpenWRT</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">界面，登陆后就可以点击</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>“</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">网络</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>”</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，如果是英文就点击</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>network</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，可以看到我们添加的子页面入口：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><A 
+href="http://images.cnitblog.com/blog/126711/201308/31155659-3561fb597fea49cd939dc6fc7f34def0.png"><SPAN 
+style="TEXT-DECORATION: none; COLOR: black; text-underline: none"></SPAN></A><o:p><IMG 
+src="images/luci_login12.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">点击后进入页面如下：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><A 
+href="http://images.cnitblog.com/blog/126711/201308/31155659-bdc4d16e3949476db0478a496aa32342.png"><SPAN 
+style="TEXT-DECORATION: none; COLOR: black; text-underline: none"></SPAN></A><o:p><IMG 
+src="images/luci_login13.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">输入用户名密码：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>root/test</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">，点击保存，后台查看配置文件已经被更改：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><A 
+href="http://images.cnitblog.com/blog/126711/201308/31155700-d40ad8cc73334e6c92ec82ae3585c3d8.png"><SPAN 
+style="TEXT-DECORATION: none; COLOR: black; text-underline: none"></SPAN></A><o:p><IMG 
+src="images/luci_login14.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>&nbsp;<o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>5. 
+</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">问题记录</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>1</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）首先，配置文件不能有任何后缀，否则页面加载后是空页面</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>2</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">）如果出现</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>500 
+</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">错误，说明</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>lua</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">文件写的有问题，要么是路径错误，要么是语法错误，暂时没找到写日志的方法，可以用</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'>wireshark</SPAN><SPAN 
+style="FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; BACKGROUND: white; COLOR: black; mso-ascii-font-family: Verdana; mso-hansi-font-family: Verdana; mso-bidi-font-family: Verdana">抓包看错误，如下：</SPAN><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt"><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><A 
+href="http://images.cnitblog.com/blog/126711/201308/31155701-c1b4bf99516f413fa2c816dccd94b129.png"><SPAN 
+style="TEXT-DECORATION: none; COLOR: black; text-underline: none"></SPAN></A><o:p><IMG 
+src="images/luci_login15.jpg" align=baseline></o:p></SPAN></P>
+<P class=MsoNormal style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 21pt"><SPAN 
+lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-bidi-font-family: Verdana'><o:p>&nbsp;</o:p></SPAN></P>
+<P><SPAN lang=EN-US 
+style='FONT-SIZE: 10.5pt; FONT-FAMILY: "Verdana",sans-serif; BACKGROUND: white; COLOR: black; mso-fareast-font-family: 宋体; mso-bidi-font-family: Verdana; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA'><BR 
+style="PAGE-BREAK-BEFORE: always; mso-special-character: line-break" 
+clear=all></SPAN>&nbsp;</P>
+</BODY>
+</HTML>
