@@ -3836,6 +3836,13 @@
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="lua直接返回HTTP页面">
+<PARAM NAME="Local" VALUE="lua直接返回HTTP页面.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="表（对象）">
 <PARAM NAME="Local" VALUE="表（对象）.htm">
 <PARAM NAME="ImageNumber" value="11">
@@ -3857,7 +3864,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="luci相关">
 <PARAM NAME="Local" VALUE="luci相关.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

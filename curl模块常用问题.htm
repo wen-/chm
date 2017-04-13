@@ -13,56 +13,727 @@ curl-devel</STRONG></FONT></P>
 <P>问题2:</P>
 <P><STRONG>地址带端口号会出现拒绝访问（命令行执行不会）</STRONG></P>
 <P><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">经常在查找资料，发现出现这个问题的原因是由于服务器开启了SElinux并且运行模式为强制模式时才会出现。</SPAN><BR 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">解决的方法就是交SElinux的运行模式切换为宽松模式。</SPAN><BR 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">操作方法如下：</SPAN><BR 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">#<STRONG><FONT 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px">经常在查找资料，发现出现这个问题的原因是由于服务器开启了SElinux并且运行模式为强制模式时才会出现。</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px">解决的方法就是交SElinux的运行模式切换为宽松模式。</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px">操作方法如下：</SPAN><BR 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px">#<STRONG><FONT 
 color=#ff0000>setenforce 0&nbsp;&nbsp;&nbsp;&nbsp; 
 这是临时方案，重启就无效了。可修改配置文件/etc/sysconfig/selinux&nbsp; 把SELINUX=permissive 或者 
 disabled&nbsp;</FONT></STRONG></SPAN><BR 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">#<FONT 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px"><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px">#<FONT 
 color=#ff0000><STRONG>getenforce</STRONG></FONT></SPAN></P>
 <P><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"></SPAN>&nbsp;</P>
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px"></SPAN>&nbsp;</P>
 <P><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px">其它可以出现的问题：</SPAN></P><SPAN 
-style="TEXT-ALIGN: left; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; DISPLAY: inline !important; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; WHITE-SPACE: normal; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(68,68,68); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><EM 
-style="TEXT-TRANSFORM: none; TEXT-INDENT: 0px; FONT: 12px/18px 宋体, tahoma, Srial, helvetica, sans-serif; WHITE-SPACE: normal; LETTER-SPACING: normal; COLOR: rgb(1,1,1); WORD-SPACING: 0px; -webkit-text-stroke-width: 0px"><EM 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px">其它可以出现的问题：</SPAN></P><SPAN 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; COLOR: rgb(68,68,68); TEXT-ALIGN: left; FONT: 13px/23px 'Microsoft Yahei', 宋体, 微软雅黑, Arial, 'Lucida Grande', Tahoma, sans-serif; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 26px; -webkit-text-stroke-width: 0px"><EM 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(1,1,1); FONT: 12px/18px 宋体, tahoma, Srial, helvetica, sans-serif; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px"><EM 
 style="FONT-STYLE: normal">
 <DIV 
-style="LINE-HEIGHT: 24px; MARGIN-TOP: 10px; WIDTH: 570px; WHITE-SPACE: normal; MARGIN-LEFT: auto; FONT-SIZE: 14px; OVERFLOW: hidden; MARGIN-RIGHT: auto" 
+style="FONT-SIZE: 14px; OVERFLOW: hidden; WIDTH: 570px; WHITE-SPACE: normal; MARGIN-TOP: 10px; MARGIN-LEFT: auto; LINE-HEIGHT: 24px; MARGIN-RIGHT: auto" 
 id=text>
 <P 
-style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">一、在SHELL环境下，通过curl命令无法获取远程数据，出现error:couldn't 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 15px auto 0px; LINE-HEIGHT: 25px; PADDING-RIGHT: 0px">一、在SHELL环境下，通过curl命令无法获取远程数据，出现error:couldn't 
 connect to host找不到主机的解决方案。</P>
 <P 
-style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">iptables 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 15px auto 0px; LINE-HEIGHT: 25px; PADDING-RIGHT: 0px">iptables 
 -A OUTPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT<BR></P>
 <P 
-style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">意思是，所有外出的请求目标的80端口授权。</P>
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 15px auto 0px; LINE-HEIGHT: 25px; PADDING-RIGHT: 0px">意思是，所有外出的请求目标的80端口授权。</P>
 <P 
-style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">之后curl 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 15px auto 0px; LINE-HEIGHT: 25px; PADDING-RIGHT: 0px">之后curl 
 远程url就肯定能成功。</P>
 <P 
-style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">二、php操作Curl（http,https）无法获取远程数据<SPAN 
-style="WIDTH: auto; FLOAT: none; HEIGHT: auto" id=1_nwp><A 
-style="COLOR: rgb(90,128,238); TEXT-DECORATION: none" id=1_nwl 
-href="http://cpro.baidu.com/cpro/ui/uijs.php?rs=1&u=http%3A%2F%2Fwww%2Eth7%2Ecn%2Fsystem%2Flin%2F201406%2F59875%2Eshtml&p=baidu&c=news&n=10&t=tpclicked3_hc&q=smileking_cpr&k=%BD%E2%BE%F6%B7%BD%B0%B8&k0=shell&kdi0=8&k1=%BD%E2%BE%F6%B7%BD%B0%B8&kdi1=8&k2=php&kdi2=8&k3=new&kdi3=8&k4=ssh&kdi4=8&k5=php%2Bmysql&kdi5=8&sid=7b538baf50649a30&ch=0&tu=u1682280&jk=2fd4afecfd0f6a71&cf=29&fv=15&stid=9&urlid=0&luki=2&seller_id=1&di=128" 
-target=_blank mpid="1"><SPAN 
-style="WIDTH: auto; FLOAT: none; HEIGHT: auto; COLOR: rgb(0,0,255); FONT-SIZE: 14px">解决方案</SPAN></A></SPAN></P>
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 15px auto 0px; LINE-HEIGHT: 25px; PADDING-RIGHT: 0px">二、php操作Curl（http,https）无法获取远程数据<SPAN 
+style="HEIGHT: auto; WIDTH: auto; FLOAT: none" id=1_nwp><A 
+style="TEXT-DECORATION: none; COLOR: rgb(90,128,238)" id=1_nwl 
+href="http://cpro.baidu.com/cpro/ui/uijs.php?rs=1&amp;u=http%3A%2F%2Fwww%2Eth7%2Ecn%2Fsystem%2Flin%2F201406%2F59875%2Eshtml&amp;p=baidu&amp;c=news&amp;n=10&amp;t=tpclicked3_hc&amp;q=smileking_cpr&amp;k=%BD%E2%BE%F6%B7%BD%B0%B8&amp;k0=shell&amp;kdi0=8&amp;k1=%BD%E2%BE%F6%B7%BD%B0%B8&amp;kdi1=8&amp;k2=php&amp;kdi2=8&amp;k3=new&amp;kdi3=8&amp;k4=ssh&amp;kdi4=8&amp;k5=php%2Bmysql&amp;kdi5=8&amp;sid=7b538baf50649a30&amp;ch=0&amp;tu=u1682280&amp;jk=2fd4afecfd0f6a71&amp;cf=29&amp;fv=15&amp;stid=9&amp;urlid=0&amp;luki=2&amp;seller_id=1&amp;di=128" target="_blank" mpid="1"><SPAN 
+style="FONT-SIZE: 14px; HEIGHT: auto; WIDTH: auto; FLOAT: none; COLOR: rgb(0,0,255)">解决方案</SPAN></A></SPAN></P>
 <P 
-style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">iptables&nbsp;-A 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 15px auto 0px; LINE-HEIGHT: 25px; PADDING-RIGHT: 0px">iptables&nbsp;-A 
 OUTPUT -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT</P>
 <P 
-style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; MARGIN: 15px auto 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">如果在SHELL下curl是正常的，在<SPAN 
-style="WIDTH: auto; FLOAT: none; HEIGHT: auto" id=0_nwp><A 
-style="COLOR: rgb(90,128,238); TEXT-DECORATION: none" id=0_nwl 
-href="http://cpro.baidu.com/cpro/ui/uijs.php?rs=1&u=http%3A%2F%2Fwww%2Eth7%2Ecn%2Fsystem%2Flin%2F201406%2F59875%2Eshtml&p=baidu&c=news&n=10&t=tpclicked3_hc&q=smileking_cpr&k=php&k0=shell&kdi0=8&k1=%BD%E2%BE%F6%B7%BD%B0%B8&kdi1=8&k2=php&kdi2=8&k3=new&kdi3=8&k4=ssh&kdi4=8&k5=php%2Bmysql&kdi5=8&sid=7b538baf50649a30&ch=0&tu=u1682280&jk=2fd4afecfd0f6a71&cf=29&fv=15&stid=9&urlid=0&luki=3&seller_id=1&di=128" 
-target=_blank mpid="0"><SPAN 
-style="WIDTH: auto; FLOAT: none; HEIGHT: auto; COLOR: rgb(0,0,255); FONT-SIZE: 14px">php</SPAN></A></SPAN><SPAN 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 15px auto 0px; LINE-HEIGHT: 25px; PADDING-RIGHT: 0px">如果在SHELL下curl是正常的，在<SPAN 
+style="HEIGHT: auto; WIDTH: auto; FLOAT: none" id=0_nwp><A 
+style="TEXT-DECORATION: none; COLOR: rgb(90,128,238)" id=0_nwl 
+href="http://cpro.baidu.com/cpro/ui/uijs.php?rs=1&amp;u=http%3A%2F%2Fwww%2Eth7%2Ecn%2Fsystem%2Flin%2F201406%2F59875%2Eshtml&amp;p=baidu&amp;c=news&amp;n=10&amp;t=tpclicked3_hc&amp;q=smileking_cpr&amp;k=php&amp;k0=shell&amp;kdi0=8&amp;k1=%BD%E2%BE%F6%B7%BD%B0%B8&amp;kdi1=8&amp;k2=php&amp;kdi2=8&amp;k3=new&amp;kdi3=8&amp;k4=ssh&amp;kdi4=8&amp;k5=php%2Bmysql&amp;kdi5=8&amp;sid=7b538baf50649a30&amp;ch=0&amp;tu=u1682280&amp;jk=2fd4afecfd0f6a71&amp;cf=29&amp;fv=15&amp;stid=9&amp;urlid=0&amp;luki=3&amp;seller_id=1&amp;di=128" target="_blank" mpid="0"><SPAN 
+style="FONT-SIZE: 14px; HEIGHT: auto; WIDTH: auto; FLOAT: none; COLOR: rgb(0,0,255)">php</SPAN></A></SPAN><SPAN 
 class=Apple-converted-space>&nbsp;</SPAN>curl也必然正常，但是请求https 
-SSH就未必正常，因为需要开启OUTPUT SSH端口443。</P></DIV></EM></EM></SPAN></BODY></HTML>
+SSH就未必正常，因为需要开启OUTPUT SSH端口443。</P></DIV>
+<P>&nbsp;</P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial"><SPAN 
+class=wp_keywordlink_affiliate style="BOX-SIZING: border-box"><A title=Linux 
+style="BOX-SIZING: border-box; COLOR: rgb(52,104,164)" 
+href="http://www.1987.name/t/linux" target=_blank>Linux</A>&nbsp;<STRONG 
+style="BOX-SIZING: border-box">curl命令</STRONG>是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称curl为下载工具。作为一款强力工具，curl支持包括HTTP、HTTPS、FTP等众多协议，还支持POST、cookies、认证、从指定偏移处下载部分文件、用户代理字符串、限速、文件大小、进度条等特征。做网页处理流程和数据检索自动化，curl可以祝一臂之力。</SPAN></P>
+<H2 id=curl命令选项 
+style="BOX-SIZING: border-box; FONT-SIZE: 21px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl命令选项</H2>
+<P>
+<TABLE 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BORDER-RIGHT: silver 1px solid; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; BORDER-LEFT: silver 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial" 
+cellSpacing=0 cellPadding=0 border=0>
+  <TBODY style="BOX-SIZING: border-box">
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-a/--append</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">上传文件时，附加到目标文件</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-A/--user-agent 
+      &lt;string&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置用户代理发送给服务器</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-anyauth</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">可以使用“任何”身份验证方法</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-b/--cookie 
+      &lt;name=string/file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">cookie字符串或文件读取位置</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--basic</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用HTTP基本验证</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-B/--use-ascii</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用ASCII 
+      /文本传输</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-c/--cookie-jar 
+      &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">操作结束后把cookie写入到这个文件中</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-C/--continue-at 
+      &lt;offset&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">断点续转</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-d/--data 
+      &lt;data&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">HTTP 
+      POST方式传送数据</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--data-ascii &lt;data&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">以ascii的方式post数据</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--data-binary &lt;data&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">以二进制的方式post数据</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--negotiate</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用HTTP身份验证</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--digest</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用数字身份验证</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--disable-eprt</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">禁止使用EPRT或LPRT</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--disable-epsv</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">禁止使用EPSV</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-D/--dump-header 
+      &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">把header信息写入到该文件中</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--egd-file &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">为随机数据(SSL)设置EGD 
+      socket路径</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--tcp-nodelay</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用TCP_NODELAY选项</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-e/--referer</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">来源网址</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-E/--cert 
+      &lt;cert[:passwd]&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">客户端证书文件和密码 
+      (SSL)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--cert-type &lt;type&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">证书文件类型 
+      (DER/PEM/ENG) (SSL)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--key &lt;key&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">私钥文件名 
+      (SSL)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--key-type &lt;type&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">私钥文件类型 
+      (DER/PEM/ENG) (SSL)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--pass &lt;pass&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">私钥密码 
+      (SSL)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--engine &lt;eng&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">加密引擎使用 
+      (SSL). "--engine list" for list</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--cacert &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">CA证书 
+      (SSL)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--capath &lt;directory&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">CA目录 
+      (made using c_rehash) to verify peer against (SSL)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ciphers &lt;list&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">SSL密码</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--compressed</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">要求返回是压缩的形势 
+      (using deflate or gzip)</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--connect-timeout &lt;seconds&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置最大请求时间</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--create-dirs</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">建立本地目录的目录层次结构</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--crlf</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">上传是把LF转变成CRLF</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-f/--fail</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">连接失败时不显示http错误</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ftp-create-dirs</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">如果远程目录不存在，创建远程目录</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ftp-method [multicwd/nocwd/singlecwd]</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">控制CWD的使用</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ftp-pasv</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用 
+      PASV/EPSV 代替端口</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ftp-skip-pasv-ip</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用PASV的时候,忽略该IP地址</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ftp-ssl</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">尝试用 
+      SSL/TLS 来进行ftp数据传输</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ftp-ssl-reqd</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">要求用 
+      SSL/TLS 来进行ftp数据传输</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-F/--form 
+      &lt;name=content&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">模拟http表单提交数据</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--form-string &lt;name=string&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">模拟http表单提交数据</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-g/--globoff</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">禁用网址序列和范围使用{}和[]</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-G/--get</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">以get的方式来发送数据</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-H/--header 
+      &lt;line&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">自定义头信息传递给服务器</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ignore-content-length</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">忽略的HTTP头信息的长度</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-i/--include</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">输出时包括protocol头信息</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-I/--head</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">只显示请求头信息</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-j/--junk-session-cookies</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">读取文件进忽略session 
+      cookie</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--interface &lt;interface&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用指定网络接口/地址</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--krb4 &lt;level&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用指定安全级别的krb4</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-k/--insecure</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">允许不使用证书到SSL站点</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-K/--config</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">指定的配置文件读取</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-l/--list-only</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">列出ftp目录下的文件名称</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--limit-rate &lt;rate&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置传输速度</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--local-port&lt;NUM&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">强制使用本地端口号</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-m/--max-time 
+      &lt;seconds&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置最大传输时间</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--max-redirs &lt;num&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置最大读取的目录数</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--max-filesize &lt;bytes&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置最大下载的文件总量</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-M/--manual</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">显示全手动</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-n/--netrc</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">从netrc文件中读取用户名和密码</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--netrc-optional</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用 
+      .netrc 或者 URL来覆盖-n</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--ntlm</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用 
+      HTTP NTLM 身份验证</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-N/--no-buffer</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">禁用缓冲输出</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-o/--output</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">把输出写到该文件中</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-O/--remote-name</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">把输出写到该文件中，保留远程文件的文件名</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-p/--proxytunnel</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用HTTP代理</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--proxy-anyauth</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">选择任一代理身份验证方法</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--proxy-basic</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">在代理上使用基本身份验证</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--proxy-digest</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">在代理上使用数字身份验证</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--proxy-ntlm</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">在代理上使用ntlm身份验证</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-P/--ftp-port 
+      &lt;address&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">使用端口地址，而不是使用PASV</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-q</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">作为第一个参数，关闭 
+      .curlrc</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-Q/--quote 
+      &lt;cmd&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">文件传输前，发送命令到服务器</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-r/--range 
+      &lt;range&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">检索来自HTTP/1.1或FTP服务器字节范围</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">--range-file</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">读取（SSL）的随机文件</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-R/--remote-time</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">在本地生成文件时，保留远程文件时间</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--retry &lt;num&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">传输出现问题时，重试的次数</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--retry-delay &lt;seconds&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">传输出现问题时，设置重试间隔时间</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--retry-max-time &lt;seconds&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">传输出现问题时，设置最大重试时间</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-s/--silent</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">静默模式。不输出任何东西</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-S/--show-error</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">显示错误</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--socks4 &lt;host[:port]&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">用socks4代理给定主机和端口</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--socks5 &lt;host[:port]&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">用socks5代理给定主机和端口</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--stderr &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp;</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-t/--telnet-option 
+      &lt;OPT=val&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">Telnet选项设置</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--trace &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">对指定文件进行debug</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--trace-ascii &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">Like 
+      --跟踪但没有hex输出</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--trace-time</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">跟踪/详细输出时，添加时间戳</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-T/--upload-file 
+      &lt;file&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">上传文件</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">&nbsp; 
+      &nbsp; &nbsp;--url &lt;URL&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">Spet 
+      URL to work with</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-u/--user 
+      &lt;user[:password]&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置服务器的用户和密码</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-U/--proxy-user 
+      &lt;user[:password]&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">设置代理用户名和密码</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-w/--write-out 
+      [format]</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">什么输出完成后</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-x/--proxy 
+      &lt;host[:port]&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">在给定的端口上使用HTTP代理</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-X/--request 
+      &lt;command&gt;</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">指定什么命令</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-y/--speed-time</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">放弃限速所要的时间，默认为30</TD></TR>
+  <TR style="BOX-SIZING: border-box">
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">-Y/--speed-limit</TD>
+    <TD 
+    style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: silver 1px solid; FONT-FAMILY: Verdana, Helvetica, Arial; BORDER-RIGHT: silver 1px solid; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: silver 1px solid; WORD-BREAK: break-all; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 3px; BORDER-LEFT: silver 1px solid; LINE-HEIGHT: 1.5; PADDING-RIGHT: 3px">停止传输速度的限制，速度时间</TD></TR></TBODY></TABLE></P>
+<H2 id=curl常用操作 
+style="BOX-SIZING: border-box; FONT-SIZE: 21px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl常用操作</H2>
+<H3 id=文件下载 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">文件下载</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl命令可以用来执行下载、发送各种HTTP请求，指定HTTP头部等操作。如果系统没有curl可以使用 
+yum install curl 
+安装，也可以下载安装。curl是将下载文件输出到stdout，将进度信息输出到stderr，不显示进度信息使用&nbsp;<STRONG 
+style="BOX-SIZING: border-box">--silent&nbsp;</STRONG>选项。</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl URL --silent</PRE>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">这条命令是将下载文件输出到终端，所有下载的数据都被写入到stdout。</P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">使用选项&nbsp;<STRONG 
+style="BOX-SIZING: border-box">-O&nbsp;</STRONG>将下载的数据写入到文件，必须使用文件的绝对地址：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl http://www.1987.name/text.iso --silent -O</PRE>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">选项&nbsp;<STRONG 
+style="BOX-SIZING: border-box">-o</STRONG>&nbsp;将下载数据写入到指定名称的文件中，并使用&nbsp;<STRONG 
+style="BOX-SIZING: border-box">--progress</STRONG>&nbsp;显示进度条：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl http://www.1987.name/test.iso -o filename.iso --progress
+######################################### 100.0%</PRE>
+<H3 id=断点续传 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">断点续传</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl能够从特定的文件偏移处继续下载，它可以通过指定一个便宜量来下载部分文件：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl URL/File -C 偏移量
+
+#偏移量是<STRONG style="BOX-SIZING: border-box">以字节为单位的整数</STRONG>，如果让curl自动推断出正确的续传位置使用-C -：
+curl -C -URL</PRE>
+<H3 id=使用curl设置参照页字符串 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">使用curl设置参照页字符串</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">参照页是位于HTTP头部中的一个字符串，用来表示用户是从哪个页面到达当前页面的，如果用户点击网页A中的某个连接，那么用户就会跳转到B网页，网页B头部的参照页字符串就包含网页A的URL。</P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">使用 
+--referer 选项指定参照页字符串：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl --referer http://www.google.com http://www.1987.name</PRE>
+<H3 id=用curl设置cookies 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">用curl设置cookies</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">使用 
+--cookie "COKKIES" 选项来指定cookie，多个cookie使用分号分隔：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl http://www.1987.name --cookie "user=root;pass=123456"</PRE>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">将cookie另存为一个文件，使用 
+--cookie-jar 选项：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl URL --cookie-jar cookie_file</PRE>
+<H3 id=用curl设置用户代理字符串 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">用curl设置用户代理字符串</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">有些网站访问会提示只能使用IE浏览器来访问，这是因为这些网站设置了检查用户代理，可以使用curl把用户代理设置为IE，这样就可以访问了。使用 
+--user-agent 或者-A 选项：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl URL --user-agent "Mozilla/5.0"
+curl URL -A "Mozilla/5.0"</PRE>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">其他HTTP头部信息也可以使用curl来发送，使用 
+-H "头部信息" 传递多个头部信息，例如：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl -H "Host:www.1987.name" -H "Accept-language:zh-cn" URL</PRE>
+<H3 id=curl的带宽控制和下载配额 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl的带宽控制和下载配额</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">使用 
+--limit-rate 限制curl的下载速度：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl URL --limit-rate 50k</PRE>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">命令中用k（千字节）和m（兆字节）指定下载速度限制。</P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">使用 
+--max-filesize 指定可下载的最大文件大小：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl URL --max-filesize bytes</PRE>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">如果文件大小超出限制，命令则返回一个<STRONG 
+style="BOX-SIZING: border-box">非0</STRONG>退出码，如果命令正常则<STRONG 
+style="BOX-SIZING: border-box">返回0</STRONG>。</P>
+<H3 id=用curl进行认证 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">用curl进行认证</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">使用curl选项&nbsp;-u&nbsp;可以完成HTTP或者FTP的认证，可以指定密码，也可以不指定密码在后续操作中输入密码：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">curl -u user:pwd http://test.1987.name
+curl -u user http://test.1987.name</PRE>
+<H3 id=只打印响应头部信息 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: verdana; BACKGROUND: url(images/title.gif) rgb(255,255,255) fixed no-repeat left top; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(102,102,102); FONT-STYLE: normal; PADDING-TOP: 12px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">只打印响应头部信息</H3>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">通过&nbsp;<STRONG 
+style="BOX-SIZING: border-box">-I</STRONG>&nbsp;或者<STRONG 
+style="BOX-SIZING: border-box">&nbsp;-head</STRONG>&nbsp;可以只打印出HTTP头部信息：</P><PRE style="BOX-SIZING: border-box; FONT-SIZE: 13px; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(75,75,75); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial">[root@localhost text]# curl -I http://www.1987.name
+HTTP/1.1 200 OK
+Server: nginx/1.2.5
+Date: Mon, 10 Dec 2012 09:24:34 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Pingback: http://www.1987.name/xmlrpc.php</PRE></EM></EM></SPAN></BODY></HTML>

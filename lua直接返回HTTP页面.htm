@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>lua直接返回HTTP页面</TITLE>
+</HEAD>
+<BODY>
+<P>lua直接返回HTTP页面</P>
+<P>#!/usr/bin/lua<BR>local log = require "luci.log"<BR>local fs = require 
+"nixio.fs"<BR>local sys = require "luci.sys"<BR>local nixio&nbsp; = require 
+"nixio"</P>
+<P>local headers="";<BR>local content_type="text/html"<BR>local Status=200</P>
+<P>local rawdata="";</P>
+<P>function getsrcbody()<BR>&nbsp;return limitsource(io.stdin, 
+tonumber(os.getenv("CONTENT_LENGTH")))<BR>end</P>
+<P>function init()<BR>&nbsp;rawdata=getsrcbody()<BR>end</P>
+<P>function getrawdata()<BR>&nbsp;return rawdata<BR>end</P>
+<P>function limitsource(handle, limit)<BR>&nbsp;limit = limit or 0</P>
+<P>&nbsp;if limit &lt; 1 
+then<BR>&nbsp;&nbsp;handle:close()<BR>&nbsp;&nbsp;return 
+nil<BR>&nbsp;else<BR>&nbsp;&nbsp;local chunk = 
+handle:read(limit)<BR>&nbsp;&nbsp;if not chunk then handle:close() 
+end<BR>&nbsp;&nbsp;return chunk<BR>&nbsp;end<BR>end</P>
+<P>function urlencode( str )</P>
+<P>&nbsp;local function __chrenc( chr )<BR>&nbsp;&nbsp;return 
+string.format(<BR>&nbsp;&nbsp;&nbsp;"%%%02x", string.byte( chr 
+)<BR>&nbsp;&nbsp;)<BR>&nbsp;end</P>
+<P>&nbsp;if type(str) == "string" then<BR>&nbsp;&nbsp;str = 
+str:gsub(<BR>&nbsp;&nbsp;&nbsp;"([^a-zA-Z0-9$_%-%.!*'(),])",<BR>&nbsp;&nbsp;&nbsp;__chrenc<BR>&nbsp;&nbsp;)<BR>&nbsp;end</P>
+<P>&nbsp;return str<BR>end</P>
+<P>function urldecode( str, no_plus )</P>
+<P>&nbsp;local function __chrdec( hex )<BR>&nbsp;&nbsp;return string.char( 
+tonumber( hex, 16 ) )<BR>&nbsp;end</P>
+<P>&nbsp;if type(str) == "string" then<BR>&nbsp;&nbsp;if not no_plus 
+then<BR>&nbsp;&nbsp;&nbsp;str = str:gsub( "+", " " )<BR>&nbsp;&nbsp;end</P>
+<P>&nbsp;&nbsp;str = str:gsub( "%%([a-fA-F0-9][a-fA-F0-9])", __chrdec 
+)<BR>&nbsp;end</P>
+<P>&nbsp;return str<BR>end</P>
+<P>--log.print(urldecode(os.getenv("QUERY_STRING")))</P>
+<P>function httpGet(k)<BR>&nbsp;local args = {}<BR>&nbsp;local c = 
+string.gsub("&amp;" .. (os.getenv("QUERY_STRING") or "") .. "&amp;", 
+"%s*&amp;%s*", "&amp;")<BR>&nbsp;local list = 
+string.split(urldecode(c),"&amp;")<BR>&nbsp;for arg,argval in ipairs(list) 
+do<BR>&nbsp;&nbsp;if string.len(argval) ~= 0 then<BR>&nbsp;&nbsp;&nbsp;local key 
+= string.split(argval,"=")<BR>&nbsp;&nbsp;&nbsp;args[key[1]] = key[2] or 
+""<BR>&nbsp;&nbsp;end<BR>&nbsp;end<BR>&nbsp;if k then<BR>&nbsp;&nbsp;return 
+args[k]<BR>&nbsp;else<BR>&nbsp;&nbsp;return args<BR>&nbsp;end<BR>end</P>
+<P>log.print(tostring(httpGet))</P>
+<P>function httpPost(k)<BR>&nbsp;init()<BR>&nbsp;local args = {}<BR>&nbsp;local 
+c = string.gsub("&amp;" .. (tostring(rawdata) or "") .. "&amp;", "%s*&amp;%s*", 
+"&amp;")<BR>&nbsp;local list = string.split(urldecode(c),"&amp;")<BR>&nbsp;for 
+arg,argval in ipairs(list) do<BR>&nbsp;&nbsp;if string.len(argval) ~= 0 
+then<BR>&nbsp;&nbsp;&nbsp;local key = 
+string.split(argval,"=")<BR>&nbsp;&nbsp;&nbsp;args[key[1]] = key[2] or 
+""<BR>&nbsp;&nbsp;end<BR>&nbsp;end<BR>&nbsp;if k ~= nil 
+then<BR>&nbsp;&nbsp;return args[k]<BR>&nbsp;else<BR>&nbsp;&nbsp;return 
+args<BR>&nbsp;end<BR>end</P>
+<P>local reboot = httpPost("reboot")<BR>if reboot and tonumber(reboot) == 1 
+then<BR>&nbsp;os.execute("reboot")<BR>end</P>
+<P>local html='&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta 
+charset="utf-8"&gt;&lt;meta http-equiv="Expires"CONTENT="0"&gt;&lt;meta 
+http-equiv="Cache-Control"content="no-cache"/&gt;&lt;meta 
+http-equiv="Pragma"contect="no-cache"&gt;&lt;script 
+src="/luci-static/bootstrap/fanqie/js/jquery-1.11.3.min.js"&gt;&lt;/script&gt;&lt;script&gt;$(function(){$("#reboot").click(function(){var 
+$this=$(this);if($this.hasClass("disable")){return 
+false}$this.addClass("disable");$this.html("正在重启...");$.ajax({type:"POST",url:"/cgi-bin/test",data:{"reboot":1},dataType:"json",success:function(res){},error:function(e){}});window.setTimeout(function(){window.location.reload()},150000)})});&lt;/script&gt;&lt;/head&gt;&lt;body 
+style="background-color: 
+white"&gt;&lt;p&gt;路由系统已经升级到新版本，请重新启动路由器&lt;/p&gt;&lt;button 
+type="button"id="reboot"&gt;重启路由&lt;/button&gt;&lt;/body&gt;&lt;/html&gt;'</P>
+<P>io.write("Status: " , tostring(Status) , "\r\n")<BR>io.write("Content-Type:" 
+,content_type ,"\r\n")</P>
+<P>if string.len(headers)~=nil then<BR>&nbsp;io.write(headers)<BR>end</P>
+<P><BR>io.write("\r\n",tostring(html or 
+""),"\r\n")<BR>io.flush()<BR>io.close()<BR></P>
+</BODY>
+</HTML>
