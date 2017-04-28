@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>openwrt切换到内存系统</TITLE>
+</HEAD>
+<BODY>
+<P>openwrt切换到内存系统</P>
+<P>涉及文件：/sbin/sysupgrade、/lib/upgrade/common.sh、/lib/upgrade/platform.sh</P>
+<P><STRONG><FONT 
+color=#ff0000>主要实现文件为/lib/upgrade/common.sh，方法为supivot()</FONT></STRONG></P>
+<P>#!/bin/sh</P>
+<P>RAM_ROOT=/tmp/root</P>
+<P>[ -x /usr/bin/ldd ] || ldd() { LD_TRACE_LOADED_OBJECTS=1 $*; }<BR>libs() { 
+ldd $* 2&gt;/dev/null | sed -r 's/(.* =&gt; )?(.*) .*/\2/'; }</P>
+<P>install_file() { # &lt;file&gt; [ &lt;file&gt; ... ]<BR>&nbsp;for file in 
+"$@"; do<BR>&nbsp;&nbsp;dest="$RAM_ROOT/$file"<BR>&nbsp;&nbsp;[ -f $file -a ! -f 
+$dest ] &amp;&amp; {<BR>&nbsp;&nbsp;&nbsp;dir="$(dirname 
+$dest)"<BR>&nbsp;&nbsp;&nbsp;mkdir -p "$dir"<BR>&nbsp;&nbsp;&nbsp;cp $file 
+$dest<BR>&nbsp;&nbsp;}<BR>&nbsp;done<BR>}</P>
+<P>install_bin() { # &lt;file&gt; [ &lt;symlink&gt; ... 
+]<BR>&nbsp;src=$1<BR>&nbsp;files=$1<BR>&nbsp;[ -x "$src" ] &amp;&amp; 
+files="$src $(libs $src)"<BR>&nbsp;install_file 
+$files<BR>&nbsp;shift<BR>&nbsp;for link in "$@"; do 
+{<BR>&nbsp;&nbsp;dest="$RAM_ROOT/$link"<BR>&nbsp;&nbsp;dir="$(dirname 
+$dest)"<BR>&nbsp;&nbsp;mkdir -p "$dir"<BR>&nbsp;&nbsp;[ -f "$dest" ] || ln -s 
+$src $dest<BR>&nbsp;}; done<BR>}</P>
+<P>supivot() { # &lt;new_root&gt; &lt;old_root&gt;<BR>&nbsp;/bin/mount | grep 
+"on $1 type" 2&gt;&amp;- 1&gt;&amp;- || /bin/mount -o bind $1 $1<BR>&nbsp;mkdir 
+-p $1$2 $1/proc $1/sys $1/dev $1/tmp $1/overlay &amp;&amp; \<BR>&nbsp;/bin/mount 
+-o noatime,move /proc $1/proc &amp;&amp; \<BR>&nbsp;pivot_root $1 $1$2 || 
+{<BR>&nbsp;&nbsp;/bin/umount -l $1 $1<BR>&nbsp;&nbsp;return 1<BR>&nbsp;}</P>
+<P>&nbsp;/bin/mount -o noatime,move $2/sys /sys<BR>&nbsp;/bin/mount -o 
+noatime,move $2/dev /dev<BR>&nbsp;/bin/mount -o noatime,move $2/tmp 
+/tmp<BR>&nbsp;/bin/mount -o noatime,move $2/overlay /overlay 
+2&gt;&amp;-<BR>&nbsp;return 0<BR>}</P>
+<P>run_ramfs() { # &lt;command&gt; [...]<BR>&nbsp;install_bin /bin/busybox 
+/bin/ash /bin/sh /bin/mount /bin/umount&nbsp;\<BR>&nbsp;&nbsp;/sbin/pivot_root 
+/usr/bin/wget /sbin/reboot /bin/sync /bin/dd&nbsp;\<BR>&nbsp;&nbsp;/bin/grep 
+/bin/cp /bin/mv /bin/tar /usr/bin/md5sum 
+"/usr/bin/["&nbsp;\<BR>&nbsp;&nbsp;/bin/dd /bin/vi /bin/ls /bin/cat /usr/bin/awk 
+/usr/bin/hexdump&nbsp;\<BR>&nbsp;&nbsp;/bin/sleep /bin/zcat /usr/bin/bzcat 
+/usr/bin/printf /usr/bin/wc \<BR>&nbsp;&nbsp;/bin/cut /usr/bin/printf /bin/sync 
+/bin/mkdir /bin/rmdir&nbsp;\<BR>&nbsp;&nbsp;/bin/rm /usr/bin/basename /bin/kill 
+/bin/chmod /bin/sed /bin/touch /usr/bin/cut /usr/sbin/crond /bin/date 
+/usr/bin/killall</P>
+<P>&nbsp;install_bin /sbin/mtd<BR>&nbsp;install_bin 
+/sbin/mount_root<BR>&nbsp;install_bin /sbin/snapshot<BR>&nbsp;install_bin 
+/sbin/snapshot_tool<BR>&nbsp;install_bin 
+/usr/sbin/ubiupdatevol<BR>&nbsp;install_bin 
+/usr/sbin/ubiattach<BR>&nbsp;install_bin /usr/sbin/ubiblock<BR>&nbsp;install_bin 
+/usr/sbin/ubiformat<BR>&nbsp;install_bin 
+/usr/sbin/ubidetach<BR>&nbsp;install_bin /usr/sbin/ubirsvol<BR>&nbsp;install_bin 
+/usr/sbin/ubirmvol<BR>&nbsp;install_bin /usr/sbin/ubimkvol<BR>&nbsp;for file in 
+$RAMFS_COPY_BIN; do<BR>&nbsp;&nbsp;install_bin ${file//:/ 
+}<BR>&nbsp;done<BR>&nbsp;install_file /etc/resolv.conf /lib/*.sh 
+/lib/functions/*.sh /lib/upgrade/*.sh 
+$RAMFS_COPY_DATA<BR>&nbsp;<BR>&nbsp;install_file /etc/ssh/* /tmp/etc/* 
+/etc/ssl/certs/* /lib/fanqie/* /etc/fanqie/* /etc/config/* 
+\<BR>&nbsp;&nbsp;/usr/share/libubox/jshn.sh /etc/crontabs/root /www/index.html 
+/etc/passwd \<BR>&nbsp;&nbsp;/etc/shadow /etc/group 
+/usr/share/shellinabox/white-on-black.css<BR>&nbsp;<BR>&nbsp;echo '&lt;!doctype 
+html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;meta 
+http-equiv="Expires"CONTENT="0"&gt;&lt;meta 
+http-equiv="Cache-Control"content="no-cache"/&gt;&lt;meta 
+http-equiv="Pragma"contect="no-cache"&gt;&lt;/head&gt;&lt;body 
+style="background-color: 
+white"&gt;&lt;p&gt;路由系统正在升级，请稍后...&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;' &gt; 
+$RAM_ROOT/www/index.html<BR>&nbsp;<BR>&nbsp;mkdir 
+$RAM_ROOT/www/cgi-bin<BR>&nbsp;echo '#!/usr/bin/lua' &gt; 
+$RAM_ROOT/www/cgi-bin/reboot<BR>&nbsp;echo 'os.execute("reboot")' &gt;&gt; 
+$RAM_ROOT/www/cgi-bin/reboot<BR>&nbsp;chmod 755 
+$RAM_ROOT/www/cgi-bin/reboot<BR>&nbsp;<BR>&nbsp;cp 
+/www/luci-static/bootstrap/fanqie/js/jquery-1.11.3.min.js 
+$RAM_ROOT/www/jquery-1.11.3.min.js<BR>&nbsp;echo "30 5 * * * [ -f /tmp/updated ] 
+&amp;&amp; reboot" &gt; $RAM_ROOT/etc/crontabs/root</P>
+<P>&nbsp;[ -L "/lib64" ] &amp;&amp; ln -s /lib $RAM_ROOT/lib64</P>
+<P>&nbsp;supivot $RAM_ROOT /mnt || {<BR>&nbsp;&nbsp;echo "Failed to switch over 
+to ramfs. Please reboot."<BR>&nbsp;&nbsp;exit 1<BR>&nbsp;}</P>
+<P>&nbsp;/bin/mount -o remount,ro /mnt<BR>&nbsp;/bin/umount -l /mnt</P>
+<P>&nbsp;grep /overlay /proc/mounts &gt; /dev/null &amp;&amp; 
+{<BR>&nbsp;&nbsp;/bin/mount -o noatime,remount,ro 
+/overlay<BR>&nbsp;&nbsp;/bin/umount -l /overlay<BR>&nbsp;}</P>
+<P>&nbsp;# spawn a new shell from ramdisk to reduce the probability of cache 
+issues<BR>&nbsp;exec /bin/busybox ash -c "$*"<BR>}</P>
+<P>kill_remaining() { # [ &lt;signal&gt; ]<BR>&nbsp;local 
+sig="${1:-TERM}"<BR>&nbsp;echo -n "Sending $sig to remaining processes ... "</P>
+<P>&nbsp;local my_pid=$$<BR>&nbsp;local my_ppid=$(cut -d' ' -f4&nbsp; 
+/proc/$my_pid/stat)<BR>&nbsp;local my_ppisupgraded=<BR>&nbsp;grep -q upgraded 
+/proc/$my_ppid/cmdline &gt;/dev/null &amp;&amp; {<BR>&nbsp;&nbsp;local 
+my_ppisupgraded=1<BR>&nbsp;}<BR>&nbsp;<BR>&nbsp;local stat<BR>&nbsp;for stat in 
+/proc/[0-9]*/stat; do<BR>&nbsp;&nbsp;[ -f "$stat" ] || continue</P>
+<P>&nbsp;&nbsp;local pid name state ppid rest<BR>&nbsp;&nbsp;read pid name state 
+ppid rest &lt; $stat<BR>&nbsp;&nbsp;name="${name#(}"; name="${name%)}"</P>
+<P>&nbsp;&nbsp;local cmdline<BR>&nbsp;&nbsp;read cmdline &lt; 
+/proc/$pid/cmdline</P>
+<P>&nbsp;&nbsp;# Skip kernel threads<BR>&nbsp;&nbsp;[ -n "$cmdline" ] || 
+continue</P>
+<P>&nbsp;&nbsp;if [ $$ -eq 1 ] || [ $my_ppid -eq 1 ] &amp;&amp; [ -n 
+"$my_ppisupgraded" ]; then<BR>&nbsp;&nbsp;&nbsp;# Running as init process, kill 
+everything except me<BR>&nbsp;&nbsp;&nbsp;if [ $pid -ne $$ ] &amp;&amp; [ $pid 
+-ne $my_ppid ]; then<BR>&nbsp;&nbsp;&nbsp;&nbsp;echo -n "$name 
+"<BR>&nbsp;&nbsp;&nbsp;&nbsp;kill -$sig $pid 
+2&gt;/dev/null<BR>&nbsp;&nbsp;&nbsp;fi<BR>&nbsp;&nbsp;else 
+<BR>&nbsp;&nbsp;&nbsp;case "$name" in<BR>&nbsp;&nbsp;&nbsp;&nbsp;# Skip 
+essential 
+services<BR>&nbsp;&nbsp;&nbsp;&nbsp;*procd*|*ash*|*init*|*watchdog*|*ssh*|*dropbear*|*telnet*|*login*|*hostapd*|*wpa_supplicant*|*nas*) 
+: ;;</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;# Killable 
+process<BR>&nbsp;&nbsp;&nbsp;&nbsp;*)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if [ $pid 
+-ne $$ ] &amp;&amp; [ $ppid -ne $$ ]; 
+then<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo -n "$name 
+"<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kill -$sig $pid 
+2&gt;/dev/null<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi<BR>&nbsp;&nbsp;&nbsp;&nbsp;;;<BR>&nbsp;&nbsp;&nbsp;esac<BR>&nbsp;&nbsp;fi<BR>&nbsp;done<BR>&nbsp;echo 
+""<BR>}</P>
+<P>run_hooks() {<BR>&nbsp;local arg="$1"; shift<BR>&nbsp;for func in "$@"; 
+do<BR>&nbsp;&nbsp;eval "$func $arg"<BR>&nbsp;done<BR>}</P>
+<P>ask_bool() {<BR>&nbsp;local default="$1"; shift;<BR>&nbsp;local 
+answer="$default"</P>
+<P>&nbsp;[ "$INTERACTIVE" -eq 1 ] &amp;&amp; {<BR>&nbsp;&nbsp;case "$default" 
+in<BR>&nbsp;&nbsp;&nbsp;0) echo -n "$* (y/N): ";;<BR>&nbsp;&nbsp;&nbsp;*) echo 
+-n "$* (Y/n): ";;<BR>&nbsp;&nbsp;esac<BR>&nbsp;&nbsp;read 
+answer<BR>&nbsp;&nbsp;case "$answer" in<BR>&nbsp;&nbsp;&nbsp;y*) 
+answer=1;;<BR>&nbsp;&nbsp;&nbsp;n*) answer=0;;<BR>&nbsp;&nbsp;&nbsp;*) 
+answer="$default";;<BR>&nbsp;&nbsp;esac<BR>&nbsp;}<BR>&nbsp;[ "$answer" -gt 0 
+]<BR>}</P>
+<P>v() {<BR>&nbsp;[ "$VERBOSE" -ge 1 ] &amp;&amp; echo "$@"<BR>}</P>
+<P>rootfs_type() {<BR>&nbsp;/bin/mount | awk '($3 ~ /^\/$/) &amp;&amp; ($5 !~ 
+/rootfs/) { print $5 }'<BR>}</P>
+<P>get_image() { # &lt;source&gt; [ &lt;command&gt; ]<BR>&nbsp;local 
+from="$1"<BR>&nbsp;local conc="$2"<BR>&nbsp;local cmd</P>
+<P>&nbsp;case "$from" in<BR>&nbsp;&nbsp;<A 
+href="http://*|ftp://">http://*|ftp://</A>*) cmd="wget -O- 
+-q";;<BR>&nbsp;&nbsp;*) cmd="cat";;<BR>&nbsp;esac<BR>&nbsp;if [ -z "$conc" ]; 
+then<BR>&nbsp;&nbsp;local magic="$(eval $cmd \"$from\" 2&gt;/dev/null | dd bs=2 
+count=1 2&gt;/dev/null | hexdump -n 2 -e '1/1 "%02x"')"<BR>&nbsp;&nbsp;case 
+"$magic" in<BR>&nbsp;&nbsp;&nbsp;1f8b) conc="zcat";;<BR>&nbsp;&nbsp;&nbsp;425a) 
+conc="bzcat";;<BR>&nbsp;&nbsp;esac<BR>&nbsp;fi</P>
+<P>&nbsp;eval "$cmd \"$from\" 2&gt;/dev/null ${conc:+| $conc}"<BR>}</P>
+<P>get_magic_word() {<BR>&nbsp;(get_image "$@" | dd bs=2 count=1 | hexdump -v -n 
+2 -e '1/1 "%02x"') 2&gt;/dev/null<BR>}</P>
+<P>get_magic_long() {<BR>&nbsp;(get_image "$@" | dd bs=4 count=1 | hexdump -v -n 
+4 -e '1/1 "%02x"') 2&gt;/dev/null<BR>}</P>
+<P>jffs2_copy_config() {<BR>&nbsp;if grep rootfs_data /proc/mtd &gt;/dev/null; 
+then<BR>&nbsp;&nbsp;# squashfs+jffs2<BR>&nbsp;&nbsp;mtd -e rootfs_data 
+jffs2write "$CONF_TAR" rootfs_data<BR>&nbsp;else<BR>&nbsp;&nbsp;# 
+jffs2<BR>&nbsp;&nbsp;mtd jffs2write "$CONF_TAR" rootfs<BR>&nbsp;fi<BR>}</P>
+<P># Flash firmware to MTD partition<BR>#<BR># $(1): path to image<BR># $(2): 
+(optional) pipe command to extract firmware, e.g. dd bs=n 
+skip=m<BR>default_do_upgrade() {<BR>&nbsp;sync<BR>&nbsp;if [ "$SAVE_CONFIG" -eq 
+1 ]; then<BR>&nbsp;&nbsp;get_image "$1" "$2" | mtd $MTD_CONFIG_ARGS -j 
+"$CONF_TAR" write - "${PART_NAME:-image}"<BR>&nbsp;else<BR>&nbsp;&nbsp;get_image 
+"$1" "$2" | mtd write - "${PART_NAME:-image}"<BR>&nbsp;fi<BR>}</P>
+<P>do_upgrade() {<BR>&nbsp;v "Performing system upgrade..."<BR>&nbsp;if type 
+'platform_do_upgrade' &gt;/dev/null 2&gt;/dev/null; 
+then<BR>&nbsp;&nbsp;platform_do_upgrade 
+"$ARGV"<BR>&nbsp;else<BR>&nbsp;&nbsp;default_do_upgrade "$ARGV"<BR>&nbsp;fi</P>
+<P>&nbsp;if [ "$SAVE_CONFIG" -eq 1 ] &amp;&amp; type 'platform_copy_config' 
+&gt;/dev/null 2&gt;/dev/null; 
+then<BR>&nbsp;&nbsp;platform_copy_config<BR>&nbsp;fi</P>
+<P>&nbsp;v "Upgrade completed"<BR>&nbsp;<BR>&nbsp;if [ $NOKILL -eq 0 ]; 
+then<BR>&nbsp;&nbsp;[ -n "$DELAY" ] &amp;&amp; sleep 
+"$DELAY"<BR>&nbsp;&nbsp;ask_bool 1 "Reboot" &amp;&amp; {<BR>&nbsp;&nbsp;&nbsp;v 
+"Rebooting system..."<BR>&nbsp;&nbsp;&nbsp;reboot -f<BR>&nbsp;&nbsp;&nbsp;sleep 
+5<BR>&nbsp;&nbsp;&nbsp;echo b 2&gt;/dev/null 
+&gt;/proc/sysrq-trigger<BR>&nbsp;&nbsp;}<BR>&nbsp;else<BR>&nbsp;&nbsp;echo 
+'&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta 
+charset="utf-8"&gt;&lt;meta http-equiv="Expires" CONTENT="0"&gt;&lt;meta 
+http-equiv="Cache-Control" 
+content="no-cache,no-store,must-revalidate"/&gt;&lt;meta http-equiv="Pragma" 
+contect="no-cache"&gt;&lt;script 
+src="jquery-1.11.3.min.js"&gt;&lt;/script&gt;&lt;script&gt;$(function(){$("#reboot").click(function(){var 
+$this=$(this);if($this.hasClass("disable")){return 
+false}$this.addClass("disable");$this.html("正在重启...");$.ajax({url:"/cgi-bin/reboot",dataType:"json",success:function(res){},error:function(e){}});window.setTimeout(function(){window.location.reload()},150000)})});&lt;/script&gt;&lt;/head&gt;&lt;body 
+style="background-color: 
+white"&gt;&lt;p&gt;路由系统已经升级到新版本，请重新启动路由器&lt;/p&gt;&lt;button 
+type="button"id="reboot"&gt;重启路由&lt;/button&gt;&lt;/body&gt;&lt;/html&gt;' &gt; 
+/www/index.html<BR>&nbsp;fi<BR>}<BR></P>
+</BODY>
+</HTML>
