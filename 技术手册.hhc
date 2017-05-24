@@ -3015,6 +3015,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
 <PARAM NAME="Local" VALUE="web应用.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3275,6 +3276,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="cordova">
 <PARAM NAME="Local" VALUE="cordova.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3782,6 +3784,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MAC系统">
 <PARAM NAME="Local" VALUE="MAC系统.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3800,6 +3803,13 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="vm安装MAC">
 <PARAM NAME="Local" VALUE="vm安装MAC.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="如何在MAC虚拟机中访问主机共享的文件夹">
+<PARAM NAME="Local" VALUE="如何在MAC虚拟机中访问主机共享的文件夹.htm">
+<PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
 </UL>

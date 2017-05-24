@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>如何在MAC虚拟机中访问主机共享的文件夹</TITLE>
+</HEAD>
+<BODY>
+<P><STRONG>如何在MAC虚拟机中访问主机共享的文件夹</STRONG></P>
+<P>1、虚拟机--设置--共享--右侧设置好相关的共享文件夹（只读或可写）</P>
+<P>2、进入MAC系统，点击右上角Finder--偏好设置--通用--<FONT 
+color=#ff0000>已连接的服务器</FONT>（打勾，就会在桌面上显示共享的文件夹）</P>
+<P><STRONG>从命令访问共享的文件夹：</STRONG></P>
+<P>1、命令行输入<FONT color=#0000ff>df -h</FONT>查看磁盘使用情况，会发现共享文件是以mount挂载到<FONT 
+color=#ff0000>/Volumes/VMware Shared Folders</FONT>，直接cd到该目录即可</P>
+<P>2、如无法写操作，需要虚拟机共享设置中取消‘只读’选项</P>
+</BODY>
+</HTML>
