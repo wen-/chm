@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>mysql删除子查询</TITLE>
+</HEAD>
+<BODY>
+<P>mysql删除子查询</P>
+<P><FONT color=#ff0000>先查再删除</FONT></P><FONT color=#ff0000>
+<P>SELECT * FROM `短信发送表` WHERE 手机号 = 13533051889 AND 类型 = '注册验证码' AND DATE(发送时间) 
+= '2017-06-06' AND 短信编号 NOT IN ( select * from (SELECT MAX(短信编号) FROM `短信发送表` 
+where 手机号 = 13533051889)&nbsp;tmp );</P></FONT>
+<P><FONT color=#0000ff>DELETE FROM `短信发送表` WHERE 手机号 = 13533051889 AND 类型 = 
+'注册验证码' AND DATE(发送时间) = '2017-06-06' AND 短信编号 NOT IN ( select * from (SELECT 
+MAX(短信编号) FROM `短信发送表` where 手机号 = 13533051889)&nbsp;tmp );</FONT></P>
+<P><FONT color=#0000ff></FONT>&nbsp;</P>
+<P><FONT color=#0000ff>更新子查询</FONT></P>
+<P>UPDATE `短信发送表` SET 发送时间='2017-06-05' WHERE 手机号 = 13533051889 AND 类型 = '注册验证码' 
+AND DATE(发送时间) = '2017-06-06' AND 短信编号 NOT IN ( select * from (SELECT MAX(短信编号) 
+FROM `短信发送表` where 手机号 = 13533051889)&nbsp;tmp );</P>
+</BODY>
+</HTML>
