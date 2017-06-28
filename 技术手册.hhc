@@ -1936,7 +1936,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="HTML5--CSS3">
 <PARAM NAME="Local" VALUE="HTML5--CSS3.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3020,6 +3019,12 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="nodejs数据传输过程中的编码问题">
+<PARAM NAME="Local" VALUE="nodejs数据传输过程中的编码问题.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
 <PARAM NAME="Local" VALUE="web应用.htm">
@@ -3463,7 +3468,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3841,7 +3845,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="openwrt系统">
 <PARAM NAME="Local" VALUE="openwrt系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

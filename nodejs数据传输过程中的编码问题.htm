@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>nodejs数据传输过程中的编码问题</TITLE>
+</HEAD>
+<BODY>
+<P>nodejs数据传输过程中的编码问题</P>
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; MARGIN-BOTTOM: 16px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px !important; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(36,41,46); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>In 
+the API docs,<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(3,102,214); BACKGROUND-COLOR: transparent" 
+href="http://nodejs.org/docs/v0.6.7/api/streams.html#stream.setEncoding"><FONT 
+color=#ff0000>streams module</FONT></A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>describes<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>setEncoding(encoding)</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>as follows:</P>
+<BLOCKQUOTE 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 1em; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">Makes 
+  the data event emit a string instead of a<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>Buffer</CODE>.<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>encoding</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>can be<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>utf8</FONT>'</CODE>,<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>ascii</FONT>'</CODE>, or<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>base64</FONT>'</CODE>.</P></BLOCKQUOTE>
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; MARGIN-BOTTOM: 16px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(36,41,46); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>But<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(3,102,214); BACKGROUND-COLOR: transparent" 
+href="http://nodejs.org/docs/v0.6.7/api/net.html#socket.setEncoding"><FONT 
+color=#ff0000>net module</FONT></A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>makes<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>null</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>a default, but does not describe its 
+meaning:</P>
+<BLOCKQUOTE 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 1em; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">Sets 
+  the encoding (either<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>ascii</FONT>'</CODE>,<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>utf8</FONT>'</CODE>, or<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>base64</FONT>'</CODE>) for data that is received. Defaults 
+  to<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>null</CODE>.</P></BLOCKQUOTE>
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; MARGIN-BOTTOM: 16px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(36,41,46); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>It 
+is described in<SPAN class=Apple-converted-space>&nbsp;</SPAN><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(3,102,214); BACKGROUND-COLOR: transparent" 
+href="http://nodejs.org/docs/v0.6.7/api/http.html#request.setEncoding"><FONT 
+color=#ff0000>http module</FONT></A>:</P>
+<BLOCKQUOTE 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 16px; LETTER-SPACING: normal; PADDING-RIGHT: 1em; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>
+  <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">Set the 
+  encoding for the request body. Either<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>utf8</FONT>'</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>or<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'<FONT 
+  color=#0000ff>binary</FONT>'</CODE>. Defaults to<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>null</CODE>, 
+  which means that the<SPAN class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'data'</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>event will emit a<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>Buffer</CODE><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>object.</P></BLOCKQUOTE>
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; MARGIN-BOTTOM: 16px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(36,41,46); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>However, 
+current implementation does not do so. Actually,<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>null</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>means<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 3px'>'utf8'</CODE><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>in all Readable Streams in 
+core.</P>
+</BODY>
+</HTML>
