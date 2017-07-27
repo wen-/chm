@@ -1,0 +1,640 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>在linux下安装tesseract-ocr</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.7601.19003"></HEAD>
+<BODY>
+<P>在linux下安装tesseract-ocr</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="FONT-SIZE: 32px">注意：下面的下载网址和版本有更新的以最新的为准</SPAN></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">1. 
+在ubuntu下可以自动安装 &nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 629px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_1 height=18 name=ZeroClipboardMovie_1 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=1&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 561px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">sudo&nbsp;apt-get&nbsp;install&nbsp;tesseract-ocr&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">2.编译安装</SPAN><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; DISPLAY: inline !important; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; a.编译环境: gcc gcc-c++ make(这个环境一般机器都具备,可以忽略) &nbsp;&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 794px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_2 height=18 name=ZeroClipboardMovie_2 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=2&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 729px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">yum&nbsp;install&nbsp;gcc&nbsp;gcc-c++&nbsp;make&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; b.安装tesseract-ocr编译必须的包</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 933px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_3 height=18 name=ZeroClipboardMovie_3 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=3&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 871px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">yum/apt-get&nbsp;install&nbsp;autoconf&nbsp;automake&nbsp;libtool&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR></P>
+<P><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; c.增加图像解析需要的包，可以按照指定的格式选择包</SPAN><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; DISPLAY: inline !important; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1072px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_4 height=18 name=ZeroClipboardMovie_4 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=4&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1013px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">yum&nbsp;install&nbsp;libjpeg-devel&nbsp;libpng-devel&nbsp;libtiff-devel&nbsp;zlib-devel&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; ubuntu</SPAN><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; DISPLAY: inline !important; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1211px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_5 height=18 name=ZeroClipboardMovie_5 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=5&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1155px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">sudo&nbsp;apt-get&nbsp;install&nbsp;libpng12-dev&nbsp;&nbsp;</SPAN></SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">sudo&nbsp;apt-get&nbsp;install&nbsp;libjpeg62-dev&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">sudo&nbsp;apt-get&nbsp;install&nbsp;libtiff4-dev&nbsp;&nbsp;</SPAN></LI></OL></DIV>
+<P><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; d.下载 leptonica 包: </SPAN></P>
+<P><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp;</P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1386px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_6 height=18 name=ZeroClipboardMovie_6 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=6&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1333px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><A 
+  href="http://www.leptonica.org/download.html">http://www.leptonica.org/download.html</A></SPAN></SPAN>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">wget&nbsp;<A 
+  href="http://www.leptonica.org/source/leptonica-1.74.tar.gz">http://www.leptonica.org/source/leptonica-1.74.tar.gz</A><BR></SPAN></SPAN>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">tar&nbsp;-zxvf&nbsp;...&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">./configure&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">make&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">make&nbsp;install&nbsp;&nbsp;</SPAN></LI></OL></DIV>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">需要注意，leptonica的版本问题</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="FONT-FAMILY: Simsun">3.01 requires at least v1.67 of Leptonica.</SPAN><BR 
+style="FONT-FAMILY: Simsun"><SPAN style="FONT-FAMILY: Simsun">3.02 requires at 
+least v1.69 of Leptonica. (Both available in Ubuntu 12.04 Precise 
+Pangolin.)</SPAN><BR style="FONT-FAMILY: Simsun"><SPAN 
+style="FONT-FAMILY: Simsun">3.03 requires at least v1.70 of Leptonica. (Both 
+available in Ubuntu 14.04 Trusty Tahr.)</SPAN><BR></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">如果版本不一致，会出现问题如下：</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1701px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_7 height=18 name=ZeroClipboardMovie_7 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=7&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1651px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">Tesseract&nbsp;Open&nbsp;Source&nbsp;OCR&nbsp;Engine&nbsp;v3.02.02&nbsp;with&nbsp;Leptonica&nbsp;&nbsp;</SPAN></SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">Error&nbsp;in&nbsp;findTiffCompression:&nbsp;function&nbsp;not&nbsp;present&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">Error&nbsp;in&nbsp;pixReadStreamTiff:&nbsp;function&nbsp;not&nbsp;present&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">Error&nbsp;in&nbsp;pixReadStream:&nbsp;tiff:&nbsp;no&nbsp;pix&nbsp;returned&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">Error&nbsp;in&nbsp;pixRead:&nbsp;pix&nbsp;not&nbsp;read&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">Unsupported&nbsp;image&nbsp;type.&nbsp;&nbsp;</SPAN></LI></OL></DIV>
+<P><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp;</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; e.下载 tesseract-3.02 安装包: 
+http://tesseract-ocr.googlecode.com/files/tesseract-3.02.02.tar.gz</P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1956px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_8 height=18 name=ZeroClipboardMovie_8 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=8&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 1909px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">wget&nbsp;<A 
+  href="https://nchc.dl.sourceforge.net/project/tesseract-ocr-alt/tesseract-ocr-3.02.02.tar.gz">https://nchc.dl.sourceforge.net/project/tesseract-ocr-alt/tesseract-ocr-3.02.02.tar.gz</A><BR></SPAN></SPAN>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">./autogen.sh&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">./configure&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">make&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">make&nbsp;install&nbsp;&nbsp;</SPAN> 
+
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(248,248,248); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">ldconfig&nbsp;&nbsp;</SPAN></LI></OL></DIV>
+<P><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; f.下载 tesseract-3.02 英文语言包: <A 
+href="http://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz">http://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz</A><BR>，解压后将 
+tesseract-ocr/tessdata 下的所有文件全部拷贝到 /usr/local/share/tessdata 下。</SPAN><SPAN 
+style="TEXT-ALIGN: left; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; DISPLAY: inline !important; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; FLOAT: none; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></SPAN></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><BR></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">&nbsp; 
+&nbsp; &nbsp;<A 
+style="COLOR: rgb(223,52,52); FONT-WEIGHT: bold; TEXT-DECORATION: none" 
+class=replace_word title=软件测试知识库 href="http://lib.csdn.net/base/softwaretest" 
+target=_blank>测试</A></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(231,229,220); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 18px 0px; WIDTH: 672px; FONT-FAMILY: Consolas, 'Courier New', Courier, mono, serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 12px; OVERFLOW: auto; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 1px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+class="dp-highlighter bg_html">
+<DIV style="PADDING-LEFT: 45px" class=bar>
+<DIV 
+style="BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 10px; BACKGROUND-COLOR: rgb(248,248,248); PADDING-LEFT: 10px; PADDING-RIGHT: 8px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: silver; PADDING-TOP: 3px; font-stretch: normal" 
+class=tools><STRONG>[html]</STRONG>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_plain.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=ViewSource title="view plain" 
+href="http://blog.csdn.net/yoara/article/details/42392659#" target=_blank>view 
+plain</A><SPAN>&nbsp;<A 
+style="BACKGROUND-IMAGE: url(images/default/ico_copy.gif); BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+class=CopyToClipboard title=copy 
+href="http://blog.csdn.net/yoara/article/details/42392659#" 
+target=_blank>copy</A> 
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 2289px; LEFT: 446px"><EMBED 
+id=ZeroClipboardMovie_9 height=18 name=ZeroClipboardMovie_9 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer width=18 
+src=http://static.blog.csdn.net/scripts/ZeroClipboard/ZeroClipboard.swf 
+loop="false" menu="false" quality="best" bgcolor="#ffffff" 
+allowscriptaccess="always" allowfullscreen="false" 
+flashvars="id=9&amp;width=18&amp;height=18" 
+wmode="transparent"></DIV></SPAN><SPAN class=Apple-converted-space>&nbsp;</SPAN> 
+
+<DIV 
+style="Z-INDEX: 99; POSITION: absolute; WIDTH: 18px; HEIGHT: 18px; TOP: 2245px; LEFT: 376px"></DIV><SPAN>&nbsp;</SPAN><SPAN 
+class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=在CODE上查看代码片 href="https://code.csdn.net/snippets/571009" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 1px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=在CODE上查看代码片 src="https://code.csdn.net/assets/CODE_ico.png" width=12 
+height=12></A></SPAN><SPAN class=tracking-ad><A 
+style="BACKGROUND-IMAGE: none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 1px; TEXT-INDENT: -2000px; MARGIN: 0px 10px 0px 0px; PADDING-LEFT: 1px; WIDTH: 16px; PADDING-RIGHT: 1px; DISPLAY: inline-block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left top; HEIGHT: 16px; COLOR: rgb(160,160,160); FONT-SIZE: 9px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; TEXT-DECORATION: none; PADDING-TOP: 1px; background-size: initial; background-origin: initial; background-clip: initial" 
+title=派生到我的代码片 href="https://code.csdn.net/snippets/571009/fork" 
+target=_blank><IMG 
+style="BORDER-BOTTOM: medium none; POSITION: relative; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; TOP: 2px; BORDER-RIGHT: medium none; LEFT: 2px" 
+alt=派生到我的代码片 src="https://code.csdn.net/assets/ico_fork.svg" width=12 
+height=12></A></SPAN></DIV></DIV>
+<OL 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal; MARGIN: 0px 0px 1px 45px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: rgb(92,92,92); BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+class=dp-xml>
+  <LI 
+  style="LIST-STYLE-POSITION: outside; BORDER-BOTTOM: medium none; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-BOTTOM: 0px !important; LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255); LIST-STYLE-TYPE: decimal-leading-zero; MARGIN: 0px; PADDING-LEFT: 10px !important; PADDING-RIGHT: 3px !important; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px !important; border-image: initial" 
+  class=alt><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px"><SPAN 
+  style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: black; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px">tesseract&nbsp;phototest.tif&nbsp;phototest&nbsp;-l&nbsp;eng&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P><SPAN 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal">这时应该在当前目录生成一个 
+phototest.txt 文本文件,内容就是 phototest.tif 显示的文字.</SPAN><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><IMG 
+style="BORDER-BOTTOM: medium none; TEXT-ALIGN: left; BORDER-LEFT: medium none; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; MAX-WIDTH: 100%; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; BORDER-TOP: medium none; FONT-WEIGHT: normal; BORDER-RIGHT: medium none; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal" 
+alt="" src="http://img.blog.csdn.net/20150107155919187"><BR 
+style="TEXT-ALIGN: left; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"></P>
+<P 
+style="TEXT-ALIGN: left; PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); FONT-STYLE: normal; TEXT-INDENT: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); FONT-SIZE: 14px; FONT-WEIGHT: normal; WORD-SPACING: 0px; PADDING-TOP: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal"><IMG 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; MAX-WIDTH: 100%; BORDER-TOP: medium none; BORDER-RIGHT: medium none" 
+alt="" 
+src="http://img.blog.csdn.net/20150112145752656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWW9hcmE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></P></BODY></HTML>

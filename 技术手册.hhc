@@ -3641,6 +3641,27 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="图像文字识别tesseract">
+<PARAM NAME="Local" VALUE="图像文字识别tesseract.htm">
+<PARAM NAME="ImageNumber" value="2">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="在linux下安装tesseract-ocr">
+<PARAM NAME="Local" VALUE="在linux下安装tesseract-ocr.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="在windows下安装tesseract-ocr">
+<PARAM NAME="Local" VALUE="在windows下安装tesseract-ocr.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="c">
 <PARAM NAME="Local" VALUE="c.htm">
 </OBJECT>
