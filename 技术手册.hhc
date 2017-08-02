@@ -3354,7 +3354,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="安卓开发">
 <PARAM NAME="Local" VALUE="安卓开发.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3368,8 +3367,29 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="苹果开发">
 <PARAM NAME="Local" VALUE="苹果开发.htm">
-<PARAM NAME="ImageNumber" value="1">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="打印日志">
+<PARAM NAME="Local" VALUE="打印日志.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ios尺寸相关">
+<PARAM NAME="Local" VALUE="ios尺寸相关.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ios-webview">
+<PARAM NAME="Local" VALUE="ios-webview.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="网站抢购原理">
@@ -3664,7 +3684,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="图像文字识别tesseract">
 <PARAM NAME="Local" VALUE="图像文字识别tesseract.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">

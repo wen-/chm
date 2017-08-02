@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>ios-webview</TITLE>
+</HEAD>
+<BODY>
+<P>ios-webview</P><PRE class="lang-c prettyprint prettyprinted" style='FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: 0px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif; BORDER-RIGHT: 0px; WIDTH: auto; VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(57,51,24); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 5px; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(239,240,241); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: inherit; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal; font-variant-numeric: inherit'><CODE style='FONT-SIZE: 13px; BORDER-TOP: 0px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(239,240,241); font-stretch: inherit'><SPAN class=pun style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">[</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">self</SPAN><SPAN class=pun style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">.</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">uiwebview reload</SPAN><SPAN class=pun style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">];//刷新</SPAN></CODE></PRE>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>//<BR>//&nbsp; 动态控制器.m<BR>//&nbsp; 飞燕云盘<BR>//<BR>//&nbsp; Created by 黄文雄 on 
+2017/8/1.<BR>//&nbsp; Copyright ? 2017年 黄文雄. All rights reserved.<BR>//</P>
+<P>#import &lt;SVProgressHUD.h&gt;<BR>#import "动态控制器.h"<BR>#import 
+"js交互.h"<BR>#import "域名管理.h"<BR>#import "登录数据模型.h"<BR>#import 
+"MJRefresh.h"<BR>#import "RealtimeSearchUtil.h"<BR>#import 
+"UIViewController+SearchController.h"</P>
+<P>@interface 动态控制器 ()&lt;UIWebViewDelegate&gt;</P>
+<P>@property (nonatomic, strong) UIWebView *webView;<BR>@property (nonatomic, 
+strong) JSContext *jsContext;</P>
+<P>@end</P>
+<P>@implementation 动态控制器</P>
+<P>- (void)viewDidLoad {<BR>&nbsp;&nbsp;&nbsp; [super 
+viewDidLoad];<BR>&nbsp;&nbsp;&nbsp; [self.view 
+addSubview:self.webView];<BR>&nbsp;&nbsp;&nbsp; [self 
+setupSearchController];<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; __weak 
+UIScrollView *scrollView = self.webView.scrollView;<BR>&nbsp;&nbsp;&nbsp; // 
+添加下拉刷新控件<BR>&nbsp;&nbsp;&nbsp; scrollView.mj_header= [MJRefreshNormalHeader 
+headerWithRefreshingBlock:^{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[_webView reload];<BR>&nbsp;&nbsp;&nbsp; }];<BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; //[SVProgressHUD 
+showWithStatus:@"数据加载中"];<BR>&nbsp;&nbsp;&nbsp; //[self 
+increateProgress];<BR>&nbsp;&nbsp;&nbsp; <BR>}</P>
+<P>static float progressValue = 0.0f;<BR>- 
+(void)increateProgress<BR>{<BR>&nbsp;&nbsp;&nbsp; progressValue += 
+0.1;<BR>&nbsp;&nbsp;&nbsp; [SVProgressHUD showProgress:progressValue 
+status:@"加载中"];<BR>&nbsp;&nbsp;&nbsp; if (progressValue &lt; 1) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [self 
+performSelector:@selector(increateProgress) withObject:nil 
+afterDelay:0.3];<BR>&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [self 
+performSelector:@selector(dismiss:) withObject:nil 
+afterDelay:0.4];<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; <BR>}</P>
+<P>- (IBAction)dismiss:(id)sender {<BR>&nbsp;&nbsp;&nbsp; [SVProgressHUD 
+dismiss];<BR>}</P>
+<P>- (UIWebView *)webView {<BR>&nbsp;&nbsp;&nbsp; 登录数据模型 *登录信息 = [登录数据模型 
+new];<BR>&nbsp;&nbsp;&nbsp; NSData *数据 = [[NSUserDefaults standardUserDefaults] 
+objectForKey:@"登录信息"];<BR>&nbsp;&nbsp;&nbsp; 登录信息 = [NSKeyedUnarchiver 
+unarchiveObjectWithData:数据];<BR>&nbsp;&nbsp;&nbsp; NSDictionary *参数 = 
+@{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+@"token":登录信息.令牌<BR>&nbsp;&nbsp;&nbsp; };<BR>&nbsp;&nbsp;&nbsp; if (_webView == 
+nil) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _webView = [[UIWebView 
+alloc] 
+initWithFrame:self.view.bounds];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+_webView.scalesPageToFit = YES;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//NSURL *url = [[NSBundle mainBundle] URLForResource:@"test" 
+withExtension:@"html"];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//NSURLRequest *request = [NSURLRequest 
+requestWithURL:url];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString *uu 
+= 域名管理.动态首页;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //NSString *url = 
+@"<A 
+href="http://192.168.2.173">http://192.168.2.173</A>";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//NSString *url = [NSString stringWithFormat:@"<A 
+href="http://192.168.2.173?token=%">http://192.168.2.173?token=%</A>@", 
+登录信息.令牌];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //NSString *url = @"<A 
+href="https://apidev.feiyan.world/api/">https://apidev.feiyan.world/api/</A>动态/首页";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//NSString *url = [NSString stringWithFormat:@"<A 
+href="https://apidev.feiyan.world/api/">https://apidev.feiyan.world/api/</A>动态/首页?token=%@", 
+登录信息.令牌];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString *url = 
+域名管理.动态首页;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = [url 
+stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"登录<A 
+href='%@",url'>url:%@",url</A>);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/*get*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //NSURLRequest *request = 
+[NSURLRequest requestWithURL:[NSURL 
+URLWithString:url]];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/*post*/<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString *bodyShare = 
+[NSString stringWithFormat: @"token=%@", 
+登录信息.令牌];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSMutableURLRequest 
+*request = [[NSMutableURLRequest alloc]initWithURL: [NSURL 
+URLWithString:url]];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [request 
+setHTTPMethod: @"POST"];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [request 
+setHTTPBody: [bodyShare dataUsingEncoding: 
+NSUTF8StringEncoding]];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"登录参数:%@",bodyShare);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[_webView loadRequest: request];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _webView.delegate = 
+self;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; return _webView;<BR>}</P>
+<P>//#pragma mark - UIWebViewDelegate<BR>- (void)webViewDidFinishLoad:(UIWebView 
+*)webView {<BR>&nbsp;&nbsp;&nbsp; self.jsContext = [webView 
+valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];<BR>&nbsp;&nbsp;&nbsp; 
+// 通过模型调用方法，这种方式更好些。<BR>&nbsp;&nbsp;&nbsp; js交互模型 *model&nbsp; = [[js交互模型 alloc] 
+init];<BR>&nbsp;&nbsp;&nbsp; self.jsContext[@"OCModel"] = 
+model;<BR>&nbsp;&nbsp;&nbsp; model.jsContext = 
+self.jsContext;<BR>&nbsp;&nbsp;&nbsp; model.webView = 
+self.webView;<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; context.exception = 
+exceptionValue;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSLog(@"异常信息：%@", 
+exceptionValue);<BR>&nbsp;&nbsp;&nbsp; };<BR>}</P>
+<P>- (void)webViewDidStartLoad:(UIWebView *)webView {<BR>&nbsp;&nbsp;&nbsp; 
+NSLog(@"开始加载：");<BR>}</P>
+<P>-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError 
+*)error{<BR>&nbsp;&nbsp;&nbsp; NSLog(@"absoluteString == <A 
+href='mailto:%@",webView.request.URL.absoluteString'>%@",webView.request.URL.absoluteString</A>);<BR>&nbsp;&nbsp;&nbsp; 
+[SVProgressHUD showErrorWithStatus:@"网络错误"];<BR>}</P>
+<P>#pragma mark webview每次加载之前都会调用这个方法<BR>// 如果返回NO，代表不允许加载这个请求<BR>- 
+(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest 
+*)request navigationType:(UIWebViewNavigationType)navigationType 
+{<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; return YES;<BR>}</P>
+<P>&nbsp;</P>
+<P>- (void)didReceiveMemoryWarning {<BR>&nbsp;&nbsp;&nbsp; [super 
+didReceiveMemoryWarning];<BR>&nbsp;&nbsp;&nbsp; // Dispose of any resources that 
+can be recreated.<BR>}</P>
+<P><BR>- (void)cancelButtonClicked<BR>{<BR>&nbsp;&nbsp;&nbsp; 
+[[RealtimeSearchUtil currentUtil] realtimeSearchStop];<BR>}</P>
+<P>- (void)searchTextChangeWithString:(NSString 
+*)aString<BR>{<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; <BR>}</P>
+<P>#pragma mark - private</P>
+<P>- (void)setupSearchController<BR>{<BR>&nbsp;&nbsp;&nbsp; [self 
+enableSearchController];<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; UISearchBar *searchBar = 
+self.searchController.searchBar;<BR>&nbsp;&nbsp;&nbsp; [self.view 
+addSubview:searchBar];<BR>&nbsp;&nbsp;&nbsp; self.webView.frame = CGRectMake(0, 
+searchBar.frame.size.height, 
+self.view.frame.size.width,self.view.frame.size.height - 
+(searchBar.frame.size.height + self.tabBarController.tabBar.frame.size.height + 
+self.navigationController.navigationBar.frame.size.height + [UIApplication 
+sharedApplication].statusBarFrame.size.height));<BR>}</P>
+<P>#pragma mark - public</P>
+<P>-(void)refresh<BR>{<BR>&nbsp;&nbsp;&nbsp; <BR>}</P>
+<P>-(void)refreshDataSource<BR>{<BR>&nbsp;&nbsp;&nbsp; <BR>}</P>
+<P>- (void)isConnect:(BOOL)isConnect{<BR>&nbsp;&nbsp;&nbsp; if (!isConnect) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; <BR>}</P>
+<P>- 
+(void)networkChanged:(EMConnectionState)connectionState<BR>{<BR>&nbsp;&nbsp;&nbsp; 
+if (connectionState == EMConnectionDisconnected) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; }<BR>}</P>
+<P><BR>- (void)发表动作 {<BR>&nbsp;&nbsp;&nbsp; <BR>}</P>
+<P>@end<BR></P>
+</BODY>
+</HTML>
