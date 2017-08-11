@@ -38,6 +38,7 @@ Android数据存储.htm
 android应用启动分析1.htm
 android应用启动分析2.htm
 android应用启动分析3.htm
+android之activity生命周期.htm
 Animations动画.htm
 ANT打包apk.htm
 apache服务器配置.html
@@ -764,8 +765,13 @@ indexedDB.htm
 inline-block经验.htm
 innerText和innerHTML.htm
 innerText和innerHTML.htm
+ios-textview.htm
+ios-UI相关.htm
 ios-webview.htm
 ios尺寸相关.htm
+ios清除缓存.htm
+ios生命周期.htm
+iOS无法播放视频.htm
 ios字典.htm
 iphone当前页AJAX提交地址和当前页一样.htm
 iphone规格.html
@@ -1564,6 +1570,7 @@ title标签内文字换行.htm
 tornado.htm
 transform变形.htm
 transition.htm
+uisearchbar相关.htm
 unicode--ascii编码.html
 uploadify参数详解.htm
 url截取.htm
@@ -1854,6 +1861,7 @@ yum源配置.htm
 主图解决方案.htm
 转义字符.htm
 状态栏.htm
+自定义tableview-cell.htm
 字符串操作.htm
 字符串数组转换成数字数组.htm
 字符的ASCII码值.htm

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>uisearchbar相关</TITLE>
+</HEAD>
+<BODY>
+<P>uisearchbar相关</P>
+<P>UISearchBar *搜索栏 = [[UISearchBar alloc]initWithFrame:CGRectMake(50, 0, 
+UIScreen.mainScreen.bounds.size.width-50, 44)];</P>
+<P>搜索栏.placeholder = @"搜索";<BR>搜索栏.barTintColor = [UIColor 
+colorWithRed:238.0f/255.0f green:238.0f/255.0f blue:238.0f/255.0f 
+alpha:1.0];<BR>搜索栏.backgroundColor = [UIColor colorWithRed:238.0f/255.0f 
+green:238.0f/255.0f blue:238.0f/255.0f 
+alpha:1.0];<BR>&nbsp;搜索栏.layer.borderWidth = 1;<BR>搜索栏.layer.borderColor = 
+[[UIColor colorWithRed:238.0f/255.0f green:238.0f/255.0f blue:238.0f/255.0f 
+alpha:1.0] CGColor];<BR>搜索栏.delegate=self;<BR>UITextField *searchField = [搜索栏 
+valueForKey:@"searchField"];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 
+(searchField) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[searchField setBackgroundColor:[UIColor 
+whiteColor]];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+searchField.layer.cornerRadius = 
+14.0f;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+searchField.layer.borderColor = [UIColor 
+whiteColor].CGColor;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+searchField.layer.borderWidth = 
+1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+searchField.layer.masksToBounds = 
+YES;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>[搜索栏尺寸视图 
+addSubview:搜索栏];<BR>self.table.frame = CGRectMake(0, 搜索栏尺寸视图.frame.size.height, 
+self.view.frame.size.width,self.view.frame.size.height - 
+(搜索栏尺寸视图.frame.size.height + self.tabBarController.tabBar.frame.size.height + 
+self.navigationController.navigationBar.frame.size.height + [UIApplication 
+sharedApplication].statusBarFrame.size.height+50));</P>
+<P>//[searchBar sizeToFit];&nbsp; //自适应宽度，如果搜索栏宽度全屏不需要这个</P>
+<P>切换图标：</P>
+<P>self.置项小图标.image = [UIImage imageNamed:@"未选择"];</P>
+<P>self.置项小图标.image = [UIImage imageNamed:@"选择"];</P>
+</BODY>
+</HTML>

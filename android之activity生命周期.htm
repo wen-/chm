@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>android之activity生命周期</TITLE>
+</HEAD>
+<BODY>
+<P>android之activity生命周期</P>
+<DIV id=article_content class="article_content tracking-ad" 
+style="WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(51,51,51); TEXT-ALIGN: left; FONT: 14px/26px Arial; ORPHANS: 2; WIDOWS: 2; MARGIN: 20px 0px 0px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal; text-decoration-style: initial; text-decoration-color: initial" 
+data-dsm="post" data-mod="popu_307">
+<P>&nbsp;<SPAN style="FONT-SIZE: large"><A title=Android知识库 class=replace_word 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+href="http://lib.csdn.net/base/android" target=_blank>Android</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>activity的生命周期</SPAN></P>
+<DIV class=g_blog_list>
+<DIV id=blogtext_fks_082075084086084071086087086095085085088075081085086069 
+class="g_t_center g_c_pdin g_p_center c07 content">
+<DIV class=ns_content>
+<P style="TEXT-INDENT: 2em">activity类处于<A title=Android知识库 class=replace_word 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+href="http://lib.csdn.net/base/android" 
+target=_blank>android</A>.app包中，继承体系如下：</P>
+<P style="TEXT-INDENT: 2em">1.<A title="Java 知识库" class=replace_word 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+href="http://lib.csdn.net/base/java" target=_blank>Java</A>.lang.Object</P>
+<P style="TEXT-INDENT: 2em">2.android.content.Context</P>
+<P style="TEXT-INDENT: 2em">3.android.app.ApplicationContext</P>
+<P style="TEXT-INDENT: 2em">4.android.app.Activity</P>
+<P 
+style="TEXT-INDENT: 2em">activity是单独的，用于处理用户操作。几乎所有的activity都要和用户打交道，所以activity类创建了一个窗口，开发人员可以通过setContentView(View)接口把UI放到activity创建的窗口上，当 
+activity指向全屏窗口时，也可以用其他方式实现：作为漂浮窗口（通过windowIsFloating的主题集合），或者嵌入到其他的 
+activity（使用ActivityGroup）。大部分的Activity子类都需要实现以下两个接口：</P>
+<UL style="LIST-STYLE-TYPE: disc">
+  <LI>onCreate(Bundle)接口是初始化activity的地方. 
+  在这儿通常可以调用setContentView(int)设置在资源文件中定义的UI, 使用findViewById(int) 
+  可以获得UI中定义的窗口.</LI>
+  <LI>onPause()接口是使用者准备离开activity的地方，在这儿，任何的修改都应该被提交(通常用于ContentProvider保存数据).</LI></UL>
+<P>&nbsp;</P>
+<P 
+style="TEXT-INDENT: 2em">为了能够使用Context.startActivity()，所有的activity类都必须在AndroidManifest.xml文件中定义有相关的“activity”项。</P>
+<P style="TEXT-INDENT: 2em">activity类是Android 应用生命周期的重要部分。</P>
+<P style="TEXT-INDENT: 2em">Activity生命周期</P>
+<P 
+style="TEXT-INDENT: 2em">在系统中的Activity被一个Activity栈所管理。当一个新的Activity启动时，将被放置到栈顶，成为运行中的Activity，前一个Activity保留在栈中，不再放到前台，直到新的Activity退出为止。</P>
+<P style="TEXT-INDENT: 2em">Activity有四种本质区别的状态：</P>
+<OL>
+  <LI>在屏幕的前台（Activity栈顶），叫做活动状态或者运行状态（active or running）</LI>
+  <LI>如果一个Activity失去焦点，但是依然可见（一个新的非全屏的Activity 或者一个透明的Activity 
+  被放置在栈顶），叫做暂停状态（Paused）。一个暂停状态的Activity依然保持活力（保持所有的状态，成员信息，和窗口管理器保持连接），但是在系统内存极端低下的时候将被杀掉。</LI>
+  <LI>如果一个Activity被另外的Activity完全覆盖掉，叫做停止状态（Stopped）。它依然保持所有状态和成员信息，但是它不再可见，所以它的窗口被隐藏，当系统内存需要被用在其他地方的时候，Stopped的Activity将被杀掉。</LI>
+  <LI>如果一个Activity是Paused或者Stopped状态，系统可以将该Activity从内存中删除，Android系统采用两种方式进行删除，要么要求该Activity结束，要么直接杀掉它的进程。当该Activity再次显示给用户时，它必须重新开始和重置前面的状态。</LI></OL>
+<P>&nbsp;</P>
+<P 
+style="TEXT-INDENT: 2em">下面的图显示了Activity的重要状态转换，矩形框表明Activity在状态转换之间的回调接口，开发人员可以重载实现以便执行相关代码，带有颜色的椭圆形表明Activity所处的状态。</P>
+<P style="TEXT-INDENT: 2em"><A 
+style="TEXT-DECORATION: none; COLOR: rgb(51,102,153)" 
+href="http://img.bimg.126.net/photo/M0_AzyumAL87Fl6sXJYPWA==/347621596238419942.jpg" 
+target=_blank></A></P>
+<P style="TEXT-INDENT: 2em"><IMG src="images/activity生命周期.png" 
+align=baseline></P>
+<P style="TEXT-INDENT: 2em">在上图中，Activity有三个关键的循环：&nbsp;</P>
+<OL>
+  <LI>整个的生命周期，从onCreate(Bundle)开始到onDestroy()结束。Activity在onCreate()设置所有的“全局”状态，在onDestory()释放所有的资源。例如：某个Activity有一个在后台运行的线程，用于从网络下载数据，则该Activity可以在onCreate()中创建线程,在onDestory()中停止线程。</LI>
+  <LI>可见的生命周期，从onStart()开始到onStop()结束。在这段时间，可以看到Activity在屏幕上，尽管有可能不在前台，不能和用户交互。在这两个接口之间，需要保持显示给用户的UI数据和资源等，例如：可以在onStart中注册一个IntentReceiver来监听数据变化导致UI的变动，当不再需要显示时候，可以在onStop()中注销它。onStart()，onStop()都可以被多次调用，因为Activity随时可以在可见和隐藏之间转换。</LI>
+  <LI>前台的生命周期，从onResume()开始到onPause()结束。在这段时间里，该Activity处于所有 
+  Activity的最前面，和用户进行交互。Activity可以经常性地在resumed和paused状态之间切换，例如：当设备准备休眠时，当一个 
+  Activity处理结果被分发时，当一个新的Intent被分发时。所以在这些接口方法中的代码应该属于非常轻量级的。</LI></OL>
+<P>&nbsp;</P>
+<P 
+style="TEXT-INDENT: 2em">Activity的整个生命周期都定义在下面的接口方法中，所有方法都可以被重载。所有的Activity都需要实现 
+onCreate(Bundle)去初始化设置，大部分Activity需要实现onPause()去提交更改过的数据，当前大部分的Activity也需要实现onFreeze()接口，以便恢复在onCreate(Bundle)里面设置的状态。</P>
+<P style="TEXT-INDENT: 2em">public class Activity extends ApplicationContext 
+{</P>
+<P style="TEXT-INDENT: 2em">protected void onCreate(Bundle icicle);</P>
+<P style="TEXT-INDENT: 2em">protected void onStart();</P>
+<P style="TEXT-INDENT: 2em">protected void onRestart();</P>
+<P style="TEXT-INDENT: 2em">protected void onResume();</P>
+<P style="TEXT-INDENT: 2em">protected void onFreeze(Bundle outIcicle);</P>
+<P style="TEXT-INDENT: 2em">protected void onPause();</P>
+<P style="TEXT-INDENT: 2em">protected void onStop();</P>
+<P style="TEXT-INDENT: 2em">protected void onDestroy();</P>
+<P style="TEXT-INDENT: 2em">}</P></DIV></DIV></DIV></DIV>
+<DIV class="bdsharebuttonbox tracking-ad bdshare-button-style0-16" 
+style='FONT-SIZE: 12px; FONT-FAMILY: Arial, Console, Verdana, "Courier New"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; ZOOM: 1; FLOAT: right; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial' 
+data-mod="popu_172" data-bd-bind="1502076916451"><A title=分享到QQ空间 
+class=bds_qzone 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -52px; FLOAT: left; COLOR: rgb(51,102,153); PADDING-LEFT: 17px; MARGIN: 6px 6px 6px 0px; LINE-HEIGHT: 16px" 
+href="http://blog.csdn.net/hpoi/article/details/4629065/#" target=_blank 
+data-cmd="qzone"></A><A title=分享到新浪微博 class=bds_tsina 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -104px; FLOAT: left; COLOR: rgb(51,102,153); PADDING-LEFT: 17px; MARGIN: 6px 6px 6px 0px; LINE-HEIGHT: 16px" 
+href="http://blog.csdn.net/hpoi/article/details/4629065/#" target=_blank 
+data-cmd="tsina"></A><A title=分享到腾讯微博 class=bds_tqq 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -260px; FLOAT: left; COLOR: rgb(51,102,153); PADDING-LEFT: 17px; MARGIN: 6px 6px 6px 0px; LINE-HEIGHT: 16px" 
+href="http://blog.csdn.net/hpoi/article/details/4629065/#" target=_blank 
+data-cmd="tqq"></A><A title=分享到人人网 class=bds_renren 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -208px; FLOAT: left; COLOR: rgb(51,102,153); PADDING-LEFT: 17px; MARGIN: 6px 6px 6px 0px; LINE-HEIGHT: 16px" 
+href="http://blog.csdn.net/hpoi/article/details/4629065/#" target=_blank 
+data-cmd="renren"></A><A title=分享到微信 class=bds_weixin 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; HEIGHT: 16px; BACKGROUND-IMAGE: url(../img/share/icons_0_16.png?v=91362611.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -1612px; FLOAT: left; COLOR: rgb(51,102,153); PADDING-LEFT: 17px; MARGIN: 6px 6px 6px 0px; LINE-HEIGHT: 16px" 
+href="http://blog.csdn.net/hpoi/article/details/4629065/#" target=_blank 
+data-cmd="weixin"></A></DIV>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<H1 class=postTitle 
+style='FONT-SIZE: 15px; BORDER-TOP: 0px; FONT-FAMILY: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif; BORDER-RIGHT: 0px; WIDTH: 972px; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT: bold; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; CLEAR: both; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'><A 
+id=cb_post_title_url class=postTitle2 
+style="TEXT-DECORATION: none; COLOR: rgb(33,117,155); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; transition: all 0.4s linear 0s" 
+href="http://www.cnblogs.com/lwbqqyumidi/p/3769113.html">Android总结篇系列：Activity生命周期</A></H1>
+<DIV class=clear 
+style='FONT-SIZE: 12px; FONT-FAMILY: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'></DIV>
+<DIV class=postBody 
+style='FONT-SIZE: 14px; FONT-FAMILY: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.7; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>
+<DIV id=cnblogs_post_body 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 20px; PADDING-RIGHT: 0px">
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Android官方文档和其他不少资料都对Activity生命周期进行了详细介绍，在结合资料和项目开发过程中遇到的问题，本文将对Activity生命周期进行一次总结。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">Activity是由Activity栈进管理，当来到一个新的Activity后，此Activity将被加入到Activity栈顶，之前的Activity位于此Activity底部。Acitivity一般意义上有四种状态：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">1.当Activity位于栈顶时，此时正好处于屏幕最前方，此时处于<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">运行状态</STRONG>；</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">2.当Activity失去了焦点但仍然对用于可见（如栈顶的Activity是透明的或者栈顶Activity并不是铺满整个手机屏幕），此时处于<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">暂停状态</SPAN></STRONG>；</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">3.当Activity被其他Activity完全遮挡，此时此Activity对用户不可见，此时处于<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">停止状态</STRONG>；</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">4.当Activity由于人为或系统原因（如低内存等）被销毁，此时处于<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">销毁状态；</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在每个不同的状态阶段，Adnroid系统对Activity内相应的方法进行了回调。因此，我们在程序中写Activity时，一般都是继承Activity类并重写相应的回调方法。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">先贴一张来自官方文档（<A 
+style="TEXT-DECORATION: underline; COLOR: black; OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; MARGIN: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px" 
+href="http://developer.android.com/reference/android/app/Activity.html" 
+target=_blank>http://developer.android.com/reference/android/app/Activity.html</A>）的图，相信大家都看到过。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;<IMG 
+style="MAX-WIDTH: 700px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
+alt="" 
+src="http://images.cnitblog.com/i/426802/201406/060009291302389.png"></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">图中详细给出了Activity整个生命周期的过程，以及在不同的状态期间相应的回调方法。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">图中需要注意一下几点：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">1.Activity实例是由系统自动创建，并在不同的状态期间回调相应的方法。一个最简单的完整的Activity生命周期会按照如下顺序回调：onCreate 
+-&gt; onStart -&gt; onResume -&gt; onPause -&gt; onStop -&gt; 
+onDestroy。称之为<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">entire 
+lifetime。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">2.当执行onStart回调方法时，Activity开始被用户所见（也就是说，onCreate时用户是看不到此Activity的，那用户看到的是哪个？当然是此Activity之前的那个Activity），一直到onStop之前，此阶段Activity都是被用户可见，称之为<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">visible 
+lifetime。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">3.当执行到onResume回调方法时，Activity可以响应用户交互，一直到onPause方法之前，此阶段Activity称之为<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">foreground 
+lifetime。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在实际应用场景中，假设A 
+Activity位于栈顶，此时用户操作，从A Activity跳转到B 
+Activity。那么对AB来说，具体会回调哪些生命周期中的方法呢？回调方法的具体回调顺序又是怎么样的呢？</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">开始时，A被实例化，执行的回调有A:onCreate 
+-&gt; A:onStart -&gt; A:onResume。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">当用户点击A中按钮来到B时，假设B全部遮挡住了A，将依次执行A:onPause 
+-&gt; B:onCreate -&gt; B:onStart -&gt; B:onResume -&gt; 
+A:onStop。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">此时如果点击Back键，将依次执行B:onPause 
+-&gt; A:onRestart -&gt; A:onStart -&gt; A:onResume -&gt; B:onStop -&gt; 
+B:onDestroy。</STRONG></SPAN></SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">至此，Activity栈中只有A。在Android中，有两个按键在影响Activity生命周期这块需要格外区分下，即Back键和Home键。我们先直接看下实验结果：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">此时如果按下Back键，系统返回到桌面，并依次执行A:onPause 
+-&gt; A:onStop -&gt; A:onDestroy。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">此时如果按下Home键（非长按），系统返回到桌面，并依次执行A:onPause 
+-&gt; A:onStop。由此可见，Back键和Home键主要区别在于是否会执行onDestroy。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">此时如果长按Home键，不同手机可能弹出不同内容，Activity生命周期未发生变化（由小米2s测的，不知道其他手机是否会对Activity生命周期有影响）。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">由于Android本身的特性，使得现在不少应用都没有直接退出应用程序的功能，按照一般的逻辑，当Activity栈中有且只有一个Activity时，当按下Back键此Activity会执行onDestroy，那么下次点击此应用程图标将从重新启动，因此，当前不少应用程序都是采取如Home键的效果，当点击了Back键，系统返回到桌面，然后点击应用程序图标，直接回到之前的Activity界面，这种效果是怎么实现的呢？</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">通过重写按下Back键的回调函数，转成Home键的效果即可。</SPAN></P>
+<DIV class=cnblogs_code 
+style='FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: "Courier New" !important; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 5px 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(245,245,245)'><PRE style='FONT-SIZE: 12px !important; WORD-WRAP: break-word; FONT-FAMILY: "Courier New" !important; WHITE-SPACE: pre-wrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 14px; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>@Override
+</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>public</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>void</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> onBackPressed() {
+    Intent home </SPAN>= <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>new</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> Intent(Intent.ACTION_MAIN);
+    home.addCategory(Intent.CATEGORY_HOME);
+    startActivity(home);
+}</SPAN></SPAN></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">当然，此种方式通过Home键效果强行影响到Back键对Activity生命周期的影响。注意，此方法只是针对按Back键需要退回到桌面时的Activity且达到Home效果才重写。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">或者，为达到此类效果，Activity实际上提供了直接的方法。</SPAN></P>
+<DIV class=cnblogs_code 
+style='FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: "Courier New" !important; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 5px 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(245,245,245)'><PRE style='FONT-SIZE: 12px !important; WORD-WRAP: break-word; FONT-FAMILY: "Courier New" !important; WHITE-SPACE: pre-wrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 14px; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>1</SPAN> activity.moveTaskToBack(<SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>true</SPAN>);</SPAN></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5; PADDING-RIGHT: 0px">moveTaskToBack()</STRONG><SPAN 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5; PADDING-RIGHT: 0px">此方法直接将当前Activity所在的Task移到后台，同时保留activity顺序和状态。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></SPAN>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在之前的项目开发过程中，当时遇到一个很奇怪的问题：<SPAN 
+style="COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">手机上的“开发者选项”中有一个“不保留活动”的设置，当开启此设置，手机上的设置提示是“用户离开后即销毁每个活动”</STRONG></SPAN>，开启后，对于其他的应用程序是从A 
+Acticity到B 
+Activity，然后Back键回到A，此时，其他应用程序只是先白屏（有可能黑屏等，取决于主题设置）一下，然后A开始可见，但是我的应用程序中出现的一个结果却是直接返回到了桌面。一开始百思不得其解。最后终于定位出问题。首先，我们需要明确开启此设置项后对Activity生命周期的影响。<SPAN 
+style="COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">开启此设置项后，当A到B时，假设B全部遮挡住了A，将依次执行A:onPause 
+-&gt; B:onCreate -&gt; B:onStart -&gt; B:onResume -&gt; A:onStop -&gt; 
+A:onDestroy。是的，A在系统原本的生命周期回调中增加了onDestroy。此即“<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">用户离开后即销毁每个活动</STRONG>”的含义。但此时需要注意的是，只要没有认为的调用A的finish()方法，虽然A执行了onDestroy，但Activity栈中依然保留有A，此时B处于栈顶。那么在B中按Back键回到A时，将依次执行：<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">B:onPause 
+-&gt; A:onCreate -&gt; A:onStart -&gt; A:onResume -&gt; B:onStop -&gt; 
+B:onDestroy。没错，A从onCreate开始执行了。此处也就解释了为什么A可能会出现白屏（或黑屏等）一下的原因了。</STRONG></STRONG></SPAN></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">那么为什么我的应用程序会跟其他应用程序出现不一样呢?最后定为出问题在于当时我的应用程序中为了做到完全退出应用程序效果，专门使用了一个Activity栈去维护Activity（当时是借鉴了网上的此类实现方案，现在想想，实在没必要，且不说Android本身特性决定了没必要通过如此方法去达到退出效果，仅仅是此方法本身也存在很大的问题，现在在网上依然能见到有不少文章说到应用程序退出可以使用此方法，哎。。），在onCreate中入栈，onDestroy出栈，调用了如下方法<STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">：</STRONG></STRONG></SPAN></P>
+<DIV class=cnblogs_code 
+style='FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: "Courier New" !important; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 5px 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(245,245,245)'><PRE style='FONT-SIZE: 12px !important; WORD-WRAP: break-word; FONT-FAMILY: "Courier New" !important; WHITE-SPACE: pre-wrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 14px; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>1</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>//</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 结束Activity&amp;从堆栈中移除</SPAN>
+<SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>2</SPAN> AppManager.getAppManager().finishActivity(<SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>this</SPAN>);</SPAN></PRE></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">其中，AppManager中finishActivity函数具体定义是：</SPAN></P>
+<DIV class=cnblogs_code 
+style='FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: "Courier New" !important; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 5px 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(245,245,245)'>
+<DIV class=cnblogs_code_toolbar 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)"><SPAN 
+class=cnblogs_code_copy 
+style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 5px'><A 
+title=复制代码 
+style="TEXT-DECORATION: underline; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+href="javascript:void(0);"><IMG 
+style="MAX-WIDTH: 700px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style='FONT-SIZE: 12px !important; WORD-WRAP: break-word; FONT-FAMILY: "Courier New" !important; WHITE-SPACE: pre-wrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 14px; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 1</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>/**</SPAN>
+<SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 2</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> * 结束指定的Activity
+</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 3</SPAN>  <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>*/</SPAN>
+<SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 4</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>public</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>void</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> finishActivity(Activity activity) {
+</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 5</SPAN>     <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>if</SPAN> (activity != <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>null</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>) {
+</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 6</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>        activityStack.remove(activity);
+</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 7</SPAN> <STRONG style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>        activity.finish();
+</SPAN></STRONG><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 8</SPAN>         activity = <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>null</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>;
+</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 9</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>    }
+</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,128); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>10</SPAN> }</SPAN></PRE>
+<DIV class=cnblogs_code_toolbar 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)"><SPAN 
+class=cnblogs_code_copy 
+style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 5px'><A 
+title=复制代码 
+style="TEXT-DECORATION: underline; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+href="javascript:void(0);"><IMG 
+style="MAX-WIDTH: 700px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">至此，相信大家应该看出问题的所在了吧。</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(128,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">没错，问题在于执行了activity的finish()方法！！ 
+activity的finish()方法至少有两个层面含义，1.将此Activity从Activity栈中移除，2.调用了此Activity的onDestroy方法。对于不开启“不保留活动”的设置项，实际上也没什么影响，但是一旦开启此设置，问题显露无疑。开启此此设置后，正常情况下离开A，即使执行了A的onDestroy，Activity栈中还是有A的，但是我这样写后，finish()方法一执行，Activity栈中就没有A了，因此，当点击Back键时，Activity栈中已经没有此应用的任何Activity了，直接来到了手机桌面。</STRONG></SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">可能，有些人会说，我就是要通过此种方法想去完全退出应用程序，同时希望自己的Activity栈和系统中Activity栈保持一致，怎么办呢？</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在此，可以通过如下改写去实现：</SPAN></P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></SPAN>&nbsp;</P>
+<DIV class=cnblogs_code 
+style='FONT-SIZE: 12px !important; OVERFLOW: auto; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: "Courier New" !important; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 5px 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(245,245,245)'>
+<DIV class=cnblogs_code_toolbar 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)"><SPAN 
+class=cnblogs_code_copy 
+style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 5px'><A 
+title=复制代码 
+style="TEXT-DECORATION: underline; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+href="javascript:void(0);"><IMG 
+style="MAX-WIDTH: 700px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+alt=复制代码 src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV><PRE style='FONT-SIZE: 12px !important; WORD-WRAP: break-word; FONT-FAMILY: "Courier New" !important; WHITE-SPACE: pre-wrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 14px; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>/**</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>
+* 结束指定的Activity
+ </SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>*/</SPAN>
+<SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>public</SPAN> <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>void</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> finishActivity(Activity activity) {
+    </SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>if</SPAN> (activity != <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>null</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>) {
+    </SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>//</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'> 为与系统Activity栈保持一致，且考虑到手机设置项里的"不保留活动"选项引起的Activity生命周期调用onDestroy()方法所带来的问题,此处需要作出如下修正</SPAN>
+    <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>if</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>(activity.isFinishing()){
+        activityStack.remove(activity);
+        </SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>//</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,128,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>activity.finish();</SPAN>
+        activity = <SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,255); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>null</SPAN><SPAN style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 0px'>;
+    }
+    }
+}</SPAN></SPAN></PRE>
+<DIV class=cnblogs_code_toolbar 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)"><SPAN 
+class=cnblogs_code_copy 
+style='FONT-SIZE: 12px !important; FONT-FAMILY: "Courier New" !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.5 !important; PADDING-RIGHT: 5px'><A 
+title=复制代码 
+style="TEXT-DECORATION: underline; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: black; OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; OUTLINE-COLOR: invert; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+href="javascript:void(0);"><IMG 
+style="MAX-WIDTH: 700px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245)" 
+alt=复制代码 
+src="http://common.cnblogs.com/images/copycode.gif"></A></SPAN></DIV></DIV>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"></SPAN>&nbsp;</P>
+<P 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px auto; PADDING-RIGHT: 0px; TEXT-INDENT: 0px"><SPAN 
+style="FONT-SIZE: 14px; COLOR: rgb(255,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><STRONG 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">以此谨记！</STRONG></SPAN></P></DIV></DIV>
+</BODY>
+</HTML>

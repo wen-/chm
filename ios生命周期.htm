@@ -1,0 +1,340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>ios生命周期</TITLE>
+</HEAD>
+<BODY>
+<P>ios生命周期</P>
+<H1 class=title 
+style='BOX-SIZING: border-box; FONT-SIZE: 34px; FONT-FAMILY: -apple-system, "SF UI Display", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 700; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 20px 0px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.3; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>iOS 
+- ViewController生命周期</H1>
+<DIV class=author 
+style='BOX-SIZING: border-box; FONT-SIZE: 17px; FONT-FAMILY: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,51); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 30px 0px 40px; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></DIV>
+<DIV class=show-content 
+style='BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(47,47,47); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.7; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial' 
+data-note-content=""><IMG src="images/viewControler生命周期.jpg" 
+align=baseline></DIV>
+<DIV class=show-content 
+style='BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(47,47,47); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.7; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial' 
+data-note-content="">
+<HR 
+style="BORDER-LEFT-WIDTH: 0px; BOX-SIZING: content-box; BORDER-TOP: rgb(221,221,221) 1px solid; HEIGHT: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-COLOR: ; BORDER-BOTTOM-COLOR: ; MARGIN: 0px 0px 20px; BORDER-RIGHT-COLOR: ; border-image: initial">
+</DIV>
+<H3 class=show-content 
+style="BOX-SIZING: border-box; FONT-SIZE: 22px; FONT-FAMILY: inherit; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 700; COLOR: rgb(47,47,47); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 15px; LETTER-SPACING: normal; LINE-HEIGHT: 1.7; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial; text-rendering: optimizeLegibility" 
+data-note-content="">一、 ARC环境</H3>
+<DIV class=show-content 
+style='BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(47,47,47); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.7; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial' 
+data-note-content="">
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 22px; PADDING-RIGHT: 0px">
+  <LI 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px"><STRONG 
+  style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><EM 
+  style="BOX-SIZING: border-box">单个viewController的生命周期</EM></STRONG>
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; MARGIN-TOP: 15px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 22px; PADDING-RIGHT: 0px">
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">initWithCoder:(NSCoder 
+    *)aDecoder：（如果使用storyboard或者xib）</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">loadView：加载view</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidLoad：view加载完毕</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillAppear：控制器的view将要显示</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillLayoutSubviews：控制器的view将要布局子控件</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidLayoutSubviews：控制器的view布局子控件完成<BR 
+    style="BOX-SIZING: border-box"><CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>这期间系统可能会多次调用viewWillLayoutSubviews 
+    、 viewDidLayoutSubviews 俩个方法</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidAppear:控制器的view完全显示</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillDisappear：控制器的view即将消失的时候<BR 
+    style="BOX-SIZING: border-box"><CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>这期间系统也会调用viewWillLayoutSubviews 
+    、viewDidLayoutSubviews 两个方法</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidDisappear：控制器的view完全消失的时候</LI></UL></LI>
+  <LI 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px"><STRONG 
+  style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><EM 
+  style="BOX-SIZING: border-box">多个viewControllers跳转</EM></STRONG>
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; MARGIN-TOP: 15px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 22px; PADDING-RIGHT: 0px">
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">当我们点击push的时候首先会加载下一个界面然后才会调用界面的消失方法</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">initWithCoder:(NSCoder 
+    *)aDecoder：<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>ViewController2</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>(如果用xib创建的情况下）</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">loadView：<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>ViewController2</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidLoad：<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>ViewController2</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillDisappear：<STRONG 
+    style="BOX-SIZING: border-box; FONT-WEIGHT: 700">ViewController1</STRONG><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>将要消失</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillAppear：<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>ViewController2</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>将要出现</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillLayoutSubviews<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>ViewController2</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidLayoutSubviews<SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN><CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>ViewController2</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillLayoutSubviews:<STRONG 
+    style="BOX-SIZING: border-box; FONT-WEIGHT: 700">ViewController1</STRONG></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidLayoutSubviews:<STRONG 
+    style="BOX-SIZING: border-box; FONT-WEIGHT: 700">ViewController1</STRONG></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidDisappear:<STRONG 
+    style="BOX-SIZING: border-box; FONT-WEIGHT: 700">ViewController1</STRONG><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>完全消失</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidAppear:<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>ViewController2</CODE><SPAN 
+    class=Apple-converted-space>&nbsp;</SPAN>完全出现</LI></UL></LI>
+  <LI 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">小结：<BR 
+  style="BOX-SIZING: border-box">-整个控制器声明周期： viewDidLoad -&gt; viewWillAppear 
+  -&gt; viewWillLayoutSubviews -&gt; viewDidLayoutSubviews -&gt; viewDidAppear 
+  -&gt; viewWillDisappear -&gt; viewDidDisappear</LI></UL></DIV>
+<HR 
+style="BORDER-LEFT-WIDTH: 0px; BOX-SIZING: content-box; BORDER-TOP: rgb(221,221,221) 1px solid; HEIGHT: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-COLOR: ; BORDER-BOTTOM-COLOR: ; MARGIN: 0px 0px 20px; BORDER-RIGHT-COLOR: ; border-image: initial">
+
+<H3 
+style="BOX-SIZING: border-box; FONT-SIZE: 22px; FONT-FAMILY: inherit; FONT-WEIGHT: 700; COLOR: rgb(47,47,47); MARGIN: 0px 0px 15px; LINE-HEIGHT: 1.7; text-rendering: optimizeLegibility">二、非ARC环境下</H3>
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 22px; PADDING-RIGHT: 0px">
+  <LI 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">didReceiveMemoryWarning：
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; MARGIN-TOP: 15px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 22px; PADDING-RIGHT: 0px">
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">当app收到内存警告的时候会发消息给视图控制器。</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">app从来不会直接调用这个方法，而是当系统确定可用内存不足的时候采取调用。</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px"><CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>如果你想覆写这个方法来释放一些控制器使用的额外内存，你应该在你的实现方法中调用父类的实现方法</CODE>。</LI></UL></LI>
+  <LI 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewWillUnload：<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>（iOS6废除）</CODE>
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; MARGIN-TOP: 15px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 22px; PADDING-RIGHT: 0px">
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">当消除掉控制器的视图之前调用</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">视图不会再在低内存条件下被清除所以这个方法不会再被调用。</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">在iOS5之前，当低的内存情况发生的时候，当前控制器的视图们不再被需要的时候，系统会有选择性的将这些视图从这些内存移除。这个方法被调用的目的是在视图被真正的销毁前你可以执行一些清空的任务。比如，<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>你想要使用这个方法去清空视图的观察者或通知或者记录视图的状态以便当重新读取的时候恢复。</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">在iOS6之后，不再需要清空视图的引用。因此，其他一些关于清理的方法，比如清空观察者，也不是必要的了。</LI></UL></LI>
+  <LI 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">viewDidUnload：<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>（iOS6废除）</CODE>
+  <UL 
+  style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; MARGIN-TOP: 15px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 22px; PADDING-RIGHT: 0px">
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">当视图从内存中被消除后调用</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">视图在地的内存情况下不再被销毁所以这个方法也不再会调用</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">在iOS5之前，地的内存状况发生之后，当前的试图控制器的视图不再被需要，系统会选择性的在视图控制器的视图被销毁后调用。这个方法使你执行一些最后清空任务的最后机会如果你的视图控制器存储着对视图的或子控件的单独引用，你应该使用这个方法去释放这些引用。<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: medium none; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: medium none; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: medium none; COLOR: rgb(101,123,131); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; BORDER-LEFT: medium none; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(246,246,246); border-radius: 4px'>你也可以使用这个方法去消除一些你再创建视图时候所创建的但是当视图不再的时候不再需要的关于对象的引用。你不应该使用这个方法去释放用户数据或者一些不能轻易被重新创建的数据。</CODE></LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">在iOS6之后，清空在试图控制器中对views和其他对象的引用已经没有必要了。</LI>
+    <LI 
+    style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px">当这个方法被调用的时候，视图的属性是空的。</LI></UL></LI></UL>
+<P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px"><FONT 
+color=#2f2f2f face=Arial></FONT>&nbsp;</P>
+<P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; LINE-HEIGHT: 30px"><FONT 
+color=#2f2f2f face=Arial></FONT>&nbsp;</P>
+<DIV>
+<DIV>
+<H1>二. <CODE>UIViewController</CODE> 的 生命周期</H1>
+<P><STRONG>代码 示例 </STRONG></P><PRE class="hljs objectivec"><CODE class=objectivec><SPAN class=hljs-meta>#pragma mark --- life circle</SPAN>
+
+<SPAN class=hljs-comment>// 非storyBoard(xib或非xib)都走这个方法</SPAN>
+- (<SPAN class=hljs-keyword>instancetype</SPAN>)initWithNibName:(<SPAN class=hljs-built_in>NSString</SPAN> *)nibNameOrNil bundle:(<SPAN class=hljs-built_in>NSBundle</SPAN> *)nibBundleOrNil {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    <SPAN class=hljs-keyword>if</SPAN> (<SPAN class=hljs-keyword>self</SPAN> = [<SPAN class=hljs-keyword>super</SPAN> initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+
+    }
+    <SPAN class=hljs-keyword>return</SPAN> <SPAN class=hljs-keyword>self</SPAN>;
+}
+
+<SPAN class=hljs-comment>// 如果连接了串联图storyBoard 走这个方法</SPAN>
+- (<SPAN class=hljs-keyword>instancetype</SPAN>)initWithCoder:(<SPAN class=hljs-built_in>NSCoder</SPAN> *)aDecoder {
+     <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    <SPAN class=hljs-keyword>if</SPAN> (<SPAN class=hljs-keyword>self</SPAN> = [<SPAN class=hljs-keyword>super</SPAN> initWithCoder:aDecoder]) {
+
+    }
+    <SPAN class=hljs-keyword>return</SPAN> <SPAN class=hljs-keyword>self</SPAN>;
+}
+
+<SPAN class=hljs-comment>// xib 加载 完成</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)awakeFromNib {
+    [<SPAN class=hljs-keyword>super</SPAN> awakeFromNib];
+     <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+}
+
+<SPAN class=hljs-comment>// 加载视图(默认从nib)</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)loadView {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    <SPAN class=hljs-keyword>self</SPAN>.view = [[<SPAN class=hljs-built_in>UIView</SPAN> alloc] initWithFrame:[<SPAN class=hljs-built_in>UIScreen</SPAN> mainScreen].bounds];
+    <SPAN class=hljs-keyword>self</SPAN>.view.backgroundColor = [<SPAN class=hljs-built_in>UIColor</SPAN> redColor];
+}
+
+<SPAN class=hljs-comment>//视图控制器中的视图加载完成，viewController自带的view加载完成</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)viewDidLoad {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> viewDidLoad];
+}
+
+
+<SPAN class=hljs-comment>//视图将要出现</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)viewWillAppear:(<SPAN class=hljs-built_in>BOOL</SPAN>)animated {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> viewWillAppear:animated];
+}
+
+<SPAN class=hljs-comment>// view 即将布局其 Subviews</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)viewWillLayoutSubviews {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> viewWillLayoutSubviews];
+}
+
+<SPAN class=hljs-comment>// view 已经布局其 Subviews</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)viewDidLayoutSubviews {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> viewDidLayoutSubviews];
+}
+
+<SPAN class=hljs-comment>//视图已经出现</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)viewDidAppear:(<SPAN class=hljs-built_in>BOOL</SPAN>)animated {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> viewDidAppear:animated];
+}
+
+<SPAN class=hljs-comment>//视图将要消失</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)viewWillDisappear:(<SPAN class=hljs-built_in>BOOL</SPAN>)animated {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> viewWillDisappear:animated];
+}
+
+<SPAN class=hljs-comment>//视图已经消失</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)viewDidDisappear:(<SPAN class=hljs-built_in>BOOL</SPAN>)animated {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> viewDidDisappear:animated];
+}
+
+<SPAN class=hljs-comment>//出现内存警告  //模拟内存警告:点击模拟器-&gt;hardware-&gt; Simulate Memory Warning</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)didReceiveMemoryWarning {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+    [<SPAN class=hljs-keyword>super</SPAN> didReceiveMemoryWarning];
+}
+
+<SPAN class=hljs-comment>// 视图被销毁</SPAN>
+- (<SPAN class=hljs-keyword>void</SPAN>)dealloc {
+    <SPAN class=hljs-built_in>NSLog</SPAN>(<SPAN class=hljs-string>@"%s"</SPAN>, __FUNCTION__);
+}</CODE></PRE>
+<P><STRONG>查看 打印 结果 </STRONG></P><PRE class="hljs css"><CODE class=css>2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:41.577</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController initWithCoder:]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:41.579</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController awakeFromNib]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:41.581</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController loadView]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:46.485</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewDidLoad]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:46.486</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewWillAppear:]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:46.487</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewWillLayoutSubviews]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:46.488</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewDidLayoutSubviews]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:46.488</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewWillLayoutSubviews]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:46.488</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewDidLayoutSubviews]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 18<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:46.490</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32254:401790]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewDidAppear:]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 19<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:13.308</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32611:427962]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewWillDisappear:]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 19<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:14.683</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32611:427962]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController viewDidDisappear:]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 19<SPAN class=hljs-selector-pseudo>:03</SPAN><SPAN class=hljs-selector-pseudo>:14.683</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32611:427962]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController dealloc]</SPAN>
+2017<SPAN class=hljs-selector-tag>-03-01</SPAN> 19<SPAN class=hljs-selector-pseudo>:12</SPAN><SPAN class=hljs-selector-pseudo>:05.927</SPAN> <SPAN class=hljs-selector-tag>ViewControllerLifeCircle</SPAN><SPAN class=hljs-selector-attr>[32611:427962]</SPAN> <SPAN class=hljs-selector-tag>-</SPAN><SPAN class=hljs-selector-attr>[ViewController didReceiveMemoryWarning]</SPAN></CODE></PRE>
+<P><STRONG>分析 </STRONG><BR><STRONG>1.<CODE>initWithNibName:bundle</CODE>: 
+</STRONG><BR>初始化<CODE>UIViewController</CODE>，执行关键数据初始化操作，非<CODE>StoryBoard</CODE>创建<CODE>UIViewController</CODE>都会调用这个方法。<BR><STRONG>注意: 
+不要在这里做<CODE>View</CODE>相关操作，<CODE>View</CODE>在<CODE>loadView</CODE>方法中才初始化。</STRONG></P>
+<P><STRONG>2. <CODE>initWithCoder:</CODE> 
+</STRONG><BR>如果使用<CODE>StoryBoard</CODE>进行视图管理，程序不会直接初始化一个<CODE>UIViewController</CODE>，<CODE>StoryBoard</CODE>会自动初始化或在<CODE>segue</CODE>被触发时自动初始化，因此方法<CODE>initWithNibName:bundle</CODE>不会被调用，但是<CODE>initWithCoder</CODE>会被调用。</P>
+<P><STRONG>3. <CODE>awakeFromNib</CODE> 
+</STRONG><BR>当<CODE>awakeFromNib</CODE>方法被调用时，所有视图的<CODE>outlet</CODE>和<CODE>action</CODE>已经连接，但还没有被确定，这个方法可以算作适合视图控制器的实例化配合一起使用的，因为有些需要根据用户洗好来进行设置的内容，无法存在<CODE>storyBoard</CODE>或<CODE>xib</CODE>中，所以可以在<CODE>awakeFromNib</CODE>方法中被加载进来。</P>
+<P><STRONG>4. <CODE>loadView</CODE> 
+</STRONG><BR>当执行到<CODE>loadView</CODE>方法时，如果视图控制器是通过<CODE>nib</CODE>创建，那么视图控制器已经从<CODE>nib</CODE>文件中被解档并创建好了，接下来任务就是对<CODE>view</CODE>进行初始化。</P>
+<P><CODE>loadView</CODE>方法在<CODE>UIViewController</CODE>对象的<CODE>view</CODE>被访问且为空的时候调用。这是它与<CODE>awakeFromNib</CODE>方法的一个区别。<BR>假设我们在处理内存警告时释放<CODE>view</CODE>属性:<CODE>self.view 
+= 
+nil</CODE>。因此<CODE>loadView</CODE>方法在视图控制器的生命周期内可能被调用多次。<BR><CODE>loadView</CODE>方法不应该直接被调用，而是由系统调用。它会加载或创建一个view并把它赋值给<CODE>UIViewController</CODE>的<CODE>view</CODE>属性。</P>
+<P>在创建<CODE>view</CODE>的过程中，首先会根据<CODE>nibName</CODE>去找对应的<CODE>nib</CODE>文件然后加载。如果<CODE>nibName</CODE>为空或找不到对应的<CODE>nib</CODE>文件，则会创建一个空视图(这种情况一般是纯代码)</P>
+<P><STRONG>注意:在重写loadView方法的时候，不要调用父类的方法。</STRONG></P>
+<P><STRONG>5. <CODE>viewDidLoad</CODE> 
+</STRONG><BR>当<CODE>loadView</CODE>将<CODE>view</CODE>载入内存中，会进一步调用<CODE>viewDidLoad</CODE>方法来进行进一步设置。此时，视图层次已经放到内存中，通常，我们对于各种初始化数据的载入，初始设定、修改约束、移除视图等很多操作都可以这个方法中实现。</P>
+<P><STRONG>视图层次(view 
+hierachy):</STRONG>因为每个视图都有自己的子视图，这个视图层次其实也可以理解为一颗树状的数据结构。而树的根节点，也就是<CODE>根视图(root 
+view)</CODE>,在<CODE>UIViewController</CODE>中以<CODE>view</CODE>属性。它可以看做是其他所有子视图的容器，也就是根节点。<BR><STRONG>6. 
+<CODE>viewWillAppear</CODE> 
+</STRONG><BR>系统在载入所有的数据后，将会在屏幕上显示视图，这时会先调用这个方法，通常我们会在这个方法对即将显示的视图做进一步的设置。比如，设置设备不同方向时该如何显示；设置状态栏方向、设置视图显示样式等。</P>
+<P>另一方面，当<CODE>APP</CODE>有多个视图时，上下级视图切换是也会调用这个方法，如果在调入视图时，需要对数据做更新，就只能在这个方法内实现。</P>
+<P><STRONG>7. <CODE>viewWillLayoutSubviews</CODE> </STRONG><BR><CODE>view</CODE> 
+即将布局其<CODE>Subviews</CODE>。 
+比如<CODE>view</CODE>的<CODE>bounds</CODE>改变了(例如:状态栏从不显示到显示,视图方向变化)，要调整<CODE>Subviews</CODE>的位置，在调整之前要做的工作可以放在该方法中实现</P>
+<P><STRONG>8.<CODE>viewDidLayoutSubviews</CODE></STRONG><BR><CODE>view</CODE>已经布局其<CODE>Subviews</CODE>，这里可以放置调整完成之后需要做的工作。</P>
+<P><STRONG>9. 
+<CODE>viewDidAppear</CODE></STRONG><BR>在view被添加到视图层级中以及多视图，上下级视图切换时调用这个方法，在这里可以对正在显示的视图做进一步的设置。</P>
+<P><STRONG>10.<CODE>viewWillDisappear</CODE> 
+</STRONG><BR>在视图切换时，当前视图在即将被移除、或被覆盖是，会调用该方法，此时还没有调用<CODE>removeFromSuperview</CODE>。</P>
+<P><STRONG>11. 
+<CODE>viewDidDisappear</CODE></STRONG><BR><CODE>view</CODE>已经消失或被覆盖，此时已经调用<CODE>removeFromSuperView</CODE>;</P>
+<P><STRONG>12. 
+<CODE>dealloc</CODE></STRONG><BR>视图被销毁，此次需要对你在<CODE>init</CODE>和<CODE>viewDidLoad</CODE>中创建的对象进行释放。</P>
+<P><STRONG>13.<CODE>didReceiveMemoryWarning</CODE> 
+</STRONG><BR>在内存足够的情况下，<CODE>app```的视图通常会一直保存在内存中，但是如果内存不够，一些没有正在显示的</CODE>viewController<CODE>就会收到内存不足的警告，然后就会释放自己拥有的视图，以达到释放内存的目的。但是系统只会释放内存，并不会释放对象的所有权，所以通常我们需要在这里将不需要显示在内存中保留的对象释放它的所有权，将其指针置</CODE>nil``。</P>
+<H1>三. 视图的生命历程</H1>
+<UL>
+  <LI><STRONG><CODE>[ViewController initWithCoder:]</CODE>或<CODE>[ViewController 
+  initWithNibName:Bundle]</CODE>:</STRONG> 
+  首先从归档文件中加载<CODE>UIViewController</CODE>对象。即使是纯代码，也会把<CODE>nil</CODE>作为参数传给后者。</LI>
+  <LI><STRONG><CODE>[UIView awakeFromNib]:</CODE></STRONG> 
+  作为第一个方法的助手，方法处理一些额外的设置。</LI>
+  <LI><STRONG><CODE>[ViewController loadView]</CODE>: 
+  </STRONG>创建或加载一个<CODE>view</CODE>并把它赋值给<CODE>UIViewController</CODE>的<CODE>view</CODE>属性。<BR>-<STRONG><CODE>[ViewController 
+  viewDidLoad]</CODE>: </STRONG>此时整个<CODE>视图层次(view 
+  hierarchy)</CODE>已经放到内存中，可以移除一些视图，修改约束，加载数据等。</LI>
+  <LI><STRONG><CODE>[ViewController viewWillAppear:]</CODE>: 
+  </STRONG>视图加载完成，并即将显示在屏幕上。还没设置动画，可以改变当前屏幕方向或状态栏的风格等。</LI>
+  <LI><STRONG><CODE>[ViewController 
+  viewWillLayoutSubviews]</CODE>：</STRONG>即将开始子视图位置布局</LI>
+  <LI><STRONG><CODE>[ViewController 
+  viewDidLayoutSubviews]</CODE>：</STRONG>用于通知视图的位置布局已经完成</LI>
+  <LI><STRONG><CODE>[ViewController 
+  viewDidAppear:]</CODE>：</STRONG>视图已经展示在屏幕上，可以对视图做一些关于展示效果方面的修改。</LI>
+  <LI><STRONG><CODE>[ViewController 
+  viewWillDisappear:]</CODE>：</STRONG>视图即将消失</LI>
+  <LI><STRONG><CODE>[ViewController viewDidDisappear:]</CODE>：</STRONG>视图已经消失
+  <H1>四: 总结:</H1></LI>
+  <LI>
+  <P>只有<CODE>init</CODE>系列的方法,如<CODE>initWithNibName</CODE>需要自己调用，其他方法如<CODE>loadView</CODE>和<CODE>awakeFromNib</CODE>则是系统自动调用。而<CODE>viewWill/Did</CODE>系列的方法则类似于回调和通知，也会被自动调用。</P></LI>
+  <LI>
+  <P>纯代码写视图布局时需要注意，要手动调用<CODE>loadView</CODE>方法，而且不要调用父类的<CODE>loadView</CODE>方法。纯代码和用<CODE>IB</CODE>的区别仅存在于<CODE>loadView</CODE>方法及其之前，编程时需要注意的也就是<CODE>loadView</CODE>方法。</P></LI>
+  <LI>
+  <P>除了<CODE>initWithNibName</CODE>和<CODE>awakeFromNib</CODE>方法是处理视图控制器外，其他方法都是处理视图。这两个方法在视图控制器的生命周期里只会调用一次。</P></LI></UL></DIV><BR><BR>作者：林大鹏天地<BR>链接：http://www.jianshu.com/p/d60b388b19f5<BR>來源：简书<BR>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</DIV>
+</BODY>
+</HTML>

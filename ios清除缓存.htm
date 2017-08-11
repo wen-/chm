@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>ios清除缓存</TITLE>
+</HEAD>
+<BODY>
+<P>ios清除缓存</P>
+<H1 class=postTitle 
+style="FONT-SIZE: 14px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WIDTH: 1516px; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT: bold; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 5px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(254,254,242); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal"><A 
+id=cb_post_title_url class=postTitle2 
+style="TEXT-DECORATION: underline; COLOR: rgb(170,122,83); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" 
+href="http://www.cnblogs.com/dj1232090/p/6775873.html">iOS 
+清除xcode缓存和生成文件</A></H1>
+<DIV class=clear 
+style="FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(254,254,242); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal"></DIV>
+<DIV class=postBody 
+style="FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 5px; ORPHANS: 2; WIDOWS: 2; MARGIN: 5px 0px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.5; PADDING-RIGHT: 2px; BACKGROUND-COLOR: rgb(254,254,242); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal">
+<DIV id=cnblogs_post_body 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 20px; PADDING-RIGHT: 0px">
+<DIV class="line number1 index0 alt2" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+class="objc plain" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">方法1 
+按快捷键 shift+command+G 或者 Finder图标点击右键选 前往文件夹... 调出前往文件夹框</CODE></DIV>
+<DIV class="line number2 index1 alt1" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+class="objc plain" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">在里面输入如下 
+/Users/(自己电脑名字)/Library/Developer/Xcode/DerivedData 回车 然后删掉目录下文件<BR 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">方法2</CODE><PRE class="best-text mb-10" style="WORD-WRAP: break-word; WHITE-SPACE: pre-wrap; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px" name="code">你打开Finder，然后鼠单击顶头的“前往”，然后按你键盘的option键（会出现一个资源库的，你松手又会不见了），你点击资源库，然后依次进入
+Developer/Xcode/DerivedData/ModuleCache
+就OK了。</PRE></DIV>
+<DIV class="line number3 index2 alt2" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><CODE 
+class="objc spaces" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">然后</CODE><CODE 
+class="objc plain" 
+style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px">删掉目录下文件</CODE></DIV></DIV></DIV>
+</BODY>
+</HTML>
