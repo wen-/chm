@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>iOS倒计时</TITLE>
+</HEAD>
+<BODY>
+<P>iOS倒计时</P>
+<P>int timeHour;<BR>int timeminute;<BR>int timesecond;<BR>int format = 
+1;</P><BR>@property (nonatomic, strong) NSTimer *timer;
+<P>_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self 
+selector:@selector(timeFireMethod) userInfo:nil repeats:YES];</P>
+<P>//解决页面滚动时，NSTimer失效<BR>[[NSRunLoop currentRunLoop] addTimer:timer 
+forMode:UITrackingRunLoopMode];</P>
+<P>- (void)timeFireMethod {<BR>&nbsp;&nbsp;&nbsp; NSString 
+*timeHourStr;<BR>&nbsp;&nbsp;&nbsp; NSString 
+*timeMinuteStr;<BR>&nbsp;&nbsp;&nbsp; NSString 
+*timeSecondStr;<BR>&nbsp;&nbsp;&nbsp; if(self-&gt;显示时间 &lt; 
+0){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [timer 
+invalidate];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self-&gt;显示开通会员提示 = 
+false;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [self.playerView 
+play];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [_提示框 
+dismissViewControllerAnimated:YES completion:nil];<BR>&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; timeHour&nbsp;&nbsp; = 
+self-&gt;显示时间 / 3600;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; timeminute = 
+(self-&gt;显示时间 - timeHour * 3600) / 
+60;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; timesecond = self-&gt;显示时间 - 
+timeHour * 3600 - timeminute * 60;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (timeHour &lt; 10) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+timeHourStr = [NSString 
+stringWithFormat:@"%d%d",0,timeHour];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+timeHourStr = [NSString 
+stringWithFormat:@"%d%d",0,timeHour];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (timeminute &lt; 10) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+timeMinuteStr = [NSString 
+stringWithFormat:@"%d%d",0,timeminute];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+timeMinuteStr = [NSString 
+stringWithFormat:@"%d",timeminute];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (timesecond &lt; 10) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+timeSecondStr = [NSString stringWithFormat:@"%d%d",0 
+,timesecond];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+timeSecondStr = [NSString 
+stringWithFormat:@"%d",timesecond];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString *str = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(format == 
+1){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; str = 
+[NSString 
+stringWithFormat:@"%d秒后播放\n",self-&gt;显示时间];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; str 
+= [NSString stringWithFormat:@"<A 
+href="mailto:%@:%@:%">%@:%@:%</A>@秒后播放\n",timeHourStr,timeMinuteStr,timeSecondStr];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+使用富文本来改变alert的title字体大小和颜色<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] 
+initWithString:str];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [titleText 
+addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] 
+range:NSMakeRange(0, 2)];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[titleText addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] 
+range:NSMakeRange(0, 2)];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [_提示框 
+setValue:titleText forKey:@"attributedTitle"];<BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; self-&gt;显示时间--;<BR>}<BR></P>
+</BODY>
+</HTML>
