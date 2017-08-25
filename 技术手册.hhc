@@ -3354,7 +3354,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="安卓开发">
 <PARAM NAME="Local" VALUE="安卓开发.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3497,6 +3496,20 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="iOS字符串转整型">
 <PARAM NAME="Local" VALUE="iOS字符串转整型.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ios文件共享">
+<PARAM NAME="Local" VALUE="ios文件共享.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="iOS引入第三方framework找不到头文件">
+<PARAM NAME="Local" VALUE="iOS引入第三方framework找不到头文件.htm">
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
