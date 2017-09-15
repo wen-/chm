@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>iOS监听横竖屏状态</TITLE>
+</HEAD>
+<BODY>
+<P>iOS监听横竖屏状态</P>
+<H1 class=csdn_top 
+style='BOX-SIZING: border-box; FONT-SIZE: 24px; FONT-FAMILY: "PingFang SC", "Microsoft YaHei", SimHei, Arial, SimSun; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(44,48,51); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 29px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; LINE-HEIGHT: 38px; PADDING-RIGHT: 29px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal'>iOS 
+横竖屏监听通知</H1>
+<DIV class="article_bar clearfix" 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "PingFang SC", "Microsoft YaHei", SimHei, Arial, SimSun; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(229,229,229) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(136,136,136); PADDING-BOTTOM: 8px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 29px; ORPHANS: 2; WIDOWS: 2; MARGIN: 5px 0px 0px; DISPLAY: block; LETTER-SPACING: normal; LINE-HEIGHT: 38px; PADDING-RIGHT: 29px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal'>
+<DIV class=artical_tag 
+style="BOX-SIZING: border-box; FLOAT: left; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+class=original 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-WEIGHT: normal; COLOR: rgb(202,12,22); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 20px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px">原创</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=time 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-WEIGHT: normal; COLOR: rgb(120,128,135); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px">2016年06月28日 
+11:21:28</SPAN></DIV>
+<UL class=right_bar 
+style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; FLOAT: right; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; PADDING-RIGHT: 0px">
+  <LI 
+  style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; FLOAT: left; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; LINE-HEIGHT: 28px; PADDING-RIGHT: 0px"><BUTTON 
+  class=btn-noborder 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; CURSOR: pointer; BORDER-TOP: 0px; HEIGHT: 24px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(136,136,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; OUTLINE-COLOR: invert; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px; -webkit-appearance: button"><I 
+  class="icon iconfont icon-read" 
+  style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: iconfont !important; VERTICAL-ALIGN: middle; COLOR: rgb(120,128,135); FONT-STYLE: normal; MARGIN: 0px 3px; DISPLAY: inline-block; -webkit-font-smoothing: antialiased"></I><SPAN 
+  class=txt 
+  style="BOX-SIZING: border-box; VERTICAL-ALIGN: middle; FONT-WEIGHT: normal; COLOR: rgb(120,128,135); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px">1754</SPAN></BUTTON></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; FLOAT: left; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; LINE-HEIGHT: 28px; PADDING-RIGHT: 0px"><BUTTON 
+  class="btn-noborder but-comment-topicon" 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; CURSOR: pointer; BORDER-TOP: 0px; HEIGHT: 24px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(136,136,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; OUTLINE-COLOR: invert; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px; -webkit-appearance: button"><I 
+  class="icon iconfont icon-pinglun" 
+  style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: iconfont !important; VERTICAL-ALIGN: middle; COLOR: rgb(120,128,135); FONT-STYLE: normal; MARGIN: 0px 3px; DISPLAY: inline-block; -webkit-font-smoothing: antialiased"></I><SPAN 
+  class=txt 
+  style="BOX-SIZING: border-box; VERTICAL-ALIGN: middle; FONT-WEIGHT: normal; COLOR: rgb(120,128,135); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px">0</SPAN></BUTTON></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; FLOAT: left; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 0px 30px; LINE-HEIGHT: 28px; PADDING-RIGHT: 0px"><BUTTON 
+  class="btn-noborder btn-like" 
+  style="BOX-SIZING: border-box; FONT-SIZE: 14px; CURSOR: pointer; BORDER-TOP: 0px; HEIGHT: 24px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(136,136,136); OUTLINE-WIDTH: medium; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; OUTLINE-STYLE: none; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; OUTLINE-COLOR: invert; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px; -webkit-appearance: button"><I 
+  class="icon iconfont icon-xihuan-" 
+  style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: iconfont !important; VERTICAL-ALIGN: middle; COLOR: rgb(120,128,135); FONT-STYLE: normal; MARGIN: 1px 3px 0px; DISPLAY: inline-block; -webkit-font-smoothing: antialiased"></I><SPAN 
+  class=txt 
+  style="BOX-SIZING: border-box; VERTICAL-ALIGN: middle; FONT-WEIGHT: normal; COLOR: rgb(120,128,135); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px">0</SPAN></BUTTON></LI></UL></DIV>
+<DIV id=article_content class="article_content tracking-ad" 
+style='BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: "PingFang SC", "Microsoft YaHei", SimHei, Arial, SimSun; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 20px; PADDING-LEFT: 30px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 50px; LETTER-SPACING: normal; PADDING-RIGHT: 30px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal' 
+data-mod="popu_307" data-dsm="post">
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "PingFang SC Semibold"; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 2px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><SPAN 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">iOS</STRONG></SPAN><SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC"; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">横竖屏通知有两种，一种监听设备横竖屏状态，另一种监听状态栏横竖屏状态。与布局有关一般使用第二种，因为如果一个</STRONG></SPAN><SPAN 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">viewcontroller</STRONG></SPAN><SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC"; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">不支持自动旋转，当设备由竖屏转横屏时依然会执行监听设备横竖屏的通知方法。</STRONG></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 14px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC Semibold"; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 2px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">1.</STRONG></SPAN><SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC"; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">监听设备横竖屏</STRONG></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">[[NSNotificationCenter 
+defaultCenter] addObserver:self selector:@selector(orientChange:) 
+name:UIDeviceOrientationDidChangeNotification object:nil];</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 14px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">- 
+(void)orientChange:(NSNotification *)notification</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIDeviceOrientation&nbsp; 
+orient = [UIDevice currentDevice].orientation;</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 14px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "PingFang SC Semibold"; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 2px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><SPAN 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">4</STRONG></SPAN><SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC"; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">种状态：</STRONG></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIDeviceOrientationPortrait</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIDeviceOrientationPortraitUpsideDown</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIDeviceOrientationLandscapeLeft</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIDeviceOrientationLandscapeRight</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 14px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC Semibold"; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 2px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 18px; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">2.</STRONG></SPAN><SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC"; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">监听状态栏横竖屏状态</STRONG></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">[[NSNotificationCenter 
+defaultCenter] addObserver:self selector:@selector(orientChange:) 
+name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 14px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">- 
+(void)orientChange:(NSNotification&nbsp;*)notification</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIInterfaceOrientation 
+interfaceOritation = [[UIApplication sharedApplication] 
+statusBarOrientation];</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 14px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "PingFang SC Semibold"; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 2px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><SPAN 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">4</STRONG></SPAN><SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "PingFang SC"; WHITE-SPACE: pre-wrap !important; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold">种状态：</STRONG></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIInterfaceOrientationUnknown&nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = UIDeviceOrientationUnknown,</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIInterfaceOrientationPortrait 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = UIDeviceOrientationPortrait,</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIInterfaceOrientationPortraitUpsideDown 
+= UIDeviceOrientationPortraitUpsideDown,</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIInterfaceOrientationLandscapeLeft&nbsp; 
+&nbsp; &nbsp; = UIDeviceOrientationLandscapeRight,</P>
+<P 
+style="BOX-SIZING: border-box; FONT-FAMILY: Helvetica; FONT-WEIGHT: normal; COLOR: rgb(69,69,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-RIGHT: 0px">UIInterfaceOrientationLandscapeRight 
+&nbsp; &nbsp; = UIDeviceOrientationLandscapeLeft</P></DIV>
+</BODY>
+</HTML>

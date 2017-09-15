@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>ijkplayer编译iOS</TITLE>
+</HEAD>
+<BODY>
+<P>ijkplayer编译iOS</P>
+<P><A 
+href="https://github.com/Bilibili/ijkplayer/">https://github.com/Bilibili/ijkplayer/</A></P>
+<P>拉取 k 分支版本，当前最高版本k0.8.3</P>
+<P>编译环境 MAC</P>
+<P>依赖：</P>
+<P>Xcode 7.3 (7D175)<BR>HomeBrew<BR>ruby -e "$(curl -fsSL <A 
+href="https://raw.githubusercontent.com/Homebrew/install/master/install">https://raw.githubusercontent.com/Homebrew/install/master/install</A>)"<BR>brew 
+install git</P>
+<P>编译后的运行环境：</P>
+<P>platform: iOS 7.0~10.2.x<BR>cpu: armv7, arm64, i386, x86_64, (armv7s is 
+obselete)<BR>api: MediaPlayer.framework-like<BR>video-output: OpenGL ES 
+2.0<BR>audio-output: AudioQueue, AudioUnit<BR>hw-decoder: VideoToolbox (iOS 
+8+)<BR>alternative-backend: AVFoundation.Framework.AVPlayer, 
+MediaPlayer.Framework.MPMoviePlayerControlelr (obselete since iOS 8)</P>
+<P><STRONG>开始：=====================================</STRONG></P>
+<P>根目录</P>
+<P>cd config<BR>rm module.sh<BR>ln -s module-default.sh 
+module.sh&nbsp;&nbsp;&nbsp; //用默认支持更多编码格式</P>
+<P>根目录</P>
+<P>./init-ios-openssl.sh</P>
+<P>./init-ios.sh</P>
+<P>cd ios</P>
+<P>./compile-openssl.sh clean</P>
+<P>./compile-ffmpeg.sh clean</P>
+<P>./compile-openssl.sh all</P>
+<P>./compile-ffmpeg.sh all</P>
+<P><STRONG>完成======================================================</STRONG></P>
+<P><STRONG></STRONG>&nbsp;</P>
+<P>xcode打开/ios/ijkmediademo/ijkmediademo.xcodeproj</P>
+<P>build 一遍IJKMediaFramework</P>
+<P>build 一遍IJKMediaFrameworkWithSSL&nbsp; (出错，少了bz2库，linked frameworks and 
+libraries添加libbz2.tbd)</P>
+<P>build 
+IJKMediaDemo（出错，少_bn_**，_ssl**等库，原因是IJKMediaFramework少库，ijk只支持http或https其中一种，之前我们编译了openssl支持https了，所以在IJKMediaFramework里虽然build通过了，但还是少了支持https的库，XCODE打开左侧IJKMediaPlayer.xcodeproj/Frameworks会看到libcrypto.a、libssl.a这两个文件，将其拖到linked 
+frameworks and libraries下，再跑就不会报错了）</P>
+<P><STRONG><FONT 
+color=#ff0000>注：不会被IJKMediaPlayer.xcodeproj工程中的IJKMediaFrameworkWithSSL误导，其实只要编译通过就不用管它的，包括打包成Frameworks，只需要用到IJKMediaFramework</FONT></STRONG></P>
+<P>&nbsp;</P>
+<P>项目中引用：</P>
+<P>xcode打开项目，</P>
+<P>1、查看有无Libraries，没有就新建一个：New Group --&gt; Libraries</P>
+<P>2、右键Libraries --&gt;Add Files to... --&gt;选择 
+ios/IJKMediaPlayer/IJKMediaPlayer.xcodeproj</P>
+<P>3、选择xcode项目名--&gt;Build Phases --&gt; Target Dependencies -- + 
+添加刚加入的库（选IJKMediaFramework，SSL那个不用管）</P>
+<P>4、在当前页找到Link Binary With Libraries --&gt; + 添加以下依赖库：</P>
+<P>IJKMediaFramework.framework<BR>AudioToolbox.framework<BR>&nbsp;AVFoundation.framework<BR>CoreGraphics.framework<BR>&nbsp;CoreMedia.framework<BR>CoreVideo.framework<BR>libbz2.tbd<BR>libz.tbd<BR>MediaPlayer.framework<BR>MobileCoreServices.framework<BR>OpenGLES.framework<BR>QuartzCore.framework<BR>UIKit.framework<BR>VideoToolbox.framework</P>
+<P>完成，如果依赖少就根据报错提示加上即可。</P>
+<P>使用：参照ijkmediademo/IJKMoviePlayerViewController</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

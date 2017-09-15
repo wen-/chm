@@ -12,5 +12,32 @@
 <P>直接打开安装好MAC的vm镜像就可以启动了。</P>
 <P>进入MAC系统后，安装vm tool 
 挂载ios镜像，会自动弹出安装对话框，如果不弹出，则右键点击右下角光盘图标选连接就可以了。</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">注意建好之后不要急着打开客户机， 
+因为直接打开你会发现新建的客户机将会无法启动。</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">仔细阅读Mac 
+OS X Unlocker for VMware V2.0里面的readme.txt你将会找到答案，VMware 11 
+默认建立好的OSX客户机直接运行会Crash, 有两个方案解决：</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">VM换成HW 
+10</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">或者编辑VMX文件， 
+加入<STRONG>smc.version = 0</STRONG>&nbsp;</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">去客户机的安装目录，打开VMX文件， 
+比如你的客户机名字为OSX， 这个文件就是OSX.vmx，</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">你将会看到有一个smc的参数：</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">smc.present 
+= "TRUE"</P>
+<P 
+style="FONT-SIZE: 14px; MARGIN-BOTTOM: 0px; FONT-FAMILY: Helvetica,Tahoma,Arial,sans-serif; MARGIN-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; ORPHANS: 2; WIDOWS: 2; LINE-HEIGHT: 25px">把<STRONG><FONT 
+color=#ff0000>smc.version = 0</FONT></STRONG> 加载这个参数后面一行， 
+保存退出。重新启动客户机发现能正常启动了。</P>
 </BODY>
 </HTML>

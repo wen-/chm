@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>reactNative之slide</TITLE>
+</HEAD>
+<BODY>
+<P>reactNative之slide</P>
+<DIV class=article_title 
+style='FONT-SIZE: 12px; MARGIN-BOTTOM: 21px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>
+<H1 
+style="FONT-SIZE: 18px; VERTICAL-ALIGN: middle; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px"><SPAN 
+class=link_title><A style="TEXT-DECORATION: none; COLOR: rgb(0,0,0)" 
+href="http://blog.csdn.net/mengks1987/article/details/70805254">react native 
+Slider 使用详解</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix" 
+style="OVERFLOW: hidden; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(237,237,237) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(153,153,153); PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 0px; FONT: 12px/22px Arial; PADDING-LEFT: 20px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -20px 10px; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 20px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-stretch: normal; text-decoration-style: initial; text-decoration-color: initial">
+<DIV class=article_l style="WIDTH: 934px; FLOAT: left"><SPAN 
+class=link_categories style="FLOAT: left; MARGIN: 0px 0px 0px 5px">标签：<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://www.csdn.net/tag/react" target=_blank>react</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://www.csdn.net/tag/native" target=_blank>native</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://www.csdn.net/tag/Slider" target=_blank>Slider</A></SPAN></DIV>
+<DIV class=article_r><SPAN class=link_postdate 
+style="MARGIN: 0px 16px 0px 0px">2017-04-26 15:47</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=阅读次数 class=link_view 
+style="BACKGROUND: url(../images/skin-type-icon.png) no-repeat 0px -25px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 24px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block; PADDING-RIGHT: 0px">1006人阅读</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN title=评论次数 class=link_comments 
+style="BACKGROUND-IMAGE: url(../images/skin-type-icon-yellow.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -43px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 17px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block; PADDING-RIGHT: 0px; background-size: initial; background-origin: initial; background-clip: initial"><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38)" 
+href="http://blog.csdn.net/mengks1987/article/details/70805254#comments">评论</A>(0)</SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class="link_collect tracking-ad" 
+style="BACKGROUND-IMAGE: url(../images/skin-type-icon-yellow.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -62px; PADDING-LEFT: 17px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block" 
+data-mod="popu_171"><A 
+onclick="javascript:collectArticle('react+native+Slider+%e4%bd%bf%e7%94%a8%e8%af%a6%e8%a7%a3','70805254');return false;" 
+title=收藏 style="TEXT-DECORATION: none; COLOR: rgb(200,131,38)" 
+href="javascript:void(0);" target=_blank>收藏</A></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=link_report 
+style="BACKGROUND-IMAGE: url(../images/skin-type-icon-yellow.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -81px; PADDING-LEFT: 17px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block"><A 
+onclick="javascript:report(70805254,2);return false;" title=举报 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38)" 
+href="http://blog.csdn.net/mengks1987/article/details/70805254#report">举报</A></SPAN></DIV></DIV>
+<DIV class="category clearfix" 
+style='FONT-SIZE: 12px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(237,237,237) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 20px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -20px; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 20px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>
+<DIV class=category_l 
+style="FONT-SIZE: 14px; WIDTH: 70px; FLOAT: left; COLOR: rgb(51,51,51); DISPLAY: inline-block; LINE-HEIGHT: 28px"><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+src="http://static.blog.csdn.net/images/category_icon.jpg"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN 
+style="VERTICAL-ALIGN: middle; DISPLAY: inline-block">分类：</SPAN></DIV>
+<DIV class=category_r 
+style="FONT-SIZE: 14px; WIDTH: 840px; FLOAT: left; COLOR: rgb(223,52,52); DISPLAY: inline-block"><LABEL 
+onclick="GetCategoryArticles('6850683','mengks1987','top','70805254');" 
+style="CURSOR: pointer; POSITION: relative; MARGIN-LEFT: 15px; DISPLAY: inline-block; LINE-HEIGHT: 28px"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">-----Components<EM 
+style="FONT-STYLE: normal">（28）</EM></SPAN><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><IMG class=arrow-down 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; DISPLAY: inline" 
+src="http://static.blog.csdn.net/images/arrow_triangle%20_down.jpg"></LABEL></DIV></DIV>
+<DIV class=bog_copyright 
+style='FONT-SIZE: 12px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 20px; FONT-STYLE: normal; PADDING-TOP: 20px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial'>
+<P class=copyright_p 
+style="FONT-SIZE: 14px; HEIGHT: 14px; COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(228,28,30) 3px solid; MARGIN: 0px; LINE-HEIGHT: 14px; PADDING-RIGHT: 0px">版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id=article_content class="article_content tracking-ad" 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 35px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial' 
+data-mod="popu_307" data-dsm="post">
+<DIV class=markdown_views 
+style='FONT-SIZE: 15px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(63,63,63)'>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px">属性：</P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 15px; PADDING-TOP: 15px; PADDING-LEFT: 20px; BORDER-LEFT: 10px solid; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 20px; border-radius: 0px 5px 5px 0px">
+  <P 
+  style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.25; PADDING-RIGHT: 0px"><STRONG 
+  style="BOX-SIZING: border-box">View props…</STRONG><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>：View的所有属性<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">disabled</STRONG>：是否禁用 为true时不可滑动<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">onSlidingComplete</STRONG>：用户结束滑动的时候调用此回调，参数：value<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">onValueChange</STRONG><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>：在用户拖动滑块的过程中不断调用此回调，参数：value<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">value</STRONG>：滑块的初始值。这个值应该在最小值和最大值之间。默认值是0<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">step</STRONG>：滑块变化的最小值<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">minimumValue</STRONG>：滑块的最小值<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">maximumValue</STRONG>：滑块的最大值</P></BLOCKQUOTE>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px">仅<A 
+title=iOS知识库 class=replace_word 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+href="http://lib.csdn.net/base/ios" target=_blank>iOS</A>支持：</P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 15px; PADDING-TOP: 15px; PADDING-LEFT: 20px; BORDER-LEFT: 10px solid; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 20px; border-radius: 0px 5px 5px 0px">
+  <P 
+  style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.25; PADDING-RIGHT: 0px"><STRONG 
+  style="BOX-SIZING: border-box">trackImage</STRONG>：滑块图片，只支持本地图片<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">minimumTrackImage</STRONG>：滑块左侧轨道背景图<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">maximumTrackImage</STRONG>：滑块右侧轨道背景图</P></BLOCKQUOTE>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px">仅<A 
+title=Android知识库 class=replace_word 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+href="http://lib.csdn.net/base/android" target=_blank>Android</A>支持：</P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 15px; PADDING-TOP: 15px; PADDING-LEFT: 20px; BORDER-LEFT: 10px solid; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 20px; border-radius: 0px 5px 5px 0px">
+  <P 
+  style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.25; PADDING-RIGHT: 0px"><STRONG 
+  style="BOX-SIZING: border-box">thumbTintColor</STRONG>:滑块颜色</P></BLOCKQUOTE>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px">下面2个属性和文档介绍不同，我是在vivo和华为P9上<A 
+title=软件测试知识库 class=replace_word 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+href="http://lib.csdn.net/base/softwaretest" target=_blank>测试</A>的：</P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 15px; PADDING-TOP: 15px; PADDING-LEFT: 20px; BORDER-LEFT: 10px solid; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 20px; border-radius: 0px 5px 5px 0px">
+  <P 
+  style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.25; PADDING-RIGHT: 0px"><STRONG 
+  style="BOX-SIZING: border-box">maximumTrackTintColor</STRONG>：真机测试发现<A 
+  title=iOS知识库 class=replace_word 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+  href="http://lib.csdn.net/base/ios" target=_blank>ios</A>：滑块右侧区域的颜色。<A 
+  title=Android知识库 class=replace_word 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(223,52,52)" 
+  href="http://lib.csdn.net/base/android" 
+  target=_blank>android</A>：滑块左侧区域的颜色<SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN><BR 
+  style="BOX-SIZING: border-box"><STRONG 
+  style="BOX-SIZING: border-box">minimumTrackTintColor</STRONG>：真机测试发现ios：滑块左侧区域的颜色。android：滑块右侧区域的颜色</P></BLOCKQUOTE>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px">demo：</P><PRE class=prettyprint style='BOX-SIZING: border-box; FONT-SIZE: 14px; WORD-WRAP: break-word; BORDER-TOP: rgb(136,136,136) 0px solid; FONT-FAMILY: "Source Code Pro", monospace; BORDER-RIGHT: rgb(136,136,136) 0px solid; WHITE-SPACE: nowrap; OVERFLOW-X: auto; OVERFLOW-Y: hidden; BORDER-BOTTOM: rgb(136,136,136) 0px solid; POSITION: relative; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 60px; BORDER-LEFT: rgb(136,136,136) 0px solid; MARGIN: 0px 0px 1.1em; DISPLAY: block; LINE-HEIGHT: 1.45; PADDING-RIGHT: 5px; border-radius: 0px' name="code"><CODE class="hljs coffeescript has-numbering" style='BOX-SIZING: border-box; WORD-WRAP: normal; FONT-FAMILY: "Source Code Pro", monospace; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; DISPLAY: block; PADDING-RIGHT: 0px; border-radius: 0px'><SPAN class=hljs-reserved style="BOX-SIZING: border-box">import</SPAN> React, {Component} from <SPAN class=hljs-string style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">'react'</SPAN>;
+<SPAN class=hljs-reserved style="BOX-SIZING: border-box">import</SPAN> {
+    StyleSheet,
+    View,
+    Slider,
+    Text,
+} from <SPAN class=hljs-string style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">'react-native'</SPAN>;
+
+<SPAN class=hljs-reserved style="BOX-SIZING: border-box">export</SPAN> <SPAN class=hljs-reserved style="BOX-SIZING: border-box">default</SPAN> <SPAN class=hljs-class style="BOX-SIZING: border-box"><SPAN class=hljs-keyword style="BOX-SIZING: border-box; COLOR: rgb(0,0,136)">class</SPAN> <SPAN class=hljs-title style="BOX-SIZING: border-box; COLOR: rgb(102,0,102)">SliderDemo</SPAN> <SPAN class=hljs-keyword style="BOX-SIZING: border-box; COLOR: rgb(0,0,136)">extends</SPAN> <SPAN class=hljs-title style="BOX-SIZING: border-box; COLOR: rgb(102,0,102)">Component</SPAN> {</SPAN>
+
+    static navigationOptions = {
+        <SPAN class=hljs-attribute style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">title</SPAN>: <SPAN class=hljs-string style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">'Slider'</SPAN>,
+    };
+
+    state = {
+        <SPAN class=hljs-attribute style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">value</SPAN>:<SPAN class=hljs-number style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">0</SPAN>,
+    }
+
+    render() {
+        <SPAN class=hljs-keyword style="BOX-SIZING: border-box; COLOR: rgb(0,0,136)">return</SPAN> (
+            &lt;View style={{<SPAN class=hljs-attribute style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">flex</SPAN>:<SPAN class=hljs-number style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">1</SPAN>}}&gt;
+                &lt;Slider /&gt;
+                &lt;Slider disabled={<SPAN class=hljs-literal style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">true</SPAN>}/&gt;
+                &lt;Slider maximumTrackTintColor=<SPAN class=hljs-string style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">'black'</SPAN>/&gt;
+                &lt;Slider minimumTrackTintColor=<SPAN class=hljs-string style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">'red'</SPAN>/&gt;
+                &lt;Slider style={{<SPAN class=hljs-attribute style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">borderWidth</SPAN>:<SPAN class=hljs-number style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">1</SPAN>,<SPAN class=hljs-attribute style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">borderColor</SPAN>:<SPAN class=hljs-string style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">'red'</SPAN>}}/&gt;
+                &lt;Text&gt;{<SPAN class=hljs-keyword style="BOX-SIZING: border-box; COLOR: rgb(0,0,136)">this</SPAN>.state.value}&lt;/Text&gt;
+                &lt;Slider minimumValue={<SPAN class=hljs-number style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">5</SPAN>} maximumValue={<SPAN class=hljs-number style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">20</SPAN>} onValueChange={<SPAN class=hljs-function style="BOX-SIZING: border-box"><SPAN class=hljs-params style="BOX-SIZING: border-box; COLOR: rgb(102,0,102)">(value)</SPAN>=&gt;</SPAN>{<SPAN class=hljs-keyword style="BOX-SIZING: border-box; COLOR: rgb(0,0,136)">this</SPAN>.setState<SPAN class=hljs-function style="BOX-SIZING: border-box"><SPAN class=hljs-params style="BOX-SIZING: border-box; COLOR: rgb(102,0,102)">({value:value})</SPAN>}} <SPAN class=hljs-title style="BOX-SIZING: border-box">onSlidingComplete</SPAN>={<SPAN class=hljs-params style="BOX-SIZING: border-box; COLOR: rgb(102,0,102)">(value)</SPAN>=&gt;</SPAN>{<SPAN class=hljs-keyword style="BOX-SIZING: border-box; COLOR: rgb(0,0,136)">this</SPAN>.setState({<SPAN class=hljs-attribute style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">value</SPAN>:value})}}/&gt;
+                &lt;Slider step={<SPAN class=hljs-number style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">0.2</SPAN>}/&gt;
+                &lt;Slider thumbImage={<SPAN class=hljs-built_in style="BOX-SIZING: border-box; COLOR: rgb(102,0,102)">require</SPAN>(<SPAN class=hljs-string style="BOX-SIZING: border-box; COLOR: rgb(0,136,0)">'../../imgs/slider_thumb.png'</SPAN>)}/&gt;
+                &lt;Slider value={<SPAN class=hljs-number style="BOX-SIZING: border-box; COLOR: rgb(0,102,102)">0.5</SPAN>}/&gt;
+            &lt;/View&gt;
+        );
+    }</CODE><UL class=pre-numbering style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; BORDER-RIGHT: rgb(221,221,221) 1px solid; WIDTH: 50px; POSITION: absolute; PADDING-BOTTOM: 40px; TEXT-ALIGN: right; PADDING-TOP: 6px; PADDING-LEFT: 0px; LEFT: 0px; MARGIN: 0px; TOP: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(238,238,238); opacity: 0"><LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">1<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">2<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">3<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">4<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">5<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">6<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">7<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">8<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">9<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">10<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">11<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">12<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">13<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">14<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">15<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">16<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">17<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">18<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">19<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">20<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">21<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">22<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">23<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">24<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">25<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">26<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">27<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">28<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">29<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">30<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">31<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">32<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">33<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">34</LI></UL><UL class=pre-numbering style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; BORDER-RIGHT: rgb(221,221,221) 1px solid; WIDTH: 50px; POSITION: absolute; PADDING-BOTTOM: 40px; TEXT-ALIGN: right; PADDING-TOP: 6px; PADDING-LEFT: 0px; LEFT: 0px; MARGIN: 0px; TOP: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(238,238,238)"><LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">1<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">2<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">3<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">4<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">5<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">6<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">7<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">8<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">9<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">10<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">11<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">12<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">13<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">14<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">15<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">16<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">17<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">18<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">19<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">20<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">21<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">22<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">23<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">24<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">25<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">26<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">27<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">28<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">29<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">30<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">31<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">32<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">33<LI style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px">34</LI></UL></PRE>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px">效果图：</P>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px"><IMG 
+alt=这里写图片描述 src="images/20170426160600984.png" align=baseline></P>
+<P 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px 0px 1.1em; PADDING-RIGHT: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(12,137,207)" 
+href="https://github.com/781238222/react-native-examples" 
+target=_blank>github下载地址</A></P></DIV></DIV>
+</BODY>
+</HTML>
