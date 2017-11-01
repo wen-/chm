@@ -37,5 +37,65 @@ style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); PADDING-BOTTOM: 0px; PADDING-TO
 style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px">NSString 
 *stringFloat = [NSString 
 stringWithFormat:@"%f",intString];</SPAN></SPAN></P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"></SPAN></SPAN>&nbsp;</P><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"><PRE><DIV><P>NSString转NSUrl：NSString *str = @"www.ngmob.com";<BR></P><P> &nbsp; &nbsp;NSURL *URL = [NSURL URLWithString:str];</P><P><BR></P><P>NSUrl转NSString：NSString *str1 = [URL absoluteString];</P></DIV><BR><BR>作者：困惑困惑困惑<BR>链接：http://www.jianshu.com/p/e7b11b154167<BR>來源：简书<BR>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</PRE></SPAN></SPAN>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"></SPAN></SPAN>&nbsp;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"></SPAN></SPAN>&nbsp;</P><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"><SPAN 
+style="FONT-FAMILY: Times; COLOR: rgb(52,52,52); LINE-HEIGHT: 24px"><PRE><DIV><DIV class="show-content" data-note-content=""><H5>二.用OC语言比较</H5>
+<P>1.isEqualToString方法:判断字符串是否相等</P>
+<PRE class="hljs undefined"><CODE>NSString *astring01 = @"This is a String!";
+NSString *astring02 = @"This is a String!";
+BOOL result = [astring01 isEqualToString:astring02];
+NSLog(@"result:%d",result);</CODE></PRE>
+<P>2.compare方法(comparer返回的三种值)    </P>
+<UL>
+<LI>NSOrderedSame 判断两者内容是否相同
+</LI></UL>
+<PRE class="hljs undefined"><CODE>NSString *astring01 = @"This is a String!";
+NSString *astring02 = @"This is a String!";    
+BOOL result = [astring01 compare:astring02] == NSOrderedSame;    
+NSLog(@"result:%d",result);</CODE></PRE>
+<UL>
+<LI>NSOrderedAscending 判断两对象值的大小(按字母顺序进行比较，astring02大于astring01为真)
+</LI></UL>
+<PRE class="hljs undefined"><CODE>NSString *astring01 = @"This is a String!";
+NSString *astring02 = @"this is a String!";
+BOOL result = [astring01 compare:astring02] == NSOrderedAscending;    
+NSLog(@"result:%d",result);</CODE></PRE>
+<UL>
+<LI>NSOrderedDescending 判断两对象值的大小(按字母顺序进行比较，astring02小于astring01为真)
+</LI></UL>
+<PRE class="hljs undefined"><CODE>NSString *astring01 = @"this is a String!";
+NSString *astring02 = @"This is a String!";
+BOOL result = [astring01 compare:astring02] == NSOrderedDescending;    
+NSLog(@"result:%d",result);</CODE></PRE>
+<P>3.不考虑大小写比较字符串</P>
+<UL>
+<LI>NSOrderedDescending判断两对象值的大小(按字母顺序进行比较，astring02小于astring01为真
+</LI></UL>
+<PRE class="hljs undefined"><CODE>NSString *astring01 = @"this is a String!";
+NSString *astring02 = @"This is a String!";
+BOOL result = [astring01 caseInsensitiveCompare:astring02] == NSOrderedSame;    
+NSLog(@"result:%d",result);</CODE></PRE>
+<UL>
+<LI>NSCaseInsensitiveSearch:不区分大小写比较 NSLiteralSearch:进行完全比较，区分大小写 NSNumericSearch:比较字符串的字符个数，而不是字符值。
+</LI></UL>
+<PRE class="hljs undefined"><CODE>NSString *astring01 = @"this is a String!";
+NSString *astring02 = @"This is a String!";
+BOOL result = [astring01 compare:astring02
+                            options:NSCaseInsensitiveSearch | NSNumericSearch] == NSOrderedSame;    
+NSLog(@"result:%d",result);</CODE></PRE>
+</DIV></DIV></PRE></SPAN></SPAN>
 </BODY>
 </HTML>

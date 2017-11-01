@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>android-ios生命周期对比</TITLE>
+</HEAD>
+<BODY>
+<P>android-ios生命周期对比</P>
+<H1 
+style='FONT-SIZE: 1.25em; WORD-WRAP: break-word; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(240,240,240) 1px solid; TEXT-TRANSFORM: none; WORD-BREAK: break-all; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.2em; FONT-STYLE: normal; PADDING-TOP: 0.2em; PADDING-LEFT: 0.5em; ORPHANS: 2; WIDOWS: 2; MARGIN: 0.1em 0px 0px 0.1em; LETTER-SPACING: normal; LINE-HEIGHT: 1.36em; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>Android、iOS大不同——生命周期</H1>
+<DIV class=meta 
+style='FONT-SIZE: 0.8em; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: right; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: right; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 35px; PADDING-RIGHT: 0.8em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><A 
+title="Zoe's blog" style="TEXT-DECORATION: none" 
+href="http://ju.outofmemory.cn/feed/1831/"><I class="ico man" 
+style="HEIGHT: 16px; WIDTH: 16px; BACKGROUND: url(/v5/s/imgs/sprite.png?17.1) no-repeat -29px -81px; POSITION: relative; DISPLAY: inline-block; TOP: 2px"></I>Zoe's 
+blog</A><SPAN class=Apple-converted-space>&nbsp;</SPAN><TIME 
+style="COLOR: black"><I class="ico date" 
+style="HEIGHT: 16px; WIDTH: 16px; BACKGROUND: url(/v5/s/imgs/sprite.png?17.1) no-repeat -29px -99px; POSITION: relative; DISPLAY: inline-block; TOP: 2px"></I>2014-12-11</TIME><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><SPAN class=pv 
+style="COLOR: rgb(139,0,0)"><B>2477</B><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>阅读</SPAN></DIV>
+<DIV class=tags 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px !important; FONT-STYLE: normal; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px !important; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><A 
+class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">生命周期</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/Java/">Java</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/iOS/">iOS</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/Objective-C/">Objective-C</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/Android/">Android</A></DIV>
+<H2 
+style='FONT-SIZE: 1.3em; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>iOS 
+Application生命周期</H2>
+<H3 
+style='FONT-SIZE: 1.2em; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(240,240,240) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.2em; FONT-STYLE: normal; PADDING-TOP: 0.2em; PADDING-LEFT: 0.2em; ORPHANS: 2; WIDOWS: 2; MARGIN: 0.2em 0px 0.4em; LETTER-SPACING: normal; PADDING-RIGHT: 0.2em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>AppDelegate</H3>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><IMG 
+onerror="return imgError(this)" alt="" 
+src="http://seniorzhai.github.io/img/iOS_LifeCycle.png"></P>
+<OL 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">BOOL</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">application</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">UIApplication</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">applicationwillFinishLaunchingWithOptions</SPAN><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">NSDictionary</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">launchOptions</SPAN></CODE><BR>将要启动</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">BOOL</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">application</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">UIApplication</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">applicationdidFinishLaunchingWithOptions</SPAN><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">NSDictionary</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">launchOptions</SPAN></CODE><BR>程序首次完成启动时执行，若直接启动，launchOptions没有数据，若由其他应用启动，launchOptions包含数据</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=kwd 
+  style="COLOR: rgb(0,0,139)">void</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">applicationWillResignActive</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">UIApplication</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">application</SPAN></CODE><BR>应用进入后台，程序失去激活(Active)时调用<BR>需要在此方法中执行下列任务
+  <UL>
+    <LI>暂停正在执行的任务</LI>
+    <LI>禁止计时器</LI>
+    <LI>减少OpenGL ES帧率</LI>
+    <LI>若为游戏应暂停游戏</LI></UL></LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=kwd 
+  style="COLOR: rgb(0,0,139)">void</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">applicationDidEnterBackground</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">UIApplication</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">application</SPAN></CODE><BR>已经进入后台时调用
+  <UL>
+    <LI>释放共享资源</LI>
+    <LI>保存用户数据</LI>
+    <LI>作废计时器</LI>
+    <LI>保存足够的程序状态以便一次恢复</LI></UL></LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=kwd 
+  style="COLOR: rgb(0,0,139)">void</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">applicationWillEnterForeground</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">UIApplication</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">application</SPAN></CODE><BR>从后台进入前台时调用</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=kwd 
+  style="COLOR: rgb(0,0,139)">void</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">applicationDidBecomeActive</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">UIApplication</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">application</SPAN></CODE><BR>应用进入激活状态</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=kwd 
+  style="COLOR: rgb(0,0,139)">void</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">applicationWillTerminate</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">:(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">UIApplication</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">*)</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)">application</SPAN></CODE><BR>应用兼将要退出时调用
+  <H3 id=UIController 
+  style="FONT-SIZE: 1.2em; BORDER-BOTTOM: rgb(240,240,240) 1px solid; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0.2em; MARGIN: 0.2em 0px 0.4em; PADDING-RIGHT: 0.2em">UIController</H3><IMG 
+  onerror="return imgError(this)" alt="" 
+  src="http://seniorzhai.github.io/img/iOS_LifeCycle_ViewController.png"></LI></OL>
+<UL 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+  <LI>alloc 创建对象</LI>
+  <LI>init 初始化对象</LI>
+  <LI>loadView 从nib载入视图</LI>
+  <LI>viewDidLoad 载入完成</LI>
+  <LI>viewWillApper 视图出现在屏幕之前</LI>
+  <LI>viewWillDisapper 渲染完成，显示在屏幕上</LI>
+  <LI>viewDiddisapper 从屏幕移除之前</LI>
+  <LI>viewWillUnload 已经从屏幕移除</LI>
+  <LI>viewDidUnload 载出之前</LI>
+  <LI>dealloc 被销毁
+  <H2 id=Android_Activity生命周期 style="FONT-SIZE: 1.3em">Android 
+  Activity生命周期</H2><IMG onerror="return imgError(this)" alt="" 
+  src="http://seniorzhai.github.io/img/Android_LifeCycle.png"></LI></UL>
+<OL 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onCreate</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">()</SPAN></CODE><BR>创建Activity</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onStart</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">()</SPAN></CODE><BR>创建或从后台重新到前台时被调用</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onRestart</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">()</SPAN></CODE><BR>从后台到前台时被调用</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onResume</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">()</SPAN></CODE><BR>创建或者被覆盖、后台重新回到前台时被调用</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onPause</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">()</SPAN></CODE><BR>被覆盖或者锁屏时被调用</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onStop</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">()</SPAN></CODE><BR>退出当前Activity或者跳转到新的Activity时被调用</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onDestroy</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">()</SPAN></CODE><BR>退出Activity时被调用，调用之后Activity就被销毁了</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onSaveInstanceState</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">Budle</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>outState</SPAN><SPAN class=pun 
+  style="COLOR: rgb(0,0,0)">)</SPAN></CODE><BR>Activity被系统销毁时调用</LI>
+  <LI><CODE class="prettyprint prettyprinted" 
+  style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+  class=pln style="COLOR: rgb(0,0,0)">onRestoreInstanceState</SPAN><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">(</SPAN><SPAN class=typ 
+  style="COLOR: rgb(43,145,175)">Budle</SPAN><SPAN class=pln 
+  style="COLOR: rgb(0,0,0)"><SPAN 
+  class=Apple-converted-space>&nbsp;</SPAN>savedInstanceState</SPAN><SPAN 
+  class=pun style="COLOR: rgb(0,0,0)">)</SPAN></CODE><BR>Activity重建时被调用
+  <H2 id=对比 style="FONT-SIZE: 1.3em">对比</H2>
+  <H3 id=第一次启动 
+  style="FONT-SIZE: 1.2em; BORDER-BOTTOM: rgb(240,240,240) 1px solid; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0.2em; MARGIN: 0.2em 0px 0.4em; PADDING-RIGHT: 0.2em">第一次启动</H3>iOS:</LI></OL><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> application</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">didFinishLaunchingWithOptions</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">ViewController</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> viewDidLoad</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">ViewController</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> viewWillAppear</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> applicationDidBecomeActivie</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">ViewController</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> viewDidAppear</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN></CODE></PRE>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>Android:</P><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pln style="COLOR: rgb(0,0,0)">onCreate</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+onStart</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+onResume</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN></CODE></PRE>
+<H3 
+style='FONT-SIZE: 1.2em; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(240,240,240) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.2em; FONT-STYLE: normal; PADDING-TOP: 0.2em; PADDING-LEFT: 0.2em; ORPHANS: 2; WIDOWS: 2; MARGIN: 0.2em 0px 0.4em; LETTER-SPACING: normal; PADDING-RIGHT: 0.2em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>应用进入后台</H3>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>iOS</P><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> applicationWillResignActive</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> applicationDidEnterBackground</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN></CODE></PRE>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>Android</P><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pln style="COLOR: rgb(0,0,0)">onPause</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+onStop</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN></CODE></PRE>
+<H3 
+style='FONT-SIZE: 1.2em; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(240,240,240) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.2em; FONT-STYLE: normal; PADDING-TOP: 0.2em; PADDING-LEFT: 0.2em; ORPHANS: 2; WIDOWS: 2; MARGIN: 0.2em 0px 0.4em; LETTER-SPACING: normal; PADDING-RIGHT: 0.2em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>应用从后台进入前台</H3>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>iOS</P><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> applicationWillEnterForeground</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> applicationDidBecomeActive</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN></CODE></PRE>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>Android</P><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pln style="COLOR: rgb(0,0,0)">onStart</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+onResume</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN></CODE></PRE>
+<H3 
+style='FONT-SIZE: 1.2em; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(240,240,240) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0.2em; FONT-STYLE: normal; PADDING-TOP: 0.2em; PADDING-LEFT: 0.2em; ORPHANS: 2; WIDOWS: 2; MARGIN: 0.2em 0px 0.4em; LETTER-SPACING: normal; PADDING-RIGHT: 0.2em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>完全退出应用</H3>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>iOS</P><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> applicationDidEnterBackground</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">ViewController</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> viewWillDisappear</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">ViewController</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> viewDidDisappear</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">-</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> </SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">[</SPAN><SPAN class=typ style="COLOR: rgb(43,145,175)">AppDelegate</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)"> applicationWillTerminate</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">:]</SPAN></CODE></PRE>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>Android</P><PRE class="prettyprint prettyprinted" style='FONT-SIZE: 0.8em; OVERFLOW: auto; MARGIN-BOTTOM: 10px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; WIDTH: auto; WHITE-SPACE: pre; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 3px; FONT-STYLE: normal; PADDING-TOP: 3px; PADDING-LEFT: 3px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 3px; BACKGROUND-COLOR: rgb(225,225,225); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 5px'><CODE class=prettyprint style='OVERFLOW: auto; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; DISPLAY: block; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN class=pln style="COLOR: rgb(0,0,0)">onPause</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+onStop</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN><SPAN class=pln style="COLOR: rgb(0,0,0)">
+onDestroy</SPAN><SPAN class=pun style="COLOR: rgb(0,0,0)">()</SPAN></CODE></PRE>
+<H2 
+style='FONT-SIZE: 1.3em; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>分析</H2>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>Android、iOS的生命周期看着大同小异，但是差别还算比较大。<BR>Android的Activity类似iOS中UIApplication 
++ 
+UIViewController。<BR>iOS的应用像是一个全屏展开的窗口，UIApplication负责管理运行状态的生命周期，UIController负责管理视图，视图间靠通知传递数据<BR>Android的App可以理解为<CODE 
+class="prettyprint prettyprinted" 
+style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+class=typ style="COLOR: rgb(43,145,175)">Activity</SPAN></CODE>，<CODE 
+class="prettyprint prettyprinted" 
+style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+class=typ style="COLOR: rgb(43,145,175)">Service</SPAN></CODE>，<CODE 
+class="prettyprint prettyprinted" 
+style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+class=typ style="COLOR: rgb(43,145,175)">Centent</SPAN><SPAN class=pln 
+style="COLOR: rgb(0,0,0)"><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN></SPAN><SPAN class=typ 
+style="COLOR: rgb(43,145,175)">Provider</SPAN></CODE>，<CODE 
+class="prettyprint prettyprinted" 
+style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+class=typ 
+style="COLOR: rgb(43,145,175)">BroadcastReceiver</SPAN></CODE>组成，可视部分主要由Activity组成，Activity要管理运行状态和视图，而且每个Activity的运行状态相对独立，四大组件之间、包括应用之间都可以通过<CODE 
+class="prettyprint prettyprinted" 
+style='FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif; BACKGROUND-COLOR: rgb(247,247,247)'><SPAN 
+class=typ style="COLOR: rgb(43,145,175)">Intent</SPAN></CODE>传递数据。</P>
+<P 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 1em 0px; LETTER-SPACING: normal; LINE-HEIGHT: 1.6em; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'></P>
+<DIV class=like 
+style='FONT-SIZE: 16px; BORDER-TOP: lightblue 1px solid; HEIGHT: 38px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; BORDER-RIGHT: lightblue 1px solid; WIDTH: 70px; BACKGROUND: rgb(34,34,136); WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: lightblue 1px solid; TEXT-TRANSFORM: none; FLOAT: right; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 20px; BORDER-LEFT: lightblue 1px solid; ORPHANS: 2; WIDOWS: 2; MARGIN: 5px 2em 5px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 38px; PADDING-RIGHT: 20px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><A 
+class=assertLogin 
+style="TEXT-DECORATION: none; HEIGHT: 32px; BACKGROUND: url(/v5/s/imgs/sprite.png?17.1) no-repeat -23px -133px; COLOR: white; DISPLAY: block; TEXT-INDENT: 22px" 
+href="javascript:void(0)" rel=nofollow target=_self>点赞</A></DIV>
+<DIV class=tags 
+style='FONT-SIZE: 16px; FONT-FAMILY: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: normal; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px !important; FONT-STYLE: normal; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px !important; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><A 
+class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">生命周期</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/Java/">Java</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/iOS/">iOS</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/Objective-C/">Objective-C</A><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A class=tag 
+style="FONT-SIZE: 0.9em; TEXT-DECORATION: none; BORDER-RIGHT: rgb(179,206,225) 1px solid; WHITE-SPACE: nowrap; BORDER-BOTTOM: rgb(179,206,225) 1px solid; COLOR: rgb(62,109,142); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 4px; MARGIN: 2px 2px 2px 0px; LINE-HEIGHT: 2.4; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(224,234,241)" 
+href="http://ju.outofmemory.cn/tag/Android/">Android</A></DIV>
+</BODY>
+</HTML>
