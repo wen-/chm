@@ -46,7 +46,10 @@ echo '*/10 * * * * /usr/sbin/ntpdate time.nist.gov &gt;/dev/null 2&gt;&amp;1' &g
 5ÊÇ/sbin/ntpdate<BR><STRONG>5¡¢ĞŞ¸ÄipµØÖ·¡¢Íø¹Ø¡¢Ö÷»úÃû¡¢DNS #eth0 Íø¿¨ÉèÖÃ</STRONG><PRE style="OVERFLOW: hidden; WORD-WRAP: break-word; BORDER-TOP: rgb(225,225,225) 1px dotted; FONT-FAMILY: 'Courier New', Courier, monospace; BORDER-RIGHT: rgb(225,225,225) 1px dotted; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(225,225,225) 1px dotted; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(225,225,225) 4px solid; MARGIN: 2px 0px; DISPLAY: block; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(249,249,249); border-image-source: none">mv /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0.bak
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE=eth0 #Íø¿¨Éè±¸Ãû³Æ
-HWADDR=00:0C:29:D0:C7:B5 #ÒÔÌ«ÍøÉè±¸µÄ¶ÔÓ¦µÄÎïÀíµØÖ·
+HWADDR=00:0C:29:D0:C7:B5 #ÒÔÌ«ÍøÉè±¸µÄ¶ÔÓ¦µÄÎïÀíµØÖ·(<FONT color=#ff0000>  
+ 
+ĞéÄâ»úÇÅ½ÓÄ£Ê½°²×°centosÈç¹ûÅäÖÃÎÄ¼şÃ»ÓĞĞèÊÖ¶¯Ìí¼Ó< 
+/FONT> )
 TYPE=Ethernet #ÍøÂçÀàĞÍÎªÒÔÌ«ÍøÄ£Ê½
 UUID=080a457b-6a53-4a3a-9155-a23c1146c2c6 #Í¨ÓÃÎ¨Ò»Ê¶±ğÂë
 ONBOOT=yes #ÊÇ·ñÆô¶¯Òıµ¼µÄÊ±ºò¼¤»îYES
@@ -164,9 +167,9 @@ EOF</PRE>µÚËÄÖÖ£ºÈç¹û²»ĞŞ¸ÄlimitsÅäÖÃÎÄ¼ş£¬Ö±½ÓÁ¢¼´ÉúĞ§£¬µ«ÖØÆôºóÓÖ»Ö¸´Ö®Ç°µÄÄ¬È
 Èç¹ûÁÙÊ±ÇĞ»»Ò²¿ÉÒÔ LANG=zh_CN.UTF-8<BR>µÚ¶şÖÖ£ºÊ¹ÓÃsed¿ìËÙÌæ»»<PRE style="OVERFLOW: hidden; WORD-WRAP: break-word; BORDER-TOP: rgb(225,225,225) 1px dotted; FONT-FAMILY: 'Courier New', Courier, monospace; BORDER-RIGHT: rgb(225,225,225) 1px dotted; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(225,225,225) 1px dotted; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(225,225,225) 4px solid; MARGIN: 2px 0px; DISPLAY: block; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(249,249,249); border-image-source: none">
   #Ìæ»»³ÉÓ¢ÎÄsed-i's#LANG="zh_CN.*"#LANG= 
 
-"en_US.UTF-8"#' /etc/sysconfig/i18n #Ìæ»»³ÉÖĞÎÄsed-i's#LANG="en_US.*"#LANG= 
+ "en_US.UTF-8"#' /etc/sysconfig/i18n#Ìæ»»³ÉÖĞÎÄsed-i's#LANG="en_US.*"#LANG= 
 
-"zh_CN.UTF-8"#' /etc/sysconfig/i18n #Ìæ»»³ÉUTF-8ÖĞÎÄsed-i's#LANG="zh_CN.*"#LANG="zh_CN.UTF-8"#' /etc/sysconfig/i18n
+ "zh_CN.UTF-8"#' /etc/sysconfig/i18n#Ìæ»»³ÉUTF-8ÖĞÎÄsed-i's#LANG="zh_CN.*"#LANG="zh_CN.UTF-8"#' /etc/sysconfig/i18n
 </PRE><STRONG>13¡¢ÇåÀíµÇÂ½µÄÊ±ºòÏÔÊ¾µÄÏµÍ³¼°ÄÚºË°æ±¾</STRONG><PRE style="OVERFLOW: hidden; WORD-WRAP: break-word; BORDER-TOP: rgb(225,225,225) 1px dotted; FONT-FAMILY: 'Courier New', Courier, monospace; BORDER-RIGHT: rgb(225,225,225) 1px dotted; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(225,225,225) 1px dotted; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(225,225,225) 4px solid; MARGIN: 2px 0px; DISPLAY: block; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(249,249,249); border-image-source: none">#²é¿´µÇÂ½ĞÅÏ¢ 
 cat /etc/redhat-release cat /etc/issue 
 #ÇåÀíµÇÂ½ĞÅÏ¢
@@ -254,7 +257,7 @@ groupdel pppusers</PRE><STRONG>17¡¢¹Ø±ÕÖØÆôctl-alt-delete×éºÏ¼ü</STRONG><PRE sty
 #exec /sbin/shutdown -r now "Control-Alt-Deletepressed" </PRE><STRONG>18¡¢ÉèÖÃÒ»Ğ©È«¾Ö±äÁ¿</STRONG><PRE style="OVERFLOW: hidden; WORD-WRAP: break-word; BORDER-TOP: rgb(225,225,225) 1px dotted; FONT-FAMILY: 'Courier New', Courier, monospace; BORDER-RIGHT: rgb(225,225,225) 1px dotted; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(225,225,225) 1px dotted; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(225,225,225) 4px solid; MARGIN: 2px 0px; DISPLAY: block; LINE-HEIGHT: 1.5em; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(249,249,249); border-image-source: none">#ÉèÖÃ×Ô¶¯ÍË³öÖÕ¶Ë£¬·ÀÖ¹·Ç·¨¹Ø±Õssh¿Í»§¶ËÔì³ÉµÇÂ¼½ø³Ì¹ı¶à£¬¿ÉÒÔÉèÖÃ´óÒ»Ğ©£¬µ¥Î»ÎªÃë
 echo "TMOUT= 
 
-3600"&gt;&gt; /etc/profile #ÀúÊ·ÃüÁî¼ÇÂ¼ÊıÁ¿ÉèÖÃÎª10Ìõsed-i"s/HISTSIZE=1000/HISTSIZE=10/" /etc/profile
+ 3600"&gt;&gt; /etc/profile#ÀúÊ·ÃüÁî¼ÇÂ¼ÊıÁ¿ÉèÖÃÎª10Ìõsed-i"s/HISTSIZE=1000/HISTSIZE=10/" /etc/profile
 #Á¢¼´ÉúĞ§
 source /etc/profile</PRE></DIV>
 <DIV class=tag 
