@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>ReactNative-webview-user-agent</TITLE>
+</HEAD>
+<BODY>
+<H1 class=post-title 
+style='BOX-SIZING: border-box; FONT-SIZE: 32px; WORD-WRAP: break-word; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 700; COLOR: rgb(49,49,49); FONT-STYLE: normal; TEXT-ALIGN: center; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -50px 30px; LETTER-SPACING: normal; LINE-HEIGHT: 1.1; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+<H1 class=post-title 
+style='BOX-SIZING: border-box; FONT-SIZE: 32px; WORD-WRAP: break-word; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 700; COLOR: rgb(49,49,49); FONT-STYLE: normal; TEXT-ALIGN: center; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -50px 30px; LETTER-SPACING: normal; LINE-HEIGHT: 1.1; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">在React Native 
+WebView中传递用户代理或自定义标头</FONT></FONT></H1><SPAN class=post-meta 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; MAX-WIDTH: 450px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; POSITION: relative; TEXT-TRANSFORM: uppercase; FONT-WEIGHT: 700; COLOR: rgb(169,169,169); PADDING-BOTTOM: 30px; FONT-STYLE: normal; TEXT-ALIGN: center; ORPHANS: 2; WIDOWS: 2; MARGIN: 10px auto 30px; DISPLAY: block; LETTER-SPACING: 1px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><EM 
+style="BOX-SIZING: border-box"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">2016</FONT></FONT></EM><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">年</FONT><EM 
+style="BOX-SIZING: border-box"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">7月10日</FONT></EM><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><SPAN>&nbsp;</SPAN>- 
+NEERAJ辛格</FONT></FONT></SPAN>
+<DIV class=post-content 
+style='BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+<P style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">ReactNative获取userAgent信息后再追加自定义字符，防止有所信息丢失<U><FONT 
+color=#0066cc>react-native-device-info</FONT></U></FONT></FONT></P>
+<P style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7"><A 
+href="https://github.com/rebeccahughes/react-native-device-info">https://github.com/rebeccahughes/react-native-device-info</A></P>
+<P style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">在React 
+Native应用程序中</FONT><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">使用<SPAN>&nbsp;</SPAN></FONT></FONT><A 
+style="BOX-SIZING: border-box; WORD-WRAP: break-word; TEXT-DECORATION: none !important; BORDER-BOTTOM: rgb(68,68,68) 1px solid; COLOR: rgb(68,68,68) !important; BACKGROUND-COLOR: transparent; transition: all 0.2s" 
+href="https://facebook.github.io/react-native/docs/webview.html"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">WebView</FONT></FONT></A><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">可以重用已经建好的网页。</FONT></FONT></P>
+<P style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">我们已经看到，在大多数基于“网络视图”的应用程序中，标题中的链接大部分都是原生的导航组件。</FONT><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">这意味着如果React 
+Native组件要求网页，则服务器不应该发送标题。</FONT><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">但是，如果请求不是来自React 
+Native应用程序，那么这些标题应该存在。</FONT></FONT></P>
+<H2 id=passing-custom-request-headers 
+style='BOX-SIZING: border-box; FONT-SIZE: 24px; WORD-WRAP: break-word; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; FONT-WEIGHT: 700; COLOR: rgb(85,85,85); MARGIN: 50px 0px 20px; LINE-HEIGHT: 1.1'><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">传递自定义请求标头</FONT></FONT></H2>
+<P style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">我们可以配置React 
+Native应用程序在向服务器请求页面时传递自定义请求标头。</FONT></FONT></P></DIV><CODE 
+class=language-JavaScript 
+style="BOX-SIZING: border-box; FONT-SIZE: 1em; WORD-WRAP: break-word; FONT-FAMILY: Menlo, monospace; WHITE-SPACE: pre-wrap; WORD-BREAK: break-all">let 
+customHeaders = {<BR>&nbsp; "X-DemoApp-Version": "1.1",<BR>&nbsp; 
+"X-DemoApp-Type": "demo-app-react-native"<BR>}<BR></CODE></H1>
+<DIV class=post-content 
+style='BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7">在调用WebView组件时，我们可以<CODE 
+class=highlighter-rouge 
+style='BOX-SIZING: border-box; FONT-SIZE: 17px; WORD-WRAP: break-word; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; BACKGROUND: rgb(243,243,243); WHITE-SPACE: pre-wrap; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(85,85,85); PADDING-BOTTOM: 1px; FONT-STYLE: normal; PADDING-TOP: 1px; PADDING-LEFT: 6px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 2px; LETTER-SPACING: normal; PADDING-RIGHT: 6px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-radius: 3px'>customHeaders</CODE><FONT 
+style='BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; VERTICAL-ALIGN: inherit; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><SPAN>&nbsp;</SPAN>按如下所示</FONT><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">传递</FONT><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">。</FONT></FONT></P>
+<P style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7"><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 1em; WORD-WRAP: break-word; FONT-FAMILY: Menlo, monospace; WHITE-SPACE: pre-wrap; WORD-BREAK: break-all">renderWebView() 
+{<BR>&nbsp; return (<BR>&nbsp;&nbsp;&nbsp; 
+&lt;WebView<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source={ {uri: this.props.url, 
+headers: customHeaders} }<BR>&nbsp;&nbsp;&nbsp; /&gt;<BR>&nbsp; 
+)<BR>}<BR></P></CODE>
+<H2 id=passing-user-agent 
+style='BOX-SIZING: border-box; FONT-SIZE: 24px; WORD-WRAP: break-word; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; FONT-WEIGHT: 700; COLOR: rgb(85,85,85); MARGIN: 50px 0px 20px; LINE-HEIGHT: 1.1'>
+<H2 id=passing-user-agent 
+style='BOX-SIZING: border-box; FONT-SIZE: 24px; WORD-WRAP: break-word; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 700; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 50px 0px 20px; LETTER-SPACING: normal; LINE-HEIGHT: 1.1; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">通过用户代理</FONT></FONT></H2>
+<P 
+style='BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 24px; LETTER-SPACING: normal; LINE-HEIGHT: 1.7; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit"><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">React 
+Native还允许我们通过“userAgent”作为道具。</FONT><FONT 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: inherit">但是它只支持React 
+Native的android版本。</FONT></FONT></P><CODE 
+style="BOX-SIZING: border-box; FONT-SIZE: 1em; WORD-WRAP: break-word; FONT-FAMILY: Menlo, monospace; WHITE-SPACE: pre-wrap; WORD-BREAK: break-all">renderWebView() 
+{<BR>&nbsp; return (<BR>&nbsp;&nbsp;&nbsp; 
+&lt;WebView<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; source={ {uri: this.props.url} 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+userAgent="demo-react-native-app"<BR>&nbsp;&nbsp;&nbsp; /&gt;<BR>&nbsp; 
+)<BR>}<BR></CODE></H2>
+<P style="BOX-SIZING: border-box; MARGIN: 0px 0px 24px; LINE-HEIGHT: 1.7"><SPAN 
+style='FONT-SIZE: 18px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>对于iOS，我们需要将以下行添加到我们的AppDelegate.m来设置userAgent。</SPAN></P>
+<DIV class=highlighter-rouge style="BOX-SIZING: border-box"><PRE class=highlight style="BOX-SIZING: border-box; FONT-SIZE: 14px; OVERFLOW: auto; WORD-WRAP: break-word; FONT-FAMILY: Menlo, monospace; BACKGROUND: rgb(240,243,243); WHITE-SPACE: pre-wrap; WORD-BREAK: break-all; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; MARGIN: 30px -15px 40px; PADDING-RIGHT: 20px; border-radius: 3px"><CODE style="BOX-SIZING: border-box; FONT-SIZE: 1em; WORD-WRAP: break-word; FONT-FAMILY: Menlo, monospace; WHITE-SPACE: pre-wrap; WORD-BREAK: break-all">NSString *newAgent = @"demo-react-native-app";
+NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:newAgent, @"UserAgent", nil];
+[[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];</CODE></PRE></DIV></DIV>
+</BODY>
+</HTML>

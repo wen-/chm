@@ -3421,6 +3421,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="苹果开发">
 <PARAM NAME="Local" VALUE="苹果开发.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3568,6 +3569,12 @@
 <PARAM NAME="Local" VALUE="lanuchScreen-xib启动图.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="iOS自定义useragent">
+<PARAM NAME="Local" VALUE="iOS自定义useragent.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3611,6 +3618,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ReactNative生命周期">
 <PARAM NAME="Local" VALUE="ReactNative生命周期.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ReactNative-webview-user-agent">
+<PARAM NAME="Local" VALUE="ReactNative-webview-user-agent.htm">
 </OBJECT>
 </UL>
 </UL>

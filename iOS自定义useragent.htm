@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>iOS自定义useragent</TITLE>
+</HEAD>
+<BODY>
+<P>iOS自定义useragent</P>
+<P>修改AppDelegate.m文件</P>
+<P>#import "AppDelegate.h"</P>
+<P>#import &lt;React/RCTBundleURLProvider.h&gt;<BR>#import 
+&lt;React/RCTRootView.h&gt;<BR>#import "SplashScreen.h"<BR>#import 
+"BaiduMobStat.h"</P>
+<P>@implementation AppDelegate</P>
+<P>- (BOOL)application:(UIApplication *)application 
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions<BR>{</P>
+<P>//获取原useragent<BR>&nbsp; <FONT color=#ff0000>UIWebView* webView = [[UIWebView 
+alloc] initWithFrame:CGRectZero];<BR>&nbsp; NSString *oldAgent = [webView 
+stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];</FONT></P>
+<P><FONT color=#ff0000><FONT 
+color=#000000>//组合新useragent&nbsp;加入“baibaod.com-”</FONT><BR>&nbsp; NSString 
+*newAgent = [@"baibaod.com-" stringByAppendingString:oldAgent];<BR>&nbsp; 
+NSDictionary *dictionary = [[NSDictionary alloc] 
+initWithObjectsAndKeys:newAgent, @"UserAgent", nil];<BR>&nbsp; [[NSUserDefaults 
+standardUserDefaults] registerDefaults:dictionary];</FONT></P>
+</BODY>
+</HTML>
