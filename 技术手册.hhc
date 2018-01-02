@@ -3769,6 +3769,20 @@
 <PARAM NAME="ImageNumber" value="11">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="Nginx允许AJAX跨域请求">
+<PARAM NAME="Local" VALUE="Nginx允许AJAX跨域请求.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ios模拟器修改host">
+<PARAM NAME="Local" VALUE="ios模拟器修改host.htm">
+<PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="第三方登录">
 <PARAM NAME="Local" VALUE="第三方登录.htm">
