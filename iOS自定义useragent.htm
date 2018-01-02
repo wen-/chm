@@ -16,7 +16,7 @@
 <P>- (BOOL)application:(UIApplication *)application 
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions<BR>{</P>
 <P>//获取原useragent<BR>&nbsp; <FONT color=#ff0000>UIWebView* webView = [[UIWebView 
-alloc] initWithFrame:CGRectZero];<BR>&nbsp; NSString *oldAgent = [webView 
+alloc] initWithFrame:CGRectZero];<BR>&nbsp; NSString *oldAgent =    [webView 
 stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];</FONT></P>
 <P><FONT color=#ff0000><FONT 
 color=#000000>//组合新useragent&nbsp;加入“baibaod.com-”</FONT><BR>&nbsp; NSString 
@@ -24,5 +24,7 @@ color=#000000>//组合新useragent&nbsp;加入“baibaod.com-”</FONT><BR>&nbsp; NSStr
 NSDictionary *dictionary = [[NSDictionary alloc] 
 initWithObjectsAndKeys:newAgent, @"UserAgent", nil];<BR>&nbsp; [[NSUserDefaults 
 standardUserDefaults] registerDefaults:dictionary];</FONT></P>
+<P><FONT color=#ff0000></FONT>&nbsp;</P>
+<P>php获取：</P><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Source Code Pro Semibold'; COLOR: #ffffff; BACKGROUND-COLOR: #282525"><FONT color=#000000><SPAN style="FONT-WEIGHT: bold; COLOR: #88e3c7">echo </SPAN><SPAN style="COLOR: #1aa642">$_SERVER</SPAN>[<SPAN style="FONT-WEIGHT: bold; COLOR: #63b5e3">'HTTP_USER_AGENT'</SPAN>];<SPAN style="FONT-WEIGHT: bold; COLOR: #88e3c7">die</SPAN>;</FONT><FONT color=#ffffff></PRE></FONT>
 </BODY>
 </HTML>

@@ -1,0 +1,941 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>RNwebview加载本地html</TITLE>
+</HEAD>
+<BODY>
+<P>RNwebview加载本地html</P>
+<P>android下要在webview加入属性<SPAN 
+style="COLOR: #95c995; FONT-STYLE: italic">allowUniversalAccessFromFileURLs</SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #3adf3a">=</SPAN>{<SPAN 
+style="FONT-WEIGHT: bold; COLOR: #99ffdd">true</SPAN>}<BR>并且要把资源文件拷贝到android\app\src\main\assets文件夹下</P>
+<P><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">const </SPAN><SPAN 
+style="FONT-WEIGHT: bold; COLOR: #99ff99">LoacalWebURL </SPAN>= (<SPAN 
+style="COLOR: #95c995; FONT-STYLE: italic">Platform</SPAN>.<SPAN 
+style="FONT-WEIGHT: bold">OS </SPAN>== <SPAN 
+style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'ios'</SPAN>) ? require(<SPAN 
+style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'./html/</SPAN><SPAN 
+style="FONT-FAMILY: '宋体'; COLOR: #ccffff; BACKGROUND-COLOR: #333333">首页</SPAN><SPAN 
+style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">.html'</SPAN>) : { <SPAN 
+style="FONT-WEIGHT: bold">uri</SPAN>: <SPAN 
+style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'file:///android_asset/html/</SPAN><SPAN 
+style="FONT-FAMILY: '宋体'; COLOR: #ccffff; BACKGROUND-COLOR: #333333">首页</SPAN><SPAN 
+style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">.html'</SPAN><SPAN 
+style="COLOR: #ccffff"> </SPAN>};</P>
+<P>ios如遇到要访问http要修改info.plist文件</P>
+<DIV id=question-header 
+style='BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; FONT-FAMILY: Arial, "Helvetica Neue", Helvetica, sans-serif; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: baseline; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(228,230,232) 1px solid; TEXT-TRANSFORM: none; BORDER-LEFT-COLOR: ; FONT-WEIGHT: 400; COLOR: rgb(36,39,41); PADDING-BOTTOM: 5px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 5px; PADDING-LEFT: 0px; CLEAR: both; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 1em; DISPLAY: flex; BORDER-RIGHT-COLOR: ; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-image: initial; font-variant-numeric: inherit; font-stretch: inherit; flex-flow: row nowrap; justify-content: space-between'>
+<DIV role=navigation aria-label="ask new question" class=aside-cta 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;</DIV></DIV>
+<DIV role=main aria-label="question and answers" id=mainbar 
+style='FONT-SIZE: 13px; BORDER-TOP: 0px; FONT-FAMILY: Arial, "Helvetica Neue", Helvetica, sans-serif; BORDER-RIGHT: 0px; WIDTH: 728px; VERTICAL-ALIGN: baseline; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT: 400; COLOR: rgb(36,39,41); PADDING-BOTTOM: 0px; FONT-STYLE: normal; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-numeric: inherit; font-stretch: inherit'>
+<DIV id=question class=question 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+data-questionid="32690789">
+<DIV id=dfp-tlb class=everyonelovesstackoverflow 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 10px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+data-clc-ready="true" data-clc-prefilled="true" 
+data-google-query-id="CNiNiMqDgdgCFRgcKgodogUALg">&nbsp;</DIV>
+<TABLE 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TBODY 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit">
+      <DIV class=vote 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; MIN-WIDTH: 46px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      title="This question shows research effort; it is useful and clear" 
+      class=vote-up-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -170px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 2px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">up 
+      vote</A><SPAN class="vote-count-post " 
+      style="FONT-SIZE: 20px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 8px 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="upvoteCount">6</SPAN><A 
+      title="This question does not show any research effort; it is unclear or not useful" 
+      class=vote-down-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -220px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 10px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">down 
+      vote</A><A class=star-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -120px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 2px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial" 
+      href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9#">favorite</A>
+      <DIV class=favoritecount 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><B 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"></B></DIV></DIV></TD>
+    <TD class=postcell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV class=post-text 
+      style="FONT-SIZE: 15px; WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="text">
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">I 
+      am trying to load HTTP links within UIWebView. The links are from my 
+      website so they are reliable. I have searched the internet and found the 
+      solution here:<SPAN>&nbsp;</SPAN><A 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      href="https://stackoverflow.com/questions/31216758/how-can-i-add-nsapptransportsecurity-to-my-info-plist-file">How 
+      can I add NSAppTransportSecurity to my info.plist file?</A></P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">After 
+      following that solution my info.plist looks like this.:</P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      href="https://i.stack.imgur.com/JQcMG.png" rel="nofollow noreferrer"><IMG 
+      style="MAX-WIDTH: 100%; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      alt="enter image description here" 
+      src="https://i.stack.imgur.com/JQcMG.png"></A></P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">Even 
+      after making the changes I cannot load HTTP links within UIWebView. I get 
+      the following error:</P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit"><STRONG 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><EM 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; FONT-STYLE: italic; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">App 
+      Transport Security has blocked a cleartext HTTP (http://) resource load 
+      since it is insecure</EM></STRONG></P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">Is 
+      there something I am doing wrong?</P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit"><STRONG 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><EM 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; FONT-STYLE: italic; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">UPDATE:</EM></STRONG></P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">After 
+      making the changes suggested by Ramshad in comments it still does not 
+      work. See image below:</P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      href="https://i.stack.imgur.com/rWlm4.png" rel="nofollow noreferrer"><IMG 
+      style="MAX-WIDTH: 100%; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      alt="enter image description here" 
+      src="https://i.stack.imgur.com/rWlm4.png"></A></P></DIV>
+      <DIV class=post-taglist 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 10px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      title="show questions tagged 'ios'" class="post-tag js-gps-track" 
+      style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: transparent 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: transparent 1px solid; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; COLOR: rgb(57,115,157); PADDING-BOTTOM: 0.4em; TEXT-ALIGN: center; PADDING-TOP: 0.4em; PADDING-LEFT: 0.5em; BORDER-LEFT: transparent 1px solid; MARGIN: 2px 2px 2px 0px; DISPLAY: inline-block; LINE-HEIGHT: 1; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(225,236,244); transition: all 0.15s ease-in-out; border-radius: 0px; font-stretch: inherit" 
+      href="https://stackoverflow.com/questions/tagged/ios" 
+      rel=tag>ios</A><SPAN>&nbsp;</SPAN><A 
+      title="show questions tagged 'uiwebview'" class="post-tag js-gps-track" 
+      style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: transparent 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: transparent 1px solid; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; COLOR: rgb(57,115,157); PADDING-BOTTOM: 0.4em; TEXT-ALIGN: center; PADDING-TOP: 0.4em; PADDING-LEFT: 0.5em; BORDER-LEFT: transparent 1px solid; MARGIN: 2px 2px 2px 0px; DISPLAY: inline-block; LINE-HEIGHT: 1; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(225,236,244); transition: all 0.15s ease-in-out; border-radius: 0px; font-stretch: inherit" 
+      href="https://stackoverflow.com/questions/tagged/uiwebview" 
+      rel=tag>uiwebview</A><SPAN>&nbsp;</SPAN><A 
+      title="show questions tagged 'ios9'" class="post-tag js-gps-track" 
+      style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: transparent 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: transparent 1px solid; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; COLOR: rgb(57,115,157); PADDING-BOTTOM: 0.4em; TEXT-ALIGN: center; PADDING-TOP: 0.4em; PADDING-LEFT: 0.5em; BORDER-LEFT: transparent 1px solid; MARGIN: 2px 2px 2px 0px; DISPLAY: inline-block; LINE-HEIGHT: 1; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(225,236,244); transition: all 0.15s ease-in-out; border-radius: 0px; font-stretch: inherit" 
+      href="https://stackoverflow.com/questions/tagged/ios9" 
+      rel=tag>ios9</A><SPAN>&nbsp;</SPAN><A 
+      title="show questions tagged 'xcode7'" class="post-tag js-gps-track" 
+      style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: transparent 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: transparent 1px solid; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; COLOR: rgb(57,115,157); PADDING-BOTTOM: 0.4em; TEXT-ALIGN: center; PADDING-TOP: 0.4em; PADDING-LEFT: 0.5em; BORDER-LEFT: transparent 1px solid; MARGIN: 2px 2px 2px 0px; DISPLAY: inline-block; LINE-HEIGHT: 1; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(225,236,244); transition: all 0.15s ease-in-out; border-radius: 0px; font-stretch: inherit" 
+      href="https://stackoverflow.com/questions/tagged/xcode7" 
+      rel=tag>xcode7</A><SPAN>&nbsp;</SPAN><A 
+      title="show questions tagged 'nsapptransportsecurity'" 
+      class="post-tag js-gps-track" 
+      style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: transparent 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: transparent 1px solid; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; COLOR: rgb(57,115,157); PADDING-BOTTOM: 0.4em; TEXT-ALIGN: center; PADDING-TOP: 0.4em; PADDING-LEFT: 0.5em; BORDER-LEFT: transparent 1px solid; MARGIN: 2px 2px 2px 0px; DISPLAY: inline-block; LINE-HEIGHT: 1; PADDING-RIGHT: 0.5em; BACKGROUND-COLOR: rgb(225,236,244); transition: all 0.15s ease-in-out; border-radius: 0px; font-stretch: inherit" 
+      href="https://stackoverflow.com/questions/tagged/nsapptransportsecurity" 
+      rel=tag>nsapptransportsecurity</A></DIV>
+      <TABLE class=fw 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TBODY 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TR 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=vt 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            <DIV class=post-menu 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            id=link-post-32690789 title="short permalink to this question" 
+            class=short-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/q/32690789">share</A><SPAN 
+            class=lsep 
+            style="FONT-SIZE: 1px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(27,64,114); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px; VISIBILITY: hidden; font-stretch: inherit"></SPAN><A 
+            title="" class=suggest-edit-post 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/posts/32690789/edit">improve this 
+            question</A></DIV></TD>
+          <TD class=post-signature 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+          align=right>
+            <DIV class="user-info user-hover" 
+            style="BOX-SIZING: border-box; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 7px; PADDING-TOP: 5px; PADDING-LEFT: 7px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 6px; font-stretch: inherit">
+            <DIV class=user-action-time 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 1px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            title="show all edits to this post" 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/posts/32690789/revisions">edited<SPAN>&nbsp;</SPAN><SPAN 
+            title="2017-05-23 11:47:32Z" class=relativetime 
+            style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">May 
+            23 at 11:47</SPAN></A></DIV>
+            <DIV class=user-gravatar32 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: separate; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit; box-shadow: rgba(12, 13, 14, 0.5) 2px 2px 4px"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/-1/community">
+            <DIV class=gravatar-wrapper-32 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><IMG 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit" 
+            alt="" 
+            src="https://www.gravatar.com/avatar/a007be5a61f6aa8f3e85ae2fc18dd66e?s=32&amp;d=identicon&amp;r=PG" 
+            width=32 height=32></DIV></A></DIV>
+            <DIV class=user-details 
+            style="WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 0px 8px; LINE-HEIGHT: 17px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/-1/community">Community</A><SPAN 
+            title=moderator class=mod-flair 
+            style="FONT-SIZE: 15px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 0px 3px; LINE-HEIGHT: 1; PADDING-RIGHT: 0px; font-stretch: inherit">?</SPAN>
+            <DIV class=-flair 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            title="reputation score " class=reputation-score 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 2px 0px 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            dir=ltr>1</SPAN><SPAN title="1 silver badge" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge2 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -82px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">1</SPAN></SPAN></DIV></DIV></DIV></TD>
+          <TD class="post-signature owner" 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(224,234,241); font-stretch: inherit">
+            <DIV class="user-info " 
+            style="BOX-SIZING: border-box; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 7px; PADDING-TOP: 5px; PADDING-LEFT: 7px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 6px; font-stretch: inherit">
+            <DIV class=user-action-time 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 1px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">asked<SPAN>&nbsp;</SPAN><SPAN 
+            title="2015-09-21 08:41:23Z" class=relativetime 
+            style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Sep 
+            21 '15 at 8:41</SPAN></DIV>
+            <DIV class=user-gravatar32 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/2190986/skywalker">
+            <DIV class=gravatar-wrapper-32 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><IMG 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit" 
+            alt="" 
+            src="https://www.gravatar.com/avatar/0c77e57abcda8e74326f8ea28a3101fe?s=32&amp;d=identicon&amp;r=PG&amp;f=1" 
+            width=32 height=32></DIV></A></DIV>
+            <DIV class=user-details 
+            style="WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 0px 8px; LINE-HEIGHT: 17px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/2190986/skywalker">Skywalker</A>
+            <DIV class=-flair 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            title="reputation score " class=reputation-score 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 2px 0px 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            dir=ltr>1,377</SPAN><SPAN title="4 gold badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge1 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -102px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">4</SPAN></SPAN><SPAN 
+            title="20 silver badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge2 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -82px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">20</SPAN></SPAN><SPAN 
+            title="49 bronze badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge3 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -62px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">49</SPAN></SPAN></DIV></DIV></DIV></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit"></TD>
+    <TD 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV id=comments-32690789 class="comments js-comments-container " 
+      style="BORDER-LEFT-WIDTH: 0px; BORDER-TOP: rgb(228,230,232) 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 10px; BORDER-BOTTOM-COLOR: ; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px 0px 0px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit; -webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
+      <TABLE 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TBODY class=js-comments-list 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+        data-addlink-disabled="true" data-comments-unavailable="false" 
+        data-cansee="true" data-canpost="false" 
+        data-remaining-comments-count="0">
+        <TR id=comment-53225338 class="comment js-comment " 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=js-comment-actions 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <TABLE 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TBODY 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TR 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+                <TD class=" comment-score" 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;&nbsp;</TD>
+                <TD 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;</TD></TR></TBODY></TABLE></TD>
+          <TD class="comment-text js-comment-text-and-form" 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <DIV class=comment-body 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=comment-copy 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://forums.developer.apple.com/thread/3544" 
+            rel="nofollow noreferrer">forums.developer.apple.com/thread/3544</A></SPAN><SPAN>&nbsp;</SPAN>–&nbsp;<A 
+            title="18,604 reputation" class=comment-user 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/1143874/shamsudheen-tk">Shamsudheen 
+            TK</A><SPAN>&nbsp;</SPAN><SPAN class=comment-date 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(145,153,161); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            dir=ltr><A class=comment-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9#comment53225338_32690789"><SPAN 
+            title="2015-09-21 08:49:25Z" class=relativetime-clean 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Sep 
+            21 '15 at 8:49</SPAN></A></SPAN></DIV></TD></TR>
+        <TR id=comment-53226587 class="comment js-comment " 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=js-comment-actions 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <TABLE 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TBODY 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TR 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+                <TD class=" comment-score" 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;&nbsp;</TD>
+                <TD 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;</TD></TR></TBODY></TABLE></TD>
+          <TD class="comment-text js-comment-text-and-form" 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <DIV class=comment-body 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=comment-copy 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">@Ramshad 
+            please see update.</SPAN><SPAN>&nbsp;</SPAN>–&nbsp;<A 
+            title="1,377 reputation" class="comment-user owner" 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(224,234,241); font-stretch: inherit" 
+            href="https://stackoverflow.com/users/2190986/skywalker">Skywalker</A><SPAN>&nbsp;</SPAN><SPAN 
+            class=comment-date 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(145,153,161); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            dir=ltr><A class=comment-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9#comment53226587_32690789"><SPAN 
+            title="2015-09-21 09:22:24Z" class=relativetime-clean 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Sep 
+            21 '15 at 9:22</SPAN></A></SPAN></DIV></TD></TR>
+        <TR id=comment-61272199 class="comment js-comment " 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=js-comment-actions 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <TABLE 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TBODY 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TR 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+                <TD class=" comment-score" 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;&nbsp;</TD>
+                <TD 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;</TD></TR></TBODY></TABLE></TD>
+          <TD class="comment-text js-comment-text-and-form" 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <DIV class=comment-body 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=comment-copy 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">I 
+            have the same issue, any update that 
+            works?</SPAN><SPAN>&nbsp;</SPAN>–&nbsp;<A title="471 reputation" 
+            class=comment-user 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/169335/ewindsor">ewindsor</A><SPAN>&nbsp;</SPAN><SPAN 
+            class=comment-date 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(145,153,161); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            dir=ltr><A class=comment-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9#comment61272199_32690789"><SPAN 
+            title="2016-04-25 21:43:17Z" class=relativetime-clean 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Apr 
+            25 '16 at 21:43</SPAN></A></SPAN></DIV></TD></TR>
+        <TR id=comment-61283930 class="comment js-comment " 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=js-comment-actions 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <TABLE 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TBODY 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TR 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+                <TD class=" comment-score" 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;&nbsp;</TD>
+                <TD 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;</TD></TR></TBODY></TABLE></TD>
+          <TD class="comment-text js-comment-text-and-form" 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <DIV class=comment-body 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=comment-copy 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">@ewindsor 
+            have a look at my answer on this question but note that this will 
+            allow all connections. But this is the only way I could get it to 
+            work.<SPAN>&nbsp;</SPAN><A 
+            title="no solution for transport security" 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="http://stackoverflow.com/questions/33011558/no-solution-for-transport-security/33011914#33011914">stackoverflow.com/questions/33011558/…</A></SPAN><SPAN>&nbsp;</SPAN>–&nbsp;<A 
+            title="1,377 reputation" class="comment-user owner" 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(224,234,241); font-stretch: inherit" 
+            href="https://stackoverflow.com/users/2190986/skywalker">Skywalker</A><SPAN>&nbsp;</SPAN><SPAN 
+            class=comment-date 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(145,153,161); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            dir=ltr><A class=comment-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9#comment61283930_32690789"><SPAN 
+            title="2016-04-26 07:22:26Z" class=relativetime-clean 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Apr 
+            26 '16 at 7:22</SPAN></A></SPAN></DIV></TD></TR></TBODY></TABLE></DIV>
+      <DIV id=comments-link-32690789 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      data-anon="true" data-rep="50"><A 
+      title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments." 
+      class="js-add-link comments-link disabled-link " 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 3px; font-stretch: inherit; opacity: 0.6">add 
+      a comment</A></DIV></TD></TR></TBODY></TABLE></DIV>
+<DIV id=answers 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 728px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 10px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+name=tab-top></A>
+<DIV id=answers-header 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 728px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 10px 0px 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+<DIV class="subheader answers-subheader" 
+style="BORDER-LEFT-WIDTH: 0px; HEIGHT: 40px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(228,230,232) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px 0px 10px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+<H2 
+style="FONT-SIZE: 18px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; FONT-WEIGHT: 400; COLOR: rgb(59,64,69); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px; font-stretch: inherit" 
+data-answercount="5">5 Answers</H2>
+<DIV 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+<DIV id=tabs 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+title="Answers with the latest activity first" 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: transparent 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: transparent 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; FLOAT: left; COLOR: rgb(132,141,149); PADDING-BOTTOM: 13px; PADDING-TOP: 13px; PADDING-LEFT: 10px; BORDER-LEFT: transparent 1px solid; MARGIN: 0px 8px 0px 0px; LINE-HEIGHT: 1; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,255,255); transition: all 0.15s ease-in-out; font-stretch: inherit" 
+href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9?answertab=active#tab-top" 
+data-shortcut="A" data-value="active" data-nav-xhref="">active</A><A 
+title="Answers in the order they were provided" 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: transparent 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: transparent 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; FLOAT: left; COLOR: rgb(132,141,149); PADDING-BOTTOM: 13px; PADDING-TOP: 13px; PADDING-LEFT: 10px; BORDER-LEFT: transparent 1px solid; MARGIN: 0px 8px 0px 0px; LINE-HEIGHT: 1; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,255,255); transition: all 0.15s ease-in-out; font-stretch: inherit" 
+href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9?answertab=oldest#tab-top" 
+data-shortcut="O" data-value="oldest" data-nav-xhref="">oldest</A><A 
+title="Answers with the highest score first" class="youarehere " 
+style="FONT-SIZE: 12px; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: rgb(228,230,232) 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: rgb(228,230,232) 1px solid; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: transparent 1px solid; POSITION: relative; FLOAT: left; FONT-WEIGHT: 400; COLOR: rgb(36,39,41); PADDING-BOTTOM: 14px; PADDING-TOP: 13px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(228,230,232) 1px solid; MARGIN: 0px; LINE-HEIGHT: 1; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(255,255,255); transition: all 0.15s ease-in-out; border-image: initial; font-stretch: inherit" 
+href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9?answertab=votes#tab-top" 
+data-shortcut="V" data-value="votes" 
+data-nav-xhref="">votes</A></DIV></DIV></DIV></DIV><A 
+style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+name=32885354></A>
+<DIV id=answer-32885354 class=answer 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; WIDTH: 728px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(228,230,232) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit" 
+itemtype="http://schema.org/Answer" itemscope="" data-answerid="32885354">
+<TABLE 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TBODY 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit">
+      <DIV class=vote 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; MIN-WIDTH: 46px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      title="This answer is useful" class=vote-up-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -170px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 2px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">up 
+      vote</A><SPAN class="vote-count-post " 
+      style="FONT-SIZE: 20px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 8px 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="upvoteCount">10</SPAN><A title="This answer is not useful" 
+      class=vote-down-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -220px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 10px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">down 
+      vote</A>
+      <DIV class=bounty-award-container 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+      title="This answer has been awarded bounties worth 250 reputation by Charu?" 
+      class=bounty-award 
+      style="FONT-SIZE: 0.8em; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: normal; COLOR: rgb(106,115,124); PADDING-BOTTOM: 4px; PADDING-TOP: 4px; PADDING-LEFT: 4px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; LINE-HEIGHT: 1.3; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(0,119,221); border-radius: 3px; font-stretch: inherit">+250</SPAN></DIV></DIV></TD>
+    <TD class=answercell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV class=post-text 
+      style="FONT-SIZE: 15px; WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="text">
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">It 
+      should be done like this, you need to add in your Plist the following 
+      records<SPAN>&nbsp;</SPAN><A 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      href="https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/">Apple 
+      Documentation</A></P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">NSAppTransportSecurity 
+      &lt;- Type Dictionary</P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">NSAllowsArbitraryLoads 
+      &lt;- Type Boolean Value YES</P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      href="https://i.stack.imgur.com/JrtPJ.png"><IMG 
+      style="MAX-WIDTH: 100%; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      alt="enter image description here" 
+      src="https://i.stack.imgur.com/JrtPJ.png"></A></P></DIV>
+      <TABLE class=fw 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TBODY 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TR 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=vt 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            <DIV class=post-menu 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            id=link-post-32885354 title="short permalink to this answer" 
+            class=short-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/a/32885354">share</A><SPAN 
+            class=lsep 
+            style="FONT-SIZE: 1px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(27,64,114); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px; VISIBILITY: hidden; font-stretch: inherit"></SPAN><A 
+            title="" class=suggest-edit-post 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/posts/32885354/edit">improve this 
+            answer</A></DIV></TD>
+          <TD class=post-signature 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+          align=right>
+            <DIV class="user-info " 
+            style="BOX-SIZING: border-box; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 7px; PADDING-TOP: 5px; PADDING-LEFT: 7px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 6px; font-stretch: inherit">
+            <DIV class=user-action-time 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 1px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">answered<SPAN>&nbsp;</SPAN><SPAN 
+            title="2015-10-01 10:34:02Z" class=relativetime 
+            style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Oct 
+            1 '15 at 10:34</SPAN></DIV>
+            <DIV class=user-gravatar32 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/1961064/grigori-jlavyan">
+            <DIV class=gravatar-wrapper-32 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><IMG 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit" 
+            alt="" 
+            src="https://www.gravatar.com/avatar/4d7e66c13568c444635b81c57d02c15d?s=32&amp;d=identicon&amp;r=PG" 
+            width=32 height=32></DIV></A></DIV>
+            <DIV class=user-details 
+            style="WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 0px 8px; LINE-HEIGHT: 17px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/1961064/grigori-jlavyan">Grigori 
+            Jlavyan</A>
+            <DIV class=-flair 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            title="reputation score " class=reputation-score 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 2px 0px 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            dir=ltr>801</SPAN><SPAN title="8 silver badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge2 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -82px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">8</SPAN></SPAN><SPAN 
+            title="31 bronze badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge3 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -62px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">31</SPAN></SPAN></DIV></DIV></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit"></TD>
+    <TD 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV id=comments-link-32885354 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      data-anon="true" data-rep="50"><A 
+      title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." 
+      class="js-add-link comments-link disabled-link " 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 3px; font-stretch: inherit; opacity: 0.6">add 
+      a comment</A></DIV></TD></TR></TBODY></TABLE></DIV>
+<DIV id=dfp-mlb class=everyonelovesstackoverflow 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 10px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+data-clc-ready="true" data-clc-prefilled="true" 
+data-google-query-id="CNmNiMqDgdgCFRgcKgodogUALg">
+<DIV 
+id=google_ads_iframe_/248424177/stackoverflow.com/mlb/question-pages_0__container__ 
+style="BORDER-TOP: 0pt; FONT-FAMILY: inherit; BORDER-RIGHT: 0pt; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0pt; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0pt; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><IFRAME 
+id=google_ads_iframe_/248424177/stackoverflow.com/mlb/question-pages_0 
+title="3rd party ad content" 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: bottom; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+height=90 marginHeight=0 frameBorder=0 width=728 
+name=google_ads_iframe_/248424177/stackoverflow.com/mlb/question-pages_0 
+marginWidth=0 scrolling=no srcdoc=""></IFRAME></DIV></DIV><A 
+style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+name=32776555></A>
+<DIV id=answer-32776555 class=answer 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; WIDTH: 728px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(228,230,232) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit" 
+itemtype="http://schema.org/Answer" itemscope="" data-answerid="32776555">
+<TABLE 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TBODY 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit">
+      <DIV class=vote 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; MIN-WIDTH: 46px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      title="This answer is useful" class=vote-up-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -170px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 2px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">up 
+      vote</A><SPAN class="vote-count-post " 
+      style="FONT-SIZE: 20px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 8px 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="upvoteCount">3</SPAN><A title="This answer is not useful" 
+      class=vote-down-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -220px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 10px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">down 
+      vote</A></DIV></TD>
+    <TD class=answercell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV class=post-text 
+      style="FONT-SIZE: 15px; WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="text">
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">Can 
+      you try to add the all thing, without "http://":</P><PRE class="default prettyprint prettyprinted" style='FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: 0px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif; BORDER-RIGHT: 0px; WIDTH: auto; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(57,51,24); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; DISPLAY: block; PADDING-RIGHT: 5px; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(239,240,241); font-stretch: inherit'><CODE style='FONT-SIZE: 13px; BORDER-TOP: 0px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(239,240,241); font-stretch: inherit'><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSAppTransportSecurity</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSExceptionDomains</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">mydomain.com</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSExceptionAllowsInsecureHTTPLoads</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;true/&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSIncludesSubdomains</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;true/&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">                
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSExceptionRequiresForwardSecrecy</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;false/&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/dict&gt;</SPAN></CODE></PRE></DIV>
+      <TABLE class=fw 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TBODY 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TR 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=vt 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            <DIV class=post-menu 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            id=link-post-32776555 title="short permalink to this answer" 
+            class=short-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/a/32776555">share</A><SPAN 
+            class=lsep 
+            style="FONT-SIZE: 1px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(27,64,114); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px; VISIBILITY: hidden; font-stretch: inherit"></SPAN><A 
+            title="" class=suggest-edit-post 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/posts/32776555/edit">improve this 
+            answer</A></DIV></TD>
+          <TD class=post-signature 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+          align=right>
+            <DIV class="user-info " 
+            style="BOX-SIZING: border-box; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 7px; PADDING-TOP: 5px; PADDING-LEFT: 7px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 6px; font-stretch: inherit">
+            <DIV class=user-action-time 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 1px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">answered<SPAN>&nbsp;</SPAN><SPAN 
+            title="2015-09-25 07:00:56Z" class=relativetime 
+            style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Sep 
+            25 '15 at 7:00</SPAN></DIV>
+            <DIV class=user-gravatar32 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/5314938/paul-slm">
+            <DIV class=gravatar-wrapper-32 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><IMG 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit" 
+            alt="" src="https://i.stack.imgur.com/tV5iX.jpg?s=32&amp;g=1" 
+            width=32 height=32></DIV></A></DIV>
+            <DIV class=user-details 
+            style="WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 0px 8px; LINE-HEIGHT: 17px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/5314938/paul-slm">Paul Slm</A>
+            <DIV class=-flair 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            title="reputation score " class=reputation-score 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 2px 0px 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            dir=ltr>163</SPAN><SPAN title="7 bronze badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge3 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -62px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">7</SPAN></SPAN></DIV></DIV></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit"></TD>
+    <TD 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV id=comments-32776555 class="comments js-comments-container " 
+      style="BORDER-LEFT-WIDTH: 0px; BORDER-TOP: rgb(228,230,232) 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 10px; BORDER-BOTTOM-COLOR: ; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px 0px 0px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit; -webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
+      <TABLE 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TBODY class=js-comments-list 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+        data-addlink-disabled="true" data-comments-unavailable="false" 
+        data-cansee="true" data-canpost="false" 
+        data-remaining-comments-count="0">
+        <TR id=comment-53396321 class="comment js-comment " 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=js-comment-actions 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <TABLE 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TBODY 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TR 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+                <TD class=" comment-score" 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;&nbsp;</TD>
+                <TD 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;</TD></TR></TBODY></TABLE></TD>
+          <TD class="comment-text js-comment-text-and-form" 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <DIV class=comment-body 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=comment-copy 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">i 
+            did, it still won't work. Any other 
+            suggestions?</SPAN><SPAN>&nbsp;</SPAN>–&nbsp;<A 
+            title="1,377 reputation" class="comment-user owner" 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(224,234,241); font-stretch: inherit" 
+            href="https://stackoverflow.com/users/2190986/skywalker">Skywalker</A><SPAN>&nbsp;</SPAN><SPAN 
+            class=comment-date 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(145,153,161); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            dir=ltr><A class=comment-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9#comment53396321_32776555"><SPAN 
+            title="2015-09-25 09:26:49Z" class=relativetime-clean 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Sep 
+            25 '15 at 9:26</SPAN></A></SPAN></DIV></TD></TR></TBODY></TABLE></DIV>
+      <DIV id=comments-link-32776555 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      data-anon="true" data-rep="50"><A 
+      title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." 
+      class="js-add-link comments-link disabled-link " 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 3px; font-stretch: inherit; opacity: 0.6">add 
+      a comment</A></DIV></TD></TR></TBODY></TABLE></DIV><A 
+style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+name=32692566></A>
+<DIV id=answer-32692566 class=answer 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; WIDTH: 728px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(228,230,232) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit" 
+itemtype="http://schema.org/Answer" itemscope="" data-answerid="32692566">
+<TABLE 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TBODY 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit">
+      <DIV class=vote 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; MIN-WIDTH: 46px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      title="This answer is useful" class=vote-up-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -170px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 2px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">up 
+      vote</A><SPAN class="vote-count-post " 
+      style="FONT-SIZE: 20px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 8px 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="upvoteCount">2</SPAN><A title="This answer is not useful" 
+      class=vote-down-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -220px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 10px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">down 
+      vote</A></DIV></TD>
+    <TD class=answercell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV class=post-text 
+      style="FONT-SIZE: 15px; WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="text">
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      href="https://i.stack.imgur.com/r56uW.png" rel="nofollow noreferrer"><IMG 
+      style="MAX-WIDTH: 100%; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      alt="enter image description here" 
+      src="https://i.stack.imgur.com/r56uW.png"></A></P>
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">Try 
+      this, this should fix your issue</P></DIV>
+      <TABLE class=fw 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TBODY 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TR 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=vt 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            <DIV class=post-menu 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 2px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            id=link-post-32692566 title="short permalink to this answer" 
+            class=short-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/a/32692566">share</A><SPAN 
+            class=lsep 
+            style="FONT-SIZE: 1px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(27,64,114); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px; VISIBILITY: hidden; font-stretch: inherit"></SPAN><A 
+            title="" class=suggest-edit-post 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 3px; font-stretch: inherit" 
+            href="https://stackoverflow.com/posts/32692566/edit">improve this 
+            answer</A></DIV></TD>
+          <TD class=post-signature 
+          style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+          align=right>
+            <DIV class="user-info " 
+            style="BOX-SIZING: border-box; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 200px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 7px; PADDING-TOP: 5px; PADDING-LEFT: 7px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 6px; font-stretch: inherit">
+            <DIV class=user-action-time 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 1px 0px 4px; PADDING-RIGHT: 0px; font-stretch: inherit">answered<SPAN>&nbsp;</SPAN><SPAN 
+            title="2015-09-21 10:11:28Z" class=relativetime 
+            style="TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Sep 
+            21 '15 at 10:11</SPAN></DIV>
+            <DIV class=user-gravatar32 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/1948163/prabhu-somasundaram">
+            <DIV class=gravatar-wrapper-32 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><IMG 
+            style="BORDER-TOP: 0px; HEIGHT: 32px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 32px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto; PADDING-RIGHT: 0px; border-radius: 1px; font-stretch: inherit" 
+            alt="" 
+            src="https://www.gravatar.com/avatar/b190194625abd00f3cd7c31d1062b37a?s=32&amp;d=identicon&amp;r=PG" 
+            width=32 height=32></DIV></A></DIV>
+            <DIV class=user-details 
+            style="WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 0px 8px; LINE-HEIGHT: 17px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            href="https://stackoverflow.com/users/1948163/prabhu-somasundaram">Prabhu.Somasundaram</A>
+            <DIV class=-flair 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            title="reputation score " class=reputation-score 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 2px 0px 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+            dir=ltr>866</SPAN><SPAN title="6 silver badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge2 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -82px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">6</SPAN></SPAN><SPAN 
+            title="11 bronze badges" 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=badge3 
+            style="OVERFLOW: hidden; BORDER-TOP: 0px; HEIGHT: 14px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 6px; VERTICAL-ALIGN: text-bottom; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: -62px -398px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 3px 0px 2px; DISPLAY: inline-block; PADDING-RIGHT: 0px; font-stretch: inherit; background-size: initial"></SPAN><SPAN 
+            class=badgecount 
+            style="FONT-SIZE: 12px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: 400; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">11</SPAN></SPAN></DIV></DIV></DIV></TD></TR></TBODY></TABLE></TD></TR>
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit"></TD>
+    <TD 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV id=comments-32692566 class="comments js-comments-container " 
+      style="BORDER-LEFT-WIDTH: 0px; BORDER-TOP: rgb(228,230,232) 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 10px; BORDER-BOTTOM-COLOR: ; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 10px 0px 0px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit; -webkit-tap-highlight-color: rgba(255, 255, 255, 0)">
+      <TABLE 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        <TBODY class=js-comments-list 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+        data-addlink-disabled="true" data-comments-unavailable="false" 
+        data-cansee="true" data-canpost="false" 
+        data-remaining-comments-count="0">
+        <TR id=comment-53228568 class="comment js-comment " 
+        style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+          <TD class=js-comment-actions 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <TABLE 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TBODY 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+              <TR 
+              style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+                <TD class=" comment-score" 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;&nbsp;</TD>
+                <TD 
+                style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&nbsp;</TD></TR></TBODY></TABLE></TD>
+          <TD class="comment-text js-comment-text-and-form" 
+          style="BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(239,240,241) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; LINE-HEIGHT: 1.3; PADDING-RIGHT: 6px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit">
+            <DIV class=comment-body 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit"><SPAN 
+            class=comment-copy 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Thank 
+            you for the reply. Please see my updated question. I have tried this 
+            but it does not work for me.</SPAN><SPAN>&nbsp;</SPAN>–&nbsp;<A 
+            title="1,377 reputation" class="comment-user owner" 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 5px; BACKGROUND-COLOR: rgb(224,234,241); font-stretch: inherit" 
+            href="https://stackoverflow.com/users/2190986/skywalker">Skywalker</A><SPAN>&nbsp;</SPAN><SPAN 
+            class=comment-date 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(145,153,161); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            dir=ltr><A class=comment-link 
+            style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: medium none; COLOR: rgb(0,89,153); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; border-image: initial; font-stretch: inherit" 
+            href="https://stackoverflow.com/questions/32690789/cannot-load-http-links-in-uiwebview-in-ios-9#comment53228568_32692566"><SPAN 
+            title="2015-09-21 10:18:35Z" class=relativetime-clean 
+            style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">Sep 
+            21 '15 at 10:18</SPAN></A></SPAN></DIV></TD></TR></TBODY></TABLE></DIV>
+      <DIV id=comments-link-32692566 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      data-anon="true" data-rep="50"><A 
+      title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." 
+      class="js-add-link comments-link disabled-link " 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 3px; font-stretch: inherit; opacity: 0.6">add 
+      a comment</A></DIV></TD></TR></TBODY></TABLE></DIV><A 
+style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+name=33808075></A>
+<DIV id=answer-33808075 class=answer 
+style="BORDER-LEFT-WIDTH: 0px; FONT-FAMILY: inherit; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-COLOR: ; WIDTH: 728px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: rgb(228,230,232) 1px solid; BORDER-LEFT-COLOR: ; PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 0px; MARGIN: 0px; BORDER-RIGHT-COLOR: ; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px; border-image: initial; font-stretch: inherit" 
+itemtype="http://schema.org/Answer" itemscope="" data-answerid="33808075">
+<TABLE 
+style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-SPACING: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TBODY 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit">
+      <DIV class=vote 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; MIN-WIDTH: 46px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit"><A 
+      title="This answer is useful" class=vote-up-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -170px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 2px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">up 
+      vote</A><SPAN class="vote-count-post " 
+      style="FONT-SIZE: 20px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(106,115,124); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 8px 0px; DISPLAY: block; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="upvoteCount">0</SPAN><A title="This answer is not useful" 
+      class=vote-down-off 
+      style="FONT-SIZE: 1px; OVERFLOW: hidden; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; HEIGHT: 30px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 40px; VERTICAL-ALIGN: baseline; BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: 0px; BACKGROUND-POSITION: 0px -220px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px auto 10px; DISPLAY: block; PADDING-RIGHT: 0px; TEXT-INDENT: -9999em; font-stretch: inherit; background-size: initial">down 
+      vote</A></DIV></TD>
+    <TD class=answercell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV class=post-text 
+      style="FONT-SIZE: 15px; WORD-WRAP: break-word; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; WIDTH: 660px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px 0px 5px; LINE-HEIGHT: 1.3; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      itemprop="text">
+      <P 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; PADDING-RIGHT: 0px; font-stretch: inherit">Have 
+      you tried this?</P><PRE class="default prettyprint prettyprinted" style='FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: normal; BORDER-TOP: 0px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif; BORDER-RIGHT: 0px; WIDTH: auto; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(57,51,24); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; MARGIN: 0px 0px 1em; DISPLAY: block; PADDING-RIGHT: 5px; MAX-HEIGHT: 600px; BACKGROUND-COLOR: rgb(239,240,241); font-stretch: inherit'><CODE style='FONT-SIZE: 13px; BORDER-TOP: 0px; FONT-FAMILY: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(239,240,241); font-stretch: inherit'><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSAppTransportSecurity</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSExceptionDomains</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">www.mydomain.com</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSIncludesSubdomains</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;true/&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSExceptionMinimumTLSVersion</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;string&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">TLSv1.0</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/string&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSExceptionRequiresForwardSecrecy</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;false/&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">NSExceptionAllowsInsecureHTTPLoads</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/key&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+            </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;true/&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+        </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    </SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/dict&gt;</SPAN><SPAN class=pln style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(48,51,54); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+</SPAN><SPAN class=tag style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(125,39,39); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">&lt;/dict&gt;</SPAN></CODE></PRE></DIV></TD></TR>
+  <TR 
+  style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+    <TD class=votecell 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: top; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 15px; font-stretch: inherit"></TD>
+    <TD 
+    style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">
+      <DIV id=comments-link-33808075 
+      style="BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+      data-anon="true" data-rep="50"><A 
+      title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." 
+      class="js-add-link comments-link disabled-link " 
+      style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(132,141,149); PADDING-BOTTOM: 2px; PADDING-TOP: 0px; PADDING-LEFT: 3px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 3px; font-stretch: inherit; opacity: 0.6">add 
+      a comment</A></DIV></TD></TR></TBODY></TABLE></DIV><A 
+style="CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; COLOR: rgb(0,119,204); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit" 
+name=37631710></A></DIV></DIV><PRE style="FONT-SIZE: 10.5pt; FONT-FAMILY: 'Source Code Pro Semibold'; COLOR: #ffffff; BACKGROUND-COLOR: #282525"><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">import </SPAN>React, { Component } <SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">from </SPAN><SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'react'</SPAN>;<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">import </SPAN>{ <SPAN style="COLOR: #95c995; FONT-STYLE: italic">StyleSheet</SPAN>, <SPAN style="COLOR: #95c995; FONT-STYLE: italic">WebView</SPAN>, <SPAN style="COLOR: #95c995; FONT-STYLE: italic">Platform</SPAN>} <SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">from </SPAN><SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'react-native'</SPAN>;<BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">import </SPAN>AdvancedWebView <SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">from </SPAN><SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'react-native-advanced-webview'</SPAN>;<BR><BR><SPAN style="COLOR: #808080; FONT-STYLE: italic">//const LoacalWebURL = require('./html/SampleHtmlFile.html');<BR></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">const </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ff99">LoacalWebURL </SPAN>= (<SPAN style="COLOR: #95c995; FONT-STYLE: italic">Platform</SPAN>.<SPAN style="FONT-WEIGHT: bold">OS </SPAN>== <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'ios'</SPAN>) ? require(<SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'./html/</SPAN><SPAN style="FONT-FAMILY: '宋体'; COLOR: #ccffff; BACKGROUND-COLOR: #333333">首页</SPAN><SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">.html'</SPAN>) : { <SPAN style="FONT-WEIGHT: bold">uri</SPAN>: <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'file:///android_asset/html/</SPAN><SPAN style="FONT-FAMILY: '宋体'; COLOR: #ccffff; BACKGROUND-COLOR: #333333">首页</SPAN><SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">.html'</SPAN><SPAN style="COLOR: #ccffff"> </SPAN>};<BR><SPAN style="COLOR: #808080; FONT-STYLE: italic">//const LoacalWebURL = { uri: 'file:///android_asset/html/</SPAN><SPAN style="FONT-FAMILY: '宋体'; COLOR: #808080; FONT-STYLE: italic">首页</SPAN><SPAN style="COLOR: #808080; FONT-STYLE: italic">.html' };<BR></SPAN><SPAN style="FONT-WEIGHT: bold">console</SPAN>.<SPAN style="FONT-WEIGHT: bold">log</SPAN>(<SPAN style="FONT-WEIGHT: bold; COLOR: #99ff99">LoacalWebURL</SPAN>);<BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">export default class </SPAN><SPAN style="COLOR: #19800a">App </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">extends </SPAN>Component {<BR><BR>   <SPAN style="COLOR: #95c995; FONT-STYLE: italic">render</SPAN>() {<BR><BR>      <SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">return </SPAN>(<BR><BR>            &lt;<SPAN style="COLOR: #ffffcc">AdvancedWebView<BR></SPAN><SPAN style="COLOR: #ffffcc">                </SPAN><SPAN style="COLOR: #95c995; FONT-STYLE: italic">style</SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #3adf3a">=</SPAN>{<SPAN style="FONT-WEIGHT: bold; COLOR: #99ff99">styles</SPAN>.<SPAN style="FONT-WEIGHT: bold">WebViewStyle</SPAN>}<BR>                <SPAN style="COLOR: #95c995; FONT-STYLE: italic">source</SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #3adf3a">=</SPAN>{<SPAN style="FONT-WEIGHT: bold; COLOR: #99ff99">LoacalWebURL</SPAN>}<BR>                <SPAN style="COLOR: #95c995; FONT-STYLE: italic">javaScriptEnabled</SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #3adf3a">=</SPAN>{<SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">true</SPAN>}<BR>                <SPAN style="COLOR: #95c995; FONT-STYLE: italic">domStorageEnabled</SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #3adf3a">=</SPAN>{<SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">true</SPAN>}<BR>                <SPAN style="COLOR: #95c995; FONT-STYLE: italic">allowUniversalAccessFromFileURLs</SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #3adf3a">=</SPAN>{<SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">true</SPAN>}<BR>                <SPAN style="COLOR: #95c995; FONT-STYLE: italic">allowFileAccessFromFileURLs</SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #3adf3a">=</SPAN>{<SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">true</SPAN>} /&gt;<BR><BR>      );<BR>   }<BR>}<BR><BR><BR><BR><SPAN style="FONT-WEIGHT: bold; COLOR: #99ffdd">const </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: #99ff99">styles </SPAN>= <SPAN style="COLOR: #95c995; FONT-STYLE: italic">StyleSheet</SPAN>.create(<BR>   {<BR><BR>      <SPAN style="FONT-WEIGHT: bold">WebViewStyle</SPAN>:<BR>         {<BR>            <SPAN style="FONT-WEIGHT: bold">justifyContent</SPAN>: <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'center'</SPAN>,<BR>            <SPAN style="FONT-WEIGHT: bold">alignItems</SPAN>: <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'center'</SPAN>,<BR>            <SPAN style="FONT-WEIGHT: bold">flex</SPAN>:<SPAN style="COLOR: #6666d9">1</SPAN>,<BR>            <SPAN style="FONT-WEIGHT: bold">marginTop</SPAN>: (<SPAN style="COLOR: #95c995; FONT-STYLE: italic">Platform</SPAN>.<SPAN style="FONT-WEIGHT: bold">OS</SPAN>) === <SPAN style="COLOR: #ccffff; BACKGROUND-COLOR: #333333">'ios'</SPAN><SPAN style="COLOR: #ccffff"> </SPAN>? <SPAN style="COLOR: #6666d9">20 </SPAN>: <SPAN style="COLOR: #6666d9">0<BR></SPAN><SPAN style="COLOR: #6666d9">         </SPAN>}<BR>   });</PRE>
+</BODY>
+</HTML>
