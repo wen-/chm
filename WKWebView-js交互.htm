@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>WKWebView-js交互</TITLE>
+</HEAD>
+<BODY>
+<P>WKWebView-js交互</P>
+<P>//<BR>//&nbsp; 邀请奖励js交互.h<BR>//&nbsp; 飞燕云盘<BR>//<BR>//&nbsp; Created by 黄文雄 
+on 2017/10/22.<BR>//&nbsp; Copyright ? 2017年 黄文雄. All rights 
+reserved.<BR>//<BR>#import &lt;UIKit/UIKit.h&gt;<BR>//#import 
+&lt;WebKit/WebKit.h&gt;<BR>#import 
+&lt;JavaScriptCore/JavaScriptCore.h&gt;<BR>#import "MBProgressHUD.h"<BR>#import 
+"SettingsViewController.h"</P>
+<P>@protocol JSDelegate &lt;JSExport&gt;</P>
+<P>// 显示提示信息<BR>- (void)showToast:(NSString *)params;</P>
+<P>// 返回<BR>- (void)goBack;</P>
+<P>- (void)gotoPage:(NSString *)address;</P>
+<P>// 结束加载<BR>- (void)loadFin;</P>
+<P>// 退出登录<BR>- (void)logout;</P>
+<P>@end</P>
+<P><A>//@interface</A> 通用js交互 : 
+NSObject&lt;WKScriptMessageHandler&gt;<BR>@interface 通用js交互 : NSObject 
+&lt;JSDelegate&gt;</P>
+<P><A>//@property</A> (nonatomic, assign) id&lt;WKScriptMessageHandler&gt; 
+scriptDelegate;<BR><A>//@property</A> (nonatomic, strong) WKWebView 
+*webView;<BR>//- 
+(instancetype)initWithDelegate:(id&lt;WKScriptMessageHandler&gt;)scriptDelegate;</P>
+<P>@property (nonatomic, strong) UIViewController&nbsp; 
+*viewController;<BR>@property (nonatomic, strong) UINavigationController&nbsp; 
+*navigationController;<BR>@property (nonatomic, strong) UIWebView 
+*webView;<BR>@property (nonatomic, strong) MBProgressHUD *HUD;<BR>@property 
+(nonatomic, assign) NSString *token;<BR>@property (nonatomic, weak) JSContext 
+*jsContext;</P>
+<P><BR>@end</P>
+<P><BR>//<BR>//&nbsp; 通用js交互.m<BR>//&nbsp; 飞燕开发服<BR>//<BR>//&nbsp; Created by 
+黄文雄 on 2017/10/22.<BR>//&nbsp; Copyright ? 2017年 黄文雄. All rights 
+reserved.<BR>//</P>
+<P>#import &lt;Foundation/Foundation.h&gt;<BR>#import "通用js交互.h"<BR>#import 
+"域名管理.h"<BR>#import "邀请奖励.h"<BR>#import "MBProgressHUD.h"<BR>#import 
+"SettingsViewController.h"</P>
+<P>@interface 通用js交互()</P>
+<P>@end</P>
+<P>@implementation 通用js交互</P>
+<P>//- 
+(instancetype)initWithDelegate:(id&lt;WKScriptMessageHandler&gt;)scriptDelegate<BR>//{<BR>//&nbsp;&nbsp;&nbsp; 
+self = [super init];<BR>//&nbsp;&nbsp;&nbsp; if (self) 
+{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _scriptDelegate = 
+scriptDelegate;<BR>//&nbsp;&nbsp;&nbsp; }<BR>//&nbsp;&nbsp;&nbsp; return 
+self;<BR>//}<BR>//<BR>//- (void)userContentController:(WKUserContentController 
+*)userContentController didReceiveScriptMessage:(WKScriptMessage 
+*)message<BR>//{<BR>//&nbsp;&nbsp;&nbsp; NSLog(@"JS 调用了 %@ 方法，传回参数 <A 
+href='mailto:%@",message.name,message.body'>%@",message.name,message.body</A>);<BR>//&nbsp;&nbsp;&nbsp; 
+if([@"js交互" 
+isEqualToString:message.name]){<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSString *method = 
+message.body[@"method"];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if([@"showToast" 
+isEqualToString:method]){<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[self 
+showToast:message.body[@"data"]];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else if([@"goBack" 
+isEqualToString:method]){<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[self goBack];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>//&nbsp;&nbsp;&nbsp; }<BR>//}</P>
+<P><BR>- (void)showToast:(NSString *)params {<BR>&nbsp;&nbsp;&nbsp; 
+NSLog(@"参数为：%@", params);<BR>&nbsp;&nbsp;&nbsp; MBProgressHUD *hud = 
+[[MBProgressHUD alloc] initWithView:self.webView];<BR>&nbsp;&nbsp;&nbsp; 
+[self.webView addSubview:hud];<BR>&nbsp;&nbsp;&nbsp; hud.mode = 
+MBProgressHUDModeText;<BR>&nbsp;&nbsp;&nbsp; hud.labelText = 
+params;<BR>&nbsp;&nbsp;&nbsp; hud.margin = 10.f;<BR>&nbsp;&nbsp;&nbsp; 
+hud.yOffset = 180;<BR>&nbsp;&nbsp;&nbsp; hud.minSize = CGSizeMake(140, 
+60);<BR>&nbsp;&nbsp;&nbsp; hud.removeFromSuperViewOnHide = 
+YES;<BR>&nbsp;&nbsp;&nbsp; [hud show:YES];<BR>&nbsp;&nbsp;&nbsp; [hud hide:YES 
+afterDelay:0.8];<BR>}</P>
+<P>- (void)goBack {<BR>&nbsp;&nbsp;&nbsp; 
+dispatch_sync(dispatch_get_main_queue(), 
+^{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [self.navigationController 
+popViewControllerAnimated:YES];<BR>&nbsp;&nbsp;&nbsp; });<BR>}</P>
+<P>//- (void)gotoPage:(NSString *)address{<BR>//&nbsp;&nbsp;&nbsp; NSString 
+*newurl = [address 
+stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];<BR>//&nbsp;&nbsp;&nbsp; 
+NSString *bodyShare = [NSString stringWithFormat: @"token=%@", 
+self.token];<BR>//&nbsp;&nbsp;&nbsp; NSMutableURLRequest *request = 
+[[NSMutableURLRequest alloc]initWithURL: [NSURL URLWithString:newurl] 
+cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
+timeoutInterval:60];<BR>//&nbsp;&nbsp;&nbsp; request.HTTPMethod = 
+@"POST";<BR>//&nbsp;&nbsp;&nbsp; request.HTTPBody = [bodyShare 
+dataUsingEncoding: NSUTF8StringEncoding];<BR>//&nbsp;&nbsp;&nbsp; [self.webView 
+loadRequest: request];<BR>//}</P>
+<P>- (void)gotoPage:(NSString *)address{<BR>&nbsp;&nbsp;&nbsp; if([@"提现" 
+isEqualToString:address]){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请奖励 
+*邀请 = [邀请奖励 new];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.当前标题 = 
+address;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.跳转地址 = 
+域名管理.提现;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[self.navigationController pushViewController:邀请 
+animated:YES];<BR>&nbsp;&nbsp;&nbsp; }else if([@"提现记录" 
+isEqualToString:address]){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请奖励 
+*邀请 = [邀请奖励 new];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.当前标题 = 
+address;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.跳转地址 = 
+域名管理.提现记录;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[self.navigationController pushViewController:邀请 
+animated:YES];<BR>&nbsp;&nbsp;&nbsp; }else if([@"邀请记录" 
+isEqualToString:address]){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请奖励 
+*邀请 = [邀请奖励 new];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.当前标题 = 
+address;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.跳转地址 = 
+域名管理.邀请记录;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[self.navigationController pushViewController:邀请 
+animated:YES];<BR>&nbsp;&nbsp;&nbsp; }else if([@"银行卡列表" 
+isEqualToString:address]){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请奖励 
+*邀请 = [邀请奖励 new];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.当前标题 = 
+address;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 邀请.跳转地址 = 
+域名管理.银行卡列表;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[self.navigationController pushViewController:邀请 
+animated:YES];<BR>&nbsp;&nbsp;&nbsp; }<BR>}</P>
+<P>- (void)loadFin {<BR>&nbsp;&nbsp;&nbsp; 
+NSLog(@"页面加载完成");<BR>&nbsp;&nbsp;&nbsp; [_HUD hide:YES];<BR>}</P>
+<P>- (void)logout {<BR>&nbsp;&nbsp;&nbsp; 
+TTAlertNoTitle(@"您的帐号已在其他地方登录，请重新登录");<BR>&nbsp;&nbsp;&nbsp; 
+[SettingsViewController 退出];<BR>}</P>
+<P>@end<BR></P>
+<P>&nbsp;</P>
+<P>//<BR>//&nbsp; 邀请奖励.h<BR>//&nbsp; 飞燕云盘<BR>//<BR>//&nbsp; Created by 黄文雄 on 
+2017/10/22.<BR>//&nbsp; Copyright ? 2017年 黄文雄. All rights reserved.<BR>//</P>
+<P>#import &lt;UIKit/UIKit.h&gt;</P>
+<P>@interface 邀请奖励 : UIViewController</P>
+<P>@property NSString *当前标题;<BR>@property NSString *跳转地址;</P>
+<P>@end<BR></P>
+<P>&nbsp;</P>
+<P>//<BR>//&nbsp; 邀请奖励.m<BR>//&nbsp; 飞燕云盘<BR>//<BR>//&nbsp; Created by 黄文雄 on 
+2017/10/22.<BR>//&nbsp; Copyright ? 2017年 黄文雄. All rights reserved.<BR>//</P>
+<P>#import "通用js交互.h"<BR>#import "邀请奖励.h"<BR>#import 
+&lt;SVProgressHUD.h&gt;<BR>#import "域名管理.h"<BR>#import "登录数据模型.h"<BR>#import 
+"MJRefresh.h"<BR>#import "RealtimeSearchUtil.h"<BR>#import 
+"UIViewController+SearchController.h"<BR>#import "BaiduMobStat.h"</P>
+<P><A>//@interface</A> 邀请奖励 
+()&lt;WKUIDelegate,WKNavigationDelegate&gt;{<BR>@interface 邀请奖励 
+()&lt;UIWebViewDelegate&gt;{<BR>&nbsp;&nbsp;&nbsp; NSString *令牌;<BR>}</P>
+<P><A>//@property</A> (nonatomic, strong) WKWebView *webView;<BR>@property 
+(nonatomic, strong) UIWebView *webView;<BR>@property (nonatomic, strong) 
+JSContext *jsContext;<BR>@property (nonatomic, strong) MBProgressHUD *HUD;</P>
+<P>@end</P>
+<P>@implementation 邀请奖励</P>
+<P>- (void)viewDidLoad {<BR>&nbsp;&nbsp;&nbsp; [super 
+viewDidLoad];<BR>&nbsp;&nbsp;&nbsp; [self 
+setupForDismissKeyboard];<BR>&nbsp;&nbsp;&nbsp; [self.view 
+addSubview:self.webViewInit];<BR>&nbsp;&nbsp;&nbsp; [self 
+increateProgress];<BR>&nbsp;&nbsp;&nbsp; self.title = 
+_当前标题?_当前标题:@"邀请奖励";<BR>&nbsp;&nbsp;&nbsp; UIBarButtonItem *leftButton = 
+[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain 
+target:self action:@selector(返回设置)];<BR>&nbsp;&nbsp;&nbsp; 
+self.navigationItem.leftBarButtonItem = leftButton;<BR>}</P>
+<P>-(void)返回设置{<BR>&nbsp;&nbsp;&nbsp; if (self.webView.canGoBack==YES) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [self.webView 
+goBack];<BR>&nbsp;&nbsp;&nbsp; 
+}else{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [self.navigationController 
+popViewControllerAnimated:YES];<BR>&nbsp;&nbsp;&nbsp; }<BR>}</P>
+<P>-(void)页面跳转: (UIButton*)section{<BR>&nbsp;&nbsp;&nbsp; NSString 
+*url;<BR>&nbsp;&nbsp;&nbsp; NSString *bodyShare;<BR>&nbsp;&nbsp;&nbsp; //url = 
+域名管理.邀请奖励首页;<BR>&nbsp;&nbsp;&nbsp; if(section.tag == 
+1){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = 
+域名管理.邀请活动详情;<BR>&nbsp;&nbsp;&nbsp; }else if(section.tag == 
+2){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = 
+域名管理.新增银行卡;<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; bodyShare = [NSString 
+stringWithFormat: @"token=%@", 令牌];<BR>&nbsp;&nbsp;&nbsp; url = [url 
+stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];<BR>&nbsp;&nbsp;&nbsp; 
+//NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: [NSURL 
+URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
+timeoutInterval:60];<BR>&nbsp;&nbsp;&nbsp; NSMutableURLRequest *request = 
+[[NSMutableURLRequest alloc]initWithURL: [NSURL 
+URLWithString:url]];<BR>&nbsp;&nbsp;&nbsp; //[request setHTTPMethod: 
+@"POST"];<BR>&nbsp;&nbsp;&nbsp; //[request setHTTPBody: [bodyShare 
+dataUsingEncoding: NSUTF8StringEncoding]];<BR>&nbsp;&nbsp;&nbsp; [_webView 
+loadRequest: request];<BR>}</P>
+<P>- (void)increateProgress<BR>{<BR>&nbsp;&nbsp;&nbsp; [SVProgressHUD 
+setForegroundColor:[[UIColor blackColor] 
+colorWithAlphaComponent:0.4]];<BR>&nbsp;&nbsp;&nbsp; //[SVProgressHUD 
+show];<BR>}</P>
+<P>//- (WKWebView *)webViewInit {<BR>//&nbsp;&nbsp;&nbsp; 登录数据模型 *登录信息 = [登录数据模型 
+new];<BR>//&nbsp;&nbsp;&nbsp; NSData *数据 = [[NSUserDefaults 
+standardUserDefaults] objectForKey:@"登录信息"];<BR>//&nbsp;&nbsp;&nbsp; 登录信息 = 
+[NSKeyedUnarchiver unarchiveObjectWithData:数据];<BR>//&nbsp;&nbsp;&nbsp; 令牌 = 
+登录信息.令牌;<BR>//&nbsp;&nbsp;&nbsp; if (_webView == nil) 
+{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+插入js代码<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString *JScode = 
+[NSString stringWithFormat: @"var APPiOS = 'true';var iOS_token = <A 
+href="mailto:'%@'">'%@'</A>;", 
+令牌];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+根据JS字符串初始化WKUserScript对象<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+WKUserScript *script = [[WKUserScript alloc] initWithSource:JScode 
+injectionTime:WKUserScriptInjectionTimeAtDocumentStart 
+forMainFrameOnly:YES];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+根据生成的WKUserScript对象，初始化WKWebViewConfiguration<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] 
+init];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[config.userContentController 
+addUserScript:script];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通用js交互 
+*model&nbsp; = [[通用js交互 alloc] 
+init];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.webView = 
+self.webView;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+model.viewController = self;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+model.token = 令牌;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+model.navigationController = 
+self.navigationController;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[config.userContentController addScriptMessageHandler:model 
+name:@"js交互"];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _webView = 
+[[WKWebView alloc] initWithFrame:self.view.bounds 
+configuration:config];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+_webView.UIDelegate = self;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+_webView.navigationDelegate = 
+self;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString 
+*url;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString 
+*bodyShare;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = 
+域名管理.邀请奖励首页;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bodyShare = 
+[NSString stringWithFormat: @"token=%@", 
+登录信息.令牌];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = [url 
+stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"登录<A 
+href='%@",url'>url:%@",url</A>);<BR>//<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+//NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: [NSURL 
+URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
+timeoutInterval:60];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: [NSURL 
+URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData 
+timeoutInterval:60];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [request 
+setHTTPMethod: @"POST"];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[request setHTTPBody: [bodyShare dataUsingEncoding: 
+NSUTF8StringEncoding]];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"登录参数:%@",bodyShare);<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[_webView loadRequest: request];<BR>//&nbsp;&nbsp;&nbsp; 
+}<BR>//&nbsp;&nbsp;&nbsp; return _webView;<BR>//}<BR>//<BR>//// 页面开始加载时调用<BR>//- 
+(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation 
+*)navigation{<BR>//&nbsp;&nbsp;&nbsp; NSLog(@"开始请求webview");<BR>//};<BR>//// 
+当内容开始返回时调用<BR>//- (void)webView:(WKWebView *)webView 
+didCommitNavigation:(WKNavigation *)navigation{<BR>//&nbsp;&nbsp;&nbsp; 
+NSLog(@"当内容开始返回时");<BR>//};<BR>//// 页面加载完成之后调用<BR>//- (void)webView:(WKWebView 
+*)webView didFinishNavigation:(WKNavigation 
+*)navigation{<BR>//&nbsp;&nbsp;&nbsp; NSLog(@"页面加载完成");<BR>//&nbsp;&nbsp;&nbsp; 
+NSString *validJs = 
+@"document.documentElement.innerHTML";//获取当前网页的html<BR>//&nbsp;&nbsp;&nbsp; 
+[webView evaluateJavaScript:validJs completionHandler:^(id _Nullable response, 
+NSError * _Nullable error) {<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"HTML页面内容：<A 
+href='mailto:%@==error:%@",response,error'>%@==error:%@",response,error</A>);<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSString *页面内容 = [NSString stringWithFormat: @"%@", 
+response];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(页面内容.length &lt; 
+200 &amp;&amp; [页面内容 rangeOfString:@"令牌已失效"].location !=NSNotFound) 
+{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TTAlertNoTitle(@"您的帐号已在其他地方登录，请重新登录");<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[SettingsViewController 退出];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}else{<BR>//<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>//&nbsp;&nbsp;&nbsp; }];<BR>//&nbsp;&nbsp;&nbsp; NSString *标题 = 
+webView.title;<BR>//&nbsp;&nbsp;&nbsp; self.title = 标题;<BR>//&nbsp;&nbsp;&nbsp; 
+if([@"邀请奖励" isEqual:标题]){<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"活动详情" 
+style:UIBarButtonItemStylePlain target:self 
+action:@selector(页面跳转:)];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+rightButton.tag = 1;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.navigationItem.rightBarButtonItem = rightButton;<BR>//&nbsp;&nbsp;&nbsp; 
+}else if([@"选择银行卡" isEqual:标题]){<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"添加" 
+style:UIBarButtonItemStylePlain target:self 
+action:@selector(页面跳转:)];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+rightButton.tag = 2;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.navigationItem.rightBarButtonItem = rightButton;<BR>//&nbsp;&nbsp;&nbsp; 
+}else{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.navigationItem.rightBarButtonItem = nil;<BR>//&nbsp;&nbsp;&nbsp; 
+}<BR>//&nbsp;&nbsp;&nbsp; [SVProgressHUD dismiss];<BR>//};<BR>//// 
+页面加载失败时调用<BR>//- (void)webView:(WKWebView *)webView 
+didFailProvisionalNavigation:(WKNavigation *)navigation{<BR>//&nbsp;&nbsp;&nbsp; 
+NSLog(@"页面加载失败:%@",navigation);<BR>//&nbsp;&nbsp;&nbsp; [SVProgressHUD 
+dismiss];<BR>//};<BR>//<BR>//// 接收到服务器跳转请求之后调用<BR>//- (void)webView:(WKWebView 
+*)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation 
+*)navigation{<BR>//&nbsp;&nbsp;&nbsp; NSLog(@"接收到服务器跳转请求");<BR>//};<BR>//// 
+在收到响应后，决定是否跳转<BR>//- (void)webView:(WKWebView *)webView 
+decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse 
+decisionHandler:(void 
+(^)(WKNavigationResponsePolicy))decisionHandler{<BR>//&nbsp;&nbsp;&nbsp; 
+NSLog(@"在收到响应");<BR>//&nbsp;&nbsp;&nbsp; // 逻辑判断<BR>////&nbsp;&nbsp;&nbsp; if 
+([navigationResponse.response.URL.host.lowercaseString 
+isEqual:@"api.feiyan.world"]) 
+{<BR>////&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+允许跳转<BR>////&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+decisionHandler(WKNavigationResponsePolicyAllow);<BR>////&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return;<BR>////&nbsp;&nbsp;&nbsp; }<BR>//&nbsp;&nbsp;&nbsp; // 
+允许跳转<BR>//&nbsp;&nbsp;&nbsp; 
+decisionHandler(WKNavigationResponsePolicyAllow);<BR>//&nbsp;&nbsp;&nbsp; // 
+不允许跳转<BR>//&nbsp;&nbsp;&nbsp; 
+//decisionHandler(WKNavigationResponsePolicyCancel);<BR>//};<BR>//// 
+在发送请求之前，决定是否跳转<BR>//- (void)webView:(WKWebView *)webView 
+decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction 
+decisionHandler:(void 
+(^)(WKNavigationActionPolicy))decisionHandler{<BR>//&nbsp;&nbsp;&nbsp; 
+NSLog(@"在发送请求:%@",navigationAction.request.HTTPMethod);<BR>//&nbsp;&nbsp;&nbsp; 
+NSLog(@"发送请求参数:%@",[[NSString 
+alloc]initWithData:navigationAction.request.HTTPBody 
+encoding:NSUTF8StringEncoding]);<BR>//&nbsp;&nbsp;&nbsp; NSLog(@"请求<A 
+href='%@",[navigationAction.request.URL.relativeString'>URL:%@",[navigationAction.request.URL.relativeString</A> 
+stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);<BR>//&nbsp;&nbsp;&nbsp; 
+NSLog(@"webView-URL:%@",[webView.URL.relativeString 
+stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);<BR>//&nbsp;&nbsp;&nbsp; 
+[SVProgressHUD show];<BR>//&nbsp;&nbsp;&nbsp; // 
+如果请求方式是GET则改成POST<BR>//&nbsp;&nbsp;&nbsp; if 
+([navigationAction.request.HTTPMethod isEqual:@"GET"]) 
+{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+decisionHandler(WKNavigationActionPolicyCancel);<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"请求方式：<A 
+href='mailto:%@",navigationAction.request.HTTPMethod'>%@",navigationAction.request.HTTPMethod</A>);<BR>//<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSMutableURLRequest *modifiedRequest = [navigationAction.request 
+mutableCopy];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString 
+*bodyShare = [NSString stringWithFormat: @"token=%@", 
+令牌];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifiedRequest.HTTPMethod 
+= @"POST";<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+modifiedRequest.HTTPBody = [bodyShare dataUsingEncoding: 
+NSUTF8StringEncoding];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [_webView 
+loadRequest: modifiedRequest];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return;<BR>//&nbsp;&nbsp;&nbsp; }<BR>//&nbsp;&nbsp;&nbsp; // 
+允许跳转<BR>//&nbsp;&nbsp;&nbsp; 
+decisionHandler(WKNavigationActionPolicyAllow);<BR>//&nbsp;&nbsp;&nbsp; // 
+不允许跳转<BR>//&nbsp;&nbsp;&nbsp; 
+//decisionHandler(WKNavigationActionPolicyCancel);<BR>//};</P>
+<P>&nbsp;</P>
+<P>- (UIWebView *)webViewInit {<BR>&nbsp;&nbsp;&nbsp; 登录数据模型 *登录信息 = [登录数据模型 
+new];<BR>&nbsp;&nbsp;&nbsp; NSData *数据 = [[NSUserDefaults standardUserDefaults] 
+objectForKey:@"登录信息"];<BR>&nbsp;&nbsp;&nbsp; 登录信息 = [NSKeyedUnarchiver 
+unarchiveObjectWithData:数据];<BR>&nbsp;&nbsp;&nbsp; 令牌 = 
+登录信息.令牌;<BR>&nbsp;&nbsp;&nbsp; if (_webView == nil) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _webView = [[UIWebView alloc] 
+initWithFrame:self.view.bounds];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+_webView.delegate = self;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+_webView.scalesPageToFit = YES;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSMutableString *JSStringM = 
+[NSMutableString string];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString 
+*JScode = [NSString stringWithFormat: @"var APPiOS = 'true';var iOS_token = <A 
+href="mailto:'%@'">'%@'</A>;",令牌];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[JSStringM appendString:JScode];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[_webView 
+stringByEvaluatingJavaScriptFromString:JSStringM];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.jsContext = [_webView 
+valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// 通过模型调用方法，这种方式更好些。<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通用js交互 
+*model&nbsp; = [[通用js交互 alloc] 
+init];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //通用js交互 *model&nbsp; = 
+[通用js交互 new];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.jsContext[@"OCModel"] = 
+model;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.jsContext = 
+self.jsContext;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.webView = 
+self.webView;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.viewController 
+= self;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.token = 
+令牌;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.navigationController = 
+self.navigationController;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+context.exception = 
+exceptionValue;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"异常信息：%@", exceptionValue);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+};<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString 
+*url;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString 
+*bodyShare;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = 
+_跳转地址?_跳转地址:域名管理.邀请奖励首页;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bodyShare 
+= [NSString stringWithFormat: @"token=%@", 
+登录信息.令牌];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url = [url 
+stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"登录<A href='%@",url'>url:%@",url</A>);</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //NSMutableURLRequest *request = 
+[[NSMutableURLRequest alloc]initWithURL: [NSURL URLWithString:url] 
+cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData 
+timeoutInterval:60];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: [NSURL 
+URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData 
+timeoutInterval:60];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [request 
+setHTTPMethod: @"POST"];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [request 
+setHTTPBody: [bodyShare dataUsingEncoding: 
+NSUTF8StringEncoding]];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"登录参数:%@",bodyShare);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[_webView loadRequest: request];<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+return _webView;<BR>}</P>
+<P>- (void)webViewDidFinishLoad:(UIWebView *)webView {<BR>&nbsp;&nbsp;&nbsp; 
+NSString *validJs = 
+@"document.documentElement.innerHTML";//获取当前网页的html<BR>&nbsp;&nbsp;&nbsp; 
+NSString *html = [webView 
+stringByEvaluatingJavaScriptFromString:validJs];<BR>&nbsp;&nbsp;&nbsp; 
+if(html.length &lt; 200 &amp;&amp; [html rangeOfString:@"令牌已失效"].location 
+!=NSNotFound) {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TTAlertNoTitle(@"您的帐号已在其他地方登录，请重新登录");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+[SettingsViewController 退出];<BR>&nbsp;&nbsp;&nbsp; } else 
+{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSMutableString *JSStringM = 
+[NSMutableString string];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSString *JScode = [NSString stringWithFormat: @"var APPiOS = 'true';var 
+iOS_token = <A href="mailto:'%@'">'%@'</A>;", 
+令牌];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [JSStringM 
+appendString:JScode];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [webView 
+stringByEvaluatingJavaScriptFromString:JSStringM];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.jsContext = [webView 
+valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// 通过模型调用方法，这种方式更好些。<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 通用js交互 
+*model&nbsp; = [[通用js交互 alloc] 
+init];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //通用js交互 *model&nbsp; = 
+[通用js交互 new];<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.jsContext[@"OCModel"] = 
+model;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.jsContext = 
+self.jsContext;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model.webView = 
+self.webView;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+model.viewController = self;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+model.token = 令牌;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+model.navigationController = 
+self.navigationController;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+model.HUD = self.HUD;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+self.jsContext.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) 
+{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+context.exception = 
+exceptionValue;<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+NSLog(@"异常信息：%@", 
+exceptionValue);<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };</P>
+<P>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; [SVProgressHUD dismiss];<BR>}</P>
+<P>// 如果返回NO，代表不允许加载这个请求<BR>- (BOOL)webView:(UIWebView *)webView 
+shouldStartLoadWithRequest:(NSURLRequest *)request 
+navigationType:(UIWebViewNavigationType)navigationType {<BR>&nbsp;&nbsp;&nbsp; 
+[SVProgressHUD show];<BR>&nbsp;&nbsp;&nbsp; NSLog(@"开始请求webview:%@", 
+[request.URL.relativeString 
+stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);</P>
+<P>&nbsp;&nbsp;&nbsp; NSMutableURLRequest *modifiedRequest = [request 
+mutableCopy];<BR>&nbsp;&nbsp;&nbsp; if([modifiedRequest.HTTPMethod 
+isEqualToString:@"GET"]){<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSString 
+*bodyShare = [NSString stringWithFormat: @"token=%@", 
+令牌];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifiedRequest.HTTPMethod = 
+@"POST";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifiedRequest.HTTPBody 
+= [bodyShare dataUsingEncoding: 
+NSUTF8StringEncoding];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [_webView 
+loadRequest: modifiedRequest];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return NO;<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+NSLog(@"回退列表:%@",webView.canGoBack==YES?@"YES":@"NO");<BR>&nbsp;&nbsp;&nbsp; 
+NSLog(@"请求方法:%@",modifiedRequest.HTTPMethod);<BR>&nbsp;&nbsp;&nbsp; NSString 
+*str =&nbsp; [[NSString alloc]initWithData:modifiedRequest.HTTPBody 
+encoding:NSUTF8StringEncoding];<BR>&nbsp;&nbsp;&nbsp; NSLog(@"请求参数:%@",str);</P>
+<P>&nbsp;&nbsp;&nbsp; return YES;<BR>}</P>
+<P>- (void)webViewDidStartLoad:(UIWebView *)webView {<BR>&nbsp;&nbsp;&nbsp; 
+NSLog(@"开始加载：<A 
+href='mailto:%@",[webView.request.URL.absoluteString'>%@",[webView.request.URL.absoluteString</A> 
+stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);<BR>&nbsp;&nbsp;&nbsp; 
+[SVProgressHUD show];<BR>}</P>
+<P>-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError 
+*)error{<BR>&nbsp;&nbsp;&nbsp; NSLog(@"absoluteString == <A 
+href='mailto:%@",[webView.request.URL.absoluteString'>%@",[webView.request.URL.absoluteString</A> 
+stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);<BR>&nbsp;&nbsp;&nbsp; 
+NSLog(@"加载出错：<A href='mailto:%@",error'>%@",error</A>);<BR>&nbsp;&nbsp;&nbsp; 
+[SVProgressHUD showErrorWithStatus:@"网络错误"];<BR>&nbsp;&nbsp;&nbsp; //[_HUD 
+hide:YES];<BR>&nbsp;&nbsp;&nbsp; //[self.webView.scrollView.mj_header 
+endRefreshing];</P>
+<P>}</P>
+<P>- (void)didReceiveMemoryWarning {<BR>&nbsp;&nbsp;&nbsp; [super 
+didReceiveMemoryWarning];<BR>&nbsp;&nbsp;&nbsp; // Dispose of any resources that 
+can be recreated.<BR>}</P>
+<P>- (void)viewWillDisappear:(BOOL)animated {<BR>&nbsp;&nbsp;&nbsp; 
+[SVProgressHUD dismiss];<BR>&nbsp;&nbsp;&nbsp; [super 
+viewWillDisappear:animated];<BR>}</P>
+<P>- (void)dealloc<BR>{<BR>&nbsp;&nbsp;&nbsp; //[[_webView 
+configuration].userContentController 
+removeScriptMessageHandlerForName:@"js交互"];<BR>}</P>
+<P>@end<BR></P>
+</BODY>
+</HTML>
