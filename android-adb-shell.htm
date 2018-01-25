@@ -1,0 +1,685 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>android-adb-shell</TITLE>
+</HEAD>
+<BODY>
+<H2 class=postTitle 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; MARGIN-BOTTOM: 10px; FONT-FAMILY: "Microsoft Yahei", Helvetica, Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: bold; COLOR: rgb(61,68,80); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 1.1; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal'><A 
+id=cb_post_title_url 
+style='BOX-SIZING: border-box; FONT-SIZE: 30px !important; TEXT-DECORATION: underline; HEIGHT: 50px; FONT-FAMILY: "Helvetica Neue", Helvetica, Arial, sans-serif !important; POSITION: relative; COLOR: rgb(51,102,153); DISPLAY: inline-block; LINE-HEIGHT: 50px; BACKGROUND-COLOR: rgb(255,255,255); transition: 0.5s' 
+href="http://www.cnblogs.com/bravesnail/articles/5850335.html">Android 常用 adb 
+命令总结</A></H2>
+<DIV class=postText 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "Microsoft Yahei", Helvetica, Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 20px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(61,68,80); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-ligatures: normal; font-variant-caps: normal'>
+<DIV id=cnblogs_post_body class=blogpost-body 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px">
+<DIV class="topic-detail panel panel-default" 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 20px; BORDER-TOP: rgb(221,221,221) 1px solid; BORDER-RIGHT: rgb(221,221,221) 1px solid; BORDER-BOTTOM: rgb(221,221,221) 1px solid; BORDER-LEFT: rgb(221,221,221) 1px solid; BACKGROUND-COLOR: rgb(255,255,255); border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 1px">
+<DIV class="panel-body markdown" 
+style="BOX-SIZING: border-box; PADDING-BOTTOM: 15px; PADDING-TOP: 15px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px">
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">针对移动端 
+Android 的测试， adb 命令是很重要的一个点，必须将常用的 adb 命令熟记于心， 将会为 Android 
+测试带来很大的方便，其中很多命令将会用于自动化测试的脚本当中。</P>
+<H3 id="Android Debug Bridge" 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.5">Android 
+Debug Bridge</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb&nbsp;其实就是&nbsp;<CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>Android 
+Debug Bridge</CODE>, Android 调试桥的缩写，adb 是一个&nbsp;<EM 
+style="BOX-SIZING: border-box">C/S</EM>&nbsp;架构的命令行工具，主要由 3 部分组成：</P>
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 30px">
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">运行在 PC 
+  端的 Client : 可以通过它对 Android 应用进行安装、卸载及调试</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">Eclipse 
+    中的 ADT、SDK Tools 目录下的 DDMS、Monitor 等工具，都是同样地用到了 adb 的功能来与 Android 设备进行交互。<BR 
+    style="BOX-SIZING: border-box"><BR style="BOX-SIZING: border-box">PC 
+    端的手机助手，诸如 360 手机助手、豌豆荚、应用宝等，其除了安装第三方应用方便，其他的功能，基本上都可以通过 adb 命令去完成，这里建议<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>测试人员</CODE>尽量不要在电脑上安装这类手机助手，因为其自带的 
+    adb 程序可能会与 Android SDK 下的 adb 程序产生冲突，<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>5037</CODE>&nbsp;端口被占用，导致使用 
+    adb 命令时无法连接到设备</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">运行在 PC 
+  端的 Service : 其管理客户端到 Android 设备上 adb 后台进程的连接</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+    服务启动后，Windows 可以在任务管理器中找到 adb.exe 这个进程</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">运行在 
+  Android 设备上的 adb 后台进程</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">执行&nbsp;<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>adb 
+    shell ps | grep adbd</CODE>&nbsp;，可以找到该后台进程，windows 请使用&nbsp;<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>findstr</CODE>&nbsp;替代 
+    grep</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell ps | grep adbd
+root      23227 1     6672   832   ffffffff 00019bb4 S /sbin/adbd</CODE></PRE>
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">这里注意一个地方，就是 
+  adb 使用的端口号，<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>5037</CODE>，有必要记一下<BR 
+  style="BOX-SIZING: border-box"><BR style="BOX-SIZING: border-box">接下来我将 adb 
+  命令分为三部分进行介绍，<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>adb 
+  命令</CODE>、<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>adb 
+  shell 命令</CODE>、<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>linux 
+  命令</CODE></P></LI></UL>
+<H3 id="adb 命令" 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.5">adb 
+命令</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">在开发或者测试的过程中，我们可以通过 
+adb 来管理多台设备，其一般的格式为：</P>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb [-e | 
+-d | -s &lt;设备序列号&gt;] &lt;子命令&gt;</P>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">在配好环境变量的前提下，在命令窗口当中输入 
+adb help 或者直接输入 adb ，将会列出所有的选项说明及子命令。</P>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">这里介绍一些里面常用的命令：</P>
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 30px">
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  devices , 获取设备列表及设备状态</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb devices
+List of devices attached 
+44c826a0    device  </CODE></PRE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  get-state , 获取设备的状态</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb get-state  
+device</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">设备的状态有 3 
+    钟，<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>device</CODE>&nbsp;,&nbsp;<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>offline</CODE>&nbsp;,&nbsp;<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>unknown</CODE><BR 
+    style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">device：设备正常连接<BR 
+    style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">offline：连接出现异常，设备无响应<BR 
+    style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">unknown：没有连接设备</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  kill-server , adb start-server , 结束 adb 服务， 启动 adb 服务，通常两个命令一起用</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">一般在连接出现异常，使用 
+    adb devices 未正常列出设备， 设备状态异常时使用 kill-server，然后运行 start-server 
+  进行重启服务</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  logcat , 打印 Android 的系统日志，这个可以单独拿出来讲</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  bugreport , 打印dumpsys、dumpstate、logcat的输出，也是用于分析错误</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">输出比较多，建议重定向到一个文件中</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb bugreport &gt; d:\bugreport.log</CODE></PRE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  install , 安装应用，覆盖安装是使用 -r 选项</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">windows 
+    下如果需要安装含有中文名的 apk ，需要对 adb 进行修改，百度可以找到做出修改的adb , 支持中文命令的 
+  apk，请自行搜索</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  uninstall , 卸载应用，后面跟的参数是<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>应用的包名</CODE>，请区别于&nbsp;<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>apk 
+  文件名</CODE></P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">'-k' 
+    means keep the data and cache directories , -k 
+  选项，卸载时保存数据和缓存目录</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  pull , 将 Android 设备上的文件或者文件夹复制到本地<BR style="BOX-SIZING: border-box"><BR 
+  style="BOX-SIZING: border-box">例如复制 Sdcard 下的 pull.txt 文件到 D 盘：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb pull sdcard/pull.txt d:\</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">如果需要重命名为 
+    rename.txt：</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb pull sdcard/pull.txt d:\rename.txt</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">注意权限，复制系统权限的目录下的文件，需要 
+    root ，并且一般的 Android 机 root 之后并不能使用命令去复制，而需要在手机上使用类似于 RE 
+    的文件浏览器，先对系统的文件系统进行挂载为可读写后，才能在手机上复制移动系统文件，这里推荐使用小米手机的开发版本，IUNI 
+  也是不错滴~~</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  push , 推送本地文件至 Android 设备<BR style="BOX-SIZING: border-box"><BR 
+  style="BOX-SIZING: border-box">例如推送 D 盘下的 push.txt 至 Sdcard：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb push d:\push.txt sdcard/</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">sdcard 
+    后面的斜杠不能少，否则会出现下面的错误：</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb push push.txt sdcard
+failed to copy 'push.txt' to 'sdcard': Is a directory</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">权限问题同 
+    pull 命令</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  root , adb remount, 只针对类似小米开发版的手机有用，可以直接已这两个命令获取 root 
+  权限，并挂载系统文件系统为可读写状态</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  reboot , 重启 Android 设备</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">bootloader 
+    , 重启设备，进入 fastboot 模式，同 adb reboot-bootloader 命令<BR 
+    style="BOX-SIZING: border-box"><BR style="BOX-SIZING: border-box">recovery , 
+    重启设备，进入 recovery 模式，经常刷机的同学比较熟悉这个模式</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  forward , 将 宿主机上的某个端口重定向到设备的某个端口</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb forward tcp:1314 tcp :8888</CODE></PRE>
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">执行该命令后所有发往宿主机 
+  1314 端口的消息、数据都会转发到 Android 设备的 8888 端口上，因此可以通过远程的方式控制 Android 设备。</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">adb 
+  connect 远程连接 Android 设备</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">手机、PC处于相同的网络下，手机 
+    root ，安装应用 adbWireless ，启动应用后点击界面中间的按钮：&nbsp;</P>
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">&nbsp;</P>
+    <DIV class=fluidbox-wrap style="BOX-SIZING: border-box"><A 
+    class="zoom-image fluidbox" 
+    style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+    href="http://i2.buimg.com/73b185a561f2c622.jpg" data-action="zoom"><IMG 
+    style="BOX-SIZING: border-box; MAX-WIDTH: 900px; BORDER-TOP: 0px; BORDER-RIGHT: 0px; VERTICAL-ALIGN: middle; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px" 
+    alt=image src="http://i2.buimg.com/73b185a561f2c622.jpg"></A>
+    <DIV class=fluidbox-ghost style="BOX-SIZING: border-box">&nbsp;</DIV></DIV>
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">&nbsp;</P>&nbsp;
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">接着运行&nbsp;<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>adb 
+    connect 192.168.1.102</CODE>&nbsp;, 
+  即可通过无线的方式连接手机，缺点是速度比较慢</P></BLOCKQUOTE></LI></UL>
+<H3 id="adb shell 命令" 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.5">adb 
+shell 命令</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">有人问过我，为什么会知道这么多的命令，答案就是我比较爱折腾，这里大家先要了解我为什么要区分 
+adb 命令和 adb shell 命令 。<BR style="BOX-SIZING: border-box">简单点讲，adb 命令是 adb 
+这个程序自带的一些命令，而 adb shell 则是调用的 Android 系统中的命令，这些 Android 特有的命令都放在了 Android 设备的 
+system/bin 目录下，例如我再命令行中敲这样一个命令：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell hehe
+/system/bin/sh: hehe: not found</CODE></PRE>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">很明显，在 bin 
+目录下并不存在这个命令。<BR 
+style="BOX-SIZING: border-box">自己爱折腾，想看看有哪些命令，也不想去找文档，于是就启动模拟器，将整个&nbsp;<CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>system/bin</CODE>&nbsp;目录复制了出来，然后一个一个的去试。。囧~~<BR 
+style="BOX-SIZING: border-box"><BR 
+style="BOX-SIZING: border-box">打开这些文件就可以发现，里面有些命令其实是一个 shell 脚本，例如打开 monkey 
+文件：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'># Script to start "monkey" on the device, which has a very rudimentary
+# shell.
+#
+base=/system
+export CLASSPATH=$base/framework/monkey.jar
+trap "" HUP
+exec app_process $base/bin com.android.commands.monkey.Monkey $*</CODE></PRE>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">再比如打开 
+am：</P><PRE class="highlight shell" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'><SPAN class=c style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">#!/system/bin/sh
+<SPAN class=c style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">#
+<SPAN class=c style="BOX-SIZING: border-box; LINE-HEIGHT: 19px"># Script to start "am" on the device, which has a very rudimentary
+<SPAN class=c style="BOX-SIZING: border-box; LINE-HEIGHT: 19px"># shell.
+<SPAN class=c style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">#
+<SPAN class=nv style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">base<SPAN class=o style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">=/system
+<SPAN class=nb style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">export <SPAN class=nv style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">CLASSPATH<SPAN class=o style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">=<SPAN class=nv style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">$base/framework/am.jar
+<SPAN class=nb style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">exec app_process <SPAN class=nv style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">$base/bin com.android.commands.am.Am <SPAN class=s2 style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">"<SPAN class=nv style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">$@<SPAN class=s2 style="BOX-SIZING: border-box; LINE-HEIGHT: 19px">"</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></CODE></PRE>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">还有 SDK 
+sources/android-20/com/android/commands 目录下：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:...oid-20/com/android/commands]$ pwd
+/Users/xuxu/utils/android/android-sdk-macosx/sources/android-20/com/android/commands
+[xuxu:...oid-20/com/android/commands]$ ll   
+total 0
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 am
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 bmgr
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 bu
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 content
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 ime
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 input
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 media
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 pm
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 requestsync
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 settings
+drwxr-xr-x  7 xuxu  staff   238B  4  2 10:57 svc
+drwxr-xr-x  6 xuxu  staff   204B  4  2 10:57 uiautomator
+drwxr-xr-x  3 xuxu  staff   102B  4  2 10:57 wm</CODE></PRE>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">有没有熟悉的命令？ 
+am 、pm、uiautomator ...</P>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">下面介绍一些常用的 
+adb shell 命令 （其中pm、am 命令比较庞大，使用四级标题）</P>
+<H4 id=pm 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">pm</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">Package 
+Manager , 可以用获取到一些安装在 Android 设备上得应用信息<BR style="BOX-SIZING: border-box"><BR 
+style="BOX-SIZING: border-box">pm 的源码&nbsp;<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.2_r1/com/android/commands/pm/Pm.java#Pm" 
+target=_blank>Pm.java</A>&nbsp;, 直接运行 adb shell pm 可以获取到该命令的帮助信息</P>
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 30px">
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm list 
+  package 列出安装在设备上的应用</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">不带任何选项：列出所有的应用的包名（不知道怎么找应用的包名的同学看这里）</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell pm list package</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">-s：列出系统应用</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell pm list package -s </CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">-3：列出第三方应用</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell pm list package -3</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">-f：列出应用包名及对应的apk名及存放位置</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell pm list package -f</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">-i：列出应用包名及其安装来源，结果显示例子：<BR 
+    style="BOX-SIZING: border-box"><BR style="BOX-SIZING: border-box"><CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>package:com.zhihu.android 
+    installer=com.xiaomi.market</CODE></P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell pm list package -i</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">命令最后增加 
+    FILTER：过滤关键字，可以很方便地查找自己想要的应用</P></BLOCKQUOTE>
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">参数组合使用，例如，查找三方应用中<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>知乎</CODE>的包名、apk存放位置、安装来源：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell pm list package -f -3 -i zhihu
+package:/data/app/com.zhihu.android-1.apk=com.zhihu.android  installer=com.xiaomi.market</CODE></PRE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm path 
+  列出对应包名的 .apk 位置</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell pm path com.tencent.mobileqq
+package:/data/app/com.tencent.mobileqq-1.apk</CODE></PRE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm list 
+  instrumentation , 列出含有单元测试 case 的应用，后面可跟参数 -f （与 pm list package 中一样），以及 
+  [TARGET-PACKAGE]</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm dump 
+  , 后跟包名，列出指定应用的 dump 信息，里面有各种信息，自行查看</P>
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px"><CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>adb 
+  shell pm dump com.tencent.mobileqq</CODE></P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>Packages:
+Package [com.tencent.mobileqq] (4397f810):
+userId=10091 gids=[3003, 3002, 3001, 1028, 1015]
+pkg=Package{43851660 com.tencent.mobileqq}
+codePath=/data/app/com.tencent.mobileqq-1.apk
+resourcePath=/data/app/com.tencent.mobileqq-1.apk
+nativeLibraryPath=/data/app-lib/com.tencent.mobileqq-1
+versionCode=242 targetSdk=9
+versionName=5.6.0
+applicationInfo=ApplicationInfo{43842cc8 com.tencent.mobileqq}
+flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]
+dataDir=/data/data/com.tencent.mobileqq
+supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+usesOptionalLibraries:
+com.google.android.media.effects
+com.motorola.hardware.frontcamera
+timeStamp=2015-05-13 14:04:24
+firstInstallTime=2015-04-03 20:50:07
+lastUpdateTime=2015-05-13 14:05:02
+installerPackageName=com.xiaomi.market
+signatures=PackageSignatures{4397f8d8 [43980488]}
+permissionsFixed=true haveGids=true installStatus=1
+pkgFlags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]
+User 0:  installed=true blocked=false stopped=false notLaunched=false enabled=0
+grantedPermissions:
+android.permission.CHANGE_WIFI_MULTICAST_STATE
+com.tencent.qav.permission.broadcast
+com.tencent.photos.permission.DATA
+com.tencent.wifisdk.permission.disconnect</CODE></PRE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm 
+  install , 安装应用</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">目标 
+    apk 存放于 PC 端，请用 adb install 安装<BR style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">目标 apk 存放于 Android 设备上，请用 pm install 
+  安装</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm 
+  uninstall , 卸载应用，同 adb uninstall , 后面跟的参数都是应用的包名</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm 
+  clear , 清除应用数据</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">pm 
+  set-install-location , pm get-install-location , 设置应用安装位置，获取应用安装位置</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">[0/auto]：默认为自动<BR 
+    style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">[1/internal]：默认为安装在手机内部<BR 
+    style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">[2/external]：默认安装在外部存储</P></BLOCKQUOTE></LI></UL>
+<H4 id=am 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">am</H4>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">又是一个庞大的命令。。。<BR 
+style="BOX-SIZING: border-box"><BR style="BOX-SIZING: border-box">am 源码&nbsp;<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.4_r1/com/android/commands/am/Am.java#Am" 
+target=_blank>Am.java</A></P>
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 30px">
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">am 
+  start , 启动一个 Activity，已启动系统相机应用为例</P>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">启动相机</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell am start -n com.android.camera/.Camera
+Starting: Intent { cmp=com.android.camera/.Camera }</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">先停止目标应用，再启动</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell am start -S com.android.camera/.Camera
+Stopping: com.android.camera
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER]     cmp=com.android.camera/.Camera }</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">等待应用完成启动</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell am start -W com.android.camera/.Camera
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.android.camera/.Camera }
+Status: ok
+Activity: com.android.camera/.Camera
+ThisTime: 500
+TotalTime: 500
+Complete</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">启动默认浏览器打开一个网页</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell am start -a android.intent.action.VIEW -d http://testerhome.com
+Starting: Intent { act=android.intent.action.VIEW dat=http://testerhome.com }</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">启动拨号器拨打 
+    10086</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell am start -a android.intent.action.CALL -d tel:10086            
+Starting: Intent { act=android.intent.action.CALL dat=tel:xxxxx }</CODE></PRE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">am 
+  instrument , 启动一个 instrumentation , 单元测试或者 Robotium 会用到</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">am 
+  monitor , 监控 crash 与 ANR</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell am monitor
+Monitoring activity manager...  available commands:
+(q)uit: finish monitoring
+** Activity starting: com.android.camera</CODE></PRE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">am 
+  force-stop , 后跟包名，结束应用</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">am 
+  startservice , 启动一个服务</P></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">am 
+  broadcast , 发送一个广播</P></LI></UL>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">还有很多的选项，自己多多发掘~~</P>
+<H4 id=input 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">input</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">这个命令可以向 
+Android 设备发送按键事件，其源码&nbsp;<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.4_r1/com/android/commands/input/Input.java#Input" 
+target=_blank>Input.java</A></P>
+<UL 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 10px; MARGIN-TOP: 0px; PADDING-LEFT: 0px; MARGIN-LEFT: 30px">
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">input 
+  text , 发送文本内容，不能发送中文</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell input text test123456</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">前提先将键盘设置为英文键盘</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">input 
+  keyevent , 发送按键事件，<A 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+  href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.4_r1/android/view/KeyEvent.java#KeyEvent" 
+  target=_blank>KeyEvent.java</A></P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell input keyevent KEYCODE_HOME</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">模拟按下 
+    Home 键 ，源码里面有定义：<BR style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">public static final int KEYCODE_HOME = 3;<BR 
+    style="BOX-SIZING: border-box"><BR 
+    style="BOX-SIZING: border-box">因此可以将命令中的&nbsp;<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>KEYCODE_HOME</CODE>&nbsp;替换为&nbsp;<CODE 
+    style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>3</CODE></P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">input 
+  tap , 对屏幕发送一个触摸事件</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell input tap 500 500</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">点击屏幕上坐标为 
+    500 500 的位置</P></BLOCKQUOTE></LI>
+  <LI style="LIST-STYLE-TYPE: disc; BOX-SIZING: border-box">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">input 
+  swipe , 滑动事件</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell input swipe 900 500 100 500</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">从右往左滑动屏幕<BR 
+    style="BOX-SIZING: border-box"><BR style="BOX-SIZING: border-box">如果版本不低于 
+    4.4 , 可以模拟长按事件</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell input swipe 500 500 501 501 2000</CODE></PRE>
+  <BLOCKQUOTE 
+  style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+    <P 
+    style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">其实就是在小的距离内，在较长的持续时间内进行滑动，最后表现出来的结果就是长按动作</P></BLOCKQUOTE></LI></UL>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">到这里会发现，MonkeyRunner 
+能做到的事情，通过 adb 命令都可以做得到，如果进行封装，会比 MR 做得更好。</P>
+<H4 id=screencap 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">screencap</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">截图命令</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell screencap -p /sdcard/screen.png</CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">截屏，保存至 
+  sdcard 目录</P></BLOCKQUOTE>
+<H4 id=screenrecord 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">screenrecord</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">4.4 
+新增的录制命令</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell screenrecord sdcard/record.mp4</CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">执行命令后操作手机，ctrl 
+  + c 结束录制，录制结果保存至 sdcard</P></BLOCKQUOTE>
+<H4 id=uiautomator 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">uiautomator</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">执行 UI 
+automation tests ， 获取当前界面的控件信息</P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">runtest：executes 
+  UI automation tests&nbsp;<A 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+  href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.4_r1/com/android/commands/uiautomator/RunTestCommand.java#RunTestCommand" 
+  target=_blank>RunTestCommand.java</A><BR style="BOX-SIZING: border-box"><BR 
+  style="BOX-SIZING: border-box">dump：获取控件信息，<A 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+  href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.4_r1/com/android/commands/uiautomator/DumpCommand.java#DumpCommand" 
+  target=_blank>DumpCommand.java</A></P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell uiautomator dump   
+UI hierchary dumped to: /storage/emulated/legacy/window_dump.xml</CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">不加 
+  [file] 选项时，默认存放在 sdcard 下</P></BLOCKQUOTE>
+<H4 id=ime 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">ime</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">输入法，<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.4_r1/com/android/commands/ime/Ime.java#Ime" 
+target=_blank>Ime.java</A></P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell ime list -s                           
+com.google.android.inputmethod.pinyin/.PinyinIME
+com.baidu.input_mi/.ImeService</CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">列出设备上的输入法</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell ime set com.baidu.input_mi/.ImeService
+Input method com.baidu.input_mi/.ImeService selected    </CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">选择输入法</P></BLOCKQUOTE>
+<H4 id=wm 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">wm</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android/4.4.4_r1/com/android/commands/wm/Wm.java#Wm" 
+target=_blank>Wm.java</A></P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb shell wm size
+Physical size: 1080x1920  </CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">获取设备分辨率</P></BLOCKQUOTE>
+<H4 id=monkey 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">monkey</H4>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">请参考&nbsp;<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://xuxu1988.com/2015/05/14/2015-05-02-Monkey/" target=_blank>Android 
+Monkey 的用法</A></P>
+<H4 id=settings 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">settings</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.google.android/android-apps/4.4.4_r1/com/android/settings/Settings.java#Settings" 
+target=_blank>Settings.java</A>，请参考&nbsp;<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://testerhome.com/topics/1993" target=_blank>探究下 Android4.2 中新增的 
+settings 命令</A></P>
+<H4 id=dumpsys 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">dumpsys</H4>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">请参考&nbsp;<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="http://testerhome.com/topics/1462" target=_blank>android 中 dumpsys 
+命令使用</A></P>
+<H4 id=log 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">log</H4>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">这个命令很有意思，可以在 
+logcat 里面打印你设定的信息，具体用途自己思考！</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell log -p d -t xuxu "test adb shell log"</CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">-p：优先级，-t：tag，标签，后面加上 
+  message</P></BLOCKQUOTE><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>[xuxu:~]$ adb logcat -v time -s xuxu               
+--------- beginning of /dev/log/system
+--------- beginning of /dev/log/main
+05-15 13:57:10.286 D/xuxu    (12646): test adb shell log  </CODE></PRE>
+<H4 id=getprop 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.1">getprop</H4>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">查看 
+Android 设备的参数信息，只运行&nbsp;<CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>adb 
+shell getprop</CODE>，结果以&nbsp;<CODE 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>key 
+: value</CODE>&nbsp;键值对的形式显示，如要获取某个 key 的值：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell getprop ro.build.version.sdk</CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">获取设备的 
+  sdk 版本</P></BLOCKQUOTE>
+<H3 id="linux 命令" 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.5">linux 
+命令</H3>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">操作你的 
+Android 设备，常用到的命令，只列出，不详解！</P>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">cat、cd、chmod、cp、date、df、du、grep、kill、ln、ls、lsof、netstat、ping、ps、rm、rmdir、top、touch、重定向符号 
+"&gt;" "&gt;&gt;"、管道 "|"</P>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">有些可能需要使用 
+  busybox ，另外建议 windows 下 安装一个&nbsp;<CODE 
+  style='BOX-SIZING: border-box; FONT-SIZE: 15px; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; COLOR: rgb(199,37,78); PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; BACKGROUND-COLOR: rgb(249,242,244); border-radius: 4px'>Cygwin</CODE>&nbsp;, 
+  没用过的请百度百科&nbsp;<A 
+  style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+  href="http://baike.baidu.com/link?url=NatnFuanrdGKgYFGyMvMT_T86-r5ETnVJd8HH6G3jPSj46QosKYAfUO3RafthymAiubSFAafN558p_lMqpJOua" 
+  target=_blank>Cygwin</A></P></BLOCKQUOTE>
+<H3 id=END 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: inherit; FONT-WEIGHT: bold; COLOR: ; MARGIN: 10px 0px; LINE-HEIGHT: 1.5">END</H3>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">补充一个引号的用途：<BR 
+style="BOX-SIZING: border-box">场景1、在 PC 端执行 monkey 命令，将信息保存至 D 盘 
+monkey.log，会这么写：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell monkey -p com.android.settings 5000 &gt; d:\monkey.log</CODE></PRE>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">场景2、在 PC 
+端执行 monkey 命令，将信息保存至手机的 Sdcard，可能会这么写：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell monkey -p com.android.settings 5000 &gt; sdcard/monkey.log</CODE></PRE>
+<BLOCKQUOTE 
+style="BOX-SIZING: border-box; FONT-SIZE: 17px; BORDER-TOP: rgb(239,239,239) 2px solid; BORDER-RIGHT: rgb(239,239,239) 2px solid; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: rgb(239,239,239) 2px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; BORDER-LEFT: rgb(238,238,238) 5px solid; MARGIN: 0px 0px 20px; PADDING-RIGHT: 20px; border-image: initial">
+  <P 
+  style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">这里肯定会报错，因为最终是写向了 
+  PC 端当前目录的 sdcard 目录下，而非写向手机的 Sdcard</P></BLOCKQUOTE>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">这里需要用上引号：</P><PRE class="highlight plaintext" style='BOX-SIZING: border-box; FONT-SIZE: 13px; OVERFLOW: auto; WORD-WRAP: break-word; BORDER-TOP: rgb(204,204,204) 1px solid; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; BORDER-RIGHT: rgb(204,204,204) 1px solid; WHITE-SPACE: pre-wrap; BORDER-BOTTOM: rgb(204,204,204) 1px solid; WORD-BREAK: break-all; COLOR: rgb(51,51,51); PADDING-BOTTOM: 9px; PADDING-TOP: 9px; PADDING-LEFT: 9px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px 0px 10px; DISPLAY: block; LINE-HEIGHT: 1.4285; PADDING-RIGHT: 9px; BACKGROUND-COLOR: rgb(245,245,245); border-radius: 4px'><CODE style='BOX-SIZING: border-box; FONT-FAMILY: Menlo, Monaco, Consolas, "Courier New", monospace; WHITE-SPACE: pre-wrap; COLOR: ; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px'>adb shell "monkey -p com.android.settings 5000 &gt; sdcard/monkey.log"</CODE></PRE>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">对这些命令都熟悉之后，那么接下来就是综合对编程语言的应用，思考如何用语言去处理这些命令，使得这些命令更加的方便于测试工作。</P>
+<P style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">所以个人<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="https://github.com/gb112211" 
+target=_blank>&nbsp;github&nbsp;</A>上的几个工具，核心都是 adb 
+命令，关键的地方在于怎么用自己所学的语言去处理这些命令。</P>
+<P 
+style="BOX-SIZING: border-box; MARGIN: 10px auto; TEXT-INDENT: 0px">貌似内容有点长。。</P></DIV>
+<DIV class="panel-footer clearfix" 
+style="BOX-SIZING: border-box; BORDER-TOP: rgb(221,221,221) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; BACKGROUND-COLOR: rgb(245,245,245); border-bottom-right-radius: 3px; border-bottom-left-radius: 3px">
+<DIV class=opts style="BOX-SIZING: border-box"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="https://testerhome.com/account/sign_in"><SPAN class="fa fa-heart-o" 
+style="BOX-SIZING: border-box; LINE-HEIGHT: 21px">&nbsp;</SPAN></A><A title=二维码 
+class="qrcode " 
+style="BOX-SIZING: border-box; TEXT-DECORATION: underline; COLOR: rgb(7,93,179); BACKGROUND-COLOR: transparent" 
+href="https://testerhome.com/topics/2565#" 
+data-url="https://testerhome.com/topics/2565"><SPAN class="fa fa-qrcode" 
+style="BOX-SIZING: border-box; LINE-HEIGHT: 21px">&nbsp;二维码</SPAN></A></DIV></DIV></DIV></DIV></DIV>
+</BODY>
+</HTML>

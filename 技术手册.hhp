@@ -24,6 +24,7 @@ Main="技术手册","技术手册.hhc","技术手册.hhk","CSS篇.html","CSS篇.html",,,,,0x42
 ajax.htm
 AJAX请求图片二进制代码.htm
 alertdialog背景透明.htm
+android-adb-shell.htm
 android-ios生命周期对比.htm
 androidManifest详解.htm
 Android-Studio打包及引用aar.htm
@@ -778,6 +779,7 @@ ios-textview.htm
 ios-UI相关.htm
 ios-webview.htm
 ios尺寸相关.htm
+ios打包运行找不到头文件.htm
 iOS倒计时.htm
 iOS发布被拒报存在IDFA广告.htm
 iOS监听横竖屏状态.htm
@@ -1501,6 +1503,7 @@ nginx配置文件支持中文路径.htm
 nginx添加模块.htm
 nginx下ThinkPHP无法写入SESSION.htm
 Nginx允许AJAX跨域请求.htm
+NoClassDefFoundError错误的一种解决方案.htm
 nodejs.htm
 nodejs5在webstrom中断点失败解决.htm
 nodejs数据传输过程中的编码问题.htm
