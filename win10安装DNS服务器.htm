@@ -1,0 +1,734 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>win10安装DNS服务器</TITLE>
+</HEAD>
+<BODY>
+<P>win10安装DNS服务器</P>
+<P>window下清除DNS缓存：<SPAN 
+style="FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial">ipconfig 
+/flushdns</SPAN></P>
+<P>bind软件下载地址：<A 
+href="http://ftp.isc.org/isc/bind9/9.12.0/">http://ftp.isc.org/isc/bind9/9.12.0/</A></P>
+<P>&nbsp;</P>
+<DIV class=article_title 
+style='FONT-SIZE: 12px; MARGIN-BOTTOM: 21px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+<H1 
+style="FONT-SIZE: 18px; VERTICAL-ALIGN: middle; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px"><SPAN 
+class=link_title><A style="TEXT-DECORATION: none; COLOR: rgb(0,0,0)" 
+href="http://blog.csdn.net/lzhui1987/article/details/53560891">在Windows7 
+系统上部署DNS服务器</A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix" 
+style="OVERFLOW: hidden; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(237,237,237) 1px solid; TEXT-TRANSFORM: none; COLOR: rgb(153,153,153); PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 0px; FONT: 400 12px/22px Arial; PADDING-LEFT: 20px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -20px 10px; LETTER-SPACING: normal; PADDING-RIGHT: 20px; TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-stretch: normal">
+<DIV class=article_l style="WIDTH: 934px; FLOAT: left"><SPAN 
+class=link_categories 
+style="FLOAT: left; MARGIN: 0px 0px 0px 5px">标签：<SPAN>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://so.csdn.net/so/search/s.do?q=WIN7&amp;t=blog" 
+target=_blank>WIN7</A><SPAN>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://so.csdn.net/so/search/s.do?q=DNS&amp;t=blog" 
+target=_blank>DNS</A><SPAN>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://so.csdn.net/so/search/s.do?q=ntbind&amp;t=blog" 
+target=_blank>ntbind</A><SPAN>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://so.csdn.net/so/search/s.do?q=DNS%E6%9C%8D%E5%8A%A1%E5%99%A8&amp;t=blog" 
+target=_blank>DNS服务器</A><SPAN>&nbsp;</SPAN><A 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38); DISPLAY: inline-block; MARGIN-RIGHT: 10px" 
+href="http://so.csdn.net/so/search/s.do?q=host&amp;t=blog" 
+target=_blank>host</A></SPAN></DIV>
+<DIV class=article_r><SPAN class=link_postdate 
+style="MARGIN: 0px 16px 0px 0px">2016年12月10日 
+21:23:51</SPAN><SPAN>&nbsp;</SPAN><SPAN title=阅读次数 class=link_view 
+style="BACKGROUND: url(../images/skin-type-icon.png) no-repeat 0px -25px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 24px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block; PADDING-RIGHT: 0px">6517人阅读</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+title=评论次数 class=link_comments 
+style="BACKGROUND-IMAGE: url(../images/skin-type-icon-yellow.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -43px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 17px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block; PADDING-RIGHT: 0px; background-size: initial; background-origin: initial; background-clip: initial"><A 
+class=btn-pinglun style="TEXT-DECORATION: none; COLOR: rgb(200,131,38)" 
+href="javascript:void(0);">评论</A>(6)</SPAN><SPAN>&nbsp;</SPAN><SPAN 
+class="link_collect csdn-tracking-statistics" 
+style="BACKGROUND-IMAGE: url(../images/skin-type-icon-yellow.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -62px; PADDING-LEFT: 17px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block" 
+data-mod="popu_171" data-pid="blog"><A 
+onclick="javascript:collectArticle('在Windows7 系统上部署DNS服务器','53560891');return false;" 
+title=收藏 style="TEXT-DECORATION: none; COLOR: rgb(200,131,38)" 
+href="javascript:void(0);" target=_blank>收藏</A></SPAN><SPAN>&nbsp;</SPAN><SPAN 
+class=link_report 
+style="BACKGROUND-IMAGE: url(../images/skin-type-icon-yellow.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 0px -81px; PADDING-LEFT: 17px; MARGIN: 0px 16px 0px 5px; DISPLAY: inline-block"><A 
+onclick="javascript:report(53560891, 2);return false;" title=举报 
+style="TEXT-DECORATION: none; COLOR: rgb(200,131,38)" 
+href="javascript:void(0);">举报</A></SPAN></DIV></DIV>
+<DIV class="category clearfix" 
+style='FONT-SIZE: 12px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(237,237,237) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); PADDING-BOTTOM: 5px; FONT-STYLE: normal; PADDING-TOP: 5px; PADDING-LEFT: 20px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px -20px; LETTER-SPACING: normal; PADDING-RIGHT: 20px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+<DIV class=category_l 
+style="FONT-SIZE: 14px; WIDTH: 70px; FLOAT: left; COLOR: rgb(51,51,51); DISPLAY: inline-block; LINE-HEIGHT: 28px"><IMG 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; VERTICAL-ALIGN: middle; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none" 
+src="http://csdnimg.cn/release/phoenix/images/category_icon.jpg"><SPAN>&nbsp;</SPAN><SPAN 
+style="VERTICAL-ALIGN: middle; DISPLAY: inline-block">分类：</SPAN></DIV>
+<DIV class=category_r 
+style="FONT-SIZE: 14px; WIDTH: 840px; FLOAT: left; COLOR: rgb(223,52,52); DISPLAY: inline-block"><LABEL 
+onclick="GetCategoryArticles('6515845','lzhui1987','top','53560891');" 
+style="CURSOR: pointer; POSITION: relative; MARGIN-LEFT: 15px; DISPLAY: inline-block; LINE-HEIGHT: 28px"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">网络协议基础<EM 
+style="FONT-STYLE: normal">（17）</EM><SPAN>&nbsp;</SPAN></SPAN><IMG 
+class=arrow-down 
+style="BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; DISPLAY: inline" 
+src="http://csdnimg.cn/release/phoenix/images/arrow_triangle%20_down.jpg"></LABEL></DIV></DIV>
+<DIV class=bog_copyright 
+style='FONT-SIZE: 12px; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); PADDING-BOTTOM: 20px; FONT-STYLE: normal; PADDING-TOP: 20px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 0px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+<P class=copyright_p 
+style="FONT-SIZE: 14px; HEIGHT: 14px; COLOR: rgb(102,102,102); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(228,28,30) 3px solid; MARGIN: 0px; LINE-HEIGHT: 14px; PADDING-RIGHT: 0px">版权声明：本文为博主原创文章，若转载请注明出处；若有错误，欢迎指出；若有问题，欢迎留言。</P></DIV>
+<DIV id=article_content class="article_content csdn-tracking-statistics" 
+style='FONT-SIZE: 15px; OVERFLOW: hidden; FONT-FAMILY: "microsoft yahei"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; WORD-BREAK: break-all; FONT-WEIGHT: 400; COLOR: rgb(85,85,85); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; MARGIN: 35px 0px; LETTER-SPACING: normal; LINE-HEIGHT: 35px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial' 
+data-mod="popu_307" data-pid="blog" data-dsm="post">
+<DIV class=htmledit_views 
+style='FONT-FAMILY: "PingFang SC", "Microsoft YaHei", SimHei, Arial, SimSun'>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px">&nbsp; 
+&nbsp; &nbsp; &nbsp; 本文主要介绍在WIN7上利用<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>ntbind部署DNS服务器的方法。<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'>ntbind是Bind的Windows版本，下载地址：<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(12,137,207)" 
+href="http://ftp.isc.org/isc/bind9/9.11.0rc3/" 
+target=_blank>http://ftp.isc.org/isc/bind9/9.11.0rc3/</A>。需要下载<A 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; TEXT-DECORATION: none; FONT-FAMILY: monospace; COLOR: rgb(12,137,207); BACKGROUND-COLOR: rgb(204,204,204)" 
+href="http://ftp.isc.org/isc/bind9/9.11.0rc3/BIND9.11.0rc3.debug.x64.zip" 
+target=_blank></A><A 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; TEXT-DECORATION: none; FONT-FAMILY: monospace; COLOR: rgb(12,137,207); BACKGROUND-COLOR: rgb(204,204,204)" 
+href="http://ftp.isc.org/isc/bind9/9.11.0rc3/BIND9.11.0rc3.debug.x64.zip" 
+target=_blank>BIND9.11.0rc3.debug.x64.zip</A>，建议下载9.11以上的版本，老版本可以不支持Win7，下载时注意区分操作系统的位数。</SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'>&nbsp; 
+&nbsp; &nbsp; &nbsp; 
+下载完成后，解压文件，点击BINDInstall.exe直接傻瓜式的安装，注意要选择以管理员身份安装，否则安装程序会报错，<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>默认安装路径为”C:\Program 
+Files\ISC BIND 9”。在C:\Program Files\ISC BIND 
+9\etc目录下，我们需要配置如下文件：</SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">1、创建文件named.conf</STRONG></SPAN><BR 
+style="BOX-SIZING: border-box"></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="dp-highlighter bg_plain" 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 924px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; BORDER-LEFT-COLOR: rgb(204,204,204); BORDER-BOTTOM-COLOR: rgb(204,204,204); TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 0px 0px 24px; BORDER-RIGHT-COLOR: rgb(204,204,204); BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="BOX-SIZING: border-box; PADDING-LEFT: 45px">
+<DIV class=tools 
+style="BOX-SIZING: border-box; BORDER-RIGHT: rgb(231,229,220) 1px solid; COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B 
+style="BOX-SIZING: border-box">[plain]</B><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>view plain</A><SPAN 
+style="BOX-SIZING: border-box" data-mod="popu_168"><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>copy</A>
+<DIV 
+style="BOX-SIZING: border-box; HEIGHT: 16px; WIDTH: 16px; POSITION: absolute; LEFT: 764px; Z-INDEX: 99; TOP: 705px"><EMBED 
+id=ZeroClipboardMovie_1 style="BOX-SIZING: border-box" name=ZeroClipboardMovie_1 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=16 width=16 
+src=http://csdnimg.cn/public/highlighter/ZeroClipboard.swf wmode="transparent" 
+flashvars="id=1&amp;width=16&amp;height=16" allowfullscreen="false" 
+allowscriptaccess="always" bgcolor="#ffffff" quality="best" menu="false" 
+loop="false"></DIV></SPAN><SPAN style="BOX-SIZING: border-box" 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: rgb(231,229,220) 1px solid; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 24px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">options&nbsp;{&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;zone文件的位置&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;directory&nbsp;"C:\Program&nbsp;Files\ISC&nbsp;BIND&nbsp;9\etc";&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;无法解析的域名就去查询ISP提供的DNS&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;在下面的IP地址位置上填写ISP的DNS地址&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;forwarders&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;//这里是Alibaba&nbsp;DNS，可以替换成自己的&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;223.5.5.5;&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;223.6.6.6;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;仅允许本机和子网内的机器查询&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;allow-query&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;127.0.0.1;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192.168.0.0/24;&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">};&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">//&nbsp;根DNS&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">zone&nbsp;"."&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;hint;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;"root.zone";&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">//&nbsp;localhost&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">zone&nbsp;"localhost"&nbsp;IN&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;master;&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;"localhost.zone";&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;allow-update&nbsp;{&nbsp;none;&nbsp;};&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">};&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">//&nbsp;localhost的反向解析&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">zone&nbsp;"0.0.127.in-addr.arpa"&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;master;&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;"localhost.rev";&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">};&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">//&nbsp;example.com&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">zone&nbsp;"example.com"&nbsp;IN&nbsp;{&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;master;&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;"example.com.zone";&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">};&nbsp;&nbsp;</SPAN></LI></OL></DIV><BR 
+style="BOX-SIZING: border-box">&nbsp; &nbsp; &nbsp; &nbsp; 
+按照named.conf中的配置，我们还要准备如下文件：
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">2、下载文件<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>named.root</SPAN></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(12,137,207)" 
+href="ftp://ftp.rs.internic.net/domain/" 
+target=_blank>ftp://ftp.rs.internic.net/domain/</A></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">3、下载文件root.zone</STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(12,137,207)" 
+href="ftp://ftp.rs.internic.net/domain/" 
+target=_blank>ftp://ftp.rs.internic.net/domain/</A></SPAN><BR 
+style="BOX-SIZING: border-box"></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">4、<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>创建文件 
+localhost.zone</SPAN></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">&nbsp; &nbsp; &nbsp; 
+&nbsp;<SPAN>&nbsp;</SPAN></STRONG>该文件针对localhost进行正向解析。</SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'></SPAN></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="dp-highlighter bg_plain" 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 924px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; BORDER-LEFT-COLOR: rgb(204,204,204); BORDER-BOTTOM-COLOR: rgb(204,204,204); TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 0px 0px 24px; BORDER-RIGHT-COLOR: rgb(204,204,204); BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="BOX-SIZING: border-box; PADDING-LEFT: 45px">
+<DIV class=tools 
+style="BOX-SIZING: border-box; BORDER-RIGHT: rgb(231,229,220) 1px solid; COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B 
+style="BOX-SIZING: border-box">[plain]</B><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>view plain</A><SPAN 
+style="BOX-SIZING: border-box" data-mod="popu_168"><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>copy</A>
+<DIV 
+style="BOX-SIZING: border-box; HEIGHT: 16px; WIDTH: 16px; POSITION: absolute; LEFT: 764px; Z-INDEX: 99; TOP: 1828px"><EMBED 
+id=ZeroClipboardMovie_2 style="BOX-SIZING: border-box" name=ZeroClipboardMovie_2 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=16 width=16 
+src=http://csdnimg.cn/public/highlighter/ZeroClipboard.swf wmode="transparent" 
+flashvars="id=2&amp;width=16&amp;height=16" allowfullscreen="false" 
+allowscriptaccess="always" bgcolor="#ffffff" quality="best" menu="false" 
+loop="false"></DIV></SPAN><SPAN style="BOX-SIZING: border-box" 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: rgb(231,229,220) 1px solid; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 24px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">$TTL&nbsp;1D&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localhost.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root.localhost.&nbsp;(&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2007091701&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Serial&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Refresh&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7200&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Retry&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;604800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Expire&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;300&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Minimum&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localhost.&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">localhost.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;127.0.0.1&nbsp;&nbsp;</SPAN></LI></OL></DIV>5、<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>创建文件 
+localhost.rev</SPAN>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">&nbsp; &nbsp; &nbsp; 
+&nbsp;<SPAN>&nbsp;</SPAN></STRONG>该文件是<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>针对localhost的反向解析。</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'></SPAN></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="dp-highlighter bg_plain" 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 924px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; BORDER-LEFT-COLOR: rgb(204,204,204); BORDER-BOTTOM-COLOR: rgb(204,204,204); TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 0px 0px 24px; BORDER-RIGHT-COLOR: rgb(204,204,204); BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="BOX-SIZING: border-box; PADDING-LEFT: 45px">
+<DIV class=tools 
+style="BOX-SIZING: border-box; BORDER-RIGHT: rgb(231,229,220) 1px solid; COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B 
+style="BOX-SIZING: border-box">[plain]</B><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>view plain</A><SPAN 
+style="BOX-SIZING: border-box" data-mod="popu_168"><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>copy</A>
+<DIV 
+style="BOX-SIZING: border-box; HEIGHT: 16px; WIDTH: 16px; POSITION: absolute; LEFT: 764px; Z-INDEX: 99; TOP: 2202px"><EMBED 
+id=ZeroClipboardMovie_3 style="BOX-SIZING: border-box" name=ZeroClipboardMovie_3 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=16 width=16 
+src=http://csdnimg.cn/public/highlighter/ZeroClipboard.swf wmode="transparent" 
+flashvars="id=3&amp;width=16&amp;height=16" allowfullscreen="false" 
+allowscriptaccess="always" bgcolor="#ffffff" quality="best" menu="false" 
+loop="false"></DIV></SPAN><SPAN style="BOX-SIZING: border-box" 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: rgb(231,229,220) 1px solid; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 24px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">$TTL&nbsp;&nbsp;&nbsp;&nbsp;1D&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOA&nbsp;&nbsp;&nbsp;&nbsp;localhost.&nbsp;&nbsp;&nbsp;&nbsp;root.localhost.&nbsp;(&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2007091701&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Serial&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Refresh&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7200&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Retry&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;604800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Expire&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;300&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Minimum&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localhost.&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PTR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;localhost.&nbsp;&nbsp;</SPAN></LI></OL></DIV><BR 
+style="BOX-SIZING: border-box">6、<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>创建文件 
+example.com.zone</SPAN>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">&nbsp; &nbsp; &nbsp; 
+&nbsp;</STRONG><SPAN>&nbsp;</SPAN><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; LINE-HEIGHT: 26px"><SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; LINE-HEIGHT: 26px">example.com是我们自定义的域，该文件</SPAN></SPAN></SPAN>为我们自己的域进行正向解析。</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'></SPAN></SPAN></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="dp-highlighter bg_plain" 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 924px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; BORDER-LEFT-COLOR: rgb(204,204,204); BORDER-BOTTOM-COLOR: rgb(204,204,204); TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 0px 0px 24px; BORDER-RIGHT-COLOR: rgb(204,204,204); BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="BOX-SIZING: border-box; PADDING-LEFT: 45px">
+<DIV class=tools 
+style="BOX-SIZING: border-box; BORDER-RIGHT: rgb(231,229,220) 1px solid; COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B 
+style="BOX-SIZING: border-box">[plain]</B><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>view plain</A><SPAN 
+style="BOX-SIZING: border-box" data-mod="popu_168"><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>copy</A>
+<DIV 
+style="BOX-SIZING: border-box; HEIGHT: 16px; WIDTH: 16px; POSITION: absolute; LEFT: 764px; Z-INDEX: 99; TOP: 2611px"><EMBED 
+id=ZeroClipboardMovie_4 style="BOX-SIZING: border-box" name=ZeroClipboardMovie_4 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=16 width=16 
+src=http://csdnimg.cn/public/highlighter/ZeroClipboard.swf wmode="transparent" 
+flashvars="id=4&amp;width=16&amp;height=16" allowfullscreen="false" 
+allowscriptaccess="always" bgcolor="#ffffff" quality="best" menu="false" 
+loop="false"></DIV></SPAN><SPAN style="BOX-SIZING: border-box" 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: rgb(231,229,220) 1px solid; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 24px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">example.com.&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;SOA&nbsp;&nbsp;&nbsp;ns1.example.com.&nbsp;&nbsp;root.example.com.&nbsp;(&nbsp;&nbsp;</SPAN></SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2007091701&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Serial&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Refresh&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7200&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Retry&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;604800&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Expire&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;300&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;Minimum&nbsp;&nbsp;</SPAN></LI>
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ns1.example.com.&nbsp;&nbsp;</SPAN></LI>
+  <LI 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(248,248,248); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14.215.177.38&nbsp;&nbsp;</SPAN></LI></OL></DIV>&nbsp; 
+&nbsp; &nbsp; &nbsp; 配置完上述文件后，目录如下：
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; LINE-HEIGHT: 26px"><SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; LINE-HEIGHT: 26px"><IMG 
+style="BOX-SIZING: border-box; MAX-WIDTH: 100%; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; MARGIN: 0px; MAX-HEIGHT: 100%" 
+alt="" 
+src="http://img.blog.csdn.net/20161210210748821?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHltYW5fYw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">&nbsp; &nbsp; &nbsp; 
+&nbsp;<SPAN>&nbsp;</SPAN></STRONG>接下来，我们进入<SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>”C:\Program 
+Files\ISC BIND 
+9\bin”目录，就</SPAN>可以启动DNS服务器了：</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style="BOX-SIZING: border-box; FONT-WEIGHT: bold"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="dp-highlighter bg_plain" 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 924px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; BORDER-LEFT-COLOR: rgb(204,204,204); BORDER-BOTTOM-COLOR: rgb(204,204,204); TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 0px 0px 24px; BORDER-RIGHT-COLOR: rgb(204,204,204); BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="BOX-SIZING: border-box; PADDING-LEFT: 45px">
+<DIV class=tools 
+style="BOX-SIZING: border-box; BORDER-RIGHT: rgb(231,229,220) 1px solid; COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B 
+style="BOX-SIZING: border-box">[plain]</B><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>view plain</A><SPAN 
+style="BOX-SIZING: border-box" data-mod="popu_168"><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>copy</A>
+<DIV 
+style="BOX-SIZING: border-box; HEIGHT: 16px; WIDTH: 16px; POSITION: absolute; LEFT: 764px; Z-INDEX: 99; TOP: 3693px"><EMBED 
+id=ZeroClipboardMovie_5 style="BOX-SIZING: border-box" name=ZeroClipboardMovie_5 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=16 width=16 
+src=http://csdnimg.cn/public/highlighter/ZeroClipboard.swf wmode="transparent" 
+flashvars="id=5&amp;width=16&amp;height=16" allowfullscreen="false" 
+allowscriptaccess="always" bgcolor="#ffffff" quality="best" menu="false" 
+loop="false"></DIV></SPAN><SPAN style="BOX-SIZING: border-box" 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: rgb(231,229,220) 1px solid; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 24px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">named&nbsp;-f&nbsp;-g&nbsp;-d&nbsp;&nbsp;1&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">&nbsp; &nbsp; 
+&nbsp;<SPAN>&nbsp;</SPAN></STRONG>&nbsp; 
+也可以做成服务，以服务的方式启动：</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'></SPAN></SPAN></STRONG></SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="dp-highlighter bg_plain" 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 924px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; BORDER-LEFT-COLOR: rgb(204,204,204); BORDER-BOTTOM-COLOR: rgb(204,204,204); TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 0px 0px 24px; BORDER-RIGHT-COLOR: rgb(204,204,204); BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="BOX-SIZING: border-box; PADDING-LEFT: 45px">
+<DIV class=tools 
+style="BOX-SIZING: border-box; BORDER-RIGHT: rgb(231,229,220) 1px solid; COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B 
+style="BOX-SIZING: border-box">[plain]</B><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>view plain</A><SPAN 
+style="BOX-SIZING: border-box" data-mod="popu_168"><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>copy</A>
+<DIV 
+style="BOX-SIZING: border-box; HEIGHT: 16px; WIDTH: 16px; POSITION: absolute; LEFT: 764px; Z-INDEX: 99; TOP: 3888px"><EMBED 
+id=ZeroClipboardMovie_6 style="BOX-SIZING: border-box" name=ZeroClipboardMovie_6 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=16 width=16 
+src=http://csdnimg.cn/public/highlighter/ZeroClipboard.swf wmode="transparent" 
+flashvars="id=6&amp;width=16&amp;height=16" allowfullscreen="false" 
+allowscriptaccess="always" bgcolor="#ffffff" quality="best" menu="false" 
+loop="false"></DIV></SPAN><SPAN style="BOX-SIZING: border-box" 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: rgb(231,229,220) 1px solid; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 24px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">net&nbsp;start&nbsp;named&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>&nbsp; 
+&nbsp; &nbsp; &nbsp; 或者停止</SPAN></SPAN></SPAN></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 13px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'></SPAN></SPAN></SPAN></P>
+<DIV class="dp-highlighter bg_plain" 
+style='BOX-SIZING: border-box; FONT-SIZE: 12px; FONT-FAMILY: Consolas, "Courier New", Courier, mono, serif; BORDER-TOP-COLOR: rgb(204,204,204); WIDTH: 924px; OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative; BORDER-LEFT-COLOR: rgb(204,204,204); BORDER-BOTTOM-COLOR: rgb(204,204,204); TEXT-ALIGN: left; PADDING-TOP: 1px; MARGIN: 0px 0px 24px; BORDER-RIGHT-COLOR: rgb(204,204,204); BACKGROUND-COLOR: rgb(231,229,220)'>
+<DIV class=bar style="BOX-SIZING: border-box; PADDING-LEFT: 45px">
+<DIV class=tools 
+style="BOX-SIZING: border-box; BORDER-RIGHT: rgb(231,229,220) 1px solid; COLOR: silver; PADDING-BOTTOM: 10px; PADDING-TOP: 3px; FONT: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; PADDING-LEFT: 10px; BORDER-LEFT: rgb(108,226,108) 3px solid; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(248,248,248); font-stretch: normal"><B 
+style="BOX-SIZING: border-box">[plain]</B><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;" 
+title="view plain" class=ViewSource 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_plain.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>view plain</A><SPAN 
+style="BOX-SIZING: border-box" data-mod="popu_168"><SPAN>&nbsp;</SPAN><A 
+onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;" title=copy 
+class=CopyToClipboard 
+style="BOX-SIZING: border-box; FONT-SIZE: 9px; TEXT-DECORATION: none; BORDER-TOP: medium none; HEIGHT: 16px; BORDER-RIGHT: medium none; WIDTH: 16px; BACKGROUND-IMAGE: url(//csdnimg.cn/release/phoenix/images/ico_copy.gif); BACKGROUND-REPEAT: no-repeat; BORDER-BOTTOM: medium none; BACKGROUND-POSITION: left top; COLOR: rgb(12,137,207); PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: medium none; MARGIN: 0px 10px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 1px; TEXT-INDENT: -2000px; background-size: initial; background-origin: initial; background-clip: initial" 
+href="http://csdnimg.cn/release/phoenix/#" target=_blank>copy</A>
+<DIV 
+style="BOX-SIZING: border-box; HEIGHT: 16px; WIDTH: 16px; POSITION: absolute; LEFT: 764px; Z-INDEX: 99; TOP: 4083px"><EMBED 
+id=ZeroClipboardMovie_7 style="BOX-SIZING: border-box" name=ZeroClipboardMovie_7 
+type=application/x-shockwave-flash align=middle 
+pluginspage=http://www.macromedia.com/go/getflashplayer height=16 width=16 
+src=http://csdnimg.cn/public/highlighter/ZeroClipboard.swf wmode="transparent" 
+flashvars="id=7&amp;width=16&amp;height=16" allowfullscreen="false" 
+allowscriptaccess="always" bgcolor="#ffffff" quality="best" menu="false" 
+loop="false"></DIV></SPAN><SPAN style="BOX-SIZING: border-box" 
+data-mod="popu_169"></SPAN></DIV></DIV>
+<OL 
+style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: rgb(231,229,220) 1px solid; BORDER-BOTTOM: medium none; COLOR: rgb(92,92,92); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px 0px 24px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial">
+  <LI class=alt 
+  style="LIST-STYLE-TYPE: decimal; BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; LIST-STYLE-POSITION: outside !important; BORDER-BOTTOM: medium none; COLOR: ; PADDING-BOTTOM: 0px !important; PADDING-TOP: 0px !important; PADDING-LEFT: 10px !important; BORDER-LEFT: rgb(108,226,108) 3px solid; MARGIN: 8px 0px 0px 40px; LINE-HEIGHT: 18px; PADDING-RIGHT: 3px !important; BACKGROUND-COLOR: rgb(255,255,255); border-image: initial"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px"><SPAN 
+  style="BOX-SIZING: border-box; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-BOTTOM: medium none; COLOR: rgb(0,0,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: medium none; MARGIN: 0px; PADDING-RIGHT: 0px">net&nbsp;stop&nbsp;named&nbsp;&nbsp;</SPAN></SPAN></LI></OL></DIV><BR 
+style="BOX-SIZING: border-box"><BR style="BOX-SIZING: border-box">
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px">&nbsp; 
+&nbsp; &nbsp;<SPAN>&nbsp;</SPAN><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700">&nbsp;<SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px"><SPAN>&nbsp;</SPAN>注意：Bind运行需要依赖时vs2008运行时库，如果未安装，启动时可能出现msvcr100d.dll和msvcr110d.dll文件找不到的情况，可以自行度娘下载，拷贝到C:\Windows\System32目录下即可。为了省事，也可以从我上传的资源处下载本文所需要的所有文件和上述两个dll。</SPAN></STRONG></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 700"><SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px">地址：<A 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(12,137,207)" 
+href="http://download.csdn.net/detail/lzhui1987/9707652" 
+target=_blank>http://download.csdn.net/detail/lzhui1987/9707652</A></SPAN></STRONG></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px"><BR 
+style="BOX-SIZING: border-box"></P>
+<P 
+style="BOX-SIZING: border-box; FONT-SIZE: 16px; WORD-WRAP: break-word; WORD-BREAK: normal; FONT-WEIGHT: 400; COLOR: rgb(79,79,79); PADDING-BOTTOM: 0px; TEXT-ALIGN: justify; PADDING-TOP: 0px; PADDING-LEFT: 0px; MIN-HEIGHT: 26px; MARGIN: 0px 0px 16px; LINE-HEIGHT: 26px; PADDING-RIGHT: 0px">&nbsp; 
+&nbsp; &nbsp; &nbsp;<SPAN 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px">&nbsp;正常启动后，将我们自己的电脑默认的DNS服务器改成127.0.0.1，随后在浏览器中访问<SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 25px'><SPAN 
+style="BOX-SIZING: border-box; LINE-HEIGHT: 26px"><SPAN 
+style="BOX-SIZING: border-box; LINE-HEIGHT: 26px"><SPAN 
+style='BOX-SIZING: border-box; FONT-FAMILY: "microsoft yahei"; COLOR: rgb(54,46,43); LINE-HEIGHT: 26px'>aaa.example.com，就会指向我们设置的</SPAN>14.215.177.38 
+，这是百度的ip地址，也就是说都会打开百度的网站。</SPAN></SPAN></SPAN></SPAN></P></DIV></DIV>
+</BODY>
+</HTML>

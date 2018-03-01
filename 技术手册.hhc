@@ -2631,6 +2631,24 @@
 <PARAM NAME="Local" VALUE="phpStudy中mySQL允许远程连接.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mysql查询结果根据某个字段去重">
+<PARAM NAME="Local" VALUE="mysql查询结果根据某个字段去重.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mysql查询指定内容并替换">
+<PARAM NAME="Local" VALUE="mysql查询指定内容并替换.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mysql查询指定时间范围">
+<PARAM NAME="Local" VALUE="mysql查询指定时间范围.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JAVA">
 <PARAM NAME="Local" VALUE="java.htm">
@@ -3033,7 +3051,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="web应用">
 <PARAM NAME="Local" VALUE="web应用.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3360,7 +3377,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="安卓开发">
 <PARAM NAME="Local" VALUE="安卓开发.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3434,7 +3450,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="苹果开发">
 <PARAM NAME="Local" VALUE="苹果开发.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3599,7 +3614,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="React-Native">
 <PARAM NAME="Local" VALUE="React-Native.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3809,6 +3823,12 @@
 <PARAM NAME="Name" VALUE="ios模拟器修改host">
 <PARAM NAME="Local" VALUE="ios模拟器修改host.htm">
 <PARAM NAME="ImageNumber" value="11">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="win10安装DNS服务器">
+<PARAM NAME="Local" VALUE="win10安装DNS服务器.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
