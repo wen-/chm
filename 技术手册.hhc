@@ -2611,6 +2611,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MySql">
 <PARAM NAME="Local" VALUE="MySql.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2647,6 +2648,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="mysql查询指定时间范围">
 <PARAM NAME="Local" VALUE="mysql查询指定时间范围.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mysql批量插入">
+<PARAM NAME="Local" VALUE="mysql批量插入.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3736,7 +3743,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="其它">
 <PARAM NAME="Local" VALUE="其它.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -4531,6 +4537,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ciPHP">
 <PARAM NAME="Local" VALUE="ciPHP.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -4556,6 +4563,24 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="彻底理解PHP的SESSION机制">
 <PARAM NAME="Local" VALUE="彻底理解PHP的SESSION机制.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="格式化数组输出">
+<PARAM NAME="Local" VALUE="格式化数组输出.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mysql查询用逗号分隔的字段">
+<PARAM NAME="Local" VALUE="mysql查询用逗号分隔的字段.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ci输出sql语句">
+<PARAM NAME="Local" VALUE="ci输出sql语句.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
