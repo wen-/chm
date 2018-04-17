@@ -357,6 +357,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JavaScriptÆª">
 <PARAM NAME="Local" VALUE="JavaScriptÆª.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -1389,6 +1390,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ºÅÂë·ÖÀàÆ÷">
 <PARAM NAME="Local" VALUE="ºÅÂë·ÖÀàÆ÷.html">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="js±àÂë×ª»»£¨¼Ó½âÃÜ£©">
+<PARAM NAME="Local" VALUE="js±àÂë×ª»»£¨¼Ó½âÃÜ£©.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -2611,7 +2618,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MySql">
 <PARAM NAME="Local" VALUE="MySql.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -4537,7 +4543,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ciPHP">
 <PARAM NAME="Local" VALUE="ciPHP.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
