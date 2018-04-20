@@ -1394,6 +1394,12 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="in判断对象是否存在某个属性">
+<PARAM NAME="Local" VALUE="in判断对象是否存在某个属性.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="js编码转换（加解密）">
 <PARAM NAME="Local" VALUE="js编码转换（加解密）.htm">
 </OBJECT>
