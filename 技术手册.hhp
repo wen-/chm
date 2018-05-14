@@ -102,6 +102,7 @@ centos下安装nginx.htm
 centos最小化安装配置.htm
 ciPHP.htm
 ciPHP2.2.x升级到3.0.htm
+ci批量更新并在原值中累加.htm
 ci输出sql语句.htm
 column-count.htm
 config.xml还可以这样.htm
@@ -1485,6 +1486,7 @@ mosquitto_sub订阅.htm
 mosquitto_sub订阅.htm
 mqtt.htm
 msi文件安装无权限解决方法.htm
+mysql 批量更新与批量更新多条记录的不同值实现方法.htm
 mySQL.htm
 MySql.htm
 mysqldump.htm
@@ -1525,6 +1527,7 @@ NPM代理服务器设置.htm
 NPM自身升级.htm
 Number 对象.htm
 Object create().htm
+OC读取plist文件.htm
 openssl生成证书.htm
 openwrt x64固件编译.htm
 openwrt.htm
@@ -1665,6 +1668,7 @@ yum源配置.htm
 安装Grunt.htm
 安装LAMP环境.htm
 安装openwrt.htm
+安卓读取BuildConfig类配置.htm
 安卓和IPHONE旋转会触发事件.htm
 安卓开发.htm
 安卓模拟器安装APK应用.htm
@@ -1748,6 +1752,7 @@ yum源配置.htm
 构建出错.htm
 谷歌插件CRX保存方法.htm
 谷歌浏览器跨域测试.htm
+谷歌浏览器设置可跨域AJAX.htm
 谷歌提供的一些共用js.htm
 关闭浏览器窗口.htm
 关于DOM节点.htm

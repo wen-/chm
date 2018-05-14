@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>OC读取plist文件</TITLE>
+</HEAD>
+<BODY>
+<P>OC读取plist文件</P>
+<P>//读取plist&nbsp; <BR>&nbsp; NSString *plistPath = [[NSBundle mainBundle] 
+pathForResource:@"万能袋开发-Info" ofType:@"plist"];<BR>&nbsp; NSMutableDictionary 
+*data = [[NSMutableDictionary alloc] 
+initWithContentsOfFile:plistPath];<BR>&nbsp; NSLog(@"%@", data);<BR>&nbsp; 
+NSString *object = [ data objectForKey:@"CodePushDeploymentKey" ];//项</P>
+<P><BR>//另一种获取plist文件信息的方法&nbsp;&nbsp;<BR>&nbsp; NSDictionary *infoDictionary = 
+[[NSBundle mainBundle] infoDictionary];<BR>&nbsp;NSLog(@"%@", 
+infoDictionary);<BR></P>
+<P>//RN调用方法</P>
+<P>RCT_EXPORT_METHOD(config:(RCTResponseSenderBlock)callback) {<BR>&nbsp; 
+//读取plist信息<BR>&nbsp; NSDictionary *infoDictionary = [[NSBundle mainBundle] 
+infoDictionary];<BR>&nbsp; callback(@[infoDictionary]);<BR>}</P>
+</BODY>
+</HTML>

@@ -2667,6 +2667,12 @@
 <PARAM NAME="Local" VALUE="mysql批量插入.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="mysql 批量更新与批量更新多条记录的不同值实现方法">
+<PARAM NAME="Local" VALUE="mysql 批量更新与批量更新多条记录的不同值实现方法.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="JAVA">
 <PARAM NAME="Local" VALUE="java.htm">
@@ -3396,6 +3402,7 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="安卓开发">
 <PARAM NAME="Local" VALUE="安卓开发.htm">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3464,12 +3471,17 @@
 <PARAM NAME="Local" VALUE="android-adb-shell.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="安卓读取BuildConfig类配置">
+<PARAM NAME="Local" VALUE="安卓读取BuildConfig类配置.htm">
+</OBJECT>
+</UL>
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="苹果开发">
 <PARAM NAME="Local" VALUE="苹果开发.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -3620,6 +3632,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="WKWebView-js交互">
 <PARAM NAME="Local" VALUE="WKWebView-js交互.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="OC读取plist文件">
+<PARAM NAME="Local" VALUE="OC读取plist文件.htm">
 </OBJECT>
 </UL>
 </UL>
@@ -3849,6 +3867,12 @@
 <PARAM NAME="Local" VALUE="webstorm配置babel.htm">
 </OBJECT>
 </UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="谷歌浏览器设置可跨域AJAX">
+<PARAM NAME="Local" VALUE="谷歌浏览器设置可跨域AJAX.htm">
+</OBJECT>
+</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="第三方登录">
 <PARAM NAME="Local" VALUE="第三方登录.htm">
@@ -3863,7 +3887,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="liunx系统">
 <PARAM NAME="Local" VALUE="liunx系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -4216,7 +4239,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="MAC系统">
 <PARAM NAME="Local" VALUE="MAC系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -4269,7 +4291,6 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="openwrt系统">
 <PARAM NAME="Local" VALUE="openwrt系统.htm">
-<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
@@ -4602,6 +4623,12 @@
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="ci输出sql语句">
 <PARAM NAME="Local" VALUE="ci输出sql语句.htm">
+</OBJECT>
+</UL>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="ci批量更新并在原值中累加">
+<PARAM NAME="Local" VALUE="ci批量更新并在原值中累加.htm">
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">

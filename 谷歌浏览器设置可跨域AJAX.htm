@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>谷歌浏览器设置可跨域AJAX</TITLE>
+</HEAD>
+<BODY>
+<P>谷歌浏览器设置可跨域AJAX</P>
+<P><A 
+href="https://github.com/zhongxia245/blog/issues/28">https://github.com/zhongxia245/blog/issues/28</A></P>
+<DIV id=partial-discussion-header 
+class="gh-header js-details-container Details js-socket-channel js-updatable-content issue" 
+style="BOX-SIZING: border-box" 
+data-url="/zhongxia245/blog/issues/28/show_partial?partial=issues%2Ftitle" 
+data-channel="issue:180207323">
+<DIV class="gh-header-show " style="BOX-SIZING: border-box">
+<H1 class=gh-header-title 
+style="BOX-SIZING: border-box; FONT-SIZE: 32px; WORD-WRAP: break-word; FONT-WEIGHT: 400; MARGIN: 0px 150px 0px 0px; LINE-HEIGHT: 1.125"><SPAN 
+class=js-issue-title style="BOX-SIZING: border-box">【20160930】Chrome 跨域 
+disable-web-security 关闭安全策略<SPAN>&nbsp;</SPAN></SPAN><SPAN 
+class=gh-header-number 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 300; COLOR: rgb(163,170,177); LETTER-SPACING: -1px">#28</SPAN></H1></DIV>
+<DIV class="TableObject gh-header-meta" 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px; MARGIN-BOTTOM: 15px; MARGIN-TOP: 8px; BORDER-BOTTOM: rgb(230,235,241) 1px solid; COLOR: rgb(88,96,105); PADDING-BOTTOM: 20px; DISPLAY: table; LINE-HEIGHT: 20px">
+<DIV class=TableObject-item 
+style="BOX-SIZING: border-box; WIDTH: 77px; VERTICAL-ALIGN: middle; WHITE-SPACE: nowrap; DISPLAY: table-cell">
+<DIV class="State State--green" 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 600; COLOR: rgb(255,255,255); PADDING-BOTTOM: 4px; TEXT-ALIGN: center; PADDING-TOP: 4px; PADDING-LEFT: 8px; DISPLAY: inline-block; LINE-HEIGHT: 20px; PADDING-RIGHT: 8px; BACKGROUND-COLOR: rgb(44,190,78); MARGIN-RIGHT: 8px; border-radius: 3px"><SVG 
+aria-hidden=true class="octicon octicon-issue-opened" height="16" width="14" 
+version="1.1" viewBox="0 0 14 16"><PATH 
+d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z" 
+fill-rule="evenodd"></PATH></SVG><SPAN>&nbsp;</SPAN>Open</DIV></DIV>
+<DIV class="TableObject-item TableObject-item--primary" 
+style="BOX-SIZING: border-box; WORD-WRAP: break-word; WIDTH: 903px; VERTICAL-ALIGN: middle; WHITE-SPACE: normal; DISPLAY: table-cell"><A 
+aria-describedby=hovercard-aria-description class=author 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FONT-WEIGHT: 600; COLOR: rgb(88,96,105); BACKGROUND-COLOR: transparent" 
+href="https://github.com/zhongxia245" data-octo-dimensions="link_type:self" 
+data-octo-click="hovercard-link-click" 
+data-hovercard-user-id="7597581">zhongxia245</A><SPAN>&nbsp;</SPAN>opened 
+this<SPAN>&nbsp;</SPAN><SPAN class=noun 
+style="BOX-SIZING: border-box; TEXT-TRANSFORM: lowercase">issue</SPAN><SPAN>&nbsp;</SPAN><RELATIVE-TIME 
+title="2016年9月30日 GMT+8 上午10:37" style="BOX-SIZING: border-box" 
+datetime="2016-09-30T02:37:44Z">on 30 Sep 
+2016</RELATIVE-TIME><SPAN>&nbsp;</SPAN>· 1 comment</DIV></DIV></DIV>
+<H2 class=sr-only 
+style="BOX-SIZING: border-box; FONT-SIZE: 24px; OVERFLOW: hidden; WORD-WRAP: normal; MARGIN-BOTTOM: 0px; BORDER-TOP: 0px; CLIP: rect(0px 0px 0px 0px); HEIGHT: 1px; BORDER-RIGHT: 0px; WIDTH: 1px; MARGIN-TOP: 0px; BORDER-BOTTOM: 0px; POSITION: absolute; FONT-WEIGHT: 600; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; PADDING-RIGHT: 0px">Comments</H2>
+<DIV id=discussion_bucket class=clearfix style="BOX-SIZING: border-box">
+<DIV class=discussion-sidebar 
+style="BOX-SIZING: border-box; WIDTH: 200px; FLOAT: right; Z-INDEX: 21; TOP: 0px">
+<DIV id=partial-discussion-sidebar 
+class="js-socket-channel js-updatable-content" style="BOX-SIZING: border-box" 
+data-url="/zhongxia245/blog/issues/28/show_partial?partial=issues%2Fsidebar" 
+data-channel="issue:180207323">
+<DIV class="discussion-sidebar-item sidebar-assignee js-discussion-sidebar-item" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; COLOR: rgb(88,96,105); PADDING-TOP: 15px">
+<FORM class=js-issue-sidebar-form style="BOX-SIZING: border-box" 
+accept-charset=UTF-8 method=post 
+action=https://github.com/zhongxia245/blog/issues/28?partial=issues%2Fsidebar%2Fshow%2Fassignees 
+data-remote="true">
+<DIV class="discussion-sidebar-heading text-bold" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; FONT-WEIGHT: 600 !important; COLOR: rgb(88,96,105); LINE-HEIGHT: 16px">Assignees</DIV><SPAN 
+class=css-truncate style="BOX-SIZING: border-box">No one 
+assigned</SPAN></FORM></DIV>
+<DIV class="discussion-sidebar-item sidebar-labels js-discussion-sidebar-item" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: rgb(230,235,241) 1px solid; MARGIN-TOP: 15px; COLOR: rgb(88,96,105); PADDING-TOP: 15px">
+<FORM class=js-issue-sidebar-form style="BOX-SIZING: border-box" 
+accept-charset=UTF-8 method=post 
+action=https://github.com/zhongxia245/blog/issues/28?partial=issues%2Fsidebar%2Fshow%2Flabels 
+data-remote="true">
+<DIV class=js-issue-labels-container style="BOX-SIZING: border-box">
+<DIV class="discussion-sidebar-heading text-bold" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; FONT-WEIGHT: 600 !important; COLOR: rgb(88,96,105); LINE-HEIGHT: 16px">Labels</DIV></DIV>
+<DIV aria-label=Labels aria-live=polite style="BOX-SIZING: border-box">
+<DIV class="labels css-truncate" 
+style="BOX-SIZING: border-box; POSITION: relative">None 
+yet</DIV></DIV></FORM></DIV>
+<DIV class="discussion-sidebar-item js-discussion-sidebar-item" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: rgb(230,235,241) 1px solid; MARGIN-TOP: 15px; COLOR: rgb(88,96,105); PADDING-TOP: 15px">
+<FORM class=js-issue-sidebar-form style="BOX-SIZING: border-box" 
+accept-charset=UTF-8 method=post 
+action=https://github.com/zhongxia245/blog/projects/issues/28 
+data-remote="true">
+<DIV class="discussion-sidebar-heading text-bold" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; FONT-WEIGHT: 600 !important; COLOR: rgb(88,96,105); LINE-HEIGHT: 16px">Projects</DIV><SPAN 
+class="css-truncate sidebar-projects" style="BOX-SIZING: border-box">None 
+yet</SPAN></FORM></DIV>
+<DIV 
+class="discussion-sidebar-item sidebar-milestone js-discussion-sidebar-item" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: rgb(230,235,241) 1px solid; MARGIN-TOP: 15px; COLOR: rgb(88,96,105); PADDING-TOP: 15px">
+<FORM class=js-issue-sidebar-form style="BOX-SIZING: border-box" 
+accept-charset=UTF-8 method=post 
+action=https://github.com/zhongxia245/blog/issues/28/set_milestone?partial=issues%2Fsidebar%2Fshow%2Fmilestone 
+data-remote="true">
+<DIV class="discussion-sidebar-heading text-bold" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; FONT-WEIGHT: 600 !important; COLOR: rgb(88,96,105); LINE-HEIGHT: 16px">Milestone</DIV>No 
+milestone</FORM></DIV>
+<DIV class="discussion-sidebar-item sidebar-notifications" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: rgb(230,235,241) 1px solid; MARGIN-TOP: 15px; POSITION: relative; COLOR: rgb(88,96,105); PADDING-TOP: 15px">
+<DIV class="discussion-sidebar-heading text-bold" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; FONT-WEIGHT: 600 !important; COLOR: rgb(88,96,105); LINE-HEIGHT: 16px">Notifications</DIV>
+<DIV 
+class="thread-subscription-status js-thread-subscription-status js-socket-channel js-updatable-content" 
+style="BOX-SIZING: border-box; BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; COLOR: rgb(88,96,105); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); border-radius: 3px" 
+data-url="/notifications/thread_subscription?repository_id=67000192&amp;thread_class=Issue&amp;thread_id=180207323" 
+data-channel="thread-subscription:180207323:4750437">
+<FORM class="thread-subscribe-form js-thread-subscribe-form" 
+style="BOX-SIZING: border-box; VERTICAL-ALIGN: middle; DISPLAY: block" 
+accept-charset=UTF-8 method=post action=https://github.com/notifications/thread 
+data-remote="true"><BUTTON class="btn btn-sm" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; OVERFLOW: visible; CURSOR: pointer; BORDER-TOP: 1px solid; FONT-FAMILY: inherit; BORDER-RIGHT: 1px solid; WIDTH: 200px; VERTICAL-ALIGN: middle; WHITE-SPACE: nowrap; BACKGROUND-REPEAT: repeat-x; BORDER-BOTTOM: 1px solid; POSITION: relative; TEXT-TRANSFORM: none; BACKGROUND-POSITION: -1px -1px; FONT-WEIGHT: 600; COLOR: rgb(36,41,46); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 10px; BORDER-LEFT: 1px solid; MARGIN: 0px; DISPLAY: block; LINE-HEIGHT: 20px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(239,243,246); border-radius: 0.25em; font-stretch: inherit; -webkit-appearance: none; user-select: none; background-size: 110% 110%" 
+type=submit data-disable-with=""><SVG aria-hidden=true 
+class="octicon octicon-unmute" height="16" width="16" version="1.1" 
+viewBox="0 0 16 16"><PATH 
+d="M12 8.02c0 1.09-.45 2.09-1.17 2.83l-.67-.67c.55-.56.89-1.31.89-2.16 0-.85-.34-1.61-.89-2.16l.67-.67A3.99 3.99 0 0 1 12 8.02zM7.72 2.28L4 6H2c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h2l3.72 3.72c.47.47 1.28.14 1.28-.53V2.81c0-.67-.81-1-1.28-.53zm5.94.08l-.67.67a6.996 6.996 0 0 1 2.06 4.98c0 1.94-.78 3.7-2.06 4.98l.67.67A7.973 7.973 0 0 0 16 8c0-2.22-.89-4.22-2.34-5.66v.02zm-1.41 1.41l-.69.67a5.05 5.05 0 0 1 1.48 3.58c0 1.39-.56 2.66-1.48 3.56l.69.67A5.971 5.971 0 0 0 14 8.02c0-1.65-.67-3.16-1.75-4.25z" 
+fill-rule="evenodd"></PATH></SVG><SPAN>&nbsp;</SPAN>Subscribe</BUTTON></FORM>
+<P class="reason text-small text-gray" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px !important; VERTICAL-ALIGN: middle; COLOR: rgb(88,96,105) !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 5px 0px 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px">You’re 
+not receiving notifications from this thread.</P></DIV></DIV>
+<DIV id=partial-users-participants class=discussion-sidebar-item 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: rgb(230,235,241) 1px solid; MARGIN-TOP: 15px; COLOR: rgb(88,96,105); PADDING-TOP: 15px">
+<DIV class=participation style="BOX-SIZING: border-box">
+<DIV class="discussion-sidebar-heading text-bold" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; FONT-WEIGHT: 600 !important; COLOR: rgb(88,96,105); LINE-HEIGHT: 16px">2 
+participants</DIV>
+<DIV class="participation-avatars d-flex flex-wrap" 
+style="BOX-SIZING: border-box; MARGIN-LEFT: -3px; DISPLAY: flex !important; flex-wrap: wrap"><A 
+aria-describedby=hovercard-aria-description class=participant-avatar 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FLOAT: left; COLOR: rgb(88,96,105); MARGIN: 3px 0px 0px 3px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/zhongxia245" data-octo-dimensions="link_type:self" 
+data-octo-click="hovercard-link-click" data-hovercard-user-id="7597581"><IMG 
+class=avatar 
+style="BORDER-TOP-STYLE: none; BOX-SIZING: border-box; OVERFLOW: hidden; BORDER-LEFT-STYLE: none; VERTICAL-ALIGN: middle; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; DISPLAY: inline-block; LINE-HEIGHT: 1; border-radius: 3px" 
+alt=@zhongxia245 
+src="https://avatars0.githubusercontent.com/u/7597581?s=52&amp;v=4" width=26 
+height=26></A><A aria-describedby=hovercard-aria-description 
+class=participant-avatar 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; FLOAT: left; COLOR: rgb(88,96,105); MARGIN: 3px 0px 0px 3px; BACKGROUND-COLOR: transparent" 
+href="https://github.com/txytju" data-octo-dimensions="link_type:self" 
+data-octo-click="hovercard-link-click" data-hovercard-user-id="20982902"><IMG 
+class=avatar 
+style="BORDER-TOP-STYLE: none; BOX-SIZING: border-box; OVERFLOW: hidden; BORDER-LEFT-STYLE: none; VERTICAL-ALIGN: middle; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; DISPLAY: inline-block; LINE-HEIGHT: 1; border-radius: 3px" 
+alt=@txytju src="https://avatars1.githubusercontent.com/u/20982902?s=52&amp;v=4" 
+width=26 height=26></A></DIV></DIV></DIV></DIV></DIV>
+<DIV class="discussion-timeline js-quote-selection-container " 
+style="BOX-SIZING: border-box; WIDTH: 760px; POSITION: relative; FLOAT: left">
+<DIV class="js-discussion js-socket-channel" style="BOX-SIZING: border-box" 
+data-channel="marked-as-read:issue:180207323">
+<DIV class="timeline-comment-wrapper js-comment-container mt-0" 
+style="BOX-SIZING: border-box; MARGIN-BOTTOM: 15px; BORDER-TOP: rgb(255,255,255) 2px solid; MARGIN-TOP: 15px; BORDER-BOTTOM: rgb(255,255,255) 2px solid; POSITION: relative; PADDING-LEFT: 60px">
+<DIV class="avatar-parent-child timeline-comment-avatar" 
+style="BOX-SIZING: border-box; POSITION: relative; FLOAT: left; MARGIN-LEFT: -60px; border-radius: 3px"><A 
+aria-describedby=hovercard-aria-description class=d-inline-block 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(3,102,214); DISPLAY: inline-block !important; BACKGROUND-COLOR: transparent" 
+href="https://github.com/zhongxia245" data-octo-dimensions="link_type:self" 
+data-octo-click="hovercard-link-click" data-hovercard-user-id="7597581"><IMG 
+class="avatar rounded-1" 
+style="BORDER-TOP-STYLE: none; BOX-SIZING: border-box; OVERFLOW: hidden; BORDER-LEFT-STYLE: none; VERTICAL-ALIGN: middle; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; DISPLAY: inline-block; LINE-HEIGHT: 1; border-radius: 3px" 
+alt=@zhongxia245 
+src="https://avatars3.githubusercontent.com/u/7597581?s=88&amp;v=4" width=44 
+height=44></A></DIV>
+<DIV class=js-minimizable-comment-group style="BOX-SIZING: border-box">
+<DIV id=issue-180207323 
+class="unminimized-comment comment previewable-edit js-comment js-task-list-container timeline-comment reorderable-task-lists " 
+style="BOX-SIZING: border-box; BORDER-TOP: rgb(209,213,218) 1px solid; BORDER-RIGHT: rgb(209,213,218) 1px solid; BORDER-BOTTOM: rgb(209,213,218) 1px solid; POSITION: relative; BORDER-LEFT: rgb(209,213,218) 1px solid; BACKGROUND-COLOR: rgb(255,255,255); border-radius: 3px" 
+data-body-version="9da433e71f6a1ef2d69001403ead1fb2">
+<DIV class="timeline-comment-header clearfix" 
+style="BOX-SIZING: border-box; BORDER-BOTTOM: rgb(209,213,218) 1px solid; COLOR: rgb(88,96,105); PADDING-LEFT: 15px; PADDING-RIGHT: 15px; BACKGROUND-COLOR: rgb(246,248,250); border-top-left-radius: 3px; border-top-right-radius: 3px">
+<DIV class=timeline-comment-actions 
+style="BOX-SIZING: border-box; FLOAT: right; MARGIN-LEFT: 10px; MARGIN-RIGHT: -5px"><DETAILS 
+class="dropdown-details details-reset position-relative d-inline-block js-socket-channel js-updatable-content js-dropdown-details js-reaction-popover-container js-comment-header-reaction-button" 
+style="BOX-SIZING: border-box; POSITION: relative !important; DISPLAY: inline-block !important" 
+data-url="/_render_node/MDU6SXNzdWUxODAyMDczMjM=/comments/comment_header_reaction_button" 
+data-channel="reaction:issue:180207323"><SUMMARY aria-haspopup=true 
+aria-label="Add your reaction" class="btn-link timeline-comment-action" 
+style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: ; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 5px; BORDER-LEFT: 0px; DISPLAY: inline-block; PADDING-RIGHT: 5px; BACKGROUND-COLOR: transparent; -webkit-appearance: none; user-select: none; opacity: 0.5"><SVG 
+aria-hidden=true class="octicon octicon-plus-small add-reaction-plus-icon" 
+height="16" width="7" version="1.1" viewBox="0 0 7 16"><PATH 
+d="M4 7V4H3v3H0v1h3v3h1V8h3V7H4z" 
+fill-rule="evenodd"></PATH></SVG><SPAN></SPAN><SVG aria-hidden=true 
+class="octicon octicon-smiley" height="16" width="16" version="1.1" 
+viewBox="0 0 16 16"><PATH 
+d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 0 1-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 0 1-1.45-2.17A6.59 6.59 0 0 1 1.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 0 1 8 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z" 
+fill-rule="evenodd"></PATH></SVG></SUMMARY></DETAILS></DIV><SPAN 
+aria-label="This user is the owner of the blog repository." 
+class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" 
+style="BOX-SIZING: border-box; FONT-SIZE: 12px; CURSOR: default; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid; BORDER-BOTTOM: 1px solid; POSITION: relative; FLOAT: right; FONT-WEIGHT: 600 !important; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; PADDING-LEFT: 5px; BORDER-LEFT: 1px solid; MARGIN: 8px 0px 0px 10px; PADDING-RIGHT: 5px; border-radius: 3px">Owner</SPAN>
+<H3 class="timeline-comment-header-text f5 text-normal" 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px !important; MARGIN-BOTTOM: 0px; MAX-WIDTH: 78%; MARGIN-TOP: 0px; FONT-WEIGHT: 400 !important; PADDING-BOTTOM: 10px; PADDING-TOP: 10px"><STRONG 
+style="BOX-SIZING: border-box; FONT-WEIGHT: 600"><A 
+aria-describedby=hovercard-aria-description class="author text-inherit" 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(88,96,105); BACKGROUND-COLOR: transparent" 
+href="https://github.com/zhongxia245" data-octo-dimensions="link_type:self" 
+data-octo-click="hovercard-link-click" 
+data-hovercard-user-id="7597581">zhongxia245</A><SPAN>&nbsp;</SPAN></STRONG>commented<SPAN>&nbsp;</SPAN><A 
+class=timestamp 
+style="BOX-SIZING: border-box; TEXT-DECORATION: none; WHITE-SPACE: nowrap; COLOR: ; BACKGROUND-COLOR: transparent" 
+href="https://github.com/zhongxia245/blog/issues/28#issue-180207323"><RELATIVE-TIME 
+title="2016年9月30日 GMT+8 上午10:37" style="BOX-SIZING: border-box" 
+datetime="2016-09-30T02:37:44Z">on 30 Sep 
+2016</RELATIVE-TIME></A><SPAN>&nbsp;</SPAN><SPAN 
+class="d-inline-block text-gray-light" 
+style="BOX-SIZING: border-box; COLOR: rgb(106,115,125) !important; DISPLAY: inline-block !important">?</SPAN><SPAN>&nbsp;</SPAN><DETAILS 
+class="dropdown-details details-reset js-dropdown-details d-inline-block dropdown" 
+style="BOX-SIZING: border-box; POSITION: relative; DISPLAY: inline-block !important"><SUMMARY 
+class="btn-link no-underline text-gray dropdown-toggle" 
+style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; CURSOR: pointer; TEXT-DECORATION: none !important; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; COLOR: rgb(88,96,105) !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; DISPLAY: inline-block; PADDING-RIGHT: 0px; BACKGROUND-COLOR: transparent; -webkit-appearance: none; user-select: none"><SPAN 
+style="BOX-SIZING: border-box">edited<SPAN>&nbsp;</SPAN></SPAN><SVG 
+aria-hidden=true class="octicon octicon-triangle-down v-align-middle" 
+height="11" width="8" version="1.1" viewBox="0 0 12 16"><PATH d="M0 5l6 6 6-6z" 
+fill-rule="evenodd"></PATH></SVG></SUMMARY></DETAILS></H3></DIV>
+<DIV class=edit-comment-hide style="BOX-SIZING: border-box"><TASK-LISTS disabled 
+style="BOX-SIZING: border-box" sortable="">
+<TABLE class=d-block 
+style="BOX-SIZING: border-box; BORDER-COLLAPSE: collapse; BORDER-SPACING: 0px; DISPLAY: block !important">
+  <TBODY class=d-block 
+style="BOX-SIZING: border-box; DISPLAY: block !important">
+  <TR class=d-block style="BOX-SIZING: border-box; DISPLAY: block !important">
+    <TD class="d-block comment-body markdown-body  js-comment-body" 
+    style='BOX-SIZING: border-box; FONT-SIZE: 14px; OVERFLOW: visible; WORD-WRAP: break-word; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WIDTH: 698px; PADDING-BOTTOM: 15px; PADDING-TOP: 15px; PADDING-LEFT: 15px; DISPLAY: block !important; LINE-HEIGHT: 1.5; PADDING-RIGHT: 15px'>
+      <H2 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px !important; BORDER-BOTTOM: rgb(234,236,239) 1px solid; FONT-WEIGHT: 600; PADDING-BOTTOM: 0.3em; LINE-HEIGHT: 1.25">为什么这样关闭Chrome安全策略跨域？</H2>
+      <P 
+      style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px">做前端的知道<STRONG 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: 600">跨域</STRONG>这个问题，现在前后端开发分离了，然后开发联调的时候，我们本地的前端项目访问后端的接口时，就报跨域问题。 
+      跨域问题 有多种解决方案，比如 CORS跨域，ＪＳＯＮＰ，HTML5 的 postMessage 等。</P>
+      <P 
+      style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px">当遇到以下情况，则可以简单的使用 
+      关闭Chrome 安全策略跨域</P>
+      <OL 
+      style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+        <LI 
+        style="BOX-SIZING: border-box; MARGIN-LEFT: 0px">开发时跨域，上线后，部署在一个域名下没有跨域问题</LI>
+        <LI 
+        style="BOX-SIZING: border-box; MARGIN-TOP: 0.25em; MARGIN-LEFT: 0px">开发时，临时解决跨域问题</LI></OL>
+      <BLOCKQUOTE 
+      style="BOX-SIZING: border-box; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; MARGIN: 0px 0px 16px; PADDING-RIGHT: 1em">
+        <P 
+        style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">只有开发时用这个，其他时候，就不要使用这种方式了</P></BLOCKQUOTE>
+      <H2 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 24px; BORDER-BOTTOM: rgb(234,236,239) 1px solid; FONT-WEIGHT: 600; PADDING-BOTTOM: 0.3em; LINE-HEIGHT: 1.25">切记切记</H2>
+      <BLOCKQUOTE 
+      style="BOX-SIZING: border-box; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; MARGIN: 0px 0px 16px; PADDING-RIGHT: 1em">
+        <P 
+        style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px">切记切记，使用这个打开之前，判断下chrome是否都关闭掉了。<BR 
+        style="BOX-SIZING: border-box">mac 下 ， command+q 就退出了<BR 
+        style="BOX-SIZING: border-box">window下，如果不确定是否全部退出，打开任务管理器， 找下 chrome 
+        是否还有打开的。</P>
+        <P 
+        style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">有时候window下，明明感觉已经全部关闭了，可是打开之后，发现居然居然居然没有用。然后打开任务管理器一看，原来还有未关闭的。 
+        只是图标没有在任务栏。<BR style="BOX-SIZING: border-box"><A 
+        style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(3,102,214); BACKGROUND-COLOR: transparent" 
+        href="https://cloud.githubusercontent.com/assets/7597581/18979307/429dffc8-86fc-11e6-8620-a113d314eade.png" 
+        target=_blank><IMG 
+        style="BORDER-TOP-STYLE: none; BOX-SIZING: content-box; MAX-WIDTH: 100%; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BACKGROUND-COLOR: rgb(255,255,255)" 
+        alt=image 
+        src="https://cloud.githubusercontent.com/assets/7597581/18979307/429dffc8-86fc-11e6-8620-a113d314eade.png"></A></P></BLOCKQUOTE>
+      <H2 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 24px; BORDER-BOTTOM: rgb(234,236,239) 1px solid; FONT-WEIGHT: 600; PADDING-BOTTOM: 0.3em; LINE-HEIGHT: 1.25">mac</H2>
+      <BLOCKQUOTE 
+      style="BOX-SIZING: border-box; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; MARGIN: 0px 0px 16px; PADDING-RIGHT: 1em">
+        <P 
+        style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px">直接用命令行打开，目前使用该命令打开还没有遇到啥问题，百试百灵。 
+        safari 也一样</P>
+        <DIV class="highlight highlight-source-shell" 
+        style="BOX-SIZING: border-box; OVERFLOW: visible !important; MARGIN-BOTTOM: 0px; BACKGROUND-COLOR: transparent"><PRE style='BOX-SIZING: border-box; FONT-SIZE: 11px; OVERFLOW: auto; WORD-WRAP: normal; MARGIN-BOTTOM: 0px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; MARGIN-TOP: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 16px; PADDING-TOP: 16px; PADDING-LEFT: 16px; LINE-HEIGHT: 1.45; PADDING-RIGHT: 16px; BACKGROUND-COLOR: rgb(246,248,250); border-radius: 3px'>//chrome 浏览器
+open -a <SPAN class=pl-s style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)"><SPAN class=pl-pds style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)">"</SPAN>Google Chrome<SPAN class=pl-pds style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)">"</SPAN></SPAN> --args --disable-web-security  --user-data-dir
+//safari 浏览器 
+open -a <SPAN class=pl-s style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)"><SPAN class=pl-pds style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)">'</SPAN>/Applications/Safari.app<SPAN class=pl-pds style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)">'</SPAN></SPAN> --args --disable-web-security --user-data-dir </PRE></DIV></BLOCKQUOTE>
+      <H2 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 24px; BORDER-BOTTOM: rgb(234,236,239) 1px solid; FONT-WEIGHT: 600; PADDING-BOTTOM: 0.3em; LINE-HEIGHT: 1.25">window下</H2>
+      <BLOCKQUOTE 
+      style="BOX-SIZING: border-box; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; MARGIN: 0px 0px 16px; PADDING-RIGHT: 1em">
+        <P 
+        style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">这里的chrome.exe 
+        地址根据自己安装路径来, 测试过 chrome45,48,53版本。<BR 
+        style="BOX-SIZING: border-box">45版本 只需要<SPAN>&nbsp;</SPAN><CODE 
+        style='BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0.4em; MARGIN: 0px; PADDING-RIGHT: 0.4em; border-radius: 3px'>--disable-web-security</CODE><BR 
+        style="BOX-SIZING: border-box">48,53版本需要 额外添加<SPAN>&nbsp;</SPAN><CODE 
+        style='BOX-SIZING: border-box; FONT-SIZE: 11px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; PADDING-BOTTOM: 0.2em; PADDING-TOP: 0.2em; PADDING-LEFT: 0.4em; MARGIN: 0px; PADDING-RIGHT: 0.4em; border-radius: 3px'>--user-data-dir</CODE></P></BLOCKQUOTE>
+      <H3 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.25em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 24px; FONT-WEIGHT: 600; LINE-HEIGHT: 1.25">一、命令行打开方式</H3>
+      <DIV class="highlight highlight-source-shell" 
+      style="BOX-SIZING: border-box; OVERFLOW: visible !important; MARGIN-BOTTOM: 16px; BACKGROUND-COLOR: transparent"><PRE style='BOX-SIZING: border-box; FONT-SIZE: 11px; OVERFLOW: auto; WORD-WRAP: normal; MARGIN-BOTTOM: 0px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; MARGIN-TOP: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 16px; PADDING-TOP: 16px; PADDING-LEFT: 16px; LINE-HEIGHT: 1.45; PADDING-RIGHT: 16px; BACKGROUND-COLOR: rgb(246,248,250); border-radius: 3px'><SPAN class=pl-s style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)"><SPAN class=pl-pds style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)">"</SPAN>C:\Users\UserName\AppData\Local\Google\Chrome\Application\chrome.exe<SPAN class=pl-pds style="BOX-SIZING: border-box; COLOR: rgb(3,47,98)">"</SPAN></SPAN> --disable-web-security --user-data-dir</PRE></DIV>
+      <P 
+      style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px">//不知道chrome.exe 
+      地址的话<BR style="BOX-SIZING: border-box">右键chrome图标--&gt;属性--&gt;如下图--&gt;图中 
+      目标 就是文件的位置了，直接复制出来即可</P>
+      <H3 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.25em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 24px; FONT-WEIGHT: 600; LINE-HEIGHT: 1.25">二、配置快捷方式打开【简单粗暴】</H3>
+      <P 
+      style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px">chrome53 
+      版本，设置这样好像不起作用。【操作系统 window7,64位】，<STRONG 
+      style="BOX-SIZING: border-box; FONT-WEIGHT: 600">只能用命令行</STRONG></P>
+      <OL 
+      style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px; PADDING-LEFT: 2em">
+        <LI style="BOX-SIZING: border-box; MARGIN-LEFT: 0px">新建桌面快捷方式
+        <BLOCKQUOTE 
+        style="BOX-SIZING: border-box; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; MARGIN: 0px 0px 16px; PADDING-RIGHT: 1em">
+          <P 
+          style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">注意：chrome48,版本需要添加上 
+          --user-data-dir</P></BLOCKQUOTE></LI></OL>
+      <DIV class="highlight highlight-source-shell" 
+      style="BOX-SIZING: border-box; OVERFLOW: visible !important; MARGIN-BOTTOM: 16px; BACKGROUND-COLOR: transparent"><PRE style='BOX-SIZING: border-box; FONT-SIZE: 11px; OVERFLOW: auto; WORD-WRAP: normal; MARGIN-BOTTOM: 0px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; MARGIN-TOP: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 16px; PADDING-TOP: 16px; PADDING-LEFT: 16px; LINE-HEIGHT: 1.45; PADDING-RIGHT: 16px; BACKGROUND-COLOR: rgb(246,248,250); border-radius: 3px'>//快捷方式后面  空一格，再加上
+--disable-web-security --user-data-dir</PRE></DIV>
+      <P style="BOX-SIZING: border-box; MARGIN-BOTTOM: 16px; MARGIN-TOP: 0px"><A 
+      style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(3,102,214); BACKGROUND-COLOR: transparent" 
+      href="https://cloud.githubusercontent.com/assets/7597581/18979162/2224aa4a-86fb-11e6-9dda-00ac857982a9.png" 
+      target=_blank><IMG 
+      style="BORDER-TOP-STYLE: none; BOX-SIZING: content-box; MAX-WIDTH: 100%; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BACKGROUND-COLOR: rgb(255,255,255)" 
+      alt=image 
+      src="https://cloud.githubusercontent.com/assets/7597581/18979162/2224aa4a-86fb-11e6-9dda-00ac857982a9.png"></A></P>
+      <H2 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 24px; BORDER-BOTTOM: rgb(234,236,239) 1px solid; FONT-WEIGHT: 600; PADDING-BOTTOM: 0.3em; LINE-HEIGHT: 1.25">Linux【未测试过】</H2><PRE style='BOX-SIZING: border-box; FONT-SIZE: 11px; OVERFLOW: auto; WORD-WRAP: normal; MARGIN-BOTTOM: 16px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; MARGIN-TOP: 0px; PADDING-BOTTOM: 16px; PADDING-TOP: 16px; PADDING-LEFT: 16px; LINE-HEIGHT: 1.45; PADDING-RIGHT: 16px; BACKGROUND-COLOR: rgb(246,248,250); border-radius: 3px'><CODE style='BOX-SIZING: border-box; FONT-SIZE: 11px; OVERFLOW: visible; WORD-WRAP: normal; BORDER-TOP: 0px; FONT-FAMILY: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace; BORDER-RIGHT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; WHITE-SPACE: pre; BORDER-BOTTOM: 0px; WORD-BREAK: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; DISPLAY: inline; PADDING-RIGHT: 0px; border-radius: 3px'>chromium-browser --disable-web-security  
+</CODE></PRE>
+      <H2 
+      style="BOX-SIZING: border-box; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 16px; MARGIN-TOP: 24px; BORDER-BOTTOM: rgb(234,236,239) 1px solid; FONT-WEIGHT: 600; PADDING-BOTTOM: 0.3em; LINE-HEIGHT: 1.25">成功效果</H2>
+      <BLOCKQUOTE 
+      style="BOX-SIZING: border-box; COLOR: rgb(106,115,125); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 1em; BORDER-LEFT: rgb(223,226,229) 0.25em solid; MARGIN: 0px; PADDING-RIGHT: 1em">
+        <P 
+        style="BOX-SIZING: border-box; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px">各个平台下的浏览器，都是差不多这个样子。<BR 
+        style="BOX-SIZING: border-box"><A 
+        style="BOX-SIZING: border-box; TEXT-DECORATION: none; COLOR: rgb(3,102,214); BACKGROUND-COLOR: transparent" 
+        href="https://cloud.githubusercontent.com/assets/7597581/18979059/6bf2d85a-86fa-11e6-95fe-972d75e69aa9.png" 
+        target=_blank><IMG 
+        style="BORDER-TOP-STYLE: none; BOX-SIZING: content-box; MAX-WIDTH: 100%; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BACKGROUND-COLOR: rgb(255,255,255)" 
+        alt=image 
+        src="https://cloud.githubusercontent.com/assets/7597581/18979059/6bf2d85a-86fa-11e6-95fe-972d75e69aa9.png"></A></P></BLOCKQUOTE></TD></TR></TBODY></TABLE></TASK-LISTS>
+<DIV 
+class="comment-reactions has-reactions js-reactions-container js-socket-channel js-updatable-content" 
+style="BOX-SIZING: border-box; BORDER-TOP: rgb(225,228,232) 1px solid" 
+data-url="/_render_node/MDU6SXNzdWUxODAyMDczMjM=/comments/reactions" 
+data-channel="reaction:issue:180207323">
+<FORM class=js-pick-reaction style="BOX-SIZING: border-box" accept-charset=UTF-8 
+method=post action=https://github.com/users/zhongxia245/reactions>
+<DIV class=comment-reactions-options style="BOX-SIZING: border-box"><BUTTON 
+aria-label="chenxiaochun, sanjiewuan, justbilt, and kaykie reacted with thumbs up emoji" 
+class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline " 
+style="BORDER-LEFT-WIDTH: 0px; BOX-SIZING: border-box; OVERFLOW: visible; CURSOR: pointer; TEXT-DECORATION: none; FONT-FAMILY: inherit; BORDER-RIGHT: rgb(225,228,232) 1px solid; BORDER-TOP-COLOR: ; WHITE-SPACE: nowrap; BORDER-BOTTOM-WIDTH: 0px; POSITION: relative; TEXT-TRANSFORM: none; FLOAT: left; BORDER-LEFT-COLOR: ; COLOR: rgb(3,102,214); PADDING-BOTTOM: 7px; BORDER-BOTTOM-COLOR: ; PADDING-TOP: 9px; PADDING-LEFT: 15px; MARGIN: 0px; DISPLAY: inline-block; LINE-HEIGHT: 18px; PADDING-RIGHT: 15px; BORDER-TOP-WIDTH: 0px; BACKGROUND-COLOR: transparent; border-radius: 0px 0px 0px 2px; font-stretch: inherit; -webkit-appearance: none; user-select: none; border-image: initial" 
+type=submit name=input[content] value="THUMBS_UP react"><G-EMOJI 
+class="emoji mr-1" 
+style='BOX-SIZING: border-box; FONT-SIZE: 18px; FONT-FAMILY: "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol"; VERTICAL-ALIGN: middle; FONT-WEIGHT: 400; LINE-HEIGHT: 20px; MARGIN-RIGHT: 4px !important' 
+fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png" 
+alias="+1">??</G-EMOJI><SPAN>&nbsp;</SPAN>4</BUTTON></DIV></FORM><DETAILS 
+class="dropdown-details details-reset position-relative float-left reaction-popover-container js-reaction-popover-container" 
+style="BOX-SIZING: border-box; POSITION: relative !important; FLOAT: left !important; Z-INDEX: 100; DISPLAY: inline-block"><SUMMARY 
+aria-haspopup=true aria-label="Add your reaction" 
+class="btn-link reaction-summary-item add-reaction-btn" 
+style="LIST-STYLE-TYPE: none; BOX-SIZING: border-box; CURSOR: pointer; TEXT-DECORATION: none; BORDER-TOP: 0px; BORDER-RIGHT: 0px; WHITE-SPACE: nowrap; BORDER-BOTTOM: 0px; FLOAT: left; COLOR: rgb(3,102,214); PADDING-BOTTOM: 7px; PADDING-TOP: 9px; PADDING-LEFT: 15px; BORDER-LEFT: 0px; DISPLAY: inline-block; LINE-HEIGHT: 18px; PADDING-RIGHT: 15px; BACKGROUND-COLOR: transparent; -webkit-appearance: none; user-select: none; opacity: 1; transition: opacity 0.1s ease-in-out"><SVG 
+aria-hidden=true class="octicon octicon-plus-small add-reaction-plus-icon" 
+height="16" width="7" version="1.1" viewBox="0 0 7 16"><PATH 
+d="M4 7V4H3v3H0v1h3v3h1V8h3V7H4z" 
+fill-rule="evenodd"></PATH></SVG><SPAN>&nbsp;</SPAN><SVG aria-hidden=true 
+class="octicon octicon-smiley" height="16" width="16" version="1.1" 
+viewBox="0 0 16 16"><PATH 
+d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 0 1-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 0 1-1.45-2.17A6.59 6.59 0 0 1 1.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 0 1 8 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z" 
+fill-rule="evenodd"></PATH></SVG></SUMMARY></DETAILS></DIV></DIV></DIV></DIV></DIV>
+<DIV id=js-timeline-progressive-loader style="BOX-SIZING: border-box" 
+data-timeline-item-src="zhongxia245/blog/timeline?id=MDU6SXNzdWUxODAyMDczMjM%3D&amp;variables%5Bafter%5D=Y3Vyc29yOnYyOpPPAAABYMAbeJAAqTM1NTIxNzI2Nw%3D%3D&amp;variables%5Bfirst%5D=80"></DIV>
+<DIV class="js-timeline-item js-timeline-progressive-focus-container" 
+style="BOX-SIZING: border-box" 
+data-gid="MDIwOkNyb3NzUmVmZXJlbmNlZEV2ZW50MjI5MTU3MjA0">
+<DIV class=discussion-item 
+style="BOX-SIZING: border-box; POSITION: relative; PADDING-LEFT: 25px; MARGIN: 15px 0px 15px 79px">
+<H3 id=ref-issue-182978120 class="discussion-item-header f5 text-normal" 
+style="BOX-SIZING: border-box; FONT-SIZE: 14px !important; WORD-WRAP: break-word; MARGIN-BOTTOM: 0px; MARGIN-TOP: 0px; FONT-WEIGHT: 400 !important; COLOR: rgb(88,96,105); PADDING-BOTTOM: 5px; PADDING-TOP: 5px; MIN-HEIGHT: 30px; LINE-HEIGHT: 22px"><SPAN 
+class=discussion-item-icon 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: rgb(255,255,255) 2px solid; HEIGHT: 32px; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; BORDER-RIGHT: rgb(255,255,255) 2px solid; WIDTH: 32px; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: -7px; BORDER-BOTTOM: rgb(255,255,255) 2px solid; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT: 400; COLOR: rgb(88,96,105); FONT-STYLE: normal; TEXT-ALIGN: center; MARGIN-LEFT: -40px; BORDER-LEFT: rgb(255,255,255) 2px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; LINE-HEIGHT: 28px; BACKGROUND-COLOR: rgb(230,235,241); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style: initial; text-decoration-color: initial; border-radius: 50%'><SVG 
+aria-hidden=true class="octicon octicon-bookmark" height="16" width="10" 
+version="1.1" viewBox="0 0 10 16"><PATH 
+d="M9 0H1C.27 0 0 .27 0 1v15l5-3.09L10 16V1c0-.73-.27-1-1-1zm-.78 4.25L6.36 5.61l.72 2.16c.06.22-.02.28-.2.17L5 6.6 3.12 7.94c-.19.11-.25.05-.2-.17l.72-2.16-1.86-1.36c-.17-.16-.14-.23.09-.23l2.3-.03.7-2.16h.25l.7 2.16 2.3.03c.23 0 .27.08.09.23h.01z" 
+fill-rule="evenodd"></PATH></SVG></SPAN><A 
+aria-describedby=hovercard-aria-description class=d-inline-block 
+style='BOX-SIZING: border-box; FONT-SIZE: 14px; TEXT-DECORATION: none; FONT-FAMILY: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(3,102,214); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline-block !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; -webkit-text-stroke-width: 0px; font-variant-ligatures: normal; font-variant-caps: normal' 
+href="https://github.com/zhongxia245" data-octo-dimensions="link_type:self" 
+data-octo-click="hovercard-link-click" data-hovercard-user-id="7597581"><BR 
+class=Apple-interchange-newline></A></H3></DIV></DIV></DIV></DIV></DIV>
+</BODY>
+</HTML>
