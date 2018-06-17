@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>mac配置ssh私钥</TITLE>
+</HEAD>
+<BODY>
+<P>mac配置ssh私钥</P>
+<P>命令行 cd /Users/用户名/.ssh</P>
+<P>执行ls -l，如果已经配置私钥会有如下文件（<FONT color=#ff0000>没配置就按如下配置</FONT>）</P>
+<P>-rw-r--r-- **** config</P>
+<P>-rw------- **** id_rsa</P>
+<P>-rw-r--r-- **** id_rsa.pub</P>
+<P>-rw-r--r-- **** known_hosts</P>
+<P>注册权限</P>
+<P>文件内容如下</P>
+<P>config：</P>#gitlab.test.com<BR>Host gitlab.test.com<BR>HostName 
+gitlab.test.com<BR>PreferredAuthentications publickey<BR>IdentityFile 
+~/.ssh/id_rsa
+<P>id_rsa：</P>
+<P>-----BEGIN RSA PRIVATE 
+KEY-----<BR>MIIEpQIBAAKCAQEA9uTQhtkOAN7hk2BLaOBqE8v7L/TYpclfxKBY/P/oAfjG7BYj<BR>F3MVB/HH9MHATyI7fO/Z88T8iM28LBOrojd2ln+I6yPUzUIPDbmJ8s0FI28cTgM6<BR>SltHv12ffs3BiII62bYRFCbil5tOVgGdzRs/iVDCj3V2ckeQp03k2n4ClxuR6a9+<BR>q1Z9pgnGbsq4+JVutF114w6oJ/GnVY9rGTgANGWGSqLMfy47WGrzWGaoHLGsfckp<BR>jCYhpQTSdKAZQoc4SxJMPOQtfrWltPZTi3mNGaShzU2VcSrGXu2a81NaaGdsP8Y1<BR>rCtl9i0P6KOBB5G5235R7m5SsMUFjQKLqxiJcQIDAQABAoIBAQCdNQFae+cgwsqb<BR>ztr1gr/Irz/YP22b0ue6Ceff4QrYBpKTTV021z5y+o852A0d1kxOt2Luh2XNrkK9<BR>RiEpf2txVO/X2c7si72OHbAq/ETjVSKOwhthsVG0FmcylM1AoLvcWMPzMvdhVbDB<BR>rvHN4iXIx7W7Jy4ugkcnYL/yJ/56PAG0Gw/0TqQ0Nzw6OD3RwrakEXrCOyzKp5D2<BR>RKY8d3Jz4rR8zbFDFFsOTT++P1PYAWrvJcqbUIV/dfatlXXwv9vjtSEmA7G+7FFy<BR>Cn/nuTrKsAiHUbcgJT6xHC+XQTOrDSLQ5Ex8lVlIAMLWSenu3Iil/c3kOZFFoi5L<BR>sOaLvoXJAoGBAP4YYCjBq9Es4/7Yk3OH9sBppeZ1JRZdIuS5AmZBuMjWgbVPD8E/<BR>pB4UnTVyNLrNFvZo/qM3sENF0yM0pNwJi9DNg0tu/x7ur20TqRb0DWo1/XYMVMun<BR>2Qx4+5IeT+IDC9cUrHHbnTcZtaK6rI6Yk8rGol5uU9S41NyfzUPMB/ufAoGBAPi+<BR>nnXURw5EV/7QgTTED3hy+/s6yVHCcBFVK490PWXY3usoACelopdBRjn+l5pAZRaj<BR>NZOJh9zgBotwP4iEr2drZMqUOUAp7j6gqf5JTwrg77lxuPwg3v2GUzQVwQnSr1vP<BR>GSSaJ3PeNWAbMz/feXb5PPQQiqY3hXEFp1KqF2DvAoGAMSCHXvnq/VtfjYNUJu8v<BR>vw3uHHujuwow1+YJV7n3PyVyGJr7odJrKcG0j4PQPBmxCd1M9kOrGaajZtgj08Mo<BR>vCsv6mLAgruFQWKeu6hd+54Krks+Dc4bAfVWNm8T5M/P9zqxCKZ8ZA3dd2P+Puez<BR>E26KMBXGsYc26J0g8628EWMCgYEA890Vx1kNLIyOZJAQDCYnMKQyLDSPCKwCaMvC<BR>QArq4r3ClnMJ69S0WWuyKMtT3/M/5/isXu+XllC/udabQwEqYc7k6sJ0elZhb17e<BR>KiG+72BlRb6bZ/vmAlG9orOtJC88olqgQMUs5qi0VXt1PCqgj6Z8Pp80/w4xsgOj<BR>-----END 
+RSA PRIVATE KEY-----</P>
+<P>id_rsa.pub：</P>
+<P>ssh-rsa 
+AAAAB3NzaC1yc2EAAAADAQABAAABAQD25NCG2Q4A3uGTYEto4GoTy/sv9NilyV/EoFj8CnTeTafgKXG5Hpr36rVn2mCcZuyrj4lW60XXXjDqgn8adVj2sZOAA0ZYZKosx/LjtYavNYZqgcsax9ySmMJiGlBNJ0oBlChzhLEkw85C1+taW09lOLeY0ZpKHNTZVxKsZe7ZrzU1poZ2w/xjWsK2X2LQ/oo4EHkbnbflHublKwxQWNAourGIlx 
+<A href="mailto:huangwx@zoteri.net">huangwx@zoteri.net</A><BR></P>
+<P>known_hosts：</P>
+<P>gitlab.test.com,192.168.0.80 ecdsa-sha2-nistp256 
+AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlywawd2hdYAFEzUTgWC5FIqQR/tr7vgfteDQ=<BR>github.com,13.250.177.223 
+ssh-rsa 
+AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==<BR>52.74.223.19 
+ssh-rsa 
+AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>
