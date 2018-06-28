@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>gson使用</TITLE>
+</HEAD>
+<BODY>
+<UL 
+style='BOX-SIZING: border-box; FONT-SIZE: 16px; FONT-FAMILY: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(47,47,47); PADDING-BOTTOM: 0px; FONT-STYLE: normal; PADDING-TOP: 0px; PADDING-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: -5px 0px 20px 20px; LETTER-SPACING: normal; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial'>
+  <LI style="BOX-SIZING: border-box; LINE-HEIGHT: 30px"><A 
+  style="BOX-SIZING: border-box; CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(49,148,208); BACKGROUND-COLOR: transparent" 
+  href="https://www.jianshu.com/p/e740196225a4" 
+  target=_blank>你真的会用Gson吗?Gson使用指南（一）</A></LI>
+  <LI style="BOX-SIZING: border-box; LINE-HEIGHT: 30px"><A 
+  style="BOX-SIZING: border-box; CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(49,148,208); BACKGROUND-COLOR: transparent" 
+  href="https://www.jianshu.com/p/c88260adaf5e" 
+  target=_blank>你真的会用Gson吗?Gson使用指南（二）</A></LI>
+  <LI style="BOX-SIZING: border-box; LINE-HEIGHT: 30px"><A 
+  style="BOX-SIZING: border-box; CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(49,148,208); BACKGROUND-COLOR: transparent" 
+  href="https://www.jianshu.com/p/0e40a52c0063" 
+  target=_blank>你真的会用Gson吗?Gson使用指南（三）</A></LI>
+  <LI style="BOX-SIZING: border-box; LINE-HEIGHT: 30px"><A 
+  style="BOX-SIZING: border-box; CURSOR: pointer; TEXT-DECORATION: none; COLOR: rgb(49,148,208); BACKGROUND-COLOR: transparent" 
+  href="https://www.jianshu.com/p/3108f1e44155" 
+  target=_blank>你真的会用Gson吗?Gson使用指南（四）</A></LI></UL><PRE style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; COLOR: #a9b7c6; BACKGROUND-COLOR: #2b2b2b">JsonParser parser = <SPAN style="COLOR: #cc7832">new </SPAN>JsonParser()<SPAN style="COLOR: #cc7832">;<BR></SPAN>JsonObject json<SPAN style="COLOR: #cc7832">;<BR></SPAN><SPAN style="COLOR: #cc7832">try</SPAN>{<BR>   json = (JsonObject) parser.parse(s)<SPAN style="COLOR: #cc7832">;<BR></SPAN>}<SPAN style="COLOR: #cc7832">catch </SPAN>(Exception e){<BR>   <SPAN style="COLOR: #9876aa">tv_result</SPAN>.setText(<SPAN style="COLOR: #6a8759">"</SPAN><SPAN style="FONT-FAMILY: '宋体'; COLOR: #6a8759">数据解释出错</SPAN><SPAN style="COLOR: #6a8759">"</SPAN>)<SPAN style="COLOR: #cc7832">;<BR></SPAN><SPAN style="COLOR: #cc7832">   return;<BR></SPAN>}<BR>String ret_code = json.get(<SPAN style="COLOR: #6a8759">"ret_code"</SPAN>).getAsString()<SPAN style="COLOR: #cc7832">;</SPAN></PRE>
+<DIV>
+<DIV>
+<H2><FONT 
+size=3>以上为普通json字符串(s)解释，方便获取单个字段值。在android中可以定义一个数据类（匹配json字符串字段）在解释的时候直接用预定的类来解释更简捷。</FONT></H2>
+<P>示例：</P><PRE style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; COLOR: #a9b7c6; BACKGROUND-COLOR: #2b2b2b"><SPAN style="COLOR: #cc7832">public class </SPAN>AuthData {<BR>    <SPAN style="COLOR: #cc7832">public </SPAN>String <SPAN style="COLOR: #9876aa">mobile</SPAN><SPAN style="COLOR: #cc7832">;</SPAN><SPAN style="COLOR: #cc7832"><BR></SPAN><SPAN style="COLOR: #cc7832"><BR></SPAN><SPAN style="COLOR: #cc7832">    public </SPAN><SPAN style="COLOR: #ffc66d">AuthData</SPAN>(String mobile) {<BR>        <SPAN style="COLOR: #cc7832">this</SPAN>.<SPAN style="COLOR: #9876aa">mobile </SPAN>= mobile<SPAN style="COLOR: #cc7832">;<BR></SPAN><SPAN style="COLOR: #cc7832">    </SPAN>}<BR>}<PRE style="FONT-SIZE: 16px; OVERFLOW: auto; BORDER-TOP: 0px; FONT-FAMILY: Inconsolata, Courier, monospace; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(68,68,68); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit">JsonParser jsonParser = <SPAN class=keyword style="FONT-SIZE: 16px; BORDER-TOP: 0px; FONT-FAMILY: inherit; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; BORDER-BOTTOM: 0px; FONT-WEIGHT: bold; COLOR: rgb(0,136,0); PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; BORDER-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; font-stretch: inherit">new</SPAN> JsonParser();
+AuthData data = jsonParser.parse(s, AuthData.class);</PRE><PRE style="FONT-SIZE: 16px; OVERFLOW: auto; BORDER-TOP: 0px; FONT-FAMILY: Inconsolata, Courier, monospace; BORDER-RIGHT: 0px; VERTICAL-ALIGN: baseline; WORD-SPACING: 0px; BORDER-BOTTOM: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(68,68,68); PADDING-BOTTOM: 10px; FONT-STYLE: normal; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: 0px; ORPHANS: 2; WIDOWS: 2; MARGIN: 0px 0px 10px; LETTER-SPACING: normal; LINE-HEIGHT: 18px; PADDING-RIGHT: 0px; BACKGROUND-COLOR: rgb(245,245,245); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit">data.mobile//使用</PRE></PRE>
+<P>&nbsp;</P>
+<H2>一、Gson的基本用法</H2>
+<P>Gson提供了<CODE>fromJson()</CODE> 和<CODE>toJson()</CODE> 
+两个直接用于解析和生成的方法，前者实现反序列化，后者实现了序列化。同时每个方法都提供了重载方法，我常用的总共有5个。</P>
+<P><STRONG>基本数据类型的解析</STRONG></P><PRE class="hljs java"><CODE class=java>Gson gson = <SPAN class=hljs-keyword>new</SPAN> Gson();
+<SPAN class=hljs-keyword>int</SPAN> i = gson.fromJson(<SPAN class=hljs-string>"100"</SPAN>, <SPAN class=hljs-keyword>int</SPAN>.class);              <SPAN class=hljs-comment>//100</SPAN>
+<SPAN class=hljs-keyword>double</SPAN> d = gson.fromJson(<SPAN class=hljs-string>"\"99.99\""</SPAN>, <SPAN class=hljs-keyword>double</SPAN>.class);  <SPAN class=hljs-comment>//99.99</SPAN>
+<SPAN class=hljs-keyword>boolean</SPAN> b = gson.fromJson(<SPAN class=hljs-string>"true"</SPAN>, <SPAN class=hljs-keyword>boolean</SPAN>.class);     <SPAN class=hljs-comment>// true</SPAN>
+String str = gson.fromJson(<SPAN class=hljs-string>"String"</SPAN>, String.class);   <SPAN class=hljs-comment>// String</SPAN>
+</CODE></PRE>
+<P>注：不知道你是否注意到了第2、3行有什么不一样没</P>
+<P><STRONG>基本数据类型的生成</STRONG></P><PRE class="hljs java"><CODE class=java>Gson gson = <SPAN class=hljs-keyword>new</SPAN> Gson();
+String jsonNumber = gson.toJson(<SPAN class=hljs-number>100</SPAN>);       <SPAN class=hljs-comment>// 100</SPAN>
+String jsonBoolean = gson.toJson(<SPAN class=hljs-keyword>false</SPAN>);    <SPAN class=hljs-comment>// false</SPAN>
+String jsonString = gson.toJson(<SPAN class=hljs-string>"String"</SPAN>); <SPAN class=hljs-comment>//"String"</SPAN>
+</CODE></PRE>
+<P><STRONG>POJO类的生成与解析</STRONG></P><PRE class="hljs java"><CODE class=java><SPAN class=hljs-keyword>public</SPAN> <SPAN class=hljs-class><SPAN class=hljs-keyword>class</SPAN> <SPAN class=hljs-title>User</SPAN> </SPAN>{
+    <SPAN class=hljs-comment>//省略其它</SPAN>
+    <SPAN class=hljs-keyword>public</SPAN> String name;
+    <SPAN class=hljs-keyword>public</SPAN> <SPAN class=hljs-keyword>int</SPAN> age;
+    <SPAN class=hljs-keyword>public</SPAN> String emailAddress;
+}
+</CODE></PRE>
+<P>生成JSON：</P><PRE class="hljs java"><CODE class=java>Gson gson = <SPAN class=hljs-keyword>new</SPAN> Gson();
+User user = <SPAN class=hljs-keyword>new</SPAN> User(<SPAN class=hljs-string>"怪盗kidou"</SPAN>,<SPAN class=hljs-number>24</SPAN>);
+String jsonObject = gson.toJson(user); <SPAN class=hljs-comment>// {"name":"怪盗kidou","age":24}</SPAN>
+</CODE></PRE>
+<P>解析JSON：</P><PRE class="hljs java"><CODE class=java>Gson gson = <SPAN class=hljs-keyword>new</SPAN> Gson();
+String jsonString = <SPAN class=hljs-string>"{\"name\":\"怪盗kidou\",\"age\":24}"</SPAN>;
+User user = gson.fromJson(jsonString, User.class);
+</CODE></PRE>
+<H2>二、属性重命名 @SerializedName 注解的使用</H2>
+<P>从上面POJO的生成与解析可以看出json的字段和值是的名称和类型是一一对应的，但也有一定容错机制(如第一个例子第3行将字符串的99.99转成double型，你可别告诉我都是字符串啊)，但有时候也会出现一些不和谐的情况，如：<BR>期望的json格式</P><PRE class="hljs json"><CODE class=json>{<SPAN class=hljs-attr>"name"</SPAN>:<SPAN class=hljs-string>"怪盗kidou"</SPAN>,<SPAN class=hljs-attr>"age"</SPAN>:<SPAN class=hljs-number>24</SPAN>,<SPAN class=hljs-attr>"emailAddress"</SPAN>:<SPAN class=hljs-string>"ikidou@example.com"</SPAN>}
+</CODE></PRE>
+<P>实际</P><PRE class="hljs json"><CODE class=json>{<SPAN class=hljs-attr>"name"</SPAN>:<SPAN class=hljs-string>"怪盗kidou"</SPAN>,<SPAN class=hljs-attr>"age"</SPAN>:<SPAN class=hljs-number>24</SPAN>,<SPAN class=hljs-attr>"email_address"</SPAN>:<SPAN class=hljs-string>"ikidou@example.com"</SPAN>}
+</CODE></PRE>
+<P>这对于使用PHP作为后台开发语言时很常见的情况，php和js在命名时一般采用下划线风格，而Java中一般采用的驼峰法，让后台的哥们改吧 
+前端和后台都不爽，但要自己使用下划线风格时我会感到不适应，怎么办?难到没有两全齐美的方法么?</P>
+<P>我们知道Gson在序列化和反序列化时需要使用反射，说到反射就不得不想到注解,一般各类库都将注解放到<CODE>annotations</CODE>包下，打开源码在<CODE>com.google.gson</CODE>包下果然有一个<CODE>annotations</CODE>，里面有一个<CODE>SerializedName</CODE>的注解类，这应该就是我们要找的。</P>
+<P>那么对于json中<CODE>email_address</CODE>这个属性对应POJO的属性则变成：</P><PRE class="hljs java"><CODE class=java><SPAN class=hljs-meta>@SerializedName</SPAN>(<SPAN class=hljs-string>"email_address"</SPAN>)
+<SPAN class=hljs-keyword>public</SPAN> String emailAddress;
+</CODE></PRE>
+<P>这样的话，很好的保留了前端、后台、Android/java各自的命名习惯。</P>
+<P>你以为这样就完了么?</P>
+<P>如果接中设计不严谨或者其它地方可以重用该类，其它字段都一样，就<CODE>emailAddress</CODE> 
+字段不一样，比如有下面三种情况那怎么?重新写一个?</P><PRE class="hljs json"><CODE class=json>{<SPAN class=hljs-attr>"name"</SPAN>:<SPAN class=hljs-string>"怪盗kidou"</SPAN>,<SPAN class=hljs-attr>"age"</SPAN>:<SPAN class=hljs-number>24</SPAN>,<SPAN class=hljs-attr>"emailAddress"</SPAN>:<SPAN class=hljs-string>"ikidou@example.com"</SPAN>}
+</CODE></PRE><PRE class="hljs json"><CODE class=json>{<SPAN class=hljs-attr>"name"</SPAN>:<SPAN class=hljs-string>"怪盗kidou"</SPAN>,<SPAN class=hljs-attr>"age"</SPAN>:<SPAN class=hljs-number>24</SPAN>,<SPAN class=hljs-attr>"email_address"</SPAN>:<SPAN class=hljs-string>"ikidou@example.com"</SPAN>}
+</CODE></PRE><PRE class="hljs json"><CODE class=json>{<SPAN class=hljs-attr>"name"</SPAN>:<SPAN class=hljs-string>"怪盗kidou"</SPAN>,<SPAN class=hljs-attr>"age"</SPAN>:<SPAN class=hljs-number>24</SPAN>,<SPAN class=hljs-attr>"email"</SPAN>:<SPAN class=hljs-string>"ikidou@example.com"</SPAN>}
+</CODE></PRE>
+<P><STRONG>为POJO字段提供备选属性名</STRONG><BR><CODE>SerializedName</CODE>注解提供了两个属性，上面用到了其中一个，别外还有一个属性<CODE>alternate</CODE>，接收一个String数组。<BR>注：<CODE>alternate</CODE>需要2.4版本</P><PRE class="hljs java"><CODE class=java><SPAN class=hljs-meta>@SerializedName</SPAN>(value = <SPAN class=hljs-string>"emailAddress"</SPAN>, alternate = {<SPAN class=hljs-string>"email"</SPAN>, <SPAN class=hljs-string>"email_address"</SPAN>})
+<SPAN class=hljs-keyword>public</SPAN> String emailAddress;
+</CODE></PRE>
+<P>当上面的三个属性(email_address、email、emailAddress)都中出现任意一个时均可以得到正确的结果。<BR>注：当多种情况同时出时，以最后一个出现的值为准。</P><PRE class="hljs java"><CODE class=java>Gson gson = <SPAN class=hljs-keyword>new</SPAN> Gson();
+String json = <SPAN class=hljs-string>"{\"name\":\"怪盗kidou\",\"age\":24,\"emailAddress\":\"ikidou_1@example.com\",\"email\":\"ikidou_2@example.com\",\"email_address\":\"ikidou_3@example.com\"}"</SPAN>;
+User user = gson.fromJson(json, User.class);
+System.out.println(user.emailAddress); <SPAN class=hljs-comment>// ikidou_3@example.com</SPAN>
+</CODE></PRE>
+<H2>三、Gson中使用泛型</H2>
+<P>上面了解的JSON中的Number、boolean、Object和String，现在说一下Array。</P>
+<P>例：JSON字符串数组</P><PRE class="hljs json"><CODE class=json>[<SPAN class=hljs-string>"Android"</SPAN>,<SPAN class=hljs-string>"Java"</SPAN>,<SPAN class=hljs-string>"PHP"</SPAN>]
+</CODE></PRE>
+<P>当我们要通过Gson解析这个json时，一般有两种方式：使用数组，使用List。而List对于增删都是比较方便的，所以实际使用是还是List比较多。</P>
+<P>数组比较简单</P><PRE class="hljs java"><CODE class=java>Gson gson = <SPAN class=hljs-keyword>new</SPAN> Gson();
+String jsonArray = <SPAN class=hljs-string>"[\"Android\",\"Java\",\"PHP\"]"</SPAN>;
+String[] strings = gson.fromJson(jsonArray, String[].class);
+</CODE></PRE>
+<P>但对于List将上面的代码中的 <CODE>String[].class</CODE> 直接改为 
+<CODE>List&lt;String&gt;.class</CODE> 
+是行不通的。对于Java来说<CODE>List&lt;String&gt;</CODE> 和<CODE>List&lt;User&gt;</CODE> 
+这俩个的字节码文件只一个那就是<CODE>List.class</CODE>，这是Java泛型使用时要注意的问题 
+<STRONG>泛型擦除</STRONG>。</P>
+<P>为了解决的上面的问题，Gson为我们提供了<CODE>TypeToken</CODE>来实现对泛型的支持，所以当我们希望使用将以上的数据解析为<CODE>List&lt;String&gt;</CODE>时需要这样写。</P><PRE class="hljs java"><CODE class=java>Gson gson = <SPAN class=hljs-keyword>new</SPAN> Gson();
+String jsonArray = <SPAN class=hljs-string>"[\"Android\",\"Java\",\"PHP\"]"</SPAN>;
+String[] strings = gson.fromJson(jsonArray, String[].class);
+List&lt;String&gt; stringList = gson.fromJson(jsonArray, <SPAN class=hljs-keyword>new</SPAN> TypeToken&lt;List&lt;String&gt;&gt;() {}.getType());
+</CODE></PRE>
+<P>注：<CODE>TypeToken</CODE>的构造方法是<CODE>protected</CODE>修饰的,所以上面才会写成<CODE>new 
+TypeToken&lt;List&lt;String&gt;&gt;() {}.getType()</CODE> 而不是 <CODE>new 
+TypeToken&lt;List&lt;String&gt;&gt;().getType()</CODE></P>
+<P><STRONG>泛型解析对接口POJO的设计影响</STRONG><BR>泛型的引入可以减少无关的代码，如我现在所在公司接口返回的数据分为两类：</P><PRE class="hljs json"><CODE class=json>{<SPAN class=hljs-attr>"code"</SPAN>:<SPAN class=hljs-string>"0"</SPAN>,<SPAN class=hljs-attr>"message"</SPAN>:<SPAN class=hljs-string>"success"</SPAN>,<SPAN class=hljs-attr>"data"</SPAN>:{}}
+</CODE></PRE><PRE class="hljs json"><CODE class=json>{<SPAN class=hljs-attr>"code"</SPAN>:<SPAN class=hljs-string>"0"</SPAN>,<SPAN class=hljs-attr>"message"</SPAN>:<SPAN class=hljs-string>"success"</SPAN>,<SPAN class=hljs-attr>"data"</SPAN>:[]}
+</CODE></PRE>
+<P>我们真正需要的<CODE>data</CODE>所包含的数据，而<CODE>code</CODE>只使用一次，<CODE>message</CODE>则几乎不用。如果Gson不支持泛型或不知道Gson支持泛型的同学一定会这么定义POJO。</P><PRE class="hljs java"><CODE class=java><SPAN class=hljs-keyword>public</SPAN> <SPAN class=hljs-class><SPAN class=hljs-keyword>class</SPAN> <SPAN class=hljs-title>UserResponse</SPAN> </SPAN>{
+    <SPAN class=hljs-keyword>public</SPAN> <SPAN class=hljs-keyword>int</SPAN> code;
+    <SPAN class=hljs-keyword>public</SPAN> String message;
+    <SPAN class=hljs-keyword>public</SPAN> User data;
+}
+</CODE></PRE>
+<P>当其它接口的时候又重新定义一个<CODE>XXResponse</CODE>将<CODE>data</CODE>的类型改成XX，很明显<CODE>code</CODE>，和<CODE>message</CODE>被重复定义了多次，通过泛型的话我们可以将<CODE>code</CODE>和<CODE>message</CODE>字段抽取到一个<CODE>Result</CODE>的类中，这样我们只需要编写<CODE>data</CODE>字段所对应的POJO即可，更专注于我们的业务逻辑。如：</P><PRE class="hljs cpp"><CODE class=cpp><SPAN class=hljs-keyword>public</SPAN> <SPAN class=hljs-class><SPAN class=hljs-keyword>class</SPAN> <SPAN class=hljs-title>Result</SPAN>&lt;T&gt; {</SPAN>
+    <SPAN class=hljs-keyword>public</SPAN> <SPAN class=hljs-keyword>int</SPAN> code;
+    <SPAN class=hljs-keyword>public</SPAN> String message;
+    <SPAN class=hljs-keyword>public</SPAN> T data;
+}
+</CODE></PRE>
+<P>那么对于<CODE>data</CODE>字段是<CODE>User</CODE>时则可以写为 
+<CODE>Result&lt;User&gt;</CODE> ,当是个列表的时候为 
+<CODE>Result&lt;List&lt;User&gt;&gt;</CODE>，其它同理。</P>
+<P>PS：嫌每次 <CODE>new TypeToken&lt;Result&lt;XXX&gt;</CODE> 和 <CODE>new 
+TypeToken&lt;Result&lt;List&lt;XXX&gt;&gt;</CODE> 太麻烦, 想进一步封装? 查看我的另一篇博客：** <A 
+href="https://www.jianshu.com/p/d62c2be60617" target=_blank>《搞定Gson泛型封装》</A> 
+**</P>
+<H2>结语</H2>
+<P>本文主要通过代码向各位读者讲解了Gson的基本用法，以后还会更新更多更高级的用法，如果你还不熟悉 
+<STRONG>注解</STRONG>和<STRONG>泛型</STRONG> 
+那么你要多多努力啦。</P></DIV><BR><BR>作者：怪盗kidou<BR>链接：https://www.jianshu.com/p/e740196225a4<BR>來源：简书<BR>简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</DIV>
+<DIV>&nbsp;</DIV>
+<DIV>
+<H1 
+style="FONT-FAMILY: arial; WHITE-SPACE: normal; WORD-SPACING: 0px; MARGIN-TOP: 0px; TEXT-TRANSFORM: none; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">GSON - 
+JsonParser</FONT></FONT></H1>
+<DIV id=pageToc 
+style="FONT-SIZE: medium; BORDER-TOP: rgb(240,240,240) 1px solid; FONT-FAMILY: arial; BORDER-RIGHT: rgb(240,240,240) 1px solid; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(240,240,240) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; BORDER-LEFT: rgb(240,240,240) 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial" 
+itemtype="http://schema.org/SiteNavigationElement" itemscope="">
+<UL>
+  <LI style="MARGIN: 6px 0px"><A 
+  style="TEXT-DECORATION: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,153)" 
+  href="http://tutorials.jenkov.com/java-json/gson-jsonparser.html#creating-a-jsonparser"><FONT 
+  style="VERTICAL-ALIGN: inherit"><FONT 
+  style="VERTICAL-ALIGN: inherit">创建一个JsonParser</FONT></FONT></A></LI>
+  <LI style="MARGIN: 6px 0px"><A 
+  style="TEXT-DECORATION: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,153)" 
+  href="http://tutorials.jenkov.com/java-json/gson-jsonparser.html#parsing-json-into-a-tree-structure"><FONT 
+  style="VERTICAL-ALIGN: inherit"><FONT 
+  style="VERTICAL-ALIGN: inherit">将JSON解析为树结构</FONT></FONT></A></LI>
+  <LI style="MARGIN: 6px 0px"><A 
+  style="TEXT-DECORATION: none; FONT-WEIGHT: normal; COLOR: rgb(51,51,153)" 
+  href="http://tutorials.jenkov.com/java-json/gson-jsonparser.html#iterating-the-json-tree-structure"><FONT 
+  style="VERTICAL-ALIGN: inherit"><FONT 
+  style="VERTICAL-ALIGN: inherit">迭代JSON树结构</FONT></FONT></A></LI></UL></DIV>
+<DIV id=lastUpdate 
+style="FONT-SIZE: 0.8em; BORDER-TOP: medium none; FONT-FAMILY: arial; BORDER-RIGHT: rgb(240,240,240) 1px solid; WHITE-SPACE: normal; WORD-SPACING: 0px; BORDER-BOTTOM: rgb(240,240,240) 1px solid; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(102,102,102); PADDING-BOTTOM: 6px; FONT-STYLE: normal; PADDING-TOP: 6px; PADDING-LEFT: 24px; BORDER-LEFT: rgb(240,240,240) 1px solid; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; PADDING-RIGHT: 24px; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; border-image: initial">
+<TABLE>
+  
+  <TR>
+    <TD class=authorPhoto></TD>
+    <TD>
+      <P style="MARGIN: 0px 0px 6px"><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+      style="VERTICAL-ALIGN: inherit">Jakob 
+      Jenkov<SPAN>&nbsp;</SPAN></FONT></FONT><BR><FONT 
+      style="VERTICAL-ALIGN: inherit"><FONT 
+      style="VERTICAL-ALIGN: inherit">更新时间：2018-02-19</FONT></FONT></P>
+      <DIV class=authorSocialLinks><A title=在Twitter上关注 class=iconLink 
+      style="TEXT-DECORATION: none" href="https://twitter.com/#!/jjenkov" 
+      target=_blank><IMG 
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABpElEQVRIx2NgwAOUlZWVFBUVqxQUFPYC8XMg/gvFIPZekBxIDQOpQAkIgAashhr2nwAGqVkN0kOU4UBXxQA1fCbCYHT8GaSXkOFlZBiMgkFm4HM5RYYjWYLqE2iYkxMsOIMLJU6gEUqqIaCUdB1PQlgNT4rYFAG9uRVXqgHKpejp6TFBfa8BFJsPpEHx9xtZHTgJQ9M5hkEqKipyQLkkIPs7mtxM9PizsLBgAloQBZR7jObIKgZoJsKwAKjBCOpCNSB/KcwioKYIbIkEKLceizl7GaBhiS0lLNXS0mKCGaCmpsYDtMwO6G05HBZgSyTPGXBFEtAgI3V1dS5iMqeqqqoIrvjCaQEQzyW2aAH6NgSfBc9xSILioQIYTByELACq3Y4rKeOMZGg81BEyHOgIFzx5ZS/OZIqEF4LiA4fhckD5p3gcWIUro4GS5FsgPg5UVASMRC4shpsA5R/iK8bhdQWWogJkwUSgIXrIhurr64MylBkoAaDlWtxFBRGF3Xsgvgwtd4gtED9jVEA0La6RLKFdhYPmE9pUmWhxQptKHxlQo9kCAHsFA8aGHksTAAAAAElFTkSuQmCC"></A><SPAN>&nbsp;</SPAN><A 
+      title=在LinkedIn上连接 class=iconLink style="TEXT-DECORATION: none" 
+      href="http://www.linkedin.com/pub/jakob-jenkov/0/a8/4a3" 
+      target=_blank><IMG 
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABEklEQVRIx2NgwAOUlZWVFBUVqxQUFPYC8XMg/gvFIPZekBxIDQOpQAkIgAashhr2nwAGqVkN0kOU4UBXxQA1fCbCYHT8GaSXkOFlZBiMgkFm4HM5RYYjWYLqE2iYkxMsOIMLJU6gEYpL8XcoJtWS1fCkiCe1fAfKy4AwGZb8BSdhaDr/TwMLQHFRxQDNRP9pEEQgvJcBmitxKkKKp/9IKa5bTU2NT0VFRQoovh+P/ucMhHIrNguABosAg00MmgJ18MUDWRYA2beB+D6IbW1tzUTIApKDCCbX0tLChMzHFUR7aWjBXkLJlCILwMmUQEajBP+F1xUEigpy8Wr6FXY0L67pUuHQpcpEixPaVPrIgBrNFgAzO0iIN1MJVQAAAABJRU5ErkJggg=="></A><SPAN>&nbsp;</SPAN><A 
+      title=在YouTube上订阅 class=iconLink style="TEXT-DECORATION: none" 
+      href="https://www.youtube.com/user/jjenkov" target=_blank><IMG 
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABNElEQVRIx7VWSwrCMBANxYW48gTS2kJFaBfiHdq1uxbP4cJNz+K6eIQeR3oAlyI6T0Zpwlj7MYEHJZN5k8zMS6pUy/B9f+l53tF13YpQE+4MfFewYY3qO5Y0iKBksscPYE0Jn07ktKs9OVw7EJu4wvcX+WEAsQZwtO18FHkjiH4SzvmQtHxNl1YTLui/yN8oP60odMuFjrkLgmARhuE8juNpkiSToigcAN+Ygw1rsBY+Zne9Wpj73Mxh3re14SPwHBWLSDNgV4Lo3LYA8BHSVClWpWaIomhmEtD8jXCi2q2lAPARAtRKUmue544QoKncMwXaNu1ZljmSyscE2HQN0DdFq74psltk623aVWhpmg4TGufX3lWBYf2y4xzau64bQew9OMZJ7DyZRk3sPPqGuEb/tjwB4iHvG88CuqcAAAAASUVORK5CYII="></A><SPAN>&nbsp;</SPAN><A 
+      title=在Google+上连线 class=iconLink style="TEXT-DECORATION: none" 
+      href="https://plus.google.com/+JakobJenkov?rel=author" rel=author 
+      target=_blank><IMG 
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABvElEQVRIx2NgwAOUlZWVFBUVqxQUFPYC8XMg/gvFIPZekBxIDQOpQAkIgAashhr2nwAGqVkN0kOU4UBXxQA1fCbCYHT8GaSXkOFlZBiMgkFm4HM5RYYjWYLqE2iYowfLX6DCbqBUBDAiXUDqjIyMmDQ1NbmAcguR1YLk0IMLJU6gEYrhVSC2g0U0kD0V6tOp6GqxWADCq+FJEUtq+a2mpgZyaTeyONBRGqqqqhLIBqMD5BAAJ2FoOsdIEdgiHchP0NbWZiPSByD1VQzQTIQhCXStEdAFMkD2RyQNfkAcQawFILMZoLkSm+RloCUqQGwAZC8GGtwOZHuRmEeeMxDIrb+B+CTQYDOoK9+SmGT/ErIAFjRh0DhJgVpKkgU4gwhoYBHQ9TlAXALEFnp6ekxA2g45XogJImyRvFxdXR2UTNeiiR9WUVHhgfqEGAv2Yk2mQEPkgOJxOIIrBygvQ2SRUYU1o+no6HABJaNwWQBNWQTDH15XoBcVQENKgEHEAmQvRdO0E5iTBYD0ZiIsWE2osFsIilCggTpAl9gAg8UEaHEAUPw4EYZ/xqiAaFpc06XCoUuVSZdKHxlQo9kCAHcMPgoKWH+jAAAAAElFTkSuQmCC"></A><SPAN>&nbsp;</SPAN><A 
+      title=订阅RSS源 class=iconLink style="TEXT-DECORATION: none" 
+      href="http://jenkov.com/rss.xml" target=_blank><IMG 
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABqUlEQVRIx71WwUrDQBANEqQnP6AUSZo0JDnkByLSU/HkB0g/o0jJVUrx5MGvkHxDzuKxZ/HgoeQsOXiQom9kVjbJZhON7cKDbDI7M/vezG4MQzMcxxnbtp1YlpUBObBj0HNG38jG+O0YY8BBys4+W0A2Ka3p5BxZzbGg6OC4ioLWtjm//oPjEsiHLvNezqUg5Z0w5zVa4jg2XdcdYsEM81vgtStdJU1Y0JphdZdBEJgIdtUxUPpTippquYfDJZKZknMRCLs6wbeHtur6LmGu8y7bzmG78DzvWNLtrkWLxOAmUhog01PKHs8rYMvvNzK/LTvJDO5KpYHM/2QyGSCjNdO5FUGYriZNckPXrcQ/VZDv+6ZEy5zXbARdLLxSB20ACc9wciYFWXMCC5qHYXjUsIudliLgA3gC3oB3EYToYk1yUV3cJ0qKGkUGzZdcyiMO8iLoQrAbtpnyfKYUWVemURQNpGp5ZFouuPvPhU4s9lBZprpGg8GKgtBOmC56n7DDkWhGmtOxomw03VHRE2nrYdcDRe0C2utxfZAL5yBXZkWT/Vz68viP35Yv1q4mS+AFuV8AAAAASUVORK5CYII="></A></DIV></TD></TR></TABLE></DIV>
+<DIV id=mainBody 
+style="FONT-SIZE: medium; FONT-FAMILY: arial; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial">
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">GSON<SPAN>&nbsp;</SPAN></FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">类可以将JSON字符串或流解析为Java对象的树结构。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">GSON还有另外两个解析器。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">可以将</FONT></FONT><A 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,153)" 
+href="http://tutorials.jenkov.com/java-json/gson.html"><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">JSON</FONT></FONT></A><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">解析为Java对象</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">的</FONT><A 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,153)" 
+href="http://tutorials.jenkov.com/java-json/gson.html"><FONT 
+style="VERTICAL-ALIGN: inherit">Gson JSON解析器</FONT></A><FONT 
+style="VERTICAL-ALIGN: inherit">，以及</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">可以将JSON字符串或流解析为标记（拉解析器）</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">的</FONT></FONT><A 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,153)" 
+href="http://tutorials.jenkov.com/java-json/gson-jsonreader.html"><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">JsonReader</FONT></FONT></A><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">本教程重点介绍</FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">虽然 - 
+GSON的树解析器。</FONT></FONT></P><A 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,153)" 
+name=creating-a-jsonparser></A>
+<H2 style="MARGIN: 24px 0px 0px"><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">创建一个JsonParser</FONT></FONT></H2>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">在您使用GSON之前，</FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">您必须创建一个</FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">实例。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">以下是创建</FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">实例的示例：</FONT></FONT></P><PRE class=codeBox style="OVERFLOW: auto; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(240,240,240)"><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">JsonParser jsonParser = new JsonParser（）;
+</FONT></FONT></PRE><A 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,153)" 
+name=parsing-json-into-a-tree-structure></A>
+<H2 style="MARGIN: 24px 0px 0px"><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">将JSON解析为树结构</FONT></FONT></H2>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">创建完成后，</FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">您可以将JSON解析为树结构。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">以下是使用以下内容将JSON字符串解析为GSON对象的树结构的示例</FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">：</FONT></FONT></P><PRE class=codeBox style="OVERFLOW: auto; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(240,240,240)"><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">JsonParser解析器=新的JsonParser（）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+String json =“{\”f1 \“：\”Hello \“，\”f2 \“：{\”f3：\“：\”World \“}}”;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+JsonElement jsonTree = parser.parse（json）;</FONT></FONT><FONT size=+0></FONT>
+</PRE>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">的JSON的解析发生在代码的第三行，通过调用</FONT></FONT><CODE>parse()</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">对</FONT></FONT><CODE>JsonParser</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">，传递作为参数的引用的JSON字符串（或流）进行解析。</FONT></FONT></P><A 
+style="TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(51,51,153)" 
+name=iterating-the-json-tree-structure></A>
+<H2 style="MARGIN: 24px 0px 0px"><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">迭代JSON树结构</FONT></FONT></H2>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">解析的JSON树结构由来自GSON API的对象组成。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">JSON树结构的根是一个</FONT></FONT><CODE>JsonElement</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">对象。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">您可以使用其中一种类型检查方法找出它代表的是哪种类型的JSON元素：</FONT></FONT></P><PRE class=codeBox style="OVERFLOW: auto; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(240,240,240)"><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">jsonTree.isJsonObject（）;</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+jsonTree.isJsonArray（）;</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+jsonTree.isJsonNull（）;</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+jsonTree.isJsonPrimitive（）;</FONT></FONT><FONT size=+0></FONT>
+</PRE>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">上面解析的JSON字符串是一个JSON对象。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">因此，我们期望</FONT></FONT><CODE>JsonElement</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">代表一个JSON对象。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">如果是这样，我们会用它做点什么。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">这是看起来如何：</FONT></FONT></P><PRE class=codeBox style="OVERFLOW: auto; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(240,240,240)"><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">if（jsonTree.isJsonObject（））{</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    JsonObject jsonObject = jsonTree.getAsJsonObject（）;</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+}</FONT></FONT><FONT size=+0></FONT>
+</PRE>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">一旦你有一个</FONT></FONT><CODE>JsonObject</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">实例，你可以使用它的</FONT></FONT><CODE>get()</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit"><SPAN>&nbsp;</SPAN>方法</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">从它中提取字段</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">这里是一个例子：</FONT></FONT></P><PRE class=codeBox style="OVERFLOW: auto; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(240,240,240)"><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">JsonObject jsonObject = jsonTree.getAsJsonObject（）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+JsonElement f1 = jsonObject.get（“f1”）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+JsonElement f2 = jsonObject.get（“f1”）;</FONT></FONT><FONT size=+0></FONT>
+</PRE>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">您也可以检查每个字段的类型，就像</FONT></FONT><CODE>JsonElement</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">从</FONT></FONT><CODE>JsonParser</CODE><SPAN>&nbsp;</SPAN><CODE>parse()</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">方法中</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">获得</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">的第一个类型一样</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">。</FONT><FONT 
+style="VERTICAL-ALIGN: inherit">以下是一个示例，显示如何：</FONT></FONT></P><PRE class=codeBox style="OVERFLOW: auto; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(240,240,240)"><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">如果（f2.isJsonObject（））{</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    JsonObject f2Obj = f2.getAsJsonObject（）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    JsonElement f3 = f2Obj.get（“f3”）;</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+}</FONT></FONT><FONT size=+0></FONT>
+</PRE>
+<P><FONT style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">下面是一个完整的例子，展示了如何迭代</FONT></FONT><CODE>JsonElement</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">从</FONT></FONT><CODE>JsonReader</CODE><FONT 
+style="VERTICAL-ALIGN: inherit"><FONT 
+style="VERTICAL-ALIGN: inherit">：</FONT></FONT></P><PRE class=codeBox style="OVERFLOW: auto; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; BORDER-RIGHT: rgb(204,204,204) 1px solid; BORDER-BOTTOM: rgb(204,204,204) 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: rgb(204,204,204) 1px solid; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(240,240,240)"><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">JsonParser解析器=新的JsonParser（）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+String json =“{\”f1 \“：\”Hello \“，\”f2 \“：{\”f3：\“：\”World \“}}”;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+JsonElement jsonTree = parser.parse（json）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+如果（jsonTree.isJsonObject（））{</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    JsonObject jsonObject = jsonTree.getAsJsonObject（）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    JsonElement f1 = jsonObject.get（“f1”）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    JsonElement f2 = jsonObject.get（“f2”）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    如果（f2.isJsonObject（））{</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+        JsonObject f2Obj = f2.getAsJsonObject（）;</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+        JsonElement f3 = f2Obj.get（“f3”）;</FONT></FONT><FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+    }</FONT></FONT><FONT size=+0></FONT>
+<FONT size=+0></FONT><FONT style="VERTICAL-ALIGN: inherit"><FONT style="VERTICAL-ALIGN: inherit">
+}</FONT></FONT></PRE></DIV></DIV>
+</BODY>
+</HTML>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META name="GENERATOR" content="QuickCHM">
+<TITLE>oc字典与字符串互转</TITLE>
+</HEAD>
+<BODY>
+<P>oc字典与字符串互转</P>
+<P>//&nbsp;&nbsp;&nbsp; 字典转json字符串<BR>//&nbsp;&nbsp;&nbsp; NSDictionary * 
+dictionary = [NSDictionary dictionary];<BR>//&nbsp;&nbsp;&nbsp; NSData * 
+jsonData = [NSJSONSerialization dataWithJSONObject:dictionary 
+options:NSJSONWritingPrettyPrinted error:nil];<BR>//&nbsp;&nbsp;&nbsp; NSString 
+* jsonString = [[NSString alloc] initWithData:jsonData 
+encoding:NSUTF8StringEncoding];<BR>&nbsp;&nbsp;&nbsp; 
+//json字符串转字典<BR>//&nbsp;&nbsp;&nbsp; NSData *jsonData = [userInfo 
+dataUsingEncoding:NSUTF8StringEncoding];<BR>//&nbsp;&nbsp;&nbsp; NSError 
+*err;<BR>//&nbsp;&nbsp;&nbsp; NSDictionary *dic = [NSJSONSerialization 
+JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers 
+error:&amp;err];<BR>//&nbsp;&nbsp;&nbsp; if(err) 
+{<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSLog(@"有盾返回json解析失败：<A 
+href='mailto:%@",err'>%@",err</A>);<BR>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+状态说明.text = @"有盾认证数据解释出错";<BR>//&nbsp;&nbsp;&nbsp; }else{</P>
+<P>}</P>
+</BODY>
+</HTML>
